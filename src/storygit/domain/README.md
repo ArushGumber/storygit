@@ -26,14 +26,22 @@ from storygit.domain.state import StoryState
 from storygit.domain.world import Fact, Predicate
 
 diff = Diff(
-    ops=(AddFact(fact=Fact(
-        id=fact_id, subject=kael, predicate=Predicate.location,
-        object_entity=ashfall, valid_from_beat=beat_a, established_by_beat=beat_a,
-    )),),
+    ops=(
+        AddFact(
+            fact=Fact(
+                id=fact_id,
+                subject=kael,
+                predicate=Predicate.location,
+                object_entity=ashfall,
+                valid_from_beat=beat_a,
+                established_by_beat=beat_a,
+            )
+        ),
+    ),
     author=DiffAuthor.ai,
     intent="put Kael in the market",
 )
-new_state = apply(state, diff)               # state is untouched
+new_state = apply(state, diff)  # state is untouched
 assert new_state.producer_of[fact_id] == beat_a
 assert new_state.facts_valid_at(beat_b, subject=kael, predicate=Predicate.location)
 ```

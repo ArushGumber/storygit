@@ -37,15 +37,15 @@ Three things fall out of this for free:
 repo = Repository.open("story.db")
 repo.initialize(StoryState.build(nodes={root.id: root}))
 
-repo.commit_diff(diff)                     # apply + snapshot + move the branch
+repo.commit_diff(diff)  # apply + snapshot + move the branch
 repo.create_branch("what-if")
 repo.commit_diff(other_diff, branch="what-if")
 
 result = repo.merge_branches("main", "what-if")
 if result.clean:
-    repo.commit_diff(result.diff)          # take their work
+    repo.commit_diff(result.diff)  # take their work
 else:
-    show(result.conflicts)                 # ask the writer
+    show(result.conflicts)  # ask the writer
 ```
 
 ## Invariants

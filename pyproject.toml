@@ -59,6 +59,10 @@ ignore = [
   "RUF001",
   "RUF002",
   "RUF003",
+  # N818 wants every exception named *Error. The provider error names (RateLimited,
+  # ProviderDown, BudgetExceeded) are fixed by the chunk briefs and referenced by later
+  # chunks; the domain layer follows the convention.
+  "N818",
 ]
 
 [tool.ruff.lint.per-file-ignores]
