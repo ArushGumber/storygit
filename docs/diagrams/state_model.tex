@@ -1,0 +1,85 @@
+% state_model.tex — the three things storygit stores and how they point at each other.
+\documentclass[tikz, border=8pt]{standalone}
+\input{style.tex}
+\begin{document}\sgpage
+\begin{tikzpicture}[sg]
+
+% ---------------- plan tree (left column) ----------------
+\node[sgnode] (story) at (0,0) {Story};
+\node[sgnode, below=7mm of story] (episode)
+  {Episode\\[-2pt]{\scriptsize hook, cliffhanger, recap, threads}};
+\node[sgnode, below=7mm of episode] (scene) {Scene};
+\node[sgnode, below=7mm of scene] (beatA)
+  {Beat A\\[-2pt]{\scriptsize produces $f_1$}};
+\node[sgnode, below=7mm of beatA] (beatB)
+  {Beat B\\[-2pt]{\scriptsize consumes $f_1$}};
+\node[sgsmall, below=7mm of beatB, minimum width=17mm] (prose)
+  {Prose\\[-2pt]{\scriptsize + provenance spans}};
+
+\draw[sgedge] (story) -- (episode);
+\draw[sgedge] (episode) -- (scene);
+\draw[sgedge] (scene) -- (beatA);
+\draw[sgedgeplain] (beatA) -- (beatB);
+\draw[sgedge] (beatB) -- (prose);
+
+\begin{scope}[on background layer]
+  \node[sggroup, fit=(story)(prose), inner sep=7pt,
+        label={[sgtitle]above:plan tree}] (planbox) {};
+\end{scope}
+
+% ---------------- world graph (right column) ----------------
+\node[sgbox, minimum width=22mm] (kael) at (64mm, 0mm) {Kael\\[-2pt]{\scriptsize character}};
+\node[sgbox, minimum width=22mm] (ashfall) at (49mm, -21mm) {Ashfall\\[-2pt]{\scriptsize place}};
+\node[sgbox, minimum width=22mm] (sister) at (79mm, -21mm) {Sister\\[-2pt]{\scriptsize character}};
+\node[sgsmall, text width=44mm, align=center] (knows) at (64mm, -36mm)
+  {\textsf{knows}(Kael, $f_2$, since Beat B)\\[-1pt]
+   {\scriptsize what a character is allowed to act on}};
+\node[sgsmall, text width=46mm, align=center] (validity) at (64mm, -47mm)
+  {$f_1$ valid on $[\,$Beat A, Beat D$\,)$\\[-1pt]
+   {\scriptsize changes end an interval, never overwrite}};
+
+\draw[sgedgeaccent] (kael) -- node[sglabel, pos=0.5] {\textsf{location} $f_1$} (ashfall);
+\draw[sgedge] (kael) -- node[sglabel, pos=0.5] {\textsf{goal} $f_2$} (sister);
+\draw[sgedgesoft] (sister.south) -- (knows.north east);
+
+\begin{scope}[on background layer]
+  \node[sggroup, fit=(kael)(sister)(ashfall)(knows)(validity), inner sep=7pt,
+        label={[sgtitle]above:world graph, facts valid over beat intervals}] (worldbox) {};
+\end{scope}
+
+% ---------------- dependency edges between the two ----------------
+\draw[sgedgeaccent] (beatA.east) to[out=30, in=200]
+  node[sglabel, pos=0.6, above=1pt] {establishes $f_1$} (ashfall.west);
+\draw[sgedgesoft] (validity.west) to[out=180, in=0]
+  node[sglabel, pos=0.55, below=1pt] {dependency edge} (beatB.east);
+
+% ---------------- snapshot chain (bottom band) ----------------
+\coordinate (bandtop) at ($(planbox.south west) + (0mm,-20mm)$);
+\node[sgsmall, anchor=north west, minimum width=8mm] (s0) at (bandtop) {$S_0$};
+\node[sgsmall, right=8mm of s0, minimum width=8mm] (s1) {$S_1$};
+\node[sgsmall, right=8mm of s1, minimum width=8mm] (s2) {$S_2$};
+\node[sgsmall, right=8mm of s2, minimum width=8mm] (s3) {$S_3$};
+\node[sgboxaccent, font=\scriptsize, inner sep=3pt, minimum height=5mm, minimum width=8mm,
+      above=8mm of s2] (s2b) {$S_2'$};
+
+\draw[sgedge] (s0) -- (s1);
+\draw[sgedge] (s1) -- (s2);
+\draw[sgedge] (s2) -- (s3);
+\draw[sgedgeaccent] (s1) to[out=55, in=200] (s2b);
+
+\node[draw=none, fill=none, right=12mm of s3, align=left, font=\scriptsize, text=sgink] (refs)
+  {\textsf{main} $\rightarrow S_3$\\[1pt] \textsf{what-if} $\rightarrow S_2'$};
+
+\begin{scope}[on background layer]
+  \node[sggroup, fit=(s0)(s3)(s2b)(refs), inner sep=7pt,
+        label={[sgtitle]above:immutable snapshots, content-addressed and structurally shared}]
+        (snapbox) {};
+\end{scope}
+
+\node[sgcaption, below=3mm of snapbox.south west, anchor=north west, text width=105mm]
+  {A snapshot is a manifest of content hashes, so unchanged objects are shared between
+   versions. A branch is a pointer; the diff between two snapshots is a set comparison
+   over their manifests, and propagation walks the dependency edges above it.};
+
+\end{tikzpicture}
+\end{document}

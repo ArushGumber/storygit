@@ -1,0 +1,66 @@
+% style.tex — the one visual language for every storygit diagram.
+%
+% Paper palette: warm off-white ground, four greys, one accent. No gradients, no
+% shadows, no icons. The frontend's CSS uses these same six values, so a diagram
+% dropped into the Architecture tab looks like it belongs there.
+%
+% Usage: \input{style.tex} inside a standalone document, then use the node styles
+% below. Never define a colour or a line width at the call site.
+
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[charter]{mathdesign}
+\usetikzlibrary{arrows.meta, positioning, fit, backgrounds, calc, shapes.geometric}
+
+% --- palette -----------------------------------------------------------------
+\definecolor{sgink}{HTML}{2B2A28}      % text, strongest strokes
+\definecolor{sgslate}{HTML}{5C5A55}    % secondary text, edges
+\definecolor{sgmute}{HTML}{9A968E}     % tertiary, dashed edges
+\definecolor{sgrule}{HTML}{D6D2C8}     % hairlines, node borders
+\definecolor{sgpaper}{HTML}{FAF8F4}    % ground
+\definecolor{sgfill}{HTML}{F1EDE4}     % filled node interiors
+\definecolor{sgaccent}{HTML}{8C5A3C}   % the single accent (terracotta)
+\definecolor{sgaccentfill}{HTML}{EFE2D8}
+
+% Status colours, shared with the frontend's plan tree.
+\definecolor{sgdraft}{HTML}{9A968E}
+\definecolor{sgaccepted}{HTML}{4F6B52}
+\definecolor{sglocked}{HTML}{3F5666}
+\definecolor{sgstale}{HTML}{9C6B2F}
+
+% --- base styles -------------------------------------------------------------
+\tikzset{
+  sg/.style={
+    font=\footnotesize,
+    line width=0.5pt,
+    >={Stealth[length=4pt, width=3pt]},
+  },
+  sgbox/.style={
+    draw=sgrule, fill=sgfill, text=sgink,
+    rounded corners=1pt, line width=0.5pt,
+    inner sep=4pt, minimum height=6.5mm, align=center,
+  },
+  sgboxplain/.style={sgbox, fill=sgpaper},
+  sgboxaccent/.style={sgbox, draw=sgaccent, fill=sgaccentfill},
+  sgnode/.style={sgbox, minimum width=17mm},
+  sgsmall/.style={sgbox, font=\scriptsize, inner sep=3pt, minimum height=5mm},
+  sgtitle/.style={font=\footnotesize\itshape, text=sgslate},
+  sgcaption/.style={font=\scriptsize, text=sgslate, align=left},
+  sggroup/.style={
+    draw=sgrule, fill=sgpaper, rounded corners=2pt,
+    line width=0.5pt, inner sep=5pt,
+  },
+  sgedge/.style={draw=sgslate, ->},
+  sgedgeplain/.style={draw=sgslate},
+  sgedgesoft/.style={draw=sgmute, ->, dashed, dash pattern=on 1.6pt off 1.6pt},
+  sgedgeaccent/.style={draw=sgaccent, ->, line width=0.7pt},
+  sglabel/.style={font=\scriptsize, text=sgslate, inner sep=2pt, fill=sgpaper},
+  sgdraft/.style={sgbox, draw=sgdraft},
+  sgaccepted/.style={sgbox, draw=sgaccepted},
+  sglocked/.style={sgbox, draw=sglocked},
+  sgstale/.style={sgbox, draw=sgstale, fill=sgaccentfill},
+}
+
+% A standalone page on the paper ground with no margin fuss.
+\newcommand{\sgpage}{\pagecolor{sgpaper}}

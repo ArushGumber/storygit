@@ -1,0 +1,215 @@
+% storygit -- literature references
+% Compiled for arush/tex/learning_design.tex and docs/presentable.tex
+% All entries verified against web search (titles/authors/years/venues) or,
+% for the Fabula preprint, against the local PDF at arush/refs/fabula.pdf.
+
+% Cited in: learning_design.tex -- diversity selection section (4.2), DPP as the
+% drop-in ablation for candidate selection over axis-conditioned beats.
+@article{kulesza2012dpp,
+  author  = {Kulesza, Alex and Taskar, Ben},
+  title   = {Determinantal Point Processes for Machine Learning},
+  journal = {Foundations and Trends in Machine Learning},
+  volume  = {5},
+  number  = {2--3},
+  pages   = {123--286},
+  year    = {2012},
+  doi     = {10.1561/2200000044}
+}
+
+% Cited in: learning_design.tex -- diversity selection section (4.2), MMR as the
+% default reranker for selecting k candidates from n axis-conditioned proposals.
+@inproceedings{carbonell1998mmr,
+  author    = {Carbonell, Jaime and Goldstein, Jade},
+  title     = {The Use of {MMR}, Diversity-Based Reranking for Reordering
+               Documents and Producing Summaries},
+  booktitle = {Proceedings of the 21st Annual International ACM SIGIR
+               Conference on Research and Development in Information
+               Retrieval (SIGIR '98)},
+  pages     = {335--336},
+  year      = {1998},
+  address   = {Melbourne, Australia},
+  publisher = {ACM},
+  doi       = {10.1145/290941.291025}
+}
+
+% Cited in: learning_design.tex -- preference layer section (4.5), InfoNCE loss
+% for the contrastive voice model (anchors: human/human-edited prose; positives:
+% accepted proposals; negatives: rejected proposals and pre-edit versions).
+@misc{oord2018cpc,
+  author        = {van den Oord, Aaron and Li, Yazhe and Vinyals, Oriol},
+  title         = {Representation Learning with Contrastive Predictive Coding},
+  year          = {2018},
+  eprint        = {1807.03748},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.LG}
+}
+
+% Cited in: learning_design.tex -- preference layer section (4.5), Bradley-Terry
+% pairwise-comparison model underlying the logistic preference head trained on
+% accept-over-reject candidate pairs.
+@article{bradley1952rank,
+  author  = {Bradley, Ralph Allan and Terry, Milton E.},
+  title   = {Rank Analysis of Incomplete Block Designs: {I}. The Method of
+             Paired Comparisons},
+  journal = {Biometrika},
+  volume  = {39},
+  number  = {3/4},
+  pages   = {324--345},
+  year    = {1952},
+  doi     = {10.2307/2334029}
+}
+
+% Cited in: learning_design.tex -- preference layer section (4.5), origin of
+% learning a reward/preference model from pairwise human judgments, motivating
+% the accept/reject/edit-signal design of the preference head.
+@inproceedings{christiano2017preferences,
+  author    = {Christiano, Paul F. and Leike, Jan and Brown, Tom B. and
+               Martic, Miljan and Legg, Shane and Amodei, Dario},
+  title     = {Deep Reinforcement Learning from Human Preferences},
+  booktitle = {Advances in Neural Information Processing Systems 30
+               (NeurIPS 2017)},
+  pages     = {4299--4307},
+  year      = {2017},
+  eprint        = {1706.03741},
+  archiveprefix = {arXiv}
+}
+
+% Cited in: learning_design.tex -- preference layer section (4.5), RLHF-at-scale
+% precedent (reward model + policy fine-tuning) referenced when explaining why
+% the preference head learns from accept/reject/edit signals rather than a
+% single scalar objective.
+@inproceedings{ouyang2022instructgpt,
+  author    = {Ouyang, Long and Wu, Jeff and Jiang, Xu and Almeida, Diogo and
+               Wainwright, Carroll L. and Mishkin, Pamela and Zhang, Chong and
+               Agarwal, Sandhini and Slama, Katarina and Ray, Alex and
+               Schulman, John and Hilton, Jacob and Kelton, Fraser and
+               Miller, Luke and Simens, Maddie and Askell, Amanda and
+               Welinder, Peter and Christiano, Paul and Leike, Jan and
+               Lowe, Ryan},
+  title     = {Training Language Models to Follow Instructions with Human
+               Feedback},
+  booktitle = {Advances in Neural Information Processing Systems 35
+               (NeurIPS 2022)},
+  pages     = {27730--27744},
+  year      = {2022},
+  eprint        = {2203.02155},
+  archiveprefix = {arXiv}
+}
+
+% Cited in: learning_design.tex -- preference layer section (4.5), Thompson
+% sampling for the safe-vs-exploratory slot-allocation bandit (5c'), with
+% reward = writer action and regret curves reported in the eval.
+@article{russo2018thompson,
+  author  = {Russo, Daniel J. and Van Roy, Benjamin and Kazerouni, Abbas and
+             Osband, Ian and Wen, Zheng},
+  title   = {A Tutorial on Thompson Sampling},
+  journal = {Foundations and Trends in Machine Learning},
+  volume  = {11},
+  number  = {1},
+  pages   = {1--96},
+  year    = {2018},
+  doi     = {10.1561/2200000070}
+}
+
+% Cited in: learning_design.tex -- continuity checker section (4.4), NLI-based
+% inconsistency detection motivating Layer 2 (DeBERTa-MNLI cross-encoder over
+% fact sentence pairs) of the three-layer checker.
+@article{laban2022summac,
+  author  = {Laban, Philippe and Schnabel, Tobias and Bennett, Paul N. and
+             Hearst, Marti A.},
+  title   = {{SummaC}: Re-Visiting {NLI}-based Models for Inconsistency
+             Detection in Summarization},
+  journal = {Transactions of the Association for Computational Linguistics},
+  volume  = {10},
+  pages   = {163--177},
+  year    = {2022},
+  doi     = {10.1162/tacl_a_00453}
+}
+
+% Cited in: learning_design.tex -- continuity checker section (4.4), backbone
+% model for the local Layer-2 NLI cross-encoder (DeBERTa-MNLI, CPU) used on
+% free-text `note` facts and borderline Layer-1 hits.
+@inproceedings{he2021deberta,
+  author    = {He, Pengcheng and Liu, Xiaodong and Gao, Jianfeng and
+               Chen, Weizhu},
+  title     = {{DeBERTa}: Decoding-Enhanced {BERT} with Disentangled
+               Attention},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2021}
+}
+
+% Cited in: learning_design.tex -- world state / knowledge graph section (4.1),
+% prior art on knowledge-graph-structured world state for interactive
+% story/fiction-world generation, contrasted with storygit's typed, versioned
+% fact-edge graph with temporal validity and epistemic edges.
+@inproceedings{ammanabrolu2020stories,
+  author    = {Ammanabrolu, Prithviraj and Cheung, Wesley and Tu, Dan and
+               Broniec, William and Riedl, Mark O.},
+  title     = {Bringing Stories Alive: Generating Interactive Fiction Worlds},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence
+               and Interactive Digital Entertainment (AIIDE)},
+  volume    = {16},
+  pages     = {3--9},
+  year      = {2020}
+}
+
+% Cited in: docs/presentable.tex -- Problem & Decisions tab, creativity-support
+% framing used to justify "meaningful creative control" as a design goal and
+% as a candidate evaluation instrument alongside the simulated-writer metrics.
+@article{cherry2014csi,
+  author  = {Cherry, Erin and Latulipe, Celine},
+  title   = {Quantifying the Creativity Support of Digital Tools through the
+             Creativity Support Index},
+  journal = {ACM Transactions on Computer-Human Interaction},
+  volume  = {21},
+  number  = {4},
+  pages   = {21:1--21:25},
+  year    = {2014},
+  doi     = {10.1145/2617588}
+}
+
+% Cited in: docs/presentable.tex -- related-work / Fabula-discussion section,
+% prompt-chaining hierarchical co-writing system used as a point of contrast
+% with storygit's typed state graph and diff-based propagation.
+@inproceedings{mirowski2023dramatron,
+  author    = {Mirowski, Piotr and Mathewson, Kory W. and Pittman, Jaylen and
+               Evans, Richard},
+  title     = {Co-Writing Screenplays and Theatre Scripts with Language
+               Models: Evaluation by Industry Professionals},
+  booktitle = {Proceedings of the 2023 CHI Conference on Human Factors in
+               Computing Systems (CHI '23)},
+  year      = {2023},
+  doi       = {10.1145/3544548.3581225}
+}
+
+% Cited in: docs/presentable.tex -- related-work section, prior human-AI
+% collaborative story-writing interface (infill/elaborate/rewrite controls),
+% contrasted with storygit's diff-based proposal-review loop.
+@inproceedings{yuan2022wordcraft,
+  author    = {Yuan, Ann and Coenen, Andy and Reif, Emily and Ippolito, Daphne},
+  title     = {Wordcraft: Story Writing with Large Language Models},
+  booktitle = {Proceedings of the 27th International Conference on
+               Intelligent User Interfaces (IUI '22)},
+  year      = {2022},
+  doi       = {10.1145/3490099.3511105}
+}
+
+% Cited in: docs/presentable.tex and learning_design.tex -- primary Fabula
+% discussion (FABLE.md sec. 3: drama managers, auto-rater, Architect/Gardener
+% views, 42-writer study) that motivates storygit's thesis and gap analysis
+% (no dependency tracking, no per-character knowledge state, no learning loop).
+@misc{mirowski2026fabula,
+  author        = {Mirowski, Piotr and Wedin, Ben and Amplayo, Reinald Kim and
+                   Galt, Rich and Williams, Duncan and Qadri, Rida and
+                   Sanchez-Elias, Jaume and Drake-Kajioka, Erin and
+                   Gooding, Sian and Lopez-Rivilla, Lucia and
+                   Araujo, Joao G. M. and Schulz, Lion and Baveja, Satinder and
+                   Mohamed, Shakir and Grefenstette, Edward and Rimell, Laura and
+                   Evans, Richard},
+  title         = {Fabula: Building a Narrative Storytelling Sidekick with the
+                   Writers' Community},
+  year          = {2026},
+  eprint        = {2606.14411},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.HC}
+}
