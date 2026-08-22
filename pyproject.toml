@@ -1,0 +1,81 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "storygit"
+version = "0.1.0"
+description = "Version-controlled, typed story state with reviewable AI diffs, dependency propagation, continuity checking, and a preference layer."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = { text = "Proprietary" }
+authors = [{ name = "Arush Gumber" }]
+dependencies = [
+  "pydantic>=2.7",
+  "pydantic-settings>=2.2",
+  "httpx>=0.27",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+ml = [
+  "torch",
+  "sentence-transformers",
+  "transformers",
+  "numpy",
+  "scipy",
+  "scikit-learn",
+  "matplotlib",
+]
+api = ["fastapi", "uvicorn"]
+dev = ["pytest", "pytest-asyncio", "ruff", "mypy"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/storygit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers -m 'not live'"
+markers = [
+  "live: hits a real network provider; excluded by default, run with -m live",
+  "slow: takes more than a few seconds (model loading, training)",
+]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests", "eval"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM", "RUF", "D"]
+ignore = [
+  "D107",  # __init__ docstring: the class docstring covers it
+  "D203",  # incompatible with D211
+  "D213",  # incompatible with D212
+  "A003",  # shadowing a builtin as an attribute name is fine (e.g. Fact.object)
+  # Typography is deliberate: docstrings and writer-facing strings use en dashes and
+  # curly quotes, because the delta summaries are read by a novelist, not a linter.
+  "RUF001",
+  "RUF002",
+  "RUF003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D100", "D101", "D102", "D103", "D104"]
+"eval/*" = ["D100", "D104"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+packages = ["storygit"]
+strict = true
+warn_unreachable = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["sentence_transformers.*", "transformers.*", "sklearn.*", "matplotlib.*", "scipy.*"]
+ignore_missing_imports = true
