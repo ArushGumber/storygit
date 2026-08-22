@@ -1,0 +1,23 @@
+# Secrets — keys live in the workspace-level .env, never in this repo
+.env
+*.env
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+# Node
+node_modules/
+frontend/dist/
+# Local caches and artifacts
+.cache/
+*.log
+# TeX build junk
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
