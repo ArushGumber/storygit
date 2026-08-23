@@ -19,6 +19,8 @@ Three things happen on every accept, in this order, and the order matters:
 
 from __future__ import annotations
 
+from collections.abc import Sequence
+
 from pydantic import BaseModel, ConfigDict
 
 from storygit.agents.propose import Proposal, Proposer
@@ -49,8 +51,17 @@ from storygit.domain.provenance import Authorship, ProvenanceSpan
 from storygit.domain.state import StoryState
 from storygit.graph.dependency import EdgeProvider
 from storygit.graph.propagation import StaleMark, marks_to_diff, propagate_change
+from storygit.preference.features import FeatureVector
+from storygit.preference.layer import PreferenceLayer
+from storygit.preference.signals import SignalReader
+from storygit.preference.state import PreferenceStateStore
 from storygit.providers.router import Router
-from storygit.selection.select import Candidate, CandidateSelector, SelectionConfig
+from storygit.selection.select import (
+    Candidate,
+    CandidateSelector,
+    SelectionConfig,
+    candidate_text,
+)
 from storygit.store.branches import DEFAULT_BRANCH
 from storygit.store.repository import Repository
 from storygit.store.signals import Signal, SignalKind, SignalStore
@@ -98,6 +109,7 @@ class Engine:
         selection: SelectionConfig | None = None,
         use_nli: bool = True,
         edge_provider: EdgeProvider | None = None,
+        preference: PreferenceLayer | None = None,
     ) -> None:
         """Wire the engine.
 
@@ -110,6 +122,8 @@ class Engine:
             use_nli: Whether accepts run layer 2. The ablation runs turn it off.
             edge_provider: Optional soft-edge provider for propagation. ``None`` means
                 declared dependencies only, which is the default and the honest one.
+            preference: The preference layer. Omitted means load whatever this branch has
+                learned; pass a disabled layer for the no-preference ablation.
         """
         self.repo = repository
         self.router = router
@@ -120,8 +134,15 @@ class Engine:
         self.selector = CandidateSelector(self.proposer, router, selection)
         self.use_nli = use_nli
         self.edge_provider = edge_provider
+        self.preference_state = PreferenceStateStore(repository.conn)
+        self.preference = preference or PreferenceLayer.load(self.preference_state, branch)
+        self._reader = SignalReader(self.signals, branch=branch)
         self._pending: dict[ProposalId, Proposal] = {}
         self._last_candidates: list[Candidate] = []
+        # Features and text are captured when a candidate is *shown*, because both depend
+        # on the state at that moment and cannot be reconstructed afterwards.
+        self._features: dict[str, FeatureVector] = {}
+        self._texts: dict[str, str] = {}
 
     # --- reads ------------------------------------------------------------------
 
@@ -159,12 +180,32 @@ class Engine:
             Candidates, shortlisted ones first.
         """
         candidates = await self.selector.select(
-            self.state(), level, target_node_id=node_id, intent=intent
+            self.state(),
+            level,
+            target_node_id=node_id,
+            intent=intent,
+            quality_fn=self._preference_quality,
         )
-        for candidate in candidates:
+        features = self.preference.features_for(candidates)
+        for candidate, vector in zip(candidates, features, strict=True):
+            key = str(candidate.proposal.id)
             self._pending[candidate.proposal.id] = candidate.proposal
+            self._features[key] = vector
+            self._texts[key] = candidate_text(candidate.proposal)
         self._last_candidates = candidates
         return candidates
+
+    async def _preference_quality(self, candidates: Sequence[Candidate]) -> list[float] | None:
+        """Base quality from the learned head, or ``None`` to defer to the judge.
+
+        This is the chunk 3 seam. When the layer is disabled, or has not yet seen a single
+        comparison, it returns ``None`` and selection ranks by the judge exactly as it did
+        before the head existed — which is what makes the no-preference ablation exact
+        rather than merely similar.
+        """
+        if not self.preference.enabled or self.preference.state.pairs_seen < 1:
+            return None
+        return self.preference.score(candidates)
 
     def shown(self) -> tuple[ProposalId, ...]:
         """Ids of the candidates last shortlisted, for recording preferences."""
@@ -228,6 +269,7 @@ class Engine:
                 propagation_snapshot = self.repo.commit_diff(mark_diff, branch=self.branch)
 
         self._pending.pop(proposal_id, None)
+        self._learn(human_prose=self._human_prose(after))
         final = self.repo.state(self.branch)
         return AcceptResult(
             snapshot_id=snapshot_id,
@@ -277,6 +319,7 @@ class Engine:
                 branch=self.branch,
             )
         self._pending.pop(proposal_id, None)
+        self._learn(human_prose=self._human_prose(self.state()))
 
     async def edit(self, proposal_id: ProposalId, new_text: str) -> AcceptResult:
         """Accept a proposal with the writer's own words in place of the model's.
@@ -516,6 +559,54 @@ class Engine:
                 snapshot_id = self.repo.commit_diff(mark_diff, branch=self.branch)
                 after = self.repo.state(self.branch)
         return snapshot_id, recheck_after_strike(after, fact_id), tuple(marks)
+
+    # --- learning ---------------------------------------------------------------
+
+    async def mine_edits(self) -> SnapshotId | None:
+        """Read the writer's edits into style rules and put them in the ledger.
+
+        Kept separate from ``learn`` because it costs a model call per edit, so it runs on
+        demand (after a session, or from the interface) rather than after every accept.
+
+        Returns:
+            The snapshot recording the new rules, or ``None`` if nothing was mined.
+        """
+        from storygit.preference import edit_mining
+
+        pairs = self._reader.edit_pairs()
+        if not pairs:
+            return None
+        rules = await edit_mining.mine(self.router, pairs)
+        diff = edit_mining.to_diff(self.state().ledger, rules)
+        if not len(diff):
+            return None
+        return self.repo.commit_diff(diff, branch=self.branch)
+
+    def _learn(self, *, human_prose: Sequence[str] = ()) -> None:
+        """Refit the preference layer and persist it. Milliseconds, so it runs inline."""
+        if not self.preference.enabled:
+            return
+        self.preference.learn(
+            self._reader,
+            self._features,
+            texts_by_proposal=self._texts,
+            human_prose=human_prose,
+        )
+        self.preference.save(self.preference_state, self.branch)
+
+    def _human_prose(self, state: StoryState) -> list[str]:
+        """Prose the writer wrote or edited — the anchors for the voice model."""
+        out: list[str] = []
+        for beat in state.beats_in_order():
+            prose = state.prose_for(beat.id)
+            if prose is None or not prose.text.strip():
+                continue
+            if any(
+                span.source in (Authorship.human, Authorship.ai_edited_by_human)
+                for span in prose.spans
+            ):
+                out.append(prose.text)
+        return out
 
     # --- internals --------------------------------------------------------------
 

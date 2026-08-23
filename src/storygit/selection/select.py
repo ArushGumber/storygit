@@ -187,7 +187,7 @@ class CandidateSelector:
         *,
         target_node_id: NodeId | None = None,
         intent: str = "",
-        quality_fn: Callable[[Sequence[Candidate]], Awaitable[list[float]]] | None = None,
+        quality_fn: Callable[[Sequence[Candidate]], Awaitable[list[float] | None]] | None = None,
     ) -> list[Candidate]:
         """Generate, check, rank, and shortlist candidates for one node.
 
@@ -196,8 +196,11 @@ class CandidateSelector:
             level: What to propose.
             target_node_id: The node to attach to.
             intent: The writer's instruction.
-            quality_fn: Overrides the base-quality signal. This is the chunk 4 seam: the
-                preference head is dropped in here and nothing else changes.
+            quality_fn: Overrides the base-quality *ranking*. This is the chunk 4 seam:
+                the preference head is dropped in here and nothing else changes. It
+                receives candidates that already carry their judge sub-scores and flags,
+                and may return ``None`` to mean "no opinion, use the judge" — which is
+                what makes the no-preference ablation exact rather than approximate.
 
         Returns:
             All sampled candidates, ordered with the selected ``k`` first. Returning the
@@ -217,17 +220,28 @@ class CandidateSelector:
         slice_ = self._slice(state, parent_id)
         candidates = [self._with_flags(state, proposal, axis) for proposal, axis in sampled]
 
-        if quality_fn is not None:
-            base = await quality_fn(candidates)
-            judge_scores: list[dict[str, float]] = [{} for _ in candidates]
-            judge_flags: list[list[Flag]] = [[] for _ in candidates]
-        elif config.use_judge:
-            base, judge_flags, judge_scores = await self._judge_all(slice_, candidates, parent_id)
+        # The judge always runs when enabled, even if a preference head will override the
+        # ranking: its sub-scores are *features* of that head, and its soft flags are shown
+        # to the writer either way. An override replaces the ranking, not the analysis.
+        if config.use_judge:
+            judged, judge_flags, judge_scores = await self._judge_all(slice_, candidates, parent_id)
         else:
-            base = [c.base_quality for c in candidates]
+            judged = [c.base_quality for c in candidates]
             judge_scores = [{} for _ in candidates]
             judge_flags = [[] for _ in candidates]
 
+        candidates = [
+            candidates[i].model_copy(
+                update={
+                    "judge_scores": judge_scores[i],
+                    "flags": tuple(sort_flags([*candidates[i].flags, *judge_flags[i]])),
+                }
+            )
+            for i in range(len(candidates))
+        ]
+
+        override = await quality_fn(candidates) if quality_fn is not None else None
+        base = list(override) if override is not None else judged
         base = [self._penalize(score, candidates[i].flags) for i, score in enumerate(base)]
 
         # Embeddings are only computed when something needs them. The top-k baseline
@@ -257,11 +271,9 @@ class CandidateSelector:
         enriched = [
             candidates[i].model_copy(
                 update={
-                    "flags": tuple(sort_flags([*candidates[i].flags, *judge_flags[i]])),
                     "base_quality": base[i],
                     "surprise": surprise[i],
                     "effective_quality": ranked[i],
-                    "judge_scores": judge_scores[i],
                     "selected": i in picked,
                 }
             )

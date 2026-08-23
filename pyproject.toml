@@ -79,7 +79,7 @@ convention = "google"
 [tool.mypy]
 python_version = "3.11"
 mypy_path = "src"
-packages = ["storygit"]
+files = ["src/storygit", "eval"]
 strict = true
 warn_unreachable = true
 plugins = ["pydantic.mypy"]

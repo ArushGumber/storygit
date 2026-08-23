@@ -84,8 +84,9 @@ as the negative side of a preference pair.
 
 ```python
 selector = CandidateSelector(proposer, router, SelectionConfig(n=6, k=3))
-candidates = await selector.select(state, Level.beat, target_node_id=scene_id,
-                                   intent="Kael's ability shows itself")
+candidates = await selector.select(
+    state, Level.beat, target_node_id=scene_id, intent="Kael's ability shows itself"
+)
 
 for c in candidates:
     print(c.selected, c.axis_label, c.base_quality, c.surprise, c.effective_quality)
