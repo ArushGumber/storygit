@@ -140,11 +140,14 @@ def record_api(out: Path) -> list[str]:
                 else:
                     failures.append(f"/api/gallery/{sid} -> HTTP {one.status_code}")
 
-    # The figures the Eval tab renders are files on disk, not API responses.
-    figures = out / "figures"
-    figures.mkdir(parents=True, exist_ok=True)
+    # The figures the Eval tab renders are files on disk, not API responses, and the
+    # listing hands the client the URL it should use. Writing them anywhere else means the
+    # recorded listing points at paths that do not exist, which is a 404 per figure and was
+    # exactly what the first export shipped.
+    plots = out / "api" / "eval" / "plot"
+    plots.mkdir(parents=True, exist_ok=True)
     for svg in sorted((ROOT / "eval" / "results").glob("*.svg")):
-        shutil.copy(svg, figures / svg.name)
+        shutil.copy(svg, plots / svg.name)
 
     work.unlink(missing_ok=True)
     for sidecar in out.glob("_demo.db-*"):

@@ -58,6 +58,7 @@ docs: diagrams numbers  ## Rebuild the outward-facing document
 
 site:  ## Export the static site into site/ (screenshots need playwright)
 	$(PY) scripts/build_site.py
+	$(PY) scripts/verify_site.py
 
 eval:  ## Run the live evaluation (costs provider quota)
 	$(PY) -m eval.run --config full
