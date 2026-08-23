@@ -1,0 +1,300 @@
+{
+  "persona": "the Maximalist",
+  "config": {
+    "name": "half",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 1,
+    "seed": 9,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_ea2939ecd6",
+      "level": "episode",
+      "shown": [
+        "p_838863af2f",
+        "p_8a76948b85",
+        "p_fb5ea03d2e"
+      ],
+      "axes": [
+        "shift the point of view",
+        "raise the stakes",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.436,
+        0.5394,
+        0.6263
+      ],
+      "chosen": "p_fb5ea03d2e",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6162,
+          "dialogue_ratio": 0.2
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "What Falls, What Follows From her post on Ashfall's wall, Watch-Captain Elara witnesses a fiery object crash in the nearby woods. While younger residents are excited, her mind fills with dread from old warnings, and she struggles with the decision to investigate or fortify the settlement against a potential threat. The community is divided by hope and fear. Elara, the leader, is burdened by old superstitions and a heavy sense of responsibility. The 'falling star' is not seen by all as a wonder.",
+        "The Last Good Filter Kaelen listens to his sister Elara's labored breathing, her respirator filter clogged with the city's toxic ash. After failing to secure a replacement from the district's empty quartermaster, he's left with one desperate option: seeking out a black marketeer named Silas, a man with a deadly reputation. The air in Ashfall is toxic and requires filters to breathe. Official supplies are gone. Kaelen is driven by the need to protect his younger sister, Elara.",
+        "Ghosts in the Static Kael, a lone scavenger in a world choked by perpetual ashfall, breaks into a derelict data archive searching for salvageable tech. He finds a pristine, miraculously preserved data drive, but his elation turns to shock when he recognizes the custom encryption signature: it belongs to his mother, who disappeared years ago during the Collapse. The world is a ruin blanketed in ash. Pre-Collapse technology is rare and sought-after. The protagonist, Kael, is driven by the unresolved loss of his mother."
+      ]
+    },
+    {
+      "node_id": "n_ea2939ecd6",
+      "level": "episode",
+      "shown": [
+        "p_5f8f602151",
+        "p_c21ec6ea50",
+        "p_a443c9b162"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.6464,
+        0.6141,
+        0.5258
+      ],
+      "chosen": "p_5f8f602151",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Watcher in the Dust Hiding in the rafters of a derelict data vault, a hardened scavenger named Elara watches a younger rival, Kael, bypass a security system she couldn't crack. She plans to ambush him for whatever he finds, but his shocked, deeply personal reaction to discovering a specific data drive makes her pause, realizing it's far more than just valuable salvage. Kael is being watched by a more experienced, and potentially hostile, scavenger. The data drive he found may have a significance he is unaware of.",
+        "The West Hatch Kael struggles to force open a corroded maintenance hatch on the exterior of a derelict pre-Collapse data archive. He battles the perpetual ashfall, the biting wind, and his own exhaustion, his thoughts cycling through the risks and the potential, meager rewards. The world is physically taxing and dangerous. Kael is skilled and determined, but not invincible. Scavenging is a slow, brutal process of attrition.",
+        "Ghosts in the Static Kael suffers a glitch in his neural implant that corrupts a core memory of his mother. He understands the device is failing, and with it, his only connection to his past is being actively erased, piece by piece, forcing him to find a solution before he loses her completely. Kael has a neural implant, installed by his mother. It's old, failing, and its decay erases his memories of her. The ashfall is a constant, oppressive presence."
+      ]
+    }
+  ],
+  "episodes_completed": 0,
+  "call_summary": {
+    "calls": 33,
+    "prompt_tokens": 39657,
+    "completion_tokens": 51173,
+    "cost_usd": 0.56130125,
+    "cache_hits": 0,
+    "errors": 0,
+    "mean_latency_s": 41.009589062878426,
+    "total_tokens": 90830,
+    "cache_hit_rate": 0.0,
+    "by_purpose": [
+      {
+        "purpose": "propose.episode",
+        "calls": 14,
+        "tokens": 50308,
+        "cost_usd": 0.32149125,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 12,
+        "tokens": 17949,
+        "cost_usd": 0.13312375,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 5,
+        "tokens": 13624,
+        "cost_usd": 0.060325000000000004,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 2,
+        "tokens": 8949,
+        "cost_usd": 0.04636125,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "openrouter",
+        "calls": 33,
+        "tokens": 90830,
+        "cost_usd": 0.56130125
+      }
+    ],
+    "cache": {
+      "hits": 6,
+      "misses": 299,
+      "entries": 8953
+    },
+    "budget_remaining_usd": 5.77870625
+  },
+  "preference_summary": {
+    "pairs_seen": 0,
+    "edits_seen": 0,
+    "voice_trained": false,
+    "top_weights": [
+      {
+        "feature": "judge_voice",
+        "weight": 2.3
+      },
+      {
+        "feature": "continuity",
+        "weight": 2.0188
+      },
+      {
+        "feature": "criterion_3",
+        "weight": 1.8631
+      },
+      {
+        "feature": "criterion_2",
+        "weight": 1.7933
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 1.5379314305804825,
+      "judge_specificity": 1.3135405037306045,
+      "judge_consequence": 1.7379441244842024,
+      "judge_voice": 2.299982624178909,
+      "criterion_1": 1.5003900927618115,
+      "criterion_2": 1.7933256862660982,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 2.018838678545792,
+      "voice_cosine": 0.4099103353220211,
+      "edit_direction": 1.308534448224314,
+      "length": 0.06202884356068559,
+      "dialogue_ratio": 0.6711140206190536
+    },
+    "weight_recovery": 0.06191518322366211,
+    "weight_recovery_identified": 0.23771632280250213
+  },
+  "hidden_weights": {
+    "judge_momentum": 0.0,
+    "judge_specificity": 0.6,
+    "judge_consequence": 0.5,
+    "judge_voice": 1.0,
+    "criterion_1": 0.7,
+    "criterion_2": 0.4,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 0.4,
+    "voice_cosine": 0.8,
+    "edit_direction": 0.0,
+    "length": 0.6,
+    "dialogue_ratio": -0.3
+  },
+  "probe": [],
+  "errors": [
+    "episode 1 was not accepted; stopping"
+  ],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
+}

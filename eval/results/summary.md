@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T18:03:02.414677+00:00.
+Generated 2026-08-23T21:47:13.107760+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
@@ -51,12 +51,24 @@ Pseudo-regret after 400 rounds: Thompson 4.8, epsilon-greedy 6.3. Pulls: {'safe'
 
 | run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | same-n ceiling | tokens/action |
 |---|---|---|---|---|---|---|---|---|
-| full/the Controller | 3 | 100% | 100% | 100% | 0.20 | 0.20 | 0.43 ± 0.16 | 27360 |
-| full/the Maximalist | 3 | 100% | 100% | 100% | 0.00 | 0.51 | 0.37 ± 0.19 | 76304 |
-| full/the Minimalist | 5 | 60% | 100% | 60% | 0.39 | 0.18 | 0.47 ± 0.15 | 34729 |
-| full/the Serialist | 3 | 100% | 100% | 100% | 0.00 | 0.24 | 0.38 ± 0.18 | 31940 |
+| full/the Controller | 3 | 100% | 100% | 100% | 0.20 | 0.20 | 0.00 ± 0.00 | 27360 |
+| full/the Maximalist | 3 | 100% | 100% | 100% | 0.00 | 0.51 | 0.00 ± 0.00 | 76304 |
+| full/the Minimalist | 5 | 60% | 100% | 60% | 0.39 | 0.18 | 0.17 ± 0.21 | 34729 |
+| full/the Serialist | 3 | 100% | 100% | 100% | 0.00 | 0.24 | 0.00 ± 0.00 | 31940 |
+| half/the Controller | 2 | 0% | 0% | 0% | 0.00 | 0.38 | 0.00 ± 0.00 | 45823 |
+| half/the Maximalist | 2 | 0% | 0% | 0% | 0.00 | 0.06 | 0.00 ± 0.00 | 45415 |
+| half/the Minimalist | 16 | 25% | 71% | 22% | 0.37 | -0.60 | 0.17 ± 0.21 | 55840 |
+| half/the Serialist | 2 | 0% | 0% | 0% | 0.00 | 0.23 | 0.00 ± 0.00 | 40698 |
 
-The informed retry was offered on 1 rejected candidate set(s) and rescued 0 of them; the rest were rejected twice, which is a writer meaning it.
+### Held-out probe
+
+The same frozen decisions, drawn from other personas' runs, re-ranked by the head after every episode. Nothing here can move because the task got harder: the probe set does not change.
+
+| run | probe points | tau, first | tau, last | uniform head | prior head | top-1, last |
+|---|---|---|---|---|---|---|
+| half/the Minimalist | 18 | +0.185 | +0.185 | +0.481 | +0.519 | 50% |
+
+The informed retry was offered on 11 rejected candidate set(s) and rescued 3 of them; the rest were rejected twice, which is a writer meaning it.
 
 ## Errors during runs
 
@@ -64,10 +76,13 @@ The informed retry was offered on 1 rejected candidate set(s) and rescued 0 of t
 - `full/the Maximalist`: RateLimited: groq: rate limited
 - `full/the Minimalist`: RateLimited: groq: rate limited
 - `full/the Serialist`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 53s
+- `half/the Controller`: episode 1 was not accepted; stopping
+- `half/the Maximalist`: episode 1 was not accepted; stopping
+- `half/the Serialist`: episode 1 was not accepted; stopping
 
 ## Provider cost
 
-- calls: 602
-- tokens: 580461
-- cache hit rate: 50%
-- estimated cost: $0.0000 (free tier; the price table would apply on a metered provider)
+- calls: 939
+- tokens: 1737777
+- cache hit rate: 33%
+- estimated cost: $6.7940 (free tier; the price table would apply on a metered provider)

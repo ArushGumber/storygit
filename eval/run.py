@@ -579,9 +579,14 @@ def main() -> None:
     call_summary: dict[str, Any] = {}
 
     if args.summarize_only:
-        for path in sorted(Path(args.results).glob("runs/full__*.json")):
+        # Every configuration, not only the reference one: summarize() unions what is on
+        # disk, and passing it a subset here would defeat that.
+        for path in sorted(Path(args.results).glob("runs/*__*.json")):
             log = RunLog.load(path)
-            logs[f"full/{log.persona}"] = log
+            config_name = (log.config or {}).get("name") or path.name.split("__", 1)[0]
+            if config_name == "probesample":
+                continue
+            logs[f"{config_name}/{log.persona}"] = log
         call_summary = _combined_call_summary(list(logs.values()))
         print(f"rebuilding the summary from {len(logs)} run log(s) on disk")
     elif not args.offline_only:

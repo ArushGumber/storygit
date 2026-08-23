@@ -1,0 +1,300 @@
+{
+  "persona": "the Controller",
+  "config": {
+    "name": "half",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 1,
+    "seed": 10,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_71f94dedb4",
+      "level": "episode",
+      "shown": [
+        "p_aa0416bf62",
+        "p_9ab0dbca7c",
+        "p_5391ba1d66"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.518,
+        0.5436,
+        0.5366
+      ],
+      "chosen": "p_9ab0dbca7c",
+      "kind": "reject",
+      "veto": "kill_the_mentor",
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of a Stranger From the perspective of Elara, the weary leader of Ashfall, a stranger named Caleb collapses at their gate. He's another mouth to feed, but he carries a strange, intricate device she can't ignore. While treating his injuries, her suspicion battles her duty, especially when the device proves to be more than just a random trinket. Ashfall is a community on the brink, not a safe haven. Its leader, Elara, is competent but haunted by a past she's been running from. Survival means making hard choices about who gets to live.",
+        "The Sound of Falling Ash Kaelen, a lone sentry, endures a quiet watch on the edge of the settlement of Ashfall. He reflects on the oppressive silence of the world, a silence broken only by the constant hiss of falling ash. Just as his shift ends, he hears a faint, rhythmic tapping from the grey wastes beyond the wall. The world is covered in a fine ash. Survival depends on vigilance. The silence is a tangible, oppressive force. The protagonist is disciplined but weary.",
+        "The First Sprout Elara, Ashfall's young Lorekeeper, documents another day of survival against the toxic, grey dust that plagues her home. Her mentor, Joric, the oldest resident, suddenly falls ill with a terrifying and unknown affliction that causes him to cough up glowing green particles. Despite the healer's frantic efforts, Joric dies by nightfall. Life in Ashfall is a precarious, daily struggle against a toxic environment. A new, unnatural plague has appeared, which is unlike anything the community has ever seen or has records of."
+      ]
+    },
+    {
+      "node_id": "n_71f94dedb4",
+      "level": "episode",
+      "shown": [
+        "p_ef5f9997e0",
+        "p_4da5fde850",
+        "p_cf4f03fd61"
+      ],
+      "axes": [
+        "slow down",
+        "subvert the expectation",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.5496,
+        0.6021,
+        0.4818
+      ],
+      "chosen": "p_4da5fde850",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Last Hour of Silence Kaelen performs the monotonous, ritualized duties of his pre-dawn watch on Ashfall's western wall. He clears ash from signaling equipment, listens to the oppressive silence, and has a brief, coded exchange with another sentry, Elara, before his thoughts drift to his sick sister, Lyra. The focus is on the sensory details and grinding reality of his world, where survival is a matter of discipline. The world is covered in a fine ash. Survival depends on monotonous vigilance and strict routines. Sentry duty is isolating and sensory-focused. Sickness is a background worry.",
+        "Tapping at the Floor of the World Sentry Kaelen, on watch over the silent, ash-covered world, hears a rhythmic tapping coming not from the wastes, but from beneath his feet. He digs, uncovering a sealed metal hatch, warm to the touch. His relief, Elara, finds him off-post, and as they argue over his breach of protocol, the tapping stops, and the hatch begins to hum and glow. The ground beneath Ashfall isn't just dead earth; there are pre-ash structures buried there. The settlement's rules of vigilance are rigid and create conflict.",
+        "The Crystal and the Hum Sentry Kaelen discovers the ever-present ash is crystallizing into sharp, impassable drifts against Ashfall's wall. He reports this to Chief Engineer Elara, who confirms the new threat makes their planned scavenging run impossible and may compromise the settlement's defenses. The ash is not inert; it can change state and become an active, physical threat. Ashfall has an internal structure with roles like Sentry and Chief Engineer."
+      ]
+    }
+  ],
+  "episodes_completed": 0,
+  "call_summary": {
+    "calls": 32,
+    "prompt_tokens": 39290,
+    "completion_tokens": 52356,
+    "cost_usd": 0.5726725,
+    "cache_hits": 0,
+    "errors": 0,
+    "mean_latency_s": 33.79378226090557,
+    "total_tokens": 91646,
+    "cache_hit_rate": 0.0,
+    "by_purpose": [
+      {
+        "purpose": "propose.episode",
+        "calls": 14,
+        "tokens": 46141,
+        "cost_usd": 0.28311125,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 4,
+        "tokens": 20244,
+        "cost_usd": 0.112875,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 12,
+        "tokens": 19422,
+        "cost_usd": 0.14865875,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 2,
+        "tokens": 5839,
+        "cost_usd": 0.0280275,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "openrouter",
+        "calls": 32,
+        "tokens": 91646,
+        "cost_usd": 0.5726725
+      }
+    ],
+    "cache": {
+      "hits": 6,
+      "misses": 331,
+      "entries": 8985
+    },
+    "budget_remaining_usd": 5.20603375
+  },
+  "preference_summary": {
+    "pairs_seen": 0,
+    "edits_seen": 0,
+    "voice_trained": false,
+    "top_weights": [
+      {
+        "feature": "judge_voice",
+        "weight": 2.3
+      },
+      {
+        "feature": "continuity",
+        "weight": 2.0188
+      },
+      {
+        "feature": "criterion_3",
+        "weight": 1.8631
+      },
+      {
+        "feature": "criterion_2",
+        "weight": 1.7933
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 1.5379314305804825,
+      "judge_specificity": 1.3135405037306045,
+      "judge_consequence": 1.7379441244842024,
+      "judge_voice": 2.299982624178909,
+      "criterion_1": 1.5003900927618115,
+      "criterion_2": 1.7933256862660982,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 2.018838678545792,
+      "voice_cosine": 0.4099103353220211,
+      "edit_direction": 1.308534448224314,
+      "length": 0.06202884356068559,
+      "dialogue_ratio": 0.6711140206190536
+    },
+    "weight_recovery": 0.38360880941162434,
+    "weight_recovery_identified": 0.7227299052893015
+  },
+  "hidden_weights": {
+    "judge_momentum": 0.0,
+    "judge_specificity": 0.5,
+    "judge_consequence": 0.7,
+    "judge_voice": 0.0,
+    "criterion_1": 1.0,
+    "criterion_2": 0.15,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 1.0,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.6,
+    "length": -0.2,
+    "dialogue_ratio": 0.0
+  },
+  "probe": [],
+  "errors": [
+    "episode 1 was not accepted; stopping"
+  ],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
+}

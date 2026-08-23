@@ -784,24 +784,37 @@ per writer decision, under a hard in-code cap of \$12.00 that refuses a call it 
 afford rather than noticing afterwards. The cap was not raised for this run.
 
 \textbf{What this comparison can and cannot support.} The cost column is clean and is the
-result worth quoting. The acceptance column is not, and the reason is a design fault in the
-evaluation rather than in the system. A persona accepts when a candidate clears a quantile of
-a \emph{reference score distribution} that was fitted to an earlier free-tier run. Change the
-model and the score distribution moves underneath a threshold that did not, so acceptance
-changes for reasons that have nothing to do with whether the writing got better. One run here
-stopped at its first episode because nothing cleared the bar, which is a statement about a
-stale calibration and not about the model.
+result worth quoting. The rest of the table is not, and the reason is a fault in the
+evaluation rather than in the system.
 
-Weight recovery and the probe are less exposed, since both ask whether the head recovers a
-persona's weights from whatever candidates it happened to see rather than whether those
-candidates were good. They are still small: a halved decision count on a run that the budget
-guard may end early is a handful of comparisons per writer.
+A persona accepts when a candidate clears a quantile of a \emph{reference score
+distribution} fitted to an earlier free-tier run. Change the model and that distribution
+moves underneath a threshold that did not. Three of the four writers here rejected everything
+at their first episode and the harness stopped them, which is why the decision count is
+\rMeteredDecisionsTotal{} rather than the configuration's full allowance and why mean
+acceptance reads \rMeteredAcceptanceMean{}. Read naively that says the stronger model wrote
+worse, which is not a claim this measurement can make: what it establishes is that a
+threshold calibrated against one model's output does not transfer to another's, and that the
+evaluation was built without noticing that.
 
-So the honest reading of this table is that it establishes the cost of the strong model and
-demonstrates that the system runs unmodified against a different provider, and that it does
-not settle whether the prose improved. Settling that needs the personas recalibrated against
-each model's own distribution, which is a change to the evaluation and is named in
-\S\ref{sec:limitations} rather than performed here.
+Weight recovery and the probe are less exposed in principle, since both ask whether the head
+recovers a persona's weights from whatever candidates it happened to see rather than whether
+those candidates were good. In practice they inherit the same problem: three runs that stop at
+episode one produce almost no comparisons, and a head fitted on almost nothing recovers almost
+nothing. \rMeteredWeightRecoveryMean{} is a statement about the sample size, not the model.
+
+So the honest reading is that this run establishes two things and settles nothing else. The
+system runs unmodified against a different provider on a one-line routing change, which is
+what the routing decision was made for. And the strong model costs
+\rMeteredUsdPerDecision{} per writer decision against \$0.00, which is the number that makes
+the free-tier claim meaningful rather than merely true.
+
+It also produced the most useful negative result in this document, by failing in a way that
+was invisible while every run used the same model: an acceptance threshold fitted to one
+model's score distribution is not a property of the writer, and an evaluation that treats it
+as one cannot compare across models at all. Fixing that means refitting the thresholds against
+each model's own output, which is a change to the evaluation rather than to the analysis, so
+it is named in \S\ref{sec:limitations} rather than performed after the fact.
 
 \section{What the measurements changed}
 \label{sec:findings}
