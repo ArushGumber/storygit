@@ -857,6 +857,15 @@ ranked by the head as it stood at that moment, scored against what that persona 
 privately have chosen. The probe set does not change between measurements, so nothing in it
 can move because the job got harder, and replaying it makes no model calls.
 
+Which decisions go in is itself a design choice with a wrong answer. A candidate set where
+one option is better on every feature has the same winner under every weight vector, so no
+head can get it wrong and replaying it measures nothing --- those are dropped by a
+discrimination floor. But taking the \emph{most} discriminating points instead, which an
+earlier version did, fills the set with near-ties: the decisions most sensitive to the
+weights and equally to noise, which maximises the variance of every reading. The rule is a
+floor and then a draw stratified across levels, and it never consults a head, fitted or
+otherwise.
+
 A rank correlation means little on its own, so each reading carries two references scored
 over the same points at the same moment: a head that has learned nothing, and the population
 prior every writer starts from. Ending at the prior means the writer's own decisions have
@@ -882,14 +891,31 @@ estimator, is what caps this: swept independently, the ceiling is \rCeilingAtTwe
 twenty-five decisions and still only \rCeilingAtTwoHundred{} at two hundred, because real
 candidate features are clustered and correlated and the design matrix is badly conditioned.
 
-\textbf{What limits it, named.} Four to five of the \rFeatures{} features never vary inside
-a single writer's candidate sets --- the criterion slots they did not define, the voice and
-edit-direction scores before the voice model has trained, dialogue ratio at plan level. A
-constant column gives the fit no gradient, so those weights stay where the population prior
-put them. In session that is harmless, since a constant cannot reorder anything the writer
-sees, which is exactly why nothing had caught it; off-distribution it is not, and the
-cross-persona probe is what made it visible. Each run reports its own unexercised features
-in \file{summary.md}.
+\textbf{What the probe found, and what changed because of it.} Several of the
+\rFeatures{} features never varied inside a single writer's candidate sets. A constant
+column gives the fit no gradient, so those weights simply stayed wherever the population
+prior had put them --- harmless in session, since a constant cannot reorder anything the
+writer sees, which is exactly why nothing had caught it, and wrong the moment the head is
+applied to candidates drawn from anywhere else. Only an off-distribution instrument could
+see it, and that is what the probe is.
+
+Two things followed. Three of those features were dead for reasons that had nothing to do
+with the stories and everything to do with the code: dialogue ratio counted only double
+quotation marks while the model writes speech in single ones, so prose that was a third
+dialogue scored zero; and the voice model, which trains on prose the \emph{writer} wrote or
+rewrote, had never once been trained, because no simulated writer had ever used the
+hand-write or polish paths the interface offers. Both are fixed, and all three features now
+vary.
+
+The fourth is a property rather than a bug, and it changed the learner. A direction the
+data cannot identify should not inherit an opinion from a population prior, so fitting now
+shrinks unidentified directions towards zero instead. That was decided by an A/B rather
+than by argument: both variants were refitted from the decisions already recorded and
+scored on the same held-out probe, which moved agreement from 0.426 to 0.565 and top-1 from
+58\,\% to 68\,\% while leaving the prior's cold-start advantage unchanged. The rule the
+result had to clear was written down before the number existed, and the replay costs
+nothing, so there was no opportunity to rerun until a variant won. Each run still reports
+its own unexercised features in \file{summary.md}.
 
 \textbf{Why one writer did worst, in detail.} The Minimalist was worst on every measure,
 and the recorded feature vectors say why --- not "too little data", which was the obvious
