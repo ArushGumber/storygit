@@ -437,3 +437,47 @@ def test_offline_stale_sweep_reports_a_real_tradeoff() -> None:
     assert any(p["recall"] > declared["recall"] for p in result["points"][1:]), (
         "soft edges must be given a case where they can add something"
     )
+
+
+def test_persona_thresholds_discriminate() -> None:
+    """A threshold below the whole score distribution accepts everything and measures nothing.
+
+    The first calibration did exactly that — 33 of 33 accepted, a flat acceptance curve —
+    so the thresholds are now quantiles of each persona's own best-of-three score
+    distribution, and this test asserts they land inside it rather than under it.
+    """
+    import random
+
+    from eval.personas import BEST_OF, PERSONAS, reference_features
+
+    for persona in PERSONAS.values():
+        accept, edit = persona.thresholds()
+        assert 0.0 < edit < accept < 1.0, persona.name
+
+        rng = random.Random(7)
+        draws = [
+            max(persona._raw_score(reference_features(rng)) for _ in range(BEST_OF))
+            for _ in range(2000)
+        ]
+        rate = sum(1 for d in draws if d >= accept) / len(draws)
+        assert 0.02 < rate < 0.98, f"{persona.name} accepts {rate:.0%} of what it sees"
+        assert abs(rate - (1 - persona.accept_quantile)) < 0.05, (
+            f"{persona.name}: the realised rate should match the designed quantile"
+        )
+
+
+def test_personas_differ_in_how_picky_they_are() -> None:
+    from eval.personas import PERSONAS
+
+    quantiles = {name: p.accept_quantile for name, p in PERSONAS.items()}
+    assert quantiles["the Controller"] > quantiles["the Serialist"], (
+        "the Controller is defined as the hardest writer to satisfy"
+    )
+    assert len(set(quantiles.values())) == len(quantiles), "four distinct dispositions"
+
+
+def test_thresholds_are_cached_and_deterministic() -> None:
+    from eval.personas import get
+
+    persona = get("the Minimalist")
+    assert persona.thresholds() == persona.thresholds()

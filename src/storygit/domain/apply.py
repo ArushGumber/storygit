@@ -138,8 +138,14 @@ def _apply_op(work: _Working, op: Op) -> None:
             )
         case SetNodeStatus():
             node = _require_node(work, op.node_id)
-            if op.node_id in work.ledger.locks and op.status is NodeStatus.stale:
-                raise LockedNodeError(f"{op.node_id} is locked and cannot be marked stale")
+            # A locked node's status may not be changed at all except by ClearLock. The
+            # narrower guard (refusing only `stale`) let a dismiss-stale call set a locked
+            # node to `accepted`, which silently desynced node.status from ledger.locks --
+            # the one invariant this pair is supposed to guarantee.
+            if op.node_id in work.ledger.locks and op.status is not NodeStatus.locked:
+                raise LockedNodeError(
+                    f"{op.node_id} is locked; unlock it before changing its status"
+                )
             work.nodes[op.node_id] = node.model_copy(
                 update={"status": op.status, "stale_reason": op.stale_reason}
             )

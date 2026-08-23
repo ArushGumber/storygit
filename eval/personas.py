@@ -61,9 +61,10 @@ class Persona(BaseModel):
         name: Label used in results and plots.
         weights: Hidden preference weights over ``BASE_FEATURES``. Never visible to the
             engine — the evaluation asserts this.
-        accept_threshold: Score below which nothing is accepted, in ``[0, 1]``.
-        edit_threshold: Score below the accept threshold but above this triggers an edit
-            rather than a rejection.
+        accept_quantile: How picky this writer is, as a quantile of the scores they would
+            typically give. 0.6 means "accepts roughly the top 40% of what they see".
+        edit_quantile: Below the accept quantile but above this, they rewrite it rather
+            than rejecting it.
         noise: Decision noise, so choices are not perfectly separable.
         forbidden: Moves that are always rejected.
         target_words: Preferred prose length.
@@ -77,8 +78,8 @@ class Persona(BaseModel):
 
     name: str
     weights: dict[str, float]
-    accept_threshold: float = Field(default=0.55, ge=0.0, le=1.0)
-    edit_threshold: float = Field(default=0.40, ge=0.0, le=1.0)
+    accept_quantile: float = Field(default=0.55, ge=0.0, le=1.0)
+    edit_quantile: float = Field(default=0.25, ge=0.0, le=1.0)
     noise: float = Field(default=0.08, ge=0.0)
     forbidden: tuple[ForbiddenMove, ...] = ()
     target_words: int = 200
@@ -86,6 +87,51 @@ class Persona(BaseModel):
     lock_probability: float = 0.05
     dial: float = 0.35
     style_notes: tuple[str, ...] = ()
+
+    def thresholds(self) -> tuple[float, float]:
+        """The accept and edit thresholds, in score units.
+
+        Computed as quantiles of this persona's *own* score distribution over a reference
+        sample of candidate feature vectors, rather than set as raw numbers.
+
+        The raw thresholds this replaced are worth recording as a mistake. 0.55/0.40
+        sounded reasonable and sat far below where scores actually land: the first full run
+        accepted 33 of 33 candidates, so the acceptance curve was flat at 1.0 and measured
+        nothing. The cause is structural — a persona's score is a weighted mean of features
+        that are themselves mostly in the upper half of their range (continuity is 1.0 on a
+        clean story, judge scores cluster near 0.7), so it lands around 0.8 and any
+        threshold below that accepts everything.
+
+        Quantiles fix it for every persona at once, adjust to each weight vector (the
+        Minimalist's large negative weight on length shifts its whole distribution), and
+        are interpretable in the write-up: "the Controller accepts roughly the top 12% of
+        what it is shown".
+
+        Returns:
+            ``(accept_threshold, edit_threshold)`` in score units.
+        """
+        cached = _THRESHOLDS.get(self.name)
+        if cached is not None:
+            return cached
+        rng = random.Random(20260823)
+        scores = sorted(
+            max(self._raw_score(reference_features(rng)) for _ in range(BEST_OF))
+            for _ in range(REFERENCE_SAMPLES)
+        )
+
+        def quantile(q: float) -> float:
+            index = min(len(scores) - 1, max(0, int(q * len(scores))))
+            return scores[index]
+
+        pair = (quantile(self.accept_quantile), quantile(self.edit_quantile))
+        _THRESHOLDS[self.name] = pair
+        return pair
+
+    def _raw_score(self, features: FeatureVector) -> float:
+        """The noiseless score, used for threshold calibration."""
+        total = sum(self.weights.get(k, 0.0) * v for k, v in features.values.items())
+        scale = sum(abs(w) for w in self.weights.values()) or 1.0
+        return total / scale
 
     def score(self, features: FeatureVector, rng: random.Random) -> float:
         """This persona's private opinion of a candidate.
@@ -97,9 +143,7 @@ class Persona(BaseModel):
         Returns:
             A score in ``[0, 1]``.
         """
-        total = sum(self.weights.get(k, 0.0) * v for k, v in features.values.items())
-        scale = sum(abs(w) for w in self.weights.values()) or 1.0
-        return max(0.0, min(1.0, total / scale + rng.gauss(0.0, self.noise)))
+        return max(0.0, min(1.0, self._raw_score(features) + rng.gauss(0.0, self.noise)))
 
     def vetoes(self, text: str) -> ForbiddenMove | None:
         """Whether the candidate crosses one of this writer's absolute lines.
@@ -132,6 +176,54 @@ class Persona(BaseModel):
         return " ".join(parts)
 
 
+REFERENCE_SAMPLES = 4000
+"""How many synthetic candidates the threshold calibration draws."""
+
+REFERENCE_RANGES: dict[str, tuple[float, float]] = {
+    "judge_momentum": (0.60, 1.00),
+    "judge_specificity": (0.60, 1.00),
+    "judge_consequence": (0.55, 1.00),
+    "judge_voice": (0.55, 1.00),
+    "writer_criteria": (0.55, 0.98),
+    "continuity": (0.65, 1.00),
+    "voice_cosine": (0.45, 0.58),
+    "edit_direction": (0.42, 0.60),
+    "length": (0.40, 1.00),
+    "dialogue_ratio": (0.00, 0.75),
+}
+"""Ranges fitted to a measured run, not guessed.
+
+The first version used plausible-looking ranges centred near 0.5 and put every threshold
+about 0.15 too low, so the first full run accepted 33 of 33 candidates. Real candidate
+features sit high: continuity is 1.0 on a clean story, an untrained voice model returns a
+flat 0.5, and the judge rarely scores below 3 out of 5. These ranges reproduce the score
+distribution actually observed (p10 0.67, p50 0.80, p90 0.90 for the Serialist).
+
+The quantile a persona is defined by is the design parameter — how picky this writer is.
+The acceptance rate that results is a *measurement*, and the two are deliberately not
+forced to agree.
+"""
+
+BEST_OF = 3
+"""Calibrate on the best of this many draws, because that is what a decision faces.
+
+A writer does not judge a random candidate; they judge the best of the three they were
+shown. Calibrating on a single draw would put the threshold well below where the decision
+actually happens.
+"""
+
+_THRESHOLDS: dict[str, tuple[float, float]] = {}
+
+
+def reference_features(rng: random.Random) -> FeatureVector:
+    """A synthetic candidate drawn from the ranges real candidates occupy."""
+    return FeatureVector(
+        values={
+            name: rng.uniform(*REFERENCE_RANGES.get(name, (0.0, 1.0))) for name in BASE_FEATURES
+        }
+    )
+
+
 def _weights(**overrides: float) -> dict[str, float]:
     """A weight vector at zero except where named."""
     return {**dict.fromkeys(BASE_FEATURES, 0.0), **overrides}
@@ -148,7 +240,8 @@ SERIALIST = Persona(
         length=0.2,
         dialogue_ratio=0.3,
     ),
-    accept_threshold=0.50,
+    accept_quantile=0.35,
+    edit_quantile=0.10,
     forbidden=(ForbiddenMove.flashback,),
     target_words=240,
     dialogue_appetite=0.45,
@@ -167,8 +260,8 @@ MINIMALIST = Persona(
         judge_momentum=0.3,
         dialogue_ratio=0.2,
     ),
-    accept_threshold=0.55,
-    edit_threshold=0.35,
+    accept_quantile=0.65,
+    edit_quantile=0.20,
     forbidden=(ForbiddenMove.prophecy,),
     target_words=110,
     dialogue_appetite=0.25,
@@ -188,7 +281,8 @@ MAXIMALIST = Persona(
         judge_consequence=0.5,
         dialogue_ratio=-0.3,
     ),
-    accept_threshold=0.52,
+    accept_quantile=0.55,
+    edit_quantile=0.15,
     forbidden=(ForbiddenMove.romance_subplot,),
     target_words=340,
     dialogue_appetite=0.10,
@@ -207,8 +301,8 @@ CONTROLLER = Persona(
         edit_direction=0.6,
         length=-0.2,
     ),
-    accept_threshold=0.68,
-    edit_threshold=0.30,
+    accept_quantile=0.92,
+    edit_quantile=0.15,
     noise=0.05,
     forbidden=(ForbiddenMove.kill_the_mentor, ForbiddenMove.prophecy),
     target_words=190,
@@ -217,8 +311,9 @@ CONTROLLER = Persona(
     dial=0.15,
     style_notes=("Nothing contradicts what is already on the page.",),
 )
-"""Accepts rarely, edits heavily, locks constantly. The hardest writer to satisfy, and the
-one whose behaviour most stresses propagation and the lock semantics."""
+"""Accepts rarely, edits heavily, locks constantly. Taking only the top ~12% of what they
+are shown makes this the hardest writer to satisfy, and the one whose behaviour most
+stresses propagation, the lock semantics, and the edit-mining path."""
 
 PERSONAS: dict[str, Persona] = {p.name: p for p in (SERIALIST, MINIMALIST, MAXIMALIST, CONTROLLER)}
 """All personas by name."""

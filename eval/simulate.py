@@ -215,14 +215,15 @@ class SimulatedWriter:
             hard_flags_shown=sum(1 for c in shown for f in c.flags if f.is_hard),
         )
 
+        accept_at, edit_at = self.persona.thresholds()
         order = sorted(range(len(shown)), key=lambda i: -scores[i])
         for index in order:
             veto = self.persona.vetoes(texts[index])
             if veto is not None:
                 continue
-            if scores[index] >= self.persona.accept_threshold:
+            if scores[index] >= accept_at:
                 return await self._accept(base, shown, index)
-            if scores[index] >= self.persona.edit_threshold:
+            if scores[index] >= edit_at:
                 return await self._edit(base, shown, index, texts[index])
             break
 

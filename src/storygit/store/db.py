@@ -62,7 +62,11 @@ def connect(path: Path | str) -> sqlite3.Connection:
     target = str(path)
     if target != ":memory:":
         Path(target).parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(target, isolation_level=None)
+    # check_same_thread=False because the HTTP layer runs synchronous routes in a thread
+    # pool, so the connection is used from a different thread than the one that opened it.
+    # That is only safe because writes are serialized -- see Repository's write lock, and
+    # the single-writer assumption documented in api/deps.py.
+    conn = sqlite3.connect(target, isolation_level=None, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     if target != ":memory:":
         conn.execute("PRAGMA journal_mode=WAL")

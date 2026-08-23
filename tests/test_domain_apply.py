@@ -144,3 +144,26 @@ def test_fact_needs_exactly_one_object(fixture: Fixture, ids: IdGenerator) -> No
             valid_from_beat=fixture.beat_a,
             established_by_beat=fixture.beat_a,
         )
+
+
+def test_a_locked_node_and_the_lock_set_can_never_disagree(fixture: Fixture) -> None:
+    """`node.status is locked` and `node_id in ledger.locks` are one fact, stored twice.
+
+    Only SetLock and ClearLock write either, and every other status change on a locked node
+    is refused -- otherwise a dismiss-stale could set a locked node to `accepted` while it
+    stayed in the lock set, and the interface would show a lock the engine no longer
+    honoured.
+    """
+    from storygit.domain.diff import ClearLock
+
+    state = apply(fixture.repo.state(), Diff(ops=(SetLock(node_id=fixture.beat_b),)))
+    assert state.nodes[fixture.beat_b].status is NodeStatus.locked
+    assert fixture.beat_b in state.ledger.locks
+
+    for status in (NodeStatus.accepted, NodeStatus.draft, NodeStatus.stale):
+        with pytest.raises(LockedNodeError):
+            apply(state, Diff(ops=(SetNodeStatus(node_id=fixture.beat_b, status=status),)))
+
+    cleared = apply(state, Diff(ops=(ClearLock(node_id=fixture.beat_b),)))
+    assert cleared.nodes[fixture.beat_b].status is NodeStatus.accepted
+    assert fixture.beat_b not in cleared.ledger.locks

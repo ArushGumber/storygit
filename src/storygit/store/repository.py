@@ -8,6 +8,7 @@ audit trail complete — if it happened, there is a snapshot for it.
 from __future__ import annotations
 
 import sqlite3
+import threading
 from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
@@ -54,6 +55,11 @@ class Repository:
         self._clock = clock or (lambda: datetime.now(UTC))
         self.snapshots = SnapshotStore(conn, clock=self._clock)
         self.branches = BranchStore(conn)
+        # One writer, but the HTTP layer serves synchronous routes from a thread pool, so
+        # two requests can land in commit_diff at once. The lock makes the read-apply-write
+        # sequence atomic; without it, two concurrent commits could both branch from the
+        # same parent and one would silently disappear.
+        self._write_lock = threading.Lock()
 
     @classmethod
     def open(cls, path: Path | str, *, clock: Callable[[], datetime] | None = None) -> Self:
@@ -142,16 +148,17 @@ class Repository:
         Raises:
             ApplyError: If the diff does not apply; nothing is written.
         """
-        parent = self.branches.head(branch)
-        new_state = apply(self.snapshots.load_state(parent), diff)
-        snapshot_id = self.snapshots.write_snapshot(
-            new_state,
-            parent_id=parent,
-            author=diff.author.value,
-            intent=intent if intent is not None else diff.intent,
-        )
-        self.branches.set(branch, snapshot_id)
-        return snapshot_id
+        with self._write_lock:
+            parent = self.branches.head(branch)
+            new_state = apply(self.snapshots.load_state(parent), diff)
+            snapshot_id = self.snapshots.write_snapshot(
+                new_state,
+                parent_id=parent,
+                author=diff.author.value,
+                intent=intent if intent is not None else diff.intent,
+            )
+            self.branches.set(branch, snapshot_id)
+            return snapshot_id
 
     def preview_apply(self, diff: Diff, *, branch: str = DEFAULT_BRANCH) -> StoryState:
         """Apply a diff to a scratch copy without committing anything.

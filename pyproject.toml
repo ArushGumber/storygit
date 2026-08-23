@@ -43,6 +43,8 @@ markers = [
 filterwarnings = [
   # torch.jit.script is used internally by sentence-transformers; not ours to fix.
   "ignore:`torch.jit.script` is deprecated:DeprecationWarning",
+  # Starlette's TestClient warns about httpx; the alternative is not released.
+  "ignore:Using `httpx` with `starlette.testclient`:DeprecationWarning",
 ]
 asyncio_mode = "auto"
 
