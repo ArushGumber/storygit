@@ -91,22 +91,6 @@ def embed(texts: Sequence[str], *, model_name: str = EMBEDDING_MODEL) -> np.ndar
     return np.asarray(vectors, dtype=np.float32)
 
 
-def cosine_matrix(vectors: np.ndarray) -> np.ndarray:
-    """Pairwise cosine similarity of L2-normalized rows.
-
-    Args:
-        vectors: Normalized embeddings, shape ``(n, dim)``.
-
-    Returns:
-        An ``(n, n)`` similarity matrix.
-    """
-    import numpy as np
-
-    if vectors.shape[0] == 0:
-        return np.zeros((0, 0), dtype=np.float32)
-    return np.asarray(vectors @ vectors.T, dtype=np.float32)
-
-
 def get_nli() -> tuple[Any, Any]:
     """Load (once) and return the NLI tokenizer and model.
 
@@ -187,10 +171,3 @@ def _label_order(model: Any) -> list[str]:
         raw = str(id2label.get(index, index)).lower()
         ordered.append(canonical.get(raw, raw))
     return ordered or ["contradiction", "entailment", "neutral"]
-
-
-def reset_cache() -> None:
-    """Drop the loaded models. Used by tests that need a clean process state."""
-    with _lock:
-        _encoders.clear()
-        _nli.clear()

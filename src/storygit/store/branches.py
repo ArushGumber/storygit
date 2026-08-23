@@ -40,7 +40,7 @@ from storygit.domain.diff import (
 from storygit.domain.errors import SnapshotNotFoundError
 from storygit.domain.ids import EntityId, FactId, NodeId, SnapshotId, ThreadId
 from storygit.domain.state import StoryState
-from storygit.store.snapshots import LEDGER_KEY, Manifest, SnapshotStore
+from storygit.store.snapshots import LEDGER_KEY, SnapshotStore
 
 DEFAULT_BRANCH = "main"
 
@@ -391,8 +391,3 @@ def _state_with(ours: StoryState, theirs: StoryState, take: dict[str, set[str]])
         threads=threads,
         ledger=ledger,
     )
-
-
-def manifest_summary(manifest: Manifest) -> dict[str, int]:
-    """Object counts per kind, for logs and the branch UI."""
-    return {kind: len(entries) for kind, entries in sorted(manifest.items())}

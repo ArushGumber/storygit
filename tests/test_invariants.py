@@ -241,3 +241,49 @@ def test_every_provider_request_carries_a_purpose_tag() -> None:
         and node.target.id == "purpose"
     )
     assert purpose.value is None, "purpose has a default, so a call could omit it"
+
+
+def test_no_public_function_is_unreachable() -> None:
+    """The code standard says no dead code, so check rather than trust.
+
+    Route handlers are excluded: they are reached through a decorator, so a textual search
+    would report every one of them as unused.
+    """
+    import re
+
+    defined: dict[str, Path] = {}
+    for path in SRC.rglob("*.py"):
+        source = path.read_text()
+        decorated = set(re.findall(r"@\w+\.(?:get|post|put|delete)\([^)]*\)\s*\ndef (\w+)", source))
+        tree = ast.parse(source)
+        for node in tree.body:
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                if node.name.startswith("_") or node.name in decorated:
+                    continue
+                defined[node.name] = path
+
+    roots = [SRC, Path(__file__).parent, SRC.parents[1] / "eval", SRC.parents[1] / "scripts"]
+    used: set[str] = set()
+    for root in roots:
+        for path in root.rglob("*.py"):
+            source = path.read_text()
+            for name, home in defined.items():
+                if source.count(name) > (1 if home == path else 0):
+                    used.add(name)
+
+    unused = sorted(set(defined) - used)
+    assert unused == [], "public names nothing references: " + ", ".join(
+        f"{n} ({defined[n].name})" for n in unused
+    )
+
+
+def test_no_todos_are_left_without_a_decision_record() -> None:
+    """The code standard: no TODOs left without a note in DECISIONS.md.
+
+    The simplest way to satisfy that is to leave none, which is what this asserts.
+    """
+    for root in (SRC, SRC.parents[1] / "eval", SRC.parents[1] / "scripts"):
+        for path in root.rglob("*.py"):
+            source = path.read_text()
+            for marker in ("TODO", "FIXME", "XXX", "HACK"):
+                assert marker not in source, f"{path.name} contains a {marker}"

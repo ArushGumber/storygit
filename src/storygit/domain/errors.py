@@ -48,9 +48,5 @@ class LockedNodeError(ApplyError):
     """An operation tried to modify a node the writer has locked."""
 
 
-class MergeConflictError(StoryGitError):
-    """A three-way merge could not be completed without human resolution."""
-
-
 class SnapshotNotFoundError(StoryGitError):
     """A snapshot or branch reference does not resolve."""
