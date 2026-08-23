@@ -209,7 +209,49 @@ def collect() -> dict[str, str]:
     ):
         macros.setdefault(name, MISSING)
 
-    runs = _get(summary, "runs", default=[]) or []
+    # The summary now carries every configuration that has been run, so the free-tier
+    # figures must not silently average in the metered ones. "Live" means the free-tier
+    # reference configuration; the strong-model rerun gets its own prefix.
+    all_runs = _get(summary, "runs", default=[]) or []
+
+    def _config_of(row: dict[str, Any]) -> str:
+        name = str(row.get("run", ""))
+        return name.split("/", 1)[0] if "/" in name else ""
+
+    runs = [r for r in all_runs if _config_of(r) in ("", "full")] or all_runs
+    metered = [r for r in all_runs if _config_of(r) == "half"]
+
+    macros["MeteredRunCount"] = str(len(metered)) if metered else MISSING
+    if metered:
+        macros["MeteredDecisionsTotal"] = str(sum(r.get("decisions", 0) for r in metered))
+        macros["MeteredAcceptanceMean"] = _pct(
+            sum(r.get("acceptance", 0.0) for r in metered) / len(metered)
+        )
+        macros["MeteredTokensPerAction"] = (
+            f"{round(sum(r.get('tokens_per_action', 0) for r in metered) / len(metered)):,}"
+        )
+        recov = [r["weight_recovery"] for r in metered if r.get("weight_recovery") is not None]
+        if recov:
+            macros["MeteredWeightRecoveryMean"] = _num(sum(recov) / len(recov))
+        taus = [r["probe_tau_last"] for r in metered if r.get("probe_tau_last") is not None]
+        if taus:
+            macros["MeteredProbeTauLast"] = f"{sum(taus) / len(taus):+.3f}"
+        spend = sum((r.get("usd_per_action") or 0.0) * r.get("decisions", 0) for r in metered)
+        macros["MeteredSpend"] = f"\\${spend:.2f}"
+        macros["MeteredUsdPerDecision"] = (
+            f"\\${spend / max(1, sum(r.get('decisions', 0) for r in metered)):.3f}"
+        )
+    for name in (
+        "MeteredDecisionsTotal",
+        "MeteredAcceptanceMean",
+        "MeteredTokensPerAction",
+        "MeteredWeightRecoveryMean",
+        "MeteredProbeTauLast",
+        "MeteredSpend",
+        "MeteredUsdPerDecision",
+    ):
+        macros.setdefault(name, MISSING)
+
     macros["LiveRunCount"] = str(len(runs)) if runs else MISSING
     # Emitted rather than worked around in the prose, because "1 runs" in a document that
     # claims to be careful about numbers undermines the numbers.

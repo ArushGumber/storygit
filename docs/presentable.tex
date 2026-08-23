@@ -743,6 +743,39 @@ writer's candidate sets, that two of those were code defects and one was a prope
 measuring instrument, and that the fix which shipped was decided by an offline replay
 against a rule written down before the number existed.
 
+\subsection{The strong-model rerun}
+\label{sec:metered}
+
+Everything above ran on free-tier inference, which bounds prose quality in a way that has
+nothing to do with the design. The rerun exists to separate those two things. Generation and
+judging move to a metered provider on a stronger model; extraction and classification stay
+where they are, because moving them would change a second variable and cost money to learn
+nothing. The configuration is otherwise identical: same axes, same selector, same dial, same
+checker, same preference layer, same personas, same seed. The decision count is halved,
+because the full configuration on the cheapest model that fits does not fit the in-code
+budget cap, and a partial run of the full configuration would confound the comparison with
+wherever it happened to stop.
+
+\begin{center}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+& \textbf{free tier} & \textbf{strong model} \\
+\midrule
+runs & \rLiveRunCount{} & \rMeteredRunCount{} \\
+decisions & \rLiveDecisionsTotal{} & \rMeteredDecisionsTotal{} \\
+mean acceptance & \rLiveAcceptanceMean{} & \rMeteredAcceptanceMean{} \\
+tokens per decision & \rLiveTokensPerAction{} & \rMeteredTokensPerAction{} \\
+weight recovery & \rLiveWeightRecoveryMean{} & \rMeteredWeightRecoveryMean{} \\
+probe tau, last episode & \rProbeTauLast{} & \rMeteredProbeTauLast{} \\
+spend & \$0.00 & \rMeteredSpend{} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The spend figure is the one to read alongside the free-tier claim: \rMeteredUsdPerDecision{}
+per writer decision, under a hard in-code cap of \$12.00 that refuses a call it cannot
+afford rather than noticing afterwards. The cap was not raised for this run.
+
 \section{What the measurements changed}
 \label{sec:findings}
 
@@ -924,11 +957,12 @@ rerun of an identical configuration is nearly free, key rotation with per-(key, 
 cooldowns, and a budget guard that refuses a call it cannot afford. Every one of those was
 exercised in anger rather than written and hoped for.
 
-The metered budget is therefore still unspent, which is the point: it is reserved for the
-strong-model rerun, where the same evaluation runs against a better model to separate
-\emph{the system works} from \emph{the model is good}. That comparison is only meaningful
-because nothing has been re-engineered in between. The model id is a configuration value,
-and the run is one command.
+The metered budget existed for one purpose: the strong-model rerun, where the same
+evaluation runs against a better model to separate \emph{the system works} from \emph{the
+model is good}. That comparison is only meaningful because nothing was re-engineered in
+between. The model id is a configuration value and the routing is one table entry, so the
+rerun changes exactly one variable. \S\ref{sec:metered} reports what it cost and what it
+showed.
 
 \decision{Purpose-tag routing rather than per-call-site provider choice}
 The cost policy is six lines in one table. \rejected{Choosing a provider where the call is

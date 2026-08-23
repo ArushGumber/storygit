@@ -254,7 +254,24 @@ def summarize(
     offline_metrics: dict[str, Any],
     results: Path,
 ) -> dict[str, Any]:
-    """Compute cross-run metrics, write the plots, and write ``summary.md``."""
+    """Compute cross-run metrics, write the plots, and write ``summary.md``.
+
+    Every run log on disk is included, not only the ones this invocation produced. A run of
+    one configuration must not erase the record of another: the strong-model comparison is
+    the free-tier table *beside* the metered one, and writing a summary from this process's
+    logs alone deleted whichever half was not just run. Logs this invocation produced win
+    over the copy on disk, since they are the same file rewritten.
+    """
+    on_disk: dict[str, RunLog] = {}
+    for path in sorted((results / "runs").glob("*__*.json")):
+        try:
+            log = RunLog.load(path)
+        except (ValueError, KeyError):
+            continue
+        config_name = (log.config or {}).get("name") or path.name.split("__", 1)[0]
+        on_disk[f"{config_name}/{log.persona}"] = log
+    logs = on_disk | dict(logs)
+
     rows: list[dict[str, Any]] = []
     acceptance: dict[str, list[float]] = {}
     edit_distance: dict[str, list[float]] = {}
