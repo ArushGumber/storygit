@@ -363,10 +363,11 @@ def test_no_client_method_is_unreachable_from_the_interface() -> None:
 def test_every_figure_the_evaluation_produces_has_a_caption() -> None:
     """A caption says what a curve demonstrates; a filename says nothing.
 
-    `bandit_selftest.svg` shipped with no caption, and the interface fell back to showing
-    its filename under the figure. The captions live in the API rather than the frontend
-    because they describe a property of the experiment, so this checks them against the
-    figures the evaluation actually writes.
+    A figure once shipped with no caption and the interface fell back to showing its
+    filename underneath. The captions live in the API rather than the frontend because they
+    describe a property of the experiment, so this checks them against the figures the
+    evaluation actually writes -- and, by the same token, fails if a caption outlives the
+    figure it describes.
     """
     source = (SRC / "api" / "routers" / "artifacts.py").read_text()
     captioned = set(re.findall(r'"(\w+\.svg)":', source))
@@ -379,6 +380,9 @@ def test_every_figure_the_evaluation_produces_has_a_caption() -> None:
     assert produced, "no figures found; this test has stopped checking anything"
     assert produced <= captioned, "figures with no caption: " + ", ".join(
         sorted(produced - captioned)
+    )
+    assert captioned <= produced, "captions for figures nothing writes: " + ", ".join(
+        sorted(captioned - produced)
     )
 
 
