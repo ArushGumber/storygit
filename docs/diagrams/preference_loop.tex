@@ -27,7 +27,7 @@
 
 % ---------------- ranking ----------------
 \node[sgboxaccent, text width=30mm, align=center, right=13mm of voice, yshift=-8mm] (rank)
-  {\textbf{ranking}\\[-2pt]{\scriptsize 10 features $\to$ one score}};
+  {\textbf{ranking}\\[-2pt]{\scriptsize 13 features $\to$ one score}};
 \foreach \n in {voice,head} { \draw[sgedge] (\n.east) -- (rank.west); }
 \draw[sgedgesoft] (exemplars.east) to[out=0, in=110] (rank.north);
 \draw[sgedgesoft] (mining.east) to[out=0, in=130] (rank.north west);
