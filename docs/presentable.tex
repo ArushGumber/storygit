@@ -172,8 +172,75 @@ kernel \\
 \section{Architecture}
 \label{sec:architecture}
 
-\textit{[Full system diagram and component walk-through --- chunk 6. Model routing
-subsection --- chunk 2.]}
+Five components and an interface. Everything below the interface is a pure Python library
+with no web machinery in it --- which is why most of it is testable with no network and
+measurable with no server.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{diagrams/system.pdf}
+\caption{One writer, one story, one process. There is no session, no auth, and no queue,
+because there is nothing to serialize between. Every state change goes through
+\texttt{Repository.commit\_diff} and nowhere else, which is what makes the snapshot history
+a complete record rather than a partial one.}
+\label{fig:system}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{@{}lp{0.60\textwidth}@{}}
+\toprule
+\textbf{Package} & \textbf{What it does} \\
+\midrule
+\file{domain/} & The typed state and the 30 diff operations that are the only way to change
+any of it. Frozen models, a pure \texttt{apply}, typed errors. \\
+\file{store/} & Content-addressed objects, snapshot manifests, branch pointers, three-way
+merge. Git's data model, in one SQLite file. \\
+\file{graph/} & Declared dependency edges, propagation that marks and never rewrites, and
+the entity-scoped slices generation prompts consume. \\
+\file{providers/} & One interface over four backends, with key rotation, a read-through
+cache, a budget guard, and a call log. No key is ever logged. \\
+\file{agents/} & Schema-constrained generation converted into typed diffs, plus fact
+extraction from accepted prose. \\
+\file{selection/} & Named axes, MMR / DPP / top-$k$ behind one signature, and the dial. \\
+\file{continuity/} & The three checker layers, the bible diff, and the periodic audit. \\
+\file{preference/} & Exemplars, edit mining, the voice model, the ranking head, the
+bandit. \\
+\file{eval/} & Simulated writers, injected ground truth, metrics, ablations, the gallery
+recorder. \\
+\file{api/} + \file{frontend/} & A thin HTTP adapter and a five-tab interface. No logic
+lives in either. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The interface, and why it is part of the argument}
+
+The interface is where the design either lands or does not. Fabula's finding that writers
+became ``an arbiter of good or bad'' is not fixed by a better model; it is fixed by changing
+what the writer is asked to do.
+
+\textbf{Diffs, not drafts.} A writer reading a wall of replacement text is judging prose. A
+writer reading \emph{``introduces Mara; changes Kael's goal; would mark 2 downstream beats
+stale''} is authorizing a change. Same underlying output, entirely different job.
+
+\textbf{Named directions, not variants.} Three options labelled \emph{raise the stakes /
+slow down / introduce a complication} cost one decision. Three unlabelled paragraphs cost
+three readings, and a writer who has done that twice stops opening the third.
+
+\textbf{The blast radius before the decision.} Every candidate says how many downstream nodes
+it would mark. That one line is the difference between a system a writer trusts with a
+manuscript and one they do not, because it makes the consequence visible while it is still
+avoidable.
+
+\textbf{Learning that is visible.} Every rule mined from the writer's edits lands in the
+ledger, is shown, and can be deleted, and enters prompts only after being observed twice. A
+system that quietly adjusted its own prompts from inferred preferences would work slightly
+better and would be untrustworthy the first time it inferred wrong --- and the writer would
+have no way to find out.
+
+The five tabs run in the order the story is told: problem, architecture, tool, proof,
+numbers.
+
 
 \section{The state model}
 \label{sec:state}
@@ -312,7 +379,6 @@ entity \emph{and} a note telling the writer what it might duplicate. No similari
 threshold is used. A fuzzy match that is occasionally wrong would weld two characters
 together silently, which is the failure this whole system exists to prevent.
 
-\subsection{Model routing and cost}
 
 One routing table maps purpose tags to backends: prose and judging to Gemini, extraction
 and classification to Groq's small fast model, embeddings and NLI to local CPU models, and

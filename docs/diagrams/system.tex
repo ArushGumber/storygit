@@ -1,0 +1,75 @@
+% system.tex -- the whole thing: one process, one file, one writer.
+\documentclass[tikz, border=8pt]{standalone}
+\input{style.tex}
+\begin{document}\sgpage
+\begin{tikzpicture}[sg]
+
+% ---------------- browser ----------------
+\node[sgboxaccent, text width=40mm, align=center] (ui) at (0,0)
+  {\textbf{browser}\\[-2pt]
+   {\scriptsize React + TypeScript\\[-1pt]
+    plan tree $|$ candidates $|$ world state}};
+\node[sgcaption, below=1.5mm of ui.south, anchor=north, text width=42mm, align=center]
+  {owns presentation\\ and nothing else};
+
+% ---------------- api ----------------
+\node[sgbox, text width=34mm, align=center, right=20mm of ui] (api)
+  {\textbf{FastAPI}\\[-2pt]
+   {\scriptsize a thin adapter.\\[-1pt] no logic lives here}};
+\draw[sgedgeaccent] (ui.east) to[out=20, in=160]
+  node[sglabel, pos=0.5, above=1pt] {JSON over HTTP} (api.west);
+\draw[sgedge] (api.south west) to[out=200, in=340] (ui.south east);
+
+% ---------------- engine ----------------
+\node[sgboxaccent, text width=34mm, align=center, right=18mm of api] (engine)
+  {\textbf{engine}\\[-2pt]
+   {\scriptsize propose $\to$ check $\to$ rank\\[-1pt]
+    $\to$ accept $\to$ propagate\\[-1pt] $\to$ learn}};
+\draw[sgedge] (api) -- (engine);
+
+% ---------------- components ----------------
+\node[sgsmall, text width=32mm, align=left, above=13mm of engine, xshift=-22mm] (agents)
+  {\textbf{agents} \; schema $\to$ diff};
+\node[sgsmall, text width=36mm, align=left, above=13mm of engine, xshift=18mm] (selection)
+  {\textbf{selection} \; axes, MMR/DPP,\\ the dial};
+\node[sgsmall, text width=32mm, align=left, below=13mm of engine, xshift=-22mm] (continuity)
+  {\textbf{continuity} \; 3 layers};
+\node[sgsmall, text width=36mm, align=left, below=13mm of engine, xshift=18mm] (preference)
+  {\textbf{preference} \; 4 learners};
+\foreach \n in {agents,selection,continuity,preference} { \draw[sgedge] (engine) -- (\n); }
+
+% ---------------- providers ----------------
+\node[sgbox, text width=30mm, align=center, right=22mm of engine] (router)
+  {\textbf{router}\\[-2pt]{\scriptsize purpose $\to$ provider,\\[-1pt] cache, budget, log}};
+\draw[sgedge] (engine) -- (router);
+
+\node[sgsmall, text width=26mm, align=center, above right=10mm and 8mm of router] (gemini)
+  {Gemini \; 6 keys};
+\node[sgsmall, text width=26mm, align=center, right=8mm of router] (groq) {Groq};
+\node[sgsmall, text width=26mm, align=center, below right=6mm and 8mm of router] (local)
+  {local CPU models};
+\node[sgsmall, draw=sgmute, text width=26mm, align=center, below right=16mm and 8mm of router]
+  (or) {OpenRouter \textbf{locked}};
+\foreach \n in {gemini,groq,local} { \draw[sgedge] (router.east) -- (\n.west); }
+\draw[sgedgesoft] (router.east) -- (or.west);
+
+% ---------------- store ----------------
+\node[sgboxaccent, text width=52mm, align=center, below=34mm of engine] (store)
+  {\textbf{one SQLite file}\\[-2pt]
+   {\scriptsize objects (content-addressed) $|$ snapshots $|$ branches\\[-1pt]
+    signals $|$ preference state $|$ cache $|$ call log}};
+\draw[sgedgeaccent] (engine.east) to[out=310, in=20]
+  node[sglabel, pos=0.75] {commit\_diff} (store.east);
+\draw[sgedge] (store.west) to[out=160, in=230] (engine.west);
+
+\node[sgcaption, anchor=north west, text width=150mm] at (-12mm,-62mm)
+  {One writer, one story, one process. There is no session, no auth, and no queue, because
+   there is nothing to serialize between --- and that is the right shape for a tool a
+   novelist runs on their own machine. Every state change goes through
+   \textsf{Repository.commit\_diff} and nowhere else, which is what makes the snapshot
+   history a complete record rather than a partial one. In development the browser is a
+   separate Vite process proxying \textsf{/api}; in production one uvicorn process serves
+   both from the same origin.};
+
+\end{tikzpicture}
+\end{document}

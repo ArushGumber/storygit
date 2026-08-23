@@ -75,53 +75,117 @@ Fabula is a chain of prompts with a UI. This is a state machine with a learning 
 
 | Package | What it does |
 |---|---|
-| `src/storygit/domain/` | The typed state: plan tree, world graph, threads, writer ledger, provenance, and the diff operations that are the only way to change any of it. |
+| `src/storygit/domain/` | The typed state: plan tree, world graph, threads, writer ledger, provenance, and the 30 diff operations that are the only way to change any of it. |
 | `src/storygit/store/` | Git-shaped persistence: content-addressed objects, snapshot manifests, branches, three-way merge. |
 | `src/storygit/graph/` | Deterministic dependency edges, staleness propagation, and the entity-scoped slices that generation prompts consume. |
+| `src/storygit/providers/` | One interface over Gemini (six keys, rotated), Groq, local CPU models, and a hard-locked metered provider. Read-through cache, budget guard, call log. |
+| `src/storygit/agents/` | Schema-constrained generation converted into typed diffs, and fact extraction from accepted prose. |
+| `src/storygit/selection/` | Named conditioning axes, MMR / DPP / top-k behind one signature, and the coherent-to-surprising dial. |
+| `src/storygit/continuity/` | Three checker layers, the bible diff, and the periodic audit. |
+| `src/storygit/preference/` | Exemplars, edit mining, a contrastive voice model, the ranking head, and a Thompson bandit. |
+| `src/storygit/api/` | A thin HTTP adapter. No logic lives here. |
+| `eval/` | Simulated writers, injected ground truth, metrics, ablations, and the gallery recorder. |
+| `frontend/` | Vite + React + TypeScript. Five tabs; the tool is three panes. |
 
-Later chunks add `providers/` (model routing), `agents/` (proposals as diffs),
-`selection/` (diverse labeled candidates), `continuity/` (the three-layer checker),
-`preference/` (learning the writer's taste), `eval/`, `api/`, and `frontend/`.
+Each package has its own `README.md` covering what it does, its key types, a worked
+example, and the invariants it maintains.
 
 ---
 
 ## Quickstart
 
 ```bash
-uv venv --python 3.11 && uv pip install -e '.[dev]'
-.venv/bin/python -m pytest          # offline unit tests
-.venv/bin/ruff check src tests      # lint
-.venv/bin/mypy src                  # types
+uv venv --python 3.11 && uv pip install -e '.[dev,ml,api]'
+cd frontend && npm install && cd ..
+
+.venv/bin/python -m pytest        # 216 tests, all offline
+.venv/bin/ruff check src tests eval scripts
+.venv/bin/mypy                    # strict, over src/ and eval/
 ```
 
-A minimal session against the state layer:
+### Run the tool
+
+```bash
+# development: two processes, Vite proxies /api
+uvicorn storygit.api.app:app --reload
+cd frontend && npm run dev          # http://localhost:5173
+
+# production: one process, one port
+cd frontend && npm run build && cd ..
+STORYGIT_DB=story.db .venv/bin/python -m storygit.api.app   # http://127.0.0.1:8000
+```
+
+Model keys live in a workspace-level `.env` **outside this repository** and are read by the
+provider layer. Without them the tool still runs — everything deterministic works — and
+generation reports that no provider is configured.
+
+### Run the evaluation
+
+```bash
+.venv/bin/python -m eval.offline                       # every deterministic metric, seconds
+.venv/bin/python -m eval.run --config smoke            # one tiny live run
+.venv/bin/python -m eval.run --config full             # four personas, budgeted
+.venv/bin/python -m eval.record_gallery                # the eight replayable sessions
+```
+
+### Check it end to end
+
+```bash
+scripts/e2e_smoke.sh              # boots the real server, walks the levels over HTTP
+scripts/smoke_live.py             # two live provider calls; run twice, the second is cached
+scripts/screenshots.py            # shoots every tab for the visual audit
+```
+
+## A minimal session against the state layer
 
 ```python
 from storygit.domain.diff import AddNode, Diff, DiffAuthor
 from storygit.domain.ids import IdGenerator
-from storygit.domain.nodes import Story
-from storygit.domain.state import StoryState
+from storygit.domain.nodes import Episode
+from storygit.seed import seed_story
 from storygit.store.repository import Repository
 
 ids = IdGenerator(seed=0)
 repo = Repository.open("story.db")
-root = Story(id=ids.node(), title="Untitled", seed="A powerless orphan discovers an ability...")
-repo.initialize(StoryState.build(nodes={root.id: root}))
+seed_story(repo, ids)                       # the orphan premise and its opening cast
 
-episode_id = ids.node()
 repo.commit_diff(
     Diff(
-        ops=(AddNode(node=Episode(id=episode_id, parent_id=root.id, title="Ashfall")),),
+        ops=(AddNode(node=Episode(id=ids.node(), parent_id=repo.state().root_id,
+                                  title="Ashfall")),),
         author=DiffAuthor.human,
         intent="open on the orphan's city",
     )
 )
 ```
 
+## What is measured
+
+Every claim is either measured or explicitly marked as unmeasured. The deterministic tier
+needs no model calls, so it is exact and cannot be improved by rerunning:
+
+| | |
+|---|---|
+| Continuity checker | layer 1 alone 80% recall, + layer 2 100%, at **0.00 false positives per beat** on a clean story |
+| Staleness prediction | declared edges P=1.00 R=0.67; + embedding edges at threshold 0.68 P=1.00 R=1.00 |
+| Selector diversity | top-k 0.254 / MMR 0.483 / DPP 0.555 mean pairwise distance, at 0.90 / 0.83 / 0.78 quality |
+| Bandit | Thompson pseudo-regret 4.8 and flat after ~50 rounds; ε-greedy 6.3 and still climbing |
+| Preference prior | +0.13 held-out pairwise accuracy over uniform after a fresh writer's first 10 comparisons |
+
+Two predictions written in advance turned out **wrong**, and both changed the system rather
+than the write-up: MMR at the conventional λ = 0.7 was identical to the top-k baseline, and
+embedding dependency edges did better than expected. Both are in
+`docs/presentable.tex` §"What the measurements changed".
+
+What this cannot measure: real taste, fatigue, or trust. The evaluation uses simulated
+writers, so every number is a property of the machinery. Only a human study would settle
+the rest, and `docs/presentable.tex` §Limitations says so.
+
 ## Design decisions
 
-The full decision log — every choice, the alternatives rejected, and why — is in
-`docs/presentable.tex`. Package-level notes live in each package's `README.md`.
+The full decision log — every choice, the alternative rejected, and why — is in
+`docs/presentable.tex`, which also carries the evaluation and the limitations. Package-level
+notes live in each package's `README.md`.
 
 ## Licence
 
