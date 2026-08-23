@@ -332,6 +332,39 @@ def audit_report() -> dict[str, Any]:
 # --- driver -------------------------------------------------------------------
 
 
+def recovery_ceiling_curve(
+    *, sizes: tuple[int, ...] = (5, 10, 25, 50, 100, 200), seeds: int = 60
+) -> dict[str, Any]:
+    """What weight recovery can reach as a function of how many decisions there are.
+
+    Independent of any run, so it answers the question the live numbers cannot: is a
+    measured recovery of 0.4 a weak result or an arithmetic fact about twenty comparisons?
+    The estimator here is correctly specified by construction and sees noiseless-enough
+    choices, so this is an upper bound on anything the real head could do.
+
+    Args:
+        sizes: Decision counts to sweep.
+        seeds: Synthetic runs averaged at each size.
+
+    Returns:
+        ``{"points": [{"decisions": n, "mean": ..., "sd": ...}, ...]}``.
+    """
+    import random
+
+    from eval.ceiling import ceiling_for
+    from eval.personas import reference_features
+
+    points = []
+    for size in sizes:
+        rng = random.Random(4242 + size)
+        matrices = [
+            [reference_features(rng, criteria=2).values for _ in range(3)] for _ in range(size)
+        ]
+        stats = ceiling_for(matrices, noise=0.08, seeds=seeds)
+        points.append({"decisions": size, "mean": stats["mean"], "sd": stats["sd"]})
+    return {"points": points}
+
+
 def run_all(*, results: Path = RESULTS) -> dict[str, Any]:
     """Compute every offline metric and write the figures.
 
@@ -349,6 +382,7 @@ def run_all(*, results: Path = RESULTS) -> dict[str, Any]:
         "mmr_lambda_sweep": mmr_lambda_sweep(),
         "bandit": bandit_regret(),
         "pretraining": pretraining(),
+        "recovery_ceiling": recovery_ceiling_curve(),
         "audit": audit_report(),
     }
     _write_figures(out, results)
@@ -386,6 +420,25 @@ def _write_figures(data: dict[str, Any], results: Path) -> None:
     ax.set_ylabel("injected contradictions caught")
     ax.set_title("What each checker layer contributes")
     save(fig, results / "checker_recall.svg")
+    plt.close(fig)
+
+    # What recovery can be, as a function of how many decisions there were.
+    curve = data["recovery_ceiling"]["points"]
+    fig, ax = plt.subplots(figsize=(5.2, 3.2))
+    ax.errorbar(
+        [p["decisions"] for p in curve],
+        [p["mean"] for p in curve],
+        yerr=[p["sd"] for p in curve],
+        marker="o",
+        color=SERIES[0],
+        capsize=3,
+    )
+    ax.set_xscale("log")
+    ax.set_xlabel("writer decisions")
+    ax.set_ylabel("weight recovery (correlation)")
+    ax.set_ylim(0.0, 1.0)
+    ax.set_title("What weight recovery can reach, by sample size")
+    save(fig, results / "recovery_ceiling.svg")
     plt.close(fig)
 
     # Stale precision/recall sweep.

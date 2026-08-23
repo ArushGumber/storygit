@@ -135,6 +135,11 @@ def eval_plots(state: State) -> dict[str, Any]:
             "curve: accepting more while rewriting just as much is not improvement."
         ),
         "edit_distance.svg": ("How much the writer rewrote what they took, over the run."),
+        "recovery_ceiling.svg": (
+            "The ceiling on weight recovery at a given number of decisions, with the "
+            "estimator correctly specified by construction. It is what makes a measured "
+            "recovery readable: the same number means different things at n=20 and n=200."
+        ),
         "probe_agreement.svg": (
             "The deconfounded learning curve. The same frozen decisions, sampled from "
             "other writers\u2019 runs, re-ranked by the head after every episode \u2014 so "

@@ -138,6 +138,15 @@ def collect() -> dict[str, str]:
         lift = entry.get("lift")
         macros[f"LiftAt{word}"] = MISSING if lift is None else f"{lift:+.3f}"
 
+    ceiling_points = _get(offline, "recovery_ceiling", "points", default=[]) or []
+    for point in ceiling_points:
+        if point.get("decisions") == 25:
+            macros["CeilingAtTwentyFive"] = _num(point.get("mean"))
+        if point.get("decisions") == 200:
+            macros["CeilingAtTwoHundred"] = _num(point.get("mean"))
+    macros.setdefault("CeilingAtTwentyFive", MISSING)
+    macros.setdefault("CeilingAtTwoHundred", MISSING)
+
     runs = _get(summary, "runs", default=[]) or []
     macros["LiveRunCount"] = str(len(runs)) if runs else MISSING
     # Emitted rather than worked around in the prose, because "1 runs" in a document that
