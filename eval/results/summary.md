@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T03:33:55.082003+00:00.
+Generated 2026-08-23T12:40:21.885442+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
@@ -41,29 +41,24 @@ Pseudo-regret after 400 rounds: Thompson 4.8, epsilon-greedy 6.3. Pulls: {'safe'
 
 | comparisons made | from prior | from uniform | lift |
 |---|---|---|---|
-| 0 | 0.790 | 0.735 | +0.055 |
-| 5 | 0.770 | 0.660 | +0.110 |
-| 10 | 0.775 | 0.645 | +0.130 |
-| 20 | 0.795 | 0.755 | +0.040 |
-| 40 | 0.815 | 0.835 | -0.020 |
+| 0 | 0.785 | 0.795 | -0.010 |
+| 5 | 0.795 | 0.685 | +0.110 |
+| 10 | 0.780 | 0.700 | +0.080 |
+| 20 | 0.805 | 0.765 | +0.040 |
+| 40 | 0.825 | 0.815 | +0.010 |
 
 ## Live runs
 
 | run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | tokens/action |
 |---|---|---|---|---|---|---|---|
-| full/the Controller | 23 | 83% | 100% | 73% | 0.66 | 0.51 | 197223 |
-| full/the Maximalist | 22 | 91% | 100% | 91% | 0.92 | 0.27 | 153346 |
-| full/the Minimalist | 32 | 97% | 100% | 100% | 0.22 | 0.53 | 76632 |
-| full/the Serialist | 30 | 83% | 91% | 84% | 0.19 | 0.46 | 42144 |
-
-## Errors during runs
-
-- `full/the Controller`: episode 3 was not accepted; stopping
-- `full/the Maximalist`: episode 3 was not accepted; stopping
+| probesample/the Controller | 11 | 100% | 100% | 100% | 0.80 | 0.46 | 34440 |
+| probesample/the Maximalist | 12 | 83% | 100% | 75% | 0.92 | 0.27 | 36574 |
+| probesample/the Minimalist | 12 | 92% | 100% | 91% | 0.00 | 0.58 | 31053 |
+| probesample/the Serialist | 11 | 100% | 100% | 100% | 0.00 | 0.34 | 36696 |
 
 ## Provider cost
 
-- calls: 1641
-- tokens: 4536130
-- cache hit rate: 2%
+- calls: 658
+- tokens: 1594018
+- cache hit rate: 0%
 - estimated cost: $0.0000 (free tier; the price table would apply on a metered provider)

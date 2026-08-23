@@ -208,7 +208,7 @@ def build(runs: list[dict[str, Any]], *, per_run: int = 3, seed: int = 20260824)
         for action in usable[:per_run]:
             points.append(
                 ProbePoint(
-                    source=f"{run.get('config', {}).get('name', 'full')}/{run['persona']}",
+                    source=f"{run.get('config', {}).get('name', 'unknown')}/{run['persona']}",
                     level=action.get("level", ""),
                     texts=tuple(action.get("texts", ())),
                     features=tuple(dict(f) for f in action["features"]),

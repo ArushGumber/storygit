@@ -1,0 +1,676 @@
+{
+  "points": [
+    {
+      "source": "probesample/the Controller",
+      "level": "scene",
+      "texts": [
+        "The Root Cellar Elara descends into the cellar, finding her father's old desk cleared of dust and a single, fresh, handwritten ledger open to today's date. As she reads the entries, she hears the cellar door latch click shut from the outside, trapping her in the dark with the smell of wet earth and jasmine tea. The house is not just occupied, but maintained; someone has been documenting Elara's life from afar.",
+        "The False Trail Instead of entering the cellar, Elara locks the parlor door behind her and begins smashing the teacups. The house responds not with a ghost, but with a rhythmic thumping from the attic that matches the exact cadence of her father's old walking cane. Elara knows exactly who is in the house, and she is baiting them rather than investigating.",
+        "The Sentry's Patience From the crawlspace beneath the floorboards, Silas watches Elara’s boots pace the parlor. He grips the cellar latch, intentionally nudging the door wide enough to creak, ensuring she hears his retreat before he slips into the darkness of the sub-floor. Silas is the one waiting for Elara and he is physically beneath her, watching her every move."
+      ],
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Controller",
+      "level": "beat",
+      "texts": [
+        "The Silent Rebound Elara expects to hear the attic floorboards creak under the weight of someone descending, but the house falls into a total, suffocating silence. She moves to the cellar door only to find the handle she just locked has dissolved into a solid, flush wall of wood grain, leaving her trapped in the parlor as the room temperature begins to plummet. The house is not just locking doors; it is physically rearranging itself to prevent exit.",
+        "The Attic's Silence With the house now sealed, Elara stops smashing teacups and stands perfectly still in the center of the parlor, realizing the rhythmic thumping above has abruptly ceased. She calls out her father's name, not with fear, but with a challenge, waiting for the silence to be broken by a response that she knows is now inevitable. Elara suspects her father is the source of the thumping; the house is now truly cut off from the outside world.",
+        "The Price of Exit As the house seals, Elara realizes her own house key has dissolved into rust in her palm. The parlor begins to fill with a thick, suffocating ash that smells of old incense and scorched paper, forcing her to choose between the locked cellar door or the increasingly unbreathable air. The house is not just trapping Elara, but physically altering her personal belongings to prevent escape."
+      ],
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Controller",
+      "level": "beat",
+      "texts": [
+        "The Occupant's Perspective High in the attic, Arthur watches Elara through a floorboard knothole as she smashes the teacups. He grips his cane tight, smiling at her calculated defiance, knowing that by destroying the tea set, she has inadvertently triggered the mechanism he set to seal the house from the inside. Arthur is currently in the attic and intentionally controlling the house's responses to Elara.",
+        "The Attic Threshold Ignoring the thumping, Elara forces her heavy travel trunk against the parlor door, barricading the exit before ascending the staircase. She stops halfway up, listening as the cane's rhythm changes from a steady march to a frantic, uneven scratching against the floorboards directly above her head. The entity in the attic is reacting to Elara's defiance, and it is capable of changing its behavior to mirror her aggression.",
+        "The Floorboards Give Way As the thumping reaches a crescendo, the floorboards in the hallway beneath Elara's feet buckle, revealing a hidden compartment containing her father's ledger. The thumping stops abruptly, and the parlor door she just locked begins to slowly creak open from the other side, despite the lock still being engaged. The house is physically altering its own architecture to force a confrontation."
+      ],
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Maximalist",
+      "level": "beat",
+      "texts": [
+        "The Resonating Frequency As Mara forces Elias to match his breathing to the watch's tempo, the rhythmic ticking begins to liquefy the surrounding ash, causing a localized cave-in that seals the path to his cache. Elias realizes the watch is not just a timer, but a sonic trigger tuned to the specific chemical signature of the Ashfall debris. Mara smiles, sensing his panic, and reveals that the cache was never for him; it was a calibrated fuel source she needed to initiate the collapse. The watch is a sonic device that interacts with Ashfall's unique properties; Mara has manipulated Elias into unknowingly sabotaging his own survival.",
+        "The Weight of the Tick Elias tries to shove the watch back into the box, but Mara catches his wrist, her grip unnatural and cold. Instead of pressing the debt, she simply forces him to listen to the ticking until it matches his own erratic breathing. She leaves him kneeling in the ash, empty-handed, as she walks away without explaining if the box is a threat or a final opportunity. Mara possesses a physical strength or coldness that unnerves Elias; the watch is a psychological anchor.",
+        "The Weight of the Tick: Mara's Perspective Mara watches Elias's frantic, trembling hands through the shifting grey veil of Ashfall. She doesn't feel the weight of the air, only the satisfying, sharp dissonance of the watch's tempo against his panicked heartbeat; to her, the ozone she carries isn't just a scent, but the literal charge of a kinetic dampener she is currently projecting to anchor him in place. She descends, her boots crunching through the crust, finding his terror as predictable as the tide. Mara is not just standing there; she is actively using a piece of technology to physically suppress Elias's ability to move."
+      ],
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6587,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6567,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Maximalist",
+      "level": "beat",
+      "texts": [
+        "The Forfeit Mara forces Elias to open the watch. Inside is not a mechanism, but a small, jagged shard of iron—the 'key' to a vault Elias swore he destroyed. Mara demands he return it to the vault by dawn or she will surrender his location to the faction hunting them both. Elias was once a thief or guardian for a dangerous faction; the watch is a cruel reminder of his past failures.",
+        "The Ledger of Buried Ash Mara forces Elias to place his hand on the ticking watch, revealing that the device is a mnemonic sync-lock tied to his biological rhythm. She informs him that every minute the watch remains active, a piece of his documented past—stored in a remote digital cache—is permanently wiped, essentially deleting his identity while he watches. The debt is not financial; it is a forced erasure of Elias's identity, and the watch is the mechanism of that deletion.",
+        "The Weight of the Watch Elias shifts his focus from Mara to the pocket watch, realizing its internal mechanism is not clockwork but an intricate, shifting puzzle of silver pins. As he touches the watch, the metallic scent intensifies, and he understands it was crafted from a specific, rare alloy—the same material used in the shackles that once held him in the Oakhaven labor camp. The watch is a physical artifact linking Elias's current situation to his traumatic past in the Oakhaven labor camp."
+      ],
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Maximalist",
+      "level": "beat",
+      "texts": [
+        "The Observer in the Soot: Mara's Departure Mara turns away from the ridge as Elias begins to weep over the ticking watch. She cleans her scope, noting with cold satisfaction that the ash has already begun to bury his footprints, erasing her presence entirely. Mara is deliberate in her anonymity and views Elias's suffering as a managed outcome.",
+        "The Second Hand Stalls Elias tries to smash the watch against a rock to silence its rhythmic ticking, but the glass remains pristine and the metal refuses to dent. As he frantically works, the ticking abruptly stops, not because it broke, but because the hands have begun to rotate backward at an impossible, blurred speed. The watch is not merely a timer; it is anomalous and beyond Elias's control.",
+        "The Price of the Tick Elias drops the watch in horror, the rhythmic clicking now mirrored by a sharp, rhythmic tapping on his own shoulder—a physical reminder of the debt he can no longer outrun. Mara descends from the ridge, her presence marked by the dry, rasping sound of her boots grinding through the thickest drifts of ash, forcing Elias to acknowledge that his sanctuary is compromised. The watch is not just a timer, but a signal for Mara to approach; Elias is physically cornered."
+      ],
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Minimalist",
+      "level": "beat",
+      "texts": [
+        "The Preventative Measure Elias sprints to the supply shed. He dumps a bucket of snow over the pile of kerosene-soaked rags before they ignite. He finds a discarded cigarette butt inside the shed, still smoldering. The future predicted by the radio can be prevented. Someone is watching him.",
+        "Matches and Friction Elias strikes a match to see inside the iron trunk. He realizes the metal lining is etched with tally marks that correspond to his own heartbeat. The radio signal shifts from his future voice to the rhythmic sound of dripping water. The trunk reacts to human presence by mirroring internal states.",
+        "Mara's Observation Mara watches Elias from behind the collapsed barn. She sees him tremble, eyes fixed on the iron trunk. She knows the trunk is empty. She does not hear the voice Elias hears. Mara believes Elias is hallucinating or lying."
+      ],
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5699,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5514,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Minimalist",
+      "level": "beat",
+      "texts": [
+        "The Steel Shutter The trunk floor glows white-hot, burning through Elias's jeans. He tries to jerk his hand back, but the radio’s speaker frame collapses into a rigid steel mouth. It clamps onto his fingers, grinding bone against the metal tally marks. The radio emits a high-pitched, harmonic whine that drowns out the distant roar of the shed fire. The trunk is a trap that uses physical pain to finalize its process.",
+        "The Sentry's Vantage Kael watches from the supply shed doorway. He sees Elias kneeling at the trunk, unaware of the smoldering fuse trailing from the shed floor toward the container. Kael notices the trunk's metal lid shifting, not by Elias's hand, but as if the box itself is hunting him. Kael knows about the trunk and the encroaching fire before Elias.",
+        "The Heat Exchange Elias hammers the radio with his free fist to break the steel shutter. Each impact forces the radio to broadcast his own screams from the near future, perfectly synced to his own throat. As the shed walls groan under encroaching flames, the glowing tally marks on the trunk floor surge with heat, branding the skin of his trapped fingers with the exact shape of the notches. The trunk is actively harvesting Elias's physical experiences to power itself."
+      ],
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Minimalist",
+      "level": "prose",
+      "texts": [
+        "prose Elias swipes his palm against his denim thigh. The black smear stays. He lifts a hand to the moonlight. Fine grains of grey silt sit in the creases of his skin. He drags a fingernail through the muck. It is cold. He touches his tongue to his knuckle. The taste is dead lake. Salt. Rot. Stagnant reeds. The radio hums louder now. A thin line of the fluid snakes toward the nearest gouge in the floor. It hits the steel and snaps into the groove. The mark glows a dull, sickly amber. Another flows. Then a dozen. The light crawls across the bottom of the trunk like a vein filling with blood. The metal floor warms under his knees.",
+        "prose Elias rubs his thumb against his palm. The black grit smears. He brings his hand to his nose. It smells of dead reeds and cold lake bottom. He touches his tongue to his skin. Bitter salt stings his throat. He spits onto the frozen dirt. Inside the trunk, the fluid creeps along the jagged steel scars. The marks glow white. A faint, low hum rattles his teeth. Elias grips the edge of the trunk. He tries to push the lid shut, but the metal holds fast. The light pulses faster. He stares at the tally marks. They look like veins pumping beneath the steel.",
+        "prose Mara watches from the tree line. The flashlight beam cuts a sharp wedge through the fog. She sees Elias kneel. His hands shake. He smears the black sludge against his denim coat. It is not grease. It is stagnant water from the basin. The silt moves under the trunk light. It flows into the metal grooves like blood in a vein. The tally marks glow. They are not scratches anymore. They are maps."
+      ],
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6875,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Serialist",
+      "level": "beat",
+      "texts": [
+        "The False Floor As Elias moves to slide the ledger through the grate, he realizes the gas intake isn't just incinerating the archives; it is venting directly into the city's residential sectors. He stares at the ledger's final page, finding a schematic that confirms the 'incinerator' is actually a dispersal unit for the toxin. If he destroys the ledger, he hides the proof of a city-wide poisoning, but if he keeps it, Sarah seals the vent forever. The incinerator gas is a delivery system for toxic dispersal into Ashfall.",
+        "The Counter-Offer Elias coughs violently but manages to slide the ledger into the vent's gap, feigning surrender as he edges his fingers toward the latch mechanism Sarah mentioned. He whispers back, agreeing to give it up, but instead of the ledger, he jams the heavy, jagged iron binding of the book into the ventilation controls to forcibly override the locking mechanism. The machine groans as the gears grind against the metal, partially jamming the vent shut while the gas level rises to his chin. Elias is willing to risk total suffocation to sabotage the mechanism instead of just handing the ledger over.",
+        "The Ledger's Deception Instead of handing over the ledger or suffocating, Elias realizes the incinerator intake chute is too small for the heavy ledger. He frantically rips out the middle pages containing the Council's signatures and shoves them into the chute, keeping the incriminating summary pages hidden in his jacket. Sarah, hearing the paper tear, believes he has surrendered the evidence and deactivates the gas as the room begins to vent, leaving Elias alive but with a fractured truth. Elias is willing to sacrifice the total truth to survive, and Sarah is susceptible to being tricked by her own rigid expectations."
+      ],
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Serialist",
+      "level": "scene",
+      "texts": [
+        "The Smell of Ozone Elias presses his ear to the cooling iron door, listening to the rhythmic, metallic scrape of a blowtorch extinguishing. As the air in the archives grows heavy with ozone and heat, he realizes the ventilation intake has been blocked from the exterior as well, leaving him to suffocate in silence with the ledger in his hands. The council is not just covering up the past; they are willing to commit murder in real-time to silence him.",
+        "The Oxygen Tax As the air recyclers in the archive room hum to a halt, a digital voice broadcast from the wall panels informs Elias that his personal oxygen allocation has been revoked due to 'unauthorized document handling.' A hidden pneumatic tube in the corner floorboard pops open, revealing a gas mask and a note signed by Sarah, the council archivist, asking if he is ready to die for the truth. The council is monitoring his oxygen usage and Sarah knows his current location.",
+        "The Ventilation Grate Instead of panicking or searching for an exit, Elias realizes the ledger contains a handwritten note by Councilman Halloway dated yesterday. A low hum vibrates through the floor as the room begins to fill with a sweet-smelling, colorless gas meant to incinerate the evidence—and him—before the welding cools. Elias presses his ear to the grate, hearing not guards, but his own sister’s voice whispering through the vent. The council is using incinerator gas to erase the evidence, and Elias's sister is somehow complicit in his containment."
+      ],
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    },
+    {
+      "source": "probesample/the Serialist",
+      "level": "episode",
+      "texts": [
+        "The Weight of Ash Elara returns to her abandoned family home in Ashfall to secure a hidden ledger, only to find the dust has been disturbed by someone else. She masks her frantic desperation with cold efficiency while bargaining with the local scavengers who claim the house as their own. Elara is running from a debt involving more than just money, and Ashfall is legally classified as a dead zone.",
+        "The Ashfall Ledger Elias discovers the ledger buried beneath the floorboards of the Ashfall archives, proving the city council authorized the toxic dumping five years ago. Just as he secures the evidence, the heavy iron door of the archives is welded shut from the outside. The city council actively orchestrated the environmental collapse of Ashfall for profit.",
+        "The Ashfall Gate Elias prepares to breach the Ashfall gate, only to discover the kinetic lock has been fused by internal sabotage, rendering his key useless. He realizes someone within his own inner circle has been manipulating his access codes since he arrived. The sabotage is local, not external, and the key Elias carries is now a liability that signals his location to whoever fused the lock."
+      ],
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5744,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        }
+      ]
+    }
+  ]
+}

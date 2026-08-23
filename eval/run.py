@@ -92,6 +92,7 @@ async def run_one(
         use_llm_edits=use_llm_edits,
         checkpoint=results / "runs",
         probe_set=probe_set,
+        config_name=config.name,
     )
     fitted = dict(
         zip(

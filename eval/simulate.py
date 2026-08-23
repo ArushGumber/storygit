@@ -383,6 +383,7 @@ async def run_writer(
     max_wait_seconds: float = 900.0,
     max_retries: int = 12,
     probe_set: probe.ProbeSet | None = None,
+    config_name: str = "",
 ) -> RunLog:
     """Drive a full run: episodes, scenes, beats, and prose.
 
@@ -403,6 +404,8 @@ async def run_writer(
         probe_set: The held-out probe. Replayed after every episode, costing nothing,
             because the acceptance curve on its own cannot separate a head that learned
             from a task that got harder.
+        config_name: Recorded in the log so a probe point can name where it came from,
+            which is how leakage stays checkable by eye rather than only by code.
 
     Returns:
         The complete run log. A run cut short by provider errors still returns everything
@@ -433,6 +436,7 @@ async def run_writer(
         return RunLog(
             persona=persona.name,
             config={
+                "name": config_name,
                 "episodes": episodes,
                 "scenes_per_episode": scenes_per_episode,
                 "beats_per_scene": beats_per_scene,
