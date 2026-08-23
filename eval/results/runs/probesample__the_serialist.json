@@ -1,0 +1,2004 @@
+{
+  "persona": "the Serialist",
+  "config": {
+    "name": "probesample",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 2,
+    "seed": 7,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_be3056fabb",
+      "level": "episode",
+      "shown": [
+        "p_c070843d39",
+        "p_a78acf9ee3",
+        "p_6290672b37"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "pay off an open thread",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.7647,
+        0.9398,
+        0.8138
+      ],
+      "chosen": "p_a78acf9ee3",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "bcdb537e98149c9b378c26ee084cd1a0",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5744,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Ash Elara returns to her abandoned family home in Ashfall to secure a hidden ledger, only to find the dust has been disturbed by someone else. She masks her frantic desperation with cold efficiency while bargaining with the local scavengers who claim the house as their own. Elara is running from a debt involving more than just money, and Ashfall is legally classified as a dead zone.",
+        "The Ashfall Ledger Elias discovers the ledger buried beneath the floorboards of the Ashfall archives, proving the city council authorized the toxic dumping five years ago. Just as he secures the evidence, the heavy iron door of the archives is welded shut from the outside. The city council actively orchestrated the environmental collapse of Ashfall for profit.",
+        "The Ashfall Gate Elias prepares to breach the Ashfall gate, only to discover the kinetic lock has been fused by internal sabotage, rendering his key useless. He realizes someone within his own inner circle has been manipulating his access codes since he arrived. The sabotage is local, not external, and the key Elias carries is now a liability that signals his location to whoever fused the lock."
+      ]
+    },
+    {
+      "node_id": "n_abcd55a45b",
+      "level": "scene",
+      "shown": [
+        "p_4550b01c39",
+        "p_ddb57bc4ac",
+        "p_9384e376a8"
+      ],
+      "axes": [
+        "slow down",
+        "pay off an open thread",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8596,
+        0.8876,
+        0.9062
+      ],
+      "chosen": "p_9384e376a8",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "1d1336c3d20ef973f7b86ef7e3b4fb07",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.3333
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Smell of Ozone Elias presses his ear to the cooling iron door, listening to the rhythmic, metallic scrape of a blowtorch extinguishing. As the air in the archives grows heavy with ozone and heat, he realizes the ventilation intake has been blocked from the exterior as well, leaving him to suffocate in silence with the ledger in his hands. The council is not just covering up the past; they are willing to commit murder in real-time to silence him.",
+        "The Oxygen Tax As the air recyclers in the archive room hum to a halt, a digital voice broadcast from the wall panels informs Elias that his personal oxygen allocation has been revoked due to 'unauthorized document handling.' A hidden pneumatic tube in the corner floorboard pops open, revealing a gas mask and a note signed by Sarah, the council archivist, asking if he is ready to die for the truth. The council is monitoring his oxygen usage and Sarah knows his current location.",
+        "The Ventilation Grate Instead of panicking or searching for an exit, Elias realizes the ledger contains a handwritten note by Councilman Halloway dated yesterday. A low hum vibrates through the floor as the room begins to fill with a sweet-smelling, colorless gas meant to incinerate the evidence—and him—before the welding cools. Elias presses his ear to the grate, hearing not guards, but his own sister’s voice whispering through the vent. The council is using incinerator gas to erase the evidence, and Elias's sister is somehow complicit in his containment."
+      ]
+    },
+    {
+      "node_id": "n_e886444d4e",
+      "level": "beat",
+      "shown": [
+        "p_6b41ee8532",
+        "p_2ccf75c617",
+        "p_d528f04a6b"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.9314,
+        0.8757,
+        0.6678
+      ],
+      "chosen": "p_6b41ee8532",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a4ec04879e705c8744e27edd79a8326d",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.25
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6647,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6433,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Sister's Bargain Elias smashes the vent with the ledger's heavy binding to force a response. His sister, Sarah, speaks through the metal, revealing she is not a prisoner but an initiate of the Council, tasked with ensuring Elias's silence to 'protect the greater order' of Ashfall. She offers him a choice: surrender the ledger to be burned in the gas, or suffocate with it. Sarah serves the Council voluntarily, framing the cover-up as a necessary sacrifice for the city's stability.",
+        "The Sister's Cipher Instead of begging for help or pleading for his life, Elias realizes the voice on the other side of the vent is reciting a sequence of archive codes—the exact combination to the secondary internal release hatch. As the gas thickens, he inputs the sequence, but the mechanism doesn't unlock; it triggers a loud, mechanical alarm that floods the room with blinding spotlights instead. Elias stares into the vent, seeing a camera lens swivel to track his movement as his sister's voice changes from a whisper to a pre-recorded broadcast. The sister is using Elias to test the archive's automated security protocols; the voice wasn't real-time contact.",
+        "The Sister's Dilemma Clara stands on the other side of the ventilation grate, her hand resting on the lever that controls the incinerator gas. She weeps as she hears Elias pleading for his life inside the room, but she remains stationary, knowing that if she releases him, the Council will execute them both immediately. She whispers a final instruction through the vent for him to look behind the loose brick in the corner, knowing it is the only way he might survive the fire. Clara is working under duress to protect Elias and herself from the Council's retribution."
+      ]
+    },
+    {
+      "node_id": "n_c10f4f4db6",
+      "level": "prose",
+      "shown": [
+        "p_d1a1426985",
+        "p_57974b2376",
+        "p_ab4bbe6518"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.9435,
+        0.9541,
+        0.8897
+      ],
+      "chosen": "p_57974b2376",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "8295317d36850779ae1294b4bcf41542",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9129,
+          "dialogue_ratio": 0.25
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9402,
+          "dialogue_ratio": 0.3333
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9402,
+          "dialogue_ratio": 0.1905
+        }
+      ],
+      "texts": [
+        "prose Elias slammed the heavy leather binding against the steel grate. The clang echoed, sharp and metallic, against the rising hiss of the gas. 'Sarah? Sarah, look at me!' He pressed his face to the slats, lungs already burning with the sweet, cloying scent. Her voice didn't waver. It was cool, clinical, devoid of the sister he remembered. 'The order of Ashfall isn't a suggestion, Elias. It is the bedrock of our survival. The Council didn't dump the waste to hurt us; they did it to buy us ten more years of power, of light, of life. Slide the ledger into the gap, or stay and watch it turn to ash with you.' She paused, the sound of a heavy bolt sliding home echoing through the duct. 'I have the key to the main service tunnel, but it only turns if the ledger is destroyed. Do you really think your death makes you a martyr, or just another secret we have to bury?' Elias gripped the spine of the book, his knuckles white as the room began to blur at the edges. 'If you really believe this,' he choked out, 'why are you the one whispering in the dark?'",
+        "prose The metal of the vent groans under the impact of the ledger, a dull, ringing thud that echoes against the reinforced concrete of the archive walls. Sarah pulls her hand back, pressing her palm flat against the cool steel grate. Through the gaps, she can see a sliver of Elias’s face—contorted, desperate, and entirely too loud. The sweet-smelling hiss of the gas system filling the room beneath her is a lullaby she helped compose. 'Stop fighting it, Eli,' she whispers, her voice barely steady. 'If you pull the trigger on this truth, you don’t just bury the Council; you bury the city’s heat, its light, its very ability to breathe another day.' She hears him gasp, the gas beginning to cloud his senses. He pushes the ledger against the grate, his knuckles white. She closes her eyes, visualizing the flames that will soon bloom inside that room to scour the history clean. 'I am not your jailer, brother,' she says, leaning closer, her breath fogging the metal. 'I am the only thing keeping your death from being in vain. Do you want to die a martyr for a ruin, or will you hand me the book and let me save what’s left of our name?'",
+        "prose Elias slammed the thick, leather-bound spine of the ledger against the metal slats of the vent. The grate groaned but held, the metal teeth biting into his palm. 'Sarah, look at me! Look at what they had you hiding!' He shoved the ledger flush against the opening, the pages smelling of damp rot and acid. On the other side, the air was unnervingly still. Sarah's voice came through, thin and detached, devoid of the warmth he remembered from their childhood home. 'You think you are the hero of a tragedy, Elias? You are just a variable that complicates the equation. The Council has already accounted for the fallout of the dumping. If you burn that book, you walk out of the archives alive. If you keep it, you are simply ash in a room that will soon be sterilized.' The sweet gas thickened, coating Elias's tongue in a sugary, metallic film. He clawed at his throat, his lungs burning with the chemical bite. 'Is this what you traded our family for, Sarah? To be the one who turns the key on your own brother?' He heard the faint scrape of leather soles against stone outside the vent. Sarah sighed, a sound of profound, weary disappointment. 'Family is a small, rotting thing, Elias. Ashfall is a city that needs to breathe. Which will you choose: the history of our failure, or your next breath?'"
+      ]
+    },
+    {
+      "node_id": "n_e886444d4e",
+      "level": "beat",
+      "shown": [
+        "p_2f6c68a272",
+        "p_8f9f2e6636",
+        "p_27ad5f0faa"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.6676,
+        0.7942,
+        0.5351
+      ],
+      "chosen": "p_8f9f2e6636",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "4d87f22699552cd3f0d593e711543ee1",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Ledger Elias presses his fingers into the cold binding of the ledger through the iron vent, his vision blurring from the gas as he chooses not to surrender the evidence. Instead of handing it over, he shoves the heavy book back into the smoke and asks Sarah if she remembers the day their father died for the same council. Elias chooses the truth over his sister's plea, weaponizing their shared past against her.",
+        "The Ledger's Cost Rather than surrendering the ledger, Elias jams the heavy book into the ventilation grate's twisted bars, wedging it permanently open as the gas thickens. Sarah screams his name as she realizes he has chosen to destroy the evidence along with himself, leaving her to face the Council empty-handed. Elias would rather die with the truth than let the Council win.",
+        "Sarah's Perspective Sarah watches through the ventilation grate as Elias struggles against the gas, pressing the ledger against the steel while his consciousness fades. She holds her ground, believing her grim bargain is the only way to save both his life and the stability of Ashfall. Sarah actively helped design the gas system used to purge the archives."
+      ]
+    },
+    {
+      "node_id": "n_16e9999833",
+      "level": "prose",
+      "shown": [
+        "p_bf7e1cefe1",
+        "p_3558348fdc",
+        "p_61e263c78a"
+      ],
+      "axes": [
+        "raise the stakes",
+        "slow down",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.929,
+        0.9196,
+        0.9712
+      ],
+      "chosen": "p_61e263c78a",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.4788,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3f7e459289e268f37c4e7614eb5d0a00",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9735,
+          "dialogue_ratio": 0.1538
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9053,
+          "dialogue_ratio": 0.1667
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7143,
+          "dialogue_ratio": 0.25
+        }
+      ],
+      "texts": [
+        "prose 'Eli!' Sarah’s scream tears through the narrow ventilation shaft, bouncing off the steel walls as the ledger catches hard against the iron bars, wedging the gap wide. The sweet, heavy odor of the accelerant billows around his face, thick and oily on his tongue. Inside the archive, the pilot igniter clicks once, twice, a mechanical death-rattle in the dark. Elias doesn't reach for the book. He presses his palms flat against the freezing floorboards, feeling the immediate shudder of the ignition below as blue flame licks the bottom of the shelves. Through the twisted metal of the grate, Sarah watches the fire catch the first dry pages of the ledger, turning five years of covered-up murder into black ash that floats up toward her face. She scrambles backward, coughing on the chemical smoke venting into the hallway, her hands empty and her coat smelling of the Council's fuel. 'You fool,' she chokes out, scrambling to her feet as the heavy iron door down the hall groans under the heat of the growing inferno. 'They'll say you burned it yourself—they'll say you were just another thief in the dark!' Elias’s voice comes back, raspy and thin through the smoke, laughing softly against the floor. 'Let them write whatever history they want, Sarah. Did you really think I’d let you carry our family's name into their parlor?'",
+        "prose Elias does not answer her. His fingers, already stiffening against the grain of the cowhide cover, wedge the Ashfall Ledger harder into the throat of the vent, forcing the iron bars to bite into the binding. The sweet smell of the gas is heavy now, tasting like winter almonds on the back of his tongue, making his teeth feel loose in his gums. On the other side of the grate, Sarah’s fingers claw uselessly at the cold mesh. 'Eli! Eli, you stupid bastard, take it back!' Her voice cracks, dropping the cool diplomat’s register entirely, leaving only the sound of a girl standing over a grave she dug herself. He feels the first hot lick of the igniter pilot beneath the floorboards, a low, structural shudder that rattles the teeth in his skull. Through the gaps, her eyes widen into bright, wet circles as the smoke begins to curl past his chin, blotting out the light of the corridor. 'Let the city burn, Sarah,' he gasps, his vision tunneling down to the single square of her face. 'Let it all turn to ash.' Can she hear the click of the thermal fuse before the fire catches?",
+        "prose Elias coughs, a harsh, rattling sound that vibrates through the thick cardboard and leather spine wedged in the ironwork. 'Save our name?' he rasps, his fingers slipping from the edge of the ledger as the sweet gas burns his throat. 'You already traded it for a council seat, Sarah.' Outside the vent, the heavy scrape of boots on concrete stops dead. Sarah’s breath catches, her hand flying from the metal as a second, heavier voice echoes down the corridor—Councilman Halloway, calling her name. The air in the archive grows hotter, the first blue lick of the ignition spark casting a sharp, dying glow across Elias's face as the book begins to smoke. Will she answer the Councilman, or pull the burning ledger through the bars before the fire takes it all?"
+      ]
+    },
+    {
+      "node_id": "n_abcd55a45b",
+      "level": "scene",
+      "shown": [
+        "p_8ede4ca504",
+        "p_fb27127723",
+        "p_d86929774a"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8313,
+        0.9774,
+        0.8692
+      ],
+      "chosen": "p_fb27127723",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "ac5a30a4e4a2a7b12cab480080542ac3",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6044,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Spark Before Sarah can reach through the twisted bars to retrieve the wedged ledger, a heavy pneumatic lock clicks overhead as Councilman Halloway activates the archive's secondary incinerator protocol early. The rising sparks catch the corner of the exposed pages, forcing Sarah to leap back from the grate as flames engulf the book. The City Council's automated systems have zero tolerance for failure and will destroy collateral to ensure secrecy.",
+        "Through the Bars Sarah ignores her own safety and claws at the burning edges of the ledger stuck in the vent, tearing pages from Elias's grip as the room below ignites. She pulls the singed evidence into the corridor just as the archive door blows inward with a sheet of white-hot flame, leaving Elias trapped inside. Sarah chose the evidence and her own survival over Elias's life, securing the ledger at the cost of her brother.",
+        "Through the Smoke As the ignition spark crackles from the archive's internal vents, Sarah frantically claws at the charred leather spine of the wedged ledger, her fingers burning against the superheated iron bars. Elias collapses against the opposite wall inside the sealed vault, watching her hand slip away as the first tongues of white-hot flame lick across the stolen pages. Sarah's loyalty to the Council fractures irrevocably the moment she watches her brother burn for a secret she helped protect."
+      ]
+    },
+    {
+      "node_id": "n_f7b4f72fee",
+      "level": "beat",
+      "shown": [
+        "p_6ea032a77e",
+        "p_9e173dd8d1",
+        "p_a7654fdc1a"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.8194,
+        0.7692,
+        0.7268
+      ],
+      "chosen": "p_6ea032a77e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 5,
+      "hard_flags_shown": 2,
+      "snapshot_id": "c21b4502a9b4d8242d885a2a293cf1c8",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.22,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Smoldering Choice Instead of choosing between the Council and her brother, Sarah rejects Halloway's call entirely, plunging her bare hands directly into the flames at the ventilation grate to yank the burning ledger free before it turns to ash. Sarah values her brother over the Council's protection.",
+        "Sarah's Choice From the corridor outside the archive vent, Sarah looks down at the burning edges of the ledger. She claws at the pages, tearing them free from Elias's grip just as the heavy archive door blows inward with white-hot flame, trapping Elias inside. Sarah prioritizes the ledger and her own survival over Elias's life, pulling the evidence through the bars just as the room ignites.",
+        "The Weight of the Ledger Before Sarah can pull the ledger through the twisted bars, Councilman Halloway steps into the corridor and jams his heavy signet ring into the mechanism, locking the vent shut from the outside and trapping the book inside the fire. Halloway is willing to sacrifice both Elias and the evidence to protect the Council."
+      ]
+    },
+    {
+      "node_id": "n_21f024388a",
+      "level": "prose",
+      "shown": [
+        "p_9eecbc2974",
+        "p_e3dc3852b6",
+        "p_c24ce8d985"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.9413,
+        0.8811,
+        0.9033
+      ],
+      "chosen": "p_9eecbc2974",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "1dfbc6ce43aa05b3002f24f47f45ef6d",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8594,
+          "dialogue_ratio": 0.1429
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9649,
+          "dialogue_ratio": 0.1
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9821,
+          "dialogue_ratio": 0.25
+        }
+      ],
+      "texts": [
+        "prose The skin of Sarah’s palms blisters instantly, the synthetic fabric of her council-issue gloves melting into the hot iron of the vent, but she does not scream. She locks her fingers into the burning corners of the ledger just as Elias shoves the heavy book forward with his last ounce of strength. A gout of flame roars up from the vents, singeing her hair and blackening her forearms as she wrenches the smoking, half-charred volume backward into the freezing corridor. The iron archive door behind her explodes outward with a concussive shockwave of white-hot gas and twisted metal, slamming into the opposite wall with a deafening screech of steel. Halloway steps out of the roiling smoke, his tailored coat unsinged, his expression cold as he looks down at the smoking, ruined book in Sarah’s bleeding hands. “You chose a pile of ash over your own future, Sarah,” Halloway says, the heavy slide of a service pistol clearing its holster ringing clear beneath the hum of the dying generators. Will Elias burn in the dark while Sarah holds the only piece of him left?",
+        "prose The heel of Halloway’s boot hits the floor tiles, sharp and demanding, but Sarah does not turn her head. The skin of her palms blisters instantly against the cast-iron mesh of the vent, the heat rising from the interior like an open furnace door. Elias screams something, his voice tearing into a ragged choke as the white-hot gas ignites below him, but she ignores him, too. She hooks her bleeding fingers through the diamond-shaped gaps, ignoring the sizzle of fat and tissue, and wrenches outward with a sickening pop of tearing leather and scorched cardboard. The heavy ledger slips an inch, catches on a welded burr of metal, and then tears free in a burst of sparks and soot, showering her forearms in glowing embers. She falls backward onto the corridor floor, clutching the smoking, half-incinerated book to her chest as the air pressure inside the archive changes, the heavy door groaning on its hinges as the fire seeks fresh oxygen. Halloway’s shadow falls long across her legs, his polished shoe stopping an inch from her scorched hand. 'What have you done, Sarah?' he asks, his voice dangerously soft. Will she roll to her feet and run, or hand the burning evidence to the man who signed her brother's death warrant?",
+        "prose The heel of Halloway’s boot strikes the concrete floor, stopping inches from Sarah’s skirts. 'Sarah,' the Councilman says, his voice flat, carrying the weight of a dozen closed-door verdicts. 'Step away from the grate. The order has been signed.' Sarah doesn't turn. The heat from the ventilation shaft hits her skin like a physical blow, blistering the soft flesh of her palms as she reaches straight into the blinding orange glare. Her fingers wrap around the smoldering leather spine of the ledger just as Elias gives a final, desperate shove from the dark interior. Flesh sizzles against the searing iron of the bars, but she clenches her grip, screaming as she wrenches the smoking, half-incinerated volume clear of the vent. A wall of white-hot air roars behind her as the archive door blows inward, shattering its frame and swallowing Elias’s muffled cry in a single, deafening concussion. Halloway stares down at the ruined, smoking book in Sarah's blistered, bleeding hands, then up at the roaring inferno where the city’s greatest secret—and her brother—are burning alive. 'You saved the garbage,' Halloway murmurs, his hand dropping toward the holster at his hip, 'and now there is nothing left of him to bury. What do you tell the council when they ask for the rest of the pages?'"
+      ]
+    },
+    {
+      "node_id": "n_f7b4f72fee",
+      "level": "beat",
+      "shown": [
+        "p_7074ac9def",
+        "p_fbdaf5be21",
+        "p_65a98444c9"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.6491,
+        0.7408,
+        0.919
+      ],
+      "chosen": "p_65a98444c9",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "6fc92a3b0c92b6bf1f77eb903c4b0763",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5556,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Ledger Sarah stares down at the burning ledger in her blistered hands while the heavy archive door crashes open behind her. Before she can turn, the weight of the book shifts as the charred spine gives way, threatening to scatter the singed council confessions across the concrete floor. The ledger is too structurally damaged by the fire to be read without specialized preservation, meaning Sarah's physical rescue of the book has not yet secured the truth.",
+        "Halloway's Ultimatum Sarah stands frozen with the smoking ledger as Councilman Halloway steps closer, leveling his service pistol directly at her chest. He gives her a cold ultimatum: hand over the incriminating evidence to be burned completely or be charged as an accomplice to treason alongside her brother. Halloway is willing to execute or frame Sarah to protect the council's secrets.",
+        "Through the Smoke From inside the burning archive, Elias watches Sarah's silhouette through the shattered vent, realizing she chose to pull the ledger free rather than let the fire consume it. Elias recognizes Sarah saved the ledger at the cost of his own escape."
+      ]
+    },
+    {
+      "node_id": "n_163c2cb4f8",
+      "level": "prose",
+      "shown": [
+        "p_dda2ce72ab",
+        "p_4070b49beb",
+        "p_46d4bf40e5"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8363,
+        0.9449,
+        0.6409
+      ],
+      "chosen": "p_4070b49beb",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.14,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "97da3c075f2c7e7f68f65b4d8fca702f",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9865,
+          "dialogue_ratio": 0.125
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8943,
+          "dialogue_ratio": 0.1
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.694,
+          "dialogue_ratio": 0.1667
+        }
+      ],
+      "texts": [
+        "prose Through the warped grille of the vent, Elias watches the red glow catch the jagged edge of the charred leather binding in Sarah’s blistered hands. She doesn't look down at her ruined skin, nor does she turn to face the muzzle of Halloway’s pistol leveling at the back of her coat. She stares straight at the dark rectangle of the vent, her lips moving without sound behind the glass as the backdraft presses a wall of black smoke against Elias’s face. He claws at the mortar around the iron bars, the heat blisteringly sharp against his fingernails, but the wall is solid granite and cold steel, welded by people who left nothing to chance. Halloway’s boot heel clicks against the concrete, stopping an inch from Sarah’s bleeding hem, his voice dropping into that smooth, practiced register that once promised Ashfall a clean horizon. “Drop the kindling, Sarah, and step away from the grate before the structural supports give out,” Halloway says, the click of the hammer resetting sounding like a dry bone snapping in the corridor. Elias tastes copper and ash on his tongue, his lungs seizing as the ceiling beams begin to groan and sag above his head. Will Elias suffocate in the dark while Sarah holds the only evidence left to hang them both?",
+        "prose The thick smoke rolls across the ceiling of the vault, a black tide swallowing the rows of empty shelving until only the orange teeth of the floor fire remain. Elias presses his face against the warped bars of the vent, his lungs seizing with every shallow gulp of superheated air. Through the jagged frame of the opening, the corridor is a blur of white vapour and pale fluorescent light. He sees the outline of Sarah’s coat, her ruined hands cradling the smoking spine of the ledger against her chest like a shield. She didn't drop it. She didn't shove it back to buy her place at Halloway's side. The realization hits him harder than the concussive blast, cold and sharp despite the heat—she chose the truth of the city's rot over the safety of the name they shared. But the heavy thud of Halloway’s service pistol being pressed against the back of Sarah’s skull echoes clear through the metal ductwork. “Drop the book, Sarah,” Halloway says, his voice flat, carrying the absolute weight of a death sentence signed five years ago. Will Elias watch her take a bullet for a pile of ash?",
+        "prose Through the warped grille of the vent, Elias watches the smoke roll over Sarah’s boots. Her raw, blackened fingers curl around the singed spine of the ledger, shielding it against her chest while Halloway’s pistol barrel rests an inch from her temple. The heat from the archive blisters the skin across Elias’s cheekbones, but he does not pull back; he watches her shoulders drop, watching her choose the evidence over the clean slate Halloway promised her. Above the roar of the consuming shelving units, Halloway’s voice is quiet, flat as a dead battery. “Put it down, Sarah, or you go in after him.” Will Sarah drop the book into the fire to save her own skin, or let Halloway pull the trigger?"
+      ]
+    },
+    {
+      "node_id": "n_be3056fabb",
+      "level": "episode",
+      "shown": [
+        "p_3faec9c761",
+        "p_dcea2ceabd",
+        "p_4cde21a59d"
+      ],
+      "axes": [
+        "raise the stakes",
+        "slow down",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.699,
+        0.8812,
+        0.7206
+      ],
+      "chosen": "p_dcea2ceabd",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": "410c461f0ff162c0bfd0aeb19881a02e",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.8789,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of Ash Elias smashes his shoulder against the iron vent grille, shattering the rusted screws just as Halloway cocks the service pistol behind Sarah's head. Sarah uses the distraction to hurl the burning ledger into the fire suppression pipe, flooding the corridor with caustic halon gas and blinding Halloway. Halloway is willing to execute a sitting council member to protect the five-year-old dumping cover-up.",
+        "Weight of Ash Trapped behind the warped vent while Halloway presses a service pistol to Sarah's skull, Elias realizes his bleeding fingers cannot reach through the iron slats in time to save her. Instead of dropping the ruined ledger, Sarah hurls the burning, charred volume directly into the intake fan above Halloway's head, shorting the corridor's emergency sprinklers in a freezing, choking downpour. Sarah's loyalty to the truth outlives her fear of Halloway, and the archive ventilation system is wired directly to the facility's water mains.",
+        "The Weight of Ash Sarah refuses to drop the ledger, prompting Halloway to pull the trigger, but the gun misfires in the damp corridor air. Elias uses the distraction to smash his shoulder through the weakened iron vent grating, tumbling out into the hallway just as Halloway regroups to strike again. Councilman Halloway's pistol has damp-corroded ammunition, giving them a momentary physical advantage."
+      ]
+    },
+    {
+      "node_id": "n_7776949b6a",
+      "level": "scene",
+      "shown": [
+        "p_d69f676b7e",
+        "p_064925e8bb",
+        "p_86cfe3139f"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8731,
+        0.8822,
+        0.842
+      ],
+      "chosen": "p_064925e8bb",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "38d80925e896f5a9144981311af3d59d",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6145,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0056,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Barrel Trapped behind the iron slats, Elias uses a jagged piece of shelving to smash his own bleeding knuckles through the grate, refusing to watch Sarah die for the charred ledger. Outside, Sarah refuses to drop the book, turning to face Halloway with her blistered hands raised while the service pistol clicks against her skull. Sarah will trade her life for the evidence, and Halloway is entirely willing to pull the trigger to keep the dumping a secret.",
+        "Through the Barrel Trapped behind the warped iron vent, Elias watches the cold steel muzzle of Councilman Halloway's pistol press against the base of Sarah's skull in the smoky corridor. Sarah refuses to drop the charred ledger, her bleeding fingers locked into its ruined spine as Halloway calmly counts down to a shot that will silence them both. Halloway is entirely willing to execute a sitting council member in cold blood to keep the dumping a secret.",
+        "The Weight of the Barrel Instead of dropping the ledger or letting Elias reach through the bars, Sarah pivots sharply on her heel, using the burning, thick spine of the book to smash the barrel of Halloway's pistol upward. The shot goes wild into the vaulted ceiling, raining plaster as Elias wrenches a loose iron slat from the vent with his bare, bleeding hands, forcing a brutal choice between a dying man and an armed councilman. Sarah is not just a passive protector of the evidence; she knows how to fight dirty against Halloway's enforcers."
+      ]
+    },
+    {
+      "node_id": "n_f4415c86d4",
+      "level": "beat",
+      "shown": [
+        "p_8219e76def",
+        "p_1c2637280c",
+        "p_151c8757d9"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.9139,
+        0.5777,
+        0.6516
+      ],
+      "chosen": "p_8219e76def",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "487a56ae99630a3b718ca0f7a5ef2187",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.3318,
+          "length": 0.5584,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5729,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5699,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Through the Barrel Sarah feels the cold steel of Halloway's pistol pressed against her skull, her ruined hands locked around the smoking ledger while Elias watches helplessly from behind the warped vent bars. Halloway is willing to execute Sarah to secure the destruction of the evidence.",
+        "The Weight of Ink Instead of dropping the ledger or taking a bullet, Sarah hurls the burning volume not away, but directly into the face of the electrical distribution panel behind Halloway, shorting the facility's emergency generators in a blinding cascade of sparks. Sarah is willing to sacrifice her own position entirely to blind the Council.",
+        "Through the Barrel Ignoring the barrel of Halloway's pistol pressed against her skull, Sarah refuses to drop the ledger and instead hurls the burning volume past him down the empty corridor, forcing Halloway to make a split-second choice between catching the evidence or pulling the trigger. Sarah's loyalty to the council is completely broken."
+      ]
+    },
+    {
+      "node_id": "n_7f13d70806",
+      "level": "prose",
+      "shown": [
+        "p_6f30887951",
+        "p_71df4b9cfd",
+        "p_2995801320"
+      ],
+      "axes": [
+        "introduce a complication",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.792,
+        0.6585,
+        0.7401
+      ],
+      "chosen": "p_6f30887951",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "bf6b994f3943c2e8b96746da47b82812",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.7942,
+          "dialogue_ratio": 0.2222
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.8029,
+          "dialogue_ratio": 0.1667
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.7038,
+          "length": 0.8696,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Elias claws at the rusted iron of the vent, his fingernails snapping against the slats as blood slicks the metal. The gap is too narrow—warped by the same heat that melted the archives behind him, no more than three inches of clearance. He strains forward until his ribs groan, his raw fingertips brushing only the scorched wool of Sarah’s coat sleeve, inches short of her hand. Outside, Sarah does not drop her chin, nor does she tremble. Her blistered palms grip the charred edges of the ledger tighter, the scorched paper flaking off into the grey slush on the floor. Halloway’s thumb pulls the hammer back on the service pistol with a sharp, heavy click that cuts through the hiss of the dying generators. “Three seconds, Sarah,” Halloway whispers, his breath pluming in the freezing draft. “Then I clean the floor with both of you.” Will Elias find the strength to tear the iron frame from the wall before the hammer falls?",
+        "prose The metal of the barrel is freezing against the nape of her neck, a dead, oily weight cutting through the damp wool of her collar. Sarah’s fingers will not uncurl; the charred leather of the ledger’s spine has fused into the raw meat of her palms, the blistered skin weeping clear fluid that sizzles softly where it drips onto the scorched floor tiles. Behind the iron grille, Elias is a smear of shadow and wet breath, his fingernails scraping uselessly against the thick vertical slats with a dry, clicking sound like a trapped insect. He is straining so hard a vessel in his eye has burst, turning the white of it a dull, bruised crimson in the glare of the overhead pipe. \"You're shaking, Sarah,\" Halloway murmurs, his breath stirring the stray hairs at her temple, smelling faintly of mint and machine oil. Will her grip finally break under the cold pressure of the steel, or will she let the fire finish what they started?",
+        "prose The steel of the barrel bites through the fabric of Sarah’s collar, cold enough to draw a thin line of gooseflesh down her neck, but she does not drop her chin. Instead, she pivots on her heel, slamming the burning spine of the ledger straight into the emergency water pipe running along the masonry. The brittle brass fitting shears off with a sharp, metallic shriek, and a geyser of high-pressure water erupts directly into Halloway’s face, blinding him in a freezing, industrial deluge. Halloway stumbles backward, coughing, his finger jerking on the trigger to send a stray bullet screaming into the concrete floor. Through the warped iron slats, Elias watches the white-hot arc of the ricochet illuminate Sarah’s bloodied hands as she hooks her fingers beneath the bent vent bar and begins to wrench it outward with a desperate, inhuman pull. The metal groans, tearing free from the mortar with a shower of grey dust as the freezing water turns the corridor into a blinding, smoking whiteout. Will Sarah haul Elias from the trap before Halloway clears his eyes and finds his target in the mist?"
+      ]
+    },
+    {
+      "node_id": "n_f4415c86d4",
+      "level": "beat",
+      "shown": [
+        "p_c25377ca05",
+        "p_49e5231dc2",
+        "p_afc7d58b5b"
+      ],
+      "axes": [
+        "slow down",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5786,
+        0.559,
+        0.6575
+      ],
+      "chosen": "p_afc7d58b5b",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 1,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.7284,
+          "length": 0.5851,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Fingers in the Slats Elias drives his broken, bleeding fingers into the narrow iron slats of the vent, tearing his skin against the jagged edges as he tries to hook his fingertips around Sarah's coat. His muscles lock and spasm with white-hot pain, but the iron frame does not yield an inch, leaving him clawing uselessly at empty air inches from her shoulder. Elias's physical injuries completely prevent him from reaching Sarah in time.",
+        "Trigger Discipline Sarah refuses to drop the ledger, gripping the burning spine so hard her blistered skin chars further against the cover. Halloway cocks the hammer of his service pistol, his finger tightening on the trigger as he prepares to execute her before Elias can wrench the vent bars free. Halloway will not hesitate to kill Sarah despite their shared history in the Council.",
+        "The Weight of the Ledger Instead of dropping the ledger or waiting for Halloway's hammer to fall, Sarah drives her bleeding fingers into the burning spine and rips the book in half, hurling the flaming pages into the intake fan above them. The resulting short circuit triggers a freezing deluge from the emergency sprinklers, blinding Halloway in a wall of steam and forcing him to stumble back as Elias wrenches frantically at the warped iron bars. Sarah is willing to destroy the ledger entirely rather than let the Council use it as leverage against Elias."
+      ]
+    },
+    {
+      "node_id": "n_f4415c86d4",
+      "level": "beat",
+      "shown": [
+        "p_6ba0136c23",
+        "p_9fd7522b83",
+        "p_561d70f4cc"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6897,
+        0.2024,
+        0.7802
+      ],
+      "chosen": "p_561d70f4cc",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.6961,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "01ea89dea316327dceba21c1f922e0d1",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.017,
+          "length": 0.5714,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Shorting the Vault Sarah hurls the burning ledger directly into the high-speed intake fan above Halloway's head, shattering the unit and shorting the emergency sprinklers into a freezing downpour. Halloway stumbles back, blinded by the sudden deluge, while Elias redoubles his frantic pulling at the warped iron vent frame. Sarah's desperate counter-attack successfully blinds Halloway and triggers the sprinkler system.",
+        "The Weight of the Hammer Elias strains against the iron bars until his palms tear open further against the rusted metal, while outside, Sarah stares down the barrel of Halloway's pistol without flinching or speaking. Sarah refuses to beg for her life or drop the ledger even with the gun pressed directly against her skull.",
+        "The Hammer Falls Instead of dropping the ledger or screaming for mercy, Sarah drives the burning spine directly against Halloway's service pistol, discharging a round into the ceiling above them and using the blinding muzzle flash to shatter the glass casing of the emergency manual override beside the door. Elias seizes the opening, finally tearing the warped iron frame entirely from the wall. Sarah's choice was not martyrdom, but a deliberate tactical escalation to break the stalemate."
+      ]
+    },
+    {
+      "node_id": "n_6ae32fb1ef",
+      "level": "prose",
+      "shown": [
+        "p_11b34e13aa",
+        "p_cc25d1f0b8",
+        "p_463b4454c2"
+      ],
+      "axes": [
+        "raise the stakes",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.8872,
+        0.8438,
+        0.993
+      ],
+      "chosen": "p_463b4454c2",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0192,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "e162dbfebe62c23405f7c9c41701e96a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.2534,
+          "length": 0.7666,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.9016,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.7746,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The deafening crack of the discharge slams against the concrete, white-hot sulfur blinding the corridor in a harsh, sudden glare. Halloway stumbles back, his grip on the service pistol thrown wide by the impact of the burning ledger, and before the smoking brass shell hits the floor, Sarah drives her elbow straight through the reinforced glass of the emergency manual override. Sirens shriek overhead, a raw, mechanical howl that triggers the heavy overhead shutters to drop. Elias seizes the vibrating iron frame of the vent, his torn, bleeding fingers hooking into the expanded gap where the mortar has cracked from the heat. He screams, hauling his entire weight backward until the rusted bolts groan and snap with a sound like breaking bone, tearing the heavy iron slats completely from the wall. Will Elias pull himself through the jagged opening into the corridor before Halloway clears his weapon and finds the trigger again?",
+        "prose Elias hooks his heel against the interior strut of the duct, using every ounce of his remaining strength to throw his weight backward. Outside the iron slats, Sarah doesn't flinch. Instead of dropping the ledger or screaming for mercy, she drives its burning spine directly into the heavy steel frame of Halloway’s service pistol, knocking the barrel upward a fraction of a second before he pulls the trigger. The gun roars, punching a smoking hole through the concrete ceiling and raining a storm of white grit and blinding muzzle flash into the corridor. Before Halloway can recover his aim, Sarah uses the concussive glare to swing the heavy, smoldering volume sideways, shattering the glass casing of the emergency manual override box beside the door. Alarms shriek to life, a deafening klaxon that floods the narrow hall with strobe-lit crimson. Seizing the sudden violence of the opening, Elias jams his bleeding, broken fingers into the warped gaps of the vent, roaring as he rips the entire iron frame outward from the rotted drywall in a cloud of plaster dust. Will he drag Sarah into the dark with him before Halloway clears the smoke and fires again?",
+        "prose The flash of the service pistol turns the smoke a blinding, electric white, washing out the corridor in a sharp, magnesium glare. Sarah doesn’t flinch; her shoulder hits Halloway’s forearm, forcing the muzzle upward just as the primer breaks. Plaster rains down from a freshly punched hole in the ceiling, showering them in white dust. Before the councilman can recover his balance, she swings the burning spine of the ledger like a heavy mace, smashing the glass box of the emergency override beside the door. Alarms shriek to life—a high, piercing wail that drowns out Halloway’s curse. Behind the vent, Elias hears the iron rivets scream as the metal wall groans under his weight. With a sickening tear of rusted bolts and old mortar, the entire frame gives way, collapsing inward as Elias lunges out of the dark into the blinding smoke. Will he reach Sarah before Halloway clears the chamber for a second shot?"
+      ]
+    },
+    {
+      "node_id": "n_7776949b6a",
+      "level": "scene",
+      "shown": [
+        "p_626964aec7",
+        "p_33e1ffd259",
+        "p_ad35ea8b2b"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "slow down",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.678,
+        0.7377,
+        0.8463
+      ],
+      "chosen": "p_ad35ea8b2b",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "71c3f0669b361497ac6c5055d756e0d7",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6729,
+          "length": 0.6232,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Through the Smokescreen Instead of waiting for the fatal shot, Sarah hurls the burning ledger directly into Halloway's face, the charred pages exploding in a shower of embers that blinds him long enough for Elias to kick the weakened vent frame completely out of the wall. Sarah is willing to weaponize the very evidence they tried to protect, and Halloway's control over the situation is more fragile than his calm demeanor suggests.",
+        "The Weight of Steel Elias leans his entire weight into the warped iron frame, his bleeding palms flat against the blistering metal as he ignores the tearing of his own skin. In the corridor, Sarah does not blink against the muzzle pressed to her skull, instead sliding the burning ledger an inch closer to the vent where Elias can finally hook a raw, torn finger into its charred binding. Sarah is willing to permanently destroy her own hands to ensure the ledger reaches Elias through the grate.",
+        "Through the Broken Iron As the freezing sprinkler water turns the corridor smoke into a blinding, chemical fog, Elias violently rips the warped iron vent completely from its mounting bolts, tumbling into the open air beside Sarah. Before Halloway can reacquire his target through the white spray, Elias drives his bleeding, ruined hands into the councilman's throat, pinning him against the concrete pillar while Sarah feeds the burning ledger directly into the high-pressure intake fan. Halloway's control over the archive sector is entirely dependent on his service weapon and lack of physical engagement."
+      ]
+    },
+    {
+      "node_id": "n_03d4cca9ae",
+      "level": "beat",
+      "shown": [
+        "p_89e4520d74",
+        "p_5edf930ec5",
+        "p_7fa7b15c4c"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "introduce a complication",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.8596,
+        0.7664,
+        0.7256
+      ],
+      "chosen": "p_89e4520d74",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7499a69e8a917b80b5c073384e3ff7ff",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9928,
+          "edit_direction": 1.0,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9776,
+          "edit_direction": 0.8006,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9967,
+          "edit_direction": 0.0,
+          "length": 0.6832,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Through the Smoke Lunging through the jagged remains of the vent, Elias tackles Halloway before the councilman can clear a second round, sending both men crashing into the wet, freezing spray of the triggered sprinklers. Sarah drops to her knees beside them, her ruined hands abandoning the ledger to press her full weight down on Halloway's pistol-holding wrist just as the weapon discharges uselessly into the floor. Elias has made it out of the ductwork and into the corridor, joining Sarah in a direct physical confrontation with Halloway.",
+        "The Chamber Clears Before Elias can clear the shattered frame, Halloway steps back from the white spray of the overhead sprinklers, flicking the slide of his service pistol to eject the spent casing with a sharp metallic ring. He keeps the weapon trained dead on the gap in the wall where Elias struggles, cutting off any path to Sarah. Halloway is too disciplined to panic when the alarms sound.",
+        "Through the Smoke From Sarah's perspective, the barrel of Halloway's pistol is a freezing ring of iron against her vertebrae, yet she feels only the steady heat of the ledger burning against her palms. As the primer clicks and plaster bursts from the ceiling, she reads the cold calculation in Halloway's eyes—not a man executing a traitor, but an administrator burning an accounting error. With her shoulder slamming into his forearm and the emergency box shattering under the book's spine, she realizes Elias is no longer trapped behind the vent, but coming through the plaster with a violence that matches her own. Sarah views Halloway's actions not as personal betrayal, but as routine administrative erasure for the Council."
+      ]
+    },
+    {
+      "node_id": "n_3919790b63",
+      "level": "prose",
+      "shown": [
+        "p_fcfc44c255",
+        "p_a5f2992474",
+        "p_9c3ca6f1c6"
+      ],
+      "axes": [
+        "introduce a complication",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8262,
+        0.7284,
+        0.6728
+      ],
+      "chosen": "p_fcfc44c255",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "07c33172a0c9d30ad3742929af103d96",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9965,
+          "edit_direction": 1.0,
+          "length": 0.856,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9945,
+          "edit_direction": 0.0,
+          "length": 0.7458,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9955,
+          "edit_direction": 0.222,
+          "length": 0.824,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The cold water hits Elias like a physical blow, cutting through the chemical haze as he slams Halloway against the wet concrete pillar. The councilman’s shoulder hits with a dull thud, his breath expelling in a sharp, wet gasp that sprays crimson across the grey floor. Elias drives his ruined, bleeding hands directly into Halloway’s throat, his split knuckles catching on the stiff wool of the man's collar, pinning him down while the overhead sprinklers churn the smoke into a freezing, opaque soup. From the wet slush beside them, Sarah drops her full weight onto Halloway’s forearm, her blistered palms grinding his wrist into the concrete just as the service pistol discharges. The bullet gouges a smoking trench through the wet floorboards, showering them in white splinters. But as Halloway’s boots kick out wildly in the deluge, his heel catches the burning ledger where it drifted against the drain, kicking the charred spine away into the flooded floor drain where the water instantly drowns its last orange embers. Will Elias hold the councilman down as the dark water rises over the ashes?",
+        "prose The impact knocks the wind out of Halloway in a wet, rattling cough, his tailored wool coat absorbing the freezing torrent from the overhead pipe in an instant. Elias slams his forearm across the councilman's throat, pinning him to the slick concrete as water floods their ears and blinds them with gray, chemical foam. Halloway's fingers claw frantically at Elias's torn, bleeding knuckles, trying to wrench the service pistol free from the mud. Beside them, Sarah drops hard onto her knees, ignoring the raw meat of her palms as she drives her entire body weight down onto Halloway’s wrist. The gun barks once against the stone floor, a deafening crack that sends sparks flying into the standing water before the slide jams hard against her knee. Will Halloway's second hand break free from the grip before Elias can crack his jaw against the floor?",
+        "prose The cold water hits like a physical blow, turning the corridor's chemical smoke into a blinding, freezing slush that coats their skin. Elias drives his shoulder straight into Halloway's ribs, the impact knocking the breath out of the councilman in a wet, rattling gasp as they tumble across the slick concrete. Before Halloway can wrench his arm free to cycle the slide, Sarah drops hard beside them, throwing her entire weight onto his wrist. Her blistered palms scream with fresh agony against the steel slide, but she does not flinch, pinning the weapon downward just as the primer breaks with a dull, muffled pop into the floorboards. Water cascades from the overhead pipes, soaking through their clothes and turning the pooling ash beneath them into black mud. Halloway thrashes beneath Elias, his boot heel slamming uselessly against the wall, but Elias keeps his bleeding, ruined hands locked tight around the councilman's throat. Will Halloway find the leverage to break their grip before the rising water chokes the last breath from his lungs?"
+      ]
+    },
+    {
+      "node_id": "n_03d4cca9ae",
+      "level": "beat",
+      "shown": [
+        "p_8b8cd2b45b",
+        "p_2c4233aab9",
+        "p_5283c5abd4"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.7543,
+        0.7115,
+        0.8267
+      ],
+      "chosen": "p_5283c5abd4",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "c3e2236196769e00e78da4d67886e67f",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9797,
+          "edit_direction": 0.0,
+          "length": 0.5379,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9957,
+          "edit_direction": 1.0,
+          "length": 0.6232,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9973,
+          "edit_direction": 0.8825,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Halloway's Retort As the freezing sprinkler water soaks his collar, Halloway twists his wrist beneath Sarah's grip, his eyes locking onto Elias breaking through the wall with a cold, terrifying recognition.",
+        "The Weight of the Pillar Pinning Halloway against the concrete pillar, Elias realizes the councilman is not fighting back for his weapon, but reaching into his coat pocket for a manual override code to seal the entire subterranean sector. Before Halloway can punch the sequence, Sarah hurls the remaining sparks of the burning ledger directly into his face, blinding him in a shower of hot embers while Elias strikes his wrist against the reinforced stone. Halloway carries a manual sector lockdown code that could trap them forever.",
+        "The Weight of Hands As the freezing sprinkler water turns the corridor smoke into a blinding, chemical fog, Elias violently rips the warped iron vent completely from its mounting bolts, tumbling into the open air beside Sarah. Before Halloway can reacquire his target through the white spray, Elias drives his bleeding, ruined hands into the councilman's throat, pinning him against the concrete pillar while Sarah feeds the burning ledger directly into the high-pressure intake fan. Elias succeeds in breaking through the vent and physically engaging Halloway, turning the tables on the execution."
+      ]
+    },
+    {
+      "node_id": "n_77b5219b91",
+      "level": "prose",
+      "shown": [
+        "p_fb4d00aae1",
+        "p_537be85a7e",
+        "p_af454e6bc2"
+      ],
+      "axes": [
+        "raise the stakes",
+        "introduce a complication",
+        "deepen the interiority"
+      ],
+      "scores": [
+        1.0,
+        0.645,
+        0.874
+      ],
+      "chosen": "p_fb4d00aae1",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.4766,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3a26a437be003089efbed2a48c73a8cf",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9949,
+          "edit_direction": 0.9114,
+          "length": 0.7237,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9943,
+          "edit_direction": 1.0,
+          "length": 0.7612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9929,
+          "edit_direction": 0.0,
+          "length": 0.7237,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The iron intake fan screams as the charred leather of the ledger hits the blades, a high metallic shriek that fills the flooded corridor before the heavy machinery chokes, sputters, and dies in a shower of blue sparks. Halloway’s hands claw desperately at Elias’s wrists, his fingernails tearing at the open flesh of Elias's split knuckles, but Elias throws his full weight downward, grinding the councilman's throat against the rough concrete until the man's heels stop drumming on the wet floor. Beside them, Sarah slumps against the pillar, her scorched forearms slick with soot and freezing water, staring blankly at the smoking, dead iron of the fan where the last evidence of the city's foundation has just been chewed to pulp. Will Elias let go before the dead weight in his hands stops moving entirely?",
+        "prose Halloway’s boots kick out wildly in the deluge, his heel catching the burning ledger where it drifted against the drain, kicking the charred spine away into the flooded floor drain where the water instantly drowns its last orange embers. Elias grips the councilman's collar tighter, his split knuckles sliding on the wet wool as Halloway’s hand scrabbles blindly behind his back, fingers closing around the cold steel of the service pistol that had slipped from his grip into the standing water. Sarah lunges forward to stomp her heel onto Halloway’s wrist, but her blistered, black-burned soles slip on the soapy tile, sending her skidding hard against the intake housing with a choked cry. Through the roaring spray of the intake fan, Halloway’s thumb cocks the hammer underwater, the metallic click cutting clean through the shrieking alarms. Will Sarah reach the emergency breaker before Halloway levels the barrel at Elias's chest?",
+        "prose The iron intake fan screams as the burning paper hits the blades, chewing leather and charred rag into a dark, fluttering blizzard that coats the ceiling in greasy black flakes. Halloway's hands claw blindly at Elias's forearms, his fingernails digging into the open gashes of Elias's split skin, but Elias doesn't flinch, his weight locked entirely into the councilman's windpipe. Through the freezing, chemical spray of the sprinklers, Sarah's face is a pale smear of soot and water as she reaches down, her blistered palms sliding over Halloway's wet belt until her fingers close around the grip of the service pistol still jammed in his holster. Will Sarah pull the weapon free to end Halloway once and for all, or will Elias's grip slip as the rising water chills his ruined hands to the bone?"
+      ]
+    }
+  ],
+  "episodes_completed": 2,
+  "call_summary": {
+    "calls": 470,
+    "prompt_tokens": 735177,
+    "completion_tokens": 174362,
+    "cost_usd": 0.0,
+    "cache_hits": 68,
+    "errors": 138,
+    "mean_latency_s": 1.6835069515063994,
+    "total_tokens": 909539,
+    "cache_hit_rate": 0.14468085106382977,
+    "by_purpose": [
+      {
+        "purpose": "propose.beat",
+        "calls": 96,
+        "tokens": 338394,
+        "cost_usd": 0.0,
+        "cache_hits": 16
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 138,
+        "tokens": 243477,
+        "cost_usd": 0.0,
+        "cache_hits": 24
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 140,
+        "tokens": 159494,
+        "cost_usd": 0.0,
+        "cache_hits": 13
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 28,
+        "tokens": 69564,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 14,
+        "tokens": 45567,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 15,
+        "tokens": 25917,
+        "cost_usd": 0.0,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "propose.beat.repair",
+        "calls": 1,
+        "tokens": 10376,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 3,
+        "tokens": 10175,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts.repair",
+        "calls": 14,
+        "tokens": 3739,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 21,
+        "tokens": 2836,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "gemini",
+        "calls": 456,
+        "tokens": 904964,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 14,
+        "tokens": 4575,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 68,
+      "misses": 297,
+      "entries": 6411
+    },
+    "budget_remaining_usd": 12.0
+  },
+  "preference_summary": {
+    "pairs_seen": 34,
+    "edits_seen": 2,
+    "voice_trained": true,
+    "top_weights": [
+      {
+        "feature": "continuity",
+        "weight": 3.5306
+      },
+      {
+        "feature": "judge_momentum",
+        "weight": 2.9688
+      },
+      {
+        "feature": "judge_consequence",
+        "weight": 2.8559
+      },
+      {
+        "feature": "criterion_2",
+        "weight": 2.3109
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 2.968783171004302,
+      "judge_specificity": -0.3143683395779169,
+      "judge_consequence": 2.8558643304420994,
+      "judge_voice": -0.4877471670771583,
+      "criterion_1": 1.6334709215143104,
+      "criterion_2": 2.310913638484042,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 3.530567331771252,
+      "voice_cosine": 0.418767198135157,
+      "edit_direction": 1.04178314298478,
+      "length": -1.3240833774081293,
+      "dialogue_ratio": 1.2703760477792747
+    },
+    "weight_recovery": 0.6045229513312171
+  },
+  "hidden_weights": {
+    "judge_momentum": 1.0,
+    "judge_specificity": 0.4,
+    "judge_consequence": 0.9,
+    "judge_voice": 0.0,
+    "criterion_1": 0.9,
+    "criterion_2": 0.3,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 0.8,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.0,
+    "length": 0.2,
+    "dialogue_ratio": 0.3
+  },
+  "probe": [],
+  "errors": [],
+  "waited_seconds": 112.0,
+  "rate_limit_waits": 6
+}

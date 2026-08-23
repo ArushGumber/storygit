@@ -891,6 +891,27 @@ sees, which is exactly why nothing had caught it; off-distribution it is not, an
 cross-persona probe is what made it visible. Each run reports its own unexercised features
 in \file{summary.md}.
 
+\textbf{Why one writer did worst, in detail.} The Minimalist was worst on every measure,
+and the recorded feature vectors say why --- not "too little data", which was the obvious
+guess and is wrong: its candidate sets are \emph{more} separated than the best performer's.
+Two of its three largest hidden weights fit with the wrong sign, and each has a cause that
+is a property of that writer rather than a defect in the machinery.
+
+Its own criterion \emph{concreteness} is scored $+0.73$ correlated with the fixed
+\emph{specificity} axis --- a near-duplicate column --- and two collinear columns at
+forty-eight comparisons is a textbook small-sample regression: the fit hands the credit to
+one and compensates with a sign flip on the other. And its standing style note, ``shorter
+sentences'', is \emph{followed}, so every candidate comes back at about the same length and
+the length feature carries a spread of 0.03. The head cannot learn a large negative weight
+from a column that does not vary.
+
+That second mechanism generalises and is worth stating: \textbf{a writer whose instruction
+is obeyed leaves the preference layer nothing to learn on the same axis}. The prompt side
+and the learning side are two halves of one system competing for the same signal, and this
+run is what it looks like when the prompt side wins. Neither is patched: rewriting the
+persona's criteria to be less collinear would be tuning the experiment to flatter the
+estimator.
+
 \textbf{The acceptance trend.} Acceptance held or rose in three runs and fell in one
 (100\,\% to 77\,\%). Read on its own this says less than it appears to: a persona's bar is a
 fixed quantile of its own score distribution and does not move, while each new candidate has

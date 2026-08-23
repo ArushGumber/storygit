@@ -1000,3 +1000,31 @@ async def test_polishing_prose_produces_the_pair_edit_direction_needs(
     assert log.acceptance_rate == 1.0
     # And plan levels are untouched -- writers do not polish an outline the same way.
     assert all(a.kind != "edit" for a in log.actions if a.level in ("episode", "scene"))
+
+
+def test_the_probe_can_see_the_features_it_is_asked_about() -> None:
+    """An instrument sampled from a system inherits that system's blind spots.
+
+    A feature with no spread *within* a probe point cannot change how that point is
+    ranked, so no head difference on that weight is visible through it. The first fixture
+    had exactly zero within-point spread on all five features the shrinkage flag touches,
+    which made the A/B provably unable to answer its own question — both variants scored
+    identically to three decimals.
+
+    This asserts the fixture can see most of the space. Two criterion slots are
+    structurally zero (the personas define two criteria each), so they are exempt and the
+    limit is reported rather than hidden.
+    """
+    probe_set = probe.ProbeSet.load()
+    structurally_absent = {"criterion_3", "criterion_4"}
+    blind = []
+    for name in BASE_FEATURES:
+        if name in structurally_absent:
+            continue
+        spread = max(
+            (max(f[name] for f in p.features) - min(f[name] for f in p.features))
+            for p in probe_set.points
+        )
+        if spread <= 1e-9:
+            blind.append(name)
+    assert blind == [], f"the probe cannot distinguish any head on: {', '.join(blind)}"
