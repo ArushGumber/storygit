@@ -357,6 +357,42 @@ def diversity_quality_point(
 # --- learning -----------------------------------------------------------------
 
 
+def retry_rescues(levels: list[str], kinds: list[str]) -> dict[str, int]:
+    """How often a rejected set was rescued by the one informed re-proposal.
+
+    A rejection is followed by exactly one retry at the same level. If that retry is
+    accepted or edited, the decision was rescued; if it is rejected too, the writer meant
+    it. Reported because the retry is the fix for the truncations, and "the runs stopped
+    truncating" is a weaker claim than "the retry rescued N decisions that would otherwise
+    have been lost".
+
+    Args:
+        levels: Level per decision, in order.
+        kinds: ``accept`` / ``edit`` / ``reject`` per decision, in order.
+
+    Returns:
+        ``{"rejected_sets": ..., "rescued": ..., "stood": ...}``.
+    """
+    rejected = rescued = stood = 0
+    index = 0
+    while index < len(kinds):
+        if kinds[index] != "reject":
+            index += 1
+            continue
+        rejected += 1
+        follows = index + 1 < len(kinds) and levels[index + 1] == levels[index]
+        if follows and kinds[index + 1] != "reject":
+            rescued += 1
+            index += 2
+        elif follows and kinds[index + 1] == "reject":
+            stood += 1
+            index += 2
+        else:
+            stood += 1
+            index += 1
+    return {"rejected_sets": rejected, "rescued": rescued, "stood": stood}
+
+
 def unexercised_features(
     matrices: list[list[dict[str, float]]], *, tolerance: float = 1e-9
 ) -> list[str]:

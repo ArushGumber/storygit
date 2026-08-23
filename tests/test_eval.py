@@ -847,3 +847,33 @@ def test_a_feature_that_never_varies_is_reported_as_unexercised() -> None:
     ]
     assert metrics.unexercised_features(matrices) == ["b", "c"]
     assert metrics.unexercised_features([]) == []
+
+
+def test_retry_rescues_are_counted_from_the_decision_sequence() -> None:
+    """ "The runs stopped truncating" is weaker than "the retry rescued N decisions"."""
+    levels = ["beat", "beat", "scene", "beat", "beat", "prose"]
+    kinds = ["reject", "accept", "accept", "reject", "reject", "accept"]
+    assert metrics.retry_rescues(levels, kinds) == {
+        "rejected_sets": 2,
+        "rescued": 1,
+        "stood": 1,
+    }
+    assert metrics.retry_rescues([], []) == {"rejected_sets": 0, "rescued": 0, "stood": 0}
+
+
+def test_the_invocation_call_summary_is_the_sum_of_its_runs() -> None:
+    """Per-run summaries are deltas now, so the whole is a sum rather than the last one.
+
+    Reading the last run's figure as the invocation total is the same mistake in reverse
+    as billing every run for the whole invocation.
+    """
+    from eval.run import _combined_call_summary
+
+    logs = [
+        RunLog(persona="a", call_summary={"calls": 10, "prompt_tokens": 100, "cache_hits": 2}),
+        RunLog(persona="b", call_summary={"calls": 30, "prompt_tokens": 300, "cache_hits": 6}),
+    ]
+    combined = _combined_call_summary(logs)
+    assert combined["calls"] == 40
+    assert combined["prompt_tokens"] == 400
+    assert combined["cache_hit_rate"] == pytest.approx(0.2)

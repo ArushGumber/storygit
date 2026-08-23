@@ -195,6 +195,35 @@ async def run_matrix(
     return {"logs": logs, "skipped": skipped, "call_summary": summary}
 
 
+def _combined_call_summary(logs: list[RunLog]) -> dict[str, Any]:
+    """Add up per-run call summaries into the invocation-level figure.
+
+    Each run records only its own calls, so the whole-invocation number has to be summed
+    rather than read off the last one — which is the bug that made every persona after the
+    first look four times more expensive than it was.
+
+    Args:
+        logs: The runs to combine.
+
+    Returns:
+        A summary with the same keys the router produces for the fields that add up.
+    """
+    total: dict[str, Any] = {
+        "calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "cost_usd": 0.0,
+        "cache_hits": 0,
+        "errors": 0,
+    }
+    for log in logs:
+        for key in total:
+            total[key] += log.call_summary.get(key, 0) or 0
+    total["total_tokens"] = total["prompt_tokens"] + total["completion_tokens"]
+    total["cache_hit_rate"] = total["cache_hits"] / total["calls"] if total["calls"] else 0.0
+    return total
+
+
 def summarize(
     logs: dict[str, RunLog],
     skipped: list[dict[str, str]],
@@ -247,6 +276,9 @@ def summarize(
                 "probe_tau_uniform": log.probe[-1].get("tau_uniform") if log.probe else None,
                 "probe_tau_prior": log.probe[-1].get("tau_prior") if log.probe else None,
                 "probe": [dict(r) for r in log.probe],
+                "retry": metrics.retry_rescues(
+                    [a.level for a in log.actions], [a.kind for a in log.actions]
+                ),
                 "unexercised_features": metrics.unexercised_features(
                     [list(a.features) for a in log.actions if len(a.features) >= 2]
                 ),
@@ -413,6 +445,17 @@ def _render_markdown(summary: dict[str, Any]) -> str:
                     f"{row['probe_top1_last']:.0%} |"
                 )
 
+        rescues = [r for r in summary["runs"] if r.get("retry")]
+        if rescues:
+            total = sum(r["retry"]["rejected_sets"] for r in rescues)
+            saved = sum(r["retry"]["rescued"] for r in rescues)
+            lines += [
+                "",
+                f"The informed retry was offered on {total} rejected candidate set(s) and "
+                f"rescued {saved} of them; the rest were rejected twice, which is a writer "
+                "meaning it.",
+            ]
+
     if summary["skipped"]:
         lines += ["", "## Not run", "", "| configuration | persona | why |", "|---|---|---|"]
         for item in summary["skipped"]:
@@ -458,6 +501,15 @@ def main() -> None:
         action="store_true",
         help="simulated edits truncate instead of calling the cheap model",
     )
+    parser.add_argument(
+        "--summarize-only",
+        action="store_true",
+        help=(
+            "rebuild summary.json, summary.md and the plots from the run logs already on "
+            "disk, without spending a call. A change to how a number is computed should "
+            "not require rerunning the thing that produced it."
+        ),
+    )
     args = parser.parse_args()
 
     results = Path(args.results)
@@ -468,7 +520,13 @@ def main() -> None:
     skipped: list[dict[str, str]] = []
     call_summary: dict[str, Any] = {}
 
-    if not args.offline_only:
+    if args.summarize_only:
+        for path in sorted(Path(args.results).glob("runs/full__*.json")):
+            log = RunLog.load(path)
+            logs[f"full/{log.persona}"] = log
+        call_summary = _combined_call_summary(list(logs.values()))
+        print(f"rebuilding the summary from {len(logs)} run log(s) on disk")
+    elif not args.offline_only:
         # "matrix" means every ablation; "full" is the single all-components-on config,
         # which is also the reference point the ablations are compared against.
         configs = (
