@@ -196,8 +196,8 @@ a complete record rather than a partial one.}
 \toprule
 \textbf{Package} & \textbf{What it does} \\
 \midrule
-\file{domain/} & The typed state and the 30 diff operations that are the only way to change
-any of it. Frozen models, a pure \texttt{apply}, typed errors. \\
+\file{domain/} & The typed state and the \rDiffOps{} diff operations that are the only way
+to change any of it. Frozen models, a pure \texttt{apply}, typed errors. \\
 \file{store/} & Content-addressed objects, snapshot manifests, branch pointers, three-way
 merge. Git's data model, in one SQLite file. \\
 \file{graph/} & Declared dependency edges, propagation that marks and never rewrites, and
@@ -877,11 +877,13 @@ does not have --- a fixed held-out decision set replayed at several points in a 
 by the same persona --- and that is the first thing to build if the evaluation gets another
 pass.
 
-Acceptance and edit-distance curves per persona are in
-\file{eval/results/acceptance.svg} and \file{eval/results/edit_distance.svg}, and the full
-table including anything that did not run is in \file{eval/results/summary.md}. Every
-number in this section regenerates with
-\texttt{python -m eval.run --config full \&\& python -m eval.texnumbers}.
+Acceptance and edit-distance curves per persona are in \file{eval/results/}, beside the
+full table --- including anything that did not run --- in \file{summary.md}. Every number
+in this section regenerates with
+
+\begin{quote}\ttfamily\small
+python -m eval.run -{}-config full \&\& python -m eval.texnumbers
+\end{quote}
 
 \section{What the measurements changed}
 \label{sec:findings}

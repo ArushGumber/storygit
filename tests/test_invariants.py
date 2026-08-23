@@ -301,10 +301,14 @@ def test_the_prose_agrees_with_the_code_about_how_many_operations_there_are() ->
     the thirty-first operation was added.
     """
     count = len(get_args(get_args(Op)[0]))
-    readme = (SRC.parents[1] / "README.md").read_text()
-    stated = re.findall(r"(\d+) diff operations", readme)
-    assert stated, "the README no longer states the operation count"
-    assert all(int(n) == count for n in stated), f"README says {stated}, the union has {count}"
+    root = SRC.parents[1]
+    prose = [root / "README.md", root / "frontend" / "src" / "tabs" / "Architecture.tsx"]
+    for path in prose:
+        stated = re.findall(r"(\d+) diff operations", path.read_text())
+        assert stated, f"{path.name} no longer states the operation count"
+        assert all(int(n) == count for n in stated), (
+            f"{path.name} says {stated}, the union has {count}"
+        )
 
 
 def test_every_operation_can_actually_be_produced() -> None:

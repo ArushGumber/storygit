@@ -75,7 +75,7 @@ export function Architecture() {
           <tr>
             <td className="mono">domain/</td>
             <td>
-              The typed state and the 30 diff operations that are the only way to change any
+              The typed state and the 31 diff operations that are the only way to change any
               of it. Frozen models, a pure apply function, typed errors.
             </td>
           </tr>
