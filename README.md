@@ -98,10 +98,13 @@ example, and the invariants it maintains.
 uv venv --python 3.11 && uv pip install -e '.[dev,ml,api]'
 cd frontend && npm install && cd ..
 
-.venv/bin/python -m pytest        # 216 tests, all offline
-.venv/bin/ruff check src tests eval scripts
-.venv/bin/mypy                    # strict, over src/ and eval/
+make check        # tests, lint, types
+make all          # + frontend build, end-to-end smoke, and the paper
+make help         # every regeneration command, named
 ```
+
+`make` exists because every artifact here has a command that recreates it. A figure or a
+number nobody can regenerate is a figure or a number nobody can check.
 
 ### Run the tool
 
@@ -122,11 +125,15 @@ generation reports that no provider is configured.
 ### Run the evaluation
 
 ```bash
-.venv/bin/python -m eval.offline                       # every deterministic metric, seconds
-.venv/bin/python -m eval.run --config smoke            # one tiny live run
-.venv/bin/python -m eval.run --config full             # four personas, budgeted
-.venv/bin/python -m eval.record_gallery                # the eight replayable sessions
+make numbers                                  # deterministic metrics + the paper's macros
+.venv/bin/python -m eval.run --config smoke   # one tiny live run
+make eval                                     # four personas, budgeted and checkpointed
+make gallery                                  # the eight replayable sessions
 ```
+
+Every measured number in `docs/presentable.tex` is a macro generated from the evaluation's
+own output by `eval/texnumbers.py`. Nothing in the paper is typed by hand, so no figure can
+go stale without the regeneration step noticing.
 
 ### Check it end to end
 

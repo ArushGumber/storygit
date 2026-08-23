@@ -271,6 +271,10 @@ own times. Predicates come from a closed vocabulary
 \textsf{trait}, \textsf{faction}) plus a free-text \textsf{note}. Closed is what makes the
 first layer of continuity checking a dictionary lookup rather than a model call.
 
+Using an explicit world-state graph to keep generated narrative consistent is an
+established idea~\cite{ammanabrolu2020stories}; what is added here is temporal validity,
+the epistemic layer, and the declared dependency edges that make edits propagate.
+
 \textbf{Epistemic edges.} \textsf{knows}(character, fact, since beat), tracked separately
 from the facts themselves, because the difference between what is true and what a
 character has been told is the single richest source of continuity errors in generated
@@ -485,8 +489,10 @@ contradiction), a fact re-established with the same value (repetition), two goal
 (a character), or a character acting on their own secret.
 
 \textbf{Layer 2 --- local NLI.} The residue is the free-text \textsf{note} predicate and
-multi-valued facts whose object strings differ. A DeBERTa cross-encoder fine-tuned on MNLI
-scores each pair for contradiction. A cross-encoder rather than a bi-encoder because the
+multi-valued facts whose object strings differ. A DeBERTa
+cross-encoder~\cite{he2021deberta} fine-tuned on MNLI scores each pair for contradiction ---
+the same instrument, and for the same reason, that the summarization-consistency literature
+uses to detect claims a source does not support~\cite{laban2022summac}. A cross-encoder rather than a bi-encoder because the
 distinction we need is exactly the one a bi-encoder structurally cannot make: ``Kael is in
 Ashfall'' and ``Kael is not in Ashfall'' embed almost identically, being about the same
 thing, but a model that reads both sentences together sees the negation.
