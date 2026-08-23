@@ -1,0 +1,2313 @@
+{
+  "persona": "the Minimalist",
+  "config": {
+    "name": "probesample",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 2,
+    "seed": 8,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_9ca14fde96",
+      "level": "episode",
+      "shown": [
+        "p_873122e25c",
+        "p_ee9cee9e0a",
+        "p_742db7f448"
+      ],
+      "axes": [
+        "raise the stakes",
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.636,
+        0.7707,
+        0.6065
+      ],
+      "chosen": "p_ee9cee9e0a",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "710b82fea8101390bfca18d98ad7b93f",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.557,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5405,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Ash Elara digs through the gray silt covering her cellar door. She finds her brother Elias's locket buried in the muck, crushed into the floorboards. The ash consumes metal and wood alike. Elias did not leave; he was buried where he stood.",
+        "The Ashfall Gate Elias unearths a sealed iron trunk beneath the frozen soil of Ashfall. Instead of gold or secrets, the box contains a functioning, humming radio broadcasting his own voice from three days in the future. The Ashfall soil preserves sound. The future is mutable but predictable.",
+        "The First Layer Elara scrapes thick gray soot from the window frame. She finds a human tooth embedded in the ash. The ash contains remnants of people. Elara is alone in the house."
+      ]
+    },
+    {
+      "node_id": "n_d3433e32c3",
+      "level": "scene",
+      "shown": [
+        "p_2208edb741",
+        "p_b2fa13dac6",
+        "p_87f308763b"
+      ],
+      "axes": [
+        "slow down",
+        "introduce a complication",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.7316,
+        0.5538,
+        0.7195
+      ],
+      "chosen": "p_2208edb741",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "4b3661699dc10a43f00916fd8151e88a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5774,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Frequency of Soil Elias presses his ear to the trunk. The iron vibrates against his skin. His future voice describes a fire in the supply shed that has not happened yet. The trunk acts as a temporal antenna. Elias recognizes his own tone but not the words.",
+        "The Static Shift Elias tunes the radio dial. His future voice warns of an imminent ground thaw that will erase the gate key buried near the trunk. He digs at the marked coordinates but pulls up a rusted, empty canister instead of the key. The soil records are fading faster than expected. The future Elias is lying or misinformed.",
+        "Sarah at the Ridge Sarah watches from the ridge as Elias digs. She sees him pull the iron trunk from the ice and press his ear to the metal lid. She records his movements in a ledger while her own radio hums with the same frequency as the one in the hole. Sarah is monitoring Elias and she possesses a matching device that connects to his."
+      ]
+    },
+    {
+      "node_id": "n_5c8f6138a3",
+      "level": "beat",
+      "shown": [
+        "p_9296a290f1",
+        "p_370c3cbfb2",
+        "p_aa5cc6a2cf"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.5123,
+        0.5187,
+        0.39
+      ],
+      "chosen": "p_370c3cbfb2",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "06ad5bd3f64adf9666653bacb369f647",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5699,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5514,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Preventative Measure Elias sprints to the supply shed. He dumps a bucket of snow over the pile of kerosene-soaked rags before they ignite. He finds a discarded cigarette butt inside the shed, still smoldering. The future predicted by the radio can be prevented. Someone is watching him.",
+        "Matches and Friction Elias strikes a match to see inside the iron trunk. He realizes the metal lining is etched with tally marks that correspond to his own heartbeat. The radio signal shifts from his future voice to the rhythmic sound of dripping water. The trunk reacts to human presence by mirroring internal states.",
+        "Mara's Observation Mara watches Elias from behind the collapsed barn. She sees him tremble, eyes fixed on the iron trunk. She knows the trunk is empty. She does not hear the voice Elias hears. Mara believes Elias is hallucinating or lying."
+      ]
+    },
+    {
+      "node_id": "n_3da54edef6",
+      "level": "prose",
+      "shown": [
+        "p_5a6f2a0894",
+        "p_d839718cae",
+        "p_ac3446d4ee"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.5537,
+        0.606,
+        0.5145
+      ],
+      "chosen": "p_d839718cae",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "bbe20860d981403233174b81aaa17c8b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6667,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Mara kneels behind the frozen swell of the ridge. She watches Elias. He crouches by the open trunk. The match flame flickers in his hand. It casts long, jagged shadows against the iron walls. Elias stares at the inner lining. He touches a tally mark with his thumb. His chest heaves. The tally marks vibrate in sync with his panicked breaths. A sudden squelch of water erupts from the radio speaker. It echoes off the permafrost. Elias drops the match. The box swallows the light. Mara pulls her coat tight. She knows that sound. She heard it in the vents of the colony before the rot took the pumps.",
+        "prose Elias strikes a match against the heel of his boot. Yellow flame catches sulfur. He drops the small fire into the dark well of the iron trunk. The light hits the inner wall. Deep scratches score the grey metal in tight clusters. Each group contains four vertical lines and one diagonal slash. Elias presses two fingers to his wrist. His pulse beats in time with the etched groups. The speaker in the radio clicks. The voice of his future self stops mid-syndrome. A wet hollow echo fills the metal box. Water drips somewhere deep beneath the frozen dirt.",
+        "prose Elias strikes a match. The flame flares. He holds it to the iron lip. Scratches cover the interior walls. A notch for every pulse. His own thumb brushes a fresh mark. The radio hum stops. The silence snaps. Then, the rhythmic drip of water fills the hole. He exhales. His breath mists in the cold air. He drops the match. It hits the soil. The trunk vibrates once, hard, against his knees."
+      ]
+    },
+    {
+      "node_id": "n_5c8f6138a3",
+      "level": "beat",
+      "shown": [
+        "p_b955d6c3cb",
+        "p_434eb68b8c",
+        "p_0abd72be11"
+      ],
+      "axes": [
+        "raise the stakes",
+        "introduce a complication",
+        "slow down"
+      ],
+      "scores": [
+        0.6019,
+        0.4414,
+        0.4084
+      ],
+      "chosen": "p_b955d6c3cb",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "be6efd12dae3c21098cb71b193fedb11",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5446,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5419,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5584,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Cold Iron Elias presses his bare palm against the etched tally marks inside the lid. Frost needles pierce his skin. The radio volume swells with his own future screams. The trunk punishes physical contact with Elias.",
+        "Smoke and Metal Ash billows from the open door of the supply shed. Elias drops the match. The future warning from the radio comes true before he can act. The future broadcast is unchangeable.",
+        "Ash and Iron Elias drops the burned match into the snow. The sulphur smell lingers inside the rim. He touches the cold iron lid again. The ticking stops and the water sound grows loud. The sound of dripping water changes tempo based on Elias's physical touch."
+      ]
+    },
+    {
+      "node_id": "n_ddf2c8f91f",
+      "level": "prose",
+      "shown": [
+        "p_dd4e39abe1",
+        "p_f3b3e4f2aa",
+        "p_357f29cf57"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6424,
+        0.5892,
+        0.58
+      ],
+      "chosen": "p_dd4e39abe1",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.7857,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "69be9b7cb9eec48734fdf37cd4fe135c",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5556,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Mara watches Elias touch the iron lid. She sees the white frost jump from the scratches to his skin. Blood beads on his thumb. The radio noise hits the walls of the pit. Elias makes no sound. The box takes his breath instead.",
+        "prose Elias drops his hand into the iron trunk. His skin hits the grey metal. Frost needles pierce his palm. The radio speaker rattles. The voice returns at ten times the volume. The small fire in the well dies under a sudden sheet of rime. Elias pulls his hand back. A square patch of grey skin stays stuck to the metal tally marks.",
+        "prose Elias drops his hand. Blood freezes on the grey metal. The screams do not fade when the skin leaves the iron. A rhythmic metallic clink joins the water drops below. The lid shudders on its hinges. Elias picks up the shovel. He drives the steel blade into the dirt beside the trunk. The frozen soil refuses the edge. A spark jumps from the stone. The radio speaker rattles with a sharp inhalation."
+      ]
+    },
+    {
+      "node_id": "n_d3433e32c3",
+      "level": "scene",
+      "shown": [
+        "p_25d6be03e2",
+        "p_3769bf41c6",
+        "p_a1aa668e97"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.3267,
+        0.4947,
+        0.3343
+      ],
+      "chosen": "p_3769bf41c6",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.2116,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5851,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Water Elias tries to lift the iron trunk from the frozen pit. The box does not move. Water fills the base of the hole, rising past the hinges. The radio emits a steady tone. The trunk is anchored to something heavier beneath the permafrost, and the water is rising too fast to dig it free.",
+        "The Well Below Elias drops a heavy iron spade into the dark pit. The blade strikes wood instead of stone. He scrapes away the wet black mud to reveal a rotten oak hatch. The hollow dripping echoes directly beneath the planks. The water sound comes from a hidden cellar beneath the frost.",
+        "The Edge of the Pit Mara kneels on the frozen rim above Elias. She watches his bloody thumb press the iron lid. Her fingers dig into the packed snow. She hears the radio click below, but catches no words. Only the wet sound of water reaches her ears from the dark trench. Mara hears the water sounds too, but misses the future voice entirely."
+      ]
+    },
+    {
+      "node_id": "n_d3433e32c3",
+      "level": "scene",
+      "shown": [
+        "p_292840dc9c",
+        "p_8b3be4d9a6",
+        "p_555bb501ca"
+      ],
+      "axes": [
+        "introduce a complication",
+        "deepen the interiority",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5889,
+        0.2826,
+        0.5023
+      ],
+      "chosen": "p_292840dc9c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "086ec685d57f0b0bbc7ef769d769ef0e",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.8645,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5528,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Sinking Well Elias tries to lift the iron trunk from the pit. The frost on the tally marks thickens. The dripping water sound accelerates beneath the dirt. The frozen soil around the trunk fractures and slides inward. The box drops deeper into the trench, dragging Elias toward the dark water below. The trunk is anchored to something moving beneath the earth.",
+        "The Second Tally Elias takes the iron nail from his coat pocket. He presses the sharp tip against the grey metal wall inside the trunk. He carves a new vertical line across the surface beside the old clusters. The radio hum stops. The dripping water sound grows louder beneath the frozen dirt. Elias is adding his own tally marks to the inside of the iron trunk.",
+        "The Root Cellar Elias drops the iron spade into the trench. The blade hits rotten oak instead of stone. He pries the wooden hatch open. The dripping sound echoes upward from the dark. A second structure lies buried beneath the frozen soil."
+      ]
+    },
+    {
+      "node_id": "n_5c516125c9",
+      "level": "beat",
+      "shown": [
+        "p_bff7a2b0af",
+        "p_6e5a4c9ec4",
+        "p_7f1a17df7b"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.3679,
+        0.395,
+        0.577
+      ],
+      "chosen": "p_7f1a17df7b",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "1e1929291d977e4717d5be010ae3ce54",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5459,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5459,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.7266,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Flooded Tally Icy water surges up from beneath the frozen dirt. It fills the trench. The water covers the etched tally marks on the iron trunk. The dripping water sound is an underground flood burying the box.",
+        "The Silent Speaker Elias drops the iron radio into the rising dark water at the base of the pit. The future voice drowns instantly. Silence replaces the hum. Elias refuses to hear the rest of his future.",
+        "Red Rust Elias drops to his knees in the wet dirt of the pit. He pulls a rusted pocket knife from his wool coat. He scrapes the blade against the bottom hinge of the iron trunk. Red flakes fall into the rising water. The radio emits a sharp tone. The iron trunk's hinges are coated in thick rust that resists the knife blade."
+      ]
+    },
+    {
+      "node_id": "n_e822b8eb52",
+      "level": "prose",
+      "shown": [
+        "p_120b878de8",
+        "p_3e361812bc",
+        "p_7e7038157e"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.6494,
+        0.5572,
+        0.6586
+      ],
+      "chosen": "p_7e7038157e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7498b189aa9189a0b042f0f9e37af6ff",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6748,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.1759,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Elias drops to his knees in the wet dirt of the pit. He pulls a rusted pocket knife from his wool coat. He scrapes the blade against the bottom hinge of the iron trunk. Red flakes fall into the rising water. The radio emits a sharp tone. Elias stops. The metal beneath the paint is not iron. The blade shaves a curl of soft lead from the seam. Water laps at his boots. The radio tone flattens into a steady hum. Elias peels the lead strip back with his fingernail. A thick cable emerges from the groove. It runs down into the black water. The water is warm. Steam rises from the surface.",
+        "prose Mara watches from the rim. Elias drops into the wet mud. His wool coat drags in the water. He pulls the knife from his pocket. The steel is orange with corrosion. He jams the blade into the bottom hinge. Red flakes peel away. They hit the water. The surface breaks. The radio emits a sharp tone. The sound cuts through the damp air. Mara grips the frozen earth above. Her fingers find no purchase in the ice.",
+        "prose Elias drops to his knees in the wet dirt of the pit. He pulls a rusted pocket knife from his wool coat. He scrapes the blade against the bottom hinge of the iron trunk. Red flakes fall into the rising water. The radio emits a sharp tone. The water surface parts. A wooden spar breaks the mud. It moves against the iron base. The dripping sound stops. A human hand rises from the dark water. The fingers curl around the lower edge of the trunk."
+      ]
+    },
+    {
+      "node_id": "n_5c516125c9",
+      "level": "beat",
+      "shown": [
+        "p_9c33c30671",
+        "p_e4351ad795",
+        "p_1ccfcda4eb"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "pay off an open thread",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.4788,
+        0.5825,
+        0.433
+      ],
+      "chosen": "p_e4351ad795",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "9005aab23f958369c5a5b409669db210",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6211,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5699,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Dry Seal Elias ignores the rising water at his boots. He presses his bleeding thumb directly onto the center tally mark of the iron trunk. The humming radio cuts off completely. The dripping sound below stops. The water in the pit drains away into the metal seams. The tally marks act as a blood lock for the iron trunk.",
+        "The Sinking Well Elias reaches into the rising dark water beneath the iron trunk. His fingers brush cold stone. A rusted iron chain snaps against his palm. The water drains away instantly down a narrow shaft. The dripping water sound comes from a drained subterranean cistern beneath the frost.",
+        "Cold Slip Elias drops his pocket knife into the dark water of the trench. The water hits his bleeding thumb, stinging the raw cut. The radio slips from his cold palm and strikes the sloping ice. It slides down the mud wall and disappears beneath the surface. Elias loses the radio into the water."
+      ]
+    },
+    {
+      "node_id": "n_21e85181d3",
+      "level": "prose",
+      "shown": [
+        "p_59471e9b5c",
+        "p_969f991162",
+        "p_9813dd5a64"
+      ],
+      "axes": [
+        "slow down",
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.5165,
+        0.6352,
+        0.651
+      ],
+      "chosen": "p_9813dd5a64",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3d42be20d13b7fcf8b009dc97a582003",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6498,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Elias thrusts his hand into the cold water. His fingers touch smooth stone. A heavy iron chain runs across the rock. He grips the links. The metal bites his palm. The rusted pin shears. The chain snaps back. The water spins. The pool empties down a narrow hole. Mud follows the current. The bottom of the trench lies bare. A second iron trunk sits beneath the first.",
+        "prose Mara kneels at the rim of the pit. Dirt falls from her gloves into the dark. Elias reaches down. His arm disappears to the elbow in black water. The radio stops its broadcast. A sharp snap echoes off the frozen clay. The water vanishes. The bottom of the trench drops open into grey stone. Elias pulls his hand back. Blood streaks his wrist. He stares at the empty shaft.",
+        "prose Elias plunges his hand beneath the iron trunk. Black water covers his wrist. His fingers strike rough masonry. A heavy iron chain cuts his palm. The metal link shears. Water rushes down a hidden hole. Mud pulls at his boots. The pit floor drops three inches. The iron trunk settles with a flat thud. Silence follows the drain. A dry draft rises from the shaft. Elias pulls his hand from the dark opening. Blood smears the wet stone."
+      ]
+    },
+    {
+      "node_id": "n_9ca14fde96",
+      "level": "episode",
+      "shown": [
+        "p_bc45b6949f",
+        "p_6a5987dcb9",
+        "p_4b3f198baa"
+      ],
+      "axes": [
+        "shift the point of view",
+        "deepen the interiority",
+        "slow down"
+      ],
+      "scores": [
+        0.4467,
+        0.3951,
+        0.4709
+      ],
+      "chosen": "p_4b3f198baa",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.557,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.9706,
+          "length": 0.5641,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Mara's Margin Mara kneels on the frozen rim above Elias as water drains from the pit. She sees the human hand pull the iron trunk down. She lowers a rope into the trench. Mara hears the radio broadcast her own name in the future voice.",
+        "The Fourth Tally Mara climbs down the rope into the pit. She stands beside Elias in the mud and reaches for the hand in the dark water. The fingers pull back beneath the surface. Elias holds the radio closer to his ear. The future voice repeats a date that matches today on the almanac. The hand in the water belongs to someone who knows the calendar. The radio broadcasts more than random noise.",
+        "The Hand in the Sinking Well Elias stays frozen in the mud as human fingers grip the lower edge of the iron trunk. Mara watches from the rim above, lowering a hemp rope down the pit. The entity beneath the dirt has physical reach and interacts with the iron trunk."
+      ]
+    },
+    {
+      "node_id": "n_9ca14fde96",
+      "level": "episode",
+      "shown": [
+        "p_242016e4b0",
+        "p_0b080a6a10",
+        "p_6fa3b95b7b"
+      ],
+      "axes": [
+        "shift the point of view",
+        "deepen the interiority",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5856,
+        0.2507,
+        0.4012
+      ],
+      "chosen": "p_242016e4b0",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "caf6be06debb0c6c94dfb30c2aa04b63",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.4828,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Rim of the Pit Mara kneels on the frozen rim above Elias. She watches his bloody thumb press the iron lid. She lowers a hemp rope down the pit. A human hand grips the lower edge of the trunk from the dark water. Mara sees the hand rise from the water but hears no future voice from the radio.",
+        "The Second Tally Elias stays in the mud. He does not pull his hand away from the human fingers gripping the trunk. Mara drops a hemp rope down the pit. Elias ties the rope around the rusted iron hinge. The radio speaks in his own voice again, naming the date of his death. The hand in the mud belongs to someone who knows the future voice.",
+        "The Second Hand Elias ignores the hand rising from the dark water and climbs out of the pit. He and Mara carry the iron trunk across the frozen field to the abandoned forge. They pry the lid open with a steel crowbar. Inside sits a second radio and a ledger written in Elias's own handwriting, detailing every hour of the upcoming week. Elias has lived this week before."
+      ]
+    },
+    {
+      "node_id": "n_ba14163ddd",
+      "level": "scene",
+      "shown": [
+        "p_fd5bea790d",
+        "p_69363b4331",
+        "p_50acd76901"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.3539,
+        0.5215,
+        0.3771
+      ],
+      "chosen": "p_69363b4331",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.1129,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "436e36c93b5d7502c6de4b5fb7b68dcd",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0097,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Rim of the Pit Mara drops a hemp rope down the frozen rim of the pit toward Elias. Elias ignores the rope. He presses his bleeding thumb against the wet iron hinge of the trunk. The hand in the dark water grips his wrist. The radio switches from static to a broadcast of Mara's voice reading today's date from the almanac. The hand in the water shares Elias's injured thumb, and Mara's voice is now trapped inside the radio alongside his own.",
+        "The Rim of the Pit Mara drops a hemp rope down the frost-rimed trench wall. Elias grabs the braided fibers with his cut palm. Blood smears the coarse hemp. The radio hums against his hip. A gloved hand rises from the dark water below and catches the trailing end of the rope. Someone else is in the pit beneath the iron trunk.",
+        "The Rim of the Pit Mara kneels on the frozen soil above the trench. She looks down at Elias kneeling in the mud beside the iron trunk. Her fingers tighten around the handle of her coil of hemp rope. She sees the human hand slip back into the dark water. She does not call out to Elias. Mara sees the hand in the water before Elias tells her."
+      ]
+    },
+    {
+      "node_id": "n_8f20476b49",
+      "level": "beat",
+      "shown": [
+        "p_9f075eac16",
+        "p_0f0fade2f4",
+        "p_3dc787d369"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "introduce a complication",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.6049,
+        0.3651,
+        0.4515
+      ],
+      "chosen": "p_9f075eac16",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "52adbfde97000fad01ba6d28d437c24d",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.4411,
+          "length": 0.5851,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Rim of the Pit Mara drops a hemp rope down the frost-rimed trench wall. Elias grabs the braided fibers with his cut palm. Blood smears the coarse hemp. The radio hums against his hip. A gloved hand rises from the dark water below and catches the trailing end of the rope.",
+        "The Severed Hemp Mara drops the hemp rope down the trench. Elias catches the braided fibers with his cut palm. Blood smears the coarse hemp. The radio hums against his hip. A gloved hand rises from the dark water below and cuts the trailing end of the rope with a rusted blade. The entity in the water is armed and hostile.",
+        "The Rim of the Pit Mara drops a hemp rope down the frost-rimed trench wall. Elias grabs the braided fibers with his cut palm. Blood smears the coarse hemp. The radio hums against his hip. A gloved hand rises from the dark water below and catches the trailing end of the rope. The entity in the dark water can manipulate objects outside the pool."
+      ]
+    },
+    {
+      "node_id": "n_78e19e3c34",
+      "level": "prose",
+      "shown": [
+        "p_d2b0482a09",
+        "p_7325f7fddd",
+        "p_2e9393c9c1"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.5192,
+        0.6066,
+        0.5768
+      ],
+      "chosen": "p_7325f7fddd",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0385,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "9a227de0ab25b5d24bf00e0721c92027",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5851,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0209,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Mara drops the braided hemp over the trench rim. The rope slaps the frozen dirt. Elias reaches upward. He grips the fibers with his cut palm. Fresh blood smears the coarse strands. The radio hums against his hip. The static vibrates through his trousers. A gloved hand breaks the black water below. The dark fingers close around the trailing end of the rope.",
+        "prose Mara holds the coil between her knees. She lets the bitter fiber unspool over the frost-rimed trench wall. Elias reaches up from the mud. His cut palm closes on the braided strands. Red taints the rough grey hemp. The radio at his belt hums with the sound of a pump priming in an empty room. Below his boots, the dark water churns. A black leather glove breaks the surface and grasps the hanging end of the rope.",
+        "prose Mara drops the coiled hemp rope down the frost-rimed trench wall. The rough fibers slap the wet stone. Elias grabs the braided line with his cut palm. Fresh blood smears the pale hemp. The radio hums a steady tone against his hip. A dark gloved hand rises from the black water below and catches the trailing end of the rope."
+      ]
+    },
+    {
+      "node_id": "n_8f20476b49",
+      "level": "beat",
+      "shown": [
+        "p_e812a8d399",
+        "p_6621ffd8c5",
+        "p_1dad6bdc96"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "introduce a complication",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.3803,
+        0.4527,
+        0.402
+      ],
+      "chosen": "p_6621ffd8c5",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9876,
+          "edit_direction": 0.0705,
+          "length": 0.5729,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9954,
+          "edit_direction": 0.0,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9944,
+          "edit_direction": 1.0,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight on the Hemp Elias wraps the hemp rope around his forearm. He pulls upward against the weight in the dark water. The radio at his belt switches from the priming pump sound to steady static. Mara leans over the trench rim and grips the taut fibers. Mara physically assists Elias with the weight below.",
+        "The Slip The gloved hand yanks the hemp rope downward with sudden force. Elias loses his footing in the wet mud. His cut palm slides across the coarse fibers. Blood smears the grey strands. The radio at his hip hits the iron trunk with a sharp crack. The entity in the water possesses immense physical strength and intends to pull Elias down.",
+        "The Upward Pull Elias grips the hemp rope with his cut palm. He pulls upward. The gloved hand below tightens its grip on the fibers. The weight strains his shoulder. Cold water drips from the dark void below. The radio at his hip rattles against the iron trunk. The entity in the dark water is pulling back against the rope."
+      ]
+    },
+    {
+      "node_id": "n_8f20476b49",
+      "level": "beat",
+      "shown": [
+        "p_eeb94d99d4",
+        "p_38f8247d2d",
+        "p_d998fe53a7"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.4092,
+        0.3465,
+        0.4734
+      ],
+      "chosen": "p_d998fe53a7",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9924,
+          "edit_direction": 1.0,
+          "length": 0.5685,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9874,
+          "edit_direction": 0.0,
+          "length": 0.5641,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9932,
+          "edit_direction": 0.4115,
+          "length": 0.5714,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Gloved Tug The gloved hand tugs twice on the trailing end of the hemp rope. Elias grips the fibers tighter with his cut palm. The radio shifts from static to the sound of dripping water. The entity in the water responds to the rope and shares an acoustic link with the radio.",
+        "The Weight on the Hemp Elias feels the rope pull taut against his palm. Water drips from the wet leather glove onto his boots. Mara leans further over the rim. She watches the dark surface below. Neither speaks. The hand on the rope applies steady weight without pulling Elias down.",
+        "The Pump's Rhythm The hemp rope jerks tight in Mara's hands. The radio at Elias's hip stops humming water sounds and emits the sharp tone. The gloved hand pulls the rope downward into the dark water. Elias loses his grip on the frayed fibers. The entity in the water responds directly to the radio tone."
+      ]
+    },
+    {
+      "node_id": "n_78e19e3c34",
+      "level": "prose",
+      "shown": [
+        "p_e5aebba472",
+        "p_3b18fe0cd9",
+        "p_ac39771172"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.6027,
+        0.6092,
+        0.4786
+      ],
+      "chosen": "p_3b18fe0cd9",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "890a2614383072da444c82b8888bbd70",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9849,
+          "edit_direction": 0.0,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9951,
+          "edit_direction": 0.0438,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9961,
+          "edit_direction": 1.0,
+          "length": 0.7143,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Mara holds the coil between her knees. She lets the bitter fiber unspool over the frost-rimed trench wall. Elias reaches up from the mud. His cut palm closes on the braided strands. Red taints the rough grey hemp. The radio at his belt hums with the sound of a pump priming in an empty room. Below his boots, the dark water churns. A black leather glove breaks the surface. It grasps the hanging end of the rope.",
+        "Mara drops the coil. The hemp rattles against the frozen dirt of the trench wall. Elias reaches up. His cut palm closes on the rough strands. Blood stains the grey fibers. The radio against his hip hums with the sound of a pump priming in an empty room. Black water ripples below his boots. A leather glove rises from the dark surface. The fingers catch the trailing end of the rope.",
+        "Mara holds the coil between her knees. She lets the bitter fiber unspool over the frost-rimed trench wall. Elias reaches up from the mud. His cut palm closes on the braided strands. Red taints the rough grey hemp. The radio at his belt hums with the sound of a pump priming in an empty room. Below his boots, the dark water churns. A black leather glove breaks the surface. It grasps the hanging end of the rope. The leather is soaked. Ice crystals rim the wrist seam. The glove pulls downward. Elias feels the fibers bite into his raw flesh. Blood wets the strands further. The radio tone shifts. A wet click sounds inside the casing. The weight on the rope increases. Elias takes a step toward the edge of the pit."
+      ]
+    },
+    {
+      "node_id": "n_ba14163ddd",
+      "level": "scene",
+      "shown": [
+        "p_27b6ba92c4",
+        "p_4394198961",
+        "p_2360dec107"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.324,
+        0.4159,
+        0.3411
+      ],
+      "chosen": "p_4394198961",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9955,
+          "edit_direction": 1.0,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9877,
+          "edit_direction": 0.0,
+          "length": 0.5584,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9954,
+          "edit_direction": 0.802,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight on the Line The gloved hand pulls downward. Elias braces his boots against the slippery mud. The hemp rope slides through his cut palm. Fresh blood wets the fibers. The radio clicks twice. Static replaces the pump sound. The entity in the water has physical strength and wants the rope.",
+        "The Trench Wall Mara kneels on the frozen rim above Elias. She watches blood smear the grey hemp rope. The leather glove pulls the trailing end into the dark water. Her fingers tighten on the dirt. Mara sees the hand take the rope but stays silent.",
+        "The Tug The gloved hand pulls the hemp rope downward. Elias plants his boots against the slick mud of the trench. The radio against his hip clicks and plays the sound of dripping water. Mara grips the top edge of the rim with both hands. She shifts her weight backward. The rope slides through Elias's cut palm. The thing in the water possesses enough strength to pull against the rope."
+      ]
+    },
+    {
+      "node_id": "n_ba14163ddd",
+      "level": "scene",
+      "shown": [
+        "p_d50d636837",
+        "p_03f95203ff",
+        "p_61951db29b"
+      ],
+      "axes": [
+        "slow down",
+        "introduce a complication",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.4351,
+        0.4323,
+        0.4117
+      ],
+      "chosen": "p_d50d636837",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9956,
+          "edit_direction": 0.8037,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9926,
+          "edit_direction": 0.0,
+          "length": 0.557,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9966,
+          "edit_direction": 1.0,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight on the Hemp Elias holds the hemp rope. The leather glove pulls the trailing end down into the black water. The radio hums against his hip. Mara stays on the frozen rim above. Neither speaks. The water ripples against the trench wall. The hand in the water is holding the rope rather than pulling Elias down.",
+        "The Pull Below The gloved hand yanks the hemp rope. Elias loses his footing in the wet mud. The radio slips from his belt and strikes the iron trunk. Water splashes over his boots. The entity in the dark water is physically stronger than Elias.",
+        "The Trench Floor The gloved hand tugs the hemp rope. Elias loses his footing in the wet mud. His knee slams against the iron trunk. The radio hum stops. A splash echoes in the dark water. The entity in the water has physical strength and responds to the rope."
+      ]
+    },
+    {
+      "node_id": "n_8f20476b49",
+      "level": "beat",
+      "shown": [
+        "p_cf69b40c01",
+        "p_8f837033ca",
+        "p_ca46a71295"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "introduce a complication",
+        "slow down"
+      ],
+      "scores": [
+        0.5748,
+        0.4521,
+        0.275
+      ],
+      "chosen": "p_cf69b40c01",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "83e515d691c3064fb204aae202872fde",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9944,
+          "edit_direction": 1.0,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9946,
+          "edit_direction": 0.0,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9955,
+          "edit_direction": 0.8756,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Slip Elias tightens his grip on the hemp rope. The leather glove below pulls hard. The hemp cuts deeper into his palm. Blood runs down his wrist. He does not call out to Mara. The thing in the water possesses enough weight to drag Elias toward the edge.",
+        "The Slip The gloved hand yanks the rope. Elias slips forward against the frozen trench wall. Blood smears the rough fibers. The radio against his hip shifts to the sound of dripping water. Mara grips the rim. She strains to hold the weight. The entity in the water possesses immense physical force.",
+        "The Hemp and the Palm Elias feels the rough fibers bite into his cut palm. Blood wets the grey hemp. The glove pulls the rope one inch. The radio hums against his hip with the sound of a pump priming in an empty room. Mara watches from the frozen rim above. The thing in the water holds the rope without pulling harder."
+      ]
+    },
+    {
+      "node_id": "n_310a8d1b7c",
+      "level": "prose",
+      "shown": [
+        "p_678929356a",
+        "p_bae71b18f9",
+        "p_02b2f86d81"
+      ],
+      "axes": [
+        "raise the stakes",
+        "slow down",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.6972,
+        0.4854,
+        0.3058
+      ],
+      "chosen": "p_678929356a",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0806,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "f3d64292455bd12e3a9ae704529ae246",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9937,
+          "edit_direction": 1.0,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9964,
+          "edit_direction": 0.0,
+          "length": 0.5528,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9955,
+          "edit_direction": 0.3902,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Elias closes his fingers. The rough hemp bites his cut palm. The leather glove below pulls. The rope slides through his grip. Blood runs down his wrist and darkens the grey strands. The radio hums against his hip. Water laps at the boots. He looks up at the rim. Mara stands against the grey sky. He does not call to her.",
+        "prose Elias grips the hemp. The leather glove below pulls. The fibres bite his cut palm. Blood wets his wrist. Water drips from the dark hole. The radio hums against his hip. Mara stands above. She watches the rope. Elias stays quiet.",
+        "prose Elias closes his fist on the coarse hemp. The leather glove below yanks the strands. The rough fibers bite the raw skin of his palm. Blood runs down his wrist into the mud. The radio hums against his hip. Water laps at his boots. Mara stands above the trench edge. Elias looks up at the grey sky. He does not speak."
+      ]
+    },
+    {
+      "node_id": "n_8f20476b49",
+      "level": "beat",
+      "shown": [
+        "p_ccd135903a",
+        "p_37c0f22e14",
+        "p_efbeea78ab"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.4471,
+        0.2676,
+        0.3007
+      ],
+      "chosen": "p_ccd135903a",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9954,
+          "edit_direction": 1.0,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9892,
+          "edit_direction": 0.0,
+          "length": 0.5714,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9947,
+          "edit_direction": 0.6485,
+          "length": 0.5729,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The First Yank The gloved hand yanks the hemp rope downward. Elias feels the coarse fibers slide across his cut palm. Fresh blood wets the braid. The radio clicks against the iron trunk. Mara leans over the trench rim. The entity below possesses enough strength to pull against Elias.",
+        "The Weight Above Mara kneels on the frozen dirt. She watches Elias drop his chin. The radio hums against his hip. Her fingers grip the coarse hemp. A leather glove pulls the lower end from the dark water. The rope slides through her fingers. Mara feels the pull on the rope from the water below.",
+        "The Static The leather glove below jerks the hemp rope. Elias grips the rough fibers with his cut palm. Blood coats the grey strands. The radio against his hip switches from the priming pump sound to a high-pitched tone. Mara watches from the trench rim. The radio signal changes when the entity below pulls the rope."
+      ]
+    },
+    {
+      "node_id": "n_8f20476b49",
+      "level": "beat",
+      "shown": [
+        "p_c50b0c1931",
+        "p_7dad1eaf03",
+        "p_a52d1b452a"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.4804,
+        0.379,
+        0.22
+      ],
+      "chosen": "p_c50b0c1931",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9844,
+          "edit_direction": 0.3004,
+          "length": 0.5729,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9869,
+          "edit_direction": 0.0,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9826,
+          "edit_direction": 1.0,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Voice Below The gloved hand pulls the rope with sudden weight. Elias stumbles into the iron trunk. The radio against his hip switches from the priming sound to a human voice speaking numbers in the dark water. A cold smell rises from the shaft. The sound beneath the water is a human voice speaking numbers.",
+        "Mara Above Mara kneels on the frozen trench rim. Her cold fingers hold the slack hemp. She feels the sudden dead weight drop three inches. Blood smears the grey strands below. The radio hums against Elias down in the dark. Mara feels the weight shift through the rope.",
+        "The Weight of the Line Elias holds the hemp rope against the pull from the water. Cold air rises from the dark gap beneath the trunk. The radio hums against his hip. He feels the wet leather tighten on the fibers. He looks at his bloody palm. The entity in the water holds the rope with steady weight."
+      ]
+    },
+    {
+      "node_id": "n_310a8d1b7c",
+      "level": "prose",
+      "shown": [
+        "p_3897c56181",
+        "p_2db19e17cd",
+        "p_74c3ad1f04"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5518,
+        0.5414,
+        0.5255
+      ],
+      "chosen": "p_3897c56181",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.6701,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3b3d74307cf1ded3ec65d4ac8de8b4b4",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.8733,
+          "edit_direction": 1.0,
+          "length": 0.5405,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.85,
+          "edit_direction": 0.0,
+          "length": 0.557,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.8727,
+          "edit_direction": 0.9583,
+          "length": 0.5419,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Elias tightens his grip on the hemp rope. The leather glove below pulls hard. The hemp cuts deeper into his palm. Blood runs down his wrist. He does not call out to Mara.",
+        "Elias tightens his grip on the hemp strands. The leather glove below pulls hard. The rough fibers cut deeper into his torn palm. Blood runs down his wrist and darkens the grey rope. The radio hums against his hip. He does not call to Mara.",
+        "Elias tightens his grip on the hemp rope. The leather glove below pulls hard. The hemp cuts deeper into his cut palm. Blood runs down his wrist. He does not call out to Mara."
+      ]
+    }
+  ],
+  "episodes_completed": 2,
+  "call_summary": {
+    "calls": 637,
+    "prompt_tokens": 760169,
+    "completion_tokens": 191057,
+    "cost_usd": 0.0,
+    "cache_hits": 102,
+    "errors": 219,
+    "mean_latency_s": 1.3249167258915377,
+    "total_tokens": 951226,
+    "cache_hit_rate": 0.16012558869701726,
+    "by_purpose": [
+      {
+        "purpose": "propose.beat",
+        "calls": 82,
+        "tokens": 341864,
+        "cost_usd": 0.0,
+        "cache_hits": 12
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 360,
+        "tokens": 242786,
+        "cost_usd": 0.0,
+        "cache_hits": 35
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 74,
+        "tokens": 145068,
+        "cost_usd": 0.0,
+        "cache_hits": 26
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 54,
+        "tokens": 113337,
+        "cost_usd": 0.0,
+        "cache_hits": 20
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 21,
+        "tokens": 61858,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 16,
+        "tokens": 19895,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 5,
+        "tokens": 15910,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.beat.repair",
+        "calls": 13,
+        "tokens": 5314,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 12,
+        "tokens": 5194,
+        "cost_usd": 0.0,
+        "cache_hits": 2
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "gemini",
+        "calls": 602,
+        "tokens": 946854,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 35,
+        "tokens": 4372,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 170,
+      "misses": 671,
+      "entries": 6726
+    },
+    "budget_remaining_usd": 12.0
+  },
+  "preference_summary": {
+    "pairs_seen": 22,
+    "edits_seen": 4,
+    "voice_trained": true,
+    "top_weights": [
+      {
+        "feature": "judge_voice",
+        "weight": 5.7403
+      },
+      {
+        "feature": "criterion_1",
+        "weight": 3.1785
+      },
+      {
+        "feature": "judge_momentum",
+        "weight": 3.1472
+      },
+      {
+        "feature": "criterion_3",
+        "weight": 1.8631
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 3.147176778554526,
+      "judge_specificity": 0.508803127435459,
+      "judge_consequence": -1.7361987470150486,
+      "judge_voice": 5.740265000319758,
+      "criterion_1": 3.1784806618172583,
+      "criterion_2": 0.16786029227789412,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 1.1685052842017958,
+      "voice_cosine": 0.40967362252778283,
+      "edit_direction": -0.09130089632870135,
+      "length": 0.1406331827557673,
+      "dialogue_ratio": 0.6711140206190536
+    },
+    "weight_recovery": 0.4595664695280633
+  },
+  "hidden_weights": {
+    "judge_momentum": 0.3,
+    "judge_specificity": 1.0,
+    "judge_consequence": 0.0,
+    "judge_voice": 0.7,
+    "criterion_1": 0.8,
+    "criterion_2": 0.2,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 0.6,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.0,
+    "length": -0.9,
+    "dialogue_ratio": 0.2
+  },
+  "probe": [],
+  "errors": [],
+  "waited_seconds": 656.3,
+  "rate_limit_waits": 7
+}

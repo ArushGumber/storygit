@@ -1,0 +1,2148 @@
+{
+  "persona": "the Maximalist",
+  "config": {
+    "name": "probesample",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 2,
+    "seed": 9,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_8676e3814f",
+      "level": "episode",
+      "shown": [
+        "p_91dc0cc286",
+        "p_0f401473ce",
+        "p_fb5ea03d2e"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.4922,
+        0.5633,
+        0.8312
+      ],
+      "chosen": "p_fb5ea03d2e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "d0b36861548c126f54d44948e13d200f",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5685,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Archivist's Breath Kaelen watches Elara fumble with the archives, his nose raw from the sulfurous grit blowing through the cracks in the Ashfall vault. He knows she is hiding the ledger, not because she's malicious, but because she fears the truth about the source of the falling ash will break her faith. Kaelen has been tracking the source of the ash for months; Elara is physically shielding the incriminating documents.",
+        "The Weight of Ash Elias tries to leave Ashfall, but the persistent soot coating his lungs makes the physical act of climbing the ridge line impossible. Instead of confronting the town gatekeepers, he retreats into his crumbling family home, forced to confront the decaying artifacts of a life he thought he had escaped.",
+        "The Ash That Won't Settle Elias sifts through the grey, biting soot of Ashfall to find his missing cache, grappling with the phantom smell of scorched cedar. He discovers the lock box not emptied, but filled with a perfectly preserved, ticking pocket watch that isn't his. Elias's past holds a debt to someone who knows exactly where he hides his failures; the ash is not just debris, it is encroaching."
+      ]
+    },
+    {
+      "node_id": "n_12055e1751",
+      "level": "scene",
+      "shown": [
+        "p_416d306b09",
+        "p_b024ba568d",
+        "p_cfacf527c6"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.7306,
+        0.3003,
+        0.5766
+      ],
+      "chosen": "p_416d306b09",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7a3855ec13625626686436716e1fb714",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Mechanism of Memory Elias holds the ticking watch, its cold silver weight searing his palm against the biting grit of the ash. He tries to crush the mechanism between his fingers, but the steady, rhythmic pulse of the seconds forces him to acknowledge that the watch isn't counting time—it’s counting the breaths he takes as the soot clogs his lungs, syncing his own failing rhythm to a mechanical beat. The watch is not merely a taunt or a replacement, but a tether linking Elias to the unseen entity monitoring him.",
+        "The Observer in the Soot From a ridge overlooking the ash-choked hollow, Mara watches Elias dig with trembling hands. She tastes the bitter metallic tang of the settling soot on her tongue and wonders if he realizes the watch is a countdown she set in motion, not a gift. Mara is responsible for the watch and is tracking Elias's reactions; she is close enough to witness his discovery.",
+        "The Weight of the Second Hand Elias pries open the lid to find the heavy gold watch, its rhythmic, mechanical pulse shivering against his numb fingertips. He realizes the cedar scent is coming not from the ash, but from a small, dried sprig wedged beneath the watch’s casing—a signature he recognizes from his father’s study, confirming that the person who opened this box didn't steal, but communicated. The intrusion is personal and linked to Elias's family history; the sender is alive and tracking his movements."
+      ]
+    },
+    {
+      "node_id": "n_8a76948b85",
+      "level": "beat",
+      "shown": [
+        "p_c3238f726a",
+        "p_cf12e39122",
+        "p_094ae2a590"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.4623,
+        0.6012,
+        0.6591
+      ],
+      "chosen": "p_094ae2a590",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 1.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Resonance of Silence Instead of casting the watch aside, Elias realizes the ticking has stopped precisely when he holds his breath. He deliberately stifles his next inhale, and the watch emits a single, sharp chime, vibrating with a warmth that matches his own skin; the watch is a biometric mirror, and it is waiting for him to signal it. The watch is not merely counting; it is actively responding to Elias's breathing patterns.",
+        "The Weight of Pulses Elias refuses the watch's cadence by shoving it deep into his mud-caked pocket, only to find the ticking vibrating straight through his wool coat against his ribs, matching a heartbeat that is not his own. He abandons the cache site, desperate to outrun the phantom cedar smell, but every footprint he leaves in the grey dust fills instantly with fresh, falling ash. The watch cannot be discarded or silenced by distance from the cache.",
+        "The Observer's Pulse From a high vantage point obscured by the haze, Kael watches Elias claw through the ash. She synchronizes her own breathing to the ticking sound amplified by a receiver pressed against her ear, feeling a perverse satisfaction as Elias begins to mimic the pace of her machine. Kael is intentionally manipulating Elias's physiology using the watch's rhythm as a metronome."
+      ]
+    },
+    {
+      "node_id": "n_8a76948b85",
+      "level": "beat",
+      "shown": [
+        "p_e9145b6eaa",
+        "p_6ed12501d5",
+        "p_21be670706"
+      ],
+      "axes": [
+        "slow down",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6976,
+        0.5939,
+        0.4723
+      ],
+      "chosen": "p_e9145b6eaa",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.9231,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "b8fe4240f34b27126623470162efb2ce",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6232,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Silver Elias sits back into the biting grit of Ashfall, pressing the ticking pocket watch against his collarbone to feel its cold mechanism through his wool tunic. He stares at the etched monogram on the back casing, realizing the metal is wearing thin where someone else's thumb used to rest, a familiar hollow indentation that mirrors the shape of his own past debts. The watch features a worn monogram on its casing that hints at a specific, personal history between Elias and its owner.",
+        "The Price of Breath Elias tries to hurl the ticking watch into the ash, but as it leaves his hand, a sharp spasm locks his throat, forcing him to crawl back through the gritty soot to retrieve it before his chest tears open entirely. The watch is physically bound to Elias's vital rhythms; discarding it causes immediate asphyxiation.",
+        "The Weight of the Ticks Rejecting the urge to smash the watch, Elias pries open its inner brass casing with a bloodied fingernail, expecting gears or poison, but finds only a tightly folded scrap of his own childhood handwriting listing debts he thought he had buried in Ashfall. The watch contains Elias's own lost handwriting, confirming the trap is deeply personal."
+      ]
+    },
+    {
+      "node_id": "n_d92350deac",
+      "level": "prose",
+      "shown": [
+        "p_a62c396cc0",
+        "p_107845f158",
+        "p_7ef25f8464"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.6458,
+        0.7908,
+        0.7996
+      ],
+      "chosen": "p_7ef25f8464",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "8d0e4d0f1c0c35a901d19c816f0943ba",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8118,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6811,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The wind carries the dry, alkaline taste of burned pine right down the back of my throat, but I keep my eyes on Elias’s shoulder blades where he’s hunched over the metal box. He presses that silver piece against his collarbone, his whole frame jerking with every tiny tick of the spring inside it like he’s trying to absorb a blow. I know that hollow in the casing before he even turns it over to show me—the worn thumb-groove where the silver’s gone paper-thin, smoothed down by years of the exact same desperate habit.",
+        "prose The metal was cold against his collarbone, pressing through the coarse weave of his wool tunic with a stubborn, deliberate weight that had nothing to do with silver and everything to do with who held the ledger. Elias traced the worn monogram on the back casing with his own thumb, sliding it neatly into the hollow indentation where another man's flesh had worn the silver thin years ago. It was the exact curvature of Mara’s thumb, polished down by the constant, nervous habit of waiting in the dark outside the dry-goods office in Oakhaven. The phantom smell of scorched cedar suddenly flared in his sinuses, thick and resinous, burning the back of his throat until he coughed a dry, rattling heave into the grey dust. The cache box sat open beside him, empty of the silver coins he had traded his name to secure, leaving him with only this ticking piece of borrowed time that fit his past debts as precisely as a key in a rusted lock.",
+        "prose Elias presses the silver casing hard against his breastbone, feeling the frantic, dry rattle of his lungs answer the steady pulse of the gears beneath his tunic. The worn indentation in the metal—that smooth, thumb-rubbed hollow—fits his own grip with a terrifying familiarity, the exact curve of the silver he pawned the winter the river froze solid and left his family with nothing to burn. The phantom smell of scorched cedar suddenly thickens in his throat, sharp and resinous, tasting of the roof beams he failed to douse five years ago. He is not just holding a stranger's timekeeper; he is holding the exact weight of the ledger he thought he had outrun in the ash."
+      ]
+    },
+    {
+      "node_id": "n_8a76948b85",
+      "level": "beat",
+      "shown": [
+        "p_6c46cb1f06",
+        "p_d262962449",
+        "p_a533deb4f7"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.7619,
+        0.3751,
+        0.7459
+      ],
+      "chosen": "p_6c46cb1f06",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "350ca735f9d04044b959ed087e0d3958",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of the Second Elias pries open the back casing of the pocket watch with a cracked fingernail, expecting gears, but finds only a tightly folded slip of rice paper bearing his own handwriting listing the debts from the winter of the freeze. The revelation forces him to accept that the watch is not measuring time from an outside source, but consuming the memories of his past to fuel its relentless, rhythmic ticking. The watch is powered by Elias's own forgotten debts and memories.",
+        "The Glass Between Them Mara watches Elias from the frost-rimed window of the adjacent watchtower, listening to the muffled, rhythmic metallic clicking that somehow carries across the courtyard through the biting wind. She touches the fresh scar along her jaw, knowing the pocket watch isn't just measuring his breathing, but ticking down the remaining hours before their debt collectors arrive. Mara is watching Elias from nearby, and she knows the pocket watch represents an impending deadline tied to their mutual debts.",
+        "The Thumb's Hollow Elias sits frozen in the grey soot, tracing the smooth, thumb-rubbed hollow on the back casing of the pocket watch. He remembers the winter the river froze and the exact weight of the silver he had to pawn, letting the cold metal burn against his collarbone as he matches his breath to its mechanical pulse. The watch's indentation matches the exact silver Elias pawned years ago during a harsh winter."
+      ]
+    },
+    {
+      "node_id": "n_996e43aa80",
+      "level": "prose",
+      "shown": [
+        "p_0757086363",
+        "p_60b7afc367",
+        "p_043bb2a1fb"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.7353,
+        0.8867,
+        0.7781
+      ],
+      "chosen": "p_60b7afc367",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.4256,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "090c8c30306156410650b2c8f3eec722",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7774,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8209,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9442,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Elias digs a ragged nail into the seam of the silver back-plate, his thumb sliding against the familiar, worn curve until the metal pops with a faint, dry snap. He waits for the whir of brass wheels, the frantic escape of mainspring grease into the cold air of Ashfall. Instead, there is only the thick, clinging scent of scorched cedar rising from the interior like smoke from a dying stove, and a scrap of rice paper folded small and tight against the balance wheel. He unfolds it with trembling fingertips, smudging the ash across his own handwriting—the precise columns of figures from the winter of the freeze, every bushel of oats and cord of wood he swore to the miller before the fire took the town. The ticking does not falter; it quickens, each hollow second chewing deeper into the marrow of his memory, stripping the past away to feed the steady pulse against his palm.",
+        "prose His nail catches the edge of the brass lip, splitting the dirt-caked skin below the cuticle with a hot, sharp sting he barely feels over the dry burn in his chest. The inner casing flips open with a soft, oiled click that sounds too loud against the hiss of the falling ash. No brass wheels, no coiled spring, no delicate balance wheel trembling in its cage—only a strip of pale rice paper, folded tight and yellowed at the creases like an old skin. He knows the ink before his eyes even clear the grey film of soot from the glass; it is his own cramped, hurried scrawl from the November the cellar flooded, listing every measure of flour and salt he borrowed from the cooper and never paid back before the man took the fever. As his thumb brushes the fragile paper, the ink seems to sink deeper into the grain, vanishing stroke by stroke, and the ticking against his ribs stutters once, then races forward with a hungrier, wetter sound.",
+        "prose The metal lip of the inner housing yields with a dry, splintering snap under his broken nail, flaking grey dust into the dry palm of his hand. He expects brass wheels, grease, the tiny frantic dance of a balance spring. Instead, the cavity is dry as attic chaff. A single square of yellowed rice paper, folded three times into a tight, hard wedge, presses against the inside of the glass. He unfolds it with thumb and forefinger stiff from the cold, his eyes straining against the yellow-grey glare off the ash dunes. The ink is iron-gall, faded to the brown of dried liver, setting down columns of figures he knows by the crook of the sevens alone: three cords of birch to the Miller, four sacks of winter rye, the tab kept at the dry goods store behind the church. Every debt he swore he settled in coin the spring the ice broke. With every muffled tick of the empty casing, the ink on the paper seems to thin, the strokes dissolving grey into the grain of the pulp until his name at the bottom—his own looping, stubborn signature—begins to fray at the edges, leaving behind only clean, white space where a life used to be."
+      ]
+    },
+    {
+      "node_id": "n_12055e1751",
+      "level": "scene",
+      "shown": [
+        "p_174b90a530",
+        "p_155be6252d",
+        "p_95485cd85e"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.6478,
+        0.42,
+        0.7595
+      ],
+      "chosen": "p_95485cd85e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "75f01c994e0b36ec71a4778dd9b39f29",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6548,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ledger Unwritten Elias tries to tear the rice paper slip from the back of the watch, but the delicate fibers fuse directly into his split cuticle, absorbing into his bloodstream with a sharp, burning pinch. The ticking instantly accelerates inside his marrow, forcing him to watch as the remaining blank pages of the internal scroll begin filling themselves in with future dates he has not yet lived. The watch does not just record past debts; it writes and locks future obligations into his flesh.",
+        "The Smoke Reader Mara watches Elias from the crumbled corner of the miller's foundation, seeing him clutch empty air as if strangling an invisible weight. When he drops the ticking watch into the grey dust, she steps forward to retrieve it, only to find the casing stone cold and completely silent to her touch. The watch's terrifying properties are bound exclusively to Elias and his guilt, remaining a dead, mundane object to anyone else who handles it.",
+        "The Ledger's Ash Elias watches the rice paper list of winter debts begin to brown and char at the edges in his grip, spontaneous heat blooming from the ink as if his own hand were catching fire. He drops the pocket watch back into the lock box, but the lid snaps shut on its own, severing the tip of his split finger and filling the container with fresh, black soot that smells unmistakably of his father's burnt coat. The watch does not merely read Elias's past; it forces him to actively burn away what remains of his memories to keep its relentless ticking alive."
+      ]
+    },
+    {
+      "node_id": "n_84178db9e4",
+      "level": "beat",
+      "shown": [
+        "p_6ac4651792",
+        "p_accb781f51",
+        "p_487a429ab0"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.2829,
+        0.636,
+        0.6575
+      ],
+      "chosen": "p_487a429ab0",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.0,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.0,
+          "criterion_1": 0.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5685,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Smoke That Follows From three yards away in the grey grit, Marta watches Elias stare into the open lock box with his hand bleeding, smelling the phantom scorched cedar that always clings to him whenever he touches that cursed tin. She sees the way his shoulders lock against a weight she cannot carry, realizing he is burning away pieces of his own mind while she stands entirely helpless in the falling ash. Marta recognizes the smell of scorched cedar on Elias and knows he is actively destroying his own memories.",
+        "The Weight on the Tongue Elias sits back in the grey dust, staring at the empty, pale void where his handwriting used to be on the rice paper, while the copper taste of old loans bleeds up into his mouth. The watch consumes memories permanently, leaving a physical taste of what was forgotten.",
+        "The First Ember Elias watches the rice paper list of winter debts begin to brown and char at the edges in his grip, spontaneous heat blooming from the ink as if his own hand were catching fire. He drops the pocket watch back into the lock box, but the lid snaps shut on its own, severing the tip of his split finger and filling the container with fresh, black soot that smells unmistakably of his father's burnt coat. The watch actively consumes Elias's memories through physical pain and fire, anchored to his father's tragic past."
+      ]
+    },
+    {
+      "node_id": "n_84178db9e4",
+      "level": "beat",
+      "shown": [
+        "p_a9ec299a72",
+        "p_da47ef154a",
+        "p_ce7e5194eb"
+      ],
+      "axes": [
+        "slow down",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.5837,
+        0.8093,
+        0.4078
+      ],
+      "chosen": "p_da47ef154a",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "008694b0f919028bbc113cbe898f714f",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6667,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Blank Elias stays frozen with the blank slip of rice paper between his fingertips, feeling the cold, empty space left inside his ribs where the memory of the flour debt used to live. He listens to the altered rhythm of the pocket watch against his chest, realizing the ticking has grown heavier, searching for another page to strip away. The watch consumes memories permanently, leaving a literal void inside Elias's physical and mental endurance.",
+        "The Weight of the Margin Elias tries to drop the pocket watch into the dirt, but his fingers refuse to uncurl, locked around the silver casing as the ticking accelerates into a frantic, wet gallop against his palm. The phantom smell of scorched cedar sharpens into the blinding acrid smoke of his family's burning pantry, and he realizes with sudden horror that the watch is not just taking his past debts—it is consuming the memory of his daughter's face, blurring her features into grey ash until he can no longer recall the sound of her voice. The watch's consumption of memory targets specific, cherished recollections rather than just abstract debts.",
+        "The Weight Across the Table Mara watches Elias from the shadow of the collapsed workshop frame, seeing the precise moment the watch strips the weight from his shoulders. She notices his fingers tremble as the rice paper vanishes, realizing that whatever debt he just paid, the cost was carved directly out of his life. Mara is observing Elias and recognizes the terrifying nature of the pocket watch."
+      ]
+    },
+    {
+      "node_id": "n_066ed6c917",
+      "level": "prose",
+      "shown": [
+        "p_0742976ed5",
+        "p_fd961e7b61",
+        "p_9f41b63ff6"
+      ],
+      "axes": [
+        "slow down",
+        "introduce a complication",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.882,
+        0.8131,
+        0.8082
+      ],
+      "chosen": "p_0742976ed5",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.8422,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "9d6bd38bb02184c2095c64828820ee06",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8594,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8765,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9053,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The metal will not let go. He hammers his palm against the frozen crust of the path, smashing the silver casing into the gravel until his knuckles split to the bone, but the fingers are not his anymore; they are iron wires curled tight around a thief's prize. The wet gallop of the gears inside the watch matches the frantic, blind panic in his throat, louder now, wet like a lung full of river water. The smell is no longer just old cedar smoke; it is the thick, choking yellow bile of the pantry wall when the grease fire caught the flour sacks. And right there, just behind his eyes where her little laugh used to sit when she brought him the cold water from the well, there is nothing. Just a wide, flat smear of grey soot where her mouth was. He tries to say her name—Maren, Maren, the way he called her through the dark when the frost bit the windows—and the sound of it simply drops out of his mouth like a dry cinder, leaving only ash on his tongue.",
+        "prose The metal bites his palm, the cold edge sinking into the raw, split skin below his thumb where the salt of his sweat stings the open meat. He tries to hurl the silver into the grey ruts of the path, but the fingers are not his anymore; they curve hard around the casing, tendons standing white and rigid like winter twigs under his dirt-grained skin. The ticking doesn't slow. It quickens into a wet, frantic gallop, wet as a lung-burst horse in the harness, beating directly against the meat of his thumb.\n\nThen the cedar smell changes. The clean, sharp resin of the dry rafters he burned five winters ago turns thick, grey, and greasy—the blind, choking acrid smoke of the larder floorboards chewing through the lard and the autumn squash. His eyes water against the grit, stinging with a heat that has nothing to do with the weather. \n\nInside his head, the corner by the flour bin where Martha used to sit with her wooden doll begins to fray at the edges, the yellow wool of her shawl dissolving into grey fibers, then into bare air. He grabs for her voice—that high, thin whistle she made when she ran against the wind—but there is only the wet gallop of the escapement, ticking the air away until the space where her laugh lived goes flat and smooth as a wiped slate. He is standing knee-deep in cold drift, holding a silver shell that knows his daughter better than he does.",
+        "prose The fingers will not obey. He thrusts his hand down toward the wet, grey grit, trying to shake the silver loose into the dirt, but the joints are locked tight as frozen hinges, welded to the cold metal by something heavier than muscle. Against his palm, the ticking accelerates into a frantic, wet gallop, a frantic beating that sounds less like gears and more like a trapped heart trying to claw its way out of a ribcage. The phantom smell of scorched cedar suddenly thickens, no longer just a dry memory in the throat but the blinding, acrid smoke of his family's pantry burning down through the floorboards, choking the air with grease and char. A wild, blind terror surges through him as the smoke clears behind his eyes, leaving only a blank, terrifying space where his daughter's face should be. He reaches for the curve of her cheek in his mind, for the sound of her laugh over the morning kettle, but the watch is scrubbing it out stroke by stroke, turning her features into the same grey, indifferent ash that coats the hemlocks outside, until there is nothing left of her voice at all."
+      ]
+    },
+    {
+      "node_id": "n_84178db9e4",
+      "level": "beat",
+      "shown": [
+        "p_b1b6aeb970",
+        "p_7652834ed4",
+        "p_e070cfce33"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.7053,
+        0.4665,
+        0.595
+      ],
+      "chosen": "p_b1b6aeb970",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.9402,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "2c38a1b256d17de07fdc062804950a4b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6627,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Hollow Casing Elias claws frantically at his own temples to hold onto Maren's cadence, but the watch's wet, heavy ticking erases her name entirely from his thoughts, leaving only the taste of woodsmoke and an open, aching emptiness behind his ribs where her face used to live. The watch does not merely dull memories; it consumes them completely, replacing them with physical cold and silence.",
+        "The Smoke That Follows From three yards away in the grey grit, Marta watches Elias stare into the open lock box with his hand bleeding, smelling the phantom scorched cedar that always clings to him whenever he touches that cursed tin. She sees the way his shoulders lock against a weight she cannot carry, realizing he is burning away pieces of his own mind while she stands entirely helpless in the falling ash. Marta recognizes the smell of scorched cedar on Elias and knows he is actively destroying his own memories.",
+        "The Stiffened Finger Elias stares down at his blood-slicked thumb, trying to force the joint to bend back toward the silver casing, but the skin has frozen into a hard, yellowed ridge that refuses to obey him. He stands in the biting ash, his breath coming in dry, shallow gasps as he watches the empty space where his daughter's face used to reside settle into an even deeper, more terrifying void. The physical toll of the watch goes beyond temporary pain, locking his joints into the rigid posture of his debt."
+      ]
+    },
+    {
+      "node_id": "n_42a2b5f275",
+      "level": "prose",
+      "shown": [
+        "p_935297e6e0",
+        "p_e1b43ba500",
+        "p_1905df6048"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.9147,
+        0.8461,
+        0.7976
+      ],
+      "chosen": "p_935297e6e0",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "5330c4ee5c24ca2233e080a0e8e8a2dc",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.9129,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.8365,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.7999,
+          "length": 0.7612,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose His fingers hook into the grey hair at his temples, digging the split nails hard against the bone until a sharp, white heat flares behind his eyes. He tries to drag her voice back through the dark, the particular way she used to call his name from the threshold when the lamps were lit and the wind was coming down off the high ridge. But the sound catches on a wet, rhythmic drag—the watch beating its heavy pulse inside the lock box by his knee, louder than his own blood. Each heavy thud strips another layer of grain from the wood inside his mind, until the syllable breaks, shatters, and turns to grey dust that drifts away on a draught he cannot feel. There is nothing left where the curves of her face used to dwell, no shadow of her chin or the way her eyes crinkled against the lamplight, only a raw, whistling gap behind his ribs where the wind blows straight through. His tongue finds only the greasy, clinging taste of scorched cedar and wet ash, thick enough to choke on, filling the hollow room where she lived with the cold smell of an empty hearth.",
+        "prose His fingers scrape against the dry bone of his temples, hard enough to bruise the skin where the hair is thinned with grey dust. He tries to pin a shape to the dark, a tilt of the chin, the familiar scrape of a wooden stool pulled across the kitchen flags when the porridge was done, but the watch's wet, heavy ticking fills his skull like rising river mud. Every time he reaches for her voice—the low, steady cadence she used when the frost cracked the window frames—the sound dissolves into a wet sucking noise, like a boot pulling free of a marsh. The name itself tears away from his tongue with a dry, ripping snap, leaving only the sharp, acrid taste of scorched cedar burning at the back of his throat. There is no face left to look for in the dark behind his eyes, only a wide, raw cavern where the ribs feel too thin to hold his lungs, aching with an empty cold that smells entirely of old ash and rain on burned floorboards.",
+        "prose The heel of his palm grinds against the bone above his ear, dragging down through the grit until the skin stings raw, but nothing comes back. Not the pitch of her voice when she called him from the doorway, nor the way her chin dipped when she laughed at the tallow candles guttering in the draft. The ticking inside the box grows thicker, wet like a pulse beneath a tongue, drowning out the rattle of his own breath. A grey film settles over the roof of his mouth, tasting sharp of scorched cedar and dry lath, filling the cavity where her face used to rest with an unbearable, light-headed draft. He stares down at his own split fingers, grey and shivering in the ash-light, trying to remember if she had his eyes or her mother's, but there is only a flat, cold sweep of wind moving through an empty house."
+      ]
+    },
+    {
+      "node_id": "n_8676e3814f",
+      "level": "episode",
+      "shown": [
+        "p_5ce02ca1f9",
+        "p_0943a3ffe2",
+        "p_9aa1e60a4d"
+      ],
+      "axes": [
+        "introduce a complication",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6865,
+        0.6072,
+        0.7923
+      ],
+      "chosen": "p_9aa1e60a4d",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "2bce4da068f5944852843d30b5f98ec4",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5851,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.493,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6044,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Second Hand Elias tries to cast the ticking watch into the dry stone well, but the heavy iron chain around the windlass winds itself around his ankle, dragging him down into the damp dark where the water smells of scorched cedar and wet ash. The watch cannot be discarded or broken; it is physically tethered to Elias's movements and demands a second memory.",
+        "The Root That Binds Elias tries to bury the ticking pocket watch beneath the frost-hardened roots of the cellar plum tree, but every time he drives the spade into the frozen earth, the soil yields only the dry, rattling bones of his mother's winter turnips. The watch's wet rhythm begins to thrum directly against his collarbone, matching the frantic pulse in his temples as the hole fills itself back in with heavy, black ash.",
+        "The Weight of the Second Hand Elias carries the ticking watch into the freezing pantry, seeking the physical weight of old winter stores to ground his vanishing thoughts, only to find the salt bins filled with grey ash that tastes of iron. When he dips his fingers into the brine crock, the wet ticking inside his ribs forces up a name he has never heard before, whispered in a voice that is horribly, perfectly his own."
+      ]
+    },
+    {
+      "node_id": "n_4cfd961c1a",
+      "level": "scene",
+      "shown": [
+        "p_ef3ca523ec",
+        "p_2e88a03bc8",
+        "p_4fdf19a7a1"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "slow down"
+      ],
+      "scores": [
+        0.6594,
+        0.6645,
+        0.5452
+      ],
+      "chosen": "p_2e88a03bc8",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.2062,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Rootless Floor Elias traces the empty space behind his ribs where Maren's cadence used to live, finding only the damp, rhythmic thud of the pocket watch against his sternum as he steps across his threshold. He tries to reach for the latch of the pantry door, but his fingers refuse to recognize the familiar iron ring, sliding off the frost-bitten metal while the smell of scorched cedar thickens in the dark room. The watch's erasure does not stop at names; it actively unspools Elias's muscle memory and spatial recognition of the house.",
+        "The Ash-Packed Hearth Elias drags his bleeding, splintered hand across the threshold of his darkened kitchen, desperate to wash the taste of woodsmoke from his tongue with stagnant well water. Instead of water, the iron pump yields only a thick stream of grey silt and cold grease that coats his teeth, while the ticking in his palm accelerates to match the frantic pace of a heart that no longer knows what it is fleeing. The watch's consumption of memory actively corrupts Elias's physical environment, turning basic survival necessities into ash and bile.",
+        "The Root of the Tongue Elias presses his bleeding thumb against the cold iron path, tasting the dry bile of forgotten loans while the wet ticking of the pocket watch scours the last remnants of Maren's name from the back of his throat. He stares down at his own splintered knuckles, realizing the hand holding the metal no longer feels like his own. The watch does not merely steal memories; it replaces them with the physical taste of their absence and makes the body feel foreign to itself."
+      ]
+    },
+    {
+      "node_id": "n_4cfd961c1a",
+      "level": "scene",
+      "shown": [
+        "p_df28de7082",
+        "p_9d1991f83c",
+        "p_17f0b75571"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5965,
+        0.7955,
+        0.7355
+      ],
+      "chosen": "p_9d1991f83c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "d766fe36eb758c60b3101a88715924f8",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.4977,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Floorboards' Breath Elias drops to his knees in the pantry, pressing his split, dirt-caked fingers against the warped cedar floorboards to steady himself against the vertigo, only to feel the timber beneath him pulse with the exact, wet cadence of the pocket watch in his palm. The smell of scorched cedar thickens until it fills his mouth, and he realizes the house itself is beginning to digest the remaining dry goods, turning the winter rye into fine, grey silt. The watch's erasure of memory is not confined to Elias's mind, but is physically converting his hoarded provisions into the very ash that fell outside.",
+        "The Threshold of Cinders Elias stands frozen on his freezing kitchen threshold, staring down at the ticking pocket watch in his palm while the copper taste of old loans bleeds up into his mouth. He desperately searches the silence behind his ribs for Maren's voice, only to find the name entirely replaced by the heavy, wet rhythm of the gears. The pocket watch does not just erase memories; it replaces them with the physical weight of unfulfilled debts.",
+        "The Unwritten Floor Elias drops to his knees on the planked floor of his cabin, scraping the grey silt from his split fingertips across the rough wood to map out a shape he can no longer picture. The ticking watch rests on the table before him, its wet, heavy rhythm counting down every remaining noun he owns while the smell of scorched cedar thickens in the dark. The watch does not merely steal memories; it actively rewrites the physical objects and spaces Elias left behind to anchor himself."
+      ]
+    },
+    {
+      "node_id": "n_d1b8cb3b52",
+      "level": "beat",
+      "shown": [
+        "p_544b64894c",
+        "p_482c99baa7",
+        "p_77413eb7e6"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.7347,
+        0.7714,
+        0.9382
+      ],
+      "chosen": "p_77413eb7e6",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "8afe15688328c5bc33a0accc2c5e7885",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.9935,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6044,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Cinder Elias tries to grip the doorframe to steady his spinning vision, but his fingers slide off the familiar grain as the watch's damp ticking hollows out another forgotten corner of his past, leaving him standing alone in the dark corridor with only the smell of burnt cedar. The watch's erasure is spreading beyond names into physical recognition of his own home.",
+        "The Weight of the Door Elias turns from the threshold toward the cold interior of his kitchen, his hand resting instinctively on his sternum where the strange watch beats against his bone. Instead of panicking over the lost name, he finds a terrifying, quiet calm, noticing for the first time that the frost on the windowpane has grown into intricate, sharp ferns of ice that smell faintly of his mother's lye soap. Elias's physical environment is beginning to morph in response to the watch's consumption of his memories.",
+        "The Smoke That Follows Watching from the freezing shadow of the lintel, Maren sees Elias clawing at his temples in the falling ash, his mouth opening in a silent cry as the pocket watch strips her very name from his blood. She steps forward through the biting grit, her hand lifting to touch his shoulder, but her fingers pass through him like cold air, leaving only the sharp, metallic taste of cedar smoke on her tongue."
+      ]
+    },
+    {
+      "node_id": "n_494a0bc146",
+      "level": "prose",
+      "shown": [
+        "p_f77c0271c6",
+        "p_7fe71951f6",
+        "p_f391033902"
+      ],
+      "axes": [
+        "raise the stakes",
+        "introduce a complication",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.8017,
+        0.6539,
+        0.5625
+      ],
+      "chosen": "p_f77c0271c6",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "645fe8132cf54a29a782d14ca769b977",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.9649,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.8088,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.8894,
+          "length": 0.9283,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Her fingers drag through the grey drift piling against the doorframe, coming away slick with soot that has no warmth left in it. She watches him—the broad slope of his back she used to know by the tilt of his shoulder in the harness—folding double against the cold, his nails tearing blindly at the grey stubble of his temples as if to dig out a splinter that will not surface. His mouth works without sound, round and empty, shaping a syllable the falling ash fills up before it can reach the air between them. She steps across the threshold, her boot making no sound on the frost-crusted wood, and lifts her palm to steady him, to press her thumb against the hard muscle of his shoulder where his coat has worn thin at the seam. Her hand meets nothing. Cold air rushes through her wrist, thin and sharp as a torn vessel, and the sudden emptiness pulls a gasp from her throat that tastes instantly of burnt cedar and iron. She is already sliding out of his blood, her own fingers turning grey and flaky as the ash falling from his coat, leaving her standing in the empty room with a name she can no longer find on her own tongue.",
+        "prose The shadow in the lintel does not cast one of its own. Maren watches him tear at his grey hair, the split skin of his knuckles catching the pale, greasy light that falls off the melting snow. Her name is still hot in her mouth, a syllable of salt and woodsmoke she tries to push across her teeth before the ticking swallows it entirely. When she reaches out, her palm meets only the cold density of his wool coat, then slips straight through the warp and weft as though the fabric were nothing more than a drift of winter fog. There is no resistance, no warmth beneath the cloth—only an abrupt, hollow vacuum that smells of scorched cedar and leaves the sharp, metallic tang of an old iron stove upon her tongue. Elias does not turn; he cannot feel the phantom weight of her fingers passing through his marrow, his mouth still wide and silent in the grey grit while the wet gears turn behind his ribs.",
+        "prose The lintel bites into her shoulder through her wool shawl, cold as buried iron. She watches him claw at his temples, his fingernails digging into the grey hair until the skin gives and dark drops bead against the falling soot. His mouth opens, wide and ragged, but the wind tears the cry from his throat before it can shape a sound. The pocket watch in his hand beats a wet, heavy rhythm, and she feels the pull of it behind her own eyes—a sudden, dragging vacuum that tugs at the edges of her mother's face, at the color of the apron she wore this morning, at the very shape of her own hands. She steps forward across the freezing timber, lifting her palm to press against his coat, to anchor him before the metal takes the rest. Her fingers strike his shoulder and slip straight through, meeting no heat, no bone, only the dense, freezing draft of a man who is already unmade. A sharp, metallic taste of scorched cedar floods her mouth, thick and bitter as ash, and when she looks down, her own fingers are beginning to turn translucent at the tips, fading into the grey drift of the room."
+      ]
+    },
+    {
+      "node_id": "n_d1b8cb3b52",
+      "level": "beat",
+      "shown": [
+        "p_f3836894b5",
+        "p_4ac962725c",
+        "p_e2b50e5bca"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5362,
+        0.7583,
+        0.5846
+      ],
+      "chosen": "p_4ac962725c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "1910b0b0128842520fae1828c0b02570",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0764,
+          "length": 0.5774,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6286,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Second Hand Elias looks down at his empty palm in the falling ash, realizing the pocket watch has vanished from his grip just as entirely as the name it stole, leaving only the lingering, cold smell of cedar smoke in his throat. The watch leaves nothing behind once its work is done, not even itself.",
+        "The Smoke That Follows Watching from the freezing shadow of the lintel, Maren sees Elias clawing at his temples in the falling ash, his mouth opening in a silent cry as the pocket watch strips her very name from his blood. She steps forward through the biting grit, her hand lifting to touch his shoulder, but her fingers pass through him like cold air, leaving only the sharp, metallic taste of cedar smoke on her tongue. Maren is physically unable to touch Elias or anchor herself to his thinning memories.",
+        "The Weight of the Threshold Elias drops to his knees on the freezing lintel, pressing the ticking watch against the splintered wood of the floorboards as if to anchor his dissolving limbs to the house. Instead of erasing another memory, the wet vibration draws up the precise weight and measurement of every winter log he ever stacked against the north wall, proving the house remembers what his mind is discarding. The watch's erasure leaves behind a physical ledger written into the architecture of the house itself."
+      ]
+    },
+    {
+      "node_id": "n_1a2262bbc3",
+      "level": "prose",
+      "shown": [
+        "p_a5b174fce4",
+        "p_18fede1391",
+        "p_16f013362f"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.7292,
+        0.6658,
+        0.9564
+      ],
+      "chosen": "p_16f013362f",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "97d5016080b95148c88ed46d90e2972a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.8462,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.9524,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.2368,
+          "length": 0.9167,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The lintel bites into her shoulder blade, a cold, hard knot of unseasoned pine she doesn't remember hammering into place. She watches him fold double against the falling grey grit, his palms hammering at his own temples until the skin tears and the blood runs thin and pale into the stubble. His mouth shapes a name she tries to match with her own tongue, but the syllables dissolve into the wet, heavy thrum of the watch beating against his chest. She steps through the threshold to catch him by the wool of his coat, to press her palm flat against the broad, familiar curve of his back where the cloth is slick with soot. Her fingers meet only the thin, freezing draft of the empty room, passing straight through his shoulder as if he were already made of smoke. A sharp, metallic bitterness floods her mouth—scorched cedar and old iron—and as she pulls her hand back, the tips of her fingers are turning grey and flaking away into the ash, leaving her without a voice to call him home.",
+        "prose The dry rot in the lintel crunches under her heel, a tiny, hollow snap that doesn't reach the air. She watches his shoulders heave, the gray wool of his coat stiff with the rime of Ashfall, lifting and falling with a rhythm that has nothing to do with breath. Her fingers, gray and flaking at the tips like old parchment left too near the grate, press into the empty space between them where the heat of his body ought to be. When her palm passes through the heavy muscle of his shoulder, the cold does not bite; it settles, heavy and metallic, against the roof of her mouth. The taste of cedar smoke is there, sharp as an unhealed cut, thick enough that she tries to swallow and finds only dry air. He does not turn. His mouth stays open in that soundless circle, his fingernails dragging across the bone of his temple as if the skin were nothing more than ash waiting to be blown away by a wind she cannot feel. On her tongue, the syllables of the name she tried to give him dissolve into a smear of grease and iron, leaving her standing in the doorway with no voice left to call him back.",
+        "prose The wood under her boots is dead, cold enough to bite through the sole, but it makes no sound as she steps out of the lintel's shadow. The ash falls in thick, greasy clumps, coating the wool of his shoulders where the seams are parting. She lifts her hand—stiff-fingered, the skin graying at the knuckle like old lard—to press her palm against the flat of his back, right where the spine curves into the heavy lift of the shoulder blade she knew better than her own face. Her fingers do not hit cloth. They slide into a draft as thin and sharp as a broken windowpane, meeting nothing behind the wool but the hard, dry smell of scorched cedar and the copper reek of unspoke debts. A dry knot catches in her throat, tasting of iron filings and the floor of an empty pantry. He does not turn. His mouth keeps working against the air, round and silent, shaping the shape of her name while the watch beneath his ribs grinds its wet, heavy gear, chewing the last red drop of her out of his blood until there is nothing left in his veins for her to hold onto."
+      ]
+    },
+    {
+      "node_id": "n_4cfd961c1a",
+      "level": "scene",
+      "shown": [
+        "p_6af04a5399",
+        "p_aa39e461e6",
+        "p_9195c5e85b"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8162,
+        0.658,
+        0.8323
+      ],
+      "chosen": "p_9195c5e85b",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a7d5f4cbca48d14b2f3bcbda53e32b01",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6647,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.1141,
+          "length": 0.6471,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Second Hand Elias sits at the splintered wooden table in the dim kitchen, his fingers brushing the raw, aching skin of his split knuckles where the bone shows white through the torn dirt. He tries to remember the weight of the water buckets he hauled yesterday, but the space where his labor should live contains only the wet, heavy pulse of the pocket watch echoing against his ribs and the persistent, greasy taste of scorched cedar. The erasure is not confined to names and faces; it is beginning to hollow out Elias's daily labor, erasing the physical proof that he ever lived in this house.",
+        "The Cooper's Ledger Elias tries to drop the pocket watch into the freezing pantry's salt bin, but his split cuticle catches on the brine crock, smearing blood that immediately turns to grey ash. The wet ticking accelerates, forcing his hand to lift the watch back to his chest where the phantom name of the cooper he robbed flares behind his eyes. The watch cannot be discarded or left behind; it is tethered directly to the unrepented debts Elias tried to bury.",
+        "The Salt-RIME Well Elias drags his feet across the salt-crusted floorboards of the pantry to the brine crock, his fingers slipping on the crusted white rim as the wet, heavy ticking inside his ribs forces up a name he has never heard before. He dips his hand into the bitter grey brine, seeking the cold stone of the bottom, but finds his split skin catching on nothing except the phantom taste of scorched cedar and his own forgotten debts. The watch's erasure is not just taking names and memories, but physically consuming Elias's past connections to his home and labor."
+      ]
+    },
+    {
+      "node_id": "n_2e529bdde6",
+      "level": "beat",
+      "shown": [
+        "p_642a432166",
+        "p_d34e00d4d2",
+        "p_9faa3c0712"
+      ],
+      "axes": [
+        "introduce a complication",
+        "slow down",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.7351,
+        0.6461,
+        0.6674
+      ],
+      "chosen": "p_642a432166",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "fe52f4e261e01e366fa194451e210353",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.9984,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Brine's Echo Elias presses his bleeding thumb harder against the salt-rimed brine crock, searching for the physical weight of old stores, only to find the salt crystals refuse to dissolve under his touch, hardening into dry, jagged teeth that tear the split skin of his cuticle further. The heavy, wet ticking inside his ribs responds with a sharp stutter, dragging a forgotten physical agony from the winter the well went dry and forcing a sudden, metallic taste of iron onto his tongue. The watch's erasure is beginning to alter the physical consistency of Elias's remaining stores, turning salt to unyielding stone.",
+        "The Weight on the Tongue Elias tries to swallow the dry, coppery taste of the salt bins while the ticking in his chest slows to a heavy, wet thud, forcing his tongue to trace the empty space where his own first name used to feel familiar. The watch's erasure is now beginning to consume Elias's sense of his own identity beyond just Maren.",
+        "The Weight of the Salt Elias drags his bleeding knuckles across the rough timber of the pantry shelf, pressing his palm against the grey salt crock until the sharp crystals bite into his split skin. The wet ticking against his ribs matches the heavy, iron-sick pulse in his wrist, driving the taste of old debts deeper into his throat while the silence left behind her face grows wider and colder. Elias seeks physical pain in the salt crock to anchor himself against the continuing loss of his memories."
+      ]
+    },
+    {
+      "node_id": "n_99fb9c943d",
+      "level": "prose",
+      "shown": [
+        "p_4914248cba",
+        "p_9c19e00558",
+        "p_362f0dbf5b"
+      ],
+      "axes": [
+        "slow down",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.806,
+        0.8423,
+        0.724
+      ],
+      "chosen": "p_9c19e00558",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.4585,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "89630d81d1d448231573eeb43fbf9969",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6326,
+          "length": 0.8527,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.7639,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.8835,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The salt-crusted lip of the crock bites into the split flesh of his thumb, but no moisture comes—only a dry, gray crust that clings to the raw edge like old mortar. He bears down, shoving his weight into the heel of his hand until the salt crystals stop shifting and lock together, hard and jagged as broken teeth against bone. The skin of his cuticle parts further, a thin line of dark blood welling up to bead against the white grain, but it does not wet the salt. Inside his ribs, the heavy, wet ticking gives a sharp, skipping hitch—a wet double-knock against his sternum—and suddenly his tongue is thick with the taste of cold iron and the dry, parched throat of January seven years back when the water froze solid at the bottom of the pit and they boiled old harness straps for the broth. The memory has no face to it, only the pull of dry leather and the smell of cedar smoke clinging to the rafters while the frost climbed six inches up the inside of the door.",
+        "prose His thumb jams harder against the crusted lip of the crock, the salt refusing to give, biting into the torn meat below the cuticle until a bright, hot bead wells up and joins the gray dust settling over his knuckle. The wet, rhythmic meat-thud behind his sternum catches on a bone, skips, and drags—a sudden, tearing lurching of the gear that hares backward through the years straight to the January the water table dropped six fathoms and the frost split the oak casks wide. He tastes the old rust on his back teeth, the copper tang of the winter he boiled his own harness straps for grease, and the name that was sitting on the tip of his tongue—the four short syllables of her voice when she told him to leave the cellar door unlatched—snaps clean off at the root, leaving a raw, bleeding hole where the word used to live.",
+        "prose His thumb-pad smears across the salt-crusted lip, the grain biting into the split skin below the cuticle where the red had already dried brown. The salt does not yield. It is not wet with brine, but dense and dry as slate, packed hard into the crock until the surface forms a ridge of jagged teeth that catch the loose flap of his torn flesh and peel it back further to the quick. He doesn't pull his hand away. The wet, heavy ticking inside his ribs gives a sharp, skipping hitch—a gear slipping on a fouled axle—and drags up the dry, rasping pull of his lungs from the February the well bottomed out to dust. The taste of iron rises instantly on his tongue, thick as a mouthful of copper coins, washing out the last faint trace of anything sweet or green he might have once carried into this room. The cold stone of the crock presses into his palm, but there is no salt-damp here, only the sharp, persistent grit of old mortar and the steady, wet register of the second hand ticking his own name out of his blood."
+      ]
+    },
+    {
+      "node_id": "n_2e529bdde6",
+      "level": "beat",
+      "shown": [
+        "p_201a307494",
+        "p_67124bdabf",
+        "p_644931ec98"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "introduce a complication",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.6936,
+        0.7708,
+        0.653
+      ],
+      "chosen": "p_67124bdabf",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a126e23315b74e8e821636e4d03637e9",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9881,
+          "edit_direction": 0.3008,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.988,
+          "edit_direction": 1.0,
+          "length": 0.5851,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9851,
+          "edit_direction": 0.0,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Iron Tongue Elias tries to wipe the smear of grey brine from his bleeding thumb against the coarse wool of his trousers, but the fabric feels stiff and dry as parchment. The wet, rhythmic ticking behind his breastbone quickens, forcing his hand away from his leg and driving his index finger deep into the cold crust of the salt crock until the joint clicks against the stone bottom. The physical environment in the pantry is actively hardening against Elias's skin, making it impossible to clean away the ash or find purchase.",
+        "The Sinking Brine Elias tries to pull his hand from the bitter grey brine, but the frozen bottom has locked his fingers in place, binding him to the stone as the ticking beneath his ribs accelerates into a frantic, wet gallop that drowns out the last echo of his own breathing. Elias is physically trapped by the brine crock, unable to withdraw his hand.",
+        "The Witness at the Threshold Maren stands at the pantry threshold, watching Elias tear his hands against the unyielding salt crock while the wet, heavy ticking of the pocket watch strips the cadence of her name from his veins. She reaches out to press her palm against his shoulder, only to find her fingers slip through a cold, thin draft that tastes of burnt cedar and iron. Maren's presence in the pantry is entirely phantom-like; she cannot touch him or stop the erasure."
+      ]
+    },
+    {
+      "node_id": "n_0fd85ab2ee",
+      "level": "prose",
+      "shown": [
+        "p_d83ccebd05",
+        "p_1c06d06a87",
+        "p_0c77b3ed4a"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.8525,
+        0.9775,
+        0.7773
+      ],
+      "chosen": "p_1c06d06a87",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "951e9d86a28ddc7f59d3b3b9abef8831",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9934,
+          "edit_direction": 0.0,
+          "length": 0.8178,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9885,
+          "edit_direction": 0.3363,
+          "length": 0.6728,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9949,
+          "edit_direction": 1.0,
+          "length": 0.9244,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The salt-crust holds him by the knuckle, hard as a winter-killed hitching post. He tugs, the tendon in his wrist pulling taut like an ungreased bowstring, but the bottom of the crock has set around his fingertips like lead in a socket. Inside his chest, the ticking does not wait for him to catch his breath; it kicks up into a wet, frantic gallop, wet as a drowned dog thrashing in a well-bucket. Every stroke of the balance wheel slams against his ribs with the dead weight of an iron mallet, driving the air up his windpipe until his tongue hits the roof of his mouth and finds nothing there. The name—the three flat vowels of her greeting when she came in from milking with the blue pail swinging against her skirt—rolls off his tongue and drops into the gray grain like a pebble down a dry shaft, leaving only the taste of rusted tin and the heavy, sulfurous reek of scorched cedar clogging his nose until his eyes water.",
+        "prose The brine crust seals over his knuckles like grey tallow cooling in a draft, holding his hand fast to the floor of the crock while the iron wheels turn inside his meat. He does not pull. There is nothing left behind his teeth to tell him which way to tug, only the thick, greasy gallop of the second hand beating against his ribs like a wet wing trapped in a throat. The grease-paper in the pantry window rattles once against the frame as the wind drops outside, leaving the room to the smell of scorched cedar and the dry, rattling hitch of a chest that has forgotten how to finish a breath.",
+        "prose The salt will not let go. It has set like winter grout around his second knuckles, pulling the skin tight over the bone until the split below his cuticle turns white at the edges before the dark grease-blood wells up again. Beneath his ribs, the wet gear-slide catches on a rib and spits—a thick, wet chunk of rhythm that smells of scorched cedar and the lard he used to grease his boots when the floorboards stayed frozen through July. He tugs, the tendon in his wrist grating like a rusty latch against the radius, but his fingers are keyed into the bottom stone, cold as river-silt. The ticking does not wait for him to catch his wind. It hurls itself forward, a frantic, wet gallop that fills his ears until his own breathing is nothing more than a dry wheeze in the back of his mouth, scraping against the place where a four-syllable name used to sit before the cinders took it. He can feel the stone through his fingertips, but it isn't stone; it's the hard, flat back of a pocket watch case he never owned, pressing back against his palm with the exact temperature of a dead woman's heel."
+      ]
+    }
+  ],
+  "episodes_completed": 2,
+  "call_summary": {
+    "calls": 542,
+    "prompt_tokens": 853487,
+    "completion_tokens": 163562,
+    "cost_usd": 0.0,
+    "cache_hits": 48,
+    "errors": 179,
+    "mean_latency_s": 1.5272534971218428,
+    "total_tokens": 1017049,
+    "cache_hit_rate": 0.08856088560885608,
+    "by_purpose": [
+      {
+        "purpose": "propose.beat",
+        "calls": 88,
+        "tokens": 345373,
+        "cost_usd": 0.0,
+        "cache_hits": 14
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 295,
+        "tokens": 260425,
+        "cost_usd": 0.0,
+        "cache_hits": 8
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 81,
+        "tokens": 204928,
+        "cost_usd": 0.0,
+        "cache_hits": 12
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 36,
+        "tokens": 104660,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 14,
+        "tokens": 63648,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 16,
+        "tokens": 24517,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 3,
+        "tokens": 10433,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 9,
+        "tokens": 3065,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "gemini",
+        "calls": 525,
+        "tokens": 1016102,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 17,
+        "tokens": 947,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 218,
+      "misses": 1022,
+      "entries": 7041
+    },
+    "budget_remaining_usd": 12.0
+  },
+  "preference_summary": {
+    "pairs_seen": 34,
+    "edits_seen": 2,
+    "voice_trained": true,
+    "top_weights": [
+      {
+        "feature": "judge_voice",
+        "weight": 5.0107
+      },
+      {
+        "feature": "criterion_2",
+        "weight": 2.707
+      },
+      {
+        "feature": "judge_specificity",
+        "weight": 2.6747
+      },
+      {
+        "feature": "judge_consequence",
+        "weight": 2.5086
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": -0.7628513455454067,
+      "judge_specificity": 2.6746692908480605,
+      "judge_consequence": 2.5086313080847646,
+      "judge_voice": 5.010734646710373,
+      "criterion_1": 1.2193471450841247,
+      "criterion_2": 2.7069757004970305,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 1.056024949898078,
+      "voice_cosine": 0.41004433474287727,
+      "edit_direction": -0.7337901437594571,
+      "length": 0.4373195940541557,
+      "dialogue_ratio": 0.6711140206190536
+    },
+    "weight_recovery": 0.533993152761344
+  },
+  "hidden_weights": {
+    "judge_momentum": 0.0,
+    "judge_specificity": 0.6,
+    "judge_consequence": 0.5,
+    "judge_voice": 1.0,
+    "criterion_1": 0.7,
+    "criterion_2": 0.4,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 0.4,
+    "voice_cosine": 0.8,
+    "edit_direction": 0.0,
+    "length": 0.6,
+    "dialogue_ratio": -0.3
+  },
+  "probe": [],
+  "errors": [],
+  "waited_seconds": 231.9,
+  "rate_limit_waits": 6
+}

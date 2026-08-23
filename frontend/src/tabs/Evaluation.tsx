@@ -226,6 +226,14 @@ export function Evaluation() {
             </tbody>
           </table>
           <p className="hint">
+            <strong>Every one of these numbers cost $0.00.</strong> The whole
+            project ran on free-tier keys — six rotated Gemini keys, Groq for
+            extraction, CPU models here for embeddings and NLI — across roughly
+            ten million tokens. The tokens-per-decision column is what a metered
+            provider would have billed for; the metered budget is deliberately
+            unspent and held in reserve for the strong-model rerun.
+          </p>
+          <p className="hint">
             Weight recovery is the correlation between what the preference head
             learned and the persona's hidden weights. It is read against the
             ceiling beside it: what the same estimator scores on the same number

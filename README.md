@@ -201,6 +201,24 @@ What this cannot measure: real taste, fatigue, or trust. The evaluation uses sim
 writers, so every number is a property of the machinery. Only a human study would settle
 the rest, and `docs/presentable.tex` §Limitations says so.
 
+## Cost
+
+**Everything here ran on free-tier keys, at $0.00 across roughly ten million tokens** —
+six rotated Gemini keys for generation and judging, Groq for extraction, CPU models on one
+laptop for embeddings and NLI.
+
+That is a decision about where risk sits, not a constraint worked around. A metered key
+from day one buys better prose immediately and hides every cost bug until the bill arrives.
+A free tier forces the cost controls to exist before they are needed — purpose-tag routing,
+a read-through cache keyed on the full request, key rotation with per-(key, model)
+cooldowns, a budget guard that refuses a call it cannot afford — and those are the same
+controls a production system needs. Each was exercised in anger rather than written and
+hoped for.
+
+The metered budget is consequently unspent, and reserved for the strong-model rerun that
+separates *the system works* from *the model is good*. Nothing needs re-engineering for it:
+the model id is a configuration value.
+
 ## Design decisions
 
 The full decision log — every choice, the alternative rejected, and why — is in

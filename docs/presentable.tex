@@ -930,10 +930,12 @@ regenerates with
 python -m eval.run -{}-config full \&\& python -m eval.texnumbers
 \end{quote}
 
-Everything above ran on a small free-tier model, so prose quality here is a floor rather
-than a ceiling. The same command reruns the whole evaluation against a stronger one, which
-is what separates ``the system works'' from ``the model is good'' --- a one-line
-configuration change, costed against the budget cap before it is spent.
+Everything above ran on **free-tier keys** --- six rotated Gemini keys, Groq for
+extraction, CPU models here for embeddings and NLI --- at a total spend of \textbf{\$0.00}
+across roughly ten million tokens. Prose quality is therefore a floor rather than a ceiling,
+and that is deliberate: the metered budget is held in reserve for the strong-model rerun,
+which is the run that separates ``the system works'' from ``the model is good''. It is a
+one-line configuration change, costed against the cap before it is spent.
 
 \section{What the measurements changed}
 \label{sec:findings}
@@ -977,6 +979,27 @@ only reports the measurements that agreed with it has not been measured.
 
 \section{Decisions, and what was rejected}
 \label{sec:decisions}
+
+\decision{Free-tier keys for all of it, with the metered budget held in reserve}
+\rejected{Paying for a strong model from day one.} Every number in this document was
+produced on free-tier keys: six rotated Gemini keys for generation and judging, Groq for
+extraction and classification, and CPU models on this machine for embeddings and natural
+language inference. \textbf{Total spend across roughly ten million tokens: \$0.00.}
+
+That is a choice about where the risk is, not a constraint that was worked around. A
+metered key from day one buys better prose immediately and hides every cost bug until the
+bill arrives; a free tier forces the cost controls to exist before they are needed, and
+they are the same controls a production system needs --- purpose-tag routing so extraction
+never touches the expensive model, a read-through cache keyed on the full request so a
+rerun of an identical configuration is nearly free, key rotation with per-(key, model)
+cooldowns, and a budget guard that refuses a call it cannot afford. Every one of those was
+exercised in anger rather than written and hoped for.
+
+The metered budget is therefore still unspent, which is the point: it is reserved for the
+strong-model rerun, where the same evaluation runs against a better model to separate
+\emph{the system works} from \emph{the model is good}. That comparison is only meaningful
+because nothing has been re-engineered in between --- the model id is a configuration
+value, and the run is one command.
 
 \decision{Purpose-tag routing rather than per-call-site provider choice}
 The cost policy is six lines in one table. \rejected{Choosing a provider where the call is

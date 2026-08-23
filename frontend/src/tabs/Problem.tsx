@@ -175,6 +175,24 @@ export function Problem() {
       <h2>Decisions</h2>
 
       <Decision
+        title="Free-tier keys for all of it, with the metered budget held in reserve"
+        rejected="paying for a strong model from day one."
+      >
+        Every number in this project was produced on free-tier keys — six
+        rotated Gemini keys for generation and judging, Groq for extraction, CPU
+        models on one laptop for embeddings and NLI.{" "}
+        <strong>Total spend across roughly ten million tokens: $0.00.</strong>{" "}
+        That is a decision about where risk sits. A metered key from day one
+        buys better prose immediately and hides every cost bug until the bill
+        arrives; a free tier forces the cost controls to exist before they are
+        needed — purpose-tag routing, a read-through cache, key rotation with
+        per-model cooldowns, a budget guard that refuses a call it cannot afford
+        — and those are the same controls a production system needs. The metered
+        budget is consequently unspent, and reserved for the strong-model rerun
+        that separates “the system works” from “the model is good”.
+      </Decision>
+
+      <Decision
         title="Diffs rather than replacement text"
         rejected="text-level replacement with a visual diff — it looks similar on screen and is far weaker underneath."
       >
