@@ -41,6 +41,20 @@ that ranking against what the persona would privately have chosen (Kendall tau, 
 agreement). The probe set never changes, so difficulty is held fixed by construction and
 anything that moves is the head.
 
+**Which decisions go in is itself a design choice with a wrong answer.** A candidate set
+where one option is better on every feature has the same winner under every weight vector,
+so no head can get it wrong and replaying it measures nothing — those are dropped by a
+discrimination floor (0.40). But taking the *most* discriminating points instead, which an
+earlier version did, fills the fixture with near-ties: the decisions most sensitive to the
+weights and equally to noise, which maximises the variance of every reading. The rule is a
+floor and then a draw stratified across levels, and it never consults a head.
+
+**An instrument sampled from a system inherits that system's blind spots.** The first
+fixture had zero within-point spread on five features, so no head difference on those
+weights could possibly show through it — which was discovered when an A/B scored both of
+its variants identically to three decimals. `test_the_probe_can_see_the_features_it_is_asked_about`
+now asserts the fixture can distinguish what it is used to ask about.
+
 Two properties keep it honest:
 
 - **No leakage.** Points come from a dedicated `probesample` run that is never itself
@@ -191,3 +205,22 @@ calls**, which is asserted in the tests.
 Each step captures what a writer would have seen: candidates with their labels, flags, and
 scores; what they did; and what changed — the bible diff and the stale marks. That is enough
 to reconstruct all three panes of the interface at any point in the session.
+
+## The shrinkage A/B
+
+`shrinkage.py` answers one question: when a feature direction has no variance in a writer's
+own decisions, should the fit leave it at the population prior or pull it to zero?
+
+It is answerable **offline** because per-decision feature vectors are recorded, so both
+variants can be refitted from the decisions that actually happened and scored on the
+held-out probe. No provider calls, no new run, and — importantly — no opportunity to keep
+rerunning until one variant wins.
+
+The decision rule was written into `arush/logs/final_pass.md` *before* the module produced a
+number: ship the flag on by default iff probe agreement improves and the prior's cold-start
+lift does not fall by more than its own seed noise. It did (0.426 → 0.565 tau, 58% → 68%
+top-1, lift unchanged at +0.098), so `SHRINK_UNIDENTIFIED` is on.
+
+```bash
+python -m eval.shrinkage
+```
