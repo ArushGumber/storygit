@@ -16,6 +16,7 @@ run that cannot resume is a run that never finishes.
 
 from __future__ import annotations
 
+import asyncio
 import json
 import random
 from pathlib import Path
@@ -29,7 +30,13 @@ from storygit.domain.ids import IdGenerator, NodeId, ProposalId, SnapshotId
 from storygit.domain.nodes import NodeType
 from storygit.engine import Engine
 from storygit.preference.features import FeatureVector
-from storygit.providers.base import LLMRequest, Message, ProviderError, Role
+from storygit.providers.base import (
+    LLMRequest,
+    Message,
+    ProviderError,
+    RateLimited,
+    Role,
+)
 from storygit.providers.base import Role as _Role
 from storygit.providers.router import Router
 from storygit.selection.select import Candidate, candidate_text
@@ -85,6 +92,10 @@ class RunLog(BaseModel):
         hidden_weights: The persona's true weights, recorded *after* the run for scoring
             recoverability. The engine never saw them.
         errors: Anything that went wrong, for honesty about partial runs.
+        waited_seconds: Total time spent backing off from rate limits. Reported because a
+            run that took an hour of which fifty minutes was waiting is a different fact
+            about the system than one that took an hour of work.
+        rate_limit_waits: How many times the run had to wait.
     """
 
     model_config = ConfigDict(frozen=True)
@@ -97,6 +108,8 @@ class RunLog(BaseModel):
     preference_summary: dict[str, Any] = Field(default_factory=dict)
     hidden_weights: dict[str, float] = Field(default_factory=dict)
     errors: tuple[str, ...] = ()
+    waited_seconds: float = 0.0
+    rate_limit_waits: int = 0
 
     def save(self, path: Path | str) -> Path:
         """Write the log as JSON."""
@@ -351,6 +364,8 @@ async def run_writer(
     use_llm_edits: bool = True,
     checkpoint: Path | None = None,
     on_episode: Any | None = None,
+    max_wait_seconds: float = 900.0,
+    max_retries: int = 12,
 ) -> RunLog:
     """Drive a full run: episodes, scenes, beats, and prose.
 
@@ -365,6 +380,9 @@ async def run_writer(
         checkpoint: Directory to write a partial log to after every episode. Rate limits
             *will* hit during a long run; a run that cannot resume never finishes.
         on_episode: Optional callback ``(index, RunLog)`` after each episode.
+        max_wait_seconds: Total backoff budget. A per-minute quota clears in seconds; a
+            daily one does not, and there is no point waiting hours for it.
+        max_retries: How many times one step may wait and retry.
 
     Returns:
         The complete run log. A run cut short by provider errors still returns everything
@@ -375,6 +393,8 @@ async def run_writer(
     actions: list[Action] = []
     errors: list[str] = []
     completed = 0
+    waited = 0.0
+    waits = 0
 
     engine.set_dial(persona.dial)
     for note in persona.style_notes:
@@ -398,14 +418,36 @@ async def run_writer(
             preference_summary=engine.preference.state.summary(),
             hidden_weights=persona.weights,
             errors=tuple(errors),
+            waited_seconds=round(waited, 1),
+            rate_limit_waits=waits,
         )
 
     async def step(level: Level, node_id: NodeId | None) -> None:
-        candidates = await engine.propose_at(level, node_id=node_id)
-        if not candidates:
-            errors.append(f"no candidates parsed at {level.value}")
+        """One decision, waiting out rate limits rather than abandoning the run.
+
+        A free-tier per-minute quota clears in seconds, and the provider tells us exactly
+        how many. Abandoning a 33-decision run because one call needed a four-second wait
+        is the difference between an evaluation that finishes and one that does not -- and
+        it is how the first four-persona run lost three of its four writers.
+        """
+        nonlocal waited, waits
+        for attempt in range(max_retries + 1):
+            try:
+                candidates = await engine.propose_at(level, node_id=node_id)
+            except RateLimited as exc:
+                if attempt == max_retries or waited >= max_wait_seconds:
+                    raise
+                pause = max(1.0, min(float(exc.retry_after), 120.0))
+                waited += pause
+                waits += 1
+                print(f"      rate limited; waiting {pause:.0f}s (total {waited:.0f}s)")
+                await asyncio.sleep(pause)
+                continue
+            if not candidates:
+                errors.append(f"no candidates parsed at {level.value}")
+                return
+            actions.append(await writer.decide(candidates))
             return
-        actions.append(await writer.decide(candidates))
 
     try:
         for episode_index in range(episodes):
@@ -438,6 +480,8 @@ async def run_writer(
     except ProviderError as exc:
         errors.append(f"{type(exc).__name__}: {exc}")
 
+    if waits:
+        print(f"      waited {waited:.0f}s across {waits} rate limits")
     return snapshot_log()
 
 

@@ -1,10 +1,48 @@
 {
-  "generated_at": "2026-08-23T01:14:01.620451+00:00",
+  "generated_at": "2026-08-23T02:32:37.376527+00:00",
   "runs": [
     {
-      "run": "smoke/the Serialist",
-      "persona": "the Serialist",
-      "decisions": 4,
+      "run": "full/the Controller",
+      "persona": "the Controller",
+      "decisions": 0,
+      "acceptance": 0.0,
+      "acceptance_first_third": 0.0,
+      "acceptance_last_third": 0.0,
+      "mean_edit_distance": 0.0,
+      "hard_flags_shown": 0,
+      "stale_marked": 0,
+      "vetoes": 0,
+      "weight_recovery": 0.3283968223344251,
+      "tokens_per_action": 0.0,
+      "usd_per_action": 0.0,
+      "episodes": 0,
+      "errors": [
+        "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s"
+      ]
+    },
+    {
+      "run": "full/the Maximalist",
+      "persona": "the Maximalist",
+      "decisions": 0,
+      "acceptance": 0.0,
+      "acceptance_first_third": 0.0,
+      "acceptance_last_third": 0.0,
+      "mean_edit_distance": 0.0,
+      "hard_flags_shown": 0,
+      "stale_marked": 0,
+      "vetoes": 0,
+      "weight_recovery": 0.06352391435843598,
+      "tokens_per_action": 0.0,
+      "usd_per_action": 0.0,
+      "episodes": 0,
+      "errors": [
+        "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s"
+      ]
+    },
+    {
+      "run": "full/the Minimalist",
+      "persona": "the Minimalist",
+      "decisions": 1,
       "acceptance": 1.0,
       "acceptance_first_third": 1.0,
       "acceptance_last_third": 1.0,
@@ -12,107 +50,126 @@
       "hard_flags_shown": 0,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.6414104572089452,
-      "tokens_per_action": 41368.75,
+      "weight_recovery": 0.4688120141284616,
+      "tokens_per_action": 1393682.0,
       "usd_per_action": 0.0,
-      "episodes": 1,
+      "episodes": 0,
+      "errors": [
+        "RateLimited: groq: rate limited"
+      ]
+    },
+    {
+      "run": "full/the Serialist",
+      "persona": "the Serialist",
+      "decisions": 33,
+      "acceptance": 0.9393939393939394,
+      "acceptance_first_third": 0.9082251082251083,
+      "acceptance_last_third": 0.9772727272727273,
+      "mean_edit_distance": 0.4411,
+      "hard_flags_shown": 13,
+      "stale_marked": 0,
+      "vetoes": 0,
+      "weight_recovery": 0.6541374062930565,
+      "tokens_per_action": 41102.36363636364,
+      "usd_per_action": 0.0,
+      "episodes": 3,
       "errors": []
     }
   ],
   "skipped": [],
   "call_summary": {
-    "calls": 67,
-    "prompt_tokens": 111835,
-    "completion_tokens": 53640,
+    "calls": 498,
+    "prompt_tokens": 1083818,
+    "completion_tokens": 309864,
     "cost_usd": 0.0,
-    "cache_hits": 15,
-    "errors": 0,
-    "mean_latency_s": 5.097323771253721,
-    "total_tokens": 165475,
-    "cache_hit_rate": 0.22388059701492538,
+    "cache_hits": 44,
+    "errors": 25,
+    "mean_latency_s": 5.013311444074302,
+    "total_tokens": 1393682,
+    "cache_hit_rate": 0.08835341365461848,
     "by_purpose": [
       {
         "purpose": "propose.beat",
-        "calls": 20,
-        "tokens": 59405,
+        "calls": 84,
+        "tokens": 436567,
         "cost_usd": 0.0,
-        "cache_hits": 8
-      },
-      {
-        "purpose": "propose.beat.repair",
-        "calls": 4,
-        "tokens": 24611,
-        "cost_usd": 0.0,
-        "cache_hits": 0
-      },
-      {
-        "purpose": "propose.episode.repair",
-        "calls": 3,
-        "tokens": 19997,
-        "cost_usd": 0.0,
-        "cache_hits": 0
-      },
-      {
-        "purpose": "propose.episode",
-        "calls": 4,
-        "tokens": 17436,
-        "cost_usd": 0.0,
-        "cache_hits": 0
+        "cache_hits": 7
       },
       {
         "purpose": "judge.soft",
-        "calls": 21,
-        "tokens": 15397,
+        "calls": 209,
+        "tokens": 410203,
+        "cost_usd": 0.0,
+        "cache_hits": 9
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 85,
+        "tokens": 224105,
         "cost_usd": 0.0,
         "cache_hits": 6
       },
       {
-        "purpose": "extract.facts",
-        "calls": 3,
-        "tokens": 9016,
+        "purpose": "propose.episode",
+        "calls": 40,
+        "tokens": 116666,
         "cost_usd": 0.0,
-        "cache_hits": 1
-      },
-      {
-        "purpose": "propose.scene.repair",
-        "calls": 4,
-        "tokens": 8850,
-        "cost_usd": 0.0,
-        "cache_hits": 0
-      },
-      {
-        "purpose": "propose.prose",
-        "calls": 4,
-        "tokens": 6532,
-        "cost_usd": 0.0,
-        "cache_hits": 0
+        "cache_hits": 14
       },
       {
         "purpose": "propose.scene",
-        "calls": 4,
-        "tokens": 4231,
+        "calls": 48,
+        "tokens": 113096,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 18,
+        "tokens": 44505,
         "cost_usd": 0.0,
         "cache_hits": 0
+      },
+      {
+        "purpose": "propose.beat.repair",
+        "calls": 4,
+        "tokens": 33130,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts.repair",
+        "calls": 6,
+        "tokens": 11236,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 4,
+        "tokens": 4174,
+        "cost_usd": 0.0,
+        "cache_hits": 1
       }
     ],
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 64,
-        "tokens": 156459,
+        "calls": 479,
+        "tokens": 1374566,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 3,
-        "tokens": 9016,
+        "calls": 19,
+        "tokens": 19116,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 0,
-      "misses": 37,
-      "entries": 52
+      "hits": 44,
+      "misses": 457,
+      "entries": 1495
     },
     "budget_remaining_usd": 12.0
   },

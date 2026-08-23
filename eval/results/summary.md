@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T01:14:01.620451+00:00.
+Generated 2026-08-23T02:32:37.376527+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
@@ -51,11 +51,20 @@ Pseudo-regret after 400 rounds: Thompson 4.8, epsilon-greedy 6.3. Pulls: {'safe'
 
 | run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | tokens/action |
 |---|---|---|---|---|---|---|---|
-| smoke/the Serialist | 4 | 100% | 100% | 100% | 0.00 | 0.64 | 41369 |
+| full/the Controller | 0 | 0% | 0% | 0% | 0.00 | 0.33 | 0 |
+| full/the Maximalist | 0 | 0% | 0% | 0% | 0.00 | 0.06 | 0 |
+| full/the Minimalist | 1 | 100% | 100% | 100% | 0.00 | 0.47 | 1393682 |
+| full/the Serialist | 33 | 94% | 91% | 98% | 0.44 | 0.65 | 41102 |
+
+## Errors during runs
+
+- `full/the Controller`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s
+- `full/the Maximalist`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s
+- `full/the Minimalist`: RateLimited: groq: rate limited
 
 ## Provider cost
 
-- calls: 67
-- tokens: 165475
-- cache hit rate: 22%
+- calls: 498
+- tokens: 1393682
+- cache hit rate: 9%
 - estimated cost: $0.0000 (free tier; the price table would apply on a metered provider)

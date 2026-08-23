@@ -15,6 +15,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import FileResponse
 
 from storygit.api.deps import AppState, app_state
+from storygit.gallery import Session, replay
 from storygit.store.repository import Repository
 
 router = APIRouter(prefix="/api", tags=["artifacts"])
@@ -65,8 +66,6 @@ def session(state: State, name: str, resolve: bool = True) -> dict[str, Any]:
     Raises:
         HTTPException: 404 if the session does not exist.
     """
-    from eval.gallery_record import Session, replay
-
     path = _gallery_dir(state) / f"{Path(name).name}.json"
     if not path.exists():
         raise HTTPException(status_code=404, detail=f"no gallery session {name!r}")

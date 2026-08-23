@@ -1,5 +1,10 @@
 """Recording replayable sessions from real snapshots.
 
+The session *shape* and the replay function live in ``storygit.gallery`` because the API
+serves them, and a deliverable package must not import its own test harness. This module is
+the authoring half: it wraps an engine and writes down what a writer would have seen.
+
+
 A recorded session is the honest form of a demo. Every step names the snapshot it happened
 at, so replay reads the story out of the store rather than out of a script — the Gallery
 tab cannot show something the system did not actually do, and replay makes **zero provider
@@ -12,116 +17,15 @@ marks. That is enough to reconstruct all three panes of the interface at any poi
 
 from __future__ import annotations
 
-import json
 from collections.abc import Sequence
-from pathlib import Path
 from typing import Any
-
-from pydantic import BaseModel, ConfigDict, Field
 
 from storygit.domain.ids import NodeId, ProposalId, SnapshotId
 from storygit.engine import AcceptResult, Engine
+from storygit.gallery import Replay, Session, ShownCandidate, Step, replay
 from storygit.selection.select import Candidate, candidate_text
 
-
-class ShownCandidate(BaseModel):
-    """One candidate as the writer saw it.
-
-    Attributes:
-        proposal_id: Its id.
-        axis_label: The named direction it was generated along.
-        delta_summary: What it would change, in English.
-        rationale: Why the model proposed it.
-        text: The candidate's prose or plan text.
-        flags: Flags on it, as ``(severity, layer, message, established_by)``.
-        base_quality: Judge or head score.
-        surprise: Distance from the greedy continuation.
-        effective_quality: What it was actually ranked on.
-        selected: Whether it made the shortlist.
-    """
-
-    model_config = ConfigDict(frozen=True)
-
-    proposal_id: ProposalId
-    axis_label: str = ""
-    delta_summary: tuple[str, ...] = ()
-    rationale: str = ""
-    text: str = ""
-    flags: tuple[dict[str, Any], ...] = ()
-    base_quality: float = 0.0
-    surprise: float = 0.0
-    effective_quality: float = 0.0
-    selected: bool = False
-
-
-class Step(BaseModel):
-    """One thing that happened, and everything it changed.
-
-    Attributes:
-        index: Position in the session.
-        title: What this step demonstrates, for the Gallery's step list.
-        note: One sentence explaining why this step is in the session.
-        snapshot_id: The snapshot after this step.
-        node_id: The node it concerned.
-        level: Plan level.
-        intent: The writer's instruction, if any.
-        shown: The candidates that were on screen.
-        action: ``accept``, ``edit``, ``reject``, ``lock``, ``strike``, or ``branch``.
-        chosen: The proposal acted on.
-        bible_diff: Facts added, ended, and struck.
-        marks: Stale and review marks the action produced.
-        flags: Continuity flags on the resulting state.
-    """
-
-    model_config = ConfigDict(frozen=True)
-
-    index: int
-    title: str = ""
-    note: str = ""
-    snapshot_id: SnapshotId | None = None
-    node_id: NodeId | None = None
-    level: str = ""
-    intent: str = ""
-    shown: tuple[ShownCandidate, ...] = ()
-    action: str = ""
-    chosen: ProposalId | None = None
-    bible_diff: tuple[str, ...] = ()
-    marks: tuple[dict[str, Any], ...] = ()
-    flags: tuple[dict[str, Any], ...] = ()
-
-
-class Session(BaseModel):
-    """A recorded, replayable session.
-
-    Attributes:
-        name: Filename-safe identifier.
-        title: What it demonstrates.
-        summary: One paragraph for the Gallery's index.
-        branch: Branch it was recorded on.
-        steps: The steps, in order.
-        db_path: The story database, so replay can load the snapshots.
-    """
-
-    model_config = ConfigDict(frozen=True)
-
-    name: str
-    title: str = ""
-    summary: str = ""
-    branch: str = "main"
-    steps: tuple[Step, ...] = ()
-    db_path: str = ""
-
-    def save(self, directory: Path | str) -> Path:
-        """Write the session as JSON."""
-        target = Path(directory) / f"{self.name}.json"
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(self.model_dump_json(indent=2))
-        return target
-
-    @staticmethod
-    def load(path: Path | str) -> Session:
-        """Read a session back."""
-        return Session.model_validate(json.loads(Path(path).read_text()))
+__all__ = ["Recorder", "Replay", "Session", "ShownCandidate", "Step", "replay", "shown_from"]
 
 
 def _flag_dict(flag: Any) -> dict[str, Any]:
@@ -250,56 +154,3 @@ class Recorder:
             steps=tuple(self.steps),
             db_path=db_path,
         )
-
-
-class Replay(BaseModel):
-    """One replayed step, resolved against the story database.
-
-    Attributes:
-        step: The recorded step.
-        tree: The plan tree as it stood, as ``(id, type, title, status)``.
-        facts: Facts true at that point, as sentences.
-    """
-
-    model_config = ConfigDict(frozen=True)
-
-    step: Step
-    tree: tuple[dict[str, Any], ...] = ()
-    facts: tuple[str, ...] = Field(default_factory=tuple)
-
-
-def replay(session: Session, repo: Any) -> list[Replay]:
-    """Reconstruct each step's state from the snapshots it names.
-
-    Makes no provider calls — everything comes out of the store. That is what makes the
-    Gallery a record rather than a recording.
-
-    Args:
-        session: The recorded session.
-        repo: The repository holding the snapshots.
-
-    Returns:
-        One entry per step, with the plan tree and world state as they stood.
-    """
-    out: list[Replay] = []
-    for step in session.steps:
-        if step.snapshot_id is None:
-            out.append(Replay(step=step))
-            continue
-        state = repo.state_at(step.snapshot_id)
-        names = state.entity_names()
-        tree = tuple(
-            {
-                "id": node.id,
-                "type": node.node_type.value,
-                "title": node.title,
-                "status": node.status.value,
-                "stale_reason": node.stale_reason,
-            }
-            for node in sorted(state.nodes.values(), key=lambda n: state.seq.get(n.id, 0))
-        )
-        facts = tuple(
-            fact.sentence(names) for fact in sorted(state.facts.values(), key=lambda f: f.id)
-        )
-        out.append(Replay(step=step, tree=tree, facts=facts))
-    return out
