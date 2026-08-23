@@ -72,6 +72,14 @@ TARGET_WORDS = 220.0
 # with the sentence after it, which is precisely the case the feature exists to measure.
 _SENTENCE_SPLIT = re.compile(r"(?<=[.!?])[\"\u201d\u2019')\]]*\s+")
 
+# Speech in any convention a model actually produces: straight or typographic doubles, and
+# single quotes when they wrap more than a word or two. The length guard is what keeps an
+# apostrophe in "don't" or a scare-quoted term from counting as dialogue.
+_QUOTED_SPEECH = re.compile(
+    r"[\"\u201c][^\"\u201d]{6,}[\"\u201d]"
+    r"|['\u2018][^'\u2019]{6,}['\u2019]"
+)
+
 
 class FeatureVector(BaseModel):
     """One candidate's features, named.
@@ -101,6 +109,13 @@ def dialogue_ratio(text: str) -> float:
     others by action and interiority. Counting quotation marks is crude and it separates
     those two modes reliably, which is all a feature needs to do.
 
+    It has to count **every** quoting convention a model actually uses, though. This
+    counted double quotes only, and the model in use writes speech in single quotes, so
+    the feature read exactly 0.0 on prose that was a third dialogue --- across every run,
+    which is why it appeared in the unexercised-features list as if the *stories* had no
+    dialogue in them. A feature that is silently constant is worse than one that is absent:
+    it occupies a weight and teaches the head nothing.
+
     Args:
         text: The prose.
 
@@ -112,7 +127,7 @@ def dialogue_ratio(text: str) -> float:
     sentences = [s for s in _SENTENCE_SPLIT.split(text) if s.strip()]
     if not sentences:
         return 0.0
-    quoted = sum(1 for s in sentences if '"' in s or "“" in s or "’’" in s)
+    quoted = sum(1 for s in sentences if _QUOTED_SPEECH.search(s))
     return quoted / len(sentences)
 
 

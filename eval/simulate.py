@@ -56,7 +56,8 @@ class Action(BaseModel):
         axes: Axis label per shown candidate.
         scores: The persona's private score per shown candidate.
         chosen: The proposal acted on, if any.
-        kind: ``accept``, ``edit``, or ``reject``.
+        kind: ``accept``, ``edit``, ``write`` (the writer discarded the suggestion and
+            wrote the beat themselves), or ``reject``.
         veto: The forbidden move that forced a rejection, if any.
         edit_distance: Normalized token edit distance when the writer rewrote it.
         flags_shown: Continuity flags on the chosen candidate.
@@ -140,7 +141,13 @@ class RunLog(BaseModel):
 
     @property
     def acceptance_rate(self) -> float:
-        """Fraction of candidate sets that ended in an accept or an edit-then-accept."""
+        """Fraction of candidate sets the writer took something from.
+
+        A hand-write counts against it: the writer looked at three suggestions and used
+        none of them, which is the system failing to be useful even though a beat got
+        written. Counting it as an acceptance would let the rate rise by the writer doing
+        more of the work.
+        """
         if not self.actions:
             return 0.0
         return sum(1 for a in self.actions if a.kind in ("accept", "edit")) / len(self.actions)
@@ -247,6 +254,21 @@ class SimulatedWriter:
 
         accept_at, edit_at = self.persona.thresholds()
         order = sorted(range(len(shown)), key=lambda i: -scores[i])
+
+        # Sometimes the writer reads the suggestion and writes the beat themselves. This
+        # is the interface's "write it myself" path, and it is the only thing that
+        # produces *anchors* for the voice model: prose the writer authored, as opposed to
+        # generated prose they merely approved. Before this existed the voice model was
+        # untrained in every live run ever recorded, and voice_cosine sat at a flat 0.5.
+        if (
+            shown[0].proposal.level is Level.prose
+            and self.persona.hand_write_probability > 0.0
+            and self.rng.random() < self.persona.hand_write_probability
+        ):
+            best = order[0]
+            if self.persona.vetoes(texts[best]) is None:
+                return await self._hand_write(base, shown, best, texts[best])
+
         for index in order:
             veto = self.persona.vetoes(texts[index])
             if veto is not None:
@@ -287,6 +309,26 @@ class SimulatedWriter:
                 "chosen": chosen.proposal.id,
                 "kind": "edit",
                 "edit_distance": round(token_edit_distance(text, rewritten), 4),
+                "snapshot_id": result.snapshot_id,
+                "stale_marked": len(result.marks),
+            }
+        )
+
+    async def _hand_write(
+        self, base: Action, shown: list[Candidate], index: int, text: str
+    ) -> Action:
+        """The writer discards the proposal and writes the beat in their own words."""
+        chosen = shown[index]
+        beat_id = chosen.proposal.target_node_id
+        if beat_id is None:
+            return await self._accept(base, shown, index)
+        written = await self._rewrite(text)
+        result = await self.engine.write_beat(beat_id, written)
+        return base.model_copy(
+            update={
+                "chosen": chosen.proposal.id,
+                "kind": "write",
+                "edit_distance": round(token_edit_distance(text, written), 4),
                 "snapshot_id": result.snapshot_id,
                 "stale_marked": len(result.marks),
             }

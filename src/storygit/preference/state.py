@@ -44,7 +44,10 @@ class PreferenceState(BaseModel):
         voice: The contrastive voice model and edit-direction vector.
         bandit: Posteriors over shown-set composition.
         pairs_seen: Comparisons the head has been fitted on.
-        edits_seen: Edit pairs mined so far.
+        edits_seen: Usable edit pairs — those with prose on both sides. An edit to a
+            plan-level proposal changes a title or a summary, not prose, so it carries no
+            voice signal and is not counted here. The number therefore reads lower than
+            "how many times the writer edited something", deliberately.
     """
 
     model_config = ConfigDict(frozen=True)

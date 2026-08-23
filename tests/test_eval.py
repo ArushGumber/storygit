@@ -58,7 +58,31 @@ def mock_engine(
         stream: Id-generator stream, so two engines over one repository cannot collide.
         **kwargs: Passed through to the engine.
     """
-    provider = MockProvider(lambda req: canned(dict(BEAT, title=f"b{req.sample_index}")))
+
+    def reply(req: object) -> object:
+        # Purpose-aware, because a beat payload does not validate as a prose proposal and
+        # the run silently stops at the prose level otherwise -- which is why nothing
+        # exercised the prose path until the voice model turned out never to have trained.
+        purpose = getattr(req, "purpose", "")
+        index = getattr(req, "sample_index", 0)
+        if purpose.startswith("propose.prose"):
+            return canned(
+                {
+                    "text": (
+                        f"'Not this one,' she said, and meant it. He counted {index + 1} "
+                        "guards and kept walking."
+                    ),
+                    "rationale": "short sentences",
+                    "delta_summary": ["writes the beat"],
+                }
+            )
+        if purpose.startswith("extract"):
+            return canned(
+                {"facts": [], "new_characters": [], "threads_opened": [], "threads_touched": []}
+            )
+        return canned(dict(BEAT, title=f"b{index}"))
+
+    provider = MockProvider(reply)
     router = router or Router({"gemini": provider, "groq": provider})
     engine = Engine(
         fixture.repo,
@@ -890,3 +914,48 @@ def test_every_probe_point_names_a_run_that_is_never_itself_probed() -> None:
         config, _, persona = point.source.partition("/")
         assert config == "probesample", f"probe point from {config!r}, which is probed"
         assert persona, "a probe point must name the writer it came from"
+
+
+@pytest.mark.asyncio
+async def test_the_writer_sometimes_writes_the_beat_itself(fixture: Fixture) -> None:
+    """The hand-write path is the only source of anchors for the voice model.
+
+    Generated prose the writer merely accepted is a positive example, not an anchor: the
+    voice model is meant to learn what *this writer* sounds like. Until the personas used
+    the "write it myself" path, no live run ever trained it and voice_cosine sat at a flat
+    0.5 in every recorded run.
+    """
+    engine, _ = mock_engine(fixture)
+    persona = get("the Minimalist").model_copy(update={"hand_write_probability": 1.0})
+    log = await run_writer(
+        persona,
+        engine,
+        episodes=1,
+        scenes_per_episode=1,
+        beats_per_scene=1,
+        seed=4,
+        use_llm_edits=False,
+    )
+    prose = [a for a in log.actions if a.level == "prose"]
+    assert prose, "the run never reached prose level"
+    assert all(a.kind == "write" for a in prose), [a.kind for a in prose]
+    # And a hand-write is not an acceptance: the writer used none of the three suggestions.
+    assert log.acceptance_rate < 1.0
+
+
+def test_dialogue_is_counted_whatever_quotes_the_model_uses() -> None:
+    """This feature read exactly 0.0 across every run because it only knew double quotes.
+
+    The model in use writes speech in single quotes, so prose that was a third dialogue
+    scored zero, and the feature showed up as "never varied" as though the stories had no
+    dialogue in them. A silently constant feature is worse than an absent one: it occupies
+    a weight and teaches the head nothing.
+    """
+    from storygit.preference.features import dialogue_ratio
+
+    assert dialogue_ratio("'Drop the book,' she hissed. He said nothing.") == pytest.approx(0.5)
+    assert dialogue_ratio('"Drop the book," she hissed. He said nothing.') == pytest.approx(0.5)
+    assert dialogue_ratio("“Drop it,” she said.") == pytest.approx(1.0)
+    # An apostrophe is not dialogue, and neither is a scare-quoted word.
+    assert dialogue_ratio("He didn't move. She wouldn't either.") == 0.0
+    assert dialogue_ratio("They called it 'art'. Nobody agreed.") == 0.0

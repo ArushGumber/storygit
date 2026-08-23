@@ -67,6 +67,12 @@ class Persona(BaseModel):
             than rejecting it.
         noise: Decision noise, so choices are not perfectly separable.
         forbidden: Moves that are always rejected.
+        hand_write_probability: How often this writer discards the suggestion at prose
+            level and writes the beat themselves. Real writers do; the interface has the
+            path ("write it myself"); and until this existed no live run ever produced it,
+            which is why the voice model was untrained in every run ever recorded. It
+            wants anchors — prose the *writer* wrote or rewrote — and generated prose the
+            writer merely accepted is a positive example, not an anchor.
         criteria: Writer-defined scoring axes as ``(name, description)``, in the order
             this writer would have created them. The run adds them to the ledger, so the
             judge scores every candidate on them and each one lands in its own feature
@@ -94,6 +100,7 @@ class Persona(BaseModel):
     dial: float = 0.35
     style_notes: tuple[str, ...] = ()
     criteria: tuple[tuple[str, str], ...] = ()
+    hand_write_probability: float = Field(default=0.0, ge=0.0, le=1.0)
 
     def thresholds(self) -> tuple[float, float]:
         """The accept and edit thresholds, in score units.
@@ -267,6 +274,7 @@ SERIALIST = Persona(
     ),
     accept_quantile=0.35,
     edit_quantile=0.10,
+    hand_write_probability=0.20,
     forbidden=(ForbiddenMove.flashback,),
     target_words=240,
     dialogue_appetite=0.45,
@@ -293,6 +301,7 @@ MINIMALIST = Persona(
     ),
     accept_quantile=0.65,
     edit_quantile=0.20,
+    hand_write_probability=0.35,
     forbidden=(ForbiddenMove.prophecy,),
     target_words=110,
     dialogue_appetite=0.25,
@@ -320,6 +329,7 @@ MAXIMALIST = Persona(
     ),
     accept_quantile=0.55,
     edit_quantile=0.15,
+    hand_write_probability=0.15,
     forbidden=(ForbiddenMove.romance_subplot,),
     target_words=340,
     dialogue_appetite=0.10,
@@ -345,6 +355,7 @@ CONTROLLER = Persona(
     ),
     accept_quantile=0.92,
     edit_quantile=0.15,
+    hand_write_probability=0.30,
     noise=0.05,
     forbidden=(ForbiddenMove.kill_the_mentor, ForbiddenMove.prophecy),
     target_words=190,
