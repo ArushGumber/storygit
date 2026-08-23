@@ -465,3 +465,31 @@ def test_a_real_recorded_session_loads_and_replays_over_http(tmp_path: Path) -> 
         for entry in index:
             response = client.get(f"/api/gallery/{entry['name']}")
             assert response.status_code == 200, f"{entry['name']} failed to load"
+
+
+def test_a_writer_can_delete_a_rule_the_system_mined(api) -> None:  # type: ignore[no-untyped-def]
+    """A mined rule the writer cannot remove is a rule influencing prose without consent.
+
+    The UI has always promised this ("rules you can see and delete"); until this was
+    written there was no route behind the promise.
+    """
+    client, _, _ = api
+    assert client.post("/api/ledger/style-note", json={"text": "no adverbs"}).status_code == 200
+    assert (
+        client.post(
+            "/api/ledger/criterion", json={"name": "dread", "description": "unease that builds"}
+        ).status_code
+        == 200
+    )
+    ledger = client.get("/api/ledger").json()
+    assert "no adverbs" in [n["text"] for n in ledger["style_notes"]]
+    assert "dread" in [c["name"] for c in ledger["criteria"]]
+
+    assert (
+        client.post("/api/ledger/style-note/remove", json={"text": "no adverbs"}).status_code == 200
+    )
+    assert client.post("/api/ledger/criterion/remove", json={"name": "dread"}).status_code == 200
+
+    ledger = client.get("/api/ledger").json()
+    assert [n["text"] for n in ledger["style_notes"]] == []
+    assert [c["name"] for c in ledger["criteria"]] == []

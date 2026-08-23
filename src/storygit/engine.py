@@ -39,6 +39,8 @@ from storygit.domain.diff import (
     Diff,
     DiffAuthor,
     Op,
+    RemoveCriterion,
+    RemoveStyleNote,
     SetDial,
     SetLock,
     SetNodeStatus,
@@ -480,6 +482,43 @@ class Engine:
                 ops=(AddStyleNote(note=StyleNote(text=text)),),
                 author=DiffAuthor.human,
                 intent="add a style note",
+            ),
+            branch=self.branch,
+        )
+
+    def remove_style_note(self, text: str) -> SnapshotId:
+        """Delete a style rule, including one the system mined from the writer's edits.
+
+        A mined rule the writer cannot remove is a rule influencing generation without
+        consent, which is the failure the whole ledger is designed to avoid. Removal is
+        itself a signal: it says the system read the writer wrong.
+        """
+        self.signals.record(
+            Signal(kind=SignalKind.style_note_removed, branch=self.branch, payload={"text": text})
+        )
+        return self.repo.commit_diff(
+            Diff(
+                ops=(RemoveStyleNote(text=text),),
+                author=DiffAuthor.human,
+                intent="remove a style note",
+            ),
+            branch=self.branch,
+        )
+
+    def remove_criterion(self, name: str) -> SnapshotId:
+        """Delete a writer-defined scoring axis.
+
+        The judge stops scoring candidates on it and the preference head stops seeing it
+        as a feature, from the next proposal onward.
+        """
+        self.signals.record(
+            Signal(kind=SignalKind.criterion_removed, branch=self.branch, payload={"name": name})
+        )
+        return self.repo.commit_diff(
+            Diff(
+                ops=(RemoveCriterion(name=name),),
+                author=DiffAuthor.human,
+                intent="remove a criterion",
             ),
             branch=self.branch,
         )

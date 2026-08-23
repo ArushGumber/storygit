@@ -219,8 +219,9 @@ def test_authorship_ratio_on_mixed_prose(fixture: Fixture) -> None:
 def test_entity_merge_rewrites_facts_and_aliases(fixture: Fixture, ids: IdGenerator) -> None:
     state = fixture.repo.state()
     duplicate = EntityId("e_dupe")
-    from storygit.domain.diff import AddEntity
-    from storygit.domain.world import Entity, EntityKind
+    subject_fact, object_fact = ids.fact(), ids.fact()
+    from storygit.domain.diff import AddEntity, AddKnows
+    from storygit.domain.world import Entity, EntityKind, Knows
 
     state = apply(
         state,
@@ -231,13 +232,29 @@ def test_entity_merge_rewrites_facts_and_aliases(fixture: Fixture, ids: IdGenera
                 ),
                 AddFact(
                     fact=Fact(
-                        id=ids.fact(),
+                        id=subject_fact,
                         subject=duplicate,
                         predicate=Predicate.goal,
                         object_text="hold the gate",
                         valid_from_beat=fixture.beat_a,
                         established_by_beat=fixture.beat_a,
                     )
+                ),
+                # The duplicate is also the *object* of somebody else's fact, and
+                # somebody knows that fact. Both point at an id that is about to
+                # stop existing.
+                AddFact(
+                    fact=Fact(
+                        id=object_fact,
+                        subject=fixture.kael,
+                        predicate=Predicate.relationship,
+                        object_entity=duplicate,
+                        valid_from_beat=fixture.beat_a,
+                        established_by_beat=fixture.beat_a,
+                    )
+                ),
+                AddKnows(
+                    knows=Knows(character=duplicate, fact=fixture.fact_f, since_beat=fixture.beat_a)
                 ),
             )
         ),
@@ -246,9 +263,18 @@ def test_entity_merge_rewrites_facts_and_aliases(fixture: Fixture, ids: IdGenera
 
     assert duplicate not in state.entities
     assert "the Warden" in state.entities[fixture.kell].aliases
-    assert all(f.subject != duplicate for f in state.facts.values())
     assert state.entity_by_name("The Warden") is not None
     assert state.entity_by_name("The Warden").id == fixture.kell  # type: ignore[union-attr]
+    # Nothing anywhere in the world may still point at the id that was merged away:
+    # a fact whose subject or object is a dead entity is a bible that cannot be read.
+    assert state.facts[subject_fact].subject == fixture.kell
+    assert state.facts[object_fact].object_entity == fixture.kell
+    assert all(f.subject != duplicate for f in state.facts.values())
+    assert all(f.object_entity != duplicate for f in state.facts.values())
+    assert all(character != duplicate for character, _ in state.knows)
+    # And the knowledge moves rather than vanishing: an epistemic edge quietly
+    # disappearing is the exact failure the epistemic layer exists to catch.
+    assert (fixture.kell, fixture.fact_f) in state.knows
 
 
 def test_entities_in_scope_uses_facts_and_names(fixture: Fixture) -> None:

@@ -417,7 +417,21 @@ export function Live() {
               <ul className="facts">
                 {ledger.style_notes.map((note) => (
                   <li key={note.text}>
-                    <div>{note.text}</div>
+                    <div className="row-between">
+                      <span>{note.text}</span>
+                      <button
+                        className="quiet"
+                        title="Delete this rule. It stops reaching prompts immediately."
+                        onClick={() =>
+                          void run("note", async () => {
+                            await api.removeStyleNote(note.text);
+                            await refresh();
+                          })
+                        }
+                      >
+                        remove
+                      </button>
+                    </div>
                     <div className="meta">
                       {note.source === "mined"
                         ? `learned from your edits, seen ${note.count}×${
@@ -461,7 +475,21 @@ export function Live() {
               <ul className="facts">
                 {ledger.criteria.map((criterion) => (
                   <li key={criterion.name}>
-                    <div>{criterion.name}</div>
+                    <div className="row-between">
+                      <span>{criterion.name}</span>
+                      <button
+                        className="quiet"
+                        title="Stop scoring options on this."
+                        onClick={() =>
+                          void run("criterion", async () => {
+                            await api.removeCriterion(criterion.name);
+                            await refresh();
+                          })
+                        }
+                      >
+                        remove
+                      </button>
+                    </div>
                     <div className="meta">{criterion.description}</div>
                   </li>
                 ))}

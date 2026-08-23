@@ -234,7 +234,7 @@ class DialRequest(BaseModel):
 
 
 class NoteRequest(BaseModel):
-    """Add a style note in the writer's own words."""
+    """Name a style note by its text, to add or to remove it."""
 
     text: str
 
@@ -245,6 +245,12 @@ class CriterionRequest(BaseModel):
     name: str
     description: str
     weight: float = 1.0
+
+
+class NameRequest(BaseModel):
+    """A request that names one thing in the ledger."""
+
+    name: str
 
 
 @router.post("/ledger/dial")
@@ -267,6 +273,24 @@ def add_criterion(state: State, request: CriterionRequest) -> dict[str, Any]:
     snapshot = state.engine().add_criterion(
         request.name, request.description, weight=request.weight
     )
+    return {"ok": True, "snapshot_id": str(snapshot)}
+
+
+@router.post("/ledger/style-note/remove")
+def remove_style_note(state: State, request: NoteRequest) -> dict[str, Any]:
+    """Delete a style rule, including one mined from the writer's own edits.
+
+    A `remove` rather than a `DELETE` to match the rest of this router, which is a list of
+    writer actions rather than a resource collection.
+    """
+    snapshot = state.engine().remove_style_note(request.text)
+    return {"ok": True, "snapshot_id": str(snapshot)}
+
+
+@router.post("/ledger/criterion/remove")
+def remove_criterion(state: State, request: NameRequest) -> dict[str, Any]:
+    """Delete a writer-defined scoring axis; the judge stops scoring candidates on it."""
+    snapshot = state.engine().remove_criterion(request.name)
     return {"ok": True, "snapshot_id": str(snapshot)}
 
 

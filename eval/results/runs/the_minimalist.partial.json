@@ -314,59 +314,329 @@
       "hard_flags_shown": 0,
       "snapshot_id": "2aa35a2feacee5305fca4aa4b3ac764a",
       "stale_marked": 0
+    },
+    {
+      "node_id": "n_0417bf53f0",
+      "level": "episode",
+      "shown": [
+        "p_9f02e64f4e",
+        "p_4b3f198baa",
+        "p_622072d70b"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "raise the stakes",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.4474,
+        0.4762,
+        0.3954
+      ],
+      "chosen": "p_4b3f198baa",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "5cb97318a66f80f6c83cb8b6e3f0b643",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_f5a493e299",
+      "level": "scene",
+      "shown": [
+        "p_bc45b6949f",
+        "p_6a5987dcb9",
+        "p_9247856346"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.6101,
+        0.4557,
+        0.3025
+      ],
+      "chosen": "p_bc45b6949f",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7d7d2f2d821e6d152798a841dee86c2f",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_114add5e19",
+      "level": "beat",
+      "shown": [
+        "p_8fb0033ab1",
+        "p_ce47002e3d",
+        "p_6fa3b95b7b"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.2397,
+        0.3277,
+        0.1242
+      ],
+      "chosen": "p_ce47002e3d",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_114add5e19",
+      "level": "beat",
+      "shown": [
+        "p_d2b0482a09",
+        "p_7d36a78ea7",
+        "p_40a3eaa8f2"
+      ],
+      "axes": [
+        "shift the point of view",
+        "pay off an open thread",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.4384,
+        0.4187,
+        0.2965
+      ],
+      "chosen": "p_d2b0482a09",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.6545,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "df455dc08834be5b4b1ffb98e6c56ee6",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_b410d69fb6",
+      "level": "prose",
+      "shown": [
+        "p_cb05bb0280",
+        "p_19754a1cf6",
+        "p_bc8155ad45"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5189,
+        0.3941,
+        0.4894
+      ],
+      "chosen": "p_cb05bb0280",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7b729bec9ea192bd5acae6faf4e7c655",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_f5a493e299",
+      "level": "scene",
+      "shown": [
+        "p_38f8247d2d",
+        "p_cd5f385557",
+        "p_777bed821b"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.489,
+        0.4972,
+        0.4521
+      ],
+      "chosen": "p_cd5f385557",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3fbd3e35cd102fae37b848a1d71e2960",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_6db4869f5e",
+      "level": "beat",
+      "shown": [
+        "p_affbf2780e",
+        "p_6698e436b0",
+        "p_3361cd2424"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.543,
+        0.1682,
+        0.5451
+      ],
+      "chosen": "p_3361cd2424",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "071840f2b199d46abe9a8e95811ce4a1",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_04c3a88a93",
+      "level": "prose",
+      "shown": [
+        "p_ddd58868c2",
+        "p_e3ad190838",
+        "p_03f95203ff"
+      ],
+      "axes": [
+        "introduce a complication",
+        "slow down",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.5798,
+        0.5566,
+        0.5623
+      ],
+      "chosen": "p_ddd58868c2",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "df539433b6fa13381f5b1e1c16d76b03",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_6db4869f5e",
+      "level": "beat",
+      "shown": [
+        "p_1fc1ba281a",
+        "p_949f5ab251",
+        "p_cf69b40c01"
+      ],
+      "axes": [
+        "slow down",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.5464,
+        0.4786,
+        0.5524
+      ],
+      "chosen": "p_cf69b40c01",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "64d3fe909680bbd4af741dba6a1b5e17",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_310a8d1b7c",
+      "level": "prose",
+      "shown": [
+        "p_376a5a6aed",
+        "p_bae71b18f9",
+        "p_01034060aa"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.6651,
+        0.5408,
+        0.4984
+      ],
+      "chosen": "p_376a5a6aed",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "31c5f099e5b028edb92816bd2c45c29e",
+      "stale_marked": 0
     }
   ],
-  "episodes_completed": 1,
+  "episodes_completed": 2,
   "call_summary": {
-    "calls": 562,
-    "prompt_tokens": 1274057,
-    "completion_tokens": 307276,
+    "calls": 701,
+    "prompt_tokens": 1584271,
+    "completion_tokens": 381547,
     "cost_usd": 0.0,
-    "cache_hits": 29,
-    "errors": 14,
-    "mean_latency_s": 5.716884115057067,
-    "total_tokens": 1581333,
-    "cache_hit_rate": 0.051601423487544484,
+    "cache_hits": 30,
+    "errors": 18,
+    "mean_latency_s": 5.5020813217476325,
+    "total_tokens": 1965818,
+    "cache_hit_rate": 0.042796005706134094,
     "by_purpose": [
       {
         "purpose": "propose.beat",
-        "calls": 113,
-        "tokens": 583695,
+        "calls": 141,
+        "tokens": 716695,
         "cost_usd": 0.0,
-        "cache_hits": 2
+        "cache_hits": 3
       },
       {
         "purpose": "judge.soft",
-        "calls": 246,
-        "tokens": 433081,
+        "calls": 306,
+        "tokens": 542548,
         "cost_usd": 0.0,
         "cache_hits": 12
       },
       {
         "purpose": "propose.prose",
-        "calls": 91,
-        "tokens": 237347,
+        "calls": 112,
+        "tokens": 290360,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
         "purpose": "propose.scene",
-        "calls": 56,
-        "tokens": 153176,
+        "calls": 70,
+        "tokens": 193047,
         "cost_usd": 0.0,
         "cache_hits": 1
       },
       {
         "purpose": "propose.episode",
-        "calls": 28,
-        "tokens": 127135,
+        "calls": 35,
+        "tokens": 165315,
         "cost_usd": 0.0,
         "cache_hits": 14
       },
       {
         "purpose": "extract.facts",
-        "calls": 24,
-        "tokens": 37892,
+        "calls": 30,
+        "tokens": 47467,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
@@ -379,8 +649,8 @@
       },
       {
         "purpose": "simulate.edit",
-        "calls": 3,
-        "tokens": 1694,
+        "calls": 6,
+        "tokens": 3073,
         "cost_usd": 0.0,
         "cache_hits": 0
       }
@@ -388,44 +658,44 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 548,
-        "tokens": 1580226,
+        "calls": 682,
+        "tokens": 1963609,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 14,
-        "tokens": 1107,
+        "calls": 19,
+        "tokens": 2209,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 29,
-      "misses": 532,
-      "entries": 2168
+      "hits": 30,
+      "misses": 670,
+      "entries": 2302
     },
     "budget_remaining_usd": 12.0
   },
   "preference_summary": {
-    "pairs_seen": 22,
+    "pairs_seen": 36,
     "edits_seen": 0,
     "voice_trained": false,
     "top_weights": [
       {
         "feature": "judge_specificity",
-        "weight": 3.5412
+        "weight": 5.1074
       },
       {
         "feature": "judge_voice",
-        "weight": 2.9582
-      },
-      {
-        "feature": "writer_criteria",
-        "weight": 1.9782
+        "weight": 3.4582
       },
       {
         "feature": "continuity",
-        "weight": 1.8357
+        "weight": 2.2328
+      },
+      {
+        "feature": "length",
+        "weight": 2.0142
       }
     ],
     "bandit_safe": 0.5,
