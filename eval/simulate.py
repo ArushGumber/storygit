@@ -24,6 +24,7 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from eval import probe
 from eval.personas import ForbiddenMove, Persona
 from storygit.agents.schemas import Level
 from storygit.domain.ids import IdGenerator, NodeId, ProposalId, SnapshotId
@@ -64,6 +65,9 @@ class Action(BaseModel):
             Recorded because the first autopsy of a truncated run wanted to decompose a
             rejection into the features that caused it and could not: the log held the
             scalar score and nothing behind it, so the answer needed a rerun.
+        texts: The shown candidates, in the same order. The held-out probe is built from
+            these: replaying a frozen decision means re-scoring the same words with a
+            later head, and the two learner-dependent features need the words.
     """
 
     model_config = ConfigDict(frozen=True)
@@ -82,6 +86,7 @@ class Action(BaseModel):
     snapshot_id: SnapshotId | None = None
     stale_marked: int = 0
     features: tuple[dict[str, float], ...] = ()
+    texts: tuple[str, ...] = ()
 
 
 class RunLog(BaseModel):
@@ -96,6 +101,9 @@ class RunLog(BaseModel):
         preference_summary: What the preference layer had learned by the end.
         hidden_weights: The persona's true weights, recorded *after* the run for scoring
             recoverability. The engine never saw them.
+        probe: Held-out probe agreement after each episode, in order. The deconfounded
+            learning curve: the same frozen decisions re-ranked by a later head, so
+            nothing in it can move because the task got harder.
         errors: Anything that went wrong, for honesty about partial runs.
         waited_seconds: Total time spent backing off from rate limits. Reported because a
             run that took an hour of which fifty minutes was waiting is a different fact
@@ -112,6 +120,7 @@ class RunLog(BaseModel):
     call_summary: dict[str, Any] = Field(default_factory=dict)
     preference_summary: dict[str, Any] = Field(default_factory=dict)
     hidden_weights: dict[str, float] = Field(default_factory=dict)
+    probe: tuple[dict[str, float], ...] = ()
     errors: tuple[str, ...] = ()
     waited_seconds: float = 0.0
     rate_limit_waits: int = 0
@@ -230,6 +239,7 @@ class SimulatedWriter:
             axes=tuple(c.axis_label for c in shown),
             scores=tuple(round(s, 4) for s in scores),
             features=tuple({k: round(v, 4) for k, v in f.values.items()} for f in features),
+            texts=tuple(texts),
             flags_shown=sum(len(c.flags) for c in shown),
             hard_flags_shown=sum(1 for c in shown for f in c.flags if f.is_hard),
         )
@@ -372,6 +382,7 @@ async def run_writer(
     on_episode: Any | None = None,
     max_wait_seconds: float = 900.0,
     max_retries: int = 12,
+    probe_set: probe.ProbeSet | None = None,
 ) -> RunLog:
     """Drive a full run: episodes, scenes, beats, and prose.
 
@@ -389,6 +400,9 @@ async def run_writer(
         max_wait_seconds: Total backoff budget. A per-minute quota clears in seconds; a
             daily one does not, and there is no point waiting hours for it.
         max_retries: How many times one step may wait and retry.
+        probe_set: The held-out probe. Replayed after every episode, costing nothing,
+            because the acceptance curve on its own cannot separate a head that learned
+            from a task that got harder.
 
     Returns:
         The complete run log. A run cut short by provider errors still returns everything
@@ -397,6 +411,8 @@ async def run_writer(
     """
     writer = SimulatedWriter(persona, engine, seed=seed, use_llm_edits=use_llm_edits)
     actions: list[Action] = []
+    probe_points = probe_set.for_persona(persona.name) if probe_set is not None else []
+    probe_curve: list[dict[str, float]] = []
     errors: list[str] = []
     completed = 0
     waited = 0.0
@@ -430,6 +446,7 @@ async def run_writer(
             call_summary=engine.router.summary(since=started_at),
             preference_summary=engine.preference.state.summary(),
             hidden_weights=persona.weights,
+            probe=tuple(probe_curve),
             errors=tuple(errors),
             waited_seconds=round(waited, 1),
             rate_limit_waits=waits,
@@ -502,6 +519,18 @@ async def run_writer(
                         await step(Level.prose, beats[-1])
 
             completed += 1
+            if probe_points:
+                # Zero provider calls: the candidates are frozen, and only the two
+                # learner-dependent features are recomputed.
+                reading = probe.agreement(
+                    probe_points,
+                    engine.preference.state.weights,
+                    persona.weights,
+                    learner=engine.preference.state.voice,
+                )
+                reading["decisions"] = float(len(actions))
+                reading["episode"] = float(completed)
+                probe_curve.append(reading)
             if checkpoint is not None:
                 snapshot_log().save(checkpoint / f"{_slug(persona.name)}.partial.json")
             if on_episode is not None:

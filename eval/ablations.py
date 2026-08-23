@@ -172,7 +172,23 @@ SOFT_EDGE_THRESHOLDS = (0.55, 0.62, 0.68, 0.72, 0.78, 0.85)
 """Threshold sweep for the 2d'' ablation. Reported as a precision/recall curve, not a
 single number, because the whole question is the trade-off."""
 
-BY_NAME: dict[str, RunConfig] = {c.name: c for c in (*ABLATIONS, SMOKE)}
+PROBE_SAMPLE = RunConfig(
+    name="probesample",
+    description="one episode per persona, to sample the held-out probe fixture from",
+    expectation="produces decisions with features and texts; never itself probed",
+    selection=SelectionConfig(n=6, k=3),
+    episodes=1,
+    scenes_per_episode=2,
+    beats_per_scene=2,
+)
+"""The run the probe fixture is built from.
+
+Kept separate from the evaluation runs on purpose. Sampling probe points from the same runs
+they are used to measure would make the probe a memory test even with the cross-persona
+rule; taking them from a run that is never itself probed removes the question entirely.
+"""
+
+BY_NAME: dict[str, RunConfig] = {c.name: c for c in (*ABLATIONS, SMOKE, PROBE_SAMPLE)}
 
 
 def get(name: str) -> RunConfig:

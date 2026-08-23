@@ -8,7 +8,7 @@ exercise by spending quota is a metrics module nobody checks.
 from __future__ import annotations
 
 import pytest
-from eval import ablations, inject, metrics, offline, personas
+from eval import ablations, inject, metrics, offline, personas, probe
 from eval.gallery_record import Recorder, Session, replay
 from eval.personas import PERSONAS, ForbiddenMove, get
 from eval.simulate import RunLog, SimulatedWriter, run_writer, token_edit_distance
@@ -636,3 +636,78 @@ async def test_a_writer_who_accepts_on_the_retry_gets_what_they_asked_for(
     assert kinds[0] == "reject", "the first set was scripted below the bar"
     assert kinds[1] == "accept", "the informed retry was scripted above it"
     assert kinds.count("reject") == 1, "one rejection, one retry, then on with the run"
+
+
+def _synthetic_probe(seed: int = 3) -> tuple[probe.ProbeSet, dict[str, float]]:
+    """A probe set and a hidden weight vector, both drawn from the same seed."""
+    import random as _random
+
+    rng = _random.Random(seed)
+    hidden = {name: rng.uniform(-1.0, 1.0) for name in BASE_FEATURES}
+    points = [
+        probe.ProbePoint(
+            source=f"synthetic/writer {i}",
+            level="beat",
+            features=tuple({name: rng.random() for name in BASE_FEATURES} for _ in range(3)),
+        )
+        for i in range(10)
+    ]
+    return probe.ProbeSet(points=tuple(points)), hidden
+
+
+def test_probe_agreement_rises_as_the_head_sees_more_true_signal() -> None:
+    """The probe is only a learning curve if it actually tracks learning.
+
+    Fit the same head on progressively more comparisons drawn from a known hidden vector
+    and the frozen probe set must reward it. The probe set never changes between
+    measurements, which is the whole point: nothing here can move because a task got
+    harder.
+    """
+    import random as _random
+
+    from storygit.preference.bt_head import fit
+
+    probe_set, hidden = _synthetic_probe()
+    rng = _random.Random(11)
+
+    def pair() -> tuple[FeatureVector, FeatureVector]:
+        a = FeatureVector(values={n: rng.random() for n in BASE_FEATURES})
+        b = FeatureVector(values={n: rng.random() for n in BASE_FEATURES})
+        sa = sum(hidden[k] * v for k, v in a.values.items())
+        sb = sum(hidden[k] * v for k, v in b.values.items())
+        return (a, b) if sa >= sb else (b, a)
+
+    pairs = [pair() for _ in range(160)]
+    curve = [
+        probe.agreement(probe_set.points, fit(pairs[:n], l2=0.5), hidden)["tau"]
+        for n in (0, 10, 40, 160)
+    ]
+    assert curve[-1] > curve[0] + 0.2, f"the probe did not reward learning: {curve}"
+    assert curve[-1] > 0.5, f"a head fitted on 160 true pairs should rank well: {curve}"
+    # Monotone-ish: no step may undo more than a little of the previous one.
+    assert all(curve[i + 1] >= curve[i] - 0.1 for i in range(len(curve) - 1)), curve
+
+
+def test_a_persona_is_never_probed_on_its_own_decisions() -> None:
+    """Leakage would make the probe measure memorisation instead of generalisation."""
+    points = probe.ProbeSet(
+        points=(
+            probe.ProbePoint(source="full/the Serialist", level="beat"),
+            probe.ProbePoint(source="full/the Minimalist", level="beat"),
+        )
+    )
+    kept = points.for_persona("the Serialist")
+    assert [p.source for p in kept] == ["full/the Minimalist"]
+
+
+def test_the_committed_probe_fixture_is_leak_free_and_usable() -> None:
+    """Every persona must have points to be probed on, and none of them its own."""
+    probe_set = probe.ProbeSet.load()
+    assert len(probe_set.points) >= 8, "too few points to average over"
+    for persona in PERSONAS:
+        kept = probe_set.for_persona(persona)
+        assert kept, f"{persona} has no probe points left after excluding its own"
+        assert all(persona not in p.source for p in kept)
+    for point in probe_set.points:
+        assert len(point.features) >= 2, "a probe point needs a ranking to score"
+        assert all(set(f) >= set(BASE_FEATURES) for f in point.features)

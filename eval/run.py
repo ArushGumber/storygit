@@ -24,7 +24,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from eval import ablations, metrics, offline, simulate
+from eval import ablations, metrics, offline, probe, simulate
 from eval.ablations import RunConfig
 from eval.personas import PERSONAS, Persona
 from eval.plots import line_plot
@@ -69,6 +69,7 @@ async def run_one(
     results: Path,
     seed: int,
     use_llm_edits: bool = True,
+    probe_set: probe.ProbeSet | None = None,
 ) -> RunLog:
     """Run one persona through one configuration and write its log."""
     ids = IdGenerator(seed=seed, stream=f"{config.name}:{persona.name}")
@@ -90,6 +91,7 @@ async def run_one(
         seed=seed,
         use_llm_edits=use_llm_edits,
         checkpoint=results / "runs",
+        probe_set=probe_set,
     )
     fitted = dict(
         zip(
@@ -120,6 +122,7 @@ async def run_matrix(
     max_calls: int,
     seed: int = 7,
     use_llm_edits: bool = True,
+    probe_set: probe.ProbeSet | None = None,
 ) -> dict[str, Any]:
     """Run every (configuration, persona) pair that fits in the call budget.
 
@@ -130,6 +133,7 @@ async def run_matrix(
         max_calls: Stop cleanly once the provider call log passes this many calls.
         seed: Base seed.
         use_llm_edits: Whether the simulated writer's edits go through the cheap model.
+        probe_set: The held-out probe, replayed after every episode at no provider cost.
 
     Returns:
         Logs by ``config/persona``, plus what was skipped and why.
@@ -173,6 +177,7 @@ async def run_matrix(
                     results=results,
                     seed=seed + index,
                     use_llm_edits=use_llm_edits,
+                    probe_set=probe_set,
                 )
                 logs[f"{config.name}/{persona.name}"] = log
                 if log.errors:
@@ -420,6 +425,13 @@ def main() -> None:
         )
         personas = [PERSONAS[n] for n in names]
 
+        # The probe fixture is sampled from its own run and is never replayed against the
+        # run it came from, so the sampling pass itself is deliberately not probed.
+        probe_set: probe.ProbeSet | None = None
+        if args.config != "probesample" and probe.FIXTURE.exists():
+            probe_set = probe.ProbeSet.load()
+            print(f"probe: {len(probe_set.points)} held-out decision points")
+
         print(
             f"running {len(configs)} config(s) x {len(personas)} persona(s), "
             f"budget {args.max_calls} calls"
@@ -432,6 +444,7 @@ def main() -> None:
                 max_calls=args.max_calls,
                 seed=args.seed,
                 use_llm_edits=not args.no_llm_edits,
+                probe_set=probe_set,
             )
         )
         logs = outcome["logs"]
