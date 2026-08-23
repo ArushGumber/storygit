@@ -623,3 +623,84 @@ def test_a_duplicate_entity_is_flagged_on_the_candidate_that_creates_it() -> Non
     assert not any(f.kind is FlagKind.duplicate_entity for f in about_someone_else), (
         "a candidate that does not touch either name must not carry the story's duplicate"
     )
+
+
+async def test_a_hard_constraint_violation_becomes_a_cited_soft_flag() -> None:
+    """A hard constraint that is checked nowhere is a style note with a confident name.
+
+    That is the writer's own sentence for it, and it was accurate: constraints reached the
+    generation prompt and nothing looked at the result. After adding "Present day. No
+    ten-shilling notes, no shillings, no Austin Cambridges" they were offered four pounds
+    ten, a Morris Minor and three-shilling bits.
+
+    The check rides the judge call that already runs per candidate, rather than adding one
+    call per constraint -- which would multiply the most expensive stage of the pipeline by
+    the size of the ledger. It is never automatic: the flag is soft, and the writer decides.
+    """
+    import json
+
+    from tests.mockprovider import MockProvider
+
+    from storygit.continuity.layer3_judge import judge
+    from storygit.graph.slices import StateSlice
+    from storygit.providers.router import Router
+
+    constraint = "Present day. No ten-shilling notes, no shillings, no Austin Cambridges."
+    slice_ = StateSlice(hard_constraints=(constraint,))
+
+    verdict = json.dumps(
+        {
+            "scores": [{"name": "momentum", "argument": "It moves.", "score": 4}],
+            "constraint_violations": [
+                {"constraint": constraint, "how": "Ronnie pays in three-shilling bits."}
+            ],
+        }
+    )
+    router = Router({"gemini": MockProvider([verdict])})
+    _, flags, _ = await judge(router, slice_, "Ronnie counts out three-shilling bits.")
+
+    violation = next(f for f in flags if f.kind.value == "hard_constraint")
+    assert violation.severity.value == "soft", "never automatic; the writer decides"
+    assert constraint in violation.message, "the citation has to be checkable"
+    assert "three-shilling bits" in violation.message
+
+
+async def test_a_constraint_the_writer_never_set_is_not_flagged() -> None:
+    """A citation the writer cannot find teaches them the citations are decorative."""
+    import json
+
+    from tests.mockprovider import MockProvider
+
+    from storygit.continuity.layer3_judge import judge
+    from storygit.graph.slices import StateSlice
+    from storygit.providers.router import Router
+
+    slice_ = StateSlice(hard_constraints=("Present day. No shillings.",))
+    verdict = json.dumps(
+        {
+            "scores": [{"name": "momentum", "argument": "It moves.", "score": 4}],
+            "constraint_violations": [
+                {"constraint": "No dogs in the show.", "how": "There is a dog."}
+            ],
+        }
+    )
+    router = Router({"gemini": MockProvider([verdict])})
+    _, flags, _ = await judge(router, slice_, "A dog walks past the bus shelter.")
+    assert not [f for f in flags if f.kind.value == "hard_constraint"]
+
+
+async def test_a_clean_candidate_produces_no_constraint_flag() -> None:
+    """The normal case, which has to stay quiet or the flag list stops being read."""
+    import json
+
+    from tests.mockprovider import MockProvider
+
+    from storygit.continuity.layer3_judge import judge
+    from storygit.graph.slices import StateSlice
+    from storygit.providers.router import Router
+
+    slice_ = StateSlice(hard_constraints=("Present day. No shillings.",))
+    verdict = json.dumps({"scores": [{"name": "momentum", "argument": "It moves.", "score": 4}]})
+    router = Router({"gemini": MockProvider([verdict])})
+    _, flags, _ = await judge(router, slice_, "Ronnie taps his card on the reader.")
+    assert not [f for f in flags if f.kind.value == "hard_constraint"]

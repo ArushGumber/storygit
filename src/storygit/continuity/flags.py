@@ -45,6 +45,7 @@ class FlagKind(StrEnum):
     motivation = "motivation"
     dropped_thread = "dropped_thread"
     duplicate_entity = "duplicate_entity"
+    hard_constraint = "hard_constraint"
 
 
 class Flag(BaseModel):

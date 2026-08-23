@@ -57,6 +57,27 @@ class CriterionScore(BoundedModel):
     score: float = Field(default=3.0, ge=1.0, le=5.0, description="1 to 5.")
 
 
+class ConstraintViolation(BoundedModel):
+    """One hard constraint a candidate breaks, quoted so the citation is checkable.
+
+    Quoting rather than referencing by index is deliberate: a writer reading "violates
+    hard constraint 2" has to go and count, and a flag that costs work to understand is a
+    flag they learn to skip. The quote also makes the citation *checkable* -- a constraint
+    the judge invented does not appear in the ledger, and the caller drops it.
+    """
+
+    model_config = ConfigDict(extra="ignore")
+
+    constraint: str = Field(
+        max_length=MAX_NOTE, description="The constraint, quoted exactly as it was given."
+    )
+    how: str = Field(
+        default="",
+        max_length=MAX_NOTE,
+        description="One sentence: what in the candidate breaks it.",
+    )
+
+
 class JudgeVerdict(BoundedModel):
     """What the soft judge returns for one candidate.
 
@@ -82,6 +103,14 @@ class JudgeVerdict(BoundedModel):
         description=(
             "If the register breaks from the surrounding story, say so in one sentence. "
             "Empty if there is no concern."
+        ),
+    )
+    constraint_violations: list[ConstraintViolation] = Field(
+        default_factory=list,
+        max_length=8,
+        description=(
+            "Every hard constraint this candidate breaks. Quote the constraint exactly as "
+            "it was given. Empty if it breaks none, which is the normal case."
         ),
     )
 
@@ -113,6 +142,21 @@ def build_request(
     """
     axes = [f"- {name}: {question}" for name, question in FIXED_CRITERIA]
     axes += [f"- {c.name}: {c.description}" for c in slice_.criteria]
+    # Hard constraints reach the *generation* prompt already, and reaching a prompt is not
+    # the same as being enforced -- the writer who added "Present day. No ten-shilling
+    # notes, no shillings, no Austin Cambridges" was then offered four pounds ten, a Morris
+    # Minor and three-shilling bits. Their sentence for it is the right one: a hard
+    # constraint that is not checked anywhere is a style note with a more confident name.
+    # Checking rides this call rather than adding one per constraint per candidate, which
+    # would multiply the most expensive stage of the pipeline by the size of the ledger.
+    constraint_block = ""
+    if slice_.hard_constraints:
+        listed = "\n".join(f"- {line}" for line in slice_.hard_constraints)
+        constraint_block = (
+            "\n\nHARD CONSTRAINTS. These are the writer's, and they are not suggestions. "
+            "For each one, check the candidate against it. Report only the ones it "
+            "actually breaks, quoting the constraint exactly:\n" + listed
+        )
     system = Message(
         role=Role.system,
         content=(
@@ -125,7 +169,7 @@ def build_request(
             "(a character doing something their established wants do not support) and a "
             "tone concern (a break in register). Leave them empty otherwise; inventing a "
             "concern to look thorough is worse than saying nothing.\n\n"
-            "Axes:\n" + "\n".join(axes)
+            "Axes:\n" + "\n".join(axes) + constraint_block
         ),
     )
     user = Message(
@@ -204,4 +248,27 @@ async def judge(
                 score=quality,
             )
         )
+    # Only constraints the writer actually set. The judge quoting something that is not in
+    # the ledger is the judge inventing a rule, and a flag citing a constraint the writer
+    # cannot find is worse than no flag -- it teaches them the citations are decorative.
+    declared = {c.strip(): c.strip() for c in slice_.hard_constraints}
+    lowered = {c.lower(): c for c in declared}
+    for violation in verdict.constraint_violations:
+        quoted = violation.constraint.strip()
+        matched = declared.get(quoted) or lowered.get(quoted.lower())
+        if matched is None:
+            continue
+        detail = violation.how.strip()
+        flags.append(
+            Flag(
+                kind=FlagKind.hard_constraint,
+                severity=Severity.soft,
+                layer=3,
+                message=f"violates hard constraint: \u201c{matched}\u201d"
+                + (f" \u2014 {detail}" if detail else ""),
+                node_id=node_id,
+                score=quality,
+            )
+        )
+
     return max(0.0, min(1.0, quality)), flags, sub_scores

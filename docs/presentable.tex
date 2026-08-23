@@ -298,6 +298,19 @@ dial. This is the object that keeps the human in authority, and everything in it
 visible and deletable --- including the rules the system mined from the writer's own
 edits, which must never influence generation invisibly.
 
+A hard constraint reaches the generation prompt \emph{and} is checked at judge time: the
+judge receives the constraint list as explicit check items alongside the scoring axes, and
+returns the ones a candidate breaks, quoting each. Those become soft flags citing the
+constraint verbatim. Never blocked --- the writer decides, as with every other flag --- but
+checked, which is the difference between a constraint and a wish. That is a change this
+system needed and did not have: a writer testing it added ``Present day. No ten-shilling
+notes, no shillings, no Austin Cambridges'' and was then offered four pounds ten, a Morris
+Minor and three-shilling bits. Their sentence for it is the one to keep: \emph{a hard
+constraint that is not enforced at generation or at check time is a style note with a more
+confident name.} The check rides the judge call that already runs per candidate rather than
+adding one per constraint, which would multiply the most expensive stage of the pipeline by
+the size of the ledger.
+
 Provenance is recorded per sentence (\textsf{human}, \textsf{ai},
 \textsf{ai\_edited\_by\_human}), because the interesting case is mixed: the AI proposed a
 paragraph and the writer rewrote two sentences of it. A node-level flag would lose exactly
