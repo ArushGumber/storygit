@@ -68,7 +68,15 @@ npm install
 npm run dev        # 5173, proxying /api to 127.0.0.1:8000
 npm run build      # tsc -b && vite build -> dist/
 npm run typecheck  # tsc --noEmit
+npm test           # vitest, over the client's error handling
 ```
+
+The unit tests cover `src/api.ts` and nothing else, deliberately. It is the one piece of
+frontend logic that is not obviously correct by inspection, and it is the piece a writer
+notices when it is wrong: the difference between *"try again in 45 seconds"*, *"the server
+is not running"*, and *"something went wrong"* is the difference between a tool that
+recovers and one that just fails. Components are covered by the end-to-end smoke and the
+screenshot audit, which is where component bugs actually show up.
 
 In production `dist/` is served by the same uvicorn process as the API, on one port.
 

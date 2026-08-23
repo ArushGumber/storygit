@@ -25,8 +25,8 @@ lint:  ## Lint and format-check
 types:  ## Type-check src/ and eval/ under mypy strict
 	$(VENV)/mypy
 
-frontend:  ## Type-check and build the interface
-	cd frontend && npm run typecheck && npm run build
+frontend:  ## Type-check, unit-test, and build the interface
+	cd frontend && npm run typecheck && npm test && npm run build
 
 e2e: frontend  ## Boot the real server and drive the loop over HTTP
 	bash scripts/e2e_smoke.sh
