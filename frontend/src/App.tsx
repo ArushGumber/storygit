@@ -59,7 +59,9 @@ export function App() {
         </span>
         {health && (
           <span className="status">
-            {health.branch} · {health.nodes} nodes · {health.facts} facts
+            {health.branch} · {health.nodes}{" "}
+            {health.nodes === 1 ? "node" : "nodes"} · {health.facts}{" "}
+            {health.facts === 1 ? "fact" : "facts"}
             {health.openrouter_enabled ? "" : " · metered provider locked"}
           </span>
         )}

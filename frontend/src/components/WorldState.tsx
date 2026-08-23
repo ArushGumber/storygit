@@ -9,7 +9,13 @@
  * like any other change — so the button says what it does.
  */
 
-import type { AuthorshipResponse, Entity, FactView, SliceResponse, Thread } from "../api";
+import type {
+  AuthorshipResponse,
+  Entity,
+  FactView,
+  SliceResponse,
+  Thread,
+} from "../api";
 
 function ThreadRow(props: { thread: Thread; sinceTouched?: number }) {
   const { thread, sinceTouched } = props;
@@ -34,8 +40,10 @@ export function WorldState(props: {
   onNavigate: (nodeId: string) => void;
   onMerge: (source: Entity) => void;
 }) {
-  const { slice, threadAges, authorship, onStrike, onNavigate, onMerge } = props;
-  if (!slice) return <p className="empty">Select a node to see the world around it.</p>;
+  const { slice, threadAges, authorship, onStrike, onNavigate, onMerge } =
+    props;
+  if (!slice)
+    return <p className="empty">Select a node to see the world around it.</p>;
 
   const ratios = authorship?.overall ?? {};
   const human = ratios.human ?? 0;
@@ -93,8 +101,11 @@ export function WorldState(props: {
                 >
                   {view.established_in}
                 </a>
-                {view.fact.valid_until_beat ? " · no longer true later" : " · still true"}
-                {view.known_by.length > 0 && ` · known by ${view.known_by.join(", ")}`}
+                {view.fact.valid_until_beat
+                  ? " · no longer true later"
+                  : " · still true"}
+                {view.known_by.length > 0 &&
+                  ` · known by ${view.known_by.join(", ")}`}
                 {view.known_by.length === 0 && " · nobody has been told"}
               </div>
             </li>
@@ -108,7 +119,11 @@ export function WorldState(props: {
       ) : (
         <ul className="facts">
           {slice.threads.map((thread) => (
-            <ThreadRow key={thread.id} thread={thread} sinceTouched={threadAges[thread.id]} />
+            <ThreadRow
+              key={thread.id}
+              thread={thread}
+              sinceTouched={threadAges[thread.id]}
+            />
           ))}
         </ul>
       )}
@@ -129,15 +144,24 @@ export function WorldState(props: {
         <>
           <div className="bar">
             <span className="human" style={{ width: `${human * 100}%` }} />
-            <span className="ai_edited_by_human" style={{ width: `${edited * 100}%` }} />
+            <span
+              className="ai_edited_by_human"
+              style={{ width: `${edited * 100}%` }}
+            />
             <span className="ai" style={{ width: `${ai * 100}%` }} />
           </div>
           <div className="legend">
             <span className="human">you {Math.round(human * 100)}%</span>
-            <span className="edited">your edits {Math.round(edited * 100)}%</span>
+            <span className="edited">
+              your edits {Math.round(edited * 100)}%
+            </span>
             <span>ai {Math.round(ai * 100)}%</span>
           </div>
-          <p className="hint">{authorship.sentences} sentences written so far.</p>
+          <p className="hint">
+            {authorship.sentences}{" "}
+            {authorship.sentences === 1 ? "sentence" : "sentences"} written so
+            far.
+          </p>
         </>
       ) : (
         <p className="empty">No prose written yet.</p>

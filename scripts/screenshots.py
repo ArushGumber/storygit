@@ -20,6 +20,15 @@ from pathlib import Path
 import httpx
 
 TABS = ("problem", "architecture", "live", "gallery", "eval")
+TALL_TABS = ("problem", "architecture", "eval", "gallery")
+"""Tabs whose content is a scrolling page rather than a fixed three-pane view."""
+
+WIDTH, HEIGHT = 1500, 1000
+CHROME = 60
+"""Masthead and tab strip, which sit outside the scrolling <main>."""
+
+MAX_HEIGHT = 12000
+"""A ceiling, so a runaway page cannot produce a hundred-megabyte PNG."""
 PORT = int(os.environ.get("STORYGIT_SHOT_PORT", "8124"))
 
 
@@ -49,7 +58,10 @@ def main() -> int:
     import tempfile
 
     db = args.db or str(Path(tempfile.mkdtemp()) / "shots.db")
-    env = {**os.environ, "STORYGIT_DB": db, "STORYGIT_PORT": str(PORT)}
+    # STORYGIT_SHOT turns on the judge, the dial, MMR, and the preference layer. The smoke
+    # test leaves them off for speed; the audit needs the interface under the content it
+    # actually renders in use.
+    env = {**os.environ, "STORYGIT_DB": db, "STORYGIT_PORT": str(PORT), "STORYGIT_SHOT": "1"}
     server = subprocess.Popen(
         [sys.executable, "scripts/e2e_server.py"],
         env=env,
@@ -102,8 +114,9 @@ def main() -> int:
 
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()
-            page = browser.new_page(viewport={"width": 1500, "height": 1000})
+            page = browser.new_page(viewport={"width": WIDTH, "height": HEIGHT})
             for tab in TABS:
+                page.set_viewport_size({"width": WIDTH, "height": HEIGHT})
                 page.goto(f"http://127.0.0.1:{PORT}/#{tab}", wait_until="networkidle")
                 page.wait_for_timeout(900)
                 if tab == "live":
@@ -112,8 +125,21 @@ def main() -> int:
                     page.fill("input[type=text]", "Kael's ability shows itself")
                     page.click("button.primary")
                     page.wait_for_timeout(2500)
+                elif tab in TALL_TABS:
+                    # The app shell is height-constrained and <main> scrolls inside it, so
+                    # Playwright's full_page does nothing: it would shoot one viewport and
+                    # the rest of a long prose page would never be audited at all. Grow
+                    # the viewport to the content instead.
+                    content = page.evaluate(
+                        "() => { const m = document.querySelector('main');"
+                        " return m ? m.scrollHeight : document.body.scrollHeight; }"
+                    )
+                    page.set_viewport_size(
+                        {"width": WIDTH, "height": min(int(content) + CHROME, MAX_HEIGHT)}
+                    )
+                    page.wait_for_timeout(500)
                 target = out / f"{tab}.png"
-                page.screenshot(path=str(target), full_page=tab not in ("live",))
+                page.screenshot(path=str(target))
                 print(f"wrote {target}")
             browser.close()
     finally:

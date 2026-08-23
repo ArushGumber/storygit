@@ -135,7 +135,14 @@ def eval_plots(state: State) -> dict[str, Any]:
             "curve: accepting more while rewriting just as much is not improvement."
         ),
         "edit_distance.svg": ("How much the writer rewrote what they took, over the run."),
+        "bandit_selftest.svg": (
+            "The sampler in isolation, against arms whose true rates are known. This is "
+            "the only setting where \u201cis the regret sublinear\u201d has an unambiguous "
+            "answer; the numbers that matter come from the simulated-writer runs."
+        ),
     }
+    # A figure with no caption is a figure whose filename gets shown to a reader, which
+    # is why test_every_figure_has_a_caption exists rather than a fallback string.
     available = []
     for path in sorted(state.results_dir.glob("*.svg")):
         available.append(

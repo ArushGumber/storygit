@@ -354,3 +354,25 @@ def test_no_client_method_is_unreachable_from_the_interface() -> None:
     assert methods, "api.ts no longer looks like a method table"
     unreachable = [name for name in methods if f".{name}(" not in components]
     assert unreachable == [], "client methods no component calls: " + ", ".join(unreachable)
+
+
+def test_every_figure_the_evaluation_produces_has_a_caption() -> None:
+    """A caption says what a curve demonstrates; a filename says nothing.
+
+    `bandit_selftest.svg` shipped with no caption, and the interface fell back to showing
+    its filename under the figure. The captions live in the API rather than the frontend
+    because they describe a property of the experiment, so this checks them against the
+    figures the evaluation actually writes.
+    """
+    source = (SRC / "api" / "routers" / "artifacts.py").read_text()
+    captioned = set(re.findall(r'"(\w+\.svg)":', source))
+    produced = set(re.findall(r'"(\w+\.svg)"', (SRC.parents[1] / "eval" / "plots.py").read_text()))
+    produced |= {
+        name
+        for path in (SRC.parents[1] / "eval").glob("*.py")
+        for name in re.findall(r'/ "(\w+\.svg)"', path.read_text())
+    }
+    assert produced, "no figures found; this test has stopped checking anything"
+    assert produced <= captioned, "figures with no caption: " + ", ".join(
+        sorted(produced - captioned)
+    )

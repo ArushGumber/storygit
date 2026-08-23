@@ -19,7 +19,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from storygit.domain.ids import EntityId, FactId, NodeId, ProposalId, ThreadId
 from storygit.domain.ledger import Criterion, StyleNote, WriterLedger
-from storygit.domain.nodes import AnyNode, NodeStatus
+from storygit.domain.nodes import AnyNode, NodeStatus, Prose
 from storygit.domain.provenance import ProvenanceSpan
 from storygit.domain.threads import Thread, ThreadStatus
 from storygit.domain.world import Entity, Fact, Knows
@@ -429,7 +429,9 @@ def delta_summary(
     def entity_name(entity_id: str) -> str:
         return names.get(str(entity_id), str(entity_id))
 
-    def node_label(node_id: NodeId) -> str:
+    def node_label(node_id: NodeId | None) -> str:
+        if node_id is None:
+            return "an unattached node"
         node = nodes.get(node_id)
         if node is None:
             return str(node_id)
@@ -439,8 +441,16 @@ def delta_summary(
     for op in diff.ops:
         match op:
             case AddNode():
-                label = op.node.title or op.node.node_type.value
-                lines.append(f"adds {op.node.node_type.value} “{label}”")
+                # Prose is the one node whose title says nothing ("prose"). What a writer
+                # wants to know is how much of it there is.
+                if isinstance(op.node, Prose):
+                    words = len(op.node.text.split())
+                    lines.append(
+                        f"writes {words} words of prose for {node_label(op.node.parent_id)}"
+                    )
+                else:
+                    label = op.node.title or op.node.node_type.value
+                    lines.append(f"adds {op.node.node_type.value} “{label}”")
             case UpdateNode():
                 fields = ", ".join(sorted(op.fields))
                 lines.append(f"changes {fields} of {node_label(op.node_id)}")

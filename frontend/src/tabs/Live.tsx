@@ -56,7 +56,9 @@ export function Live() {
   const [authorship, setAuthorship] = useState<AuthorshipResponse | null>(null);
   const [branches, setBranches] = useState<BranchesResponse | null>(null);
   const [threadAges, setThreadAges] = useState<Record<string, number>>({});
-  const [audit, setAudit] = useState<{ summary: string; flags: Flag[] } | null>(null);
+  const [audit, setAudit] = useState<{ summary: string; flags: Flag[] } | null>(
+    null,
+  );
   const [history, setHistory] = useState<Array<Record<string, unknown>>>([]);
   const [divergence, setDivergence] = useState<string | null>(null);
 
@@ -70,26 +72,31 @@ export function Live() {
 
   const refresh = useCallback(async () => {
     try {
-      const [nextTree, nextLedger, nextAuthorship, nextBranches, threads] = await Promise.all([
-        api.tree(),
-        api.ledger(),
-        api.authorship(),
-        api.branches(),
-        api.threads(),
-      ]);
+      const [nextTree, nextLedger, nextAuthorship, nextBranches, threads] =
+        await Promise.all([
+          api.tree(),
+          api.ledger(),
+          api.authorship(),
+          api.branches(),
+          api.threads(),
+        ]);
       setTree(nextTree);
       setLedger(nextLedger);
       setAuthorship(nextAuthorship);
       setBranches(nextBranches);
       setThreadAges(
-        Object.fromEntries(threads.threads.map((t) => [t.thread.id, t.beats_since_touched])),
+        Object.fromEntries(
+          threads.threads.map((t) => [t.thread.id, t.beats_since_touched]),
+        ),
       );
       // Default to the deepest node that can still be proposed *into*, which is where a
       // writer picking the tool back up wants to be. Landing on a prose node would show
       // them the end of what exists rather than the place to continue from.
       setSelected((current) => {
         if (current) return current;
-        const openable = nextTree.nodes.filter((node) => node.node_type !== "prose");
+        const openable = nextTree.nodes.filter(
+          (node) => node.node_type !== "prose",
+        );
         return openable.at(-1)?.id ?? nextTree.nodes.at(-1)?.id ?? null;
       });
     } catch (caught) {
@@ -105,7 +112,10 @@ export function Live() {
     if (!selected) return;
     void (async () => {
       try {
-        const [nextDetail, nextSlice] = await Promise.all([api.node(selected), api.slice(selected)]);
+        const [nextDetail, nextSlice] = await Promise.all([
+          api.node(selected),
+          api.slice(selected),
+        ]);
         setDetail(nextDetail);
         setSlice(nextSlice);
       } catch (caught) {
@@ -114,14 +124,19 @@ export function Live() {
     })();
   }, [selected, tree]);
 
-  async function run<T>(label: string, work: () => Promise<T>): Promise<T | null> {
+  async function run<T>(
+    label: string,
+    work: () => Promise<T>,
+  ): Promise<T | null> {
     setBusy(label);
     setError(null);
     try {
       return await work();
     } catch (caught) {
       setError(
-        caught instanceof ApiError ? caught : new ApiError(0, "Unknown", String(caught), null),
+        caught instanceof ApiError
+          ? caught
+          : new ApiError(0, "Unknown", String(caught), null),
       );
       return null;
     } finally {
@@ -132,7 +147,9 @@ export function Live() {
   const level = detail ? (NEXT_LEVEL[detail.node.node_type] ?? "beat") : "beat";
 
   async function propose() {
-    const response = await run("propose", () => api.propose(selected, level, intent));
+    const response = await run("propose", () =>
+      api.propose(selected, level, intent),
+    );
     if (response) setCandidates(response.candidates);
   }
 
@@ -183,8 +200,8 @@ export function Live() {
 
         {tree && (tree.stale_count > 0 || tree.review_count > 0) && (
           <p className="hint">
-            {tree.stale_count} stale, {tree.review_count} flagged for review. Nothing was
-            rewritten.
+            {tree.stale_count} stale, {tree.review_count} flagged for review.
+            Nothing was rewritten.
           </p>
         )}
 
@@ -202,7 +219,7 @@ export function Live() {
                     diff.op_count === 0
                       ? "identical to main so far."
                       : `${diff.op_count} change${diff.op_count === 1 ? "" : "s"} away from ` +
-                        `main: ${diff.summary.slice(0, 3).join("; ")}`,
+                          `main: ${diff.summary.slice(0, 3).join("; ")}`,
                   );
                 });
               }}
@@ -237,17 +254,28 @@ export function Live() {
                   `Merge which branch into ${branches?.current}?\n\n${others.join("\n")}`,
                 );
                 if (!answer) return;
-                const preview = await api.mergeBranches(branches?.current ?? "main", answer, false);
+                const preview = await api.mergeBranches(
+                  branches?.current ?? "main",
+                  answer,
+                  false,
+                );
                 if (!preview.clean) {
                   window.alert(
-                    `${preview.conflicts.length} conflict(s). Nothing was merged; the ` +
+                    `${preview.conflicts.length} ` +
+                      `${preview.conflicts.length === 1 ? "conflict" : "conflicts"}. ` +
+                      `Nothing was merged; the ` +
                       `system will not guess which version you meant.`,
                   );
                   return;
                 }
                 const lines = preview.summary.slice(0, 12).join("\n");
-                if (!window.confirm(`This would:\n\n${lines}\n\nMerge it?`)) return;
-                await api.mergeBranches(branches?.current ?? "main", answer, true);
+                if (!window.confirm(`This would:\n\n${lines}\n\nMerge it?`))
+                  return;
+                await api.mergeBranches(
+                  branches?.current ?? "main",
+                  answer,
+                  true,
+                );
                 await refresh();
               })
             }
@@ -259,8 +287,9 @@ export function Live() {
 
         <h2>Check the whole story</h2>
         <p className="hint">
-          Per-accept checking is incremental and can miss drift assembled over ten episodes.
-          This walks the whole graph, and lists the threads you have stopped touching.
+          Per-accept checking is incremental and can miss drift assembled over
+          ten episodes. This walks the whole graph, and lists the threads you
+          have stopped touching.
         </p>
         <button
           onClick={() =>
@@ -323,7 +352,10 @@ export function Live() {
                   <button
                     onClick={() =>
                       void run("regen", async () => {
-                        const response = await api.regenerate(detail.node.id, false);
+                        const response = await api.regenerate(
+                          detail.node.id,
+                          false,
+                        );
                         setCandidates(response.candidates);
                       })
                     }
@@ -349,22 +381,25 @@ export function Live() {
               <div className="flag">
                 <div>{detail.node.stale_reason}</div>
                 <div className="cite">
-                  Regenerate it, edit it yourself, or dismiss the mark. Nothing has been
-                  changed for you.
+                  Regenerate it, edit it yourself, or dismiss the mark. Nothing
+                  has been changed for you.
                 </div>
               </div>
             )}
 
             {detail.what_happens && <p>{detail.what_happens}</p>}
             {detail.audience_learns && (
-              <p className="hint">the audience learns: {detail.audience_learns}</p>
+              <p className="hint">
+                the audience learns: {detail.audience_learns}
+              </p>
             )}
             {detail.episode && (
               <div className="stack">
                 {["hook", "cliffhanger", "recap_of_previous"].map((key) =>
                   detail.episode?.[key] ? (
                     <p key={key} className="hint">
-                      <strong>{key.replace(/_/g, " ")}:</strong> {String(detail.episode[key])}
+                      <strong>{key.replace(/_/g, " ")}:</strong>{" "}
+                      {String(detail.episode[key])}
                     </p>
                   ) : null,
                 )}
@@ -380,7 +415,11 @@ export function Live() {
 
             <FlagList flags={detail.flags} onNavigate={setSelected} />
 
-            <h2>{level === "prose" ? "Write this beat" : `Ask for the next ${level}`}</h2>
+            <h2>
+              {level === "prose"
+                ? "Write this beat"
+                : `Ask for the next ${level}`}
+            </h2>
             <div className="stack">
               <input
                 type="text"
@@ -396,11 +435,18 @@ export function Live() {
                 }}
               />
               <div className="inline">
-                <button className="primary" disabled={busy !== null} onClick={() => void propose()}>
+                <button
+                  className="primary"
+                  disabled={busy !== null}
+                  onClick={() => void propose()}
+                >
                   {busy === "propose" ? "thinking…" : "propose"}
                 </button>
                 {detail.node.node_type === "beat" && (
-                  <button disabled={busy !== null} onClick={() => setWriting((w) => !w)}>
+                  <button
+                    disabled={busy !== null}
+                    onClick={() => setWriting((w) => !w)}
+                  >
                     write it myself
                   </button>
                 )}
@@ -409,15 +455,16 @@ export function Live() {
 
             {busy === "propose" && (
               <p className="working">
-                Sampling six options along different directions, checking each against the
-                bible, and picking three.
+                Sampling six options along different directions, checking each
+                against the bible, and picking three.
               </p>
             )}
 
             {error && (
               <div className="error">
                 <strong>{error.kind}</strong> — {error.message}
-                {error.retryAfter !== null && ` Try again in ${Math.ceil(error.retryAfter)}s.`}
+                {error.retryAfter !== null &&
+                  ` Try again in ${Math.ceil(error.retryAfter)}s.`}
                 {error.retryable && (
                   <div className="actions">
                     <button onClick={() => void propose()}>retry</button>
@@ -464,15 +511,21 @@ export function Live() {
                     busy={busy !== null}
                     onNavigate={setSelected}
                     onAccept={(id) =>
-                      void run("accept", async () => afterAction(await api.accept(id)))
+                      void run("accept", async () =>
+                        afterAction(await api.accept(id)),
+                      )
                     }
                     onEdit={(id, text) =>
-                      void run("edit", async () => afterAction(await api.edit(id, text)))
+                      void run("edit", async () =>
+                        afterAction(await api.edit(id, text)),
+                      )
                     }
                     onReject={(id, reason) =>
                       void run("reject", async () => {
                         await api.reject(id, reason);
-                        setCandidates((current) => current.filter((c) => c.proposal_id !== id));
+                        setCandidates((current) =>
+                          current.filter((c) => c.proposal_id !== id),
+                        );
                         await refresh();
                       })
                     }
@@ -491,11 +544,15 @@ export function Live() {
           authorship={authorship}
           onNavigate={setSelected}
           onStrike={(fact: FactView) =>
-            void run("strike", async () => afterAction(await api.strikeFact(fact.fact.id)))
+            void run("strike", async () =>
+              afterAction(await api.strikeFact(fact.fact.id)),
+            )
           }
           onMerge={(source: Entity) =>
             void run("merge-entity", async () => {
-              const others = (slice?.entities ?? []).filter((e) => e.id !== source.id);
+              const others = (slice?.entities ?? []).filter(
+                (e) => e.id !== source.id,
+              );
               const answer = window.prompt(
                 `Fold ${source.name} into which entity?\n\n${others.map((e) => e.name).join("\n")}`,
               );
@@ -538,8 +595,8 @@ export function Live() {
                 }
               />
               <p className="hint">
-                At 0 the options are ranked on quality alone. At 1 they are ranked on how far
-                they are from the obvious next move.
+                At 0 the options are ranked on quality alone. At 1 they are
+                ranked on how far they are from the obvious next move.
               </p>
             </div>
 
@@ -580,7 +637,9 @@ export function Live() {
               <button
                 onClick={() =>
                   void run("note", async () => {
-                    const text = window.prompt("A rule for how prose should read");
+                    const text = window.prompt(
+                      "A rule for how prose should read",
+                    );
                     if (text) await api.addStyleNote(text);
                     await refresh();
                   })
@@ -616,7 +675,9 @@ export function Live() {
             <button
               onClick={() =>
                 void run("constraint", async () => {
-                  const text = window.prompt("A rule generation must never break");
+                  const text = window.prompt(
+                    "A rule generation must never break",
+                  );
                   if (text) await api.addHardConstraint(text);
                   await refresh();
                 })
@@ -627,7 +688,9 @@ export function Live() {
 
             <h2>Your criteria</h2>
             {ledger.criteria.length === 0 ? (
-              <p className="empty">None yet. Adding one changes what the options are scored on.</p>
+              <p className="empty">
+                None yet. Adding one changes what the options are scored on.
+              </p>
             ) : (
               <ul className="facts">
                 {ledger.criteria.map((criterion) => (
@@ -655,9 +718,12 @@ export function Live() {
             <button
               onClick={() =>
                 void run("criterion", async () => {
-                  const name = window.prompt("Name the thing you care about (e.g. menace)");
+                  const name = window.prompt(
+                    "Name the thing you care about (e.g. menace)",
+                  );
                   if (!name) return;
-                  const description = window.prompt("Describe it in your own words") ?? "";
+                  const description =
+                    window.prompt("Describe it in your own words") ?? "";
                   await api.addCriterion(name, description);
                   await refresh();
                 })
@@ -688,7 +754,11 @@ export function Live() {
       </section>
 
       {result && (
-        <BibleDiffModal result={result} onClose={() => setResult(null)} onNavigate={setSelected} />
+        <BibleDiffModal
+          result={result}
+          onClose={() => setResult(null)}
+          onNavigate={setSelected}
+        />
       )}
     </div>
   );

@@ -398,10 +398,23 @@ def _write_figures(data: dict[str, Any], results: Path) -> None:
         color=SERIES[0],
         label="declared + soft edges",
     )
+    # Several thresholds land on the same (recall, precision) once the sweep saturates,
+    # and one label per threshold draws them on top of each other into an unreadable
+    # smudge. Group by position and label each position once, as a range.
+    grouped: dict[tuple[float, float], list[float]] = {}
     for point, threshold in zip(points[1:], ablations.SOFT_EDGE_THRESHOLDS, strict=True):
+        grouped.setdefault((round(point["recall"], 4), round(point["precision"], 4)), []).append(
+            threshold
+        )
+    for (recall, precision), thresholds in grouped.items():
+        label = (
+            f"{thresholds[0]:.2f}"
+            if len(thresholds) == 1
+            else f"{min(thresholds):.2f}\u2013{max(thresholds):.2f}"
+        )
         ax.annotate(
-            f"{threshold:.2f}",
-            (point["recall"], point["precision"]),
+            label,
+            (recall, precision),
             textcoords="offset points",
             xytext=(5, 4),
             fontsize=7,
