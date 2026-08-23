@@ -384,10 +384,22 @@ compliance, and this system does not measure that compliance --- see
 declared edge is checkable and a guessed one is not. But ``cannot go unmaintained'' would
 be a claim about the model, not about the schema.
 
-Every field carries a length bound, forwarded into the provider's own response schema. This
-keeps candidates readable, and it closes a failure mode observed in the first live test: a
-small model fell into a repetition loop and filled a field until it hit the token cap,
-turning a good candidate into truncated JSON.
+Every field carries a length bound, forwarded into the provider's own response schema where
+the provider honours one. This keeps candidates readable, and it closes a failure mode
+observed in the first live test: a small model fell into a repetition loop and filled a
+field until it hit the token cap, turning a good candidate into truncated JSON.
+
+The bound is enforced client-side, and \emph{how} is worth a sentence, because the obvious
+answer is wrong twice over. Rejecting an over-long field costs a repair call to recover a
+candidate that was fine except for being twenty characters long --- measured at roughly 80\%
+of proposals during the first evaluation run, which doubled the cost of the experiment. So
+the bound truncates. But truncating naively cuts mid-word, and the fragment becomes permanent
+state that every later prompt reads back as context: about a third of one writer's candidates
+ended mid-clause, and one field arrived as literal keyboard mash padded to a minimum length
+and was committed. So the contract is neither: cut at the last sentence boundary inside the
+bound; ask again once when nothing inside the bound ends a sentence, or when the value is
+padding rather than writing; drop the candidate if the second answer is no better. A dropped
+candidate costs one sample out of six. A committed fragment costs every prompt after it.
 
 \subsection{What the model is allowed to see}
 
@@ -477,9 +489,16 @@ is exported into every subsequent prompt as a hard constraint.
 author that their own sentences are out of date; it tells them something they relied on
 moved, and leaves the judgement where it belongs.
 \item \textbf{Nothing is ever rewritten.} The writer chooses: regenerate (previewed as a
-diff, respecting locks and current facts), edit by hand, or dismiss --- ``it still
-works''. Regenerating a whole stale subtree exists, as an explicit, confirmed, previewed
-action.
+diff, respecting locks and current facts, and replacing the node rather than adding a sibling
+beside it), edit by hand, or dismiss --- ``it still works''. Regenerating a whole stale
+subtree exists, as an explicit, confirmed, previewed action.
+\item \textbf{And accepting is not one-way.} An accepted node can be revised or deleted, on
+the same terms as striking a fact: the blast radius is shown before the commit, propagation
+marks what depended on it, and nothing below it is regenerated. Locks refuse, because a lock
+has to mean what it says. This is here because a writer using the system said the
+irreversibility changed how they worked --- they over-deliberated on every candidate, because
+accept could not be taken back. A tool whose main verb is one-way makes its user slow, which
+is the failure mode this whole design is arguing against.
 \end{enumerate}
 
 Because the marks are emitted as ordinary status operations, staleness flows through the

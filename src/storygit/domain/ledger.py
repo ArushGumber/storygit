@@ -79,7 +79,12 @@ class WriterLedger(BaseModel):
     Attributes:
         locks: Nodes the writer has frozen. Propagation never marks them and their
             facts are exported as hard constraints into every prompt.
-        hard_constraints: Free-text rules that must not be violated.
+        hard_constraints: Free-text rules that must not be violated. They reach every
+            generation prompt *and* are checked at judge time -- the judge receives them as
+            explicit check items and returns the ones a candidate breaks, quoting each,
+            which become soft flags. Never blocking; the writer decides. Before that check
+            existed they only reached the prompt, and a writer's "Present day. No shillings"
+            was followed by three-shilling bits in the next candidate.
         style_notes: Soft prose rules, writer-written or mined from edits.
         criteria: Writer-defined scoring axes.
         rejected_directions: Directions already turned down, fed to generation as
