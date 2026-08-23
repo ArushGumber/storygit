@@ -942,7 +942,20 @@
       }
     ],
     "bandit_safe": 0.5,
-    "bandit_explore": 0.5
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 1.5063086502530267,
+      "judge_specificity": 3.549306286924951,
+      "judge_consequence": 6.590819992085357,
+      "judge_voice": 3.0539944451160785,
+      "writer_criteria": 1.9782136890241964,
+      "continuity": 1.420149039422338,
+      "voice_cosine": 0.3822474758870265,
+      "edit_direction": -0.27444629523233854,
+      "length": 0.8853035991777154,
+      "dialogue_ratio": 0.8888517253064538
+    },
+    "weight_recovery": 0.4618237626693748
   },
   "hidden_weights": {
     "judge_momentum": 1.0,

@@ -7,7 +7,7 @@
 VENV := .venv/bin
 PY   := $(VENV)/python
 
-.PHONY: help check test lint types frontend e2e docs diagrams numbers eval gallery screenshots all clean
+.PHONY: help check test coverage lint types frontend e2e docs diagrams numbers eval gallery screenshots all clean
 
 help:  ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -17,6 +17,9 @@ check: lint types test  ## Everything that must be green before a commit
 
 test:  ## Run the test suite (offline)
 	$(PY) -m pytest
+
+coverage:  ## Line coverage over src/, to find what is claimed but not exercised
+	$(PY) -m pytest --cov=storygit --cov-report=term-missing
 
 lint:  ## Lint and format-check
 	$(VENV)/ruff check src tests eval scripts

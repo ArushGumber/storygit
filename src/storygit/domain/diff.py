@@ -13,7 +13,7 @@ edges, threads, and the writer ledger.
 from __future__ import annotations
 
 from enum import StrEnum
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, assert_never
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -404,9 +404,13 @@ def delta_summary(
         stale_count: Number of nodes propagation would mark, when the caller has
             run :func:`storygit.graph.propagation.preview`.
 
+    Every operation produces at least one line — see
+    ``test_every_operation_is_visible_in_the_summary``. A change the writer cannot
+    see is a change they cannot review, which would defeat the point of the diff.
+
     Returns:
-        One line per meaningful change, in op order, ending with the staleness
-        line when a count was supplied.
+        One line per operation, in op order, ending with the staleness line when a
+        count was supplied.
     """
     names: dict[str, str] = {}
     if getattr(state, "entities", None):
@@ -506,8 +510,26 @@ def delta_summary(
                 lines.append(f"adds hard constraint: {op.text}")
             case AddRejectedDirection():
                 lines.append(f"records a rejected direction: {op.text}")
+            case ReplaceLedger():
+                lines.append("replaces the writer ledger wholesale")
+            case UpdateThread():
+                thread = state.threads.get(op.thread_id)
+                desc = thread.description if thread else str(op.thread_id)
+                fields = ", ".join(sorted(op.fields))
+                lines.append(f"changes {fields} of thread: {desc}")
+            case RemoveThread():
+                thread = state.threads.get(op.thread_id)
+                desc = thread.description if thread else str(op.thread_id)
+                lines.append(f"deletes thread: {desc}")
+            case RemoveStyleNote():
+                lines.append(f"removes style note: {op.text}")
+            case RemoveCriterion():
+                lines.append(f"removes criterion: {op.name}")
             case _:
-                continue
+                # Exhaustive: mypy fails here if an operation is added to the union
+                # without a line, and test_every_operation_is_visible_in_the_summary
+                # fails at runtime. A change the writer cannot see is unreviewable.
+                assert_never(op)
     if stale_count:
         noun = "node" if stale_count == 1 else "nodes"
         lines.append(f"would mark {stale_count} downstream {noun} stale")
