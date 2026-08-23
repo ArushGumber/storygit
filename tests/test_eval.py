@@ -959,3 +959,6 @@ def test_dialogue_is_counted_whatever_quotes_the_model_uses() -> None:
     # An apostrophe is not dialogue, and neither is a scare-quoted word.
     assert dialogue_ratio("He didn't move. She wouldn't either.") == 0.0
     assert dialogue_ratio("They called it 'art'. Nobody agreed.") == 0.0
+    # A single quote wrapping a real utterance still counts, even when the sentence
+    # splitter has eaten its closing mark.
+    assert dialogue_ratio("She said, 'Go home now.' He didn't.") == pytest.approx(0.5)

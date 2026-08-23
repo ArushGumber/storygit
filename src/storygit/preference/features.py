@@ -72,12 +72,20 @@ TARGET_WORDS = 220.0
 # with the sentence after it, which is precisely the case the feature exists to measure.
 _SENTENCE_SPLIT = re.compile(r"(?<=[.!?])[\"\u201d\u2019')\]]*\s+")
 
-# Speech in any convention a model actually produces: straight or typographic doubles, and
-# single quotes when they wrap more than a word or two. The length guard is what keeps an
-# apostrophe in "don't" or a scare-quoted term from counting as dialogue.
+# Speech in any convention a model actually produces. A double quote is unambiguous, so
+# any length counts -- "Go." is dialogue. A single quote is not: it is also the apostrophe
+# in "don't" and the scare quotes around 'art', so it only counts when it wraps enough
+# text to be an utterance.
+# The closing quote may be missing: the sentence splitter consumes it as part of the
+# separator, so `He said. "Go." She left.` arrives here as three sentences the second of
+# which is `"Go.` -- hence the end-of-string alternative on both branches.
+#
+# A single quote needs two guards a double quote does not, because it is also the
+# apostrophe in "don't" and the scare quotes around 'art'. It must not be preceded by a
+# letter, and it must wrap enough text to be an utterance rather than a word.
 _QUOTED_SPEECH = re.compile(
-    r"[\"\u201c][^\"\u201d]{6,}[\"\u201d]"
-    r"|['\u2018][^'\u2019]{6,}['\u2019]"
+    r"[\"\u201c][^\"\u201d]+(?:[\"\u201d]|$)"
+    r"|(?<![A-Za-z])['\u2018][^'\u2019]{6,}(?:['\u2019]|$)"
 )
 
 
