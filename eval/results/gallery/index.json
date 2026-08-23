@@ -14,7 +14,7 @@
   {
     "name": "dial_both_ends",
     "title": "The same beat, at both ends of the dial",
-    "summary": "The dial re-weights the objective, not the sampler. At 0 the ranking is quality alone; at 1 it is distance from the model's own temperature-0 continuation -- so the system explicitly selects against what it would have done anyway. Same six candidates both times; different three shown.",
+    "summary": "The dial re-weights the objective, not the sampler. At 0 the ranking is quality alone; at 1 it is distance from the model's own temperature-0 continuation, so the system explicitly selects against what it would have done anyway. Same six candidates both times; different three shown.",
     "steps": 2
   },
   {
@@ -26,7 +26,7 @@
   {
     "name": "labelled_candidates",
     "title": "Three named directions, not three paragraphs",
-    "summary": "Six candidates are generated under named instructions -- raise the stakes, slow down, subvert the expectation -- and three are selected for quality and mutual difference. The label is the mechanism: three named directions cost a decision; three unlabelled paragraphs cost three readings. Each candidate arrives already checked, with its flags attached.",
+    "summary": "Six candidates are generated under named instructions: raise the stakes, slow down, subvert the expectation, and three are selected for quality and mutual difference. The label is the mechanism: three named directions cost a decision; three unlabelled paragraphs cost three readings. Each candidate arrives already checked, with its flags attached.",
     "steps": 2
   },
   {

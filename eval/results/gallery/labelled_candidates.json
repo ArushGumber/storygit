@@ -1,35 +1,28 @@
 {
   "name": "labelled_candidates",
   "title": "Three named directions, not three paragraphs",
-  "summary": "Six candidates are generated under named instructions -- raise the stakes, slow down, subvert the expectation -- and three are selected for quality and mutual difference. The label is the mechanism: three named directions cost a decision; three unlabelled paragraphs cost three readings. Each candidate arrives already checked, with its flags attached.",
+  "summary": "Six candidates are generated under named instructions: raise the stakes, slow down, subvert the expectation, and three are selected for quality and mutual difference. The label is the mechanism: three named directions cost a decision; three unlabelled paragraphs cost three readings. Each candidate arrives already checked, with its flags attached.",
   "branch": "main",
   "steps": [
     {
       "index": 0,
       "title": "Six sampled, three shown",
       "note": "Every candidate carries its axis label, its rationale, and its flags.",
-      "snapshot_id": "8fd7c7e449f1b8bf79ec4750ed77cfa0",
+      "snapshot_id": "4e33f9425b9857ba29d283a06fca2a9d",
       "node_id": "n_c6fbb2e448",
       "level": "beat",
       "intent": "",
       "shown": [
         {
-          "proposal_id": "p_12dea344ec",
-          "axis_label": "slow down",
+          "proposal_id": "p_6b553ec493",
+          "axis_label": "deepen the interiority",
           "delta_summary": [
-            "Kael experiences sensory overload",
-            "Kael touches the gate",
-            "The gate shows signs of sentience",
-            "adds beat “The silence of the gate”",
-            "introduces character The gate",
-            "establishes: Kael wants reconnect with Mara.",
-            "establishes: The gate is sentient.",
-            "Kael learns this at The silence of the gate"
+            "adds beat “The Whisper at the Iron”"
           ],
-          "rationale": "By focusing on the physical interaction with the gate, we establish the supernatural stakes of the world before moving the plot forward to the Warden's intervention.",
-          "text": "The silence of the gate Kael stands before the iron, the clang of the gate still vibrating in his teeth. The market stalls are suddenly deserted, the air thick with the smell of ozone and wet ash. He presses his hands against the cold iron, whispering a desperate apology to his sister, Mara. He isn't sure if he's praying or pleading, but the metal shifts—not because he moves it, but because a hum, deep and rhythmic like a heartbeat, pulses from the other side, answering his touch. Kael is desperate and guilt-ridden; the gate is not just iron, but something responsive.",
+          "rationale": "",
+          "text": "The Whisper at the Iron Trapped against the locked gate, Kael slams his hand into the iron studs and demands a way out, refusing to look at Mara. Instead of a guard, a low resonance vibrates back through the metal, answering his strike with an identical rhythm. Kael has a hidden connection to the city infrastructure that responds to his touch.",
           "flags": [],
-          "base_quality": 0.8125,
+          "base_quality": 0.6875,
           "surprise": 0.0,
           "effective_quality": 1.0,
           "selected": true
@@ -38,78 +31,121 @@
           "proposal_id": "p_fb44df1455",
           "axis_label": "introduce a complication",
           "delta_summary": [
-            "Kael trapped",
-            "Warden introduces magical obstacle",
-            "adds beat “The Warden's blockade”",
-            "introduces place Kell market",
-            "introduces character North Gate",
-            "establishes: Kael is at Kell market.",
-            "establishes: Warden of Kell has iron-bound cage.",
-            "establishes: North Gate: magically warded against Kael",
-            "Kael learns this at The Warden's blockade",
-            "Warden of Kell learns this at The Warden's blockade"
+            "adds beat “The Warden's Decree”"
           ],
-          "rationale": "By reinforcing the gate with a magical ward and introducing the Warden, I ensure Kael cannot simply walk away, forcing a direct confrontation that aligns with the established constraint of a closed gate.",
-          "text": "The Warden's blockade As Kael tries to slip through a secondary gate, the Warden of Kell blocks the path, dragging a heavy, iron-bound cage that seals the exit. The gate is not just closed; it is magically warded against Kael's touch, rendering his attempt to bypass it physically impossible. The Warden has specifically anticipated Kael's movements, and the gate is magically reinforced.",
+          "rationale": "",
+          "text": "The Warden's Decree Kael attempts to slip through the side alley of the market, only to find the Warden of Kell blocking the exit with a detachment of guards, enforcing the total lockdown of Ashfall. The Warden of Kell personally oversees the market lockdown, making escape impossible without a confrontation.",
           "flags": [],
-          "base_quality": 0.75,
+          "base_quality": 0.625,
           "surprise": 0.0,
-          "effective_quality": 0.5,
+          "effective_quality": 0.8,
           "selected": true
         },
         {
-          "proposal_id": "p_3295d2d1b3",
-          "axis_label": "subvert the expectation",
+          "proposal_id": "p_d9c085cc59",
+          "axis_label": "pay off an open thread",
           "delta_summary": [
-            "The environment reacts to Kael",
-            "The Warden is temporarily incapacitated",
-            "The gate's nature is revealed as anomalous",
-            "adds beat “A Silence in the Static”",
-            "introduces character The gate",
-            "establishes: The gate is sensory dampener.",
-            "establishes: Warden of Kell: incapacitated by the gate",
-            "Kael learns this at A Silence in the Static"
+            "adds beat “The Voice in the Ash”"
           ],
-          "rationale": "Rather than escalating into a standard combat beat, this creates a psychological imbalance. It forces Kael to navigate a situation where the rules of physics seem to be failing, heightening the mystery of Ashfall.",
-          "text": "A Silence in the Static Instead of an imposing voice or a magical blast, the heavy iron of the gate itself hums a low, dissonant frequency that vibrates through Kael’s teeth. The Warden of Kell stops mid-stride, his armor rattling in sync with the metal. For a heartbeat, the chaos of the market vanishes—everyone freezes, not out of fear, but because they have momentarily lost the ability to perceive sound or movement. Kael realizes the gate isn't an obstacle; it's a sensory dampener. The gate possesses an active, anomalous property that affects the Warden.",
-          "flags": [],
-          "base_quality": 0.8125,
+          "rationale": "",
+          "text": "The Voice in the Ash Trapped against the sealed iron gates of Ashfall with the Warden's guards closing in, Kael slams his hand into the ash-covered stone and utters the forbidden name. A deep, subterranean hum answers him, and the ground cracks open to swallow the nearest guard. Kael's connection to the underground entity is real and immediately lethal to his pursuers.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The register holds steady as a grim action sequence, avoiding any jarring shifts in vocabulary or mood.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.6875,
           "surprise": 0.0,
           "effective_quality": 1.0,
           "selected": true
         },
         {
-          "proposal_id": "p_9f3b86107f",
-          "axis_label": "shift the point of view",
+          "proposal_id": "p_1aae46d56a",
+          "axis_label": "slow down",
           "delta_summary": [
-            "adds beat “Mara's observation”",
-            "introduces character pulsating amulet",
-            "establishes: Kael has pulsating amulet.",
-            "establishes: pulsating amulet is magical.",
-            "Mara learns this at Mara's observation"
+            "Kael is cornered",
+            "New entity interaction",
+            "adds beat “The Voice in the Alley”",
+            "introduces character Voice from Shadows",
+            "establishes: Kael is at Alleyway outside Kell's market.",
+            "establishes: Kael wants Escape Kell's market.",
+            "establishes: Voice from Shadows is Offers deals.",
+            "establishes: Kael is Desperate.",
+            "Kael learns this at The Voice in the Alley"
           ],
-          "rationale": "Shifting the POV to Mara reveals that Kael's predicament isn't just about being trapped, but about a catalyst he is hiding, raising the stakes of his survival.",
-          "text": "Mara's observation Mara watches from the shadows of a merchant stall as the gate locks Kael in. She sees Kael's desperate eyes scan the empty market and notices him clutching a strange, pulsating amulet he keeps hidden under his cloak. As he cries out into the silence, the amulet glows with a sickly rhythmic light that seems to vibrate the very iron of the locked gate. Kael possesses a magical artifact that reacts to his distress.",
-          "flags": [],
-          "base_quality": 0.75,
+          "rationale": "This beat focuses on Kael's immediate predicament and introduces a new interactive element, slowing down the pace as requested and building suspense.",
+          "text": "The Voice in the Alley Kael, trapped in the alley as the market gate slams shut, hears a voice from the shadows. It offers a deal, its words echoing in the confined space. Kael, desperate, considers his options. Kael is truly cut off and desperate. An unknown entity has agency and is aware of Kael's situation.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The sudden introduction of a mysterious voice offering a deal feels slightly generic compared to the gritty logistical reality of the closed gate.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.5625,
           "surprise": 0.0,
-          "effective_quality": 0.5,
+          "effective_quality": 0.6,
           "selected": false
         },
         {
-          "proposal_id": "p_6b553ec493",
-          "axis_label": "deepen the interiority",
+          "proposal_id": "p_f749606f79",
+          "axis_label": "subvert the expectation",
           "delta_summary": [
-            "adds beat “A voice in the static”",
-            "introduces character The gate",
-            "establishes: Kael wants find Mara.",
-            "establishes: The gate: possesses a sentient or trapped presence",
-            "Kael learns this at A voice in the static"
+            "Kael is not alone",
+            "New mystery introduced",
+            "Warden's control is questioned",
+            "adds beat “The voice”",
+            "introduces character The Voice",
+            "establishes: Kael: He hears a voice answer him from the gate.",
+            "establishes: The Voice is at Kell Gate.",
+            "establishes: Kael wants Solve the riddle..",
+            "establishes: The Voice: Speaks in riddles.",
+            "Kael learns this at The voice"
           ],
-          "rationale": "By showing Kael's desperate scan for Mara, we establish his internal priority while externalizing his powerlessness against the Warden. The voice adds a layer of mystery that forces Kael to confront his past.",
-          "text": "A voice in the static Kael backs into the heavy iron gate, his hand scraping against the cold, rusted metal. He tells the Warden he just wants to leave, but his eyes keep scanning the crowd for Mara. He finds no trace of her. As he exhales, a low, grinding vibration ripples through the gate and into his spine, followed by a voice that isn't his own, whispering a name he hasn't heard in years: 'Kael, be still.' Kael is searching for someone named Mara; an unknown entity or mechanism within the gate is communicating with Kael.",
-          "flags": [],
-          "base_quality": 0.6875,
+          "rationale": "This beat subverts the expectation of the Warden appearing by introducing a new, mysterious entity. It raises the stakes by presenting Kael with a puzzle rather than immediate physical confrontation, deepening the intrigue of Kell's society.",
+          "text": "The voice As Kael, trapped in the market square, calls out in desperation, a voice echoes from the closed gate, not from the Warden, but from someone unseen, offering a cryptic riddle. There's another power or presence within Kell, possibly as manipulative as the Warden, and Kael has an unexpected potential ally or adversary.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The sudden shift to a cryptic riddle introduces a fantasy trope register that feels slightly detached from the grittier survival tone established in the earlier beats of Ashfall.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.5625,
+          "surprise": 0.0,
+          "effective_quality": 0.6,
+          "selected": false
+        },
+        {
+          "proposal_id": "p_9990838877",
+          "axis_label": "shift the point of view",
+          "delta_summary": [
+            "adds beat “Mara watches”"
+          ],
+          "rationale": "",
+          "text": "Mara watches From the shadows of the outer market stalls, Mara watches Kael back into the sealed iron gate as the Warden's guards close in. She hears the strange, low resonance vibrate through the cobblestones before Kael himself even realizes something is answering him. Mara is observing Kael's cornered moment from the market shadows and notices the ground vibrating.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The register is consistent, but the heavy redundancy in the prose breaks the reading flow.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.375,
           "surprise": 0.0,
           "effective_quality": 0.0,
           "selected": false
@@ -123,30 +159,23 @@
     },
     {
       "index": 1,
-      "title": "The writer takes 'slow down'",
-      "note": "Accepting commits the diff, extracts facts from any new prose, and shows the bible diff. The alternatives are recorded too -- that is what makes this a preference rather than an event.",
-      "snapshot_id": "fcf84346f13106803257f50699dcb7f4",
+      "title": "The writer takes 'deepen the interiority'",
+      "note": "Accepting commits the diff, extracts facts from any new prose, and shows the bible diff. The alternatives are recorded too, and that is what makes this a preference rather than an event.",
+      "snapshot_id": "9a1174fdc90d269d8f7e0e969465343e",
       "node_id": null,
       "level": "",
       "intent": "",
       "shown": [
         {
-          "proposal_id": "p_12dea344ec",
-          "axis_label": "slow down",
+          "proposal_id": "p_6b553ec493",
+          "axis_label": "deepen the interiority",
           "delta_summary": [
-            "Kael experiences sensory overload",
-            "Kael touches the gate",
-            "The gate shows signs of sentience",
-            "adds beat “The silence of the gate”",
-            "introduces character The gate",
-            "establishes: Kael wants reconnect with Mara.",
-            "establishes: The gate is sentient.",
-            "Kael learns this at The silence of the gate"
+            "adds beat “The Whisper at the Iron”"
           ],
-          "rationale": "By focusing on the physical interaction with the gate, we establish the supernatural stakes of the world before moving the plot forward to the Warden's intervention.",
-          "text": "The silence of the gate Kael stands before the iron, the clang of the gate still vibrating in his teeth. The market stalls are suddenly deserted, the air thick with the smell of ozone and wet ash. He presses his hands against the cold iron, whispering a desperate apology to his sister, Mara. He isn't sure if he's praying or pleading, but the metal shifts—not because he moves it, but because a hum, deep and rhythmic like a heartbeat, pulses from the other side, answering his touch. Kael is desperate and guilt-ridden; the gate is not just iron, but something responsive.",
+          "rationale": "",
+          "text": "The Whisper at the Iron Trapped against the locked gate, Kael slams his hand into the iron studs and demands a way out, refusing to look at Mara. Instead of a guard, a low resonance vibrates back through the metal, answering his strike with an identical rhythm. Kael has a hidden connection to the city infrastructure that responds to his touch.",
           "flags": [],
-          "base_quality": 0.8125,
+          "base_quality": 0.6875,
           "surprise": 0.0,
           "effective_quality": 1.0,
           "selected": true
@@ -155,89 +184,129 @@
           "proposal_id": "p_fb44df1455",
           "axis_label": "introduce a complication",
           "delta_summary": [
-            "Kael trapped",
-            "Warden introduces magical obstacle",
-            "adds beat “The Warden's blockade”",
-            "introduces place Kell market",
-            "introduces character North Gate",
-            "establishes: Kael is at Kell market.",
-            "establishes: Warden of Kell has iron-bound cage.",
-            "establishes: North Gate: magically warded against Kael",
-            "Kael learns this at The Warden's blockade",
-            "Warden of Kell learns this at The Warden's blockade"
+            "adds beat “The Warden's Decree”"
           ],
-          "rationale": "By reinforcing the gate with a magical ward and introducing the Warden, I ensure Kael cannot simply walk away, forcing a direct confrontation that aligns with the established constraint of a closed gate.",
-          "text": "The Warden's blockade As Kael tries to slip through a secondary gate, the Warden of Kell blocks the path, dragging a heavy, iron-bound cage that seals the exit. The gate is not just closed; it is magically warded against Kael's touch, rendering his attempt to bypass it physically impossible. The Warden has specifically anticipated Kael's movements, and the gate is magically reinforced.",
+          "rationale": "",
+          "text": "The Warden's Decree Kael attempts to slip through the side alley of the market, only to find the Warden of Kell blocking the exit with a detachment of guards, enforcing the total lockdown of Ashfall. The Warden of Kell personally oversees the market lockdown, making escape impossible without a confrontation.",
           "flags": [],
-          "base_quality": 0.75,
+          "base_quality": 0.625,
           "surprise": 0.0,
-          "effective_quality": 0.5,
+          "effective_quality": 0.8,
           "selected": true
         },
         {
-          "proposal_id": "p_3295d2d1b3",
-          "axis_label": "subvert the expectation",
+          "proposal_id": "p_d9c085cc59",
+          "axis_label": "pay off an open thread",
           "delta_summary": [
-            "The environment reacts to Kael",
-            "The Warden is temporarily incapacitated",
-            "The gate's nature is revealed as anomalous",
-            "adds beat “A Silence in the Static”",
-            "introduces character The gate",
-            "establishes: The gate is sensory dampener.",
-            "establishes: Warden of Kell: incapacitated by the gate",
-            "Kael learns this at A Silence in the Static"
+            "adds beat “The Voice in the Ash”"
           ],
-          "rationale": "Rather than escalating into a standard combat beat, this creates a psychological imbalance. It forces Kael to navigate a situation where the rules of physics seem to be failing, heightening the mystery of Ashfall.",
-          "text": "A Silence in the Static Instead of an imposing voice or a magical blast, the heavy iron of the gate itself hums a low, dissonant frequency that vibrates through Kael’s teeth. The Warden of Kell stops mid-stride, his armor rattling in sync with the metal. For a heartbeat, the chaos of the market vanishes—everyone freezes, not out of fear, but because they have momentarily lost the ability to perceive sound or movement. Kael realizes the gate isn't an obstacle; it's a sensory dampener. The gate possesses an active, anomalous property that affects the Warden.",
-          "flags": [],
-          "base_quality": 0.8125,
+          "rationale": "",
+          "text": "The Voice in the Ash Trapped against the sealed iron gates of Ashfall with the Warden's guards closing in, Kael slams his hand into the ash-covered stone and utters the forbidden name. A deep, subterranean hum answers him, and the ground cracks open to swallow the nearest guard. Kael's connection to the underground entity is real and immediately lethal to his pursuers.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The register holds steady as a grim action sequence, avoiding any jarring shifts in vocabulary or mood.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.6875,
           "surprise": 0.0,
           "effective_quality": 1.0,
           "selected": true
         },
         {
-          "proposal_id": "p_9f3b86107f",
-          "axis_label": "shift the point of view",
+          "proposal_id": "p_1aae46d56a",
+          "axis_label": "slow down",
           "delta_summary": [
-            "adds beat “Mara's observation”",
-            "introduces character pulsating amulet",
-            "establishes: Kael has pulsating amulet.",
-            "establishes: pulsating amulet is magical.",
-            "Mara learns this at Mara's observation"
+            "Kael is cornered",
+            "New entity interaction",
+            "adds beat “The Voice in the Alley”",
+            "introduces character Voice from Shadows",
+            "establishes: Kael is at Alleyway outside Kell's market.",
+            "establishes: Kael wants Escape Kell's market.",
+            "establishes: Voice from Shadows is Offers deals.",
+            "establishes: Kael is Desperate.",
+            "Kael learns this at The Voice in the Alley"
           ],
-          "rationale": "Shifting the POV to Mara reveals that Kael's predicament isn't just about being trapped, but about a catalyst he is hiding, raising the stakes of his survival.",
-          "text": "Mara's observation Mara watches from the shadows of a merchant stall as the gate locks Kael in. She sees Kael's desperate eyes scan the empty market and notices him clutching a strange, pulsating amulet he keeps hidden under his cloak. As he cries out into the silence, the amulet glows with a sickly rhythmic light that seems to vibrate the very iron of the locked gate. Kael possesses a magical artifact that reacts to his distress.",
-          "flags": [],
-          "base_quality": 0.75,
+          "rationale": "This beat focuses on Kael's immediate predicament and introduces a new interactive element, slowing down the pace as requested and building suspense.",
+          "text": "The Voice in the Alley Kael, trapped in the alley as the market gate slams shut, hears a voice from the shadows. It offers a deal, its words echoing in the confined space. Kael, desperate, considers his options. Kael is truly cut off and desperate. An unknown entity has agency and is aware of Kael's situation.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The sudden introduction of a mysterious voice offering a deal feels slightly generic compared to the gritty logistical reality of the closed gate.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.5625,
           "surprise": 0.0,
-          "effective_quality": 0.5,
+          "effective_quality": 0.6,
           "selected": false
         },
         {
-          "proposal_id": "p_6b553ec493",
-          "axis_label": "deepen the interiority",
+          "proposal_id": "p_f749606f79",
+          "axis_label": "subvert the expectation",
           "delta_summary": [
-            "adds beat “A voice in the static”",
-            "introduces character The gate",
-            "establishes: Kael wants find Mara.",
-            "establishes: The gate: possesses a sentient or trapped presence",
-            "Kael learns this at A voice in the static"
+            "Kael is not alone",
+            "New mystery introduced",
+            "Warden's control is questioned",
+            "adds beat “The voice”",
+            "introduces character The Voice",
+            "establishes: Kael: He hears a voice answer him from the gate.",
+            "establishes: The Voice is at Kell Gate.",
+            "establishes: Kael wants Solve the riddle..",
+            "establishes: The Voice: Speaks in riddles.",
+            "Kael learns this at The voice"
           ],
-          "rationale": "By showing Kael's desperate scan for Mara, we establish his internal priority while externalizing his powerlessness against the Warden. The voice adds a layer of mystery that forces Kael to confront his past.",
-          "text": "A voice in the static Kael backs into the heavy iron gate, his hand scraping against the cold, rusted metal. He tells the Warden he just wants to leave, but his eyes keep scanning the crowd for Mara. He finds no trace of her. As he exhales, a low, grinding vibration ripples through the gate and into his spine, followed by a voice that isn't his own, whispering a name he hasn't heard in years: 'Kael, be still.' Kael is searching for someone named Mara; an unknown entity or mechanism within the gate is communicating with Kael.",
-          "flags": [],
-          "base_quality": 0.6875,
+          "rationale": "This beat subverts the expectation of the Warden appearing by introducing a new, mysterious entity. It raises the stakes by presenting Kael with a puzzle rather than immediate physical confrontation, deepening the intrigue of Kell's society.",
+          "text": "The voice As Kael, trapped in the market square, calls out in desperation, a voice echoes from the closed gate, not from the Warden, but from someone unseen, offering a cryptic riddle. There's another power or presence within Kell, possibly as manipulative as the Warden, and Kael has an unexpected potential ally or adversary.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The sudden shift to a cryptic riddle introduces a fantasy trope register that feels slightly detached from the grittier survival tone established in the earlier beats of Ashfall.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.5625,
+          "surprise": 0.0,
+          "effective_quality": 0.6,
+          "selected": false
+        },
+        {
+          "proposal_id": "p_9990838877",
+          "axis_label": "shift the point of view",
+          "delta_summary": [
+            "adds beat “Mara watches”"
+          ],
+          "rationale": "",
+          "text": "Mara watches From the shadows of the outer market stalls, Mara watches Kael back into the sealed iron gate as the Warden's guards close in. She hears the strange, low resonance vibrate through the cobblestones before Kael himself even realizes something is answering him. Mara is observing Kael's cornered moment from the market shadows and notices the ground vibrating.",
+          "flags": [
+            {
+              "kind": "tone",
+              "severity": "soft",
+              "layer": 3,
+              "message": "The register is consistent, but the heavy redundancy in the prose breaks the reading flow.",
+              "established_by": null,
+              "node_id": "n_c6fbb2e448"
+            }
+          ],
+          "base_quality": 0.375,
           "surprise": 0.0,
           "effective_quality": 0.0,
           "selected": false
         }
       ],
       "action": "accept",
-      "chosen": "p_12dea344ec",
-      "bible_diff": [
-        "+ The gate is sentient.",
-        "+ Kael wants reconnect with Mara."
-      ],
+      "chosen": "p_6b553ec493",
+      "bible_diff": [],
       "marks": [],
       "flags": []
     }
