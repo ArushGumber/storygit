@@ -595,8 +595,13 @@ best embedding-edge threshold & \rStaleSoftBestPrecision & \rStaleSoftBestRecall
 
 Declared edges are exact and blind to what nobody declared. The prediction stated in advance
 was that embedding edges would trade recall for precision too poorly to be useful; on this
-case the best threshold reaches \rStaleSoftBestPrecision{} precision at
-\rStaleSoftBestRecall{} recall (\rStaleSoftBestLabel).
+case the embedding edges reach \rStaleSoftBestPrecision{} precision at
+\rStaleSoftBestRecall{} recall, and they do so over a \emph{range}: \rStaleSoftTiedCount{}
+of the \rStaleSoftSweptCount{} swept thresholds tie there, from \rStaleSoftTiedRange{}. That
+matters more than the peak. A single best threshold picked from the only case available is an
+argmax on the test set; a band over which the mechanism is indistinguishable from perfect is
+evidence that it is not balanced on one number. What ships is
+\rStaleSoftShippedThreshold{}, inside that band.
 The case is six beats with lexically distinctive locations, so this is suggestive rather
 than settled. It is nonetheless the opposite of the prediction.
 

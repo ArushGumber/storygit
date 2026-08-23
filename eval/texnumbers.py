@@ -16,6 +16,7 @@ that says the experiment has not been run.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any, get_args
 
@@ -102,11 +103,12 @@ def collect() -> dict[str, str]:
             macros["StaleSoftBestFOne"] = _num(tied[0].get("f1"))
             macros["StaleSoftTiedCount"] = str(len(tied))
             macros["StaleSoftSweptCount"] = str(len(soft))
-            macros["StaleSoftTiedRange"] = (
-                str(tied[0]["label"]).replace("_", "\\_")
-                + "--"
-                + str(tied[-1]["label"]).replace("_", "\\_")
-            )
+            # The labels read "+ soft edges @ 0.68"; the range wants the numbers only.
+            def _threshold(point: dict[str, Any]) -> str:
+                match = re.search(r"([\d.]+)\s*$", str(point.get("label", "")))
+                return match.group(1) if match else str(point.get("label", ""))
+
+            macros["StaleSoftTiedRange"] = f"{_threshold(tied[0])} to {_threshold(tied[-1])}"
             macros["StaleSoftShippedThreshold"] = _num(SOFT_EDGE_DEFAULT)
     for name in (
         "StaleDeclaredPrecision",
