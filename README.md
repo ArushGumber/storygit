@@ -75,7 +75,7 @@ Fabula is a chain of prompts with a UI. This is a state machine with a learning 
 
 | Package | What it does |
 |---|---|
-| `src/storygit/domain/` | The typed state: plan tree, world graph, threads, writer ledger, provenance, and the 30 diff operations that are the only way to change any of it. |
+| `src/storygit/domain/` | The typed state: plan tree, world graph, threads, writer ledger, provenance, and the 31 diff operations that are the only way to change any of it. |
 | `src/storygit/store/` | Git-shaped persistence: content-addressed objects, snapshot manifests, branches, three-way merge. |
 | `src/storygit/graph/` | Deterministic dependency edges, staleness propagation, and the entity-scoped slices that generation prompts consume. |
 | `src/storygit/providers/` | One interface over Gemini (six keys, rotated), Groq, local CPU models, and a hard-locked metered provider. Read-through cache, budget guard, call log. |

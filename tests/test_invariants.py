@@ -8,9 +8,13 @@ that would decay first under maintenance — so they get tests.
 from __future__ import annotations
 
 import ast
+import re
 from pathlib import Path
+from typing import get_args
 
 import pytest
+
+from storygit.domain.diff import Op
 
 SRC = Path(__file__).resolve().parents[1] / "src" / "storygit"
 
@@ -287,3 +291,17 @@ def test_no_todos_are_left_without_a_decision_record() -> None:
             source = path.read_text()
             for marker in ("TODO", "FIXME", "XXX", "HACK"):
                 assert marker not in source, f"{path.name} contains a {marker}"
+
+
+def test_the_prose_agrees_with_the_code_about_how_many_operations_there_are() -> None:
+    """A document that miscounts the thing it is describing is a document nobody trusts.
+
+    `presentable.tex` reads the count from a generated macro, so it cannot drift. The
+    README states it in prose, so this is what stops it. It drifted once already, when
+    the thirty-first operation was added.
+    """
+    count = len(get_args(get_args(Op)[0]))
+    readme = (SRC.parents[1] / "README.md").read_text()
+    stated = re.findall(r"(\d+) diff operations", readme)
+    assert stated, "the README no longer states the operation count"
+    assert all(int(n) == count for n in stated), f"README says {stated}, the union has {count}"

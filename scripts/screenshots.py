@@ -84,6 +84,18 @@ def main() -> int:
                     "/api/action/accept",
                     json={"proposal_id": proposed["candidates"][0]["proposal_id"]},
                 )
+        # Put something in the writer ledger too. "None yet." proves nothing about the
+        # panel that carries the agency argument, and the remove controls only exist to
+        # be audited when there is something to remove.
+        client.post("/api/ledger/style-note", json={"text": "shorter sentences at the turn"})
+        client.post(
+            "/api/ledger/criterion",
+            json={
+                "name": "menace",
+                "description": "the sense that something is about to go wrong",
+                "weight": 1.0,
+            },
+        )
         client.close()
 
         from playwright.sync_api import sync_playwright

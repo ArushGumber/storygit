@@ -17,7 +17,10 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, get_args
+
+from storygit.domain.diff import Op
+from storygit.domain.world import Predicate
 
 RESULTS = Path(__file__).parent / "results"
 OUTPUT = Path(__file__).resolve().parents[1] / "docs" / "results.tex"
@@ -161,6 +164,11 @@ def collect() -> dict[str, str]:
 
     macros["ProviderCalls"] = str(_get(summary, "call_summary", "calls", default=MISSING))
     macros["ProviderCacheHitRate"] = _pct(_get(summary, "call_summary", "cache_hit_rate"))
+
+    # Two counts read from the code rather than from a results file, because a paper that
+    # says "the 30 operations" while the union holds 31 is wrong in a way no rerun fixes.
+    macros["DiffOps"] = str(len(get_args(get_args(Op)[0])))
+    macros["Predicates"] = str(len([p for p in Predicate if p is not Predicate.note]))
     return macros
 
 
