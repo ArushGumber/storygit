@@ -548,3 +548,45 @@ def test_the_whole_story_audit_answers_over_http(api) -> None:  # type: ignore[n
     assert body["flags"] == []
     assert body["by_layer"] == {}, "a clean story has nothing to report per layer"
     assert body["summary"].startswith("audit: 0 flags")
+
+
+def test_editing_a_plan_candidate_keeps_the_writers_words(api) -> None:  # type: ignore[no-untyped-def]
+    """This returned 200 and threw the writer's text away at every plan level.
+
+    `_with_edited_prose` rewrote prose operations and passed everything else through, so an
+    edit to an episode, scene or beat committed the model's paragraph instead — while still
+    recording the edit signal, so the preference layer learned from a change that never
+    happened. A writer found it by re-reading the node.
+    """
+    client, state, _ = api
+    story = next(n for n in client.get("/api/tree").json()["nodes"] if n["node_type"] == "story")
+    proposed = client.post(
+        "/api/propose", json={"node_id": story["id"], "level": "episode", "intent": "go on"}
+    ).json()
+    assert proposed["candidates"], "the mock produced no candidates"
+    first = proposed["candidates"][0]
+
+    mine = "Ronnie refuses the money for slightly under one second."
+    response = client.post(
+        "/api/action/edit", json={"proposal_id": first["proposal_id"], "text": mine}
+    )
+    assert response.status_code == 200
+    episodes = [n for n in client.get("/api/tree").json()["nodes"] if n["node_type"] == "episode"]
+    detail = client.get(f"/api/node/{episodes[-1]['id']}").json()
+    assert detail["what_happens"] == mine
+
+
+def test_a_criterion_weight_out_of_range_is_a_422_not_a_500(api) -> None:  # type: ignore[no-untyped-def]
+    """A writer reaching for 1.5 to mean "this matters more" got a bare 500 and no body.
+
+    They only noticed because the criterion was missing from the ledger afterwards, which
+    is the worst way to find out that the objective you set was never set.
+    """
+    client, _, _ = api
+    response = client.post(
+        "/api/ledger/criterion",
+        json={"name": "escalating cost", "description": "each lie costs more", "weight": 1.5},
+    )
+    assert response.status_code == 422
+    assert "weight" in response.text
+    assert client.get("/api/ledger").json()["criteria"] == []

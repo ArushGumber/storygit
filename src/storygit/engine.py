@@ -762,7 +762,18 @@ def _prose_text(proposal: Proposal) -> str:
 
 
 def _with_edited_prose(proposal: Proposal, new_text: str) -> Proposal:
-    """Rebuild a proposal with the writer's text, marked as an edit of AI output."""
+    """Rebuild a proposal with the writer's text, marked as an edit of AI output.
+
+    At prose level the writer's words replace the prose. At a plan level there is no prose
+    to replace, so they replace the node's summary --- the sentence the writer was actually
+    shown and actually edited.
+
+    This used to rewrite prose operations only and pass everything else through untouched,
+    which meant an edit to an episode, scene or beat returned ``200`` and silently threw the
+    writer's words away. Worse, the edit *signal* was still recorded, so the preference
+    layer learned from a change that never happened. A writer who edits a plan node is
+    editing the one field they can see.
+    """
     sentences = max(1, new_text.count(".") + new_text.count("?") + new_text.count("!"))
     span = ProvenanceSpan(
         start=0,
@@ -781,6 +792,10 @@ def _with_edited_prose(proposal: Proposal, new_text: str) -> Proposal:
             )
         elif isinstance(op, SetProse):
             ops.append(op.model_copy(update={"text": new_text, "spans": (span,)}))
+        elif node is not None and hasattr(node, "what_happens"):
+            ops.append(
+                op.model_copy(update={"node": node.model_copy(update={"what_happens": new_text})})
+            )
         else:
             ops.append(op)
     return proposal.model_copy(

@@ -53,6 +53,21 @@ ENTITY_VALUED_PREDICATES: frozenset[Predicate] = frozenset(
 )
 """Predicates whose object is normally another entity rather than a literal."""
 
+ACCUMULATIVE_PREDICATES: frozenset[Predicate] = frozenset(
+    {Predicate.possesses, Predicate.trait, Predicate.secret, Predicate.injury}
+)
+"""Predicates a character simply collects more of, where two values never conflict.
+
+A person may own a biscuit tin and an envelope, have two scars, keep three secrets, and be
+both stubborn and kind. Sending those pairs to a cross-encoder asks it a question with no
+right answer, and it duly answers: in one real session, six of twelve audit flags were
+possessions contradicting other possessions, at scores above 0.99. That is quadratic in the
+number of props a writer introduces --- and props are what writers are told to write in.
+
+Distinct from :data:`SINGLE_VALUED_PREDICATES`, which layer 1 decides by equality. These
+are the ones nothing should decide at all.
+"""
+
 SINGLE_VALUED_PREDICATES: frozenset[Predicate] = frozenset(
     {Predicate.location, Predicate.alive, Predicate.faction, Predicate.relationship_status}
 )

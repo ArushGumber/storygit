@@ -23,7 +23,12 @@ from __future__ import annotations
 from storygit.continuity.flags import Flag, FlagKind, Severity
 from storygit.domain.ids import FactId, NodeId
 from storygit.domain.state import StoryState
-from storygit.domain.world import SINGLE_VALUED_PREDICATES, Fact, Predicate
+from storygit.domain.world import (
+    ACCUMULATIVE_PREDICATES,
+    SINGLE_VALUED_PREDICATES,
+    Fact,
+    Predicate,
+)
 
 CONTRADICTION_THRESHOLD = 0.35
 """Contradiction probability above which a pair becomes a soft flag.
@@ -75,6 +80,8 @@ def candidate_pairs(
     for (_, predicate), facts in by_subject.items():
         if predicate in SINGLE_VALUED_PREDICATES:
             continue  # layer 1 decided these by equality
+        if predicate in ACCUMULATIVE_PREDICATES:
+            continue  # a character may hold two things, two scars, or two secrets
         ordered = sorted(facts, key=lambda f: (state.seq.get(f.valid_from_beat, 0), f.id))
         for i, first in enumerate(ordered):
             for second in ordered[i + 1 :]:

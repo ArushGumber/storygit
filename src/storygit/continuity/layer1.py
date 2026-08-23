@@ -27,7 +27,7 @@ from __future__ import annotations
 
 from storygit.continuity.flags import Flag, FlagKind, Severity
 from storygit.domain.ids import EntityId, FactId, NodeId
-from storygit.domain.state import StoryState
+from storygit.domain.state import StoryState, normalize_name
 from storygit.domain.world import (
     SINGLE_VALUED_PREDICATES,
     EntityKind,
@@ -55,6 +55,53 @@ def check_state(state: StoryState, *, beats: tuple[NodeId, ...] | None = None) -
     flags.extend(check_dead_actors(state, targets))
     flags.extend(check_possession(state, targets))
     flags.extend(check_epistemic(state, targets))
+    flags.extend(check_duplicate_entities(state))
+    return flags
+
+
+def check_duplicate_entities(state: StoryState) -> list[Flag]:
+    """Two entities whose names contain one another are probably one character.
+
+    Alias resolution is deliberately conservative --- it matches exactly or creates --- so
+    it will leave a duplicate rather than risk welding two characters together. That is the
+    right trade only if the writer is *told*, and until this existed they were not: in a
+    real session, extraction from a hand-written beat created a second, empty "Ronnie"
+    beside the seeded "Ronnie Fenn", and the new one held the fact the whole story turns
+    on. Nothing flagged it. The writer found it by reading raw JSON for an unrelated reason.
+
+    Soft, never automatic: welding two characters together silently would be a worse bug
+    than leaving them apart.
+
+    Args:
+        state: The state to check.
+
+    Returns:
+        One soft flag per suspicious pair.
+    """
+    flags: list[Flag] = []
+    entities = list(state.entities.values())
+    for index, first in enumerate(entities):
+        for second in entities[index + 1 :]:
+            if first.kind is not second.kind:
+                continue
+            a = {normalize_name(n) for n in first.names}
+            b = {normalize_name(n) for n in second.names}
+            if a & b:
+                continue  # an exact shared name is already an alias, not a duplicate
+            if not any(x in y or y in x for x in a for y in b):
+                continue
+            flags.append(
+                Flag(
+                    kind=FlagKind.duplicate_entity,
+                    severity=Severity.soft,
+                    layer=1,
+                    message=(
+                        f"“{first.name}” and “{second.name}” may be the same "
+                        f"{first.kind.value}. Merge one into the other, or leave them apart."
+                    ),
+                    entity_ids=(first.id, second.id),
+                )
+            )
     return flags
 
 

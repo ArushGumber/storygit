@@ -376,3 +376,28 @@ def test_every_guard_actually_fires(fixture: Fixture, ids: IdGenerator) -> None:
         with pytest.raises(error):
             apply(state, diff)
         assert fixture.repo.state() == state, f"state changed while rejecting: {name}"
+
+
+def test_two_siblings_claiming_one_slot_are_ordered_by_acceptance(fixture: Fixture) -> None:
+    """A proposal carries the position the tree had when it was generated.
+
+    So a writer who asks for the next beat before accepting the last one gets two
+    candidates both claiming position 0, and their order then falls back to their ids. In
+    a real session that put a payoff before its setup — in the tree, in the audit, and in
+    the slice the next generation reads. A taken slot means append.
+    """
+    state = fixture.repo.state()
+    first, second = NodeId("n_first"), NodeId("n_second")
+    state = apply(
+        state,
+        Diff(
+            ops=(
+                AddNode(node=Beat(id=first, parent_id=fixture.scene, position=0, title="setup")),
+                AddNode(node=Beat(id=second, parent_id=fixture.scene, position=0, title="payoff")),
+            ),
+            author=DiffAuthor.human,
+        ),
+    )
+    order = [state.nodes[n].title for n in state.children[fixture.scene]]
+    assert order.index("setup") < order.index("payoff"), order
+    assert state.nodes[second].position > state.nodes[first].position

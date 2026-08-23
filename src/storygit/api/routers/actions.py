@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from storygit.agents.schemas import Level
 from storygit.api import schemas
@@ -244,7 +244,11 @@ class CriterionRequest(BaseModel):
 
     name: str
     description: str
-    weight: float = 1.0
+    # Bounded here as well as in the domain model, so an out-of-range weight is a 422
+    # naming the field rather than a bare 500 with no body. A writer reaching for 1.5 to
+    # mean "this matters more" got the latter, and only noticed because the criterion was
+    # missing from the ledger afterwards.
+    weight: float = Field(default=1.0, ge=0.0, le=1.0)
 
 
 class NameRequest(BaseModel):

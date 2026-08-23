@@ -44,6 +44,7 @@ class FlagKind(StrEnum):
     tone = "tone"
     motivation = "motivation"
     dropped_thread = "dropped_thread"
+    duplicate_entity = "duplicate_entity"
 
 
 class Flag(BaseModel):

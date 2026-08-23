@@ -308,6 +308,20 @@ def _add_node(work: _Working, node: AnyNode) -> None:
             ]
             if existing:
                 raise InvalidStructureError(f"beat {node.parent_id} already has prose")
+
+        # A proposal carries the position the tree had when it was *generated*, so two
+        # candidates for the same parent both claim the same slot -- and a writer who
+        # proposes the next beat before accepting the last one gets two siblings at
+        # position 0, whose order then falls back to their ids. In one real session that
+        # put the payoff before the setup, in the tree, in the audit, and in the slice the
+        # next generation reads. A taken slot means append: accept order is the order.
+        taken = {
+            n.position
+            for n in work.nodes.values()
+            if n.parent_id == node.parent_id and n.node_type is node.node_type
+        }
+        if node.position in taken:
+            node = node.model_copy(update={"position": max(taken) + 1})
     work.nodes[node.id] = node
 
 
