@@ -83,6 +83,13 @@ def system_message(slice_: StateSlice, *, extra: str = "") -> Message:
         parts.append(
             "The writer judges work on their own criteria. Optimise for these:\n" + criteria
         )
+    if slice_.rejected_directions:
+        # Stated as directions to avoid rather than as constraints: the writer turned this
+        # down here, which is not the same as saying it may never happen in the story.
+        turned_down = "\n".join(f"- {line}" for line in slice_.rejected_directions)
+        parts.append(
+            "The writer has already turned these down. Do not offer them again:\n" + turned_down
+        )
     if slice_.hard_constraints:
         constraints = "\n".join(f"- {line}" for line in slice_.hard_constraints)
         parts.append(

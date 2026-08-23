@@ -19,6 +19,14 @@ from storygit.domain.threads import Thread, ThreadStatus
 from storygit.domain.world import Entity, Fact
 from storygit.graph.dependency import hard_constraints
 
+RECENT_REJECTIONS = 4
+"""How many turned-down directions reach a prompt.
+
+All of them would crowd out the state and, worse, would keep telling the model to avoid
+something the story moved past ten beats ago. The newest few are the ones the writer still
+means.
+"""
+
 
 class PathStep(BaseModel):
     """One ancestor of the target node, rendered for the prompt."""
@@ -56,6 +64,11 @@ class StateSlice(BaseModel):
         style_notes: Soft prose rules from the ledger.
         criteria: Writer-defined scoring axes, so the judge scores what the writer
             actually cares about.
+        rejected_directions: The most recent directions the writer turned down, in their
+            own words. The ledger has always described these as "fed to generation";
+            until the fix pass nothing carried them into a prompt, so a writer who said
+            "not this" got the same proposal again. Bounded to the newest few: a
+            standing list of everything ever rejected would crowd out the state.
         recent_prose: The last few paragraphs, for voice continuity.
     """
 
@@ -70,6 +83,7 @@ class StateSlice(BaseModel):
     hard_constraints: tuple[str, ...] = ()
     style_notes: tuple[StyleNote, ...] = ()
     criteria: tuple[Criterion, ...] = ()
+    rejected_directions: tuple[str, ...] = ()
     recent_prose: tuple[str, ...] = ()
 
     def render(self, names: dict[EntityId, str] | None = None) -> str:
@@ -211,6 +225,9 @@ def entity_slice(
         hard_constraints=tuple(hard_constraints(state)),
         style_notes=state.ledger.active_style_notes(mined_threshold),
         criteria=state.ledger.criteria,
+        rejected_directions=tuple(
+            d.text for d in state.ledger.rejected_directions[-RECENT_REJECTIONS:]
+        ),
         recent_prose=tuple(reversed(prose)),
     )
 

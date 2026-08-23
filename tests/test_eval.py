@@ -8,7 +8,7 @@ exercise by spending quota is a metrics module nobody checks.
 from __future__ import annotations
 
 import pytest
-from eval import ablations, inject, metrics, offline
+from eval import ablations, inject, metrics, offline, personas
 from eval.gallery_record import Recorder, Session, replay
 from eval.personas import PERSONAS, ForbiddenMove, get
 from eval.simulate import RunLog, SimulatedWriter, run_writer, token_edit_distance
@@ -548,3 +548,91 @@ async def test_every_decision_records_the_features_behind_its_scores(fixture: Fi
         assert len(action.features) == len(action.scores)
         for vector in action.features:
             assert set(vector) >= set(BASE_FEATURES), "a feature disappeared from the log"
+
+
+@pytest.mark.asyncio
+async def test_a_rejected_set_gets_exactly_one_informed_retry(fixture: Fixture) -> None:
+    """A writer who dislikes all three asks again; they do not close the tool.
+
+    The retry is what puts the system's own thesis under test — the rejection is already
+    a turned-down direction in the ledger and a negative exemplar, so the second set is
+    informed by the first. Exactly one: a writer who rejects twice means it, and an
+    unbounded loop would burn a free tier on one stubborn decision.
+    """
+    engine, _ = mock_engine(fixture)
+    proposals: list[str] = []
+    accept_on_retry = get("the Serialist").model_copy(update={"noise": 0.0})
+
+    original = engine.propose_at
+
+    async def counting(level, **kwargs: object):  # type: ignore[no-untyped-def]
+        proposals.append(f"{level.value}:{kwargs.get('node_id')}")
+        return await original(level, **kwargs)  # type: ignore[arg-type]
+
+    engine.propose_at = counting  # type: ignore[method-assign]
+
+    # A bar nothing can clear: every set is rejected, so the retry always fires and the
+    # second rejection has to stand.
+    impossible = accept_on_retry.model_copy(update={"accept_quantile": 1.0, "edit_quantile": 1.0})
+    personas._THRESHOLDS[impossible.name] = (2.0, 2.0)
+    try:
+        log = await run_writer(
+            impossible,
+            engine,
+            episodes=1,
+            scenes_per_episode=1,
+            beats_per_scene=1,
+            seed=5,
+            use_llm_edits=False,
+        )
+    finally:
+        personas._THRESHOLDS.pop(impossible.name, None)
+
+    assert all(a.kind == "reject" for a in log.actions), "the bar was meant to be unclearable"
+    assert log.actions, "the run produced no decisions"
+    # Every rejected set is retried exactly once, so decisions arrive in same-level pairs
+    # and never in threes.
+    assert len(log.actions) % 2 == 0, "a rejection without its retry, or a retry of a retry"
+    levels = [a.level for a in log.actions]
+    assert all(levels[i] == levels[i + 1] for i in range(0, len(levels), 2)), levels
+    # And never a third attempt at the same place: two proposals per node, no more.
+    from collections import Counter
+
+    assert max(Counter(proposals).values()) == 2, Counter(proposals)
+
+
+@pytest.mark.asyncio
+async def test_a_writer_who_accepts_on_the_retry_gets_what_they_asked_for(
+    fixture: Fixture, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The other half of the retry: rejecting once must not end the decision.
+
+    Scripted so the first set scores below the bar and the second above it, which is the
+    case the retry exists for — the writer said "not these", the next set was informed by
+    that, and the run continues instead of stopping.
+    """
+    engine, _ = mock_engine(fixture)
+    persona = get("the Serialist")
+    accept_at, _ = persona.thresholds()
+    seen: list[int] = []
+
+    def scripted(self: object, features: object, rng: object) -> float:
+        seen.append(1)
+        # Three candidates per set: the first set is under the bar, the second over it.
+        return 0.0 if len(seen) <= 3 else accept_at + 0.05
+
+    monkeypatch.setattr(personas.Persona, "score", scripted)
+    log = await run_writer(
+        persona,
+        engine,
+        episodes=1,
+        scenes_per_episode=1,
+        beats_per_scene=1,
+        seed=5,
+        use_llm_edits=False,
+    )
+
+    kinds = [a.kind for a in log.actions]
+    assert kinds[0] == "reject", "the first set was scripted below the bar"
+    assert kinds[1] == "accept", "the informed retry was scripted above it"
+    assert kinds.count("reject") == 1, "one rejection, one retry, then on with the run"

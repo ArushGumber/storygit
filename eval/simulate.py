@@ -435,13 +435,19 @@ async def run_writer(
             rate_limit_waits=waits,
         )
 
-    async def step(level: Level, node_id: NodeId | None) -> None:
+    async def step(level: Level, node_id: NodeId | None, *, retry: bool = False) -> None:
         """One decision, waiting out rate limits rather than abandoning the run.
 
         A free-tier per-minute quota clears in seconds, and the provider tells us exactly
         how many. Abandoning a 33-decision run because one call needed a four-second wait
         is the difference between an evaluation that finishes and one that does not -- and
         it is how the first four-persona run lost three of its four writers.
+
+        Args:
+            level: What to propose.
+            node_id: The parent to propose under.
+            retry: Whether this call *is* the one informed re-proposal, in which case a
+                second rejection stands.
         """
         nonlocal waited, waits
         for attempt in range(max_retries + 1):
@@ -459,7 +465,17 @@ async def run_writer(
             if not candidates:
                 errors.append(f"no candidates parsed at {level.value}")
                 return
-            actions.append(await writer.decide(candidates))
+            action = await writer.decide(candidates)
+            actions.append(action)
+            if action.kind == "reject" and not retry:
+                # A writer who dislikes all three says "not these" and asks again; they do
+                # not close the tool. The rejection is already in the ledger as a
+                # turned-down direction and in the exemplar pool as a negative, so the
+                # second set is *informed* by the first -- which is the system's own
+                # thesis (feedback in, better proposal out) put under test rather than
+                # asserted. Exactly one retry: a writer who rejects twice means it, and
+                # an unbounded loop would burn a free tier on one stubborn decision.
+                await step(level, node_id, retry=True)
             return
 
     try:
