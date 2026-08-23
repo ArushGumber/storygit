@@ -4,8 +4,12 @@ Every route here goes through the engine, and the engine goes through
 ``Repository.commit_diff``. There is no other path — a POST cannot mutate state any other
 way, which is what makes the snapshot history a complete record rather than a partial one.
 
-Long calls (proposing) run in a thread pool rather than on the event loop. Generation takes
-seconds and involves local embedding work that would otherwise block every other request.
+Long calls (proposing) are ``async def`` and therefore run **on** the event loop, and the
+local embedding and NLI work reached from inside them is blocking CPU work that holds it.
+With one writer in one process that costs nothing, which is why it has never been fixed;
+with a second concurrent request it would stall it. Saying so here rather than describing a
+thread pool that does not exist -- an earlier version of this docstring did, and a docstring
+that describes the fix while the code has the bug is worse than no docstring.
 """
 
 from __future__ import annotations
@@ -99,7 +103,9 @@ async def edit(state: State, request: schemas.EditRequest) -> schemas.ActionResp
     """Accept a proposal with the writer's own words, recording the before/after pair."""
     engine = state.engine()
     try:
-        result = await engine.edit(ProposalId(request.proposal_id), request.text)
+        result = await engine.edit(
+            ProposalId(request.proposal_id), request.text, shown_with=engine.shown()
+        )
     except KeyError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     return schemas.action_response(result)

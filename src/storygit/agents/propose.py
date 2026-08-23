@@ -52,7 +52,6 @@ from storygit.domain.provenance import Authorship, ProvenanceSpan
 from storygit.domain.state import StoryState
 from storygit.domain.threads import Thread, ThreadStatus
 from storygit.domain.world import (
-    ENTITY_VALUED_PREDICATES,
     EntityKind,
     Fact,
     FactSource,
@@ -655,6 +654,6 @@ def _kind_for(draft: FactDraft) -> EntityKind:
         return EntityKind.faction
     if draft.predicate is Predicate.possesses:
         return EntityKind.object
-    if draft.predicate in ENTITY_VALUED_PREDICATES:
-        return EntityKind.character
+    # Everything that reaches here refers to a person: the predicates with a non-character
+    # object are handled above. Written as one return rather than two identical ones.
     return EntityKind.character

@@ -59,7 +59,9 @@ class StateSlice(BaseModel):
         entities: Entities in scope.
         facts: Facts about those entities valid at the target beat.
         knowledge: Epistemic edges for those entities.
-        threads: Open threads touching those entities or recently untouched.
+        threads: Every open thread. Not filtered to these entities: a dropped thread is
+            invisible to every other check, so the slice carries all of them and lets the
+            model see what is outstanding.
         hard_constraints: Locked facts and writer constraints; never violate.
         style_notes: Soft prose rules from the ledger.
         criteria: Writer-defined scoring axes, so the judge scores what the writer
@@ -243,7 +245,9 @@ def entities_in_scope(state: StoryState, node_id: NodeId) -> set[EntityId]:
         node_id: The node in question.
 
     Returns:
-        Entity ids in scope, always non-empty when the story has entities.
+        Entity ids in scope. Possibly empty -- a node that declares no facts and whose
+        title names nobody has nothing in scope, and callers that cannot work with an empty
+        set fall back to the whole cast rather than pretending otherwise.
     """
     node = state.nodes.get(node_id)
     if node is None:

@@ -20,8 +20,9 @@ partly theirs.
 
 from __future__ import annotations
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import ConfigDict, Field
 
+from storygit.agents.schemas import BoundedModel
 from storygit.continuity.flags import Flag, FlagKind, Severity
 from storygit.domain.ids import NodeId
 from storygit.graph.slices import StateSlice
@@ -32,8 +33,18 @@ MAX_ARGUMENT = 400
 MAX_NOTE = 240
 
 
-class CriterionScore(BaseModel):
-    """One score on one axis, with the argument that produced it."""
+class CriterionScore(BoundedModel):
+    """One score on one axis, with the argument that produced it.
+
+    ``BoundedModel`` rather than ``BaseModel``, for the reason its own docstring gives: the
+    provider does not enforce ``maxLength``, so a bounded string field that *rejects*
+    throws away a good answer over punctuation. This is the highest-volume call in the
+    pipeline -- six per node -- against a field the prompt explicitly asks the model to
+    fill with a sentence of prose, so it is the exact case ``BoundedModel`` was built for.
+    And the failure was invisible: ``judge()`` catches the parse error and returns a
+    neutral 0.5, so a run where every verdict failed to validate looked identical to a run
+    where none did.
+    """
 
     model_config = ConfigDict(extra="ignore")
 
@@ -46,8 +57,11 @@ class CriterionScore(BaseModel):
     score: float = Field(default=3.0, ge=1.0, le=5.0, description="1 to 5.")
 
 
-class JudgeVerdict(BaseModel):
-    """What the soft judge returns for one candidate."""
+class JudgeVerdict(BoundedModel):
+    """What the soft judge returns for one candidate.
+
+    Bounded rather than rejecting, for the same reason as :class:`CriterionScore`.
+    """
 
     model_config = ConfigDict(extra="ignore")
 

@@ -820,3 +820,44 @@ def test_a_session_of_edited_wins_moves_the_head_less_than_clean_wins() -> None:
         "a session of edited-then-accepted wins is weaker evidence and must move the head "
         "less far from where it started"
     )
+
+
+def test_an_edited_accept_produces_a_preference_pair() -> None:
+    """The edit path recorded no comparison at all, so half the head's mechanism was dead.
+
+    ``Engine.edit`` ended in ``accept(proposal.id)`` with no ``shown_with``, and
+    ``SignalReader.preference_pairs`` iterates exactly that field -- so editing a candidate
+    and accepting it produced zero pairs. ``PreferencePair.was_edited`` and
+    ``EDITED_WIN_WEIGHT`` could never fire from the product's only edit path, which is the
+    path whose own docstring calls it "the most informative signal the system gets".
+
+    Asserted on the signals the engine writes rather than on the engine's source, because a
+    test that reads source is a test that passes when the behaviour changes underneath it.
+    """
+    import sqlite3
+
+    from storygit.domain.ids import NodeId, ProposalId
+    from storygit.preference.signals import SignalReader
+    from storygit.store.signals import Signal, SignalKind, SignalStore
+
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    store = SignalStore(conn)
+    winner, loser = ProposalId("p_win"), ProposalId("p_lose")
+    node = NodeId("n_beat")
+
+    # What the engine records when the writer edits a candidate and accepts it.
+    store.record(Signal(kind=SignalKind.edit, proposal_id=winner, node_id=node))
+    store.record(
+        Signal(
+            kind=SignalKind.accept,
+            proposal_id=winner,
+            node_id=node,
+            shown_with=(winner, loser),
+        )
+    )
+
+    pairs = SignalReader(store, branch="main").preference_pairs()
+    assert len(pairs) == 1, f"an edited accept must still be a comparison: {pairs}"
+    assert pairs[0].winner == winner and pairs[0].loser == loser
+    assert pairs[0].was_edited, "and it must be marked as the weaker kind of win"

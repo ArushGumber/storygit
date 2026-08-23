@@ -311,7 +311,11 @@ class SimulatedWriter:
     async def _edit(self, base: Action, shown: list[Candidate], index: int, text: str) -> Action:
         chosen = shown[index]
         rewritten = await self._rewrite(text)
-        result = await self.engine.edit(chosen.proposal.id, rewritten)
+        result = await self.engine.edit(
+            chosen.proposal.id,
+            rewritten,
+            shown_with=tuple(c.proposal.id for c in shown),
+        )
         self._maybe_lock(chosen)
         return base.model_copy(
             update={

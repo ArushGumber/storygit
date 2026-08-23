@@ -230,6 +230,15 @@ class CandidateSelector:
         # to the writer either way. An override replaces the ranking, not the analysis.
         if config.use_judge:
             judged, judge_flags, judge_scores = await self._judge_all(slice_, candidates, parent_id)
+            # A candidate whose diff will not apply was scored at zero by _with_flags, and
+            # on this path the judge's score replaced that outright -- so a change that
+            # cannot be made to the story at all could out-rank a valid one and be shown as
+            # the top choice, with only a 0.6 flag penalty between them. The judge reads
+            # prose and knows nothing about whether the diff applies. Zero wins.
+            judged = [
+                0.0 if candidate.base_quality == 0.0 else score
+                for candidate, score in zip(candidates, judged, strict=True)
+            ]
         else:
             judged = [c.base_quality for c in candidates]
             judge_scores = [{} for _ in candidates]

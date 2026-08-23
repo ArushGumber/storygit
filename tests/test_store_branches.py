@@ -22,7 +22,7 @@ from storygit.domain.diff import (
     RemoveThread,
     UpdateNode,
 )
-from storygit.domain.errors import SnapshotNotFoundError
+from storygit.domain.errors import BranchExistsError, SnapshotNotFoundError
 from storygit.domain.ids import NodeId
 from storygit.domain.ledger import StyleNote
 from storygit.domain.nodes import Beat
@@ -39,7 +39,9 @@ def test_branch_starts_at_the_same_state(fixture: Fixture) -> None:
 
 def test_duplicate_branch_name_raises(fixture: Fixture) -> None:
     fixture.repo.create_branch("alt")
-    with pytest.raises(SnapshotNotFoundError):
+    # Not SnapshotNotFoundError: a name collision and a missing snapshot are opposite
+    # problems, and the API maps them to 409 and 404 respectively.
+    with pytest.raises(BranchExistsError):
         fixture.repo.create_branch("alt")
 
 

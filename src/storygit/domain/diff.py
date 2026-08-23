@@ -13,7 +13,7 @@ edges, threads, and the writer ledger.
 from __future__ import annotations
 
 from enum import StrEnum
-from typing import Annotated, Any, Literal, assert_never
+from typing import TYPE_CHECKING, Annotated, Any, Literal, assert_never
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -23,6 +23,12 @@ from storygit.domain.nodes import AnyNode, NodeStatus, Prose
 from storygit.domain.provenance import ProvenanceSpan
 from storygit.domain.threads import Thread, ThreadStatus
 from storygit.domain.world import Entity, Fact, Knows
+
+if TYPE_CHECKING:
+    # Imported for typing only. There is no cycle to avoid -- state.py does not
+    # import this module -- but a runtime import here would make the dependency
+    # look load-bearing when it is purely descriptive.
+    from storygit.domain.state import StoryState
 
 
 class DiffAuthor(StrEnum):
@@ -387,7 +393,7 @@ def _as_entity_names(names: dict[str, str]) -> dict[EntityId, str]:
 
 def delta_summary(
     diff: Diff,
-    state: Any,
+    state: StoryState,
     *,
     stale_count: int | None = None,
 ) -> list[str]:
@@ -398,9 +404,7 @@ def delta_summary(
 
     Args:
         diff: The diff to describe.
-        state: The :class:`~storygit.domain.state.StoryState` the diff applies to,
-            used to resolve ids to names. Typed loosely to keep this module free of
-            an import cycle.
+        state: The state the diff applies to, used to resolve ids to names.
         stale_count: Number of nodes propagation would mark, when the caller has
             run :func:`storygit.graph.propagation.preview`.
 

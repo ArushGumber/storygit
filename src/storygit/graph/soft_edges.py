@@ -89,11 +89,27 @@ class EmbeddingEdgeProvider:
         self._cache: dict[str, np.ndarray] = {}
 
     def _embed(self, texts: list[str]) -> np.ndarray:
+        """Embed a list of beat texts, reusing vectors already computed for this story.
+
+        The cache was assigned in ``__init__`` and never read or written, and the cost of
+        that was not small: ``extra_dependents`` embeds *every beat in the story*, and
+        ``propagate`` calls it once per origin beat -- so one accept that changed facts
+        produced by three beats ran the encoder over the whole story three times. Keyed on
+        the text itself, so a beat whose prose has not changed is embedded once per
+        process regardless of how many propagations read it.
+        """
+        import numpy as np
+
         if self._embed_fn is not None:
             return self._embed_fn(texts)  # type: ignore[operator, no-any-return]
         from storygit.selection.embed import embed_texts
 
-        return embed_texts(texts)
+        missing = [t for t in dict.fromkeys(texts) if t not in self._cache]
+        if missing:
+            fresh = embed_texts(missing)
+            for text, vector in zip(missing, fresh, strict=True):
+                self._cache[text] = vector
+        return np.stack([self._cache[t] for t in texts])
 
     def extra_dependents(self, state: StoryState, node_id: NodeId) -> tuple[NodeId, ...]:
         """Beats that read closely enough on ``node_id`` to be worth checking.

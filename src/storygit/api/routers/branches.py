@@ -10,7 +10,7 @@ from pydantic import BaseModel
 from storygit.api import schemas
 from storygit.api.deps import AppState, app_state
 from storygit.domain.diff import delta_summary
-from storygit.domain.errors import SnapshotNotFoundError
+from storygit.domain.errors import BranchExistsError, SnapshotNotFoundError
 
 router = APIRouter(prefix="/api", tags=["branches"])
 
@@ -58,8 +58,10 @@ def create_branch(state: State, request: BranchRequest) -> dict[str, Any]:
         snapshot = state.repo.create_branch(
             request.name, from_branch=request.from_branch or state.branch
         )
-    except SnapshotNotFoundError as exc:
+    except BranchExistsError as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from exc
+    except SnapshotNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
     return {"ok": True, "branch": request.name, "snapshot_id": str(snapshot)}
 
 

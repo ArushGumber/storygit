@@ -50,3 +50,13 @@ class LockedNodeError(ApplyError):
 
 class SnapshotNotFoundError(StoryGitError):
     """A snapshot or branch reference does not resolve."""
+
+
+class BranchExistsError(StoryGitError):
+    """A branch name is already taken.
+
+    Distinct from :class:`SnapshotNotFoundError` because the two mean opposite things and
+    the API maps them to opposite statuses. Raising "not found" for "already exists" left
+    one file catching the same class twelve lines apart and returning 409 in one place and
+    404 in the other.
+    """

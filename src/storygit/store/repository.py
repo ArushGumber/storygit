@@ -16,7 +16,7 @@ from typing import Any, Self
 
 from storygit.domain.apply import apply
 from storygit.domain.diff import Diff
-from storygit.domain.errors import SnapshotNotFoundError
+from storygit.domain.errors import BranchExistsError, SnapshotNotFoundError
 from storygit.domain.ids import SnapshotId
 from storygit.domain.state import StoryState
 from storygit.store.branches import (
@@ -191,10 +191,10 @@ class Repository:
             The snapshot the new branch points at.
 
         Raises:
-            SnapshotNotFoundError: If the branch already exists.
+            BranchExistsError: If the branch already exists.
         """
         if self.branches.exists(name):
-            raise SnapshotNotFoundError(f"branch {name!r} already exists")
+            raise BranchExistsError(f"branch {name!r} already exists")
         snapshot_id = at or self.branches.head(from_branch)
         self.branches.set(name, snapshot_id)
         return snapshot_id

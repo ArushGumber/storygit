@@ -163,8 +163,12 @@ class ThompsonBandit:
             return [], Arm.safe
         arm = self.choose()
         safe = ranked[:k]
+        # k < 2 leaves no slot for a surprising candidate, so no exploration can happen --
+        # and reporting the explore arm here credited the bandit for it anyway, against the
+        # promise three lines above. The old ternary was also tautological: `Arm.safe if arm
+        # is Arm.safe else arm` is `arm`.
         if arm is Arm.safe or k < 2:
-            return safe, Arm.safe if arm is Arm.safe else arm
+            return safe, Arm.safe
 
         keep = ranked[: k - 1]
         for index in surprising:

@@ -48,6 +48,7 @@ from storygit.domain.diff import (
     SetNodeStatus,
     SetProse,
 )
+from storygit.domain.errors import LockedNodeError
 from storygit.domain.ids import EntityId, FactId, IdGenerator, NodeId, ProposalId, SnapshotId
 from storygit.domain.ledger import Criterion, StyleNote
 from storygit.domain.nodes import NodeStatus, Prose
@@ -334,7 +335,13 @@ class Engine:
         self._pending.pop(proposal_id, None)
         self._learn(human_prose=self._human_prose(self.state()))
 
-    async def edit(self, proposal_id: ProposalId, new_text: str) -> AcceptResult:
+    async def edit(
+        self,
+        proposal_id: ProposalId,
+        new_text: str,
+        *,
+        shown_with: tuple[ProposalId, ...] = (),
+    ) -> AcceptResult:
         """Accept a proposal with the writer's own words in place of the model's.
 
         The before/after pair is the most informative signal the system gets: it says
@@ -342,9 +349,18 @@ class Engine:
         like. Chunk 4 mines exactly these pairs into style rules and an edit-direction
         vector.
 
+        ``shown_with`` matters as much here as on a clean accept, and for longer it was
+        missing: the edit path called ``accept`` with no shown set, so an edited win
+        produced no preference pair at all. Which made ``PreferencePair.was_edited`` and
+        ``EDITED_WIN_WEIGHT`` -- a documented mechanism, with an argument behind it --
+        unreachable from the only edit path the product has. The most informative signal
+        the system gets was contributing the least to the head.
+
         Args:
             proposal_id: The proposal being edited.
             new_text: The writer's replacement prose.
+            shown_with: The other candidates it was shown alongside. An edited winner is
+                still a winner, weighted at half a clean accept.
 
         Returns:
             The same result an accept produces.
@@ -369,7 +385,7 @@ class Engine:
                 },
             )
         )
-        return await self.accept(proposal.id)
+        return await self.accept(proposal.id, shown_with=shown_with)
 
     async def write_beat(self, beat_id: NodeId, text: str) -> AcceptResult:
         """The hand-written path: the writer writes, the system only reads.
@@ -453,15 +469,30 @@ class Engine:
         )
 
     def dismiss_stale(self, node_id: NodeId) -> SnapshotId:
-        """The writer's "it still works" — clears a stale mark without regenerating."""
+        """The writer's "it still works" — clears a stale mark without regenerating.
+
+        The status only changes when it was actually ``stale``. Propagation also writes a
+        reason onto nodes it marks ``review`` or ``maybe_affected`` *without* changing their
+        status, so a draft can carry a reason -- and dismissing it used to mark that draft
+        accepted, granting a review the writer never gave. Dismissing a mark means "this
+        still works", not "I approve of this".
+        """
         self.signals.record(
             Signal(kind=SignalKind.dismiss_stale, branch=self.branch, node_id=node_id)
         )
+        node = self.repo.state(self.branch).nodes.get(node_id)
+        if node is not None and node.status is NodeStatus.locked:
+            # apply()'s guard exempts SetNodeStatus(status=locked), which is what preserving
+            # the node's own status would produce here -- so the refusal has to be explicit
+            # or dismissing a mark on a locked node silently succeeds. A locked node is
+            # never marked in the first place; there is nothing to dismiss.
+            raise LockedNodeError(f"{node_id} is locked; unlock it before changing its status")
+        status = (
+            NodeStatus.accepted if node is None or node.status is NodeStatus.stale else node.status
+        )
         return self.repo.commit_diff(
             Diff(
-                ops=(
-                    SetNodeStatus(node_id=node_id, status=NodeStatus.accepted, stale_reason=None),
-                ),
+                ops=(SetNodeStatus(node_id=node_id, status=status, stale_reason=None),),
                 author=DiffAuthor.human,
                 intent="dismiss stale mark",
             ),
@@ -721,32 +752,6 @@ class Engine:
         if target is not None and target in state.prose_of_beat:
             return target
         return None
-
-
-def bible_diff(before: StoryState, after: StoryState) -> BibleDiff:
-    """What changed in the world graph between two states.
-
-    Args:
-        before: State before the change.
-        after: State after it.
-
-    Returns:
-        Facts added, ended, and struck, plus writer-readable lines.
-    """
-    names = after.entity_names() or before.entity_names()
-    added = tuple(after.facts[f] for f in sorted(after.facts.keys() - before.facts.keys()))
-    removed = tuple(before.facts[f] for f in sorted(before.facts.keys() - after.facts.keys()))
-    ended = tuple(
-        after.facts[f]
-        for f in sorted(before.facts.keys() & after.facts.keys())
-        if before.facts[f].valid_until_beat is None and after.facts[f].valid_until_beat is not None
-    )
-    lines = [
-        *(f"+ {fact.sentence(names)}" for fact in added),
-        *(f"~ {fact.sentence(names)} (no longer true from here)" for fact in ended),
-        *(f"- {fact.sentence(names)}" for fact in removed),
-    ]
-    return BibleDiff(added=added, ended=ended, removed=removed, lines=tuple(lines))
 
 
 def _prose_text(proposal: Proposal) -> str:

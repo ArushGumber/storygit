@@ -178,7 +178,6 @@ def evaluate_prior(
     Returns:
         ``{"prior": accuracy, "uniform": accuracy, "lift": difference}``.
     """
-    rng = random.Random(seed)
     fresh = make_personas(1, seed=seed)[0]
     train = generate_pairs([fresh], per_persona=n_decisions, seed=seed + 1)
     test = generate_pairs([fresh], per_persona=n_test, seed=seed + 2)
@@ -190,7 +189,6 @@ def evaluate_prior(
 
     prior_accuracy = pairwise_accuracy(from_prior, test)
     uniform_accuracy = pairwise_accuracy(from_uniform, test)
-    del rng
     return {
         "prior": prior_accuracy,
         "uniform": uniform_accuracy,
