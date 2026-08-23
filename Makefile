@@ -10,7 +10,7 @@ PY   := $(VENV)/python
 .PHONY: help check test coverage lint types frontend e2e docs diagrams numbers eval gallery screenshots all clean
 
 help:  ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[1m%-14s\033[0m %s\n", $$1, $$2}'
 
 check: lint types test  ## Everything that must be green before a commit

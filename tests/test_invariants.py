@@ -380,3 +380,23 @@ def test_every_figure_the_evaluation_produces_has_a_caption() -> None:
     assert produced <= captioned, "figures with no caption: " + ", ".join(
         sorted(produced - captioned)
     )
+
+
+def test_make_help_lists_every_target() -> None:
+    """The README says `make help` shows "every regeneration command, named".
+
+    It did not. The help target greps `^[a-zA-Z_-]+:` and `e2e` contains a digit, so the
+    end-to-end smoke — one of the four things `make all` runs — was silently absent from
+    the list of what this project can regenerate.
+    """
+    makefile = (SRC.parents[1] / "Makefile").read_text()
+    phony = set(re.search(r"^\.PHONY:(.*)$", makefile, re.M).group(1).split())  # type: ignore[union-attr]
+    documented = set(re.findall(r"^([a-zA-Z0-9_-]+):.*?## ", makefile, re.M))
+    assert phony <= documented, "targets with no help text: " + ", ".join(
+        sorted(phony - documented)
+    )
+    pattern = re.search(r"@grep -E '(\^[^']+)'", makefile).group(1)  # type: ignore[union-attr]
+    listed = {name for name in documented if re.match(pattern.replace("$$", "$"), f"{name}: ## x")}
+    assert listed == documented, "targets the help grep cannot match: " + ", ".join(
+        sorted(documented - listed)
+    )
