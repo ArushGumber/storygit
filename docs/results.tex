@@ -5,8 +5,13 @@
 %
 %   python -m eval.offline && python -m eval.texnumbers && tectonic presentable.tex
 %
-% 87 macros.
+% 99 macros.
 
+\newcommand{\rAcceptanceFellCount}{1}
+\newcommand{\rAcceptanceFellFrom}{100\%}
+\newcommand{\rAcceptanceFellTo}{60\%}
+\newcommand{\rAcceptanceFirstThird}{100\%}
+\newcommand{\rAcceptanceLastThird}{90\%}
 \newcommand{\rBanditEpsilonRegret}{6.3}
 \newcommand{\rBanditPosteriorExplore}{0.707}
 \newcommand{\rBanditPosteriorSafe}{0.389}
@@ -38,9 +43,12 @@
 \newcommand{\rLiftAtTen}{+0.080}
 \newcommand{\rLiftAtZero}{-0.010}
 \newcommand{\rLiveAcceptanceMean}{90\%}
+\newcommand{\rLiveDecisionsPerRun}{4}
 \newcommand{\rLiveDecisionsTotal}{14}
 \newcommand{\rLiveRunCount}{4}
 \newcommand{\rLiveRunPlural}{runs}
+\newcommand{\rLiveRunsCompleted}{0}
+\newcommand{\rLiveRunsTruncated}{4}
 \newcommand{\rLiveTokensPerAction}{42,584}
 \newcommand{\rLiveWeightRecoveryBest}{0.51}
 \newcommand{\rLiveWeightRecoveryIdentified}{\textit{[not measured yet]}}
@@ -62,6 +70,7 @@
 \newcommand{\rProbeTauPrior}{\textit{[not measured yet]}}
 \newcommand{\rProbeTauUniform}{\textit{[not measured yet]}}
 \newcommand{\rProbeTopOneLast}{\textit{[not measured yet]}}
+\newcommand{\rProbeWorstPersona}{\textit{[not measured yet]}}
 \newcommand{\rProviderCacheHitRate}{50\%}
 \newcommand{\rProviderCalls}{602}
 \newcommand{\rProviderErrors}{290}
@@ -69,7 +78,10 @@
 \newcommand{\rQualityDpp}{0.780}
 \newcommand{\rQualityMmr}{0.833}
 \newcommand{\rQualityTopK}{0.900}
+\newcommand{\rRecoveryBestPersona}{\textit{[not measured yet]}}
 \newcommand{\rRecoveryFractionOfCeiling}{68\%}
+\newcommand{\rRetryOffered}{1}
+\newcommand{\rRetryRescued}{0}
 \newcommand{\rShrinkColdStartAnchored}{+0.067}
 \newcommand{\rShrinkColdStartSeedSd}{0.040}
 \newcommand{\rShrinkColdStartSeeds}{5}

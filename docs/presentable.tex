@@ -45,15 +45,22 @@ from that model. Every AI action is a reviewable diff against the graph rather t
 of replacement text. Edits propagate along declared dependency edges by \emph{marking} what
 they affect and never by rewriting it. Continuity is checked graph-first, by a deterministic
 pass over a closed predicate vocabulary, before any model is asked for an opinion. A
-preference layer learns the writer's taste from the accept, reject and edit signals they
-already produce, and is measured on a held-out cross-writer probe against an oracle ceiling
-for the same estimator on the same data, which separates what the learner did from what the
-sample size allowed. The deterministic evaluation catches four of five injected
-contradiction classes at layer 1 and the fifth at layer 2, at
-\rCheckerFalsePositivesPerBeat{} false positives per beat on a clean story, and predicts an
-edit's blast radius at precision \rStaleDeclaredPrecision{} and recall
-\rStaleDeclaredRecall{} from declared edges alone. All of it ran on free-tier inference at a
-total spend of \$0.00.
+preference layer fits a Bradley-Terry ranking head to the accept, reject and edit signals a
+writer already produces, using their own stated criteria as features.
+
+The evaluation is in two tiers. The deterministic tier needs no model calls and is therefore
+exact: the checker catches four of five injected contradiction classes at layer 1 and the
+fifth at layer 2, at \rCheckerFalsePositivesPerBeat{} false positives per beat on a clean
+story, and declared dependency edges predict an edit's blast radius at precision
+\rStaleDeclaredPrecision{} and recall \rStaleDeclaredRecall{}. The live tier drives the real
+system with \emph{simulated} writers, each a known weight vector over the head's own feature
+space, so what it can answer is whether the estimator recovers a taste it was shown, not
+whether the system helps a human write; no human study was run. That measurement is
+deconfounded twice: learning is read on a held-out probe of other writers' decisions, which
+cannot move because the task got harder, and recovery is scaled against an oracle ceiling
+computed with the same estimator on the same candidate sets at the same decision count,
+which separates what the learner did from what the sample size allowed. All development ran
+on free-tier inference at a total spend of \$0.00.
 \end{abstract}
 
 \section{Introduction}
@@ -251,11 +258,14 @@ nine episodes'' is a query, not a judgement.
 criteria in the writer's own words, rejected directions, and the coherent-to-surprising
 dial. This is the object that keeps the human in authority, and everything in it is visible
 and deletable, including the rules the system mined from the writer's own edits, which must
-never influence generation invisibly. Appendix~\ref{app:ledger} covers what each entry
-does, including how a hard constraint is checked rather than merely stated, and how
-provenance is tracked per sentence.
+never influence generation invisibly. A hard constraint reaches the generation prompt \emph{and} is checked at judge
+time: the judge receives the constraint list as explicit check items beside the scoring axes
+and returns the ones a candidate breaks, quoting each, which become soft flags. Never
+blocking, since the writer decides here as everywhere else, but checked, which is the
+difference between a constraint and a wish. Appendix~\ref{app:ledger} covers provenance,
+which is tracked per sentence rather than per node.
 
-\subsection{Snapshots, branches, and why the project is called \storygit}
+\subsection{Snapshots and branches}
 
 Every object is stored once under the SHA-256 of its canonical JSON. A snapshot is a
 \emph{manifest}: a mapping from logical id to content hash, plus a parent pointer, the
@@ -316,7 +326,7 @@ the facts it relies on, and an edge from beat $A$ to beat $B$ exists exactly whe
 consumes something $A$ produced. When an accepted change alters or removes a fact, the
 system walks the consumers transitively and \emph{marks} them. It never rewrites them.
 
-Three rules make this safe to leave running.
+Four rules make this safe to leave running.
 
 \begin{enumerate}[label=\arabic*.]
 \item \textbf{Locked nodes are never marked}, and the walk does not pass through them. A
@@ -349,6 +359,7 @@ stale''}. The blast radius is visible before the decision, not after it.
 
 
 \subsection{Continuity checking}
+\label{sec:continuity}
 
 Three layers, cheapest and most certain first. Each check is pushed to the cheapest layer
 that can decide it, and each layer's recall is reported separately, which is what turns
@@ -385,6 +396,7 @@ carries which layer raised it so the writer knows what kind of claim it is.
 Appendix~\ref{app:continuity} gives both layers, the threshold, and what a flag must carry.
 
 \subsection{Diversity, and the dial}
+\label{sec:diversity-fwd}
 
 Six candidates that are near-paraphrases of each other are one candidate with a wider
 error bar. Diversity is therefore produced rather than filtered for: each sample is
@@ -394,8 +406,10 @@ paragraphs, and the shortlist is selected by maximal marginal relevance or by a 
 point process over a quality-scaled similarity kernel. A single coherent-to-surprising dial
 re-ranks the same sample by distance from the model's own temperature-zero continuation,
 which is a smaller claim than the label implies and is stated as such.
-Appendix~\ref{app:diversity} gives the selectors, the kernel, and the sweep behind the
-default.
+Appendix~\ref{app:diversity} gives the selectors and the kernel. The
+$\lambda$ default was chosen from a sweep whose objective was never written down, which is
+the weakest methodological point in this document and is recorded as such rather than
+defended.
 
 \subsection{The preference layer}
 
@@ -464,11 +478,11 @@ writers' hidden weights are defined over, which is what makes
 
 
 The head starts from a prior fitted across synthetic proto-personas rather than from
-uniform weights, because twenty comparisons cannot fit a model from scratch. What that
-prior can and cannot transfer, and the cold-start row where it does not help at all, are in
-Appendix~\ref{app:preference}.
+uniform weights, because twenty comparisons cannot fit a model from scratch. What that prior can and cannot transfer is in
+Appendix~\ref{app:preference}; the cold-start row, where it does not help at all, is in the
+table in \S\ref{sec:evaluation}.
 
-\subsection{The interface, and why it is part of the argument}
+\subsection{The interface}
 
 The interface is where the design either lands or does not. Fabula's finding that writers
 became ``an arbiter of good or bad'' is not fixed by a better model; it is fixed by changing
@@ -518,7 +532,7 @@ story and needs none.}
 \end{figure}
 
 The application is a five-tab site, and the tabs run in the order the story is told.
-\textbf{Problem and Decisions} states the five failure modes and the design decisions taken
+\textbf{Problem and Decisions} states the six failure modes and the design decisions taken
 against them, each with the alternative that was rejected. \textbf{Architecture} shows the
 component diagram and the routing table. \textbf{Live} is the tool itself, in three panes: a
 plan tree carrying each node's status, its lock, its staleness reason and its flag count; a
@@ -531,8 +545,8 @@ mechanisms can be watched without a model call. \textbf{Eval} carries the curves
 in this document, generated from the same artifacts.
 
 Everything the backend can do is reachable from that interface, and a test fails if it is
-not. That is a stronger property than it sounds: it is the difference between a capability
-the product has and a capability its test suite has.
+not. That is the difference between a capability the product has and a capability its test suite
+has.
 
 
 
@@ -586,8 +600,7 @@ was that embedding edges would trade recall for precision too poorly to be usefu
 case the best threshold reaches \rStaleSoftBestPrecision{} precision at
 \rStaleSoftBestRecall{} recall (\rStaleSoftBestLabel).
 The case is six beats with lexically distinctive locations, so this is suggestive rather
-than settled. It is nonetheless the opposite of the prediction, and it is recorded as such
-rather than explained away.
+than settled. It is nonetheless the opposite of the prediction.
 
 \begin{center}
 \begin{tabular}{@{}lrr@{}}
@@ -619,10 +632,9 @@ after 40 comparisons & \rPriorAtForty & \rUniformAtForty & \rLiftAtForty \\
 \end{center}
 
 Pairwise accuracy on comparisons held out from a proto-persona the prior was not fitted on.
-Two things about this table are easy to overclaim and are worth reading carefully.
+Two things about this table bound what it shows.
 
-The cold-start row is the one to read first, and it is negative: with no data at all the
-uniform head is the better ranker. The prior's advantage appears only once a small number of
+The cold-start row is negative: with no data at all the uniform head is the better ranker. The prior's advantage appears only once a small number of
 comparisons exists, and most of it is the \emph{uniform} head being damaged by small-sample
 fitting rather than the prior being informative: the uniform column falls before it
 recovers, and a zero-data uniform head outscores the prior-initialised head at ten
@@ -649,8 +661,11 @@ against \rBanditPullsExplore{} on the better one, and its posteriors land at
 
 Four simulated writers drove the real engine through the full configuration with no human
 intervention: \rLiveRunCount{} \rLiveRunPlural, \rLiveDecisionsTotal{} writer decisions,
-mean acceptance \rLiveAcceptanceMean{}, \rLiveTokensPerAction{} tokens per decision, and no
-run cut short.
+mean acceptance \rLiveAcceptanceMean{}, and \rLiveTokensPerAction{} tokens per decision.
+Of those, \rLiveRunsCompleted{} ran to completion and \rLiveRunsTruncated{} stopped early
+on provider rate limits, which is a property of running an evaluation on a free tier rather
+than of the system, and is reported here because a truncated run's later episodes are
+missing rather than bad.
 
 \textbf{The held-out probe.} An acceptance curve cannot separate a head that learned from a
 task that got harder, so the learning result is measured on a frozen set instead.
@@ -669,8 +684,7 @@ weights and equally to noise, which maximises the variance of every reading. The
 floor and then a draw stratified across levels, and it never consults a head, fitted or
 otherwise.
 
-Two details of the label are worth stating, because both were wrong until this document's
-final review. The persona's ranking is computed from the features as they were
+Two details of the label are load-bearing. The persona's ranking is computed from the features as they were
 \emph{recorded}, not as the current voice model would recompute them.
 Refreshing both sides let the ground truth drift between episodes, driven by the learner
 being measured, which is the leakage the held-out design exists to prevent. And the label reads only the nine
@@ -686,11 +700,10 @@ prior every writer starts from. Ending at the prior means the writer's own decis
 not yet added anything; ending above it means they have.
 \textbf{\rProbeAboveUniform{} of \rLiveRunCount{} runs end above an uninformed head, and
 \rProbeAtOrAbovePrior{} of \rLiveRunCount{} end at or above the prior}, at
-\rProbeTopOneLast{} top-1 agreement with the persona's own first choice. Precisely: one run
-ends strictly above the prior, two end level with it, and one, the Serialist, ends below
-both. So the honest reading is that at this sample size the writer's own decisions
-mostly reproduce the prior rather than improve on it, and the mechanism behind that is
-identified below. Weight recovery, in the next paragraph, is the measurement that does move,
+\rProbeTopOneLast{} top-1 agreement with the persona's own first choice. The reading at this
+sample size is that the writers' own decisions mostly reproduce the prior rather than improve
+on it, and the mechanism behind that is identified below. The run that ends furthest below
+its references is \rProbeWorstPersona{}. Weight recovery, in the next paragraph, is the measurement that does move,
 and the two are consistent: the head is learning the directions its data exercises.
 
 \textbf{Weight recovery, against what it could have been.} The correlation between the
@@ -706,29 +719,25 @@ decisions and still only \rCeilingAtTwoHundred{} $\pm$ \rCeilingAtTwoHundredSd{}
 hundred, because real candidate features are clustered and correlated and the design matrix
 is badly conditioned.
 
-``The same estimator'' is the clause this whole scale rests on, so it is worth saying what it
-cost to make true. The first version of the ceiling was a different estimator in five ways:
+``The same estimator'' is the clause this scale rests on, and it was not free. The first version of the ceiling was a different estimator in six ways:
 half the regularization, a uniform anchor instead of the population prior, no edited-win
-down-weighting, shrinkage off, and a dense random weight vector where every persona is sparse
-by construction. It also added the persona's noise to an \emph{un-normalised} score, which
-made its labels several times cleaner than a real writer's, and it emitted a winner for every
+down-weighting, shrinkage off, a dense random weight vector where every persona is sparse by
+construction, and the persona's noise added to an \emph{un-normalised} score, which made its
+labels several times cleaner than a real writer's. It also emitted a winner for every
 decision, including the ones the writer rejected, which produce no comparison at all in
 reality, so it was fitted on materially more data than the run it was scaling. Every one of
 those errors pushed the ceiling up and the reported fraction down, so the earlier figure was
-conservative rather than flattering; but a sentence claiming a controlled comparison has to
-have one. All six are now matched, and the ceiling is correspondingly lower.
+conservative rather than flattering. A sentence claiming a controlled comparison still
+has to have one. All six are now matched, and the ceiling is correspondingly lower.
 
-One more thing a reader is entitled to. Recovery is a \rFeatures{}-dimensional correlation,
+Recovery is a \rFeatures{}-dimensional correlation,
 and five or six of every persona's \rFeatures{} weights are exactly zero, including the two
 criterion slots no writer here fills, which are constant across every recorded decision. The
 shrinkage change drives the fitted values on precisely those dead coordinates towards zero, so
 it improves this metric without anyone learning anything. Restricted to the coordinates the
-writer actually weights, recovery is \rLiveWeightRecoveryIdentified{}. The difference between
-that and the headline is the size of the effect, and it is reported rather than left for a
-reader to find in \file{personas.py} and \file{bt\_head.py} side by side.
+writer actually weights, recovery is \rLiveWeightRecoveryIdentified{}. The difference between that and the headline is the size of the effect.
 
-Two findings from the probe changed the learner rather than the write-up, and one
-explains the writer who did worst. Both are set out in Appendix~\ref{app:eval}, with the
+Two findings from the probe changed the learner, and one explains the writer who did worst. Both are set out in Appendix~\ref{app:eval}, with the
 feature-level evidence; the summary is that several features never varied inside a single
 writer's candidate sets, that two of those were code defects and one was a property of the
 measuring instrument, and that the fix which shipped was decided by an offline replay
@@ -768,11 +777,9 @@ What was wrong was the harness's stop rule: it ended the session where a writer 
 said \emph{``not these, try again''}. So a rejected set now gets exactly one
 rejection-informed re-proposal, which also required wiring a path the system had described
 but never built: the rejected candidate's text reached the exemplar pool, while the writer's
-stated reason reached nothing. In the rerun the retry was offered seven times and rescued
-five, and no run was cut short.
+stated reason reached nothing. In the rerun the retry was offered \rRetryOffered{} times and
+rescued \rRetryRescued{} of them.
 
-Both are recorded here rather than quietly folded into the design, because a system that
-only reports the measurements that agreed with it has not been measured.
 
 
 \section{Limitations}
@@ -784,6 +791,12 @@ tool is exhausting to use. Every number here is a property of the machinery. Whe
 system helps a human write a better serial is not established by anything in this document,
 and only a human study would establish it.
 
+One writer did use the system, for a two-episode session, and this document quotes them
+three times: on accepting being irreversible, on hard constraints not binding, and on the
+ranker preferring compliance. Those are design evidence and are treated as such. They are
+one person's reaction, unblinded, uncontrolled and not a measurement, and no number anywhere
+here comes from them.
+
 \textbf{The preference layer is validated against writers built from its own hypothesis
 class.} The head is linear in \rFeatures{} features; the personas score linearly in the same
 \rFeatures{}. The model is therefore correctly specified by construction, which is why the
@@ -794,9 +807,8 @@ learns taste}. A real writer's preferences are not linear in \rFeatures{} featur
 bet is that the adaptation machinery transfers even though the values do not, and that bet is
 measured (a \rLiftAtTen{} lift at ten comparisons) rather than assumed.
 
-\textbf{Injected errors are the errors we thought of.} Checker recall is over five known
-classes. A class nobody imagined is a class nobody measured. The periodic audit exists partly
-for that, and the honest phrasing throughout is ``recall over five classes''.
+\textbf{Injected errors are the errors that were thought of.} Checker recall is over five known
+classes. A class nobody imagined is a class nobody measured. The periodic audit exists partly for that. Recall is therefore over five classes.
 
 \textbf{Single writer, single story.} SQLite, one process, no auth, no concurrency. The
 scaling discussion is architectural rather than demonstrated.
@@ -827,7 +839,7 @@ three candidates in a set most of those features tie. In the shipped probe fixtu
 criterion slots no persona fills are constant by construction, and several judge axes are
 constant in more than half the decisions. The effective dimensionality of a decision is far
 below \rFeatures{}. That is a property of the measuring instrument, not of the two feature
-bugs \S\ref{sec:findings} reports fixing, and fixing those did not change it.
+bugs reported in Appendix~\ref{app:eval}, and fixing those did not change it.
 
 \textbf{The probe's ground truth is not well defined across writers.} The held-out probe
 scores each head against another writer's decisions, which is what deconfounds learning from
@@ -849,9 +861,9 @@ candidates in the selector case. The per-run ceiling spreads are computed and re
 run summary; the figures in this document are point estimates, and several of them are single
 observations.
 
-\textbf{The labelling claim is the thesis and is unmeasured.} ``Three options labelled
-\emph{raise the stakes / slow down / introduce a complication} cost one decision; three
-unlabelled paragraphs cost three readings'' is what the whole selection chapter serves. There
+\textbf{The labelling claim is the thesis and is unmeasured.} The interface claim in
+\S\ref{sec:architecture}, that labelled options cost one decision where unlabelled ones cost
+three readings, is what the whole selection chapter serves. There
 is no measurement of it here, not even a proxy: no reading time, no interaction count. A
 human study is the honest answer for whether the system helps someone write a better serial,
 but this narrower claim is testable for far less and was not tested.
@@ -896,6 +908,13 @@ language inference. \textbf{Total spend across \rProviderCalls{} routed calls an
 of those calls. Embeddings and the NLI checkpoint run locally and bypass the router, so they
 are outside that token count, and outside nothing else, since they are free.
 
+The number in that log that deserves a sentence is \rProviderErrors{} errors against
+\rProviderCalls{} calls. Almost all of them are free-tier rate limits, retried and served;
+the cost of a free tier is not paid in dollars but in wall-clock and in runs that stop early
+when a daily allowance is gone, which is visible in the run count above. A metered key
+removes that failure mode and adds a bill. Which trade is right depends on whether the
+thing being built is the system or the story, and during development it was the system.
+
 That is a choice about where the risk is, not a constraint that was worked around. A
 metered key from day one buys better prose immediately and hides every cost bug until the
 bill arrives; a free tier forces the cost controls to exist before they are needed, and
@@ -914,8 +933,9 @@ and the run is one command.
 \decision{Purpose-tag routing rather than per-call-site provider choice}
 The cost policy is six lines in one table. \rejected{Choosing a provider where the call is
 made.} That scatters the policy across forty call sites and makes it impossible to audit
-or change. It also makes the ablation in \S\ref{sec:evaluation}, rerunning everything on a stronger
-model, a one-line edit rather than a refactor.
+or change. It also makes rerunning everything on a stronger model a one-line edit rather than a
+refactor: one routing table entry moves generation and judging to the metered provider and
+leaves extraction where it is, so the comparison changes one variable.
 
 \decision{Diffs rather than replacement text}
 Every AI action is a typed operation list against the current state, not a block of prose
@@ -929,8 +949,12 @@ A beat states what it produces and consumes; propagation walks those edges only.
 \rejected{Inferring dependencies with a model.} A dependency oracle that is wrong ten
 percent of the time makes every propagation result untrustworthy, which is worse than no
 propagation at all, because the writer stops reading the marks. Embedding-similarity edges are
-implemented, but as a clearly weaker ``maybe affected'' signal and as an ablation to
-measure, never as the primary mechanism.
+implemented as a ``maybe affected'' signal and as an ablation to measure, never as the
+primary mechanism. That was a prediction about their quality, and the measurement contradicts
+it: on the one case available they reach perfect precision and recall over a range of
+thresholds, where declared edges alone miss the undeclared dependency. The design decision
+still holds, because it is about what a writer can trust rather than about what scores well
+on one fixture, but the prediction was wrong and \S\ref{sec:evaluation} says so.
 
 \decision{A closed predicate vocabulary}
 Ten predicates plus a free-text escape hatch. \rejected{Open-vocabulary relation
@@ -1143,7 +1167,7 @@ multi-valued facts whose object strings differ. A DeBERTa
 cross-encoder~\cite{he2021deberta} fine-tuned on MNLI scores each pair for contradiction.
 It is the same instrument, and used for the same reason, that the summarization-consistency
 literature uses to detect claims a source does not support~\cite{laban2022summac}. A cross-encoder rather than a bi-encoder because the
-distinction we need is exactly the one a bi-encoder structurally cannot make: ``Kael is in
+distinction that matters here is exactly the one a bi-encoder structurally cannot make: ``Kael is in
 Ashfall'' and ``Kael is not in Ashfall'' embed almost identically, being about the same
 thing, but a model that reads both sentences together sees the negation.
 
@@ -1304,7 +1328,7 @@ credited for exploration that did not happen.
 $k$; the bandit composes nothing on that path, its posterior never leaves
 $\mathrm{Beta}(1,1)$, and the regret curve below is a simulator with the arms held at fixed
 rates. So the convergence problem this subsection opens with is stated, not solved, in the
-running system. Saying so costs a paragraph and is cheaper than being asked.
+running system. 
 
 
 \section{Diversity and the dial in detail}
@@ -1427,7 +1451,7 @@ is a property of that writer rather than a defect in the machinery.
 
 Its largest weight is on \emph{specificity}, and the writer has also defined a criterion
 called \emph{concreteness} which the judge scores $+0.73$ correlated with it, a
-near-duplicate column. Two collinear columns at forty-eight comparisons is a textbook
+near-duplicate column. Two collinear columns at a few dozen comparisons is a textbook
 small-sample regression: the fit hands the credit to one and compensates with a sign flip on
 the other, and here the fixed axis is the one that flips. Its second-largest weight is a
 large \emph{negative} one on length, and its standing style note, ``shorter
@@ -1443,12 +1467,13 @@ persona's criteria to be less collinear would be tuning the experiment to flatte
 estimator.
 
 \textbf{The acceptance trend.} Acceptance held or rose in three runs and fell in one
-(100\,\% to 77\,\%). Read on its own this says less than it appears to: a persona's bar is a
+(\rAcceptanceFellFrom{} to \rAcceptanceFellTo{}). Read on its own this says less than it
+appears to: a persona's bar is a
 fixed quantile of its own score distribution and does not move, while each new candidate has
 to stay consistent with more established facts, more open threads, and more accumulated
 rules, so the curve tracks task difficulty as well as satisfaction, and the probe above is
-the view that does not. The first-third figures also rest on eleven or twelve decisions
-each, so the endpoints are noisy.
+the view that does not. The thirds also rest on a handful of decisions each, at
+\rLiveDecisionsPerRun{} decisions per run, so the endpoints are noisy.
 
 Curves per persona are in \file{eval/results/}, and the full table of probe readings,
 ceilings, retry rescues, per-run costs, and anything that did not run is in

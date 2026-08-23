@@ -239,6 +239,48 @@ def collect() -> dict[str, str]:
         )
         macros["LiveAcceptanceMean"] = _pct(sum(r.get("acceptance", 0.0) for r in runs) / len(runs))
 
+        # Everything the live-tier prose used to assert by hand. A narrative sentence with a
+        # typed number in it is a sentence that goes stale the first time the run changes,
+        # and this section's numbers changed under it more than once.
+        macros["LiveRunsCompleted"] = str(sum(1 for r in runs if not r.get("errors")))
+        macros["LiveRunsTruncated"] = str(sum(1 for r in runs if r.get("errors")))
+        offered = sum(_get(r, "retry", "rejected_sets", default=0) or 0 for r in runs)
+        rescued = sum(_get(r, "retry", "rescued", default=0) or 0 for r in runs)
+        macros["RetryOffered"] = str(offered)
+        macros["RetryRescued"] = str(rescued)
+        firsts_acc = [
+            r["acceptance_first_third"] for r in runs if r.get("acceptance_first_third") is not None
+        ]
+        lasts_acc = [
+            r["acceptance_last_third"] for r in runs if r.get("acceptance_last_third") is not None
+        ]
+        if firsts_acc and lasts_acc:
+            macros["AcceptanceFirstThird"] = _pct(sum(firsts_acc) / len(firsts_acc))
+            macros["AcceptanceLastThird"] = _pct(sum(lasts_acc) / len(lasts_acc))
+            fell = [(a, b) for a, b in zip(firsts_acc, lasts_acc, strict=True) if b < a - 1e-9]
+            macros["AcceptanceFellCount"] = str(len(fell))
+            if fell:
+                worst = min(fell, key=lambda pair: pair[1] - pair[0])
+                macros["AcceptanceFellFrom"] = _pct(worst[0])
+                macros["AcceptanceFellTo"] = _pct(worst[1])
+        # Which persona ended furthest below its references, named rather than assumed.
+        probed = [r for r in runs if r.get("probe_tau_last") is not None]
+        if probed:
+            worst_run = min(
+                probed, key=lambda r: r["probe_tau_last"] - (r.get("probe_tau_prior") or 0.0)
+            )
+            macros["ProbeWorstPersona"] = str(worst_run.get("persona", "")).replace("_", "\\_")
+            best_recovery = max(
+                (r for r in runs if r.get("weight_recovery") is not None),
+                key=lambda r: r["weight_recovery"],
+                default=None,
+            )
+            if best_recovery is not None:
+                macros["RecoveryBestPersona"] = str(best_recovery.get("persona", ""))
+        macros["LiveDecisionsPerRun"] = str(
+            round(sum(r.get("decisions", 0) for r in runs) / max(1, len(runs)))
+        )
+
         # The ceiling: what the estimator could have scored on this much data. Recovery
         # without it is a number with no scale.
         caps = [
@@ -318,6 +360,18 @@ def collect() -> dict[str, str]:
         "LiveWeightRecoveryIdentified",
         "LiveTokensPerAction",
         "LiveAcceptanceMean",
+        "LiveRunsCompleted",
+        "LiveRunsTruncated",
+        "RetryOffered",
+        "RetryRescued",
+        "AcceptanceFirstThird",
+        "AcceptanceLastThird",
+        "AcceptanceFellCount",
+        "AcceptanceFellFrom",
+        "AcceptanceFellTo",
+        "ProbeWorstPersona",
+        "RecoveryBestPersona",
+        "LiveDecisionsPerRun",
         "CeilingMean",
         "CeilingBest",
         "RecoveryFractionOfCeiling",
