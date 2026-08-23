@@ -148,12 +148,24 @@ def evaluate_prior(
 ) -> dict[str, float]:
     """Does starting from the prior beat starting from uniform, early on?
 
-    Simulates a *fresh* writer (a persona the prior never saw), gives both a
-    prior-initialized and a uniform-initialized head the same first ``n_decisions``
-    comparisons, and measures held-out pairwise accuracy.
+    Simulates a *fresh* writer, gives both a prior-initialized and a uniform-initialized
+    head the same first ``n_decisions`` comparisons, and measures held-out pairwise
+    accuracy.
 
     This is the test that decides whether pretraining is worth keeping. It is reported
     rather than assumed.
+
+    What it is not: a transfer test. The fresh writer is held out of the *sample* the
+    prior was fitted on -- the caller must pass a seed no training persona used, or the
+    number is measured on training data -- but it is drawn from the same generator, so it
+    is in-distribution by construction. ``make_personas`` forces every judge axis,
+    criterion and continuity weight positive, which is the sign structure the four
+    hand-written evaluation personas also have, so an all-equal-positive vector is already
+    a decent ranker on this population and the prior is *guaranteed* correlated with the
+    writer before any data arrives. The four evaluated personas, by contrast, come from a
+    distribution this generator cannot produce -- ``_weights`` zero-fills, and
+    ``uniform(0.1, 1.2)`` never emits 0.0 -- so there is no leakage into them and also no
+    evidence here that the prior transfers to a writer unlike the ones it was fitted on.
 
     Args:
         prior: The fitted prior.

@@ -99,8 +99,18 @@ def cold_start_lift(*, seeds: tuple[int, ...] = (0, 1, 2, 3, 4), shrink: bool) -
     out: list[float] = []
     for seed in seeds:
         prior = fit_prior(seed=seed)
+        # The fresh writer must not be one of the eight the prior was fitted on.
+        # ``fit_prior(seed=s)`` draws ``make_personas(8, seed=s)`` and
+        # ``evaluate_prior(seed=s)`` draws ``make_personas(1, seed=s)[0]`` -- both seed
+        # ``random.Random(s)`` and draw in the same order, so sharing the seed makes the
+        # held-out writer proto-persona #0 of the training set. Every cold-start number
+        # behind the second half of the pre-stated rule would then be measured on
+        # training data. ``offline.pretraining`` already gets this right (prior at the
+        # default seed, writer at 99); this is the same separation, per seed.
         out.append(
-            evaluate_prior(prior, n_decisions=5, seed=seed, shrink_unidentified=shrink)["lift"]
+            evaluate_prior(prior, n_decisions=5, seed=seed + 1000, shrink_unidentified=shrink)[
+                "lift"
+            ]
         )
     return out
 

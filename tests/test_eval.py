@@ -22,7 +22,7 @@ from storygit.domain.diff import Diff, DiffAuthor, UpdateFact
 from storygit.domain.ids import IdGenerator
 from storygit.engine import Engine
 from storygit.graph.propagation import propagate_change
-from storygit.preference.features import BASE_FEATURES, FeatureVector
+from storygit.preference.features import BASE_FEATURES, CRITERION_SLOTS, FeatureVector
 from storygit.preference.layer import PreferenceLayer
 from storygit.providers.router import Router
 from storygit.selection.select import SelectionConfig, Selector
@@ -694,11 +694,19 @@ def test_probe_agreement_rises_as_the_head_sees_more_true_signal() -> None:
     probe_set, hidden = _synthetic_probe()
     rng = _random.Random(11)
 
+    # The persona's preference is expressed over every feature, but the probe's label
+    # deliberately reads only the nine whose meaning is the same for every writer -- the
+    # criterion slots are positional and the probe is cross-persona. Labelling the
+    # training pairs the same way is what makes this a test of the *instrument* rather
+    # than a test of how much of a writer's taste happens to live outside their own
+    # criteria.
+    readable = {k: v for k, v in hidden.items() if k not in CRITERION_SLOTS}
+
     def pair() -> tuple[FeatureVector, FeatureVector]:
         a = FeatureVector(values={n: rng.random() for n in BASE_FEATURES})
         b = FeatureVector(values={n: rng.random() for n in BASE_FEATURES})
-        sa = sum(hidden[k] * v for k, v in a.values.items())
-        sb = sum(hidden[k] * v for k, v in b.values.items())
+        sa = sum(readable[k] * v for k, v in a.values.items() if k in readable)
+        sb = sum(readable[k] * v for k, v in b.values.items() if k in readable)
         return (a, b) if sa >= sb else (b, a)
 
     pairs = [pair() for _ in range(160)]
@@ -708,8 +716,14 @@ def test_probe_agreement_rises_as_the_head_sees_more_true_signal() -> None:
     ]
     assert curve[-1] > curve[0] + 0.2, f"the probe did not reward learning: {curve}"
     assert curve[-1] > 0.5, f"a head fitted on 160 true pairs should rank well: {curve}"
-    # Monotone-ish: no step may undo more than a little of the previous one.
-    assert all(curve[i + 1] >= curve[i] - 0.1 for i in range(len(curve) - 1)), curve
+    # Monotone-ish from the point where the fit has data, and no further. The first step
+    # is allowed to go *down*: curve[0] is an unfitted uniform head, and an all-positive
+    # equal-weight vector is already a fair ranker, while a head fitted on ten pairs is a
+    # small-sample regression that can be worse than doing nothing. The generated
+    # pretraining curve shows the same dip (uniform: 0.795 at zero comparisons, 0.685 at
+    # five), so a guard that forbade it here would be asserting something the deterministic
+    # tier contradicts.
+    assert all(curve[i + 1] >= curve[i] - 0.1 for i in range(1, len(curve) - 1)), curve
 
 
 def test_a_persona_is_never_probed_on_its_own_decisions() -> None:

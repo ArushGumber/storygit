@@ -345,9 +345,16 @@ def build_scenario(
 ) -> tuple[StoryState, Scenario]:
     """A story with one contradiction of each requested class.
 
-    Each class is injected into its own copy of the clean story and the results are merged,
-    so the injections cannot interact — a location conflict must not accidentally also be a
-    possession conflict, or the per-class recall numbers become meaningless.
+    The injections are applied *sequentially to one story*, so with more than one class
+    they can and do interact: ``inject_location`` puts Kael in Kell at beat 3 and
+    ``inject_possession`` puts the token on Mara at the same beat, while ``inject_death``
+    kills Kael two beats earlier. ``metrics.checker_recall`` credits a catch when any flag
+    mentions any of an injection's facts, so cross-talk between classes inflates recall.
+
+    Isolation is therefore the caller's job, and it is one line: pass a single class.
+    ``offline.checker_layers`` builds one story per class for exactly this reason. This
+    function's multi-class form is for building a story that has several things wrong with
+    it, not for measuring per-class recall.
 
     Args:
         classes: Which classes to inject.

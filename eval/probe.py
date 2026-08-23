@@ -39,7 +39,7 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict
 
 from storygit.preference.bt_head import BTWeights
-from storygit.preference.features import BASE_FEATURES, FeatureVector
+from storygit.preference.features import BASE_FEATURES, CRITERION_SLOTS, FeatureVector
 
 FIXTURE = Path(__file__).parent / "fixtures" / "probe_points.json"
 """The committed probe set. Regenerating it changes the measuring stick, so it is a
@@ -146,8 +146,15 @@ def agreement(
         hidden: The persona's hidden weight vector. Never visible to the head.
         learner: Optional object with ``score(texts)`` and ``direction_scores(texts)``
             (the preference layer's voice model), used to refresh the two
-            learner-dependent features. Omitted, the frozen values are used, which is what
-            the deterministic offline test wants.
+            learner-dependent features *for the head's ranking only*. Omitted, the frozen
+            values are used, which is what the deterministic offline test wants.
+
+            The persona's label is always computed from the recorded vectors. Refreshing
+            both sides would move the ground truth between episode 1 and episode 3 for any
+            persona weighting those axes, driven by the learner being measured --- which is
+            exactly the leakage the held-out design exists to prevent, arriving through a
+            side door. The head must be scored on what it can see now; the truth must not
+            move.
 
     Returns:
         ``{"tau": ..., "top1": ..., "points": ...}``. Tau is the mean rank correlation over
@@ -159,6 +166,7 @@ def agreement(
     taus: list[float] = []
     hits = 0
     for point in points:
+        recorded = [FeatureVector(values=dict(v)) for v in point.features]
         vectors = [dict(v) for v in point.features]
         if learner is not None and point.texts:
             voice = learner.score(list(point.texts))
@@ -168,7 +176,7 @@ def agreement(
                 values["edit_direction"] = float(direction[index])
         built = [FeatureVector(values=v) for v in vectors]
         learned = [head.score(f) for f in built]
-        truth = [_hidden_score(f, hidden) for f in built]
+        truth = [_hidden_score(f, hidden) for f in recorded]
         taus.append(kendall_tau(learned, truth))
         if learned.index(max(learned)) == truth.index(max(truth)):
             hits += 1
@@ -214,8 +222,29 @@ def reading(
 
 
 def _hidden_score(features: FeatureVector, hidden: dict[str, float]) -> float:
-    """What the persona would privately think of this candidate, noiselessly."""
-    return sum(hidden.get(k, 0.0) * v for k, v in features.values.items())
+    """What the persona would privately think of this candidate, noiselessly.
+
+    The criterion slots are excluded, and that exclusion is the whole point of this
+    function existing separately from ``BTWeights.score``. Criterion features are
+    *positional*: ``criterion_1`` means whatever the first criterion this writer defined
+    happens to be, and the personas' criteria are disjoint. Every point this label is
+    computed on came from a *different* persona's run, so ``criterion_1`` on a Maximalist
+    point carries the judge's score for *interiority* while the Serialist's hidden weight
+    on that slot means *pull*. Scoring one through the other is not noise, it is a
+    category error, and it lands on the two features that carry the largest hidden weight
+    for every persona.
+
+    The cross-persona holdout is what deconfounds learning from task difficulty; positional
+    slots are what let a writer weight their own criteria independently. The two are in
+    direct tension and this is where the tension is resolved: the probe reads the nine
+    features whose meaning is the same for every writer, and the criterion slots --- which
+    the head still learns and still uses --- are simply not part of the held-out label.
+    """
+    return sum(
+        weight * features.values.get(name, 0.0)
+        for name, weight in hidden.items()
+        if name not in CRITERION_SLOTS
+    )
 
 
 def discrimination(features: list[dict[str, float]], *, trials: int = 200, seed: int = 0) -> float:

@@ -48,22 +48,22 @@ def checker_layers(*, use_nli: bool = True) -> dict[str, Any]:
         Per-layer precision/recall, the combined figure, per-class detail, and the
         false-positive rate on a story with nothing wrong with it.
     """
-    state, scenario = inject.build_scenario()
-    flags = list(layer1.check_state(state))
-    if use_nli:
-        flags.extend(layer2_nli.check(state))
-
-    per_layer = {
-        f"layer{layer}": metrics.checker_recall(
-            scenario.injections, flags, layer=layer
-        ).model_dump()
-        for layer in (1, 2)
-    }
-    combined = metrics.checker_recall(scenario.injections, flags)
-
+    # One story per class. Injected into a shared story they interact -- two classes land
+    # on the same beat, a third kills a character both need alive -- and recall is credited
+    # when any flag mentions any of an injection's facts, so cross-talk would score a
+    # location conflict as caught because the possession conflict beside it was.
     per_class: dict[str, dict[str, Any]] = {}
-    for injection in scenario.injections:
+    tallies: dict[str, list[metrics.PrecisionRecall]] = {"layer1": [], "layer2": [], "all": []}
+    for cls in inject.ContradictionClass:
+        state, scenario = inject.build_scenario(classes=(cls,))
+        flags = list(layer1.check_state(state))
+        if use_nli:
+            flags.extend(layer2_nli.check(state))
+        injection = scenario.injections[0]
         single = metrics.checker_recall([injection], flags)
+        tallies["all"].append(single)
+        for layer in (1, 2):
+            tallies[f"layer{layer}"].append(metrics.checker_recall([injection], flags, layer=layer))
         per_class[injection.kind.value] = {
             "caught": single.true_positives == 1,
             "expected_layer": injection.expected_layer,
@@ -76,6 +76,23 @@ def checker_layers(*, use_nli: bool = True) -> dict[str, Any]:
             ),
             "description": injection.description,
         }
+
+    # Summed across the isolated stories, never pooled: each story is built from the same
+    # id seed, so a flag raised on the location story names the same fact ids as the
+    # possession story's injection and would be credited against it.
+    def _sum(label: str, parts: list[metrics.PrecisionRecall]) -> metrics.PrecisionRecall:
+        return metrics.PrecisionRecall(
+            label=label,
+            true_positives=sum(p.true_positives for p in parts),
+            false_positives=sum(p.false_positives for p in parts),
+            false_negatives=sum(p.false_negatives for p in parts),
+        )
+
+    per_layer = {
+        f"layer{layer}": _sum(f"layer {layer}", tallies[f"layer{layer}"]).model_dump()
+        for layer in (1, 2)
+    }
+    combined = _sum("all layers", tallies["all"])
 
     clean_state, clean_scenario = inject.clean_story(IdGenerator(seed=5, stream="clean"))
     clean_flags = list(layer1.check_state(clean_state))
