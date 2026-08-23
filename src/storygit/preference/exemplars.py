@@ -23,26 +23,8 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from pydantic import BaseModel, ConfigDict
-
 RECENCY_HALF_LIFE = 12.0
 """How many exemplars back an item's weight halves. Tilts, does not dominate."""
-
-
-class Exemplar(BaseModel):
-    """One piece of text the writer liked or rejected.
-
-    Attributes:
-        text: The prose.
-        positive: True for accepted or human-written, False for rejected.
-        age: How many exemplars have been added since this one; 0 is newest.
-    """
-
-    model_config = ConfigDict(frozen=True)
-
-    text: str
-    positive: bool
-    age: int = 0
 
 
 class ExemplarPool:

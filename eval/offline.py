@@ -28,7 +28,12 @@ from storygit.domain.diff import Diff, DiffAuthor, UpdateFact
 from storygit.domain.ids import IdGenerator
 from storygit.graph.propagation import propagate_change
 from storygit.graph.soft_edges import EmbeddingEdgeProvider
-from storygit.preference.bandit import Arm, ThompsonBandit, pseudo_regret_curve
+from storygit.preference.bandit import (
+    Arm,
+    ThompsonBandit,
+    pseudo_regret_curve,
+    realized_regret_curve,
+)
 from storygit.preference.pretrain import evaluate_prior, fit_prior
 from storygit.selection.select import SelectionConfig
 
@@ -280,10 +285,13 @@ def bandit_regret(*, rounds: int = 400, seed: int = 1) -> dict[str, Any]:
     rng = random.Random(seed)
     bandit = ThompsonBandit(seed=seed)
     thompson_arms: list[Arm] = []
+    thompson_rewards: list[tuple[Arm, float]] = []
     for _ in range(rounds):
         arm = bandit.choose()
-        bandit.update(arm, 1.0 if rng.random() < rates[arm] else 0.0)
+        reward = 1.0 if rng.random() < rates[arm] else 0.0
+        bandit.update(arm, reward)
         thompson_arms.append(arm)
+        thompson_rewards.append((arm, reward))
 
     eps_rng = random.Random(seed)
     counts = dict.fromkeys(Arm, 0)
@@ -300,8 +308,14 @@ def bandit_regret(*, rounds: int = 400, seed: int = 1) -> dict[str, Any]:
 
     thompson = pseudo_regret_curve(thompson_arms, rates)
     epsilon = pseudo_regret_curve(eps_arms, rates)
+    # Reported alongside pseudo-regret, which is what realized_regret_curve's docstring has
+    # always claimed and what nothing did. Pseudo-regret uses the arms' true rates, which
+    # exist only in a simulator; with real writers the realized curve is the only one there
+    # is, and it is noisier by construction. Showing both is the point.
+    realized = realized_regret_curve(thompson_rewards, max(rates.values()))
     return {
         "thompson": thompson,
+        "thompson_realized": realized,
         "epsilon_greedy": epsilon,
         "final": {"thompson": thompson[-1], "epsilon_greedy": epsilon[-1]},
         "pulls": dict(bandit.state.pulls),

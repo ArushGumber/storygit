@@ -141,3 +141,58 @@ def test_missing_branch_raises(repo: Repository) -> None:
 
 def test_canonical_json_is_stable() -> None:
     assert canonical_json({"b": 1, "a": [2, 3]}) == '{"a":[2,3],"b":1}'
+
+
+def test_the_same_diff_applied_twice_produces_the_same_hashes(ids: IdGenerator) -> None:
+    """Apply the same diff to the same state in two repositories; compare sha256s.
+
+    The paper states this property as "apply the same diff twice and get the same hashes is
+    a test rather than a hope", and until this function existed it was not one. The nearest
+    thing compared ``first.nodes == second.nodes`` -- object equality, which never touches
+    the store, the manifest, or a hash -- and a separate test covered ``initialize`` only.
+    The property is what makes the snapshot chain content-addressed rather than
+    incidentally reproducible, so it is worth asserting on the artifact that carries it.
+
+    Two repositories rather than one commit twice, because committing the same diff twice
+    to one repository would test idempotence of the *chain*, not determinism of the
+    *content*.
+
+    The manifest is the thing that must match. A snapshot id also hashes ``created_at``,
+    because a snapshot is an event in a history and two identical edits made an hour apart
+    are two entries -- so it matches only when the clock does. Both halves are asserted
+    here, because the weaker one is the one the claim actually rests on and the stronger
+    one is what makes the history readable.
+    """
+    from datetime import UTC, datetime
+
+    from storygit.domain.nodes import Story
+    from storygit.domain.state import StoryState
+
+    root = Story(id=NodeId("n_root"), title="S")
+    scene = Scene(id=NodeId("n_scene"), parent_id=root.id, title="One", position=0)
+    base = StoryState.build(nodes={root.id: root, scene.id: scene})
+    diff = Diff(
+        ops=(
+            AddNode(node=Beat(id=NodeId("n_beat"), parent_id=scene.id, title="B", position=0)),
+            UpdateNode(node_id=scene.id, fields={"title": "One, revised"}),
+        ),
+        author=DiffAuthor.ai,
+        intent="add a beat and rename its scene",
+    )
+
+    def commit(clock: object | None) -> tuple[object, dict[str, dict[str, str]]]:
+        repo = Repository.open(":memory:", clock=clock) if clock else Repository.open(":memory:")
+        repo.initialize(base)
+        head = repo.commit_diff(diff)
+        return head, repo.snapshots.manifest(head)
+
+    # Free-running clocks: the content must still be identical, hash for hash.
+    (_, left), (_, right) = commit(None), commit(None)
+    assert left == right, "every object hash must match, not just the root"
+    assert left, "a manifest with no objects would satisfy this vacuously"
+
+    # Same clock: the snapshot id itself is reproducible.
+    fixed = datetime(2026, 1, 1, tzinfo=UTC)
+    first, _ = commit(lambda: fixed)
+    second, _ = commit(lambda: fixed)
+    assert first == second, "with the clock pinned, the snapshot id is content-derived too"

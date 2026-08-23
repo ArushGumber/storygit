@@ -325,8 +325,10 @@ three nodes writes three object rows and one manifest, so a five-hundred-snapsho
 of a two-hundred-node story costs the changed nodes, not five hundred copies. Structural
 diff needs no heuristics: what changed between two versions is a set comparison over two
 manifests. And the whole thing is reproducible: identical content yields an identical
-manifest, so ``apply the same diff twice and get the same hashes'' is a test rather than a
-hope.
+manifest, so ``apply the same diff twice and get the same object hashes'' is a test rather
+than a hope. The snapshot \emph{id} additionally hashes the timestamp, because a snapshot is
+an entry in a history and two identical edits an hour apart are two entries --- with the
+clock pinned it too is content-derived, and the test asserts both halves.
 
 Merging is three-way at object granularity. Where only one side changed an object, that
 side wins. Where both changed it differently, the merge returns a conflict. It never

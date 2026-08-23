@@ -18,7 +18,7 @@ from dataclasses import dataclass, field, replace
 
 from storygit.domain.ids import EntityId, FactId, NodeId, ThreadId
 from storygit.domain.ledger import WriterLedger
-from storygit.domain.nodes import BaseNode, Beat, NodeStatus, NodeType, Prose
+from storygit.domain.nodes import BaseNode, Beat, NodeType, Prose
 from storygit.domain.threads import Thread
 from storygit.domain.world import Entity, Fact, Knows, Predicate
 
@@ -200,10 +200,6 @@ class StoryState:
 
     # --- tree queries -----------------------------------------------------------
 
-    def children_of(self, node_id: NodeId) -> tuple[BaseNode, ...]:
-        """Direct children of a node, in reading order."""
-        return tuple(self.nodes[nid] for nid in self.children.get(node_id, ()))
-
     def ancestors_of(self, node_id: NodeId) -> tuple[BaseNode, ...]:
         """The node's ancestors, root first."""
         chain: list[BaseNode] = []
@@ -362,11 +358,3 @@ class StoryState:
     def entity_names(self) -> dict[EntityId, str]:
         """Display names for every entity, for rendering facts as sentences."""
         return {eid: entity.name for eid, entity in self.entities.items()}
-
-    def stale_nodes(self) -> tuple[BaseNode, ...]:
-        """Every node currently marked stale, in reading order."""
-        return tuple(
-            n
-            for n in sorted(self.nodes.values(), key=lambda n: self.seq.get(n.id, 0))
-            if n.status is NodeStatus.stale
-        )

@@ -255,25 +255,62 @@ def test_no_public_function_is_unreachable() -> None:
     """
     import re
 
+    # Public *methods* count. The first version of this test walked module-level defs only,
+    # which is how a whole learner -- PreferenceLayer.compose and .reward, the Thompson
+    # bandit's entire entry point -- sat unreferenced through several passes while a test
+    # named "no public function is unreachable" passed. Dunders and known protocol names
+    # are excluded because they are called by the language rather than by a caller.
+    protocol = {"model_post_init", "model_config", "setUp", "tearDown"}
     defined: dict[str, Path] = {}
     for path in SRC.rglob("*.py"):
         source = path.read_text()
-        decorated = set(re.findall(r"@\w+\.(?:get|post|put|delete)\([^)]*\)\s*\ndef (\w+)", source))
+        decorated = set(re.findall(r"@\w+\.(?:get|post|put|delete)\([^)]*\)\s*def (\w+)", source))
         tree = ast.parse(source)
-        for node in tree.body:
-            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-                if node.name.startswith("_") or node.name in decorated:
-                    continue
-                defined[node.name] = path
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                continue
+            if node.name.startswith("_") or node.name in decorated or node.name in protocol:
+                continue
+            if any(
+                isinstance(d, ast.Name) and d.id in {"overload", "abstractmethod"}
+                for d in getattr(node, "decorator_list", [])
+            ):
+                continue
+            defined.setdefault(node.name, path)
 
+    # A reference, not a substring. `source.count(name)` counted the name in its own
+    # docstring, in a comment, and inside any longer identifier that contained it -- so a
+    # function documented but never called read as used. Only Name and Attribute nodes, and
+    # the names in import statements, count now.
     roots = [SRC, Path(__file__).parent, SRC.parents[1] / "eval", SRC.parents[1] / "scripts"]
     used: set[str] = set()
     for root in roots:
         for path in root.rglob("*.py"):
-            source = path.read_text()
-            for name, home in defined.items():
-                if source.count(name) > (1 if home == path else 0):
-                    used.add(name)
+            tree = ast.parse(path.read_text())
+            here: set[str] = set()
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Name):
+                    here.add(node.id)
+                elif isinstance(node, ast.Attribute):
+                    here.add(node.attr)
+                elif isinstance(node, ast.ImportFrom):
+                    here.update(a.name for a in node.names)
+                elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                    # A definition is not a use of itself, but a definition in one file is
+                    # a use of the same name defined elsewhere (an override, a protocol
+                    # implementation), so only its own home file is discounted.
+                    if defined.get(node.name) != path:
+                        here.add(node.name)
+                elif isinstance(node, ast.Constant) and isinstance(node.value, str):
+                    # Strings that are genuinely dispatch keys: the API surface is
+                    # exercised from TypeScript, and getattr-style lookups exist.
+                    here.add(node.value)
+            used |= here
+
+    frontend = SRC.parents[1] / "frontend" / "src"
+    if frontend.exists():
+        text = "\n".join(p.read_text() for p in frontend.rglob("*.ts*"))
+        used |= {m for m in defined if re.search(rf"\b{re.escape(m)}\s*\(", text)}
 
     unused = sorted(set(defined) - used)
     assert unused == [], "public names nothing references: " + ", ".join(
@@ -354,9 +391,21 @@ def test_no_client_method_is_unreachable_from_the_interface() -> None:
     components = "\n".join(
         path.read_text() for path in frontend.rglob("*.tsx") if "__tests__" not in str(path)
     )
-    methods = re.findall(r"^  (\w+):\s*(?:\(|=)", client, re.M)
+    methods = re.findall(r"^\s*(\w+)\s*:\s*(?:async\s*)?(?:\(|<|=)", client, re.M)
     assert methods, "api.ts no longer looks like a method table"
-    unreachable = [name for name in methods if f".{name}(" not in components]
+
+    # The receiver matters. Searching for ".slice(" found String.prototype.slice eleven
+    # times and would have passed with every api.slice call deleted -- and the same hazard
+    # sat under node, tree, edit, write, lock, history, flags and health. The call has to
+    # be on the client object, whatever the component happens to have named it.
+    holders = set(re.findall(r"(?:const|let)\s+(\w+)\s*=\s*(?:useApi\(\)|api)\b", components))
+    holders |= {"api", "client"}
+    receiver = "|".join(sorted(re.escape(h) for h in holders))
+    unreachable = [
+        name
+        for name in methods
+        if not re.search(rf"\b(?:{receiver})\s*\.\s*{re.escape(name)}\s*\(", components)
+    ]
     assert unreachable == [], "client methods no component calls: " + ", ".join(unreachable)
 
 
