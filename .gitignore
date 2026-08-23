@@ -36,3 +36,9 @@ demo/*.db-wal
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# A scratch story created by running the app at the repo root. The demo state that
+# ships with the project is demo/story.db, which is committed on purpose.
+/story.db
+/story.db-shm
+/story.db-wal
