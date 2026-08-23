@@ -1,0 +1,1 @@
+{"ok": true, "branch": "main", "nodes": 37, "facts": 18, "providers": ["gemini", "groq", "openrouter"], "openrouter_enabled": true}

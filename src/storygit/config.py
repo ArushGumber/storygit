@@ -86,7 +86,7 @@ class Settings(BaseSettings):
     openrouter_api_key: SecretStr = SecretStr("")
     openrouter_enabled: str = "false"
     openrouter_budget_usd: float = 12.0
-    openrouter_model: str = "anthropic/claude-3.5-sonnet"
+    openrouter_model: str = "google/gemini-2.5-pro"
 
     cache_path: str = Field(default="")
     request_timeout_s: float = 90.0

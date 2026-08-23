@@ -288,10 +288,25 @@ export class ApiError extends Error {
   }
 }
 
+/**
+ * Where a request actually goes.
+ *
+ * The published static site has no server, only files, so each recorded GET lives at its
+ * own path with a `.json` suffix. The suffix is not decoration: a static host cannot serve
+ * `/api/gallery` as both a JSON document and a directory containing `/api/gallery/<id>`,
+ * and the gallery needs both. Adding the extension gives every endpoint its own file and
+ * lets collections keep their children.
+ */
+function resolve(path: string): string {
+  if (!import.meta.env.VITE_STATIC) return path;
+  const bare = path.split("?")[0] ?? path;
+  return bare.endsWith(".json") ? bare : `${bare}.json`;
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(path, {
+    response = await fetch(resolve(path), {
       ...init,
       headers: { "content-type": "application/json", ...(init?.headers ?? {}) },
     });

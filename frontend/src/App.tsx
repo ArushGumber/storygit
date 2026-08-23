@@ -15,12 +15,20 @@ import { Architecture } from "./tabs/Architecture";
 import { Evaluation } from "./tabs/Evaluation";
 import { Gallery } from "./tabs/Gallery";
 import { Live } from "./tabs/Live";
+import { LiveStatic } from "./tabs/LiveStatic";
 import { Problem } from "./tabs/Problem";
 
 const TABS = [
   { id: "problem", label: "Problem & Decisions", render: () => <Problem /> },
   { id: "architecture", label: "Architecture", render: () => <Architecture /> },
-  { id: "live", label: "Live", render: () => <Live /> },
+  // The static build has no Python process behind it, so the tool becomes screenshots
+  // plus the commands to run it. Every other tab reads pre-rendered JSON and works
+  // unchanged, which is why only this one is swapped.
+  {
+    id: "live",
+    label: "Live",
+    render: () => (import.meta.env.VITE_STATIC ? <LiveStatic /> : <Live />),
+  },
   { id: "gallery", label: "Gallery", render: () => <Gallery /> },
   { id: "eval", label: "Eval", render: () => <Evaluation /> },
 ] as const;

@@ -1,0 +1,300 @@
+{
+  "persona": "the Serialist",
+  "config": {
+    "name": "half",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 1,
+    "seed": 7,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_95391f56a0",
+      "level": "episode",
+      "shown": [
+        "p_d628369452",
+        "p_c97840cf34",
+        "p_26da24b5ba"
+      ],
+      "axes": [
+        "raise the stakes",
+        "slow down",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.5355,
+        0.5977,
+        0.5383
+      ],
+      "chosen": "p_c97840cf34",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6027,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Last Filter Kaelen, a young scavenger, breaks into a derelict med-transport to steal a vital air filter for his sick sister, Elara. He's discovered by the authoritarian Wardens, and in the ensuing chase, he drops and breaks the filter, returning home with nothing as Elara's condition worsens. The air in Ashfall is toxic. Survival depends on scarce filtration technology controlled by the Wardens. Scavenging is a capital crime.",
+        "Firstfall A woman, Elara, awakens at dawn on a ridge overlooking Ashfall, a town blanketed in grey dust. She has no memory of her arrival, only a strange, inert compass in her pocket. Drawn by a need for answers, she descends into the silent streets, finding signs of a hurried, orderly evacuation, not a disaster. Ashfall was evacuated recently and suddenly. Something may be wrong with physics here (the compass). The protagonist is suffering from amnesia but is methodical and observant.",
+        "The Nature of the Ash Protagonists Kaelen and Lena arrive at the edge of the ruin of Ashfall, ready to execute their long-planned scavenge of a tech vault. They discover the titular 'ash' is not inert dust but an active, responsive swarm, making their entire plan and gear useless. The 'ash' in Ashfall is not fallout or dust, but an active swarm of unknown origin and intelligence. The protagonists' information is dangerously out of date."
+      ]
+    },
+    {
+      "node_id": "n_95391f56a0",
+      "level": "episode",
+      "shown": [
+        "p_e5da1768f3",
+        "p_2ccf75c617",
+        "p_28f713aea8"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.5316,
+        0.5018,
+        0.5404
+      ],
+      "chosen": "p_28f713aea8",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6509,
+          "dialogue_ratio": 0.2857
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6286,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "What the Dust Remembers Elara enters Ashfall and discovers the grey dust is psychometric; touching objects triggers vivid, chaotic memories of the town's final moments. Seeking a central source of information, she enters the Town Hall, only to find the dust inside is not settled, but is actively coalescing into a humanoid form. The dust has recorded the final, traumatic moments of Ashfall's residents. The act of touching things can reveal the past, but it is an uncontrolled and overwhelming experience.",
+        "The Watcher on the Ridge From a watchtower overlooking Ashfall, a man named Silas conducts his daily surveillance. He is the town's sole occupant, left behind after a formal 'Protocol' evacuated everyone else. At dawn, his instruments detect an anomaly that isn't the one he's monitoring: a human figure, Elara, appearing on the opposite ridge. He tracks her methodical descent into the town, his interest piqued; she is the variable he was warned might appear. Ashfall's evacuation was a planned, orderly 'Protocol.' Someone was deliberately left behind to monitor the town and wait for an arrival. The strange physics may be artificial.",
+        "The Ledger of Lost Names A woman, Kaelen, breaks into the Ashfall Municipal Archive, searching for a specific birth record. Her methodical search is punctuated by moments of distraction with personal items left behind by evacuees, hinting at her true motive. She finds the correct ledger, but the page she needs has been meticulously cut out. Kaelen is not an amnesiac; she is in Ashfall for a specific purpose tied to its past. Someone else with a similar goal was here before her. The town itself may be physically unnatural."
+      ]
+    }
+  ],
+  "episodes_completed": 0,
+  "call_summary": {
+    "calls": 28,
+    "prompt_tokens": 31974,
+    "completion_tokens": 49423,
+    "cost_usd": 0.5341975,
+    "cache_hits": 0,
+    "errors": 0,
+    "mean_latency_s": 36.266406738786046,
+    "total_tokens": 81397,
+    "cache_hit_rate": 0.0,
+    "by_purpose": [
+      {
+        "purpose": "propose.episode",
+        "calls": 14,
+        "tokens": 52961,
+        "cost_usd": 0.34964,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 11,
+        "tokens": 17797,
+        "cost_usd": 0.136285,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 2,
+        "tokens": 7597,
+        "cost_usd": 0.03411,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 1,
+        "tokens": 3042,
+        "cost_usd": 0.0141625,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "openrouter",
+        "calls": 28,
+        "tokens": 81397,
+        "cost_usd": 0.5341975
+      }
+    ],
+    "cache": {
+      "hits": 0,
+      "misses": 28,
+      "entries": 8683
+    },
+    "budget_remaining_usd": 11.4658025
+  },
+  "preference_summary": {
+    "pairs_seen": 0,
+    "edits_seen": 0,
+    "voice_trained": false,
+    "top_weights": [
+      {
+        "feature": "judge_voice",
+        "weight": 2.3
+      },
+      {
+        "feature": "continuity",
+        "weight": 2.0188
+      },
+      {
+        "feature": "criterion_3",
+        "weight": 1.8631
+      },
+      {
+        "feature": "criterion_2",
+        "weight": 1.7933
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 1.5379314305804825,
+      "judge_specificity": 1.3135405037306045,
+      "judge_consequence": 1.7379441244842024,
+      "judge_voice": 2.299982624178909,
+      "criterion_1": 1.5003900927618115,
+      "criterion_2": 1.7933256862660982,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 2.018838678545792,
+      "voice_cosine": 0.4099103353220211,
+      "edit_direction": 1.308534448224314,
+      "length": 0.06202884356068559,
+      "dialogue_ratio": 0.6711140206190536
+    },
+    "weight_recovery": 0.22743860785824038,
+    "weight_recovery_identified": 0.6413667085131931
+  },
+  "hidden_weights": {
+    "judge_momentum": 1.0,
+    "judge_specificity": 0.4,
+    "judge_consequence": 0.9,
+    "judge_voice": 0.0,
+    "criterion_1": 0.9,
+    "criterion_2": 0.3,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 0.8,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.0,
+    "length": 0.2,
+    "dialogue_ratio": 0.3
+  },
+  "probe": [],
+  "errors": [
+    "episode 1 was not accepted; stopping"
+  ],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
+}
