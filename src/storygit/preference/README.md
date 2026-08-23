@@ -13,9 +13,9 @@ mechanism that can use it, and each contributes as soon as it has enough:
 |---|---|---|---|
 | Exemplar retrieval | `exemplars.py` | 1 accepted paragraph | Their own sentences in the prompt |
 | Edit direction | `voice.py` | 1 edit | A direction to score candidates against |
-| Bradley-Terry head | `bt_head.py` | ~10 comparisons | The ranking |
+| Bradley-Terry head | `bt_head.py` | 4 comparisons (useful by ~10) | The ranking |
 | Edit mining | `edit_mining.py` | 2 similar edits | A standing style rule |
-| Voice model | `voice.py` | ~a few dozen texts | "Sounds like this writer" |
+| Voice model | `voice.py` | 4 anchors the writer wrote | "Sounds like this writer" |
 | Bandit | `bandit.py` | ~20 shown sets | How much to explore |
 
 `layer.py` is the façade. The engine sees `score(candidates)` and `learn(...)`, and the
@@ -90,7 +90,7 @@ sampling.
 
 Why Thompson over ε-greedy: ε-greedy explores at a fixed rate forever and explores
 uniformly. Thompson's exploration rate falls out of the posterior width, with no schedule
-to tune. The self-test (`python -m eval.bandit_selftest`, arms at 0.40 and 0.70) shows it:
+to tune. The self-test (`python -m eval.bandit_selftest`, arms at 0.40 and 0.70) reports:
 
 ```
 pulls: {'safe': 16, 'explore': 384}

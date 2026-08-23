@@ -142,11 +142,20 @@ def _mount_frontend(application: FastAPI, frontend_dir: str | Path | None) -> No
 
     @application.get("/{path:path}", include_in_schema=False)
     def spa(path: str) -> FileResponse:
-        """Serve a static file if it exists, otherwise the app shell."""
-        candidate = root / path
-        if path and candidate.is_file():
+        """Serve a static file from the build directory, otherwise the app shell.
+
+        The resolved path is checked against the build root before anything is read.
+        ``root / path`` on an unsanitised URL segment resolves ``../`` happily, so this
+        route would otherwise serve any file the process can read to anyone who can reach
+        the port --- including the workspace ``.env`` two directories up. The sibling route
+        that serves figures got this right; this one, the only hand-rolled static handler,
+        was also the only route no test mounted.
+        """
+        base = root.resolve()
+        candidate = (base / path).resolve()
+        if path and candidate.is_file() and candidate.is_relative_to(base):
             return FileResponse(candidate)
-        return FileResponse(root / "index.html")
+        return FileResponse(base / "index.html")
 
 
 app = create_app()

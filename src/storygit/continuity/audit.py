@@ -3,7 +3,9 @@
 Per-accept checking is incremental — it looks at the facts a change introduced. That is
 right for the interactive loop and it can miss the slow kind of drift: a contradiction
 assembled over ten episodes where no single accept was wrong. The audit walks everything
-in entity-sized batches, runs layers 1 and 2 over all of it, and samples layer 3.
+in entity-sized batches and runs layers 1 and 2 over all of it. Layer 3 is not part of
+the audit: it is an opinion on one candidate, and an opinion re-litigated over a whole
+finished story is noise the writer did not ask for.
 
 It also answers a question no per-fact check can: which threads are being dropped. A
 thread opened in episode 2 and untouched since episode 3 is not a contradiction, so
@@ -111,13 +113,11 @@ def check_dropped_threads(state: StoryState, *, max_gap: int = STALE_THREAD_BEAT
     beats = state.beats_in_order()
     if not beats:
         return []
-    latest = state.seq.get(beats[-1].id, 0)
     flags: list[Flag] = []
     for thread in sorted(state.threads.values(), key=lambda t: t.id):
         if thread.status is not ThreadStatus.open:
             continue
-        touched = state.seq.get(thread.last_touched_beat, 0)
-        gap = latest - touched
+        gap = state.beats_since(thread.last_touched_beat)
         if gap < max_gap:
             continue
         opened = state.nodes.get(thread.opened_at_beat)

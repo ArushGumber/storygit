@@ -93,13 +93,11 @@ def world_slice(
 def threads(state: State, branch: str | None = None) -> dict[str, object]:
     """The open-thread ledger, with how long each has gone untouched."""
     story = state.repo.state(branch or state.branch)
-    beats = story.beats_in_order()
-    latest = story.seq.get(beats[-1].id, 0) if beats else 0
     return {
         "threads": [
             {
                 "thread": thread.model_dump(mode="json"),
-                "beats_since_touched": latest - story.seq.get(thread.last_touched_beat, 0),
+                "beats_since_touched": story.beats_since(thread.last_touched_beat),
                 "opened_in": (
                     (story.nodes[thread.opened_at_beat].title or "an earlier beat")
                     if thread.opened_at_beat in story.nodes

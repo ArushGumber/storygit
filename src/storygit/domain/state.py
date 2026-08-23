@@ -231,6 +231,26 @@ class StoryState:
         """Every beat in reading order — the total order facts are dated against."""
         return tuple(n for n in self.nodes_of_type(NodeType.beat) if isinstance(n, Beat))
 
+    def beats_since(self, node_id: NodeId) -> int:
+        """How many beats have happened since the given beat, in reading order.
+
+        Not a difference of :attr:`seq` values: ``seq`` is the global depth-first order over
+        *every* node, so episodes and scenes count towards it. Subtracting two seq numbers
+        answers "how many nodes apart" and gets reported as "beats", which in a
+        seventeen-beat story with eight scenes produced the sentence "untouched for 31
+        beats". A reader who counts is owed the number they would count.
+
+        Args:
+            node_id: The beat to measure from.
+
+        Returns:
+            Beats between that beat and the last one; 0 if the beat is unknown.
+        """
+        order = [beat.id for beat in self.beats_in_order()]
+        if node_id not in order:
+            return 0
+        return (len(order) - 1) - order.index(node_id)
+
     def seq_of(self, node_id: NodeId) -> int:
         """Position of a node in the global depth-first reading order.
 

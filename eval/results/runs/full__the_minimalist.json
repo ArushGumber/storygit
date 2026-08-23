@@ -23,7 +23,7 @@
       "node_id": "n_0417bf53f0",
       "level": "episode",
       "shown": [
-        "p_115ee165d9",
+        "p_8b13838eda",
         "p_742db7f448",
         "p_873122e25c"
       ],
@@ -43,7 +43,7 @@
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "080fb6c15fbc65b16745a79a38d50069",
+      "snapshot_id": "e980e949b0905522b3ca7c9e61b196b9",
       "stale_marked": 0,
       "features": [
         {
@@ -102,9 +102,9 @@
       "node_id": "n_fd5545cda2",
       "level": "scene",
       "shown": [
-        "p_ed3f6fd1d8",
-        "p_77759c6de8",
-        "p_b2fa13dac6"
+        "p_b2fa13dac6",
+        "p_e5da6af10d",
+        "p_87f308763b"
       ],
       "axes": [
         "subvert the expectation",
@@ -116,13 +116,13 @@
         0.5553,
         0.8635
       ],
-      "chosen": "p_b2fa13dac6",
+      "chosen": "p_87f308763b",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "5296cd059e4ae880a286751fe37a900a",
+      "snapshot_id": "621e85727e4af9c5a234e914c064b189",
       "stale_marked": 0,
       "features": [
         {
@@ -178,53 +178,38 @@
       ]
     },
     {
-      "node_id": "n_a63520907f",
+      "node_id": "n_e5cba71f8f",
       "level": "beat",
       "shown": [
-        "p_0edc086b75",
-        "p_7958718de8",
-        "p_370c3cbfb2"
+        "p_370c3cbfb2",
+        "p_9296a290f1",
+        "p_0edc086b75"
       ],
       "axes": [
-        "slow down",
         "introduce a complication",
-        "shift the point of view"
+        "shift the point of view",
+        "subvert the expectation"
       ],
       "scores": [
-        0.5487,
-        0.3843,
-        0.2723
+        0.3177,
+        0.2556,
+        0.2995
       ],
-      "chosen": "p_0edc086b75",
-      "kind": "accept",
+      "chosen": "p_370c3cbfb2",
+      "kind": "reject",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 1,
+      "flags_shown": 2,
       "hard_flags_shown": 0,
-      "snapshot_id": "0022b4d509b8d49b75bcd3b7c0a17487",
+      "snapshot_id": null,
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5656,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
@@ -237,8 +222,8 @@
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.5,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
@@ -248,555 +233,17 @@
           "edit_direction": 0.5,
           "length": 0.5851,
           "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Weight of Stillness Kael watches the traveler's eyes dull from brown to gray as the iron spreads. He reaches out, not to save the man, but to reclaim the iron key from a stiffening, metallic grip. The gate's transformation process is slow and absolute; Kael remains unfeeling toward the cost.",
-        "The Gate Stalls The iron conversion reaches the traveler's shoulder, then stops. The gate trembles, failing to anchor the change, as the traveler's blood contains a strange, unnatural residue. Kael stares at the half-turned intruder, realizing the lock will not fully seal. The gate has a threshold for what it can consume; the traveler is defective in some way.",
-        "The Traveler's Final View Elara clutches the iron key, her fingers slick with sweat. She sees a shadow detach from the wall, but Kael is too fast. As he slams her against the gate, her desperate grip on the key slices his palm, feeding the lock she was desperate to open. Elara never intended to die; the sacrifice was an accident of her desperation."
-      ]
-    },
-    {
-      "node_id": "n_236e30a504",
-      "level": "prose",
-      "shown": [
-        "p_65c13ff34b",
-        "p_95b302365a",
-        "p_5a6f2a0894"
-      ],
-      "axes": [
-        "raise the stakes",
-        "shift the point of view",
-        "pay off an open thread"
-      ],
-      "scores": [
-        0.6351,
-        0.6021,
-        0.6073
-      ],
-      "chosen": "p_65c13ff34b",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "1f7739a1b9633a55560c17f9092b228e",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6027,
-          "dialogue_ratio": 0.0
         },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6377,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5867,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose The traveler’s pulse flickers under the metallic sheen. Kael pulls at the key. The traveler's fingers lock tight. Bone turns to ore. Kael digs his heels into the gravel and wrenches the key loose. The traveler’s mouth stays open, a statue of silent warning. Kael looks at his own hand. A jagged vein of iron snakes up his wrist from the cut. The gate needs more than blood. It feeds on the gatekeeper too.",
-        "prose The iron travels up my forearm. My blood turns heavy as lead. Kael stands over me. He smells of old dust and dry rot. His fingers pry at my rigid grip. He wants the key. I see his palm, slick with red. He does not look at my face. He only wants the metal. The gate hums against my back. It drinks the heat from my marrow. Kael wrenches my thumb back. The bone snaps, a dry click. The key slides free. I cannot scream. My throat is a hollow pipe of cooling slag.",
-        "prose The traveler’s pupils lock. Gray creep moves from his knuckles to his chin. Kael watches the brown fade into slate. He pries at the rigid, metallic fingers. The traveler’s skin flakes like rusted scale. The key snaps free. It is heavy, cold, and wet with blood. The man becomes a statue. Kael drops the key into his pouch and steps back into the dark."
-      ]
-    },
-    {
-      "node_id": "n_a63520907f",
-      "level": "beat",
-      "shown": [
-        "p_a7f9bf3a97",
-        "p_e028607734",
-        "p_e1151bf1fe"
-      ],
-      "axes": [
-        "deepen the interiority",
-        "introduce a complication",
-        "slow down"
-      ],
-      "scores": [
-        0.607,
-        0.5288,
-        0.3368
-      ],
-      "chosen": "p_a7f9bf3a97",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "9893dfda6ec030b6bd698569cdf5c3a3",
-      "stale_marked": 0,
-      "features": [
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 0.75,
           "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6011,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5851,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.5,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5714,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "A Vessel for the Gate Kael drags the traveler's heavy, iron-limbed body away from the threshold. He drops the corpse into a shallow pit near the gate. He rubs his own wrist, feeling the cold weight of the iron vein pulsing beneath his skin. He turns his back on the gate and walks toward his small, wood-plank hut to hide his growing deformity. Kael intends to conceal his condition rather than seek a cure.",
-        "Seized by the Gate As Kael wrenches the iron key from the statue's grasp, the key does not yield. It fuses to his palm, welding his skin to the dead man's metallic hand. The gate vibrates, pulling both bodies forward, hungry for the combined mass of the gatekeeper and the intruder. The key is a permanent tether, not a tool to be handed off.",
-        "The Resonance of Metal Kael kneels beside the statue. The iron key resonates, vibrating against his own cooling palm. He feels the gate pulling at the iron within his own skin. He realizes the gate is not just hungry, it is a map leading somewhere else. The iron infection acts as a compass or beacon."
-      ]
-    },
-    {
-      "node_id": "n_f321b1c4cb",
-      "level": "prose",
-      "shown": [
-        "p_7fcb44b77b",
-        "p_031487159d",
-        "p_f4be180810"
-      ],
-      "axes": [
-        "slow down",
-        "shift the point of view",
-        "raise the stakes"
-      ],
-      "scores": [
-        0.7184,
-        0.6388,
-        0.5865
-      ],
-      "chosen": "p_7fcb44b77b",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "89a4c09fbff33044a58c77a676ffa987",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6587,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6304,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.649,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose Kael grips the traveler’s shoulder. The body is dead weight, cold and dense as an anvil. He drags the legs across the gravel. Metal scrapes against stone. Kael drops the corpse into the pit. The iron limbs clatter against the dirt. He wipes his palm on his tunic, but the smear of blood stays wet. He rubs his wrist. The iron vein pulses under his skin. It beats a slow, rhythmic thud against his thumb. He turns away from the gate. The wooden planks of his hut groan under his boots. He reaches for the iron key in his pocket. It feels heavier than before.",
-        "prose The gate groans. Metal teeth grind against stone. Kael hauls the heavy traveler by the ankles. The body scrapes across the dirt. Kael stops at the pit. He dumps the man in. He wipes his stained hands on his trousers. Kael touches his wrist. The iron vein throbs. He stares at the hut. Kael walks away. The gate shifts behind him. A heavy bolt slides into place. Inside the hut, Kael lights a tallow candle. He stares at his reflection in a cracked mirror. The iron climbs toward his elbow.",
-        "prose The traveler hits the dirt with a hollow, metallic thud. Kael drags the legs. Each step rings out like a hammer on an anvil. He dumps the body into the shallow trench. Dirt slides over the iron-grey face. Kael leans against the rough bark of a pine. He grips his wrist. The iron vein throbs. It pulses in time with the gate’s low hum. He pulls his sleeve down. The fabric catches on a rough patch of skin. He touches his forearm. His own flesh feels thin. Hard. He turns toward his hut. He walks with a stiff, heavy gait."
-      ]
-    },
-    {
-      "node_id": "n_fd5545cda2",
-      "level": "scene",
-      "shown": [
-        "p_eed21a76bb",
-        "p_94d5285d35",
-        "p_c43c25c705"
-      ],
-      "axes": [
-        "subvert the expectation",
-        "introduce a complication",
-        "pay off an open thread"
-      ],
-      "scores": [
-        0.527,
-        0.4704,
-        0.3002
-      ],
-      "chosen": "p_eed21a76bb",
-      "kind": "edit",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 1,
-      "hard_flags_shown": 0,
-      "snapshot_id": "d851dae900baef3bba779dc48c051c83",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
           "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5898,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.5,
-          "criterion_1": 0.25,
-          "criterion_2": 1.0,
+          "criterion_2": 0.5,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5759,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.25,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6027,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Weight of Secrecy Inside the hut, Kael tries to sharpen his rusted blade, but his fingers stiffen. He drops the whetstone; it cracks the floorboards. Kael sees the iron spreading from his palm to his knuckles. He pulls his tunic tight to hide the transformation and hears a rhythmic knocking at his door. Kael’s transformation is accelerating and he is no longer alone at the gate.",
-        "The Locked Door Kael reaches his hut. He tries to turn the iron key in his door lock. The key has grown too heavy and thick to fit the keyhole. He drops the key, and it cracks the floorboards. He realizes he cannot hide inside. The transformation is accelerating and the key is becoming unusable for normal tasks.",
-        "The Weight of Oaths Kael places the iron key on his workbench. The heavy metal bites into the soft pine, carving a deep groove as the wood splinters. He presses his wrist against the same surface, noting how his skin mimics the key's texture. He takes a rusted chisel to his own vein, but the tool shatters against the iron hardening beneath his skin. The iron key's weight directly correlates to Kael's irreversible physical transformation."
-      ]
-    },
-    {
-      "node_id": "n_169c89cfda",
-      "level": "beat",
-      "shown": [
-        "p_2d6235cc75",
-        "p_555bb501ca",
-        "p_82823533bd"
-      ],
-      "axes": [
-        "introduce a complication",
-        "raise the stakes",
-        "deepen the interiority"
-      ],
-      "scores": [
-        0.5941,
-        0.386,
-        0.3205
-      ],
-      "chosen": "p_2d6235cc75",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "2df3abc3e60a70f8a49aee7507137964",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5759,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6128,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5914,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Gatekeeper's Visitor Kael cracks the door. A woman in a thick, grey cloak stands on the threshold. She wears a symbol of the Iron Faction on her chest. She points at Kael’s concealed, metallic hand. She says she has come to collect the toll for the gate. The Iron Faction tracks the gate's activity and demands payment.",
-        "A Visitor at the Threshold Kael pulls the wooden door inward. Standing in the rain is Elara, a village scout who once shared his watch. She holds a damp letter and looks at his hand, which he keeps buried in his sleeve. She asks why he left his post, her eyes narrowing as she spots the fresh smear of rust-colored blood on the doorframe. Kael has a personal connection to the outside world; his secret is physically leaking into his surroundings.",
-        "The Gatekeeper's Visitor Kael shoves the whetstone into his pocket, his hand metallic and stiff. He moves to the door and slides the heavy wooden latch. A woman stands in the rain. She wears a travel-stained cloak and grips a satchel. She stares at Kael's iron-stained hand, ignoring his attempt to pull his sleeve down. Kael is failing to hide his transformation. A new, observant figure has arrived."
-      ]
-    },
-    {
-      "node_id": "n_20fa58c371",
-      "level": "prose",
-      "shown": [
-        "p_6db25a0a7d",
-        "p_88aef1a48e",
-        "p_35fd8c7b8d"
-      ],
-      "axes": [
-        "slow down",
-        "deepen the interiority",
-        "subvert the expectation"
-      ],
-      "scores": [
-        0.7298,
-        0.5825,
-        0.622
-      ],
-      "chosen": "p_6db25a0a7d",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "0670378c4224525132316655120fb99b",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
-          "judge_voice": 1.0,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6377,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
-          "judge_voice": 1.0,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6377,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6528,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose Kael pulls the door wide. A sliver of grey light hits the floor. The woman stands there. Her cloak smells of damp wool and ozone. A brass cog, the Faction’s mark, pins the fabric at her throat. She does not look at his face. Her gaze drops to his left hand, tucked deep into his tunic. She taps her own wrist. The iron ring on her finger clicks against her bone. Toll, she says. Her voice is dry as grit. The gate is hungry. It has been a long time since the last payment.",
-        "prose Kael pulls the door. It drags against the dirt floor. The woman stands under the rain. Water beads on her cloak. A gear etched in silver sits on her collar. She does not look at his face. Her eyes fix on his right hand. He keeps it buried in his sleeve. The metal beneath his skin burns. She reaches into her satchel. A coin clinks against a vial. She holds out a palm. Give me the key, she says. The gate requires its due. Kael grips the doorframe. His knuckles grind against the wood.",
-        "prose Kael pulls the door. The hinge screams. The woman stands in the mud. Rain drips from her hood. The metal badge on her chest catches the dim light. It is a gear, split by a spike. She does not look at his face. Her eyes lock on his right arm, held tight against his chest. The fabric of his sleeve tears. A flake of grey scale falls to the floorboards. She reaches out a gloved hand. Her palm is open. The toll is not coin, she says. She points to the dark iron vein creeping up his neck. The gate wants marrow."
-      ]
-    },
-    {
-      "node_id": "n_169c89cfda",
-      "level": "beat",
-      "shown": [
-        "p_3828b2694a",
-        "p_b6fa2cd3eb",
-        "p_42af527a9b"
-      ],
-      "axes": [
-        "introduce a complication",
-        "raise the stakes",
-        "deepen the interiority"
-      ],
-      "scores": [
-        0.5327,
-        0.407,
-        0.5253
-      ],
-      "chosen": "p_3828b2694a",
-      "kind": "edit",
-      "veto": null,
-      "edit_distance": 0.8824,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "2f67bd2dae544c960cee2eba4819e714",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5867,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6286,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
           "length": 0.582,
@@ -804,662 +251,30 @@
         }
       ],
       "texts": [
-        "The Counterfeit Toll Kael pulls the iron key from his pocket to hand it to the woman. As he touches the key, the iron vein on his wrist flares with heat, and the key crumbles into fine, rusted dust. The woman’s gaze hardens as the key disintegrates before she can touch it. The gatekeeper’s iron transformation destroys the very key needed to satisfy the toll.",
-        "The Price of Flesh Kael pulls his hand from his tunic, revealing a hardened, metallic claw where skin used to be. The woman does not flinch; she produces a rusted, heavy iron brand from her cloak. She presses the searing metal into Kael’s forearm, bypassing the iron vein and turning his living flesh to grey, unfeeling ore. The pain is not fire but a deadening cold that travels up his shoulder. The Iron Faction physically harvests the Gatekeepers to maintain the gate. Kael's transformation is accelerated by the Faction's intervention.",
-        "The Price of Iron Kael pulls the heavy iron key from his pocket and lays it on the floorboards. The woman steps inside, her boots clicking against the wood. She ignores the key and grabs Kael’s wrist. Her fingers are cold metal, not flesh. The Iron Faction collector is also partially transformed, and the toll is not the key, but Kael himself."
+        "The Gate Stalls The iron conversion reaches the traveler's shoulder, then stops. The gate trembles, failing to anchor the change, as the traveler's blood contains a strange, unnatural residue. Kael stares at the half-turned intruder, realizing the lock will not fully seal. The gate has a threshold for what it can consume; the traveler is defective in some way.",
+        "The Traveler's Final View Elara clutches the iron key, her fingers slick with sweat. She sees a shadow detach from the wall, but Kael is too fast. As he slams her against the gate, her desperate grip on the key slices his palm, feeding the lock she was desperate to open. Elara never intended to die; the sacrifice was an accident of her desperation.",
+        "The Gatekeeper's Debt Kael pulls the iron-skinned traveler from the lock. He drags the heavy body into the shadow of the gate. Kael cuts his own palm to drip fresh blood onto the stone floor instead of the gate itself. The seal hums but does not fully close. Kael can manipulate the sacrifice to save a life, but at a personal cost."
       ]
     },
     {
-      "node_id": "n_21fbc36b02",
-      "level": "prose",
+      "node_id": "n_e5cba71f8f",
+      "level": "beat",
       "shown": [
-        "p_cbe327696b",
-        "p_1bb9517629",
-        "p_960df080d3"
+        "p_e1151bf1fe",
+        "p_c80e311dcd",
+        "p_6a6f4b27c0"
       ],
       "axes": [
-        "pay off an open thread",
-        "deepen the interiority",
-        "shift the point of view"
-      ],
-      "scores": [
-        0.4943,
-        0.5063,
-        0.628
-      ],
-      "chosen": "p_960df080d3",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "4add551e72b2cb1bcd7383f6ef1fcccc",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6304,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.618,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.694,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose Kael pulls his hand from the tunic. The iron key rests in his palm. It is black with corrosion. He extends his arm. The woman reaches out. A sharp heat stabs his wrist. The iron vein under his skin glows white. The key shudders. It turns to orange grit. The dust slips between his fingers. It hits the floorboards like sand. The woman stares at the pile. Her jaw tightens. She looks at the gate behind him. It groans. The metal hinges shriek. She draws a blade from her cloak.",
-        "prose Kael pulls the key from his tunic. His fingers are stiff. The iron vein on his wrist glows a dull, angry orange. Heat crawls up his forearm. The metal key groans. It snaps in his grip. Flakes of red dust rain onto the wooden floorboards. He holds a fistful of rot. The woman stares. Her mouth pulls into a tight line. She takes a half-step inside. The iron ring on her finger taps the doorframe. It leaves a deep dent in the pine.",
-        "prose The woman watches his hand emerge from the tunic. Her eyes track the slow, pained movement of his fingers. He holds the key. It looks brittle. A patch of dull, grey rot creeps across the iron surface. The vein on his wrist pulses, a rhythmic throb beneath thin skin. Heat radiates from him, thick and metallic. He offers the metal to her. A sudden spark jumps from his thumb. The key shifts, sheds its shape, and collapses. It falls through his fingers in a shower of orange flakes. Rust dust settles on the floorboards. The woman stares at the empty, open palm. She tilts her head. She does not reach for him. Her fingers tighten around the brass cog at her throat."
-      ]
-    },
-    {
-      "node_id": "n_0417bf53f0",
-      "level": "episode",
-      "shown": [
-        "p_8698dfe959",
-        "p_daffe7d322",
-        "p_55a468f6c8"
-      ],
-      "axes": [
-        "deepen the interiority",
         "introduce a complication",
-        "raise the stakes"
-      ],
-      "scores": [
-        0.3647,
-        0.5462,
-        0.4761
-      ],
-      "chosen": "p_daffe7d322",
-      "kind": "edit",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 1,
-      "hard_flags_shown": 0,
-      "snapshot_id": "db521e23c9f2408ed40e7a335a173080",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6145,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5598,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6077,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Weight of Omission Kael tries to slam the door, but the woman wedges her boot in the gap. She pulls a jagged shard of metal from her pocket—a piece of the broken key—and presses it into his chest. Kael collapses as his own iron-wrought heart slows, and the woman steps inside his home to inspect the spreading rust on his skin. The woman knows the nature of Kael's affliction. She is not an ordinary traveler, but a collector of iron-wrought gatekeepers.",
-        "The Price of Iron The woman rejects the rust-streaked palm and draws a serrated blade. Kael realizes his own flesh is the only toll left for the gate. The Faction tracks the gatekeepers by the iron in their blood. The toll requires living metal, not forged keys.",
-        "The Price of Rust The woman draws a jagged blade and presses it against Kael's hardening wrist. She carves a line into his skin, but instead of blood, thin ribbons of molten iron spill out to coat the floor. Kael collapses as the gate behind them emits a high, resonant shriek, drawing the iron from the walls into his body. Kael’s transformation is a byproduct of the gate’s hunger, and the woman knows how to harvest his condition."
-      ]
-    },
-    {
-      "node_id": "n_969f991162",
-      "level": "scene",
-      "shown": [
-        "p_1d63cb444e",
-        "p_93a7da0b7a",
-        "p_9f02e64f4e"
-      ],
-      "axes": [
         "shift the point of view",
-        "subvert the expectation",
-        "raise the stakes"
+        "pay off an open thread"
       ],
       "scores": [
-        0.6116,
-        0.6343,
-        0.414
+        0.4815,
+        0.4585,
+        0.4717
       ],
-      "chosen": "p_93a7da0b7a",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "244364071a2182f6048d641a81421367",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5789,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5836,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5627,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Collector's Assessment The Woman watches the iron dust settle. She observes the fevered, metallic sweat on Kael’s skin and notes the specific, shifting shade of his wrist vein. She realizes he is not failing to pay; he is becoming the tribute. The Faction knows what the transformation entails. The Gatekeepers are not servants, but reservoirs for the gate's hunger.",
-        "Blood for the Gate The woman ignores the rusted dust and slices Kael’s palm with her serrated blade. She catches his blood in a small iron vial, which glows as it absorbs the metallic fluid. Kael’s hand begins to knit shut, but the skin turns cold and grey as stone. The toll is not a physical object, but the blood of the transformed.",
-        "Extraction The woman steps inside, the tip of her serrated blade resting against Kael’s pulsing wrist. She draws a line of silver blood, and the gate outside shudders, sensing the iron harvest. The gate feeds on blood enriched with iron. The woman is an extraction agent, not a collector."
-      ]
-    },
-    {
-      "node_id": "n_2f41142502",
-      "level": "beat",
-      "shown": [
-        "p_e68675b242",
-        "p_9247856346",
-        "p_8fb0033ab1"
-      ],
-      "axes": [
-        "raise the stakes",
-        "slow down",
-        "introduce a complication"
-      ],
-      "scores": [
-        0.3908,
-        0.4407,
-        0.3954
-      ],
-      "chosen": "p_9247856346",
-      "kind": "reject",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 1,
-      "hard_flags_shown": 0,
-      "snapshot_id": null,
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5656,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5882,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5978,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Iron Debt The woman ignores the rusted dust and slices Kael’s palm with her serrated blade. She holds a small iron vial under his hand, watching it glow as it fills with his dark, metallic blood. Kael’s blood is the true toll the gate demands. The Faction harvests transformed gatekeepers.",
-        "The Weight of the Toll The woman reaches out and grips Kael's wrist. She forces his palm open, ignoring his flinch. She watches the grey iron vein pulse beneath his skin, then leans in to smell the ozone rising from his cooling flesh. She whispers that the gate does not accept cold metal, only the living kind. The gate requires living, transformed tissue as a toll.",
-        "The Iron Resonance As the key dust falls, the iron vein on Kael's wrist pulses with a blinding, white-hot glow that mirrors the woman's ring. The hut vibrates. The wooden floorboards snap under the pressure of an unseen magnetic pull between Kael and the woman, forcing them to lock eyes as the iron in Kael's blood begins to react to her presence. Kael's transformation is linked to the Faction's own iron technology."
-      ]
-    },
-    {
-      "node_id": "n_2f41142502",
-      "level": "beat",
-      "shown": [
-        "p_b6d1449cff",
-        "p_8f20476b49",
-        "p_4a46271a98"
-      ],
-      "axes": [
-        "raise the stakes",
-        "introduce a complication",
-        "deepen the interiority"
-      ],
-      "scores": [
-        0.58,
-        0.5738,
-        0.4204
-      ],
-      "chosen": "p_b6d1449cff",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "96ae80f0074aecc90bcc3402efa16c8f",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5774,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5851,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5882,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Toll Manifested The woman presses the iron ring against Kael’s transforming wrist, forcing the metal to leach from his skin into the ring. Kael screams as his flesh tears, leaving a raw, metallic wound that will not bleed. The ring turns from dull iron to glowing, fluid gold. The gatekeeper’s transformation is a harvestable resource for the Faction.",
-        "The Resonance of the Gate The iron vial begins to emit a high-pitched, harmonic hum in the Woman’s hand. Kael’s hand, now grey and rigid, twitches uncontrollably toward the gate outside. The vial is not merely a container; it is a tuning fork that forces Kael’s transformed flesh to align with the gate's frequency. The transformation is a process of synchronization, not just decay.",
-        "The Toll Settled Kael pulls the iron vial from his tunic, watching the liquid surface shift like mercury. He offers it to the woman. She accepts it, pressing the glass against her own iron ring until the vial hums with a resonant, low-frequency vibration that rattles the hut's floorboards. The vial serves as a conduit for the toll, linking the gatekeeper's blood to the Faction's tools."
-      ]
-    },
-    {
-      "node_id": "n_83f0644277",
-      "level": "prose",
-      "shown": [
-        "p_9f075eac16",
-        "p_0f0fade2f4",
-        "p_6b955eb942"
-      ],
-      "axes": [
-        "slow down",
-        "shift the point of view",
-        "deepen the interiority"
-      ],
-      "scores": [
-        0.5882,
-        0.4303,
-        0.5948
-      ],
-      "chosen": "p_6b955eb942",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "8d7736907cbe71a989743ed644bad25f",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6962,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6875,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6414,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose The woman moves. Her fingers are ice against his burning skin. She drives the iron ring into the grey, hardened flesh of his wrist. Kael gasps. The skin tears like dry parchment. Beneath the surface, something thick and dark pulls toward the ring. He screams. The sound hits the wooden walls of the hut and drops. The ring pulses. It pulls a jagged thread of metal from his bone. The wound stays open, a dark hole in his arm that shows no red blood. Just a hollow, silvered dark. The ring softens. It ripples like oil on water. The dull iron hue burns away. It turns a bright, liquid gold. She pulls the ring back. A trail of heat lingers in the air.",
-        "prose The ring bites. I press it deep into his grey, hardening skin. The metal resists, stubborn as dead bark, then shudders. A vibration hums up my arm. His wrist tears. A seam of raw, exposed muscle gapes open. No blood beads on the edge. Instead, liquid iron wells up, shimmering, thick as mercury. I hold the ring steady. The metal flows into the iron hoop. It glides like light through water. My fingers grow warm. The dull iron of the band gives way to a soft, golden pulse. It feels alive. It feels heavy with his stolen time. He screams, but his voice is thin, a reedy whistle. The gate behind us groans in answer. It is finally waking.",
-        "prose The woman jams the iron ring into the grey skin of his wrist. Kael gasps. The ring bites deep. Cold metal meets living nerves. He shouts as his flesh tears like wet parchment. The wound stays open. No blood flows. It is a dry, jagged gap of silver and grey. The ring vibrates in her grip. It drinks the iron from his arm. The dull surface of the ring turns. It bleeds a bright, molten gold. The woman does not let go. She watches the light fill the metal circle. Her jaw tightens. She wants more."
-      ]
-    },
-    {
-      "node_id": "n_2f41142502",
-      "level": "beat",
-      "shown": [
-        "p_bf49d9ad49",
-        "p_047eb9ab52",
-        "p_bc8155ad45"
-      ],
-      "axes": [
-        "introduce a complication",
-        "subvert the expectation",
-        "deepen the interiority"
-      ],
-      "scores": [
-        0.5084,
-        0.5634,
-        0.4987
-      ],
-      "chosen": "p_047eb9ab52",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "1a24ca8b97b80656e56664f8b2494f4f",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5699,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.567,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6027,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Ring Rejects The gold in the ring turns black and brittle. It shatters against Kael’s wrist. The fragments fall to the floorboards. The woman steps back, her expression shifting from hunger to fear. She refuses to touch the iron wound again. Kael’s transformation is no longer a stable harvestable resource for the Faction.",
-        "The Gate Repelled The gold-filled ring flares. It does not pull more from Kael. It burns the woman’s hand instead. She drops it. The ring hits the floorboards and slides toward the threshold. It turns cold, dull lead. The gate is not a simple drain. It has a limit or a preference.",
-        "The Gate Repays Kael pulls his arm away. He stumbles back. The golden ring remains on her finger, glowing. The gate behind the woman moans. It is a deep, metallic sound. The iron ring pulses in time with the gate’s groans. Kael feels the pull in his bones. The woman smiles. She does not move to stop him. She watches the gate open a fraction. The ring acts as a tuning fork for the gate."
-      ]
-    },
-    {
-      "node_id": "n_cb05bb0280",
-      "level": "prose",
-      "shown": [
-        "p_3a4f9cc2f7",
-        "p_4d2fe74dc9",
-        "p_6db4869f5e"
-      ],
-      "axes": [
-        "introduce a complication",
-        "raise the stakes",
-        "subvert the expectation"
-      ],
-      "scores": [
-        0.6619,
-        0.449,
-        0.7111
-      ],
-      "chosen": "p_6db4869f5e",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "326514752fe41a64425bccf4e90e132c",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6232,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6162,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6452,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose The ring flares, white and blinding. It does not pull more from Kael. It pulses once, twice, then snaps. The heat turns volatile. It surges through the woman’s arm. Her skin blisters. She shrieks and drops the metal. The ring hits the floorboards with a heavy, hollow thud. It skitters toward the threshold, leaving a trail of soot. The gold vanishes. It sits in the dust, a circle of dull, grey lead. Kael grips his wrist. The wound does not knit. It is colder than before.",
-        "prose The ring flares. It does not pull. It screams. A white light sears the air. The woman’s palm blisters. Skin blackens and curls. She shrieks and drops the metal. It hits the floorboards with a heavy, dead thud. It rolls toward the gate. The gold light gutters out. It turns to dull, pitted lead. The woman grips her burned hand. She gasps. The air in the hut grows thin. The gate hungers. It hums a low, grinding note. It wants the toll.",
-        "prose The ring flares. Gold light bleeds onto the floor. It pulses once, twice, then snaps back into the woman’s palm. She screams. The smell of scorched skin fills the hut. She drops the ring. It strikes the floorboards with a heavy, dead thud. It rolls toward the threshold and stops. The gold is gone. The metal is grey, porous, and cold. The gate falls silent. The woman cradles her hand against her chest. Her fingers are blackened and stiff. She looks at the threshold, then at Kael. Her eyes are wide. She does not reach for him again."
-      ]
-    },
-    {
-      "node_id": "n_969f991162",
-      "level": "scene",
-      "shown": [
-        "p_6239df864c",
-        "p_3a8bcfb9ae",
-        "p_c95a88d804"
-      ],
-      "axes": [
-        "introduce a complication",
-        "raise the stakes",
-        "subvert the expectation"
-      ],
-      "scores": [
-        0.4288,
-        0.4651,
-        0.4637
-      ],
-      "chosen": "p_3a8bcfb9ae",
+      "chosen": "p_e1151bf1fe",
       "kind": "reject",
       "veto": null,
       "edit_distance": 0.0,
@@ -1472,6 +287,21 @@
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5459,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
           "judge_voice": 0.75,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
@@ -1480,12 +310,12 @@
           "continuity": 0.92,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6197,
+          "length": 0.5542,
           "dialogue_ratio": 0.0
         },
         {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
           "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.25,
@@ -1495,75 +325,45 @@
           "continuity": 0.92,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6145,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.557,
+          "length": 0.5805,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Threshold Responds The ring on the floorboards begins to vibrate. It pulls the iron key dust from the floorboards toward the threshold. A hairline crack forms in the wood of the door, spilling a fine, grey mist that turns the air heavy and cold. The woman backs away, pressing her burned hand into her tunic, as the threshold itself begins to draw iron from the room's fixtures. The gate does not need a keeper to function; it can harvest iron directly from its environment.",
-        "The Weight of the Toll Kael stumbles toward the threshold, his grey, stone-like hand scraping against the rough doorframe. He reaches for the leadened ring, but it vibrates and emits a sharp, piercing whine that makes his teeth ache. The woman scrambles backward, clutching her burned hand, as the gate begins to warp the air, pulling loose nails from the wood to build a jagged, makeshift barrier in the doorway. The gate acts on its own accord, independent of the woman’s intentions.",
-        "The Threshold Weight The woman ignores her burned hand and crawls to the threshold. She picks up the lead ring. Kael watches from the bench as his wrist drips grey fluid onto the floor. The woman values the lead ring more than her burned fingers."
+        "The Second Key Kael pulls the traveler back from the metal teeth of the gate. A second traveler steps from the fog behind Kael. This new arrival holds an identical iron key. The gate requires two sacrifices.",
+        "The Traveler's Weight The traveler watches his fingers harden into grey metal while Kael bleeds onto the lock. He realizes the gate feeds on bone to stay shut, and his own blood is payment enough. The traveler understands the sacrifice before he dies.",
+        "The Weight of the Seal Kael kneels beside the finished statue of iron. He strips the brass ring from the dead traveler's cold finger. The massive doors lock completely. Kael wears the ring and accepts the toll on his own blood. The gate takes a life but leaves a toll behind, and Kael must bear the personal cost of the seal."
       ]
     },
     {
-      "node_id": "n_969f991162",
-      "level": "scene",
+      "node_id": "n_e5cba71f8f",
+      "level": "beat",
       "shown": [
-        "p_9970579563",
-        "p_d13e5e6a73",
-        "p_99f121839e"
+        "p_9628bed129",
+        "p_357f29cf57",
+        "p_2f0e3b71bd"
       ],
       "axes": [
-        "subvert the expectation",
-        "introduce a complication",
-        "deepen the interiority"
+        "deepen the interiority",
+        "raise the stakes",
+        "pay off an open thread"
       ],
       "scores": [
-        0.6325,
-        0.5636,
-        0.5322
+        0.5452,
+        0.3999,
+        0.4653
       ],
-      "chosen": "p_9970579563",
-      "kind": "accept",
+      "chosen": "p_9628bed129",
+      "kind": "edit",
       "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 1,
+      "edit_distance": 0.6667,
+      "flags_shown": 3,
       "hard_flags_shown": 0,
-      "snapshot_id": "35b496f368bd7424d280c2bba9ce5365",
+      "snapshot_id": "222dd15d91b8abfb7da2b8f7ea9fa969",
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.593,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
@@ -1574,19 +374,34 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5836,
+          "length": 0.5774,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5789,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
+          "judge_consequence": 1.0,
           "judge_voice": 0.75,
-          "criterion_1": 1.0,
+          "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 1.0,
+          "continuity": 0.92,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
           "length": 0.5656,
@@ -1594,63 +409,63 @@
         }
       ],
       "texts": [
-        "The Threshold Weight The woman ignores her blackened fingers. She walks past Kael, steps over the dead lead ring on the floorboards, and sits by the open door. Kael watches her bleed onto the sill. She takes up a small whetstone and begins to scrape the edge of her serrated blade. The woman is not fleeing the failed toll. She is waiting for something else to cross the threshold.",
-        "The Threshold Weight The leadened ring begins to sink into the wood of the threshold, melting the grain. Kael watches the grey skin of his wrist crawl up his forearm toward his elbow. The woman kicks the door shut, trapping them both inside with the silent gate. The gate affects the structure of the hut itself, and escape is no longer an option.",
-        "The Lead Threshold The woman backs away from the lead ring on the floorboards. She presses her blackened hand into her opposite arm. Kael stands by the table, his grey wrist rigid and heavy. Neither person reaches for the metal. The woman fears the gate as much as she serves it."
+        "The Weight of the Seal Kael kneels beside the iron statue of the traveler. He pries the iron key from the dead fingers. He opens the latch on his own chest instead of the gate. He forces the key into his ribs to keep the seal open. Kael uses his own body as the permanent anchor for the gate.",
+        "The Weight of the Seal Kael drops his knife. He drives the blade into his own shoulder to match the traveler's sacrifice. The heavy doors latch shut as the second drop of blood hits the iron floor. Kael falls against the metal frame. The gate demands blood from the keeper if the intruder lacks enough mass to finish the seal.",
+        "The Weight of the Seal Kael kneels by the iron-turned traveler. He pries the cold fingers apart to retrieve the key. The metal is freezing. Kael pockets the key and feels the first stiffness in his own bleeding hand. The sacrifice infection passes through contact with the key or the body."
       ]
     },
     {
-      "node_id": "n_e3ad190838",
-      "level": "beat",
+      "node_id": "n_5a3b199a5d",
+      "level": "prose",
       "shown": [
-        "p_310a8d1b7c",
-        "p_9d97e5e849",
-        "p_5037a818f2"
+        "p_442abc0912",
+        "p_a1aa668e97",
+        "p_fb43df5dd9"
       ],
       "axes": [
         "shift the point of view",
-        "raise the stakes",
-        "introduce a complication"
+        "introduce a complication",
+        "slow down"
       ],
       "scores": [
-        0.532,
-        0.5006,
-        0.467
+        0.5626,
+        0.5781,
+        0.4934
       ],
-      "chosen": "p_310a8d1b7c",
-      "kind": "edit",
+      "chosen": "p_a1aa668e97",
+      "kind": "write",
       "veto": null,
-      "edit_distance": 0.3284,
-      "flags_shown": 2,
+      "edit_distance": 0.08,
+      "flags_shown": 1,
       "hard_flags_shown": 0,
-      "snapshot_id": "f5cdd8ef1f4d3c2bfadf41c2e0a227a3",
+      "snapshot_id": "5bc368e54943bbc16d672bd1e1b11b36",
       "stale_marked": 0,
       "features": [
         {
-          "judge_momentum": 0.75,
+          "judge_momentum": 1.0,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
           "criterion_1": 1.0,
-          "criterion_2": 0.75,
+          "criterion_2": 1.0,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 1.0,
+          "continuity": 0.92,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5898,
+          "length": 0.5774,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
+          "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
           "length": 0.5641,
@@ -1658,58 +473,9 @@
         },
         {
           "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
+          "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5978,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Threshold Responds Kael watches the woman from the floor. Her back is rigid. She does not look at her ruined hand. A thin, grey thread of light begins to bleed from the lead ring toward the threshold. It snakes across the wood like a vein. The threshold pulses in silent rhythm with Kael's own chest. The gate is not dead; it is feeding on the ring.",
-        "The Gate's Tax The gate manifests an echo of the woman's burned hand on Kael's own flesh. His fingers wither and turn to blackened stone to match hers. The hut floorboards groan under a sudden, localized increase in gravity. The gate inflicts the toll's failure directly upon the keeper's body.",
-        "The Threshold Stalls The iron key on Kael's palm turns to fine dust and spills. The heavy, grey door of the hut groans, its frame bowing inward. Dust sifts from the ceiling, choking the air. The gate is not simply disabled; it is starved, and the structure itself begins to cannibalize the iron nails in the floorboards to keep the threshold open. The gate consumes structural iron if no toll is paid."
-      ]
-    },
-    {
-      "node_id": "n_12f73b2643",
-      "level": "prose",
-      "shown": [
-        "p_6b9dae5f73",
-        "p_f70705950a",
-        "p_a26086ff66"
-      ],
-      "axes": [
-        "shift the point of view",
-        "raise the stakes",
-        "pay off an open thread"
-      ],
-      "scores": [
-        0.5529,
-        0.5011,
-        0.5561
-      ],
-      "chosen": "p_a26086ff66",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "4b588cd7adbfb61800d569b2e00d1956",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
-          "judge_voice": 1.0,
           "criterion_1": 1.0,
           "criterion_2": 1.0,
           "criterion_3": 0.0,
@@ -1717,9 +483,43 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.649,
+          "length": 0.6322,
           "dialogue_ratio": 0.0
-        },
+        }
+      ],
+      "texts": [
+        "prose The gate hums. Kael drops to his knees on the stone. He pries the iron key from the rigid fingers of the statue. The metal is grey. The traveler's boots remain leather. Kael hooks the latch on his own sternum. He pulls the iron plate back. He pushes the key deep into his ribs. The gate falls silent.",
+        "prose Kael pries the iron key from the dead fingers. The latch on his chest clicks open. The key meets the bone of his ribs. A second key sits inside the cavity already. The old key fuses to the new one. The gate hums louder. The doors do not lock.",
+        "prose The metal statue stays warm for three seconds. Kael grips the stiff fingers. Each joint clicks like an old latch. He bends the thumb back and pulls the iron key free. Blood drips from the key onto the stone floor. Kael reaches for his own ribs. He finds the small hatch beneath his collarbone. He clicks his fingernail into the groove and flips the iron plate open. The hollow sounds like an empty tin box. He pushes the key through his skin. The teeth find bone. He clicks the plate shut."
+      ]
+    },
+    {
+      "node_id": "n_fd5545cda2",
+      "level": "scene",
+      "shown": [
+        "p_8b3be4d9a6",
+        "p_2d6235cc75",
+        "p_555bb501ca"
+      ],
+      "axes": [
+        "slow down",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5537,
+        0.7011,
+        0.6441
+      ],
+      "chosen": "p_2d6235cc75",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "4fc52898d233a0863ac013a4a76fa870",
+      "stale_marked": 0,
+      "features": [
         {
           "judge_momentum": 0.75,
           "judge_specificity": 1.0,
@@ -1732,7 +532,22 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6044,
+          "length": 0.5405,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5729,
           "dialogue_ratio": 0.0
         },
         {
@@ -1747,71 +562,71 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6044,
+          "length": 0.5612,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "prose The woman ignores the black char on her fingers. She works the whetstone across the steel. Scrape. Scrape. The sound teeth-grinds in the quiet hut. She does not look at the ring on the floor, but her shoulders track the grey thread of light as it leeches into the wood. She is not waiting for the gate to open. She is waiting for the threshold to finish swallowing the lead. The wood of the doorframe sighs. It is a hollow sound. Kael feels the vibration in his teeth. His own pulse matches the rhythm of the floorboards. He tastes copper.",
-        "prose The grey thread touches the threshold. The wood groans. A splintered edge of the doorframe curls inward, exposing raw, white grain. Kael feels a sharp pull at his wrist. The iron vein under his skin flares. He arches his back. The thread of light is not enough. The threshold demands more. It pulls a jagged sliver of iron directly from Kael's stiff, grey forearm. Skin tears. A bead of thick, metallic sludge hits the floorboards.",
-        "prose The light reaches the sill. The wood groans. A faint, hollow sound rises from beneath the boards. Kael feels a sharp pull against his own chest. His iron-slicked wrist aches. The threshold grows wide. It does not lead outside. It shows a vast, dark cavern of shifting ore. The woman turns. She holds her blade to her own throat. She does not look at Kael. She waits for the gate to demand a different toll."
+        "The Rib-Latch Kael forces his own ribs apart. The second key fits into the bone socket beside his heart. The metal latch clicks twice. Kael was always the backup mechanism for the gate.",
+        "The Second Key Inside the ash-choked watchtower, Vane listens to the heavy thud of Kael's boots on the stairs. Vane pulls a duplicate iron key from his pocket and drops it into the mortar dust. Kael enters with blood dripping from his palm and says nothing. Kael is not the only one holding an iron key.",
+        "The Second Key Kael pulls the second key from his own chest cavity. The brass teeth slide out of his ribs with a dry click. He holds it to the humming iron lock. The gate refuses the match. Kael's own key cannot shut the gate he just sealed."
       ]
     },
     {
-      "node_id": "n_e3ad190838",
+      "node_id": "n_20fa58c371",
       "level": "beat",
       "shown": [
-        "p_cfbbf86acf",
-        "p_2923b39339",
-        "p_81e182db60"
+        "p_ae89b40376",
+        "p_120b878de8",
+        "p_21e85181d3"
       ],
       "axes": [
-        "introduce a complication",
+        "slow down",
         "pay off an open thread",
-        "deepen the interiority"
+        "subvert the expectation"
       ],
       "scores": [
-        0.3019,
-        0.4048,
-        0.2957
+        0.5865,
+        0.4583,
+        0.4282
       ],
-      "chosen": "p_2923b39339",
-      "kind": "reject",
+      "chosen": "p_ae89b40376",
+      "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 3,
-      "hard_flags_shown": 2,
-      "snapshot_id": null,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a5d4627a06a4ff97eee2da5b3a8e06ae",
       "stale_marked": 0,
       "features": [
         {
-          "judge_momentum": 1.0,
+          "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
-          "judge_voice": 0.5,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 0.92,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5714,
+          "length": 0.5528,
           "dialogue_ratio": 0.0
         },
         {
-          "judge_momentum": 1.0,
+          "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
-          "criterion_1": 0.25,
+          "criterion_1": 0.75,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.65,
+          "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6027,
+          "length": 0.5714,
           "dialogue_ratio": 0.0
         },
         {
@@ -1819,54 +634,163 @@
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.65,
+          "continuity": 0.92,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5962,
+          "length": 0.5556,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Iron Lock The gate does not demand the woman's life. Instead, it pulls the iron key from Kael's pocket. The key flies toward the threshold, slamming into the wood and lodging there. The threshold turns to solid, rusted iron. The woman’s escape route is gone. The gate prioritizes trapping the inhabitants over killing them.",
-        "The Price of Iron The blade bites into the woman's neck. She does not flinch. A single, dark drop of blood beads on the edge of the steel. The threshold stills. The cavern image vanishes, replaced by a sudden, violent expansion of the door frame that splinters the surrounding wood. The woman collapses, her breathing shallow, as the gate demands a permanent forfeit from her. The gate requires blood from the woman, not just iron.",
-        "The Threshold Demands The woman ignores the blade. She presses her blackened, stiff fingers into the wood of the floor. The threshold widens. She does not look at Kael, but her voice is dry and hollow. She says the gate does not care for iron, but for the one who carries it. She gestures for Kael to step forward. The woman believes the gate wants Kael specifically, not just his iron."
+        "The Weight in the Ribs Kael stands before the iron gate. He reaches into his open chest. He grips the second key beneath his ribs and pushes it deeper into the lock. Kael uses his own body to force the gate shut.",
+        "The Price in the Dust Vane steps from the shadows of the watchtower and kicks the iron key across the mortar dust. Kael looks down at the metal, then presses his bleeding palm against the stone floor. Vane draws a rusted blade and waits for Kael to answer. Vane demands Kael's second key by force.",
+        "The Empty Cavity Kael forces his hand into his own ribs. His fingers scrape against empty space. The second key is gone. Vane stands behind him on the stairs with the iron key in his palm. Vane stole the second key before Kael arrived."
       ]
     },
     {
-      "node_id": "n_e3ad190838",
-      "level": "beat",
+      "node_id": "n_b6fa2cd3eb",
+      "level": "prose",
       "shown": [
-        "p_ef002e6094",
-        "p_fd436f8308",
-        "p_3897c56181"
+        "p_55a468f6c8",
+        "p_6f6344e05f",
+        "p_43c4ca9d64"
       ],
       "axes": [
-        "deepen the interiority",
         "slow down",
-        "introduce a complication"
+        "introduce a complication",
+        "raise the stakes"
       ],
       "scores": [
-        0.3931,
-        0.4004,
-        0.3654
+        0.4381,
+        0.5502,
+        0.5987
       ],
-      "chosen": "p_fd436f8308",
-      "kind": "reject",
+      "chosen": "p_43c4ca9d64",
+      "kind": "write",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 4,
-      "hard_flags_shown": 2,
-      "snapshot_id": null,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "04db3cd3e1da1c4f0889cf20c33443bf",
       "stale_marked": 0,
       "features": [
         {
-          "judge_momentum": 1.0,
+          "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5514,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5251,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5446,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Kael stands before the iron gate. Cold air strikes the meat of his chest. Bone splinters against the brass teeth of the key. Blood pools in the bottom of the lock. The metal turns red. The gate demands more weight.",
+        "prose Kael pushes the key. The iron tumbler grinds against the rib. The key snaps in two. The latch stays open.",
+        "prose Kael pushes the second key into the iron mouth of the gate. Bone grinds against cold brass inside his chest. The lock turns once. The bolt slides home. Kael leaves his hand inside the mechanism."
+      ]
+    },
+    {
+      "node_id": "n_20fa58c371",
+      "level": "beat",
+      "shown": [
+        "p_daffe7d322",
+        "p_65a09dd5fe",
+        "p_9813dd5a64"
+      ],
+      "axes": [
+        "introduce a complication",
+        "deepen the interiority",
+        "slow down"
+      ],
+      "scores": [
+        0.482,
+        0.7703,
+        0.49
+      ],
+      "chosen": "p_65a09dd5fe",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "fdc7eabe1e6af1256af9261431e010d4",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5514,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5446,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.25,
           "criterion_2": 1.0,
@@ -1875,7 +799,609 @@
           "continuity": 0.92,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5729,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Bone Rejects the Brass The key inside Kael's chest grinds against his ribs and snaps the brass teeth. The gate lock remains jammed. Vane watches from the shadows of the stairs. The second key cannot open the lock while broken.",
+        "The Second Turn Kael pulls his hand from the lock. He leaves the iron key embedded in the iron plate. He walks past Vane without speaking. Kael will not remove the key from his own chest.",
+        "The Iron Edge Kael forces his fingers deeper into the open cavity of his chest. Bone splinters against the cold brass of the second key. Blood wells over the rim of the metal and drips onto the floorboards. The physical cost of turning the key is immediate and bodily."
+      ]
+    },
+    {
+      "node_id": "n_93a7da0b7a",
+      "level": "prose",
+      "shown": [
+        "p_8f20476b49",
+        "p_e68675b242",
+        "p_7b99ffa21a"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5769,
+        0.7721,
+        0.4585
+      ],
+      "chosen": "p_e68675b242",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.5814,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "20b7cfa925cdd6474edd2e5782012dbb",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5584,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5542,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5419,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Kael pulls his bloody wrist free from the iron plate. The key stays wedged in the vertical slot. He steps over the mortar dust on the stair. Vane stands against the lime-washed wall. Kael ignores him. The floorboards sag under the weight of his boots.",
+        "prose Kael pulls his wrist from the iron mouth. The skin tears. The iron key stays wedged in the plate. Kael steps around Vane. Blood drips on the stone stair. Vane watches the key. Kael walks past the threshold into the grey rain.",
+        "prose Kael pulls his hand from the iron plate. Blood smears the cold metal. The key remains in the lock. Kael steps past Vane. Dust settles on the stairwell. Vane stares at the door."
+      ]
+    },
+    {
+      "node_id": "n_0417bf53f0",
+      "level": "episode",
+      "shown": [
+        "p_de5783bd76",
+        "p_50acd76901",
+        "p_cbd07af1c2"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5281,
+        0.5749,
+        0.3586
+      ],
+      "chosen": "p_50acd76901",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "680221a9aaeb8f97427121d8553006b0",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9874,
+          "edit_direction": 0.0,
+          "length": 0.5598,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9946,
+          "edit_direction": 1.0,
+          "length": 0.5486,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9867,
+          "edit_direction": 0.5022,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Ashfall: The Empty Room Vane climbs the remaining stairs to the watchtower apex. He finds the iron lock empty. Kael sits on the stone bench outside in the grey rain, whetting a blade with a dry stone. The gate needs no key when the blood is gone.",
+        "The Second Lock Vane tests the gate. The iron key turns in the plate, but the second bolt does not move. Kael leaves the tower door open to the grey rain. Two keys are required to seal the gate.",
+        "Ashfall: The Grey Rain Kael walks into the grey rain. Vane picks up the second key from the mortar dust. Vane places the key into the open padlock on his own chest. The latch clicks shut. Vane drops dead on the stone stair. Kael watches the body turn to iron. The gate requires a sacrifice to stay locked, and Vane chose to pay the toll."
+      ]
+    },
+    {
+      "node_id": "n_34d591a4cc",
+      "level": "scene",
+      "shown": [
+        "p_f906d74875",
+        "p_7d36a78ea7",
+        "p_4a4d153380"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5899,
+        0.4735,
+        0.3467
+      ],
+      "chosen": "p_f906d74875",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "2fabfef914263ef5479bf08a4642a356",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9931,
+          "edit_direction": 1.0,
+          "length": 0.5556,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.985,
+          "edit_direction": 0.0,
+          "length": 0.5641,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9885,
+          "edit_direction": 0.6441,
+          "length": 0.5556,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Threshold Vane picks up the second key from the mortar dust. He inserts the brass tooth into his own palm. Kael stands in the grey rain and watches the threshold refuse to close. The gate requires a keeper's flesh, not an iron duplicate.",
+        "The Threshold Kael steps into the grey rain outside the watchtower. The rain hits his open chest cavity. Water pools in the empty bone. The iron key inside fuses tighter to his ribs. Kael falls to his knees in the mud. The grey rain reacts with Kael's open chest cavity.",
+        "The Threshold Vane picks up the second key from the mortar dust. He inserts the brass teeth into the secondary slot of the gate. Kael stands in the grey rain and watches the heavy bolt slide home. Vane knows how to work the lock."
+      ]
+    },
+    {
+      "node_id": "n_9956226f04",
+      "level": "beat",
+      "shown": [
+        "p_777bed821b",
+        "p_8d0a527e06",
+        "p_3a4f9cc2f7"
+      ],
+      "axes": [
+        "raise the stakes",
+        "pay off an open thread",
+        "slow down"
+      ],
+      "scores": [
+        0.3127,
+        0.4498,
+        0.3831
+      ],
+      "chosen": "p_8d0a527e06",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9937,
+          "edit_direction": 0.0,
+          "length": 0.557,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.994,
+          "edit_direction": 0.6376,
+          "length": 0.5405,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9766,
+          "edit_direction": 1.0,
+          "length": 0.5486,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Chest Opens Vane reaches into his own torn coat. He pulls his ribs apart with grey fingers. He drops the second iron key onto the bloody stones. Kael stares at the open cavity in Vane's chest. Vane possesses the same internal mechanism as Kael.",
+        "The Iron Drop Vane picks up the iron key from the mortar dust. He inserts the key into the inner latch. The heavy watchtower door swings shut. Vane intends to lock Kael outside.",
+        "The Drip on the Stone Kael stands in the grey rain outside the threshold. He watches his palm bleed into the puddles. The blood matches the color of the water. Kael's blood does not wash away in the rain."
+      ]
+    },
+    {
+      "node_id": "n_9956226f04",
+      "level": "beat",
+      "shown": [
+        "p_f6fa4ac505",
+        "p_3a8bcfb9ae",
+        "p_e5aebba472"
+      ],
+      "axes": [
+        "shift the point of view",
+        "pay off an open thread",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.4746,
+        0.6337,
+        0.3863
+      ],
+      "chosen": "p_3a8bcfb9ae",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "ba249f6752f70e66e56d3882c6f6b54d",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9907,
+          "edit_direction": 1.0,
+          "length": 0.5446,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9931,
+          "edit_direction": 0.0,
+          "length": 0.55,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9884,
+          "edit_direction": 0.3108,
+          "length": 0.5446,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Vane Watches Vane stares at the mortar dust. He picks up the second key from the floor. He walks to the open gate and watches Kael vanish into the grey rain. Vane possesses the second key.",
+        "The Left Hand Vane kneels in the mortar dust. He picks up the second key from the floor. He presses the metal against his own chest. His ribcage yields to the iron. Vane carries the same internal mechanism as Kael.",
+        "The Chest's Empty Void Kael reaches inside his torn chest cavity to verify the second key. His fingers scrape empty bone. The second key is gone from his chest. Kael no longer possesses the second key."
+      ]
+    },
+    {
+      "node_id": "n_702164584e",
+      "level": "prose",
+      "shown": [
+        "p_504fbb41f5",
+        "p_ddd58868c2",
+        "p_5ae51bd060"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5014,
+        0.5228,
+        0.538
+      ],
+      "chosen": "p_5ae51bd060",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0732,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "36a3fddde0dd5547425af5880b9f3688",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9833,
+          "edit_direction": 1.0,
+          "length": 0.5405,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9847,
+          "edit_direction": 0.0435,
+          "length": 0.5379,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9878,
+          "edit_direction": 0.0,
+          "length": 0.5514,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Vane kneels in the mortar dust. He picks up the brass tooth from the floor. He presses the metal against his sternum. Bone splinters. The brass slides between his ribs and locks.",
+        "prose Vane kneels in the mortar dust. He lifts the brass tooth from the floor. He holds the cold metal to his breastbone. Bone cracks. The iron slips beneath his ribs.",
+        "prose Vane kneels in the mortar dust. His fingers close on the brass teeth. He pushes the key against his sternum. Bone cracks. The metal slips between the ribs and rests against his lungs. Vane breathes. Blood pools in the dust."
+      ]
+    },
+    {
+      "node_id": "n_9956226f04",
+      "level": "beat",
+      "shown": [
+        "p_9d97e5e849",
+        "p_99f121839e",
+        "p_a9a98d5d32"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.4052,
+        0.5271,
+        0.3327
+      ],
+      "chosen": "p_99f121839e",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.7742,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "28a45ab81d367203a06608428ceb403d",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.993,
+          "edit_direction": 1.0,
+          "length": 0.5556,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9933,
+          "edit_direction": 0.0,
+          "length": 0.534,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9955,
+          "edit_direction": 0.4889,
+          "length": 0.5528,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Second Bolt Vane walks past Kael into the grey rain. He lifts the brass key from his own hand and presses it into the outer jamb. The door clicks shut behind them. Vane can lock the watchtower from the outside without Kael's consent.",
+        "The Second Plate Vane watches Kael leave. Blood coats the iron teeth in the door. Vane touches his own cold ribs. Vane tracks Kael's blood on the stone.",
+        "The Second Tooth Vane presses his thumb into his sternum. Metal clicks against bone. Vane pulls the second key from his own chest cavity and drops it into the puddle at Kael's boots. Vane also carries the second key inside his body."
+      ]
+    },
+    {
+      "node_id": "n_61951db29b",
+      "level": "prose",
+      "shown": [
+        "p_c09a54bd8b",
+        "p_1fc1ba281a",
+        "p_8528c1bf6e"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.5104,
+        0.368,
+        0.493
+      ],
+      "chosen": "p_c09a54bd8b",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.2955,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "f165b9a7b495e052ff3c725ef8a2872a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9956,
+          "edit_direction": 0.2647,
+          "length": 0.5556,
           "dialogue_ratio": 0.0
         },
         {
@@ -1883,926 +1409,373 @@
           "judge_specificity": 0.75,
           "judge_consequence": 0.5,
           "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.65,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5995,
+          "continuity": 1.0,
+          "voice_cosine": 0.995,
+          "edit_direction": 0.0,
+          "length": 0.567,
           "dialogue_ratio": 0.0
         },
         {
-          "judge_momentum": 0.75,
+          "judge_momentum": 0.5,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.57,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6268,
+          "continuity": 0.92,
+          "voice_cosine": 0.9928,
+          "edit_direction": 1.0,
+          "length": 0.5641,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Threshold Demands The woman presses the serrated edge against her neck. She draws a thin, red line. A drop of blood falls onto the lead ring. The grey ring shudders, turns liquid, and flows into the threshold's frame. The door frame glows with intense, white heat. The gate requires human blood as a final toll.",
-        "The Threshold Responds Kael watches the woman's blackened fingers spasm against the rough wood of the floor. She does not look at the whetstone or her blade. A single, rhythmic pulse ripples through the floorboards. Kael feels a metallic grinding in his own wrist as the threshold light intensifies. He realizes the door frame is not a portal, but a maw. The threshold has an active, predatory hunger that syncs with Kael's injury.",
-        "The Threshold's Appetite The light from the lead ring hits the threshold and splinters. The wood of the door frame peels back like dead skin. The threshold pulses, but not in rhythm with Kael. It pulls hard at his iron-filled wrist, dragging him toward the open door. The woman watches the gate reject the iron ring. She realizes the gate does not want the lead or the iron. It wants the flesh that held them. The gate is not a tool but an entity with a specific, hunger-based agenda."
+        "prose Vane looks at the open door. Rain hits the stone sill. The iron teeth in the lock hold Kael's blood. Vane presses his fingers against his coat. Bone meets cold metal beneath the wool. He breathes. The second key grinds against his ribs.",
+        "prose The rain strikes the stone stair. Kael is a grey shape at the edge of the roof. Vane stands. Blood smears the iron bolt. He presses his palm to his ribs. The brass key shifts under his skin. The metal grates against bone. Vane breathes. He looks at the open door.",
+        "prose Kael leaves. His boots slap the wet stone. Vane watches the door frame stay wide. Rain hits the floor inside. Vane lifts a hand to his chest. Cold metal presses against his ribs. Blood runs down his palm. The iron teeth in the door rust in the damp air."
       ]
     },
     {
-      "node_id": "n_12f73b2643",
-      "level": "prose",
-      "shown": [
-        "p_7cca6326d0",
-        "p_d62ad8d7e1",
-        "p_822c48e112"
-      ],
-      "axes": [
-        "slow down",
-        "pay off an open thread",
-        "subvert the expectation"
-      ],
-      "scores": [
-        0.7011,
-        0.5965,
-        0.4621
-      ],
-      "chosen": "p_7cca6326d0",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "36e835b4d0ff66f41ceecf00b4d60283",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
-          "judge_voice": 1.0,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6528,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6162,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6027,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The woman sits on the doorframe. Her breath comes in jagged, shallow hitches. She drags the blade across the whetstone. The sound is dry. It is the sound of bone on stone. Kael watches the grey vein of light slide over the wood. It finds the threshold. The threshold absorbs the glow. It pulses. Each strike of the woman's whetstone happens in time with the light. Kael's wrist burns. The skin at his pulse point ripples. He feels the gate pulling at his marrow. The woman looks at the horizon, not at him. Her ruined fingers twitch against the steel of her knife.",
-        "The woman scrapes the blade. Each stroke echoes in the hut like a hammer on an anvil. She ignores the dead lead ring on the boards. The grey light from the ring reaches the threshold. The wood around the door frame darkens and cracks. Kael grips his wrist. The iron in his arm pulls toward the gap. The woman stops scraping. She turns her head. Her eyes find Kael. She does not see a man. She sees the iron she failed to harvest.",
-        "The light reaches the sill. The wood groans. A faint, hollow sound rises from beneath the boards. Kael feels a sharp pull against his own chest. His iron-slicked wrist aches. The threshold grows wide. It does not lead outside. It shows a vast, dark cavern of shifting ore. The woman turns. She holds her blade to her own throat. She does not look at Kael. She waits for the gate to demand a different toll."
-      ]
-    },
-    {
-      "node_id": "n_0417bf53f0",
-      "level": "episode",
-      "shown": [
-        "p_8b6732de7a",
-        "p_a84b2bc431",
-        "p_43697c5524"
-      ],
-      "axes": [
-        "introduce a complication",
-        "subvert the expectation",
-        "pay off an open thread"
-      ],
-      "scores": [
-        0.6851,
-        0.4377,
-        0.2507
-      ],
-      "chosen": "p_8b6732de7a",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "7afc095fb8e59186be5ac53850e7df99",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5898,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5774,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5898,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Weight of the Marrow Kael lunges to stop the woman, but his iron-filled limb fails him. He collapses. The cavern beyond the threshold shifts, revealing not ore, but a city of rusted, human-sized cages. The threshold pulses, rejecting the woman's blade and drawing the iron from Kael's blood to begin forging a new cage door. The gate does not transport travelers; it builds prisons for them.",
-        "The Whetstone's Echo The woman does not cut herself. She uses the serrated blade to carve the dead lead ring into the threshold's wood. The gate stops pulsing, the cavern view vanishes, and the hut goes dark. The gate reacts to the destruction of the ring, not just blood or iron. The woman knows more than she lets on.",
-        "The Hollow Debt Kael forces his arm into the shifting ore of the threshold to halt the drain. The iron in his limb crystallizes, turning his wrist into a rigid spike that locks the gate open, trapping them both inside the collapsing cabin. The gate requires a permanent physical anchor to remain open, and Kael's transformation into iron is the mechanism it uses to secure that anchor."
-      ]
-    },
-    {
-      "node_id": "n_b09a55be51",
+      "node_id": "n_34d591a4cc",
       "level": "scene",
       "shown": [
-        "p_f216f6f15e",
-        "p_8baad6d315",
-        "p_a68be429fb"
+        "p_bd1a188590",
+        "p_6b9dae5f73",
+        "p_669a68cb6c"
       ],
       "axes": [
-        "raise the stakes",
-        "introduce a complication",
-        "subvert the expectation"
+        "pay off an open thread",
+        "subvert the expectation",
+        "raise the stakes"
       ],
       "scores": [
-        0.5982,
-        0.416,
-        0.2335
+        0.5557,
+        0.5051,
+        0.455
       ],
-      "chosen": "p_f216f6f15e",
+      "chosen": "p_bd1a188590",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 1,
+      "flags_shown": 2,
       "hard_flags_shown": 0,
-      "snapshot_id": "208053384377591b3f4237f675a2c355",
+      "snapshot_id": "e0ba0fe04a3afdee56f43cb6f1f26de9",
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6044,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
+          "voice_cosine": 0.9852,
+          "edit_direction": 1.0,
           "length": 0.5744,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
           "criterion_1": 0.25,
-          "criterion_2": 0.5,
+          "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.593,
+          "voice_cosine": 0.9843,
+          "edit_direction": 0.8693,
+          "length": 0.5641,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9896,
+          "edit_direction": 0.0,
+          "length": 0.5699,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Price of Motion The threshold’s grey light anchors to Kael’s wrist, pinning him to the floorboards. The woman stands, her blackened fingers leaving soot on the doorframe, and she presses her serrated blade into the threshold wood. The door groans, wood splintering into fine grey dust, and the frame begins to pull Kael forward by his very bones. The threshold is not a gateway, but a trap that consumes the living to fuel its structure.",
-        "The Weight of the Marrow Kael lunges to stop the woman, but his iron-filled limb drags him to the floor. The threshold pulses, rejecting her blade and drawing iron from Kael's blood to forge a new hinge. The gate builds prisons instead of passages. The gate is not a transit point, but a mechanism for constructing prisons.",
-        "The Price of Stillness Kael pulls his arm back, tearing the dead metal skin further. He jams his own wrist into the lead ring on the floorboards, feeding the gate his own iron directly. The threshold stops pulsing and locks into a rigid, permanent frame of solid, unmoving steel. The gate does not need a keeper to function; it only needs a steady source of iron to anchor itself."
+        "The Outer Sill Vane walks to the open watchtower door. Rain hits his face. Kael stands ten paces down the slate path. Water fills Kael's bootprints in the mud. Vane touches the wet wool of his coat over the second key. Neither man speaks. Vane follows Kael outside into the rain, abandoning the shelter of the tower.",
+        "The Floor Below Vane walks down the spiral stair. He leaves the open door behind him. He finds Kael sitting on the lower stone landing. Kael holds his torn palm against his knee. Vane stops two steps above him. Neither man speaks. Kael did not leave the tower. He cannot.",
+        "The Third Rib Vane reaches into his coat. He pulls the brass key from his sternum. Blood drips on the stone floor. Kael turns at the threshold. Kael pushes his fingers into his own chest. He pulls his second key free. Both keys drop into the mortar dust. The keys can leave their bodies."
       ]
     },
     {
-      "node_id": "n_7bec8bf897",
+      "node_id": "n_01034060aa",
       "level": "beat",
       "shown": [
-        "p_89860a3b32",
-        "p_ed3ebbbdaa",
-        "p_fa2f0bb4d0"
+        "p_2923b39339",
+        "p_efbeea78ab",
+        "p_f315701664"
       ],
       "axes": [
-        "subvert the expectation",
-        "pay off an open thread",
-        "deepen the interiority"
-      ],
-      "scores": [
-        0.5767,
-        0.2853,
-        0.6604
-      ],
-      "chosen": "p_fa2f0bb4d0",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 3,
-      "hard_flags_shown": 2,
-      "snapshot_id": "b8bd5d4461af8842ec29b5f6b6ceb6bb",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5978,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.65,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5774,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.65,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5759,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Threshold's Tax The grey thread of light touches Kael's wrist. It does not pull him forward. Instead, it begins to stitch the iron-wound closed with fine filaments of cold wood. Kael watches his own flesh hardening, turning rigid and grey as the floorboards. The doorframe is grafting itself to his limb. The threshold is not a trap that pulls; it is a parasitic organism that replaces flesh with its own structure.",
-        "The Price of Iron The threshold pulls harder, tearing the floorboards free. Kael’s hand enters the frame, skin weeping iron filings into the wood. The woman watches the gate drink, her face pale. She realizes the gate requires a body, not just a sacrifice, to remain open. The gate consumes the body to stabilize its connection to the world.",
-        "The Threshold's Choice Kael crawls toward the door, his wrist trailing the grey thread of light. The woman stands and places her uninjured hand on the doorframe. She whispers to the house. The threshold stops pulsing. It shudders, the wood turning brittle, and locks the door shut. The woman commands the house; the gate has closed its exit."
-      ]
-    },
-    {
-      "node_id": "n_5127d1926f",
-      "level": "prose",
-      "shown": [
-        "p_5e69c8c464",
-        "p_f069176324",
-        "p_57e6f9afbe"
-      ],
-      "axes": [
-        "pay off an open thread",
         "shift the point of view",
+        "raise the stakes",
         "slow down"
       ],
       "scores": [
-        0.6738,
-        0.5311,
-        0.5954
+        0.4929,
+        0.447,
+        0.383
       ],
-      "chosen": "p_5e69c8c464",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "f49ffdc93b60e5e750ade149e2fab86d",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
-          "judge_voice": 1.0,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6286,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6748,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6897,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose Kael drags his weight across the floorboards. His wrist creates a deep, jagged groove in the wood. The grey thread of light pulls him inch by inch toward the frame. The woman rises. She ignores his struggle. She plants her good hand against the doorframe. Her palm turns white against the grain. She leans in. Her lips brush the rotting wood. She whispers. The sound is a low, scraping hiss. The threshold stops its rhythmic pulse. The wood groans. Fibers snap. The door slams shut. Dust chokes the air.",
-        "prose The woman watches Kael scrape across the floor. He pulls against the grey thread. It is a leash of his own blood. She steps over him. She ignores the rasp of his knees on the wood. She places her palm against the doorframe. The wood is cold. It feels like dead muscle beneath her skin. She leans in. Her lips brush the grain. She whispers a name that is not a word. The hut goes still. The pulsing light dies. The frame shudders. The wood hardens into brittle bone. A final click rings out. The door is locked. She turns to face the room. Her chest rises and falls in measured, heavy counts.",
-        "prose The floorboards groan under Kael. He drags his wrist. The grey thread of light pulls tight, taut as a wire against his raw, metallic skin. It drags him inches at a time toward the threshold. Dust from the doorframe settles in his hair. The woman stands. Her left hand is a claw of soot and stiff, charred flesh. She places her right palm flat against the doorframe. Her breath hits the wood. She whispers. The sound is low, a scraping vibration. The threshold stops its rhythmic pulse. The wood shudders once, twice. It curls inward like scorched paper. The door frame turns grey, brittle, and dry. It snaps shut. The heavy wood slams into the frame. Silence fills the hut."
-      ]
-    },
-    {
-      "node_id": "n_7bec8bf897",
-      "level": "beat",
-      "shown": [
-        "p_fe2c21d074",
-        "p_c0e95e163a",
-        "p_90bce64baa"
-      ],
-      "axes": [
-        "raise the stakes",
-        "subvert the expectation",
-        "pay off an open thread"
-      ],
-      "scores": [
-        0.3425,
-        0.3247,
-        0.1051
-      ],
-      "chosen": "p_fe2c21d074",
+      "chosen": "p_2923b39339",
       "kind": "reject",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 5,
-      "hard_flags_shown": 1,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
       "snapshot_id": null,
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.5,
-          "criterion_1": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6094,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.5,
-          "judge_specificity": 0.5,
-          "judge_consequence": 0.5,
-          "judge_voice": 0.5,
-          "criterion_1": 0.5,
-          "criterion_2": 0.5,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.84,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6061,
+          "continuity": 1.0,
+          "voice_cosine": 0.9901,
+          "edit_direction": 0.0,
+          "length": 0.5486,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.985,
+          "edit_direction": 0.2705,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9819,
+          "edit_direction": 1.0,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Open Threshold Kael stands outside in the grey rain. He pulls the brass tooth from his palm. He drops it into the deep mud. The water does not wash the blood from the metal. Kael abandons the key.",
+        "The Third Turn Vane forces his fingers into the lock plate. The internal brass tooth catches his tendon. He twists his wrist until the joint snaps. The heavy iron door swings an inch outward. Vane can force the second bolt by breaking his own wrist inside the mechanism.",
+        "The Weight of the Sill Vane looks down at his palm. Dried blood coats the brass tooth. He closes his hand into a tight fist. Metal bites into his flesh. Rain falls through the open door and strikes his boots. Vane feels the physical toll of the metal embedded in his chest."
+      ]
+    },
+    {
+      "node_id": "n_01034060aa",
+      "level": "beat",
+      "shown": [
+        "p_1a2b64fad3",
+        "p_46a9e59489",
+        "p_45a55623e4"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.3919,
+        0.2551,
+        0.4128
+      ],
+      "chosen": "p_45a55623e4",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9784,
+          "edit_direction": 1.0,
+          "length": 0.5432,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9917,
+          "edit_direction": 0.4452,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9887,
+          "edit_direction": 0.0,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Heavy Step Kael walks into the grey rain. Water fills his boot prints in the mud. He turns his head back toward the open tower door. Kael does not flee far from the tower.",
+        "The Outer Sill Kael turns on the stone threshold. He reaches into his open coat. He presses his palm flat against the damp mortar beside the door. He leaves the key behind in the wall instead of taking it away. Kael leaves the second key embedded in the mortar of the threshold.",
+        "The Grey Sill Kael stands outside the watchtower door in the grey rain. He looks down at his torn palm. Cold water fills the open wound. The blood does not wash away. He turns his back on the open threshold. Kael keeps the wound open despite the rain."
+      ]
+    },
+    {
+      "node_id": "n_01034060aa",
+      "level": "beat",
+      "shown": [
+        "p_2db19e17cd",
+        "p_bcb7366391",
+        "p_d382b71888"
+      ],
+      "axes": [
+        "slow down",
+        "pay off an open thread",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.4491,
+        0.3715,
+        0.3714
+      ],
+      "chosen": "p_2db19e17cd",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 5,
+      "hard_flags_shown": 2,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9912,
+          "edit_direction": 1.0,
+          "length": 0.5486,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 0.57,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6145,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Price of Motion: Bone Debt The locked door draws Kael's iron-infused blood directly from his wrist, feeding it into the wood grain. Kael watches his own hand pale as the threshold pulls the metal away. The woman laughs, but the house vibrates in response to her laughter, causing the floorboards to tilt and pin her against the wall. The house is not just a building; it is a parasitic organism that consumes both the gatekeeper and the toll-payer.",
-        "The Threshold's Residue Kael pulls his arm free, leaving a smear of grey, metallic dust on the locked threshold. The woman stares at her own blackened fingers, then wipes them clean on her skirt. She picks up the cold, porous ring from the floor. She does not look at Kael, but walks toward the corner of the hut, placing the ring inside a small iron box. The woman treasures the ring even in its ruined, grey state.",
-        "The Toll Settles The threshold seals, but the grey light remains embedded in Kael's wrist. The gate's pull shifts from the marrow to his very skin, causing it to harden into cold, grey stone. The woman watches the transformation, her own blackened fingers trembling as she tucks the blade away. She has paid the gate's toll, but Kael is no longer entirely human. The toll paid by the woman is not the end of the gate's hunger; it has moved to Kael."
-      ]
-    },
-    {
-      "node_id": "n_7bec8bf897",
-      "level": "beat",
-      "shown": [
-        "p_f9f7f369c1",
-        "p_9b3ec972d4",
-        "p_a9fd3059ce"
-      ],
-      "axes": [
-        "introduce a complication",
-        "deepen the interiority",
-        "shift the point of view"
-      ],
-      "scores": [
-        0.4388,
-        0.3801,
-        0.5715
-      ],
-      "chosen": "p_a9fd3059ce",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 1,
-      "hard_flags_shown": 0,
-      "snapshot_id": "6a5c76f0f673a7d0babd494f6529407b",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.593,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6111,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.625,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Price of Blood The threshold seals, but the grey light remains anchored to Kael's wrist. The house shudders and begins to draw Kael's iron-infused blood through the floorboards to feed the void. The woman watches, paralyzed by the loss of her toll and the sight of her own blood staining the wood. The house does not care if the toll is paid; it will take what it requires.",
-        "The Price of Silence The woman wipes grey wood dust from her skirt. She does not look at Kael, but she reaches into the space behind the doorframe. She pulls out a small, hollow bone flute. She blows a sharp, discordant note that vibrates through the hut walls. The hut floor begins to sink into the ground, burying the door deeper into the earth. The woman possesses specific tools to manipulate the architecture of the hut beyond just commanding it.",
-        "The Threshold's Judgement Kael watches the woman's face from the floor. She does not look at him. She stares at the locked door, her eyes tracing the grain where the wood has fused. She wipes a drop of blood from her lip. Her breath hitches. She knows the house has taken more than just the iron from the key; it has taken her claim to leave. She tests the door with a trembling finger. It is cold as stone. The woman is now trapped as well as Kael."
-      ]
-    },
-    {
-      "node_id": "n_74bd49acda",
-      "level": "prose",
-      "shown": [
-        "p_37c9b49c08",
-        "p_e055cf9a69",
-        "p_dde0bd34a7"
-      ],
-      "axes": [
-        "deepen the interiority",
-        "subvert the expectation",
-        "introduce a complication"
-      ],
-      "scores": [
-        0.5164,
-        0.5191,
-        0.5374
-      ],
-      "chosen": "p_dde0bd34a7",
-      "kind": "edit",
-      "veto": null,
-      "edit_distance": 0.3415,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "b69aa13f6963d77892dfbe67c0d1ed92",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6627,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.625,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6145,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose Kael watches from the floorboards. The woman stands still. She stares at the fused wood of the door. She wipes a smear of blood from her lip with a blackened thumb. Her breath hitches in a dry rattle. She reaches out. Her finger trembles as it touches the timber. The wood remains dead. It holds no pulse. She presses her palm flat against the grain. It does not yield. She pulls her hand back. Her skin is pale where she pressed the wood. She turns her back to the door and faces the dark corners of the hut. Her shoulders drop. She does not look at Kael.",
-        "prose Kael watches her from the floor. He drags his wrist. The iron vein remains dull. The woman ignores him. She stares at the door. Wood grain has fused into a smooth, seamless wall. She wipes a drop of blood from her lip. Her breath hitches. She presses a trembling finger against the wood. It does not yield. It is cold as stone. She pulls back. She touches the door again, harder. Her nail clicks against the surface. The house has claimed the way out. She is stuck.",
-        "prose Kael watches the woman from the floor. She does not look at him. She stares at the locked door. Her eyes trace the grain where wood has fused into something seamless. She wipes a drop of blood from her lip. Her breath hitches. The house took more than iron. It took her claim to leave. She presses a trembling finger to the wood. It is cold as stone. She pulls back, a jagged splinter of grey dust clinging to her nail."
-      ]
-    },
-    {
-      "node_id": "n_b09a55be51",
-      "level": "scene",
-      "shown": [
-        "p_8a13453390",
-        "p_eae5c0d198",
-        "p_141b9b2ea3"
-      ],
-      "axes": [
-        "deepen the interiority",
-        "subvert the expectation",
-        "pay off an open thread"
-      ],
-      "scores": [
-        0.5146,
-        0.5005,
-        0.2326
-      ],
-      "chosen": "p_8a13453390",
-      "kind": "edit",
-      "veto": null,
-      "edit_distance": 0.7143,
-      "flags_shown": 2,
-      "hard_flags_shown": 0,
-      "snapshot_id": "01e8ca0738ad43e726d7efdabe05abf3",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 1.0,
-          "length": 0.5995,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
+          "voice_cosine": 0.9813,
           "edit_direction": 0.0,
-          "length": 0.618,
+          "length": 0.5446,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.5,
           "judge_specificity": 0.5,
           "judge_consequence": 0.5,
-          "judge_voice": 0.5,
-          "criterion_1": 0.5,
-          "criterion_2": 0.5,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.84,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.3784,
-          "length": 0.6111,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Silent Exchange Kael pulls his wrist from the threshold. The grey light remains stitched to his skin. The woman turns. She holds her blackened palm out. She demands the iron key from his pocket. Kael shakes his head. He grips his own wrist to stop the tremor. The woman reaches for her blade, but her hand locks mid-air. The woman has lost control over her own body. The gate claims Kael's iron.",
-        "The Hollow Echo The woman turns from the door. She ignores Kael. She begins to pace the hut, tapping the walls with her knuckles. Each strike produces a hollow ring, then a wet, heavy thud. She stops at the corner and pulls a rusted nail from the floorboards. She drops it into the grey dust at the threshold. The house sighs, the wood shifting to swallow the metal. The house demands iron for every movement, and the woman knows exactly how to feed it.",
-        "The Weight of the Vow Kael pulls his wrist back, leaving a streak of grey dust on the threshold. The woman paces the room. She stops at the corner where the shadows pool deepest. She pulls a loose floorboard. She hides her serrated blade beneath the floor. She turns to Kael. Her eyes lack focus. She says the house demands a new anchor for the gate. The woman intends to sacrifice Kael to replace the function of the locked gate."
-      ]
-    },
-    {
-      "node_id": "n_13ed03f889",
-      "level": "beat",
-      "shown": [
-        "p_b849e9fc86",
-        "p_f3afd7427b",
-        "p_3c7c5391de"
-      ],
-      "axes": [
-        "introduce a complication",
-        "deepen the interiority",
-        "shift the point of view"
-      ],
-      "scores": [
-        0.461,
-        0.2985,
-        0.5196
-      ],
-      "chosen": "p_3c7c5391de",
-      "kind": "edit",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 3,
-      "hard_flags_shown": 3,
-      "snapshot_id": "5ad281966b93be98d7b3d3791e8ed49c",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
           "judge_voice": 0.75,
-          "criterion_1": 0.75,
+          "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.9345,
-          "length": 0.6197,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.0,
-          "length": 0.6509,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 1.0,
-          "length": 0.5914,
+          "continuity": 0.57,
+          "voice_cosine": 0.9859,
+          "edit_direction": 0.5007,
+          "length": 0.5612,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Price of Iron The threshold does not stop pulling. The grey light at Kael's wrist grows thick, turning from a thread into a shackle of solidified rust. The door remains locked, but the wall beside it begins to dissolve into a viscous, iron-scented slurry. The Woman watches her own hand, which is now coated in the same grey crust as the threshold. She cannot pull it away. The house is not just locking them in; it is actively consuming them to sustain its structure.",
-        "The Gate's Counter-Offer Kael pulls at the grey thread, but the threshold vibrates, anchoring his wrist deeper into the wood. The Woman watches, her fingers still stiff and blackened. She kneels, ignoring his panic, and unhooks the glowing gold ring from her own finger. She presses the ring into the threshold's grain, right beside Kael's trapped skin. The house pulls the ring into its structure, and the door's locking sound shifts from a thud to a metallic, hungry click. The Woman is willing to pay any price to open the door, even if it means binding her own power to the house.",
-        "The Threshold's Weight Kael watches the woman. She presses her palm to the wood. Her skin bruises in the shape of the grain. She whispers a command. The door stays shut. She realizes the house ignores her. She pulls her hand away. A splinter of wood remains embedded in her palm. The house is no longer hers to command. The house has stripped the woman of her authority."
+        "The Cold Weight Vane sits on the stone step. He watches his palm bleed where the brass tooth entered. The rain cools the skin around the wound. Vane feels the physical cost of the key embedded in his chest.",
+        "The Outer Sill Kael walks down the stone path away from the watchtower. Rain fills his boot tracks. He reaches the outer gate and finds it chained. The watchtower has an outer perimeter that remains barred.",
+        "The Cold Threshold Kael walks through the grey rain away from the tower. Water fills the open wound in his palm. He does not wipe the blood away. He stops at the outer wall and stares into the fog. Kael keeps moving away from Vane without seeking shelter."
       ]
     },
     {
-      "node_id": "n_a4b6d1f5cf",
-      "level": "prose",
+      "node_id": "n_01034060aa",
+      "level": "beat",
       "shown": [
-        "p_660a6877e5",
-        "p_7a7e599906",
-        "p_974aa20b3b"
+        "p_1f5a265455",
+        "p_d62ad8d7e1",
+        "p_7cca6326d0"
       ],
       "axes": [
+        "subvert the expectation",
         "deepen the interiority",
-        "pay off an open thread",
         "shift the point of view"
       ],
       "scores": [
-        0.5086,
-        0.5979,
-        0.5194
+        0.2408,
+        0.2113,
+        0.1603
       ],
-      "chosen": "p_7a7e599906",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "b04fa3e52d59a60a5fc46c8b857b0020",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 1.0,
-          "length": 0.6548,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.1603,
-          "length": 0.6748,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.0,
-          "length": 0.5962,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "prose Kael watches the woman. Her palm slaps the threshold. She presses her weight against the grain. Her skin purples in a web of splintered lines. She leans close. Her mouth moves against the wood. Silence follows. She speaks again, louder. The door does not creak. She tears her hand back. A dark, jagged shard of wood sits deep in her flesh. She stares at the wound. She does not look at Kael. She breathes once, sharp and ragged. She presses her back to the wall of the hut. She tries to command the floorboards. The floor does not shift. The room stays dark.",
-        "prose The woman digs her nails into the frame. She yanks at the wood. It does not yield. She turns to Kael. Her jaw tightens. She reaches for the iron ring on her finger, but her hand stops. The ring is dull, the gold glow gone. She stares at it. She looks at the floor, then back to the door. Her voice drops to a whisper. She speaks to the wood again. Nothing happens. She steps away from the frame. She looks at her palm. A long, grey splinter sticks out of her skin. She tries to pull it out with her teeth. The wood does not budge. It is part of her now.",
-        "prose The woman stares at her palm. The skin is torn. A grey splinter pulses under the skin like a heartbeat. She looks at the door. Her mouth works in silence. No words come. She turns to Kael. Her eyes are dry. She points at the iron key in his pocket. Her hand shakes. The floor beneath her feet tilts. The house has moved on. She is a stranger here now."
-      ]
-    },
-    {
-      "node_id": "n_13ed03f889",
-      "level": "beat",
-      "shown": [
-        "p_13c42e676b",
-        "p_ae0e13d5dd",
-        "p_ba5e0f6b87"
-      ],
-      "axes": [
-        "introduce a complication",
-        "pay off an open thread",
-        "deepen the interiority"
-      ],
-      "scores": [
-        0.4945,
-        0.4358,
-        0.4476
-      ],
-      "chosen": "p_13c42e676b",
+      "chosen": "p_1f5a265455",
       "kind": "reject",
       "veto": null,
       "edit_distance": 0.0,
@@ -2812,302 +1785,360 @@
       "stale_marked": 0,
       "features": [
         {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
-          "criterion_1": 0.5,
+          "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9895,
+          "edit_direction": 0.0,
+          "length": 0.557,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9852,
+          "edit_direction": 0.9324,
+          "length": 0.5432,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
           "continuity": 1.0,
-          "voice_cosine": 0.5,
+          "voice_cosine": 0.9852,
           "edit_direction": 1.0,
-          "length": 0.5914,
+          "length": 0.5366,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Threshold Stone Kael does not walk away into the rain. He kneels on the wet stone outside the open door. He presses his palm into the mortar until the gap takes his blood. Kael cannot cross the threshold while the key remains inside Vane.",
+        "The Palm Vane presses his bleeding palm against the cold mortar of the threshold. He tests the dead lock with his bare fingers. The iron plate remains unmoving. Vane cannot force the gate open alone.",
+        "The Grey Threshold Kael steps through the open door into the grey rain. Water hits his torn palm. He does not look back at Vane. Kael leaves the watchtower entirely."
+      ]
+    },
+    {
+      "node_id": "n_0417bf53f0",
+      "level": "episode",
+      "shown": [
+        "p_1b36012c8c",
+        "p_90fa2f84bc",
+        "p_8e35eeb9fc"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "raise the stakes",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.3615,
+        0.4321,
+        0.508
+      ],
+      "chosen": "p_8e35eeb9fc",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": "4bdcb814b2d63b83227be1a62a41a60b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9908,
+          "edit_direction": 1.0,
+          "length": 0.5459,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9883,
+          "edit_direction": 0.1858,
+          "length": 0.5584,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.75,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 0.92,
-          "voice_cosine": 0.5,
+          "voice_cosine": 0.9942,
           "edit_direction": 0.0,
-          "length": 0.649,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.3381,
-          "length": 0.6197,
+          "length": 0.5598,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Price of Iron The grey thread on Kael's wrist pulses. It begins to pull the iron from the hut's floorboards toward Kael's wound. The wood around Kael grows porous and weak, as if eaten by rust. Kael feels his wrist pull taut, anchored to the house's architecture. Kael is a magnet for the house's iron structure, and the hut is actively falling apart to feed his injury.",
-        "The Price of Separation The woman scrapes at her palm, but the grey splinter holds fast. She realizes it is not wood, but a sliver of the threshold. She looks at Kael, who is still pinned to the floor by the house's pull. She reaches out, not for her blade, but to catch his hand. The splinter in her flesh hums in resonance with the light in his wrist. The door's lock eases just enough to let a sliver of outside air reach them. The house has bridged the two of them; they are now physically linked through the threshold's remains.",
-        "The Price of Iron Kael pulls the grey thread of light from his wrist. He holds it between his thumb and finger. It does not fray. He extends it toward the woman. She recoils, eyes fixed on the strand. She reaches for the iron ring on her finger, but the gold glow is dead. She realizes the ring cannot save her from the house's judgment. The woman relies on her ring to command the house; Kael now possesses a fragment of the house's own power."
+        "The Third Rib Vane cuts his palm on the inner latch. Kael returns through the rain and pushes the heavy door until the rusted hinges scream. Neither speaks. The gate requires both bloodlines to turn the latch.",
+        "The Third Rib Vane climbs the tower stair. The metal key grinds against his lung with every breath. He reaches the bell chamber and finds Kael sitting on the floor. Kael holds a rusted saw. The key cannot be removed from Vane's chest without cutting bone.",
+        "The Third Rib Vane drags his chest across the threshold stone. The brass key inside his sternum catches on the door frame. Kael returns from the rain. He pushes Vane back onto the mortar dust. The key inside Vane cannot pass the threshold while Kael stands outside."
       ]
     },
     {
-      "node_id": "n_13ed03f889",
-      "level": "beat",
+      "node_id": "n_a59d5fb071",
+      "level": "scene",
       "shown": [
-        "p_a37aebd605",
-        "p_7111e8e989",
-        "p_4fb16ca58a"
+        "p_1f1af62c4e",
+        "p_3589f8ec8c",
+        "p_51eb20734a"
       ],
       "axes": [
-        "introduce a complication",
         "slow down",
-        "deepen the interiority"
+        "introduce a complication",
+        "shift the point of view"
       ],
       "scores": [
-        0.4771,
-        0.3882,
-        0.4866
+        0.2986,
+        0.4051,
+        0.4202
       ],
-      "chosen": "p_4fb16ca58a",
+      "chosen": "p_51eb20734a",
       "kind": "reject",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 0,
+      "flags_shown": 3,
       "hard_flags_shown": 0,
       "snapshot_id": null,
       "stale_marked": 0,
       "features": [
         {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9851,
+          "edit_direction": 1.0,
+          "length": 0.5514,
+          "dialogue_ratio": 0.0
+        },
+        {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9757,
+          "edit_direction": 0.0,
+          "length": 0.557,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9946,
+          "edit_direction": 0.3183,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Third Rib Vane sits alone on the stone floor. He reaches into his coat. He touches the cold edge of the brass key lodged against his bone. Rain pools near his boot. Vane cannot remove the key from his chest.",
+        "The Third Rib Vane falls against the stone table. The key inside his chest grinds his lung. He pulls a rusted scalpel from the shelf. He cuts the third rib to release the metal. Blood pours onto the slate. Removing the key causes physical ruin.",
+        "The Third Rib Kael walks through the grey rain. Water pools in his torn palm. The brass tooth in his chest grinds against his collarbone with every stride. He looks back at the open door of the watchtower. Vane remains inside. Kael feels the metal inside his chest fighting his own bone."
+      ]
+    },
+    {
+      "node_id": "n_a59d5fb071",
+      "level": "scene",
+      "shown": [
+        "p_5821f9b700",
+        "p_544b4783dd",
+        "p_92957d5c1f"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.2955,
+        0.3107,
+        0.2819
+      ],
+      "chosen": "p_544b4783dd",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9804,
+          "edit_direction": 1.0,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9935,
+          "edit_direction": 0.0,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.75,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 1.0,
-          "length": 0.5729,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.5,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.0,
-          "length": 0.6027,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.2193,
-          "length": 0.6128,
+          "voice_cosine": 0.9909,
+          "edit_direction": 0.2018,
+          "length": 0.5656,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Gate's Toll Redirects Kael's wrist pulses. The grey thread of light leaves his skin. It crawls across the floorboards toward the woman's feet. The woman screams as the grey thread binds her ankles to the hut floor. The door groans, partially unlatching. The gate demands iron from the nearest available source, now targeting the woman.",
-        "The Weight of the Splinter The woman stares at her palm. She tries to flick the splinter away, but it clings to her skin. She grabs the wood with her free hand, pulling hard. She screams. The skin tears, but the splinter stays buried. Her breath comes in jagged, wet rasps as she realizes the house is weaving itself into her body. The house is not just locking the door; it is reclaiming the woman.",
-        "The Price of Blood Kael tries to stand. The floorboards moan. A thin, grey vein of metal climbs from his wrist up his forearm. He collapses, breath ragged. The woman watches the metal vein pulse. She steps over him, her hand hovering near his throat. She stops. She stares at her own palm where the splinter resides, then back to the spreading grey on Kael. The house is not just locking them in; it is feeding on Kael to construct something."
-      ]
-    },
-    {
-      "node_id": "n_a4b6d1f5cf",
-      "level": "prose",
-      "shown": [
-        "p_bdf88cfa1c",
-        "p_7919c01c90",
-        "p_912f0b7eda"
-      ],
-      "axes": [
-        "slow down",
-        "deepen the interiority",
-        "shift the point of view"
-      ],
-      "scores": [
-        0.5699,
-        0.5414,
-        0.6161
-      ],
-      "chosen": "p_912f0b7eda",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "c6cd903de262b7715b708949c3efafaa",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 1.0,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.1386,
-          "length": 0.6607,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.0,
-          "length": 0.6027,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 0.75,
-          "criterion_2": 1.0,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 1.0,
-          "length": 0.618,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The woman lays her palm flat against the timber. She forces her weight down. The grain bites into her skin. Bruises bloom in the shape of knots and rings. She whispers. Her words are sharp. The door remains stone-cold and still. She breathes out. The air is stale. She pulls her hand back. A jagged splinter stays in her palm. It is grey and dry. She flicks her wrist. It does not drop. The wood is buried deep. She reaches for the iron ring on her finger. The surface is leaden. The glow is gone. She stares at the door. The house does not know her name.",
-        "The woman slams her palm against the doorframe. The wood is silent. Her skin discolors under the pressure, the dark grain mapping onto her flesh like a brand. She hisses a command, her teeth bared. The door remains stone-cold. She pulls her hand back. A jagged grey splinter hangs from the meat of her thumb. She stares at it. Her eyes dart to Kael, then to the threshold. She does not touch the door again.",
-        "The woman ignores Kael. She places her palm flat against the doorframe. The wood grain presses into her flesh, turning her skin a bruised violet. She whispers. Her command rattles in the quiet room. The door does not move. She tries again, louder this time. The house stays silent. She pulls her hand back. A long, grey splinter remains lodged in the center of her palm. She stares at the wood. The house no longer knows her. She is a stranger inside its walls."
+        "The Third Rib Vane sits on the stone bench. He takes a rusted iron probe from his pocket. He slides the tip between his ribs, seeking the brass teeth. The metal grates against bone. Blood wells through his woolen tunic. He pulls the probe free and drops it into the mortar dust. Vane attempts to remove the foreign key himself.",
+        "The Mud Stair Kael walks down the stone steps outside the tower. Grey water fills his boot prints. He stops at the landing and presses his hand against his ribs. The brass tooth inside shifts against his lung. He turns back toward the open door. Kael cannot leave the tower's perimeter while the key remains inside his chest.",
+        "The Third Rib Vane stands at the open door. Rain hits the stone sill. Vane reaches into his coat. He touches the brass tooth lodged against his sternum. Blood leaks through his shirt. The metal turns one millimeter inside his flesh. The key inside Vane moves independently of his own muscle."
       ]
     }
   ],
-  "episodes_completed": 3,
+  "episodes_completed": 2,
   "call_summary": {
-    "calls": 570,
-    "prompt_tokens": 1573023,
-    "completion_tokens": 311109,
+    "calls": 696,
+    "prompt_tokens": 676363,
+    "completion_tokens": 156816,
     "cost_usd": 0.0,
-    "cache_hits": 17,
-    "errors": 38,
-    "mean_latency_s": 3.236554496517566,
-    "total_tokens": 1884132,
-    "cache_hit_rate": 0.02982456140350877,
+    "cache_hits": 105,
+    "errors": 270,
+    "mean_latency_s": 0.9974479428938243,
+    "total_tokens": 833179,
+    "cache_hit_rate": 0.15086206896551724,
     "by_purpose": [
       {
         "purpose": "propose.beat",
-        "calls": 113,
-        "tokens": 647965,
+        "calls": 108,
+        "tokens": 365119,
         "cost_usd": 0.0,
-        "cache_hits": 2
+        "cache_hits": 26
       },
       {
         "purpose": "judge.soft",
-        "calls": 249,
-        "tokens": 585630,
+        "calls": 389,
+        "tokens": 190996,
         "cost_usd": 0.0,
-        "cache_hits": 3
-      },
-      {
-        "purpose": "propose.prose",
-        "calls": 84,
-        "tokens": 269544,
-        "cost_usd": 0.0,
-        "cache_hits": 0
+        "cache_hits": 28
       },
       {
         "purpose": "propose.scene",
-        "calls": 58,
-        "tokens": 186329,
+        "calls": 103,
+        "tokens": 129554,
         "cost_usd": 0.0,
-        "cache_hits": 6
+        "cache_hits": 32
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 47,
+        "tokens": 73386,
+        "cost_usd": 0.0,
+        "cache_hits": 12
       },
       {
         "purpose": "propose.episode",
         "calls": 21,
-        "tokens": 97404,
+        "tokens": 53098,
         "cost_usd": 0.0,
-        "cache_hits": 6
+        "cache_hits": 7
       },
       {
         "purpose": "extract.facts",
-        "calls": 24,
-        "tokens": 45948,
+        "calls": 10,
+        "tokens": 10895,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
         "purpose": "judge.soft.repair",
-        "calls": 7,
-        "tokens": 34320,
-        "cost_usd": 0.0,
-        "cache_hits": 0
-      },
-      {
-        "purpose": "propose.beat.repair",
-        "calls": 1,
-        "tokens": 5468,
-        "cost_usd": 0.0,
-        "cache_hits": 0
-      },
-      {
-        "purpose": "propose.episode.repair",
-        "calls": 1,
-        "tokens": 4589,
+        "calls": 3,
+        "tokens": 7863,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
         "purpose": "simulate.edit",
-        "calls": 11,
-        "tokens": 4236,
-        "cost_usd": 0.0,
-        "cache_hits": 0
-      },
-      {
-        "purpose": "propose.scene.repair",
-        "calls": 1,
-        "tokens": 2699,
+        "calls": 15,
+        "tokens": 2268,
         "cost_usd": 0.0,
         "cache_hits": 0
       }
@@ -3115,64 +2146,64 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 548,
-        "tokens": 1880849,
+        "calls": 663,
+        "tokens": 832116,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 22,
-        "tokens": 3283,
+        "calls": 33,
+        "tokens": 1063,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 128,
-      "misses": 912,
-      "entries": 4951
+      "hits": 176,
+      "misses": 883,
+      "entries": 8627
     },
     "budget_remaining_usd": 12.0
   },
   "preference_summary": {
-    "pairs_seen": 48,
-    "edits_seen": 1,
-    "voice_trained": false,
+    "pairs_seen": 18,
+    "edits_seen": 2,
+    "voice_trained": true,
     "top_weights": [
       {
-        "feature": "judge_voice",
-        "weight": 6.6656
-      },
-      {
         "feature": "criterion_1",
-        "weight": 5.6327
+        "weight": 2.4302
       },
       {
-        "feature": "judge_consequence",
-        "weight": 2.7793
+        "feature": "judge_specificity",
+        "weight": -1.7438
       },
       {
-        "feature": "criterion_3",
-        "weight": 1.8631
+        "feature": "edit_direction",
+        "weight": 1.5246
+      },
+      {
+        "feature": "judge_momentum",
+        "weight": 1.0403
       }
     ],
     "bandit_safe": 0.5,
     "bandit_explore": 0.5,
     "fitted_weights": {
-      "judge_momentum": 1.4665229306241094,
-      "judge_specificity": -0.404688561085317,
-      "judge_consequence": 2.779252234637938,
-      "judge_voice": 6.66562979988924,
-      "criterion_1": 5.632748496933477,
-      "criterion_2": 0.4234192476466575,
-      "criterion_3": 1.863114734593474,
-      "criterion_4": 1.4875520827193216,
-      "continuity": 1.044056764820866,
-      "voice_cosine": 0.4099103353220211,
-      "edit_direction": 1.1880145290961501,
-      "length": 1.2046417835985495,
-      "dialogue_ratio": 0.6711140206190536
+      "judge_momentum": 1.0403391512060716,
+      "judge_specificity": -1.7437539091835386,
+      "judge_consequence": 0.7282977241174915,
+      "judge_voice": 0.943141595335098,
+      "criterion_1": 2.4302273116328497,
+      "criterion_2": -0.044730163668958434,
+      "criterion_3": 5e-323,
+      "criterion_4": 5e-323,
+      "continuity": 0.3047460104867149,
+      "voice_cosine": 0.05604639705399106,
+      "edit_direction": 1.5246279536161007,
+      "length": 0.4616863683051085,
+      "dialogue_ratio": 5e-323
     },
-    "weight_recovery": 0.29404990233046463
+    "weight_recovery": -0.05955191554114817
   },
   "hidden_weights": {
     "judge_momentum": 0.3,
@@ -3191,40 +2222,31 @@
   },
   "probe": [
     {
-      "tau": 0.4444444444444444,
-      "top1": 0.5,
-      "points": 12.0,
-      "tau_uniform": 0.5,
-      "top1_uniform": 0.5833333333333334,
-      "tau_prior": 0.5,
-      "top1_prior": 0.5833333333333334,
+      "tau": 0.14814814814814808,
+      "top1": 0.3888888888888889,
+      "points": 18.0,
+      "tau_uniform": 0.37037037037037035,
+      "top1_uniform": 0.5555555555555556,
+      "tau_prior": 0.4444444444444444,
+      "top1_prior": 0.6111111111111112,
       "decisions": 11.0,
       "episode": 1.0
     },
     {
-      "tau": 0.3333333333333333,
-      "top1": 0.5,
-      "points": 12.0,
-      "tau_uniform": 0.5,
-      "top1_uniform": 0.5833333333333334,
-      "tau_prior": 0.5,
-      "top1_prior": 0.5833333333333334,
-      "decisions": 25.0,
+      "tau": 0.25925925925925924,
+      "top1": 0.4444444444444444,
+      "points": 18.0,
+      "tau_uniform": 0.37037037037037035,
+      "top1_uniform": 0.5555555555555556,
+      "tau_prior": 0.4444444444444444,
+      "top1_prior": 0.5555555555555556,
+      "decisions": 23.0,
       "episode": 2.0
-    },
-    {
-      "tau": 0.1111111111111111,
-      "top1": 0.3333333333333333,
-      "points": 12.0,
-      "tau_uniform": 0.0,
-      "top1_uniform": 0.3333333333333333,
-      "tau_prior": 0.055555555555555546,
-      "top1_prior": 0.3333333333333333,
-      "decisions": 38.0,
-      "episode": 3.0
     }
   ],
-  "errors": [],
-  "waited_seconds": 120.0,
-  "rate_limit_waits": 1
+  "errors": [
+    "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 0s"
+  ],
+  "waited_seconds": 935.7,
+  "rate_limit_waits": 14
 }

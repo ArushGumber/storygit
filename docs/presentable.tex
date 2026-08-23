@@ -600,7 +600,7 @@ candidate down the ranking but never remove it.
 \section{The preference layer}
 \label{sec:preference}
 
-Iteration thirty should not repeat iteration one's mistakes. Four learners over the same
+Iteration thirty should not repeat iteration one's mistakes. Six learners over the same
 signal --- accept, reject, edit --- feed one ranking.
 
 \begin{figure}[t]
@@ -622,7 +622,7 @@ shown set --- comparing a candidate accepted on Monday against one rejected in a
 scene on Friday would compare two different questions. An edited-then-accepted win is
 weaker evidence than a clean accept and is weighted accordingly.
 
-\subsection{Four learners, four data appetites}
+\subsection{Six learners, six data appetites}
 
 A writer produces about twenty comparisons in a session, which is nowhere near enough to
 fit one model that does everything. So each signal is exploited by the cheapest mechanism
@@ -923,13 +923,15 @@ guess and is wrong: its candidate sets are \emph{more} separated than the best p
 Two of its three largest hidden weights fit with the wrong sign, and each has a cause that
 is a property of that writer rather than a defect in the machinery.
 
-Its own criterion \emph{concreteness} is scored $+0.73$ correlated with the fixed
-\emph{specificity} axis --- a near-duplicate column --- and two collinear columns at
-forty-eight comparisons is a textbook small-sample regression: the fit hands the credit to
-one and compensates with a sign flip on the other. And its standing style note, ``shorter
-sentences'', is \emph{followed}, so every candidate comes back at about the same length and
-the length feature carries a spread of 0.03. The head cannot learn a large negative weight
-from a column that does not vary.
+Its largest weight is on \emph{specificity}, and the writer has also defined a criterion
+called \emph{concreteness} which the judge scores $+0.73$ correlated with it --- a
+near-duplicate column. Two collinear columns at forty-eight comparisons is a textbook
+small-sample regression: the fit hands the credit to one and compensates with a sign flip on
+the other, and here the fixed axis is the one that flips. Its second-largest weight is a
+large \emph{negative} one on length, and its standing style note --- ``shorter sentences''
+--- is \emph{followed}, so every candidate comes back at about the same length and the
+length feature carries a spread of 0.03. The head cannot learn a large negative weight from
+a column that does not vary.
 
 That second mechanism generalises and is worth stating: \textbf{a writer whose instruction
 is obeyed leaves the preference layer nothing to learn on the same axis}. The prompt side

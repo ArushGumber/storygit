@@ -590,3 +590,41 @@ def test_a_criterion_weight_out_of_range_is_a_422_not_a_500(api) -> None:  # typ
     assert response.status_code == 422
     assert "weight" in response.text
     assert client.get("/api/ledger").json()["criteria"] == []
+
+
+def test_the_app_shell_route_cannot_be_walked_out_of(tmp_path: Path) -> None:
+    """`root / path` on an unsanitised URL segment resolves `../` happily.
+
+    This route would otherwise serve any file the process can read to anyone who can reach
+    the port — including the workspace `.env` two directories up, which is where this
+    project's provider keys live. The sibling route that serves figures already did this
+    correctly; this one was the only hand-rolled static handler, and the only route no test
+    mounted, which is not a coincidence.
+    """
+    build = tmp_path / "dist"
+    build.mkdir()
+    (build / "index.html").write_text("<!doctype html><title>shell</title>")
+    (build / "assets").mkdir()
+    (tmp_path / "secret.env").write_text("GEMINI_KEY_1=should-never-be-served")
+
+    from storygit.config import Settings
+
+    repo = Repository.open(tmp_path / "walk.db")
+    story_id = IdGenerator(seed=1, stream="walk").node()
+    repo.initialize(StoryState.build(nodes={story_id: Story(id=story_id, title="x")}))
+    provider = MockProvider(lambda req: canned({"facts": []}))
+    state = AppState(
+        repo=repo,
+        router=Router({"gemini": provider, "groq": provider}),
+        settings=Settings(),
+        results_dir=tmp_path,
+    )
+    client = TestClient(create_app(state=state, frontend_dir=str(build)))
+
+    for attack in ("../secret.env", "..%2Fsecret.env", "a/../../secret.env"):
+        response = client.get(f"/{attack}")
+        assert "should-never-be-served" not in response.text, attack
+        # Falling back to the shell is the correct answer for a single-page app.
+        assert "shell" in response.text, attack
+
+    assert "shell" in client.get("/index.html").text

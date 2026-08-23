@@ -124,7 +124,7 @@ class Persona(BaseModel):
 
         Quantiles fix it for every persona at once, adjust to each weight vector (the
         Minimalist's large negative weight on length shifts its whole distribution), and
-        are interpretable in the write-up: "the Controller accepts roughly the top 12% of
+        are interpretable in the write-up: "the Controller accepts roughly the top 8% of
         what it is shown".
 
         Returns:
@@ -374,7 +374,7 @@ CONTROLLER = Persona(
     dial=0.15,
     style_notes=("Nothing contradicts what is already on the page.",),
 )
-"""Accepts rarely, edits heavily, locks constantly. Taking only the top ~12% of what they
+"""Accepts rarely, edits heavily, locks constantly. Taking only the top ~8% of what they
 are shown makes this the hardest writer to satisfy, and the one whose behaviour most
 stresses propagation, the lock semantics, and the edit-mining path."""
 
