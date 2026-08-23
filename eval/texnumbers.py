@@ -147,7 +147,7 @@ def collect() -> dict[str, str]:
     # followed by the characters "10", which then get typeset in the preamble and produce a
     # baffling "Missing \begin{document}". Spell the numbers.
     by_decisions = _get(offline, "pretraining", "by_decisions", default={}) or {}
-    for decisions, word in (("5", "Five"), ("10", "Ten"), ("40", "Forty")):
+    for decisions, word in (("5", "Five"), ("10", "Ten"), ("20", "Twenty"), ("40", "Forty")):
         entry = by_decisions.get(decisions, {})
         macros[f"PriorAt{word}"] = _num(entry.get("prior"), 3)
         macros[f"UniformAt{word}"] = _num(entry.get("uniform"), 3)

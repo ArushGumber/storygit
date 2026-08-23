@@ -121,9 +121,9 @@ demonstrate; the state machine is what survives episode~40.
 
 
 
-\paragraph{Contributions.} The novelty here is not any single mechanism but the fact that
-they are derived from one commitment, that the story is a typed state graph under version
-control, and that the evaluation is designed so the central claim can fail. Specifically:
+\paragraph{Contributions.} Each mechanism below is derived from one commitment, that the
+story is a typed state graph under version control, and the evaluation is designed so the
+central claim can fail. The fourth is the one with no close precedent in this literature:
 
 \begin{enumerate}[label=(\arabic*)]
 \item A \textbf{versioned typed state graph} for a serial, with content-addressed
@@ -325,6 +325,13 @@ Dependency edges are declared, not inferred: a beat states the facts it establis
 the facts it relies on, and an edge from beat $A$ to beat $B$ exists exactly when $B$
 consumes something $A$ produced. When an accepted change alters or removes a fact, the
 system walks the consumers transitively and \emph{marks} them. It never rewrites them.
+
+The walk is exact over the edges that exist, and those edges are declared by the model into
+fields that are prompted for rather than schema-required. A beat that omits its dependencies
+validates, and a consumed id naming nothing is dropped without a flag, so the graph is as
+good as the model's compliance and this system does not measure that compliance. That is the
+least-guarded assumption here and \S\ref{sec:limitations} says so; Appendix~\ref{app:engine}
+has the schemas.
 
 Four rules make this safe to leave running.
 
@@ -626,6 +633,7 @@ baseline takes all three. This measurement changed the system twice, described i
 before any comparison & \rPriorAtZero & \rUniformAtZero & \rLiftAtZero \\
 after 5 comparisons & \rPriorAtFive & \rUniformAtFive & \rLiftAtFive \\
 after 10 comparisons & \rPriorAtTen & \rUniformAtTen & \rLiftAtTen \\
+after 20 comparisons & \rPriorAtTwenty & \rUniformAtTwenty & \rLiftAtTwenty \\
 after 40 comparisons & \rPriorAtForty & \rUniformAtForty & \rLiftAtForty \\
 \bottomrule
 \end{tabular}
@@ -648,6 +656,9 @@ drawn from the same generator. This measures that the prior generalises within i
 distribution. It is not a transfer test, and the four personas the live evaluation uses come
 from a distribution this generator cannot produce at all.
 
+The bandit's numbers below are a simulator rather than the product: the arms are held at
+fixed rates and nothing in the running system composes a shown set through it, as
+\S\ref{sec:limitations} states. They measure the sampler, not the writer's experience.
 The Thompson sampler reaches cumulative pseudo-regret \rBanditThompsonRegret{} over 400
 rounds against arms at 0.40 and 0.70, and is flat after roughly the first fifty, because it
 pays its exploration cost early and then stops. $\varepsilon$-greedy at 0.1 reaches
@@ -991,7 +1002,7 @@ still holds, because it is about what a writer can trust rather than about what 
 on one fixture, but the prediction was wrong and \S\ref{sec:evaluation} says so.
 
 \decision{A closed predicate vocabulary}
-Ten predicates plus a free-text escape hatch. \rejected{Open-vocabulary relation
+\rPredicates{} predicates plus a free-text escape hatch. \rejected{Open-vocabulary relation
 extraction.} Closed predicates make the first checker layer a dictionary lookup and an
 equality test: free, instant, and never wrong for the wrong reason. The escape hatch
 is exactly the set of facts that needs the more expensive NLI check, which is a useful
