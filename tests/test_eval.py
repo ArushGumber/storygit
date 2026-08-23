@@ -877,3 +877,16 @@ def test_the_invocation_call_summary_is_the_sum_of_its_runs() -> None:
     assert combined["calls"] == 40
     assert combined["prompt_tokens"] == 400
     assert combined["cache_hit_rate"] == pytest.approx(0.2)
+
+
+def test_every_probe_point_names_a_run_that_is_never_itself_probed() -> None:
+    """Provenance is the leak defence a reader can check without running anything.
+
+    The cross-persona filter is code; this is the label. A point sourced from a
+    configuration the probe is later replayed against would be controlled for rather than
+    excluded, and "unknown" would leave a reader unable to tell which.
+    """
+    for point in probe.ProbeSet.load().points:
+        config, _, persona = point.source.partition("/")
+        assert config == "probesample", f"probe point from {config!r}, which is probed"
+        assert persona, "a probe point must name the writer it came from"
