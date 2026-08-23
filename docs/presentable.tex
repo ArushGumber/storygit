@@ -243,6 +243,14 @@ system that quietly adjusted its own prompts from inferred preferences would wor
 better and would be untrustworthy the first time it inferred wrong --- and the writer would
 have no way to find out.
 
+\textbf{Nothing the system can do is API-only.} A capability the writer cannot reach is a
+capability the product does not have, however well it is tested. The whole-graph audit,
+the three-way merge with its conflicts, the snapshot chain, striking a fact, merging a
+duplicate entity, deleting a mined rule --- each is a control in the tool, not just a
+route. This is checked rather than asserted: a test fails if any method in the API client
+is called by no component, and another fails if any state operation is constructed by
+nothing outside the two modules that define and apply it.
+
 The five tabs run in the order the story is told: problem, architecture, tool, proof,
 numbers.
 
