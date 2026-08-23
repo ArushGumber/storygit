@@ -7,13 +7,15 @@ from tests.conftest import Fixture
 from tests.mockprovider import MockProvider, canned
 
 from storygit.agents.schemas import Level
+from storygit.continuity.bible_diff import compute as bible_diff
 from storygit.domain.ids import IdGenerator
 from storygit.domain.nodes import NodeStatus
 from storygit.domain.provenance import Authorship
 from storygit.domain.world import Predicate
-from storygit.engine import Engine, bible_diff
+from storygit.engine import Engine
 from storygit.graph.propagation import MarkKind
 from storygit.providers.router import Router
+from storygit.selection.select import SelectionConfig, Selector
 from storygit.store.signals import SignalKind
 
 PROSE = {
@@ -59,38 +61,68 @@ BEAT = {
 }
 
 
-def engine_for(fixture: Fixture, responses: list[str]) -> tuple[Engine, MockProvider]:
+# One candidate, no judge, no dial, the baseline selector: these tests are about the
+# engine loop, not about selection, and this configuration needs no encoder or judge.
+PLAIN = SelectionConfig(
+    n=1, k=1, selector=Selector.topk_temperature, use_judge=False, use_dial=False
+)
+
+
+def engine_for(
+    fixture: Fixture,
+    responses: list[str],
+    *,
+    selection: SelectionConfig = PLAIN,
+    **kwargs: object,
+) -> tuple[Engine, MockProvider]:
     """An engine wired to one mock provider serving canned JSON."""
     provider = MockProvider(responses)
     router = Router({"gemini": provider, "groq": provider})
-    return Engine(fixture.repo, router, ids=IdGenerator(seed=99)), provider
+    engine = Engine(
+        fixture.repo,
+        router,
+        ids=IdGenerator(seed=99),
+        selection=selection,
+        use_nli=False,
+        **kwargs,  # type: ignore[arg-type]
+    )
+    return engine, provider
 
 
 async def test_propose_then_accept_commits_and_records_a_preference(fixture: Fixture) -> None:
-    engine, _ = engine_for(fixture, [canned(BEAT)])
+    engine, _ = engine_for(
+        fixture,
+        [canned(BEAT)],
+        selection=SelectionConfig(
+            n=3, k=3, selector=Selector.topk_temperature, use_judge=False, use_dial=False
+        ),
+    )
     before_head = fixture.repo.head()
 
-    proposals = await engine.propose_at(Level.beat, node_id=fixture.scene, k=3)
-    assert len(proposals) == 3
+    candidates = await engine.propose_at(Level.beat, node_id=fixture.scene)
+    assert len(candidates) == 3
+    assert {c.axis_key for c in candidates} == {"raise_stakes", "slow_down", "subvert"}, (
+        "each candidate is generated along a different named axis"
+    )
     assert fixture.repo.head() == before_head, "proposing must not change state"
 
-    chosen, *rest = proposals
-    result = await engine.accept(chosen.id, shown_with=tuple(p.id for p in proposals))
+    chosen, *rest = candidates
+    result = await engine.accept(chosen.proposal.id, shown_with=engine.shown())
 
     assert fixture.repo.head() != before_head
     assert result.snapshot_id == fixture.repo.head() or result.propagation_snapshot_id
     signals = engine.signals.all(kind=SignalKind.accept)
     assert len(signals) == 1
-    assert signals[0].proposal_id == chosen.id
-    assert set(signals[0].shown_with) == {p.id for p in rest}, (
+    assert signals[0].proposal_id == chosen.proposal.id
+    assert set(signals[0].shown_with) == {c.proposal.id for c in rest}, (
         "the alternatives are recorded, which is what makes this a preference"
     )
 
 
 async def test_accept_returns_a_writer_readable_bible_diff(fixture: Fixture) -> None:
     engine, _ = engine_for(fixture, [canned(BEAT)])
-    proposals = await engine.propose_at(Level.beat, node_id=fixture.scene, k=1)
-    result = await engine.accept(proposals[0].id)
+    candidates = await engine.propose_at(Level.beat, node_id=fixture.scene)
+    result = await engine.accept(candidates[0].proposal.id)
 
     assert not result.bible_diff.is_empty
     assert len(result.bible_diff.added) == 1
@@ -100,8 +132,8 @@ async def test_accept_returns_a_writer_readable_bible_diff(fixture: Fixture) -> 
 
 async def test_accepting_prose_extracts_facts_from_it(fixture: Fixture) -> None:
     engine, provider = engine_for(fixture, [canned(PROSE), canned(EXTRACTION)])
-    proposals = await engine.propose_at(Level.prose, node_id=fixture.beat_d, k=1)
-    result = await engine.accept(proposals[0].id)
+    candidates = await engine.propose_at(Level.prose, node_id=fixture.beat_d)
+    result = await engine.accept(candidates[0].proposal.id)
 
     assert result.extracted is True
     state = engine.state()
@@ -120,8 +152,8 @@ async def test_accepting_prose_extracts_facts_from_it(fixture: Fixture) -> None:
 
 async def test_edit_records_the_before_and_after_pair(fixture: Fixture) -> None:
     engine, _ = engine_for(fixture, [canned(PROSE), canned(EXTRACTION)])
-    proposals = await engine.propose_at(Level.prose, node_id=fixture.beat_d, k=1)
-    await engine.edit(proposals[0].id, "Ash fell. Kael counted guards.")
+    candidates = await engine.propose_at(Level.prose, node_id=fixture.beat_d)
+    await engine.edit(candidates[0].proposal.id, "Ash fell. Kael counted guards.")
 
     edits = engine.signals.all(kind=SignalKind.edit)
     assert len(edits) == 1
@@ -138,15 +170,15 @@ async def test_edit_records_the_before_and_after_pair(fixture: Fixture) -> None:
 
 async def test_reject_records_the_direction_in_the_ledger(fixture: Fixture) -> None:
     engine, _ = engine_for(fixture, [canned(BEAT)])
-    proposals = await engine.propose_at(Level.beat, node_id=fixture.scene, k=1)
-    engine.reject(proposals[0].id, reason="no more shadowy benefactors")
+    candidates = await engine.propose_at(Level.beat, node_id=fixture.scene)
+    engine.reject(candidates[0].proposal.id, reason="no more shadowy benefactors")
 
     rejects = engine.signals.all(kind=SignalKind.reject)
     assert len(rejects) == 1 and rejects[0].payload["reason"]
     ledger = engine.state().ledger
     assert ledger.rejected_directions[0].text == "no more shadowy benefactors"
-    assert ledger.rejected_directions[0].proposal_id == proposals[0].id
-    assert engine.pending(proposals[0].id) is None
+    assert ledger.rejected_directions[0].proposal_id == candidates[0].proposal.id
+    assert engine.pending(candidates[0].proposal.id) is None
 
 
 async def test_hand_written_beats_skip_generation_but_run_everything_else(

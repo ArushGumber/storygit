@@ -23,6 +23,11 @@ from pydantic import BaseModel, ConfigDict
 
 from storygit.agents.propose import Proposal, Proposer
 from storygit.agents.schemas import Level
+from storygit.continuity import layer1, layer2_nli
+from storygit.continuity.audit import AuditReport, run_audit
+from storygit.continuity.bible_diff import BibleDiff, recheck_after_strike, strike
+from storygit.continuity.bible_diff import compute as compute_bible_diff
+from storygit.continuity.flags import Flag, sort_flags
 from storygit.domain.diff import (
     AddCriterion,
     AddNode,
@@ -37,43 +42,18 @@ from storygit.domain.diff import (
     SetNodeStatus,
     SetProse,
 )
-from storygit.domain.ids import IdGenerator, NodeId, ProposalId, SnapshotId
+from storygit.domain.ids import FactId, IdGenerator, NodeId, ProposalId, SnapshotId
 from storygit.domain.ledger import Criterion, StyleNote
 from storygit.domain.nodes import NodeStatus, Prose
 from storygit.domain.provenance import Authorship, ProvenanceSpan
 from storygit.domain.state import StoryState
-from storygit.domain.world import Fact
+from storygit.graph.dependency import EdgeProvider
 from storygit.graph.propagation import StaleMark, marks_to_diff, propagate_change
 from storygit.providers.router import Router
+from storygit.selection.select import Candidate, CandidateSelector, SelectionConfig
 from storygit.store.branches import DEFAULT_BRANCH
 from storygit.store.repository import Repository
 from storygit.store.signals import Signal, SignalKind, SignalStore
-
-
-class BibleDiff(BaseModel):
-    """What a change did to the world graph, in the writer's terms.
-
-    Shown on every accept so that "what did I just agree to" has an answer that is about
-    the story rather than about JSON.
-
-    Attributes:
-        added: Facts newly asserted.
-        ended: Facts whose validity was closed off by this change.
-        removed: Facts struck outright.
-        lines: The same information as sentences, ready to render.
-    """
-
-    model_config = ConfigDict(frozen=True)
-
-    added: tuple[Fact, ...] = ()
-    ended: tuple[Fact, ...] = ()
-    removed: tuple[Fact, ...] = ()
-    lines: tuple[str, ...] = ()
-
-    @property
-    def is_empty(self) -> bool:
-        """Whether the change touched no facts at all."""
-        return not (self.added or self.ended or self.removed)
 
 
 class AcceptResult(BaseModel):
@@ -85,6 +65,7 @@ class AcceptResult(BaseModel):
         bible_diff: What changed in the world graph.
         marks: What is now stale or wants review.
         extracted: Whether facts were extracted from newly written prose.
+        flags: Continuity flags on the new state, hard first.
     """
 
     model_config = ConfigDict(frozen=True)
@@ -94,6 +75,7 @@ class AcceptResult(BaseModel):
     bible_diff: BibleDiff = BibleDiff()
     marks: tuple[StaleMark, ...] = ()
     extracted: bool = False
+    flags: tuple[Flag, ...] = ()
 
 
 class Engine:
@@ -113,6 +95,9 @@ class Engine:
         *,
         ids: IdGenerator | None = None,
         branch: str = DEFAULT_BRANCH,
+        selection: SelectionConfig | None = None,
+        use_nli: bool = True,
+        edge_provider: EdgeProvider | None = None,
     ) -> None:
         """Wire the engine.
 
@@ -121,6 +106,10 @@ class Engine:
             router: Model access.
             ids: Id generator; seed it to make a whole session reproducible.
             branch: The branch this engine reads and writes.
+            selection: Candidate-selection tunables (n, k, selector, dial, judge).
+            use_nli: Whether accepts run layer 2. The ablation runs turn it off.
+            edge_provider: Optional soft-edge provider for propagation. ``None`` means
+                declared dependencies only, which is the default and the honest one.
         """
         self.repo = repository
         self.router = router
@@ -128,7 +117,11 @@ class Engine:
         self.ids = ids or IdGenerator()
         self.proposer = Proposer(router, self.ids)
         self.signals = SignalStore(repository.conn)
+        self.selector = CandidateSelector(self.proposer, router, selection)
+        self.use_nli = use_nli
+        self.edge_provider = edge_provider
         self._pending: dict[ProposalId, Proposal] = {}
+        self._last_candidates: list[Candidate] = []
 
     # --- reads ------------------------------------------------------------------
 
@@ -148,26 +141,34 @@ class Engine:
         *,
         node_id: NodeId | None = None,
         intent: str = "",
-        k: int = 3,
-    ) -> list[Proposal]:
-        """Generate candidates at a level, and remember them pending a decision.
+    ) -> list[Candidate]:
+        """Generate labelled, checked, diverse candidates and hold them for a decision.
+
+        The full pipeline: axis-conditioned sampling, continuity checking on each
+        candidate's would-be facts, judging, the dial, and MMR or DPP selection. Every
+        candidate comes back — selected ones first — because the evaluation measures
+        diversity over the whole set and chunk 4 needs the unselected ones as the
+        negative side of a preference pair.
 
         Args:
             level: What to propose.
             node_id: The node to attach to; defaults per level.
             intent: The writer's instruction.
-            k: How many candidates.
 
         Returns:
-            The candidates, each already carrying its diff, rationale, delta summary,
-            and the count of nodes it would mark stale.
+            Candidates, shortlisted ones first.
         """
-        proposals = await self.proposer.propose(
-            self.state(), level, target_node_id=node_id, intent=intent, k=k
+        candidates = await self.selector.select(
+            self.state(), level, target_node_id=node_id, intent=intent
         )
-        for proposal in proposals:
-            self._pending[proposal.id] = proposal
-        return proposals
+        for candidate in candidates:
+            self._pending[candidate.proposal.id] = candidate.proposal
+        self._last_candidates = candidates
+        return candidates
+
+    def shown(self) -> tuple[ProposalId, ...]:
+        """Ids of the candidates last shortlisted, for recording preferences."""
+        return tuple(c.proposal.id for c in self._last_candidates if c.selected)
 
     # --- actions ----------------------------------------------------------------
 
@@ -219,7 +220,7 @@ class Engine:
             )
         )
 
-        marks = propagate_change(before, after)
+        marks = propagate_change(before, after, edge_provider=self.edge_provider)
         propagation_snapshot: SnapshotId | None = None
         if marks:
             mark_diff = marks_to_diff(after, marks)
@@ -227,12 +228,14 @@ class Engine:
                 propagation_snapshot = self.repo.commit_diff(mark_diff, branch=self.branch)
 
         self._pending.pop(proposal_id, None)
+        final = self.repo.state(self.branch)
         return AcceptResult(
             snapshot_id=snapshot_id,
             propagation_snapshot_id=propagation_snapshot,
-            bible_diff=bible_diff(before, self.repo.state(self.branch)),
+            bible_diff=compute_bible_diff(before, final),
             marks=tuple(marks),
             extracted=extracted,
+            flags=tuple(self.check(before, final)),
         )
 
     def reject(self, proposal_id: ProposalId, *, reason: str = "") -> None:
@@ -358,19 +361,21 @@ class Engine:
             after = self.repo.state(self.branch)
             extracted = True
 
-        marks = propagate_change(before, after)
+        marks = propagate_change(before, after, edge_provider=self.edge_provider)
         propagation_snapshot: SnapshotId | None = None
         if marks:
             mark_diff = marks_to_diff(after, marks)
             if len(mark_diff):
                 propagation_snapshot = self.repo.commit_diff(mark_diff, branch=self.branch)
 
+        final = self.repo.state(self.branch)
         return AcceptResult(
             snapshot_id=snapshot_id,
             propagation_snapshot_id=propagation_snapshot,
-            bible_diff=bible_diff(before, self.repo.state(self.branch)),
+            bible_diff=compute_bible_diff(before, final),
             marks=tuple(marks),
             extracted=extracted,
+            flags=tuple(self.check(before, final)),
         )
 
     # --- writer ledger and node controls ---------------------------------------
@@ -452,6 +457,65 @@ class Engine:
             ),
             branch=self.branch,
         )
+
+    # --- continuity -------------------------------------------------------------
+
+    def check(self, before: StoryState, after: StoryState) -> list[Flag]:
+        """Run layers 1 and 2 over what a change introduced.
+
+        Incremental by design: only the facts the change added are checked, against
+        everything already true. The whole-graph pass is :meth:`audit`, which is where
+        slow drift gets caught.
+
+        Args:
+            before: State before the change.
+            after: State after it.
+
+        Returns:
+            Flags, hard first.
+        """
+        new_facts = set(after.facts) - set(before.facts)
+        flags = layer1.check_new_facts(after, new_facts)
+        if self.use_nli and new_facts:
+            flags.extend(layer2_nli.check(after, fact_ids=new_facts))
+        return sort_flags(flags)
+
+    def audit(self) -> AuditReport:
+        """Walk the whole graph through layers 1 and 2, plus the thread ledger."""
+        return run_audit(self.state(), use_nli=self.use_nli)
+
+    def strike_fact(
+        self, fact_id: FactId, *, at_beat: NodeId | None = None
+    ) -> tuple[SnapshotId, list[Flag], tuple[StaleMark, ...]]:
+        """The writer striking a fact from the bible.
+
+        Args:
+            fact_id: The fact to strike.
+            at_beat: End the fact here rather than deleting it. Ending preserves the
+                history earlier beats depend on; deleting does not, and propagation will
+                mark them.
+
+        Returns:
+            ``(snapshot, flags, marks)`` — layer 1 re-runs on whatever depended on it.
+        """
+        before = self.state()
+        diff = strike(before, fact_id, at_beat=at_beat)
+        self.signals.record(
+            Signal(
+                kind=SignalKind.strike_fact,
+                branch=self.branch,
+                payload={"fact_id": str(fact_id), "at_beat": str(at_beat) if at_beat else None},
+            )
+        )
+        snapshot_id = self.repo.commit_diff(diff, branch=self.branch)
+        after = self.repo.state(self.branch)
+        marks = propagate_change(before, after, edge_provider=self.edge_provider)
+        if marks:
+            mark_diff = marks_to_diff(after, marks)
+            if len(mark_diff):
+                snapshot_id = self.repo.commit_diff(mark_diff, branch=self.branch)
+                after = self.repo.state(self.branch)
+        return snapshot_id, recheck_after_strike(after, fact_id), tuple(marks)
 
     # --- internals --------------------------------------------------------------
 
