@@ -30,6 +30,7 @@ from storygit.agents.schemas import Level
 from storygit.domain.ids import IdGenerator, NodeId, ProposalId, SnapshotId
 from storygit.domain.nodes import NodeType
 from storygit.engine import Engine
+from storygit.preference.bt_head import BTWeights
 from storygit.preference.features import FeatureVector
 from storygit.providers.base import (
     LLMRequest,
@@ -416,6 +417,18 @@ async def run_writer(
     actions: list[Action] = []
     probe_points = probe_set.for_persona(persona.name) if probe_set is not None else []
     probe_curve: list[dict[str, float]] = []
+    # References the probe reading is read against. `uniform` is a head that has learned
+    # nothing; `prior` is the population prior every writer starts from. The head begins at
+    # `prior` by construction, so without these a curve that starts high and stays flat
+    # cannot be told apart from a measurement that is not measuring.
+    probe_baselines = (
+        {
+            "uniform": BTWeights.uniform(),
+            "prior": engine.preference.state.weights,
+        }
+        if probe_points
+        else {}
+    )
     errors: list[str] = []
     completed = 0
     waited = 0.0
@@ -526,11 +539,12 @@ async def run_writer(
             if probe_points:
                 # Zero provider calls: the candidates are frozen, and only the two
                 # learner-dependent features are recomputed.
-                reading = probe.agreement(
+                reading = probe.reading(
                     probe_points,
                     engine.preference.state.weights,
                     persona.weights,
                     learner=engine.preference.state.voice,
+                    baselines=probe_baselines,
                 )
                 reading["decisions"] = float(len(actions))
                 reading["episode"] = float(completed)

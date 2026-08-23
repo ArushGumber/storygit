@@ -803,3 +803,31 @@ async def test_replaying_the_probe_makes_no_provider_calls(fixture: Fixture) -> 
     assert reading["points"] == float(len(probe_set.points))
     assert -1.0 <= reading["tau"] <= 1.0
     assert 0.0 <= reading["top1"] <= 1.0
+
+
+def test_the_probe_points_discriminate_between_weight_vectors() -> None:
+    """A point every weight vector gets right measures nothing.
+
+    The first fixture was sampled uniformly at random and scored a fitted prior and an
+    untrained uniform head *identically* on all four personas — because in a set where one
+    candidate is better on every feature, the answer does not depend on the weights. Points
+    are now chosen for the opposite property.
+    """
+    probe_set = probe.ProbeSet.load()
+    scores = [probe.discrimination(list(p.features), seed=20260824) for p in probe_set.points]
+    assert min(scores) > 0.25, f"a point no weight vector disagrees on: {min(scores):.2f}"
+
+
+def test_a_probe_reading_carries_its_references() -> None:
+    """A tau of 0.93 says nothing without knowing what an uninformed head scores."""
+    probe_set, hidden = _synthetic_probe()
+    from storygit.preference.bt_head import BTWeights
+
+    out = probe.reading(
+        list(probe_set.points),
+        BTWeights.uniform(),
+        hidden,
+        baselines={"uniform": BTWeights.uniform()},
+    )
+    assert "tau_uniform" in out and "top1_uniform" in out
+    assert out["tau"] == pytest.approx(out["tau_uniform"]), "same head, same reading"

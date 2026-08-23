@@ -179,13 +179,84 @@ def agreement(
     }
 
 
+def reading(
+    points: list[ProbePoint],
+    head: BTWeights,
+    hidden: dict[str, float],
+    *,
+    learner: Any | None = None,
+    baselines: dict[str, BTWeights] | None = None,
+) -> dict[str, float]:
+    """One probe measurement, with the references that make it readable.
+
+    A tau of 0.93 says nothing on its own. The head starts from a population prior that
+    already ranks well, so the interesting quantity is not the level but the distance from
+    the references: how far above an uninformed head it sits, and whether it moves away
+    from the prior it started at. Without those, a probe curve that starts high and stays
+    flat is indistinguishable from a probe that is not measuring anything.
+
+    Args:
+        points: The probe points.
+        head: The learner's current weights.
+        hidden: The persona's hidden weights.
+        learner: The voice model, for the two learner-dependent features.
+        baselines: Named reference heads, each scored over the same points.
+
+    Returns:
+        The head's reading, plus ``tau_<name>`` and ``top1_<name>`` per baseline.
+    """
+    out = agreement(points, head, hidden, learner=learner)
+    for name, reference in (baselines or {}).items():
+        scored = agreement(points, reference, hidden, learner=learner)
+        out[f"tau_{name}"] = scored["tau"]
+        out[f"top1_{name}"] = scored["top1"]
+    return out
+
+
 def _hidden_score(features: FeatureVector, hidden: dict[str, float]) -> float:
     """What the persona would privately think of this candidate, noiselessly."""
     return sum(hidden.get(k, 0.0) * v for k, v in features.values.items())
 
 
+def discrimination(features: list[dict[str, float]], *, trials: int = 200, seed: int = 0) -> float:
+    """How much a decision point depends on *which* weight vector is asked.
+
+    A candidate set where one option is better on every feature has the same answer under
+    every weight vector with positive weights, so replaying it measures nothing: a head
+    that has learned the writer and a head that has learned nothing both get it right. The
+    probe is only a measurement over points where the answer turns on the *shape* of the
+    weights.
+
+    Args:
+        features: One feature dict per candidate.
+        trials: Random weight vectors to poll.
+        seed: Draw seed, so fixture selection is reproducible.
+
+    Returns:
+        The fraction of trials that do **not** pick the most popular winner — 0.0 when
+        every weight vector agrees, approaching ``1 - 1/k`` when they are split evenly.
+    """
+    if len(features) < 2:
+        return 0.0
+    rng = random.Random(seed)
+    vectors = [FeatureVector(values=dict(f)) for f in features]
+    winners = []
+    for _ in range(trials):
+        weights = {name: rng.uniform(-1.0, 1.0) for name in BASE_FEATURES}
+        scores = [_hidden_score(v, weights) for v in vectors]
+        winners.append(scores.index(max(scores)))
+    top = max(winners.count(i) for i in set(winners))
+    return 1.0 - top / len(winners)
+
+
 def build(runs: list[dict[str, Any]], *, per_run: int = 3, seed: int = 20260824) -> ProbeSet:
-    """Sample probe points from recorded runs.
+    """Sample probe points from recorded runs, preferring the ones that discriminate.
+
+    Points are ranked by :func:`discrimination` and the most discriminating are taken. This
+    is not a thumb on the scale for any particular head — it removes decisions that *no*
+    weight vector gets wrong, which are exactly the decisions a learning curve cannot be
+    measured on. Chosen this way because the first fixture, sampled uniformly at random,
+    scored a fitted prior and an untrained uniform head identically on every persona.
 
     Args:
         runs: Loaded RunLog dictionaries.
@@ -205,6 +276,7 @@ def build(runs: list[dict[str, Any]], *, per_run: int = 3, seed: int = 20260824)
             and all(set(f) >= set(BASE_FEATURES) for f in a["features"])
         ]
         rng.shuffle(usable)
+        usable.sort(key=lambda a: -discrimination(list(a["features"]), seed=seed))
         for action in usable[:per_run]:
             points.append(
                 ProbePoint(
