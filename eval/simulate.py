@@ -269,11 +269,20 @@ class SimulatedWriter:
             if self.persona.vetoes(texts[best]) is None:
                 return await self._hand_write(base, shown, best, texts[best])
 
+        # Writers polish prose. They do not polish an outline the same way, so this is a
+        # prose-level disposition -- and it is the only action that produces a before/after
+        # pair, which the edit-direction feature is computed from.
+        polish = (
+            shown[0].proposal.level is Level.prose
+            and self.rng.random() < self.persona.prose_polish_probability
+        )
         for index in order:
             veto = self.persona.vetoes(texts[index])
             if veto is not None:
                 continue
             if scores[index] >= accept_at:
+                if polish:
+                    return await self._edit(base, shown, index, texts[index])
                 return await self._accept(base, shown, index)
             if scores[index] >= edit_at:
                 return await self._edit(base, shown, index, texts[index])

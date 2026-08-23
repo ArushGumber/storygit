@@ -962,3 +962,41 @@ def test_dialogue_is_counted_whatever_quotes_the_model_uses() -> None:
     # A single quote wrapping a real utterance still counts, even when the sentence
     # splitter has eaten its closing mark.
     assert dialogue_ratio("She said, 'Go home now.' He didn't.") == pytest.approx(0.5)
+
+
+@pytest.mark.asyncio
+async def test_polishing_prose_produces_the_pair_edit_direction_needs(
+    fixture: Fixture,
+) -> None:
+    """A hand-write gives the voice model an anchor; only an edit gives it a direction.
+
+    Accepting a candidate in the writer's own words is the one action that records a
+    before and an after, which is what the edit-direction feature is computed from. No
+    persona ever did it at prose level, so the feature was a flat 0.5 in every run.
+    """
+    engine, _ = mock_engine(fixture)
+    persona = get("the Minimalist").model_copy(
+        update={"prose_polish_probability": 1.0, "hand_write_probability": 0.0}
+    )
+    # A bar anything clears, so this measures where a decision is routed rather than
+    # whether the mock's canned prose happens to satisfy a calibrated persona.
+    personas._THRESHOLDS[persona.name] = (0.0, 0.0)
+    try:
+        log = await run_writer(
+            persona,
+            engine,
+            episodes=1,
+            scenes_per_episode=1,
+            beats_per_scene=1,
+            seed=6,
+            use_llm_edits=False,
+        )
+    finally:
+        personas._THRESHOLDS.pop(persona.name, None)
+    prose = [a for a in log.actions if a.level == "prose"]
+    assert prose, "the run never reached prose level"
+    assert all(a.kind == "edit" for a in prose), [a.kind for a in prose]
+    # An edit is still an acceptance: the writer used the candidate, in their own words.
+    assert log.acceptance_rate == 1.0
+    # And plan levels are untouched -- writers do not polish an outline the same way.
+    assert all(a.kind != "edit" for a in log.actions if a.level in ("episode", "scene"))
