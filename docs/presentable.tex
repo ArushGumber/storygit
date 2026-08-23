@@ -1465,10 +1465,12 @@ and is not addressed by it. That was decided by an A/B rather
 than by argument: both variants were refitted from the decisions already recorded and
 scored on the same held-out probe, which moved agreement from \rShrinkTauAnchored{} to
 \rShrinkTauShrunk{} and top-1 from \rShrinkTopOneAnchored{} to \rShrinkTopOneShrunk{} over
-\rShrinkRunsReplayed{} replayed runs, while the prior's cold-start lift held at
-\rShrinkColdStartShrunk{} against \rShrinkColdStartAnchored{}, inside the
-\rShrinkColdStartSeedSd{} spread across \rShrinkColdStartSeeds{} seeds, which is what the
-rule asked. The rule the result had to clear was written down before the number existed,
+\rShrinkRunsReplayed{} replayed runs, while the second half of the rule held: the prior's
+five-comparison lift came out at \rShrinkColdStartShrunk{} with the change against
+\rShrinkColdStartAnchored{} without it, inside the \rShrinkColdStartSeedSd{} spread across
+\rShrinkColdStartSeeds{} seeds. That is a different measurement from the zero-comparison row
+in \S\ref{sec:evaluation}, which is negative: this one asks whether the change costs the
+prior anything where the prior helps, and the answer is that it does not. The rule the result had to clear was written down before the number existed,
 and the replay costs nothing, so there was no opportunity to rerun until a variant won. Each run still reports
 its own unexercised features in \file{summary.md}.
 
