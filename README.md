@@ -107,6 +107,19 @@ make help         # every regeneration command, named
 `make` exists because every artifact here has a command that recreates it. A figure or a
 number nobody can regenerate is a figure or a number nobody can check.
 
+### The static site
+
+```bash
+make site           # writes site/, screenshots need playwright
+cd site && python3 -m http.server 8080
+```
+
+`site/` is a fully static export: Problem, Architecture, Gallery and Eval work from
+pre-recorded JSON, and Live becomes screenshots of the running tool with the commands to
+start it, because a static host has neither a Python process nor provider keys. It is
+committed, so it can be published from repository settings by enabling GitHub Pages with
+`site/` on the default branch as the source. Nothing here pushes anything.
+
 ### Run the tool
 
 ```bash

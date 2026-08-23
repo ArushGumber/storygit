@@ -51,6 +51,9 @@ docs: diagrams numbers  ## Rebuild the outward-facing document
 	fi
 	cd docs && tectonic presentable.tex
 
+site:  ## Export the static site into site/ (screenshots need playwright)
+	$(PY) scripts/build_site.py
+
 eval:  ## Run the live evaluation (costs provider quota)
 	$(PY) -m eval.run --config full
 
