@@ -432,3 +432,22 @@ def test_the_env_example_holds_no_values_that_could_be_keys() -> None:
         name, _, value = line.partition("=")
         if any(word in name.upper() for word in ("KEY", "TOKEN", "SECRET", "PASSWORD")):
             assert value.strip() == "", f"{name} has a value in .env.example"
+
+
+def test_the_interface_serves_the_same_diagrams_the_paper_includes() -> None:
+    """One source for the figures, checked rather than asserted.
+
+    `docs/diagrams/build.sh` copies each SVG into `frontend/public/diagrams/` so the
+    Architecture tab and `presentable.tex` cannot drift into showing different pictures of
+    the same system. Nothing enforced that until this, and forgetting to rerun the build
+    is exactly the kind of thing nobody notices.
+    """
+    root = SRC.parents[1]
+    source = sorted((root / "docs" / "diagrams").glob("*.svg"))
+    assert source, "no diagrams found; this test has stopped checking anything"
+    for path in source:
+        served = root / "frontend" / "public" / "diagrams" / path.name
+        assert served.exists(), f"{path.name} is in the paper and not in the interface"
+        assert served.read_bytes() == path.read_bytes(), (
+            f"{path.name} differs between the paper and the interface; rerun docs/diagrams/build.sh"
+        )
