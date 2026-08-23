@@ -1,14 +1,14 @@
 {
   "name": "criterion_changes_ranking",
   "title": "The writer's own criterion reorders the candidates",
-  "summary": "Two candidates, judged on the fixed narratology axes, rank one way. The writer adds a criterion in their own words -- 'menace: every scene should threaten something' -- and the judge scores it alongside the fixed axes, so the ranking changes. The objective is partly the writer's, which is the whole answer to being an arbiter of somebody else's objective.",
+  "summary": "Two candidates, judged on the fixed narratology axes, rank one way. The writer adds a criterion in their own words, 'menace: every scene should threaten something', and the judge scores it alongside the fixed axes, so the ranking changes. The objective is partly the writer's, which is the whole answer to being an arbiter of somebody else's objective.",
   "branch": "main",
   "steps": [
     {
       "index": 0,
       "title": "Before: ranked on the fixed axes",
       "note": "'Quiet' scores 0.461, 'threatening' 0.526. The polished, low-stakes candidate wins.",
-      "snapshot_id": "17c61a6568e68d62ffbb04b939550c2f",
+      "snapshot_id": "d750cdb7f7cb74037ce6ca6376e36c26",
       "node_id": null,
       "level": "",
       "intent": "",
@@ -23,7 +23,7 @@
       "index": 1,
       "title": "After: the writer's criterion is in the objective",
       "note": "With 'menace' weighted, 'quiet' scores 0.486 and 'threatening' 0.726. The order flips. The criterion is visible in the ledger and deletable.",
-      "snapshot_id": "2d2276146a960d52b49b246b2b7ded0b",
+      "snapshot_id": "fe385f799e7d20c17d1b85ce1d87471a",
       "node_id": null,
       "level": "",
       "intent": "",

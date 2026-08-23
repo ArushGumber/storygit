@@ -1,14 +1,14 @@
 {
   "name": "propagation_walk",
   "title": "An edit marks what it affected, and rewrites nothing",
-  "summary": "Beat 1 establishes where Kael is. Beat 2 relies on it and establishes his goal; beat 3 relies on that. Changing beat 1 walks the declared dependency edges and marks both -- with the reason and the beat that established the fact. Beat 4, which depends on neither, is untouched. Nothing is regenerated.",
+  "summary": "Beat 1 establishes where Kael is. Beat 2 relies on it and establishes his goal; beat 3 relies on that. Changing beat 1 walks the declared dependency edges and marks both, with the reason and the beat that established the fact. Beat 4, which depends on neither, is untouched. Nothing is regenerated.",
   "branch": "main",
   "steps": [
     {
       "index": 0,
       "title": "The story so far",
       "note": "Two facts, and the beats that declare they depend on them.",
-      "snapshot_id": "02ace95830874bef2220734a17d482d3",
+      "snapshot_id": "4eaf9c17d30fc9f9369e4a6456ad41eb",
       "node_id": null,
       "level": "",
       "intent": "",
@@ -25,8 +25,8 @@
     {
       "index": 1,
       "title": "The writer moves Kael to Kell",
-      "note": "One fact changes. Two beats are marked stale, each citing the fact and the beat it came from. Beat 4 is not touched. Nothing is rewritten -- the writer chooses regenerate, edit, or dismiss.",
-      "snapshot_id": "9faf27542b993920c685272ece6d9b82",
+      "note": "One fact changes. Two beats are marked stale, each citing the fact and the beat it came from. Beat 4 is not touched. Nothing is rewritten: the writer chooses regenerate, edit, or dismiss.",
+      "snapshot_id": "9f113a616db23043e48068b1117a8ac0",
       "node_id": "n_4c749ebbf0",
       "level": "",
       "intent": "",

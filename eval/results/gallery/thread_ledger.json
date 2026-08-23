@@ -1,14 +1,14 @@
 {
   "name": "thread_ledger",
   "title": "A dropped thread is not a contradiction, so nothing else would find it",
-  "summary": "A thread opened in beat 1 and untouched since is perfectly consistent. No fact conflicts, no dependency is stale, and every continuity check passes -- which is exactly why a serial needs a ledger that tracks it separately. For audio fiction, a dropped thread is the most expensive kind of mistake.",
+  "summary": "A thread opened in beat 1 and untouched since is perfectly consistent. No fact conflicts, no dependency is stale, and every continuity check passes, which is exactly why a serial needs a ledger that tracks it separately. For audio fiction, a dropped thread is the most expensive kind of mistake.",
   "branch": "main",
   "steps": [
     {
       "index": 0,
       "title": "A question is opened",
       "note": "Beat 1 raises it: who told the Warden Kael's name?",
-      "snapshot_id": "a2dc3c59448a41c9946600916f54947c",
+      "snapshot_id": "02fa90510069fc8cccdc34545841c227",
       "node_id": null,
       "level": "",
       "intent": "",
@@ -22,8 +22,8 @@
     {
       "index": 1,
       "title": "Four beats later, nothing has touched it",
-      "note": "The audit reports it. Not a contradiction -- an omission, and the only place in the system that would ever notice.",
-      "snapshot_id": "a2dc3c59448a41c9946600916f54947c",
+      "note": "The audit reports it. Not a contradiction, an omission, and the only place in the system that would ever notice.",
+      "snapshot_id": "02fa90510069fc8cccdc34545841c227",
       "node_id": null,
       "level": "",
       "intent": "",

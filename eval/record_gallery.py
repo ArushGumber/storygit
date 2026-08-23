@@ -211,7 +211,7 @@ def session_propagation() -> Session:
         summary=(
             "Beat 1 establishes where Kael is. Beat 2 relies on it and establishes his "
             "goal; beat 3 relies on that. Changing beat 1 walks the declared dependency "
-            "edges and marks both -- with the reason and the beat that established the "
+            "edges and marks both, with the reason and the beat that established the "
             "fact. Beat 4, which depends on neither, is untouched. Nothing is regenerated."
         ),
     )
@@ -252,7 +252,7 @@ def session_propagation() -> Session:
         title="The writer moves Kael to Kell",
         note=(
             "One fact changes. Two beats are marked stale, each citing the fact and the "
-            "beat it came from. Beat 4 is not touched. Nothing is rewritten -- the writer "
+            "beat it came from. Beat 4 is not touched. Nothing is rewritten: the writer "
             "chooses regenerate, edit, or dismiss."
         ),
         diff=Diff(
@@ -285,7 +285,7 @@ def session_epistemic() -> Session:
         title="A character acts on something nobody told her",
         summary=(
             "Kael's secret is established in beat 2. In beat 4 Mara acts on it. Nothing "
-            "about the *facts* is wrong -- the secret is true -- so a checker that only "
+            "about the facts is wrong, the secret is true, so a checker that only "
             "compares facts sees nothing. The epistemic layer asks whether Mara has been "
             "told, finds no edge, and says so, naming the beat where the secret was "
             "established."
@@ -378,7 +378,7 @@ def session_threads() -> Session:
         title="A dropped thread is not a contradiction, so nothing else would find it",
         summary=(
             "A thread opened in beat 1 and untouched since is perfectly consistent. No "
-            "fact conflicts, no dependency is stale, and every continuity check passes -- "
+            "fact conflicts, no dependency is stale, and every continuity check passes, "
             "which is exactly why a serial needs a ledger that tracks it separately. For "
             "audio fiction, a dropped thread is the most expensive kind of mistake."
         ),
@@ -411,7 +411,7 @@ def session_threads() -> Session:
     recorder.record(
         title="Four beats later, nothing has touched it",
         note=(
-            "The audit reports it. Not a contradiction -- an omission, and the only place "
+            "The audit reports it. Not a contradiction, an omission, and the only place "
             "in the system that would ever notice."
         ),
         flags=flags,
@@ -436,7 +436,7 @@ def session_locks() -> Session:
             "The same upstream edit, three times. Once normally: two beats stale. Once "
             "with beat 2 locked: the walk stops there and beat 3 is never reached, because "
             "a locked beat is not going to change. Once with human-written prose on beat "
-            "2: it is flagged for review rather than staled -- the system does not tell an "
+            "2: it is flagged for review rather than staled, the system does not tell an "
             "author their own sentences are out of date."
         ),
     )
@@ -541,7 +541,7 @@ def session_branching() -> Session:
         summary=(
             "A branch is a pointer at a snapshot, so exploring costs nothing. Two "
             "divergent edits merge automatically when they touch different beats. Two "
-            "edits to the *same* beat come back as a conflict for the writer -- the system "
+            "edits to the same beat come back as a conflict for the writer, the system "
             "never guesses which version of a scene the author meant."
         ),
     )
@@ -645,8 +645,8 @@ def session_criterion() -> Session:
         title="The writer's own criterion reorders the candidates",
         summary=(
             "Two candidates, judged on the fixed narratology axes, rank one way. The "
-            "writer adds a criterion in their own words -- 'menace: every scene should "
-            "threaten something' -- and the judge scores it alongside the fixed axes, so "
+            "writer adds a criterion in their own words, 'menace: every scene should "
+            "threaten something', and the judge scores it alongside the fixed axes, so "
             "the ranking changes. The objective is partly the writer's, which is the whole "
             "answer to being an arbiter of somebody else's objective."
         ),
@@ -729,7 +729,7 @@ async def session_dial(*, live: bool = True) -> Session | None:
         summary=(
             "The dial re-weights the objective, not the sampler. At 0 the ranking is "
             "quality alone; at 1 it is distance from the model's own temperature-0 "
-            "continuation -- so the system explicitly selects against what it would have "
+            "continuation, so the system explicitly selects against what it would have "
             "done anyway. Same six candidates both times; different three shown."
         ),
     )
@@ -785,8 +785,8 @@ async def session_labelled(*, live: bool = True) -> Session | None:
         "labelled_candidates",
         title="Three named directions, not three paragraphs",
         summary=(
-            "Six candidates are generated under named instructions -- raise the stakes, "
-            "slow down, subvert the expectation -- and three are selected for quality and "
+            "Six candidates are generated under named instructions: raise the stakes, "
+            "slow down, subvert the expectation, and three are selected for quality and "
             "mutual difference. The label is the mechanism: three named directions cost a "
             "decision; three unlabelled paragraphs cost three readings. Each candidate "
             "arrives already checked, with its flags attached."
@@ -813,7 +813,7 @@ async def session_labelled(*, live: bool = True) -> Session | None:
                 title=f"The writer takes '{chosen.axis_label}'",
                 note=(
                     "Accepting commits the diff, extracts facts from any new prose, and "
-                    "shows the bible diff. The alternatives are recorded too -- that is "
+                    "shows the bible diff. The alternatives are recorded too, and that is "
                     "what makes this a preference rather than an event."
                 ),
                 candidates=candidates,

@@ -424,3 +424,44 @@ def test_a_rate_limit_carries_retry_after(api) -> None:  # type: ignore[no-untyp
     assert body["retry_after"] == 45.0, (
         "the interface can wait exactly long enough instead of guessing"
     )
+
+
+def test_a_real_recorded_session_loads_and_replays_over_http(tmp_path: Path) -> None:
+    """The Gallery must serve an actual recording, not just an empty list.
+
+    The empty case passed while the route was broken: it imported the evaluation harness,
+    which fails at request time from anywhere but the repository root, and every session
+    returned a 500. A screenshot caught it; this test is so a screenshot does not have to
+    next time.
+    """
+    from storygit.config import Settings
+    from storygit.gallery import Session
+
+    results = Path("eval/results")
+    sessions = sorted(p for p in (results / "gallery").glob("*.json") if p.name != "index.json")
+    if not sessions:
+        pytest.skip("no recorded sessions; run `python -m eval.record_gallery`")
+
+    repo = Repository.open(tmp_path / "s.db")
+    root = Story(id=NodeId("n_r"), title="S")
+    repo.initialize(StoryState.build(nodes={root.id: root}))
+    state = AppState(repo=repo, router=Router({}), settings=Settings(), results_dir=results)
+
+    with TestClient(create_app(state=state, frontend_dir=tmp_path / "nope")) as client:
+        index = client.get("/api/gallery").json()["sessions"]
+        assert len(index) >= 7, "FABLE asks for seven scenarios"
+        assert all(entry["title"] and entry["summary"] for entry in index), (
+            "every session says what it demonstrates"
+        )
+
+        name = Session.load(sessions[0]).name
+        body = client.get(f"/api/gallery/{name}").json()
+        assert body["session"]["steps"], "the session has steps"
+        assert "replay" in body, "and they resolve against the snapshots they name"
+        first = body["replay"][0]
+        assert first["tree"], "replay reconstructs the plan tree from the store"
+
+        # Every session in the index loads, not just the first.
+        for entry in index:
+            response = client.get(f"/api/gallery/{entry['name']}")
+            assert response.status_code == 200, f"{entry['name']} failed to load"
