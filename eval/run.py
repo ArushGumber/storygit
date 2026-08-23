@@ -24,7 +24,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from eval import ablations, metrics, offline, probe, simulate
+from eval import ablations, ceiling, metrics, offline, probe, simulate
 from eval.ablations import RunConfig
 from eval.personas import PERSONAS, Persona
 from eval.plots import line_plot
@@ -205,6 +205,14 @@ def summarize(
     rows: list[dict[str, Any]] = []
     acceptance: dict[str, list[float]] = {}
     edit_distance: dict[str, list[float]] = {}
+    probe_curves: dict[str, list[float]] = {}
+    # What the estimator could have scored on exactly this much data, from exactly these
+    # candidate sets. Reported beside every measured recovery number, because 0.44 against
+    # a ceiling of 0.50 and 0.44 against a ceiling of 0.95 are different claims.
+    ceilings = ceiling.for_runs(
+        [json.loads(log.model_dump_json()) for log in logs.values()],
+        {name: persona.noise for name, persona in PERSONAS.items()},
+    )
 
     for key, log in sorted(logs.items()):
         kinds = [a.kind for a in log.actions]
@@ -213,6 +221,8 @@ def summarize(
         acceptance[key] = curve
         edit_distance[key] = metrics.edit_distance_curve(kinds, distances, window=8)
         cost = metrics.cost_per_action(log.call_summary, len(log.actions))
+        if log.probe:
+            probe_curves[key] = [r["tau"] for r in log.probe]
         rows.append(
             {
                 "run": key,
@@ -228,6 +238,12 @@ def summarize(
                 "stale_marked": sum(a.stale_marked for a in log.actions),
                 "vetoes": sum(1 for a in log.actions if a.veto),
                 "weight_recovery": log.preference_summary.get("weight_recovery"),
+                "weight_recovery_ceiling": ceilings.get(log.persona, {}).get("mean"),
+                "weight_recovery_ceiling_sd": ceilings.get(log.persona, {}).get("sd"),
+                "probe_tau_first": log.probe[0]["tau"] if log.probe else None,
+                "probe_tau_last": log.probe[-1]["tau"] if log.probe else None,
+                "probe_top1_last": log.probe[-1]["top1"] if log.probe else None,
+                "probe": [dict(r) for r in log.probe],
                 "tokens_per_action": cost["tokens"],
                 "usd_per_action": cost["usd"],
                 "episodes": log.episodes_completed,
@@ -250,12 +266,21 @@ def summarize(
             ylabel="normalized token edit distance",
             path=results / "edit_distance.svg",
         )
+    if probe_curves:
+        line_plot(
+            probe_curves,
+            title="Held-out probe: agreement with the writer's own ranking",
+            xlabel="episodes completed",
+            ylabel="Kendall tau on frozen decisions",
+            path=results / "probe_agreement.svg",
+        )
 
     summary = {
         "generated_at": datetime.now(UTC).isoformat(),
         "runs": rows,
         "skipped": skipped,
         "call_summary": call_summary,
+        "ceilings": ceilings,
         "offline": offline_metrics,
     }
     results.mkdir(parents=True, exist_ok=True)
@@ -341,21 +366,42 @@ def _render_markdown(summary: dict[str, Any]) -> str:
     else:
         lines += [
             "| run | decisions | acceptance | first third | last third | "
-            "mean edit dist | weight recovery | tokens/action |",
-            "|---|---|---|---|---|---|---|---|",
+            "mean edit dist | weight recovery | same-n ceiling | tokens/action |",
+            "|---|---|---|---|---|---|---|---|---|",
         ]
         for row in summary["runs"]:
             recovery = row["weight_recovery"]
+            cap = row.get("weight_recovery_ceiling")
+            sd = row.get("weight_recovery_ceiling_sd")
             lines.append(
                 f"| {row['run']} | {row['decisions']} | {row['acceptance']:.0%} | "
                 f"{row['acceptance_first_third']:.0%} | {row['acceptance_last_third']:.0%} | "
                 f"{row['mean_edit_distance']:.2f} | "
-                f"{recovery:.2f} | {row['tokens_per_action']:.0f} |"
-                if recovery is not None
-                else f"| {row['run']} | {row['decisions']} | {row['acceptance']:.0%} | "
-                f"{row['acceptance_first_third']:.0%} | {row['acceptance_last_third']:.0%} | "
-                f"{row['mean_edit_distance']:.2f} | - | {row['tokens_per_action']:.0f} |"
+                f"{'-' if recovery is None else format(recovery, '.2f')} | "
+                f"{'-' if cap is None else f'{cap:.2f} ± {sd or 0.0:.2f}'} | "
+                f"{row['tokens_per_action']:.0f} |"
             )
+
+        if any(r.get("probe") for r in summary["runs"]):
+            lines += [
+                "",
+                "### Held-out probe",
+                "",
+                "The same frozen decisions, drawn from other personas' runs, re-ranked by "
+                "the head after every episode. Nothing here can move because the task got "
+                "harder: the probe set does not change.",
+                "",
+                "| run | probe points | tau, first | tau, last | top-1, last |",
+                "|---|---|---|---|---|",
+            ]
+            for row in summary["runs"]:
+                if not row.get("probe"):
+                    continue
+                points = int(row["probe"][0].get("points", 0))
+                lines.append(
+                    f"| {row['run']} | {points} | {row['probe_tau_first']:+.3f} | "
+                    f"{row['probe_tau_last']:+.3f} | {row['probe_top1_last']:.0%} |"
+                )
 
     if summary["skipped"]:
         lines += ["", "## Not run", "", "| configuration | persona | why |", "|---|---|---|"]

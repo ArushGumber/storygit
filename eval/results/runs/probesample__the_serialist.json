@@ -1,0 +1,1034 @@
+{
+  "persona": "the Serialist",
+  "config": {
+    "episodes": 1,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 2,
+    "seed": 7,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_be3056fabb",
+      "level": "episode",
+      "shown": [
+        "p_a78acf9ee3",
+        "p_ab4ffd6ca6",
+        "p_6290672b37"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "pay off an open thread",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.7647,
+        0.9398,
+        0.8138
+      ],
+      "chosen": "p_ab4ffd6ca6",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3bcdcc94bec68cb65a04a34481429904",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5744,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Ash Elara returns to her abandoned family home in Ashfall to secure a hidden ledger, only to find the dust has been disturbed by someone else. She masks her frantic desperation with cold efficiency while bargaining with the local scavengers who claim the house as their own. Elara is running from a debt involving more than just money, and Ashfall is legally classified as a dead zone.",
+        "The Ashfall Ledger Elias discovers the ledger buried beneath the floorboards of the Ashfall archives, proving the city council authorized the toxic dumping five years ago. Just as he secures the evidence, the heavy iron door of the archives is welded shut from the outside. The city council actively orchestrated the environmental collapse of Ashfall for profit.",
+        "The Ashfall Gate Elias prepares to breach the Ashfall gate, only to discover the kinetic lock has been fused by internal sabotage, rendering his key useless. He realizes someone within his own inner circle has been manipulating his access codes since he arrived. The sabotage is local, not external, and the key Elias carries is now a liability that signals his location to whoever fused the lock."
+      ]
+    },
+    {
+      "node_id": "n_c9665fe8f4",
+      "level": "scene",
+      "shown": [
+        "p_e21b60b17f",
+        "p_4550b01c39",
+        "p_3200b8a5fb"
+      ],
+      "axes": [
+        "slow down",
+        "pay off an open thread",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8596,
+        0.8667,
+        0.9062
+      ],
+      "chosen": "p_3200b8a5fb",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "ffd0b0250be68684c2d4a885eeb29416",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Smell of Ozone Elias presses his ear to the cooling iron door, listening to the rhythmic, metallic scrape of a blowtorch extinguishing. As the air in the archives grows heavy with ozone and heat, he realizes the ventilation intake has been blocked from the exterior as well, leaving him to suffocate in silence with the ledger in his hands. The council is not just covering up the past; they are willing to commit murder in real-time to silence him.",
+        "The Oxygen Tax As the air recyclers in the archive room hum to a halt, a digital voice broadcast from the wall panels informs Elias that his personal oxygen allocation has been revoked due to 'unauthorized document handling.' A hidden pneumatic tube in the corner floorboard pops open, revealing a gas mask and a note signed by Sarah, the council archivist, asking if he is ready to die for the truth. The council is monitoring his oxygen usage and Sarah knows his current location.",
+        "The Ventilation Grate Instead of panicking or searching for an exit, Elias realizes the ledger contains a handwritten note by Councilman Halloway dated yesterday. A low hum vibrates through the floor as the room begins to fill with a sweet-smelling, colorless gas meant to incinerate the evidence—and him—before the welding cools. Elias presses his ear to the grate, hearing not guards, but his own sister’s voice whispering through the vent. The council is using incinerator gas to erase the evidence, and Elias's sister is somehow complicit in his containment."
+      ]
+    },
+    {
+      "node_id": "n_b5a82d7022",
+      "level": "beat",
+      "shown": [
+        "p_02d783302c",
+        "p_709b033a60",
+        "p_6b41ee8532"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.9158,
+        0.8757,
+        0.6678
+      ],
+      "chosen": "p_02d783302c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a2ac66296d8af981932514bd010350be",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6647,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6433,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Sister's Bargain Elias smashes the vent with the ledger's heavy binding to force a response. His sister, Sarah, speaks through the metal, revealing she is not a prisoner but an initiate of the Council, tasked with ensuring Elias's silence to 'protect the greater order' of Ashfall. She offers him a choice: surrender the ledger to be burned in the gas, or suffocate with it. Sarah serves the Council voluntarily, framing the cover-up as a necessary sacrifice for the city's stability.",
+        "The Sister's Cipher Instead of begging for help or pleading for his life, Elias realizes the voice on the other side of the vent is reciting a sequence of archive codes—the exact combination to the secondary internal release hatch. As the gas thickens, he inputs the sequence, but the mechanism doesn't unlock; it triggers a loud, mechanical alarm that floods the room with blinding spotlights instead. Elias stares into the vent, seeing a camera lens swivel to track his movement as his sister's voice changes from a whisper to a pre-recorded broadcast. The sister is using Elias to test the archive's automated security protocols; the voice wasn't real-time contact.",
+        "The Sister's Dilemma Clara stands on the other side of the ventilation grate, her hand resting on the lever that controls the incinerator gas. She weeps as she hears Elias pleading for his life inside the room, but she remains stationary, knowing that if she releases him, the Council will execute them both immediately. She whispers a final instruction through the vent for him to look behind the loose brick in the corner, knowing it is the only way he might survive the fire. Clara is working under duress to protect Elias and herself from the Council's retribution."
+      ]
+    },
+    {
+      "node_id": "n_6e430043c7",
+      "level": "prose",
+      "shown": [
+        "p_28f713aea8",
+        "p_dc2f5f7230",
+        "p_9516ce2f8f"
+      ],
+      "axes": [
+        "raise the stakes",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.9306,
+        0.9189,
+        0.8601
+      ],
+      "chosen": "p_28f713aea8",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "13818ad12721290beaab46a4167ff9fe",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9778,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9692,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8907,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The metal of the vent buckled, a screech of tortured steel echoing against the walls as Elias slammed the ledger’s iron-bound spine into the grate. He didn’t stop until the mesh tore, revealing a sliver of the corridor beyond, but all he saw was the shadow of a boot. Sarah’s voice didn’t waver. It was the same tone she used to use when reading him bedtime stories, now stripped of all warmth. 'The gas is already reaching the floor level, Elias. Breathe deep and you’ll be asleep before your lungs stop, or hand it over and I promise you a clean exit.' Elias coughed, the sweet scent of the incinerator gas catching in his throat like thick, velvet syrup. He looked at the ledger, the ink of Halloway's handwriting blurring in the dim emergency light. 'You call this order, Sarah? Killing your own blood for a lie buried five years ago?' Her voice dropped to a whisper, cold and precise. 'It’s not a lie. It’s the foundation. If you don't drop that book into the intake chute within ten seconds, I will lock the vent from the outside and let the room finish its work. Are you truly willing to die for a stack of paper that no one is ever going to read?'",
+        "prose Elias swung the heavy, leather-bound ledger. The metal casing of the ventilation grate groaned, then buckled inward with a scream of rusted iron. Dust choked the air. Through the jagged gap, a sliver of hallway light cut through the haze. Sarah didn't flinch. She stood on the other side, her hands folded neatly into the deep sleeves of a Council initiate’s robe. 'Stop, Elias,' she said, her voice impossibly calm against the roar of the gas vents kicking into overdrive. 'The room is sealed. You are breathing poison, and the Council needs that book gone to save us all.' Elias coughed, his vision blurring as the sweet scent intensified. He pressed the ledger against his chest, feeling the sharp corner dig into his ribs. 'Save us?' he wheezed, his fingers trembling as he clutched the spine. 'You call killing thousands to save a reputation the greater order?' Sarah moved closer, her face pressed against the grate. 'I call it peace,' she whispered, her eyes devoid of the sister he remembered. 'Slide it through the opening now, and I will unlock the door. Keep it, and you will become nothing more than a footnote in a history that will never be written. Is the truth worth the last breath you will ever take?'",
+        "prose The metal buckled under the ledger's iron binding, a hollow, screeching protest that echoed in the tightening room. Elias pressed his face against the grate, his breath shallow, the sweet, cloying scent of the gas already thick in his lungs. 'Sarah?' he coughed, the name tasting like ash. A steady, calm voice drifted through the slats, devoid of the panic he felt tearing at his ribs. 'Elias, the ledger is not a history, it is a foundation. If it stays in the fire, Ashfall remains stable. If it leaves, the city tears itself apart from the inside.' He could hear the faint, rhythmic ticking of a timer on her side of the vent. 'The gas will ignite in ninety seconds. Pass the ledger through the gap, and I will pull the lever that unlocks the floor hatch. Keep it, and you become part of the archive's permanent inventory.' Elias gripped the ledger to his chest, his knuckles white. The floor groaned as the pilot lights hummed to life. 'Is this what you meant when you said you were working for the future, Sarah? By killing your own blood to hide a crime?'"
+      ]
+    },
+    {
+      "node_id": "n_b5a82d7022",
+      "level": "beat",
+      "shown": [
+        "p_16e9999833",
+        "p_998c561bf2",
+        "p_a2c86e8321"
+      ],
+      "axes": [
+        "introduce a complication",
+        "deepen the interiority",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.7866,
+        0.648,
+        0.8152
+      ],
+      "chosen": "p_a2c86e8321",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "51472267bc01da6f71432fe3eaac4ec5",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The False Floor As Elias moves to slide the ledger through the grate, he realizes the gas intake isn't just incinerating the archives; it is venting directly into the city's residential sectors. He stares at the ledger's final page, finding a schematic that confirms the 'incinerator' is actually a dispersal unit for the toxin. If he destroys the ledger, he hides the proof of a city-wide poisoning, but if he keeps it, Sarah seals the vent forever. The incinerator gas is a delivery system for toxic dispersal into Ashfall.",
+        "The Counter-Offer Elias coughs violently but manages to slide the ledger into the vent's gap, feigning surrender as he edges his fingers toward the latch mechanism Sarah mentioned. He whispers back, agreeing to give it up, but instead of the ledger, he jams the heavy, jagged iron binding of the book into the ventilation controls to forcibly override the locking mechanism. The machine groans as the gears grind against the metal, partially jamming the vent shut while the gas level rises to his chin. Elias is willing to risk total suffocation to sabotage the mechanism instead of just handing the ledger over.",
+        "The Ledger's Deception Instead of handing over the ledger or suffocating, Elias realizes the incinerator intake chute is too small for the heavy ledger. He frantically rips out the middle pages containing the Council's signatures and shoves them into the chute, keeping the incriminating summary pages hidden in his jacket. Sarah, hearing the paper tear, believes he has surrendered the evidence and deactivates the gas as the room begins to vent, leaving Elias alive but with a fractured truth. Elias is willing to sacrifice the total truth to survive, and Sarah is susceptible to being tricked by her own rigid expectations."
+      ]
+    },
+    {
+      "node_id": "n_8f9f2e6636",
+      "level": "prose",
+      "shown": [
+        "p_4438791d84",
+        "p_e06602ced3",
+        "p_1aacfe1a0e"
+      ],
+      "axes": [
+        "introduce a complication",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8813,
+        1.0,
+        0.9435
+      ],
+      "chosen": "p_e06602ced3",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "c340ba46da9098380b76fbeff44f3d1b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9244,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9565,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9244,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Elias lunged for the incinerator chute, the heavy, iron-bound spine of the ledger slamming against the intake grate with a dull thud. It wouldn't fit. The opening was narrow, designed only for waste paper and ash. He frantically tore at the binding, his fingers slick with sweat and the residue of the gas. With a guttural sound, he ripped out the central signatures—the names of every councilman who had signed the order—and jammed the crumpled pages into the chute. The machinery whirred, sensing the intake, and he threw the ledger behind a row of filing cabinets just as the sound of tearing paper echoed through the vent. 'Good,' Sarah’s voice crackled, sounding almost relieved. 'You made the right choice.' The high-pitched whine of the incinerator died, replaced by the heavy hiss of the ventilation system purging the room. Elias slumped against the cold floor, his chest heaving, his hand pressed tight against the summary pages hidden beneath his jacket. The air cleared, but the silence that followed felt heavier than the gas. If she believed the signatures were the only proof, would she stop hunting him, or had he just handed her the only weapon she needed to identify her enemies?",
+        "prose The sweet, cloying scent of the gas clawed at the back of Elias’s throat, making his vision swim. He stumbled toward the intake chute, the iron-bound ledger heavy in his shaking hands. He thrust the book toward the slot, but the leather cover snagged, too thick to pass. A frantic realization hit him: the system was built to burn, not to ingest. He dropped to his knees, his fingers scrambling to catch the edge of the parchment. With a jagged, desperate motion, he ripped the central signatures from the binding. The sound of tearing paper echoed unnaturally loud in the pressurized chamber. He shoved the loose pages into the chute, where they were snatched by the internal suction with a sharp, pneumatic thud. Outside the grate, silence stretched, then the aggressive whir of the ventilation fans engaged, pulling the toxic air from the room. A hiss of hydraulics followed as the heavy iron door groaned, the welds popping under the sudden shift in pressure. Elias pressed the remaining summary pages against his chest, heart hammering against his ribs, as a sliver of light from the corridor bled into the dark archive. He stood on shaky legs, hiding the truth beneath his jacket, but his eyes stayed fixed on the door. Was he safe because she believed him, or because she was waiting for him to step into the light?",
+        "prose Elias lunged for the incinerator intake. He shoved the leather-bound book against the narrow mouth of the chute, but it didn't budge. It was built for waste, not history. The gas clawed at his throat, a thickening, cloying sweetness. Through the haze, he realized the impossibility of his situation: the chute was too small for the whole. His hands, trembling and slick with sweat, clawed at the binding. With a violent, ragged sound, paper tore. He jammed the thick wad of signed pages—the evidence of the Council's direct culpability—into the intake. They disappeared into the dark. 'I'm putting it in now!' he rasped, his voice cracking. He shoved the remaining pages, the summary that laid out the scale of the toxic rot, deep into the inner lining of his jacket. The vent above hissed, the suction pulling hard on the pages inside the chute. Outside, the heavy thud of the door's locking mechanism sliding back echoed through the room. The lethal, sweet fog began to dissipate, replaced by the biting cold of the ventilation system kicking into high gear. Elias collapsed against the wall, clutching his chest, waiting to see if his sister would walk through that door expecting a ghost."
+      ]
+    },
+    {
+      "node_id": "n_c9665fe8f4",
+      "level": "scene",
+      "shown": [
+        "p_8ede4ca504",
+        "p_26a0811501",
+        "p_bf68c009bd"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8491,
+        0.8182,
+        0.678
+      ],
+      "chosen": "p_8ede4ca504",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "431a0acca136915fbd6e22764f5c482b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6607,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6811,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Threshold of Trust The iron door grinds open, revealing Sarah standing in the dim corridor with her sidearm drawn. She doesn't shoot, but her eyes track the subtle bulge of the hidden pages beneath Elias's coat. Instead of an interrogation, she holsters her weapon and offers a hand to help him out, claiming she declassified the area to protect him from the Council's wrath. As Elias takes her hand, he spots a fresh burn mark on her uniform—the same chemical scent as the gas he barely survived. Sarah is actively lying about her motives and was in closer proximity to the incinerator than she let on.",
+        "The Threshold of Silence As the iron door swings open, Elias steps out expecting a confrontation, but he finds the corridor empty save for a dropped communicator. Sarah’s voice crackles over the device, not from the hallway, but from deep within the city’s ventilation hub, revealing she never left her post to monitor the purge. A heavy security detail of Council enforcers rounds the corner, clearly alerted by the silent alarm the archive door triggered upon opening. Sarah is monitoring Elias remotely and the Council is already aware of his breach.",
+        "The Threshold of Betrayal Elias stumbles out of the archive into the dimly lit corridor, finding Sarah standing alone with her hand on her sidearm. She inspects the intake chute’s output on her monitor, confirming the signatures have been incinerated, but her eyes lock onto the slight bulge of the summary pages hidden beneath Elias's jacket. She doesn't raise her gun; instead, she holds out a small, metallic flash drive and asks him if he knows what the cost of his 'mercy' will be for the people currently residing in Sector 4. Sarah knows or suspects the ledger wasn't fully destroyed; she is testing Elias's willingness to abandon the people in Sector 4 to keep his secret."
+      ]
+    },
+    {
+      "node_id": "n_e8693764ac",
+      "level": "beat",
+      "shown": [
+        "p_4a3e066966",
+        "p_698bb247b7",
+        "p_257075f254"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.9003,
+        0.7339,
+        0.7674
+      ],
+      "chosen": "p_4a3e066966",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "095194e31f642431720fdb587264c49b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6854,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Shared Secret Sarah reaches out, her gloved hand steady, offering to guide Elias through the smoke-filled corridors. As he reaches to take it, he spots the singe marks on her cuff and the faint, chemically sweet residue on her fingertips, matching the incinerator gas. She smiles, but her eyes remain flat, devoid of the sisterly warmth he remembers. Elias takes her hand, but as he does, he slips the hidden pages deeper into his coat lining, wondering if she is helping him because she doesn't know he still has the truth, or because she is playing the long game. Sarah is lying about her involvement in the gas incident, and Elias is consciously choosing to maintain his deception.",
+        "The Weight of the Ledger POV shifts to Sarah. As she monitors the internal sensors, she realizes Elias didn't destroy the whole ledger, only the signatures. Instead of the relief of mission success, she feels a surge of terror—the Council knows the full extent of her failure to contain the breach. She greets him with the facade of an ally, but her hand hovers over her comms, debating whether to report him or buy his silence. Sarah knows the ledger is incomplete; she is terrified of the Council's retribution.",
+        "The Scent of Deceit As Sarah helps Elias out of the archive, he notices a distinct, singed chemical burn on her sleeve that mirrors the smell of the incinerator gas. She claims she declassified the area to save him, but Elias realizes she was close enough to the intake to be exposed herself. Elias must decide if he should confront her about the burn or continue the charade of trust to escape the building. Sarah was closer to the incinerator mechanism than she admitted, suggesting she is directly involved in the attempt on Elias's life."
+      ]
+    },
+    {
+      "node_id": "n_bd82a677b1",
+      "level": "prose",
+      "shown": [
+        "p_e09af60f74",
+        "p_b98d7331ca",
+        "p_02b6c12e96"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "introduce a complication",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.7918,
+        0.8549,
+        0.8712
+      ],
+      "chosen": "p_02b6c12e96",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "d9fd9489b4faf8022fd0ea85a06502ba",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9129,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8462,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9442,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The air in the corridor tasted like burnt copper and synthetic sugar. Sarah’s grip was firm, almost clinical, as she pulled him from the wreckage of the archives. Her eyes flicked toward the bulge beneath his coat, then back to his face, lingering with a predatory patience. She walked with a stiff, unnatural gait, her left arm held close to her side as if protecting an injury hidden by the dark fabric of her uniform. 'The purge protocols are still cycling, Elias,' she said, her voice dropping into the sterile cadence of a Council report. 'If we move toward the central atrium, the atmospheric sensors will detect your elevated heart rate and trigger a secondary lockdown.' She steered him toward a narrow maintenance hatch tucked behind a ventilation duct. Elias felt the pages of the ledger bite into his ribs with every step, a constant, sharp reminder of the truth he had salvaged. He kept his stride rhythmic, matching hers, forcing his breathing to remain shallow to mimic the lethargy of someone who had inhaled the gas. As they reached the hatch, she paused, her hand hovering over the keypad. She didn't look at him, but she tilted her head just enough to catch the light on her fingertips. 'You’re unusually quiet for a man who just survived an execution attempt. Tell me, brother, did you find what you were looking for, or did you leave it all to burn?'",
+        "prose The air in the corridor hung heavy, a toxic fog that tasted like copper and old lies. Sarah’s gloved hand hovered in the space between them, steady as stone. Elias reached out, his fingers brushing against the fabric of her sleeve, where the fabric was puckered and charred from the very gas she claimed to have neutralized. The sweet, cloying scent clinging to her skin didn’t just suggest proximity; it was a testament to the fact that she had been holding the valve. He forced a tremor into his hand, a performance of his own weakness, as he gripped her palm. The skin beneath her glove felt impossibly cold. 'I declassified this sector, Elias,' she said, her voice a smooth, calculated hum. 'But the Council is already tracking the power drop from the archive ventilation. If we don’t move now, you’ll be the one they incinerate to seal the silence.' She didn’t wait for his reply. Her grip tightened, not like a sister pulling a brother to safety, but like a guard leading a prisoner to the block. As they stepped into the dense, swirling haze of the corridor, Elias felt the edges of the ledger pages bite into his ribs. He felt the shift in her stance as they reached the primary junction—she turned not toward the exit, but toward the central processing hub, the only place in the city with the equipment to fully erase digital records. If she knew the ledger wasn't fully destroyed, was this walk a salvation, or the final preparation for a burial?",
+        "prose Sarah’s fingers closed around his wrist, her grip firm, almost clinical. Her glove felt cold, slick with that same oily sheen he’d smelled in the vents. As she pulled him into the corridor, the harsh overhead lights caught the frayed, blackened threads of her uniform cuff. She didn't let go. Instead, she leaned in, her breath smelling of nothing—no coffee, no smoke, just the sterile, metallic tang of the ventilation system. 'You look tired, Elias,' she said, her voice a low hum that barely carried over the steady drone of the turbines. She turned toward the main egress, her back exposed, but her hand remained a shackle on his pulse. Elias tightened his arm against his ribs, pressing the hidden pages against his side until the edges bit into his skin. He shifted his weight, trying to gauge if she could feel the crinkle of paper through his heavy jacket, or if she was simply waiting for the right moment to squeeze the life out of him. 'I’m fine,' he lied, forcing his voice to remain steady. 'Just ready to leave this place.' Sarah let out a soft, dry laugh, her gaze shifting to the end of the long, dark hallway where the shadows of Council guards flickered like ghosts. 'We all are, brother. But tell me, did you really think that incinerator chute was the only place we keep the records?'"
+      ]
+    },
+    {
+      "node_id": "n_e8693764ac",
+      "level": "beat",
+      "shown": [
+        "p_d632857291",
+        "p_a7654fdc1a",
+        "p_60ed946a11"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.843,
+        0.8095,
+        0.8054
+      ],
+      "chosen": "p_d632857291",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "e29582739460e9da7c4104277efa2376",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6748,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Vaulted Truth Sarah drags Elias into a side chamber, away from the guards' line of sight. She pulls a hidden lever on the wall, and a concealed wall panel slides open to reveal a private, illuminated archive containing identical ledger copies. She drops the mask of concern, her expression hardening into absolute control, and demands he hand over the paper to prove he understands the gravity of the Council's real reach. The Council maintains a hidden, secondary archive accessible only to initiates, and Sarah knows Elias hasn't surrendered the evidence.",
+        "The Price of Compliance Sarah stops in the corridor, her hand tight on Elias's wrist. She presses a remote detonator against his jacket, the device humming with a low, dissonant frequency that vibrates against his ribs and the hidden ledger pages. She whispers that if he doesn't hand over what he kept, the proximity alarm will trigger the remaining gas scrubbers to reverse, flooding the corridor with pure chlorine instead of neutralizing agents. Elias stares at her, realizing she is willing to kill them both to force his hand. Sarah has a remote detonator that controls the local ventilation systems and is prepared to use it to kill them both to secure the ledger.",
+        "The Auditor's Eye Sarah shifts her perspective, observing Elias’s forced calm. She feels the distinct, sharp edge of the ledger hidden beneath his jacket as she guides him, confirming her suspicion that he held back the evidence. She maintains her facade of sisterly concern, internally weighing whether to execute him now or extract the location of his remaining contacts before the Council's enforcers arrive. Sarah knows Elias has the ledger pages."
+      ]
+    },
+    {
+      "node_id": "n_2385effb40",
+      "level": "prose",
+      "shown": [
+        "p_4a8e0b6090",
+        "p_7d0979ea25",
+        "p_c24ce8d985"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "deepen the interiority",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.8705,
+        0.9312,
+        0.969
+      ],
+      "chosen": "p_c24ce8d985",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "4c1ae884c88032685b2094a5032c5223",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9442,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.88,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9362,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Sarah didn't walk; she steered. She shoved Elias through a narrow maintenance hatch into a room that smelled violently of ozone. With a sharp, rhythmic click, she dragged a brass lever embedded in the masonry. A portion of the wall hissed, receding into the floor to reveal a chamber bathed in white, surgical light. Inside, rows of pristine, leather-bound ledgers stood on glass shelves, identical to the one Elias had scavenged from the floorboards. She stepped into the center of the room and let his arm go, her demeanor shifting from sisterly protector to cold, detached inquisitor. The warmth of her touch had been a calculated facade; now, her eyes were flat, mirroring the sterile metal of the walls. 'The archives you broke into were bait, Elias,' she said, her voice devoid of its earlier inflection. She held out a gloved hand, the oily residue catching the light as she gestured to his jacket. 'You think you are playing a game of revelation, but you are merely inventory. Hand over the pages. If you want to believe your life has value, prove to me that you understand who really owns this city—and what happens to those who try to claim a piece of it for themselves?'",
+        "prose Sarah yanked him through a narrow service arch, the metal groaning as she shoved him into a cramped, windowless room. She didn't wait for him to find his balance. With a rhythmic clatter, she tripped a lever behind a stack of rusted canisters, and the wall shuddered, sliding aside to reveal a glow that was far too white, too clean for these bowels of the city. Inside sat rows of cabinets, perfectly organized, each one containing ledgers identical to the one he had torn apart. Sarah stepped into the light, the softness drained from her face, leaving only the sharp, predatory architecture of a Council loyalist. She held out a gloved hand, fingers splayed and demanding. 'Stop pretending, Elias. I felt the paper crunch when I pulled you in.' She took a step closer, her voice dropping into a register that made the air feel thin. 'You think you are protecting some grand truth, but you are just holding a funeral notice for yourself. Give me what you have left, or do you truly want to see how much more of the city we can burn to find it?'",
+        "prose Sarah pulled Elias into the shadow of the alcove, her boots silent on the grating. She watched his jaw tighten, the pulse jumping at his neck—he still thought he was hiding something. With a swift movement, she pressed the hidden lever behind the conduit pipe. The wall groaned, a pneumatic hiss accompanying the shifting steel plates as they slid aside to reveal the inner sanctum: rows of illuminated glass cabinets holding hundreds of identical ledger volumes. The soft, blue glow reflected in Sarah’s eyes, hardening them into something sharp and unyielding. She released his arm, stepping into his space until the sterile scent of her uniform became a suffocating wall between them. 'The incinerator is for show, Elias. It’s for the fools who think the truth can be burned away,' she whispered, her voice dropping the practiced warmth of a sibling to the cold authority of an initiate. She gestured toward the infinite shelves of documented crimes. 'The Council doesn't destroy the ledger; we catalog it. We own it. Now, give me the pages you’re clutching against your ribs, and tell me—did you truly think I would let you walk out of here with the only piece of the puzzle I haven't indexed yet?'"
+      ]
+    }
+  ],
+  "episodes_completed": 1,
+  "call_summary": {
+    "calls": 152,
+    "prompt_tokens": 298098,
+    "completion_tokens": 105563,
+    "cost_usd": 0.0,
+    "cache_hits": 0,
+    "errors": 4,
+    "mean_latency_s": 6.860654666902375,
+    "total_tokens": 403661,
+    "cache_hit_rate": 0.0,
+    "by_purpose": [
+      {
+        "purpose": "propose.beat",
+        "calls": 28,
+        "tokens": 151485,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 66,
+        "tokens": 109857,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 28,
+        "tokens": 74609,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 14,
+        "tokens": 26129,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 7,
+        "tokens": 23174,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 7,
+        "tokens": 14522,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts.repair",
+        "calls": 2,
+        "tokens": 3885,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "gemini",
+        "calls": 147,
+        "tokens": 400010,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 5,
+        "tokens": 3651,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 0,
+      "misses": 152,
+      "entries": 3251
+    },
+    "budget_remaining_usd": 12.0
+  },
+  "preference_summary": {
+    "pairs_seen": 22,
+    "edits_seen": 0,
+    "voice_trained": false,
+    "top_weights": [
+      {
+        "feature": "judge_momentum",
+        "weight": 2.6856
+      },
+      {
+        "feature": "criterion_2",
+        "weight": 2.4192
+      },
+      {
+        "feature": "continuity",
+        "weight": 2.1044
+      },
+      {
+        "feature": "judge_voice",
+        "weight": 2.0044
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 2.68557812291016,
+      "judge_specificity": 0.3261129604997745,
+      "judge_consequence": 1.5478821065543447,
+      "judge_voice": 2.0043611052497528,
+      "criterion_1": 1.4000593878025016,
+      "criterion_2": 2.4191839131434505,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 2.1044128523713947,
+      "voice_cosine": 0.4099103353220211,
+      "edit_direction": 1.308534448224314,
+      "length": 0.43965555791837096,
+      "dialogue_ratio": 0.6711140206190536
+    },
+    "weight_recovery": 0.34355888873180007
+  },
+  "hidden_weights": {
+    "judge_momentum": 1.0,
+    "judge_specificity": 0.4,
+    "judge_consequence": 0.9,
+    "judge_voice": 0.0,
+    "criterion_1": 0.9,
+    "criterion_2": 0.3,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 0.8,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.0,
+    "length": 0.2,
+    "dialogue_ratio": 0.3
+  },
+  "probe": [],
+  "errors": [],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
+}

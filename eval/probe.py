@@ -222,6 +222,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--build", action="store_true", help="rebuild the fixture")
     parser.add_argument("--runs", default="eval/results/runs", help="directory of RunLog JSON")
+    parser.add_argument(
+        "--glob",
+        default="probesample__*.json",
+        help="which runs to sample from; the sampling run is never itself probed",
+    )
     parser.add_argument("--per-run", type=int, default=3)
     args = parser.parse_args()
     if not args.build:
@@ -230,9 +235,11 @@ def main() -> None:
         return
     runs = [
         json.loads(path.read_text())
-        for path in sorted(Path(args.runs).glob("full__*.json"))
+        for path in sorted(Path(args.runs).glob(args.glob))
         if "partial" not in path.name
     ]
+    if not runs:
+        raise SystemExit(f"no runs matched {args.glob} in {args.runs}")
     probe = build(runs, per_run=args.per_run)
     path = probe.save()
     print(f"wrote {path}: {len(probe.points)} points from {len(runs)} runs")

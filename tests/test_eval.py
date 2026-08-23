@@ -8,7 +8,7 @@ exercise by spending quota is a metrics module nobody checks.
 from __future__ import annotations
 
 import pytest
-from eval import ablations, inject, metrics, offline, personas, probe
+from eval import ablations, ceiling, costing, inject, metrics, offline, personas, probe
 from eval.gallery_record import Recorder, Session, replay
 from eval.personas import PERSONAS, ForbiddenMove, get
 from eval.simulate import RunLog, SimulatedWriter, run_writer, token_edit_distance
@@ -711,3 +711,73 @@ def test_the_committed_probe_fixture_is_leak_free_and_usable() -> None:
     for point in probe_set.points:
         assert len(point.features) >= 2, "a probe point needs a ranking to score"
         assert all(set(f) >= set(BASE_FEATURES) for f in point.features)
+
+
+def test_the_recovery_ceiling_is_deterministic_and_bounded() -> None:
+    """A recovery number without a ceiling is a number without a scale.
+
+    Same inputs, same answer, and the answer has to sit where a correlation can: the
+    ceiling is what the estimator achieves when the model is correct by construction, so
+    it is well below 1.0 at these sample sizes and well above chance.
+    """
+    import random as _random
+
+    rng = _random.Random(4)
+    matrices = [
+        [{name: rng.random() for name in BASE_FEATURES} for _ in range(3)] for _ in range(25)
+    ]
+    first = ceiling.ceiling_for(matrices, noise=0.08, seeds=40)
+    second = ceiling.ceiling_for(matrices, noise=0.08, seeds=40)
+    assert first == second, "the ceiling must be seeded"
+    assert 0.0 < first["mean"] < 1.0, first
+    assert first["n_decisions"] == 25.0
+    assert first["n_pairs"] > 0.0
+
+
+def test_more_decisions_raise_the_ceiling() -> None:
+    """If the ceiling did not rise with sample size it would not be a sample-size story."""
+    import random as _random
+
+    rng = _random.Random(5)
+
+    def matrices(n: int) -> list[list[dict[str, float]]]:
+        return [[{k: rng.random() for k in BASE_FEATURES} for _ in range(3)] for _ in range(n)]
+
+    small = ceiling.ceiling_for(matrices(8), noise=0.08, seeds=40)["mean"]
+    large = ceiling.ceiling_for(matrices(120), noise=0.08, seeds=40)["mean"]
+    assert large > small + 0.05, f"small={small:.3f} large={large:.3f}"
+
+
+def test_a_noisier_writer_has_a_lower_ceiling() -> None:
+    """Decision noise is the other half of what caps recovery, and it must show."""
+    import random as _random
+
+    rng = _random.Random(6)
+    matrices = [
+        [{name: rng.random() for name in BASE_FEATURES} for _ in range(3)] for _ in range(40)
+    ]
+    quiet = ceiling.ceiling_for(matrices, noise=0.02, seeds=40)["mean"]
+    loud = ceiling.ceiling_for(matrices, noise=0.40, seeds=40)["mean"]
+    assert quiet > loud, f"quiet={quiet:.3f} loud={loud:.3f}"
+
+
+def test_the_chunk_seven_costing_is_arithmetic_and_never_calls_anything() -> None:
+    """The projection exists precisely so that no metered call has to be made to get it."""
+    summary = {
+        "call_summary": {"prompt_tokens": 4_000_000, "completion_tokens": 500_000},
+        "runs": [{"decisions": 100}],
+    }
+    totals = costing.totals_from(summary)
+    full = costing.project(totals, "anthropic/claude-3.5-sonnet")
+    # 4M prompt at $3/M plus 0.5M completion at $15/M.
+    assert full["prompt_usd"] == pytest.approx(12.0)
+    assert full["completion_usd"] == pytest.approx(7.5)
+    assert full["total_usd"] == pytest.approx(19.5)
+    assert full["usd_per_decision"] == pytest.approx(0.195)
+
+    half = costing.project(totals, "anthropic/claude-3.5-sonnet", fraction=0.5)
+    assert half["total_usd"] == pytest.approx(9.75)
+
+    body = costing.render(summary, cap_usd=12.0)
+    assert "No OpenRouter call was made" in body
+    assert "half only" in body, "a run over the cap must say so rather than just printing it"

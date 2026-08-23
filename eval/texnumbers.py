@@ -154,12 +154,58 @@ def collect() -> dict[str, str]:
             f"{round(sum(r.get('tokens_per_action', 0) for r in runs) / len(runs)):,}"
         )
         macros["LiveAcceptanceMean"] = _pct(sum(r.get("acceptance", 0.0) for r in runs) / len(runs))
+
+        # The ceiling: what the estimator could have scored on this much data. Recovery
+        # without it is a number with no scale.
+        caps = [
+            r["weight_recovery_ceiling"]
+            for r in runs
+            if r.get("weight_recovery_ceiling") is not None
+        ]
+        macros["CeilingMean"] = _num(sum(caps) / len(caps) if caps else None)
+        macros["CeilingBest"] = _num(max(caps) if caps else None)
+        if recoveries and caps:
+            macros["RecoveryFractionOfCeiling"] = _pct(
+                (sum(recoveries) / len(recoveries)) / (sum(caps) / len(caps))
+            )
+
+        # The deconfounded learning curve.
+        firsts = [r["probe_tau_first"] for r in runs if r.get("probe_tau_first") is not None]
+        lasts = [r["probe_tau_last"] for r in runs if r.get("probe_tau_last") is not None]
+        tops = [r["probe_top1_last"] for r in runs if r.get("probe_top1_last") is not None]
+        if firsts and lasts:
+            macros["ProbeTauFirst"] = f"{sum(firsts) / len(firsts):+.3f}"
+            macros["ProbeTauLast"] = f"{sum(lasts) / len(lasts):+.3f}"
+            macros["ProbeTauDelta"] = (
+                f"{(sum(lasts) / len(lasts)) - (sum(firsts) / len(firsts)):+.3f}"
+            )
+            macros["ProbeRose"] = str(
+                sum(
+                    1
+                    for r in runs
+                    if (r.get("probe_tau_last") or 0) > (r.get("probe_tau_first") or 0)
+                )
+            )
+        if tops:
+            macros["ProbeTopOneLast"] = _pct(sum(tops) / len(tops))
+        points = [r["probe"][0].get("points") for r in runs if r.get("probe")]
+        if points:
+            macros["ProbePoints"] = str(int(min(p for p in points if p is not None)))
     for name in (
         "LiveDecisionsTotal",
         "LiveWeightRecoveryMean",
         "LiveWeightRecoveryBest",
         "LiveTokensPerAction",
         "LiveAcceptanceMean",
+        "CeilingMean",
+        "CeilingBest",
+        "RecoveryFractionOfCeiling",
+        "ProbeTauFirst",
+        "ProbeTauLast",
+        "ProbeTauDelta",
+        "ProbeTopOneLast",
+        "ProbeRose",
+        "ProbePoints",
     ):
         macros.setdefault(name, MISSING)
 

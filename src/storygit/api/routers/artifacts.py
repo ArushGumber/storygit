@@ -135,6 +135,11 @@ def eval_plots(state: State) -> dict[str, Any]:
             "curve: accepting more while rewriting just as much is not improvement."
         ),
         "edit_distance.svg": ("How much the writer rewrote what they took, over the run."),
+        "probe_agreement.svg": (
+            "The deconfounded learning curve. The same frozen decisions, sampled from "
+            "other writers\u2019 runs, re-ranked by the head after every episode \u2014 so "
+            "nothing in it can move because the task got harder."
+        ),
         "bandit_selftest.svg": (
             "The sampler in isolation, against arms whose true rates are known. This is "
             "the only setting where \u201cis the regret sublinear\u201d has an unambiguous "

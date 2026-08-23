@@ -7,7 +7,7 @@
 VENV := .venv/bin
 PY   := $(VENV)/python
 
-.PHONY: help check test coverage lint types frontend e2e docs diagrams numbers eval gallery screenshots all clean
+.PHONY: help check test coverage lint types frontend e2e docs diagrams numbers eval probe costing gallery screenshots all clean
 
 help:  ## Show this help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -46,6 +46,13 @@ docs: diagrams numbers  ## Rebuild the outward-facing document
 
 eval:  ## Run the live evaluation (costs provider quota)
 	$(PY) -m eval.run --config full
+
+probe:  ## Rebuild the held-out probe fixture (costs quota; changes the measuring stick)
+	$(PY) -m eval.run --config probesample
+	$(PY) -m eval.probe --build
+
+costing:  ## Project the chunk-7 metered rerun against the budget cap (no calls)
+	$(PY) -m eval.costing
 
 gallery:  ## Re-record the Gallery sessions (--offline for the free six)
 	$(PY) -m eval.record_gallery
