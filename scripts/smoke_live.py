@@ -84,7 +84,11 @@ async def main() -> int:
 
     ids = IdGenerator(seed=2026, stream="smoke")
     repo, state = build_story(ids)
-    router = build_router(settings)
+    # A fresh call log per invocation. The shared one on disk accumulates across every run
+    # of everything, so printing it here would report a couple of hundred calls for a
+    # script whose entire point is that it makes two. The cache stays shared, because the
+    # second run being free is the thing this script demonstrates.
+    router = build_router(settings, calllog_path=":memory:")
     proposer = Proposer(router, ids)
 
     try:

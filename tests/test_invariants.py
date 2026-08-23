@@ -400,3 +400,35 @@ def test_make_help_lists_every_target() -> None:
     assert listed == documented, "targets the help grep cannot match: " + ", ".join(
         sorted(documented - listed)
     )
+
+
+def test_the_readme_example_actually_runs(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """The first code a reader tries is the one in the README.
+
+    It is the cheapest possible broken promise and the most embarrassing one, so it is
+    executed rather than eyeballed. The block is extracted by fence, so renaming a symbol
+    it uses fails here rather than in front of whoever opened the repository first.
+    """
+    readme = (SRC.parents[1] / "README.md").read_text()
+    blocks = re.findall(r"```python\n(.*?)```", readme, re.S)
+    assert blocks, "the README no longer contains a Python example"
+    monkeypatch.chdir(tmp_path)
+    for block in blocks:
+        exec(compile(block, "README.md", "exec"), {"__name__": "__readme__"})
+
+
+def test_the_env_example_holds_no_values_that_could_be_keys() -> None:
+    """A committed example file is the easiest place in a repository to leak a key.
+
+    Every variable whose name says it holds a credential must be present and empty, so
+    that filling one in locally and committing it fails here rather than in a git history
+    that cannot be rewritten.
+    """
+    example = SRC.parents[1] / ".env.example"
+    assert example.exists(), ".env.example is how a reader learns what to configure"
+    for line in example.read_text().splitlines():
+        if line.startswith("#") or "=" not in line:
+            continue
+        name, _, value = line.partition("=")
+        if any(word in name.upper() for word in ("KEY", "TOKEN", "SECRET", "PASSWORD")):
+            assert value.strip() == "", f"{name} has a value in .env.example"

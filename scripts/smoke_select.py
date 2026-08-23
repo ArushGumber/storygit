@@ -112,7 +112,10 @@ async def main() -> int:
 
     ids = IdGenerator(seed=31337, stream="smoke_select")
     repo = build_story(ids)
-    router = build_router(settings)
+    # Per-invocation call log: the shared one accumulates across every run of everything,
+    # and the number this script exists to show is what *this* selection cost. The cache
+    # stays shared, so a repeat run is free.
+    router = build_router(settings, calllog_path=":memory:")
     selector = CandidateSelector(
         Proposer(router, ids), router, SelectionConfig(n=6, k=3, use_judge=True, use_dial=True)
     )

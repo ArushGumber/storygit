@@ -69,7 +69,12 @@ class Settings(BaseSettings):
     # the free tier and returns clean JSON under json_object mode (verified 2026-08-23).
     groq_model: str = "openai/gpt-oss-20b"
 
-    gemini_model: str = "gemini-2.0-flash"
+    # Google retires model ids without much notice, and a default that 404s makes a fresh
+    # checkout look broken. `-latest` tracks whatever the current small model is, which is
+    # the right shape for a default; the workspace .env pins a specific id for runs whose
+    # numbers have to be comparable. Verified against the live API on 2026-08-23:
+    # gemini-2.0-flash, gemini-2.5-flash and gemini-2.5-flash-lite all 404 now.
+    gemini_model: str = "gemini-flash-lite-latest"
     gemini_fallback_models: str = ""
     gemini_key_1: SecretStr = SecretStr("")
     gemini_key_2: SecretStr = SecretStr("")

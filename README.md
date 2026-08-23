@@ -119,8 +119,10 @@ STORYGIT_DB=story.db .venv/bin/python -m storygit.api.app   # http://127.0.0.1:8
 ```
 
 Model keys live in a workspace-level `.env` **outside this repository** and are read by the
-provider layer. Without them the tool still runs — everything deterministic works — and
-generation reports that no provider is configured.
+provider layer; `.env.example` lists every variable, with the reason for each. Without keys
+the tool still runs — everything deterministic works — and generation reports that no
+provider is configured. Google retires model ids without notice, so if a long run starts
+failing, `scripts/smoke_live.py` is the cheapest way to find out which one went.
 
 ### Run the evaluation
 
