@@ -99,17 +99,26 @@ def line_plot(
     path: Path | str,
     baseline: float | None = None,
     baseline_label: str = "",
+    x_start: int = 0,
+    x_values: Sequence[float] | None = None,
 ) -> Path:
     """A multi-series line plot in the house style.
 
     Args:
-        series: Label to y-values. x is the index.
+        series: Label to y-values. x is the index, offset by ``x_start``.
         title: Figure title.
         xlabel: X-axis label.
         ylabel: Y-axis label.
         path: Where to write the SVG.
         baseline: Optional horizontal reference line.
         baseline_label: Label for the reference line.
+        x_start: What the first point is called on the x-axis. Curves counted in episodes
+            start at one, and an axis reading 0 to 2 under the label "episodes completed"
+            is off by one against its own caption.
+        x_values: Explicit x coordinates, when the points are not evenly spaced. Without
+            this a sweep over 0, 5, 10, 20 and 40 comparisons plots against 0-4 while the
+            axis label still says "comparisons", which is not an approximation but a
+            different graph.
 
     Returns:
         The path written.
@@ -117,7 +126,14 @@ def line_plot(
     plt = configure()
     fig, ax = plt.subplots(figsize=(5.4, 3.2))
     for index, (label, values) in enumerate(series.items()):
-        ax.plot(range(len(values)), values, color=SERIES[index % len(SERIES)], label=label)
+        xs = list(x_values) if x_values is not None else list(range(x_start, x_start + len(values)))
+        ax.plot(xs, values, color=SERIES[index % len(SERIES)], label=label)
+    # A count is a whole number; fractional ticks under "episodes completed" invite the
+    # reader to look for a point that does not exist.
+    if all(float(x).is_integer() for x in (x_values or [x_start])):
+        from matplotlib.ticker import MaxNLocator
+
+        ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     if baseline is not None:
         ax.axhline(baseline, color=MUTE, linestyle="--", linewidth=1.0, label=baseline_label)
     ax.set_title(title)

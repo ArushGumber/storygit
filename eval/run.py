@@ -311,6 +311,7 @@ def summarize(
             xlabel="episodes completed",
             ylabel="Kendall tau on frozen decisions",
             path=results / "probe_agreement.svg",
+            x_start=1,
         )
 
     summary = {

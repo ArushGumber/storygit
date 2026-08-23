@@ -550,6 +550,7 @@ def _write_figures(data: dict[str, Any], results: Path) -> None:
         xlabel="comparisons the writer has made",
         ylabel="held-out pairwise accuracy",
         path=results / "pretraining_lift.svg",
+        x_values=xs,
         baseline=0.5,
         baseline_label="chance",
     )

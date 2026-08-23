@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T13:36:19.736796+00:00.
+Generated 2026-08-23T14:08:43.718535+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
