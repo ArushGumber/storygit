@@ -203,7 +203,7 @@ the rest, and `docs/presentable.tex` §Limitations says so.
 
 ## Cost
 
-**Everything here ran on free-tier keys, at $0.00 across roughly ten million tokens** —
+**Everything here ran on free-tier keys, at $0.00 across ~2.8 million routed tokens** —
 six rotated Gemini keys for generation and judging, Groq for extraction, CPU models on one
 laptop for embeddings and NLI.
 

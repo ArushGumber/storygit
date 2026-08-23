@@ -1041,7 +1041,8 @@ python -m eval.run -{}-config full \&\& python -m eval.texnumbers
 
 Everything above ran on **free-tier keys** --- six rotated Gemini keys, Groq for
 extraction, CPU models here for embeddings and NLI --- at a total spend of \textbf{\$0.00}
-across roughly ten million tokens. Prose quality is therefore a floor rather than a ceiling,
+across \rProviderTokens{} of routed tokens. Prose quality is therefore a floor rather than
+a ceiling,
 and that is deliberate: the metered budget is held in reserve for the strong-model rerun,
 which is the run that separates ``the system works'' from ``the model is good''. It is a
 one-line configuration change, costed against the cap before it is spent.
@@ -1093,7 +1094,10 @@ only reports the measurements that agreed with it has not been measured.
 \rejected{Paying for a strong model from day one.} Every number in this document was
 produced on free-tier keys: six rotated Gemini keys for generation and judging, Groq for
 extraction and classification, and CPU models on this machine for embeddings and natural
-language inference. \textbf{Total spend across roughly ten million tokens: \$0.00.}
+language inference. \textbf{Total spend across \rProviderCalls{} routed calls and
+\rProviderTokens{} tokens: \$0.00.} The read-through cache served \rProviderCacheHitRate{}
+of those calls. Embeddings and the NLI checkpoint run locally and bypass the router, so they
+are outside that token count --- and outside nothing else, since they are free.
 
 That is a choice about where the risk is, not a constraint that was worked around. A
 metered key from day one buys better prose immediately and hides every cost bug until the

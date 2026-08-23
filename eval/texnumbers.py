@@ -322,6 +322,15 @@ def collect() -> dict[str, str]:
 
     macros["ProviderCalls"] = str(_get(summary, "call_summary", "calls", default=MISSING))
     macros["ProviderCacheHitRate"] = _pct(_get(summary, "call_summary", "cache_hit_rate"))
+    # The token figure the free-tier claim rests on. It counts *routed* calls only:
+    # embeddings and the NLI checkpoint run locally and are called directly, so they
+    # produce no log row. The dollar figure is unaffected -- local models are free -- but
+    # this is not a complete token accounting and the document says so.
+    total_tokens = _get(summary, "call_summary", "total_tokens")
+    macros["ProviderTokens"] = (
+        MISSING if total_tokens is None else f"{round(total_tokens / 1_000_000, 1)} million"
+    )
+    macros["ProviderErrors"] = str(_get(summary, "call_summary", "errors", default=MISSING))
 
     # Two counts read from the code rather than from a results file, because a paper that
     # says "the 30 operations" while the union holds 31 is wrong in a way no rerun fixes.

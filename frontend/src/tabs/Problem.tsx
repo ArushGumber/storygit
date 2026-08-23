@@ -181,7 +181,7 @@ export function Problem() {
         Every number in this project was produced on free-tier keys — six
         rotated Gemini keys for generation and judging, Groq for extraction, CPU
         models on one laptop for embeddings and NLI.{" "}
-        <strong>Total spend across roughly ten million tokens: $0.00.</strong>{" "}
+        <strong>Total spend across ~2.8&nbsp;million routed tokens: $0.00.</strong>{" "}
         That is a decision about where risk sits. A metered key from day one
         buys better prose immediately and hides every cost bug until the bill
         arrives; a free tier forces the cost controls to exist before they are

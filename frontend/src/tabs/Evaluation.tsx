@@ -229,7 +229,7 @@ export function Evaluation() {
             <strong>Every one of these numbers cost $0.00.</strong> The whole
             project ran on free-tier keys — six rotated Gemini keys, Groq for
             extraction, CPU models here for embeddings and NLI — across roughly
-            ten million tokens. The tokens-per-decision column is what a metered
+            2.8 million routed tokens. The tokens-per-decision column is what a metered
             provider would have billed for; the metered budget is deliberately
             unspent and held in reserve for the strong-model rerun.
           </p>
