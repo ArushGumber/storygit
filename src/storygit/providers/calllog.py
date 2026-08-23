@@ -120,12 +120,33 @@ class CallLog:
         cursor = self._conn.execute("SELECT * FROM calllog ORDER BY id DESC LIMIT ?", (limit,))
         return [dict(row) for row in cursor.fetchall()]
 
-    def summary(self) -> dict[str, Any]:
+    def mark(self) -> int:
+        """The highest id in the log right now, for scoping a later :meth:`summary`.
+
+        One router, and therefore one log, serves every persona in an evaluation
+        invocation — the call budget is an invocation-level thing and has to stay that
+        way. Per-persona cost figures are not: charging the fourth writer for everything
+        the first three did inflated the reported tokens-per-decision by up to four times
+        before this existed.
+
+        Returns:
+            A marker to pass to :meth:`summary` as ``since``.
+        """
+        row = self._conn.execute("SELECT COALESCE(MAX(id), 0) FROM calllog").fetchone()
+        return int(row[0])
+
+    def summary(self, *, since: int = 0) -> dict[str, Any]:
         """Aggregate the log for the evaluation and the Eval tab.
+
+        Args:
+            since: Only count calls recorded after this :meth:`mark`. Zero, the default,
+                summarises the whole log.
 
         Returns:
             Totals plus per-purpose and per-provider breakdowns.
         """
+        where = " WHERE id > ?"
+        args = (since,)
         total = self._conn.execute(
             "SELECT COUNT(*) AS calls, COALESCE(SUM(prompt_tokens),0) AS prompt_tokens,"
             " COALESCE(SUM(completion_tokens),0) AS completion_tokens,"
@@ -133,20 +154,23 @@ class CallLog:
             " COALESCE(SUM(cached),0) AS cache_hits,"
             " COALESCE(SUM(CASE WHEN error IS NOT NULL THEN 1 ELSE 0 END),0) AS errors,"
             " COALESCE(AVG(latency_s),0) AS mean_latency_s"
-            " FROM calllog"
+            " FROM calllog" + where,
+            args,
         ).fetchone()
         by_purpose = self._conn.execute(
             "SELECT purpose, COUNT(*) AS calls,"
             " COALESCE(SUM(prompt_tokens + completion_tokens),0) AS tokens,"
             " COALESCE(SUM(cost_usd),0) AS cost_usd,"
             " COALESCE(SUM(cached),0) AS cache_hits"
-            " FROM calllog GROUP BY purpose ORDER BY tokens DESC"
+            " FROM calllog" + where + " GROUP BY purpose ORDER BY tokens DESC",
+            args,
         ).fetchall()
         by_provider = self._conn.execute(
             "SELECT provider, COUNT(*) AS calls,"
             " COALESCE(SUM(prompt_tokens + completion_tokens),0) AS tokens,"
             " COALESCE(SUM(cost_usd),0) AS cost_usd"
-            " FROM calllog GROUP BY provider ORDER BY calls DESC"
+            " FROM calllog" + where + " GROUP BY provider ORDER BY calls DESC",
+            args,
         ).fetchall()
         summary = dict(total)
         summary["total_tokens"] = summary["prompt_tokens"] + summary["completion_tokens"]

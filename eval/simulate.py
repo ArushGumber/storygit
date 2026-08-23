@@ -60,6 +60,10 @@ class Action(BaseModel):
         flags_shown: Continuity flags on the chosen candidate.
         snapshot_id: The snapshot the action produced.
         stale_marked: How many nodes propagation marked.
+        features: One feature vector per shown candidate, in the same order as ``scores``.
+            Recorded because the first autopsy of a truncated run wanted to decompose a
+            rejection into the features that caused it and could not: the log held the
+            scalar score and nothing behind it, so the answer needed a rerun.
     """
 
     model_config = ConfigDict(frozen=True)
@@ -77,6 +81,7 @@ class Action(BaseModel):
     hard_flags_shown: int = 0
     snapshot_id: SnapshotId | None = None
     stale_marked: int = 0
+    features: tuple[dict[str, float], ...] = ()
 
 
 class RunLog(BaseModel):
@@ -224,6 +229,7 @@ class SimulatedWriter:
             shown=tuple(c.proposal.id for c in shown),
             axes=tuple(c.axis_label for c in shown),
             scores=tuple(round(s, 4) for s in scores),
+            features=tuple({k: round(v, 4) for k, v in f.values.items()} for f in features),
             flags_shown=sum(len(c.flags) for c in shown),
             hard_flags_shown=sum(1 for c in shown for f in c.flags if f.is_hard),
         )
@@ -395,6 +401,9 @@ async def run_writer(
     completed = 0
     waited = 0.0
     waits = 0
+    # One router serves every persona in an invocation, so the log has to be scoped to
+    # this run or the fourth writer is billed for the first three.
+    started_at = engine.router.mark()
 
     engine.set_dial(persona.dial)
     for note in persona.style_notes:
@@ -414,7 +423,7 @@ async def run_writer(
             },
             actions=tuple(actions),
             episodes_completed=completed,
-            call_summary=engine.router.summary(),
+            call_summary=engine.router.summary(since=started_at),
             preference_summary=engine.preference.state.summary(),
             hidden_weights=persona.weights,
             errors=tuple(errors),

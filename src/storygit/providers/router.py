@@ -267,9 +267,17 @@ class Router:
 
     # --- lifecycle --------------------------------------------------------------
 
-    def summary(self) -> dict[str, Any]:
-        """Call-log summary plus cache statistics."""
-        summary = self.calllog.summary()
+    def mark(self) -> int:
+        """A call-log marker, so a later :meth:`summary` can be scoped to one run."""
+        return self.calllog.mark()
+
+    def summary(self, *, since: int = 0) -> dict[str, Any]:
+        """Call-log summary plus cache statistics.
+
+        Args:
+            since: Only count calls after this :meth:`mark`; zero summarises everything.
+        """
+        summary = self.calllog.summary(since=since)
         summary["cache"] = self.cache.stats()
         summary["budget_remaining_usd"] = self.budget.remaining()
         return summary

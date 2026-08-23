@@ -46,10 +46,19 @@ TINY = SelectionConfig(
 )
 
 
-def mock_engine(fixture: Fixture, **kwargs: object) -> tuple[Engine, MockProvider]:
-    """An engine whose every call returns the same canned beat."""
+def mock_engine(
+    fixture: Fixture, *, router: Router | None = None, **kwargs: object
+) -> tuple[Engine, MockProvider]:
+    """An engine whose every call returns the same canned beat.
+
+    Args:
+        fixture: The story to run against.
+        router: Share a router (and therefore one call log) across two engines, the way
+            an evaluation invocation shares one across four personas.
+        **kwargs: Passed through to the engine.
+    """
     provider = MockProvider(lambda req: canned(dict(BEAT, title=f"b{req.sample_index}")))
-    router = Router({"gemini": provider, "groq": provider})
+    router = router or Router({"gemini": provider, "groq": provider})
     engine = Engine(
         fixture.repo,
         router,
@@ -481,3 +490,57 @@ def test_thresholds_are_cached_and_deterministic() -> None:
 
     persona = get("the Minimalist")
     assert persona.thresholds() == persona.thresholds()
+
+
+@pytest.mark.asyncio
+async def test_a_run_is_billed_only_for_its_own_calls(fixture: Fixture, tmp_path) -> None:  # type: ignore[no-untyped-def]
+    """One router serves every persona in an invocation; the cost figures must not.
+
+    Before this, each run snapshotted the running total at the end of its own run, so the
+    fourth writer was charged for everything the first three did and the reported
+    tokens-per-decision was inflated by up to four times.
+    """
+    engine, _ = mock_engine(fixture)
+    first = await run_writer(
+        get("the Serialist"),
+        engine,
+        episodes=1,
+        scenes_per_episode=1,
+        beats_per_scene=1,
+        seed=2,
+        use_llm_edits=False,
+    )
+    engine_two, _ = mock_engine(fixture, router=engine.router)
+    second = await run_writer(
+        get("the Minimalist"),
+        engine_two,
+        episodes=1,
+        scenes_per_episode=1,
+        beats_per_scene=1,
+        seed=3,
+        use_llm_edits=False,
+    )
+
+    whole_log = engine.router.summary()["calls"]
+    assert first.call_summary["calls"] > 0 and second.call_summary["calls"] > 0
+    assert second.call_summary["calls"] < whole_log, "the second run was billed for the first"
+    assert first.call_summary["calls"] + second.call_summary["calls"] == whole_log
+
+
+@pytest.mark.asyncio
+async def test_every_decision_records_the_features_behind_its_scores(fixture: Fixture) -> None:
+    """A score with no feature vector behind it cannot be autopsied without a rerun."""
+    engine, _ = mock_engine(fixture)
+    log = await run_writer(
+        get("the Serialist"),
+        engine,
+        episodes=1,
+        scenes_per_episode=1,
+        beats_per_scene=1,
+        seed=2,
+        use_llm_edits=False,
+    )
+    for action in log.actions:
+        assert len(action.features) == len(action.scores)
+        for vector in action.features:
+            assert set(vector) >= set(BASE_FEATURES), "a feature disappeared from the log"
