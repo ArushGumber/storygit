@@ -175,16 +175,28 @@ class Router:
             if fallback is None:
                 self._log_error(provider.name, model, request, primary_error)
                 raise
+            fallback_model = str(request.model or getattr(fallback, "model", "unknown"))
+            fallback_key = cache_key(fallback.name, fallback_model, request)
+            if not request.bypass_cache:
+                # A flaky primary should not mean paying for the fallback twice.
+                hit = self.cache.get(fallback_key)
+                if hit is not None:
+                    self._log_error(provider.name, model, request, primary_error)
+                    self.calllog.record(
+                        provider=hit.provider,
+                        model=hit.model,
+                        purpose=request.purpose,
+                        key_index=hit.key_index,
+                        prompt_tokens=hit.prompt_tokens,
+                        completion_tokens=hit.completion_tokens,
+                        cached=True,
+                    )
+                    return hit
             try:
                 response = await self._call(fallback, request, request.model)
             except ProviderError as fallback_error:
                 self._log_error(provider.name, model, request, primary_error)
-                self._log_error(
-                    fallback.name,
-                    str(request.model or getattr(fallback, "model", "unknown")),
-                    request,
-                    fallback_error,
-                )
+                self._log_error(fallback.name, fallback_model, request, fallback_error)
                 raise
             self._log_error(provider.name, model, request, primary_error)
             key = cache_key(response.provider, response.model, request)

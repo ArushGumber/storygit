@@ -1,0 +1,72 @@
+% routing.tex -- purpose tags decide the provider; rotation and cache do the rest.
+\documentclass[tikz, border=8pt]{standalone}
+\input{style.tex}
+\begin{document}\sgpage
+\begin{tikzpicture}[sg]
+
+% ---------------- purposes (left) ----------------
+\node[sgsmall, minimum width=30mm] (p1) at (0,0)   {\textsf{propose.*}};
+\node[sgsmall, minimum width=30mm] (p2) at (0,-7mm)  {\textsf{judge.*}};
+\node[sgsmall, minimum width=30mm] (p3) at (0,-14mm) {\textsf{extract.*}};
+\node[sgsmall, minimum width=30mm] (p4) at (0,-21mm) {\textsf{classify.*}, \textsf{simulate.*}};
+\node[sgsmall, minimum width=30mm] (p5) at (0,-28mm) {embeddings, NLI};
+\node[sgsmall, minimum width=30mm] (p6) at (0,-35mm) {\textsf{final.*}};
+
+\begin{scope}[on background layer]
+  \node[sggroup, fit=(p1)(p6), inner sep=6pt,
+        label={[sgtitle]above:purpose tag}] (purposebox) {};
+\end{scope}
+
+% ---------------- the router (middle) ----------------
+\node[sgboxaccent, minimum width=26mm, minimum height=13mm, align=center] (router) at (46mm,-17.5mm)
+  {Router\\[-1pt]{\scriptsize one table}};
+\node[sgsmall, text width=30mm, align=center, above=5mm of router] (cache)
+  {cache lookup\\[-2pt]
+   {\scriptsize sha256(model, prompt,}\\[-2pt]
+   {\scriptsize params, sample\_index)}};
+\node[sgsmall, text width=30mm, align=center, below=5mm of router] (guard)
+  {budget guard\\[-2pt]
+   {\scriptsize refuses a call that}\\[-2pt]
+   {\scriptsize could cross the cap}};
+\node[sgsmall, text width=30mm, align=center, below=4mm of guard] (log)
+  {call log\\[-2pt]
+   {\scriptsize one row per call,}\\[-2pt]
+   {\scriptsize key \emph{index} only}};
+
+\draw[sgedge] (cache) -- (router);
+\draw[sgedge] (router) -- (guard);
+\draw[sgedgeplain] (guard) -- (log);
+
+\foreach \p in {p1,p2,p3,p4,p5,p6} { \draw[sgedge] (\p.east) -- (cache.west); }
+
+% ---------------- providers (right) ----------------
+\node[sgbox, minimum width=32mm] (gemini) at (92mm, -2mm)
+  {Gemini\\[-2pt]{\scriptsize 6 keys, round robin}};
+\node[sgbox, minimum width=32mm] (groq) at (92mm, -17mm)
+  {Groq\\[-2pt]{\scriptsize small, fast, free}};
+\node[sgbox, minimum width=32mm] (local) at (92mm, -29mm)
+  {local, CPU\\[-2pt]{\scriptsize bge-small, DeBERTa-MNLI}};
+\node[sgbox, draw=sgmute, minimum width=32mm] (or) at (92mm, -41mm)
+  {OpenRouter\\[-2pt]{\scriptsize \textbf{locked}}};
+
+\draw[sgedgeaccent] (router.east) to[out=20, in=180] node[sglabel, pos=0.6] {prose} (gemini.west);
+\draw[sgedge] (router.east) to[out=0, in=180] node[sglabel, pos=0.6] {structure} (groq.west);
+\draw[sgedge] (router.east) to[out=-20, in=180] (local.west);
+\draw[sgedgesoft] (router.east) to[out=-40, in=180] (or.west);
+
+% ---------------- rotation detail ----------------
+\node[sgsmall, right=6mm of gemini, minimum width=8mm] (k1) {1};
+\node[sgsmall, right=2mm of k1, minimum width=8mm] (k2) {2};
+\node[sgsmall, right=2mm of k2, minimum width=8mm] (k3) {3};
+\node[sgcaption, below=1.5mm of k2.south, anchor=north, text width=36mm, align=center]
+  {per (key, model) cooldown;\\ then fallback models;\\ then \textsf{RateLimited}};
+\draw[sgedgeplain] (gemini.east) -- (k1.west);
+
+% ---------------- the lock ----------------
+\node[sgcaption, below=2mm of or.south west, anchor=north west, text width=52mm]
+  {Locked unless \textsf{OPENROUTER\_ENABLED} is exactly \textsf{"true"}.
+   The error is raised before a key is read or a URL is built,
+   and the budget guard is a second, independent refusal.};
+
+\end{tikzpicture}
+\end{document}

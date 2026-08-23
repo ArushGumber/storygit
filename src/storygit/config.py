@@ -65,7 +65,9 @@ class Settings(BaseSettings):
     )
 
     groq_api_key: SecretStr = SecretStr("")
-    groq_model: str = "llama-3.1-8b-instant"
+    # Groq retired llama-3.1-8b-instant; gpt-oss-20b is the current small fast model on
+    # the free tier and returns clean JSON under json_object mode (verified 2026-08-23).
+    groq_model: str = "openai/gpt-oss-20b"
 
     gemini_model: str = "gemini-2.0-flash"
     gemini_fallback_models: str = ""

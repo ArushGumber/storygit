@@ -116,16 +116,56 @@ demonstrate; the state machine is what survives episode~40.
 \section{Fabula, and the gaps this exploits}
 \label{sec:fabula}
 
-Fabula~\cite{mirowski2026fabula} is the closest published system, and the immediate
-predecessor of this design's questions; Dramatron~\cite{mirowski2023dramatron} and
-Wordcraft~\cite{yuan2022wordcraft} are the hierarchical-generation and
+Fabula~\cite{mirowski2026fabula} (DeepMind, 2026) builds a two-level hierarchical plan --- a
+story plan of scenes, then beat plans per scene --- and then a script, using
+prompt-chaining orchestrators with structured output. It is editable at every level, with
+top-down propagation and partial bottom-up updates. It ships 26 orchestrator variants, an
+auto-rater over 63 narratology guidelines that argues before it rates (to reduce position
+bias) and correlates 0.83 with human preference after tuning, a generate--critique--select
+search loop, and suggestion diversity implemented as embedding cosine against past
+suggestions. It was evaluated with 42 writers --- 18 design interviews and 25 three-hour
+sessions --- plus hundreds of testers. It is the closest published system to this problem,
+and the immediate predecessor of these questions; Dramatron~\cite{mirowski2023dramatron}
+and Wordcraft~\cite{yuan2022wordcraft} are the hierarchical-generation and
 writer-in-the-loop lines it builds on, and the creativity-support
-literature~\cite{cherry2014csi} supplies the evaluation vocabulary.
+literature~\cite{cherry2014csi} supplies the vocabulary for judging such tools.
 
-\textit{[Written in chunk 2 --- summary of the Fabula system, its user study findings,
-and the five gaps \storygit{} targets: no dependency tracking, no per-character
-knowledge state, no learning from writer signals, no serial mechanics, and diversity
-implemented as ``do not repeat the last suggestion''.]}
+The study's findings matter more than its architecture, and they are unusually specific.
+Writers liked the structure, the scene breaking, the character questions, and the plan-beside-script
+view for restructuring. They disliked generic prose and poor handling of style, irony, and
+satire. They found the system \emph{rigid}: they could not add a character locally, edits
+rewrote the whole plan, stale downstream scenes were not flagged. They asked for locks,
+insert and delete controls, progressive build-up, and an ``absurdity dial''. And the
+authors' own conclusion is that the system is most useful as feedback on the writer's own
+script, not as a generator.
+
+Three of those complaints --- edits rewriting the plan, stale scenes going unflagged, and
+the inability to add a character locally --- are the same missing abstraction seen from
+three angles: there is no explicit dependency graph. \storygit{} builds that abstraction
+first and derives the rest from it.
+
+\begin{center}
+\begin{tabular}{@{}p{0.42\textwidth}p{0.52\textwidth}@{}}
+\toprule
+\textbf{Gap} & \textbf{What \storygit{} does about it} \\
+\midrule
+No dependency tracking; edits rewrite the plan &
+Beats declare \textsf{produces} / \textsf{consumes}; propagation \emph{marks} affected
+nodes and never rewrites them \\
+No per-character knowledge state &
+Epistemic edges \textsf{knows}(character, fact, since beat), checked before a character may
+act on something \\
+No learning from writer signals &
+A preference layer trained on accept / reject / edit, with the writer's own criteria as
+features \\
+No serial mechanics &
+Episode hooks, cliffhangers, recaps, and an open-thread ledger with last-touched dates \\
+Diversity is ``do not repeat the last one'' &
+Axis-conditioned sampling with MMR or DPP selection over a quality-weighted similarity
+kernel \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \section{Architecture}
 \label{sec:architecture}
@@ -209,8 +249,106 @@ guesses which version of a scene the author meant.
 \section{The proposal engine}
 \label{sec:proposals}
 
-\textit{[Chunk 2: proposals as diffs, progressive levels, structured output. Chunk 3:
-axis-conditioned sampling, MMR and DPP selection, the dial.]}
+Every AI action is a \textbf{diff}: a list of typed operations against the current state,
+carrying a rationale and a delta summary in English. The writer reads \emph{``introduces
+Mara; changes Kael's goal; would mark 2 downstream beats stale''} and decides. They never
+read a wall of replacement text and guess what it changed.
+
+This is the direct answer to two of Fabula's findings at once. ``I could not add a
+character locally'' is, in this model, a single \textsf{AddEntity} operation. And
+``editing one scene rewrote the whole plan'' cannot happen, because a diff that would
+rewrite the plan is visibly a diff that rewrites the plan.
+
+\subsection{Progressive levels}
+
+Generation is a function \texttt{propose(level, state slice, intent, k)}. The levels run
+seed $\to$ premise $\to$ episodes $\to$ scenes $\to$ beats $\to$ prose, and the writer
+settles each before the next exists. This is Fabula's progressive-build-up lesson taken
+literally: writers rejected systems that produced a whole plan before they had agreed to
+its premise.
+
+Every level has a schema the model must fill, and the schema is where the requirements
+live. A beat proposal cannot come back without saying which facts it establishes and which
+existing facts it relies on, because those are required fields --- so the dependency graph
+that propagation walks cannot quietly go unmaintained. The same schema requires, for each
+new fact, the list of characters who \emph{learn} it at this beat: not everyone present,
+and not everyone it is true of.
+
+Every field carries a length bound, forwarded into the provider's own response schema. This
+keeps candidates readable, and it closes a failure mode observed in the first live test: a
+small model fell into a repetition loop and filled a field until it hit the token cap,
+turning a good candidate into truncated JSON.
+
+\subsection{What the model is allowed to see}
+
+Never the story. Generation is fed an \textbf{entity-scoped slice}: the entities in scope,
+the facts about them \emph{valid at that beat} with their ids, who knows what, the open
+threads, the plan path down to the insertion point, hard constraints from locks, the
+writer's style notes, and the writer's own criteria. A few hundred tokens instead of tens
+of thousands.
+
+The important difference from ordinary retrieval-augmented generation is not the size, it
+is the kind of answer. Chunk-and-embed retrieval returns text that is \emph{approximately
+relevant}; a query against a typed graph returns what is \emph{exactly true, at this point
+in the story, about these entities}. That precision is what makes the continuity claims in
+\S\ref{sec:continuity} checkable rather than aspirational.
+
+\subsection{Extraction, and the closed vocabulary}
+
+When prose is accepted --- whether the model wrote it or the writer typed it --- a cheap
+model reads it back and returns structured facts. A hand-written beat therefore
+participates in continuity exactly like a generated one: the system does not generate
+anything, it only reads what was written and updates the graph.
+
+Predicates come from a closed vocabulary of ten, plus a free-text \textsf{note}. Closed is
+what makes the first checker layer a dictionary lookup and an equality test rather than a
+semantic judgement, and the escape hatch isolates exactly the residue that needs the more
+expensive check.
+
+Names are canonicalized conservatively: exact match after normalization, otherwise a new
+entity \emph{and} a note telling the writer what it might duplicate. No similarity
+threshold is used. A fuzzy match that is occasionally wrong would weld two characters
+together silently, which is the failure this whole system exists to prevent.
+
+\subsection{Model routing and cost}
+
+One routing table maps purpose tags to backends: prose and judging to Gemini, extraction
+and classification to Groq's small fast model, embeddings and NLI to local CPU models, and
+a metered provider that is locked. Around the chosen backend sit a read-through cache, a
+budget guard, and a call log that records tokens for every call.
+
+Three details are load-bearing. Gemini's six free-tier keys carry per-\texttt{(key, model)}
+cooldowns, because free-tier quota is per model per key --- exhausting a key on one model
+says nothing about its allowance on another. The cache key includes a per-sample index, so
+the six axis-conditioned candidates of \S\ref{sec:diversity-fwd} are six entries rather
+than one. And non-prose purposes fall back across providers when one is down, while prose
+does not: a beat silently served by an 8B model is a quality regression the writer cannot
+see the cause of.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{diagrams/routing.pdf}
+\caption{Purpose tags decide the provider; rotation, caching, budget, and logging are
+layered around it rather than baked into each backend. The metered provider is locked by
+two independent fail-closed checks.}
+\label{fig:routing}
+\end{figure}
+
+\subsection{The loop}
+
+\begin{enumerate}[label=\arabic*.]
+\item The writer states an intent at a node.
+\item The engine slices the state, samples $k$ candidates, converts each into a typed diff,
+and previews what each would invalidate.
+\item The writer accepts, edits, or rejects. Editing keeps the writer's words and records
+the before/after pair; rejecting records the direction so it is not proposed again.
+\item Accepting commits the diff, extracts facts from any new prose, and commits the
+propagation marks as a second snapshot.
+\item Every action is recorded as a signal, along with the alternatives it was shown
+beside --- which is what makes an accept a \emph{preference} rather than an event.
+\end{enumerate}
+
+\label{sec:diversity-fwd}
 
 \section{Propagation}
 \label{sec:propagation}
@@ -266,6 +404,12 @@ contradictions, the metric definitions, the ablation table, and the curves.]}
 
 \section{Decisions, and what was rejected}
 \label{sec:decisions}
+
+\decision{Purpose-tag routing rather than per-call-site provider choice}
+The cost policy is six lines in one table. \rejected{Choosing a provider where the call is
+made.} That scatters the policy across forty call sites and makes it impossible to audit
+or change. It also makes the ablation in \S\ref{sec:evaluation} --- rerunning everything on
+a stronger model --- a one-line edit rather than a refactor.
 
 \decision{Diffs rather than replacement text}
 Every AI action is a typed operation list against the current state, not a block of prose

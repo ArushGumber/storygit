@@ -367,6 +367,13 @@ _SCHEMA_KEYS = {
     "required",
     "nullable",
     "format",
+    # Length bounds are forwarded deliberately: without them a small model can fall into
+    # a repetition loop and fill a string field until it hits the token cap, which turns
+    # a good candidate into a truncated-JSON parse failure.
+    "maxLength",
+    "minLength",
+    "maxItems",
+    "minItems",
 }
 
 

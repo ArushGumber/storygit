@@ -96,17 +96,19 @@ class StateSlice(BaseModel):
                 desc = f" — {entity.description}" if entity.description else ""
                 out.append(f"  {entity.name} [{entity.kind.value}]{alias}{desc}")
         if self.facts:
-            out.append("ESTABLISHED FACTS (true right now)")
-            out.extend(f"  {fact.sentence(display)}" for fact in self.facts)
+            # Fact ids are printed so a proposal can cite exactly which facts it
+            # consumes; without them the model can only gesture at "the thing about Kael".
+            out.append("ESTABLISHED FACTS (true right now, cite these ids in `consumes`)")
+            out.extend(f"  [{fact.id}] {fact.sentence(display)}" for fact in self.facts)
         if self.knowledge:
             out.append("WHO KNOWS WHAT")
             out.extend(
-                f"  {item.character_name} knows fact {item.fact_id} (since {item.since_beat})"
+                f"  {item.character_name} knows [{item.fact_id}] (since {item.since_beat})"
                 for item in self.knowledge
             )
         if self.threads:
-            out.append("OPEN THREADS")
-            out.extend(f"  [{t.status.value}] {t.description}" for t in self.threads)
+            out.append("OPEN THREADS (cite these ids when a beat advances one)")
+            out.extend(f"  [{t.id}] {t.description} ({t.status.value})" for t in self.threads)
         if self.hard_constraints:
             out.append("HARD CONSTRAINTS (must not be violated)")
             out.extend(f"  {line}" for line in self.hard_constraints)

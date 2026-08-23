@@ -27,15 +27,19 @@ class IdGenerator:
     includes ids — come out byte-identical across runs.
     """
 
-    def __init__(self, seed: int | None = None, *, width: int = 10) -> None:
+    def __init__(self, seed: int | None = None, *, stream: str = "", width: int = 10) -> None:
         """Create a generator.
 
         Args:
             seed: When given, ids are a deterministic function of the seed and the
                 number of ids drawn so far. When ``None``, ids are unpredictable.
+            stream: A label mixed into the seed. Two generators created with the same
+                seed produce the *same* id sequence, so handing one to the test fixture
+                and another to the proposer makes them collide on the first id. Give
+                independent streams different labels, or better, share one generator.
             width: Number of hex characters after the type prefix.
         """
-        self._rng = random.Random(seed)
+        self._rng = random.Random(f"{seed}:{stream}" if seed is not None else None)
         self._width = width
 
     def _raw(self) -> str:

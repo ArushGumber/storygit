@@ -27,6 +27,13 @@ from storygit.providers.base import (
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 
+class _JsonModeRejected(Exception):
+    """Groq's server-side JSON validation rejected its own model's output.
+
+    Internal to this module: it triggers one retry with JSON mode off and never escapes.
+    """
+
+
 class GroqProvider:
     """OpenAI-shaped chat client pointed at Groq.
 
@@ -41,7 +48,7 @@ class GroqProvider:
         self,
         api_key: str,
         *,
-        model: str = "llama-3.1-8b-instant",
+        model: str = "openai/gpt-oss-20b",
         transport: httpx.AsyncBaseTransport | None = None,
         timeout_s: float = 60.0,
         redactor: Callable[[str], str] | None = None,
@@ -72,6 +79,12 @@ class GroqProvider:
     async def complete(self, request: LLMRequest) -> LLMResponse:
         """Run one completion.
 
+        Groq validates JSON-mode output server side and rejects the whole request with a
+        400 when its own model produces malformed JSON. That is a generation failure, not
+        an outage, so it is retried once with JSON mode off — the prompt already carries
+        the schema and this model returns clean JSON without the mode. Only if that also
+        fails does the router get to fall back to a different provider.
+
         Args:
             request: The call to make.
 
@@ -82,6 +95,13 @@ class GroqProvider:
             RateLimited: On HTTP 429.
             ProviderDown: On any other failure.
         """
+        try:
+            return await self._attempt(request, json_mode=request.json_schema is not None)
+        except _JsonModeRejected:
+            return await self._attempt(request, json_mode=False)
+
+    async def _attempt(self, request: LLMRequest, *, json_mode: bool) -> LLMResponse:
+        """One HTTP call, with JSON mode on or off."""
         model = request.model or self.model
         payload: dict[str, Any] = {
             "model": model,
@@ -91,7 +111,7 @@ class GroqProvider:
         }
         if request.stop:
             payload["stop"] = list(request.stop)
-        if request.json_schema is not None:
+        if json_mode:
             # Groq supports OpenAI-style JSON mode; the schema itself is carried in the
             # prompt by the agents layer, and validated on the way back by Pydantic.
             payload["response_format"] = {"type": "json_object"}
@@ -118,6 +138,8 @@ class GroqProvider:
             )
         if http_response.status_code >= 400:
             body = self._redact(http_response.text[:400])
+            if json_mode and "json_validate_failed" in body:
+                raise _JsonModeRejected(body)
             raise ProviderDown(f"groq: HTTP {http_response.status_code}: {body}")
 
         try:

@@ -416,7 +416,11 @@ def delta_summary(
     for op in diff.ops:
         if isinstance(op, AddEntity):
             names[str(op.entity.id)] = op.entity.name
-    nodes = getattr(state, "nodes", {}) or {}
+    nodes = dict(getattr(state, "nodes", {}) or {})
+    # Same for nodes the diff creates: "Kael learns this at Beat 4" beats an opaque id.
+    for op in diff.ops:
+        if isinstance(op, AddNode):
+            nodes[op.node.id] = op.node
 
     def entity_name(entity_id: str) -> str:
         return names.get(str(entity_id), str(entity_id))

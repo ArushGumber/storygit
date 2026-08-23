@@ -477,3 +477,66 @@ async def test_unroutable_purpose_is_a_typed_error() -> None:
     router = Router({})
     with pytest.raises(ProviderDown, match="no route"):
         await router.complete(request("nonsense.thing"))
+
+
+async def test_groq_retries_once_without_json_mode_when_its_own_validator_rejects() -> None:
+    seen: list[bool] = []
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        body = json.loads(req.content)
+        json_mode = "response_format" in body
+        seen.append(json_mode)
+        if json_mode:
+            return httpx.Response(
+                400,
+                json={"error": {"code": "json_validate_failed", "message": "bad json"}},
+            )
+        return httpx.Response(
+            200, json={"choices": [{"message": {"content": '{"ok": true}'}}], "model": "gq"}
+        )
+
+    provider = GroqProvider(
+        "SENTINEL_GROQ_KEY",
+        model="gq",
+        transport=httpx.MockTransport(handler),
+        redactor=lambda t: t,
+    )
+    response = await provider.complete(request("extract.facts", json_schema={"type": "object"}))
+
+    assert seen == [True, False], "JSON mode is retried off before the router falls back"
+    assert response.text == '{"ok": true}'
+
+
+async def test_a_fallback_result_is_served_from_cache_on_the_next_failure() -> None:
+    groq_calls = {"n": 0}
+
+    def groq_handler(_req: httpx.Request) -> httpx.Response:
+        groq_calls["n"] += 1
+        return httpx.Response(
+            200, json={"choices": [{"message": {"content": "rescued"}}], "model": "gq"}
+        )
+
+    def make_router(cache: LLMCache) -> Router:
+        dead = GeminiProvider(
+            [SENTINEL_KEYS[0]],
+            model="gm",
+            transport=httpx.MockTransport(lambda _r: httpx.Response(503, text="down")),
+            clock=Clock(),
+            sleeper=_no_sleep,
+            redactor=lambda t: t,
+        )
+        groq = GroqProvider(
+            "SENTINEL_GROQ_KEY",
+            model="gq",
+            transport=httpx.MockTransport(groq_handler),
+            redactor=lambda t: t,
+        )
+        return Router({"gemini": dead, "groq": groq}, cache=cache)
+
+    cache = LLMCache(":memory:")
+    assert (await make_router(cache).complete(request("judge.soft"))).text == "rescued"
+    assert groq_calls["n"] == 1
+
+    second = await make_router(cache).complete(request("judge.soft"))
+    assert second.cached is True
+    assert groq_calls["n"] == 1, "a flaky primary must not mean paying for the fallback twice"
