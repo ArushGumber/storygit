@@ -1,0 +1,442 @@
+{
+  "persona": "the Serialist",
+  "config": {
+    "episodes": 3,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 2,
+    "seed": 7,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_5be9e443dc",
+      "level": "episode",
+      "shown": [
+        "p_ab4ffd6ca6",
+        "p_a993a15652",
+        "p_e5ae1f8581"
+      ],
+      "axes": [
+        "slow down",
+        "introduce a complication",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.6986,
+        0.7982,
+        0.7882
+      ],
+      "chosen": "p_a993a15652",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "47cf3eaaecf04db579c721980064c0aa",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_9195665d52",
+      "level": "scene",
+      "shown": [
+        "p_221f99c072",
+        "p_4550b01c39",
+        "p_e21b60b17f"
+      ],
+      "axes": [
+        "introduce a complication",
+        "slow down",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.7474,
+        0.7013,
+        0.8016
+      ],
+      "chosen": "p_e21b60b17f",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3f2ed9703bc6d2f791f65e79930b202c",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_883aab2752",
+      "level": "beat",
+      "shown": [
+        "p_6a1338c60e",
+        "p_616b963c5f",
+        "p_a69b4fdb41"
+      ],
+      "axes": [
+        "slow down",
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.8578,
+        0.8284,
+        0.7528
+      ],
+      "chosen": "p_6a1338c60e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3395853502aac005f6332b06d5d7a5d8",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_2ccf75c617",
+      "level": "prose",
+      "shown": [
+        "p_3831cc06fe",
+        "p_f6264451a9",
+        "p_b5e1f4491a"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.8522,
+        0.7993,
+        0.8019
+      ],
+      "chosen": "p_3831cc06fe",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "871235325db33f783867fc0200c458ef",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_883aab2752",
+      "level": "beat",
+      "shown": [
+        "p_27ad5f0faa",
+        "p_16e9999833",
+        "p_1e5082ebd0"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.6732,
+        0.6703,
+        0.7388
+      ],
+      "chosen": "p_1e5082ebd0",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_2ccf75c617",
+      "level": "prose",
+      "shown": [
+        "p_ebbf976bff",
+        "p_4709a5656c",
+        "p_a9e26663d8"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8019,
+        0.8694,
+        0.8373
+      ],
+      "chosen": "p_4709a5656c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "248172a4d53dadc972c5f58609db9aa0",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_9195665d52",
+      "level": "scene",
+      "shown": [
+        "p_b15f06ae48",
+        "p_61e263c78a",
+        "p_eb98466833"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.7478,
+        0.8243,
+        0.8577
+      ],
+      "chosen": "p_eb98466833",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "04f50572a84ada5aea54aca12329f5f5",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_d6a253de8a",
+      "level": "beat",
+      "shown": [
+        "p_520bac20d9",
+        "p_90831aee92",
+        "p_bd82a677b1"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.854,
+        0.7662,
+        0.9037
+      ],
+      "chosen": "p_bd82a677b1",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "30e76819b7c13a9af4f1155b6719203d",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_b5ae919121",
+      "level": "prose",
+      "shown": [
+        "p_4c42fb123f",
+        "p_3537a80091",
+        "p_fb8a36bf7e"
+      ],
+      "axes": [
+        "raise the stakes",
+        "pay off an open thread",
+        "slow down"
+      ],
+      "scores": [
+        0.7289,
+        0.856,
+        0.7604
+      ],
+      "chosen": "p_3537a80091",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "b23ff28bc5f8fce297f1b2699cd0839a",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_d6a253de8a",
+      "level": "beat",
+      "shown": [
+        "p_44ca130088",
+        "p_2c796a69bf",
+        "p_d3e335af7b"
+      ],
+      "axes": [
+        "introduce a complication",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.7829,
+        0.7739,
+        0.5827
+      ],
+      "chosen": "p_44ca130088",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "442a7fa838da439ad72c07890b219be3",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_e3e2af03d8",
+      "level": "prose",
+      "shown": [
+        "p_7bddea071e",
+        "p_ad33115b6b",
+        "p_681d6ce792"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.7674,
+        0.7453,
+        0.745
+      ],
+      "chosen": "p_7bddea071e",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.3734,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "5c0534d0dbff0b0327d5c89d22399a3c",
+      "stale_marked": 0
+    }
+  ],
+  "episodes_completed": 1,
+  "call_summary": {
+    "calls": 154,
+    "prompt_tokens": 247648,
+    "completion_tokens": 82378,
+    "cost_usd": 0.0,
+    "cache_hits": 14,
+    "errors": 5,
+    "mean_latency_s": 6.096420389253168,
+    "total_tokens": 330026,
+    "cache_hit_rate": 0.09090909090909091,
+    "by_purpose": [
+      {
+        "purpose": "propose.beat",
+        "calls": 28,
+        "tokens": 132212,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 66,
+        "tokens": 79500,
+        "cost_usd": 0.0,
+        "cache_hits": 6
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 28,
+        "tokens": 61455,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 14,
+        "tokens": 25015,
+        "cost_usd": 0.0,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 7,
+        "tokens": 18891,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 8,
+        "tokens": 11259,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 3,
+        "tokens": 1694,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "gemini",
+        "calls": 148,
+        "tokens": 328919,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 6,
+        "tokens": 1107,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 14,
+      "misses": 140,
+      "entries": 1784
+    },
+    "budget_remaining_usd": 12.0
+  },
+  "preference_summary": {
+    "pairs_seen": 16,
+    "edits_seen": 1,
+    "voice_trained": false,
+    "top_weights": [
+      {
+        "feature": "judge_consequence",
+        "weight": 3.2789
+      },
+      {
+        "feature": "judge_specificity",
+        "weight": 2.3394
+      },
+      {
+        "feature": "judge_momentum",
+        "weight": 2.2735
+      },
+      {
+        "feature": "writer_criteria",
+        "weight": 1.9782
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5
+  },
+  "hidden_weights": {
+    "judge_momentum": 1.0,
+    "judge_specificity": 0.4,
+    "judge_consequence": 0.9,
+    "judge_voice": 0.0,
+    "writer_criteria": 0.7,
+    "continuity": 0.8,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.0,
+    "length": 0.2,
+    "dialogue_ratio": 0.3
+  },
+  "errors": [],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
+}

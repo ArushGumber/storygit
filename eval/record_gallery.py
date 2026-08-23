@@ -17,6 +17,7 @@ against the live provider with caching, so a re-record costs nothing.
 from __future__ import annotations
 
 import asyncio
+import json
 from pathlib import Path
 from typing import Any
 
@@ -857,20 +858,47 @@ async def record_all(*, live: bool = True) -> list[Session]:
     return sessions
 
 
+def write_index() -> list[dict[str, Any]]:
+    """Rebuild the index from every session on disk.
+
+    From disk rather than from what this invocation recorded, because ``--offline`` records
+    only the six scripted sessions, and an index built from the return value would then
+    silently drop the two generated ones. That is not hypothetical: it happened, and the
+    Gallery quietly lost two sessions until a test noticed.
+
+    Returns:
+        The index entries, in name order.
+    """
+    entries: list[dict[str, Any]] = []
+    for path in sorted(RESULTS.glob("*.json")):
+        if path.name == "index.json":
+            continue
+        session = Session.load(path)
+        entries.append(
+            {
+                "name": session.name,
+                "title": session.title,
+                "summary": session.summary,
+                "steps": len(session.steps),
+            }
+        )
+    (RESULTS / "index.json").write_text(json.dumps(entries, indent=2))
+    return entries
+
+
 def main() -> None:
-    """Record every session and print what was written."""
+    """Record every session and print what the Gallery now holds."""
     import sys
 
     live = "--offline" not in sys.argv
-    sessions = asyncio.run(record_all(live=live))
-    index = [
-        {"name": s.name, "title": s.title, "summary": s.summary, "steps": len(s.steps)}
-        for s in sessions
-    ]
-    (RESULTS / "index.json").write_text(__import__("json").dumps(index, indent=2))
-    for session in sessions:
-        print(f"  {session.name:28} {len(session.steps)} steps  {session.title}")
-    print(f"\nwrote {len(sessions)} sessions to {RESULTS}")
+    recorded = {session.name for session in asyncio.run(record_all(live=live))}
+    entries = write_index()
+    for entry in entries:
+        mark = "recorded" if entry["name"] in recorded else "kept    "
+        print(f"  {mark}  {entry['name']:28} {entry['steps']} steps  {entry['title']}")
+    if not live:
+        print("\n  (--offline: the two generated sessions were kept as previously recorded)")
+    print(f"\nGallery holds {len(entries)} sessions in {RESULTS}")
 
 
 if __name__ == "__main__":

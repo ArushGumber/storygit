@@ -1,29 +1,5 @@
 [
   {
-    "name": "propagation_walk",
-    "title": "An edit marks what it affected, and rewrites nothing",
-    "summary": "Beat 1 establishes where Kael is. Beat 2 relies on it and establishes his goal; beat 3 relies on that. Changing beat 1 walks the declared dependency edges and marks both, with the reason and the beat that established the fact. Beat 4, which depends on neither, is untouched. Nothing is regenerated.",
-    "steps": 2
-  },
-  {
-    "name": "epistemic_catch",
-    "title": "A character acts on something nobody told her",
-    "summary": "Kael's secret is established in beat 2. In beat 4 Mara acts on it. Nothing about the facts is wrong, the secret is true, so a checker that only compares facts sees nothing. The epistemic layer asks whether Mara has been told, finds no edge, and says so, naming the beat where the secret was established.",
-    "steps": 3
-  },
-  {
-    "name": "thread_ledger",
-    "title": "A dropped thread is not a contradiction, so nothing else would find it",
-    "summary": "A thread opened in beat 1 and untouched since is perfectly consistent. No fact conflicts, no dependency is stale, and every continuity check passes, which is exactly why a serial needs a ledger that tracks it separately. For audio fiction, a dropped thread is the most expensive kind of mistake.",
-    "steps": 2
-  },
-  {
-    "name": "locks_and_review",
-    "title": "Locks stop the walk; human prose is flagged, never staled",
-    "summary": "The same upstream edit, three times. Once normally: two beats stale. Once with beat 2 locked: the walk stops there and beat 3 is never reached, because a locked beat is not going to change. Once with human-written prose on beat 2: it is flagged for review rather than staled, the system does not tell an author their own sentences are out of date.",
-    "steps": 3
-  },
-  {
     "name": "branch_and_merge",
     "title": "What if the Warden lets him go?",
     "summary": "A branch is a pointer at a snapshot, so exploring costs nothing. Two divergent edits merge automatically when they touch different beats. Two edits to the same beat come back as a conflict for the writer, the system never guesses which version of a scene the author meant.",
@@ -33,6 +9,42 @@
     "name": "criterion_changes_ranking",
     "title": "The writer's own criterion reorders the candidates",
     "summary": "Two candidates, judged on the fixed narratology axes, rank one way. The writer adds a criterion in their own words, 'menace: every scene should threaten something', and the judge scores it alongside the fixed axes, so the ranking changes. The objective is partly the writer's, which is the whole answer to being an arbiter of somebody else's objective.",
+    "steps": 2
+  },
+  {
+    "name": "dial_both_ends",
+    "title": "The same beat, at both ends of the dial",
+    "summary": "The dial re-weights the objective, not the sampler. At 0 the ranking is quality alone; at 1 it is distance from the model's own temperature-0 continuation -- so the system explicitly selects against what it would have done anyway. Same six candidates both times; different three shown.",
+    "steps": 2
+  },
+  {
+    "name": "epistemic_catch",
+    "title": "A character acts on something nobody told her",
+    "summary": "Kael's secret is established in beat 2. In beat 4 Mara acts on it. Nothing about the facts is wrong, the secret is true, so a checker that only compares facts sees nothing. The epistemic layer asks whether Mara has been told, finds no edge, and says so, naming the beat where the secret was established.",
+    "steps": 3
+  },
+  {
+    "name": "labelled_candidates",
+    "title": "Three named directions, not three paragraphs",
+    "summary": "Six candidates are generated under named instructions -- raise the stakes, slow down, subvert the expectation -- and three are selected for quality and mutual difference. The label is the mechanism: three named directions cost a decision; three unlabelled paragraphs cost three readings. Each candidate arrives already checked, with its flags attached.",
+    "steps": 2
+  },
+  {
+    "name": "locks_and_review",
+    "title": "Locks stop the walk; human prose is flagged, never staled",
+    "summary": "The same upstream edit, three times. Once normally: two beats stale. Once with beat 2 locked: the walk stops there and beat 3 is never reached, because a locked beat is not going to change. Once with human-written prose on beat 2: it is flagged for review rather than staled, the system does not tell an author their own sentences are out of date.",
+    "steps": 3
+  },
+  {
+    "name": "propagation_walk",
+    "title": "An edit marks what it affected, and rewrites nothing",
+    "summary": "Beat 1 establishes where Kael is. Beat 2 relies on it and establishes his goal; beat 3 relies on that. Changing beat 1 walks the declared dependency edges and marks both, with the reason and the beat that established the fact. Beat 4, which depends on neither, is untouched. Nothing is regenerated.",
+    "steps": 2
+  },
+  {
+    "name": "thread_ledger",
+    "title": "A dropped thread is not a contradiction, so nothing else would find it",
+    "summary": "A thread opened in beat 1 and untouched since is perfectly consistent. No fact conflicts, no dependency is stale, and every continuity check passes, which is exactly why a serial needs a ledger that tracks it separately. For audio fiction, a dropped thread is the most expensive kind of mistake.",
     "steps": 2
   }
 ]
