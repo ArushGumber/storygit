@@ -586,3 +586,121 @@ async def test_an_enabled_layer_with_no_data_also_defers_to_the_judge(
     assert engine.preference.state.pairs_seen == 0
     # Features were still captured, so the very first accept produces usable training data.
     assert len(engine._features) == 3
+
+
+@pytest.mark.slow
+async def test_exemplars_actually_reach_the_prompt(fixture: Fixture) -> None:
+    """The writer's own sentences must appear in the prompt, not merely be retrievable.
+
+    Retrieval that is built, tested, and never wired in is the failure this test exists to
+    catch — and it was the state of things until the quality pass.
+    """
+    from storygit.agents.schemas import Level
+    from storygit.domain.ids import IdGenerator
+    from storygit.engine import Engine
+    from storygit.selection.select import SelectionConfig, Selector
+
+    payload = {
+        "title": "t",
+        "what_happens": "w",
+        "audience_learns": "",
+        "audience_feels": "",
+        "location": "",
+        "time": "",
+        "produces": [],
+        "consumes": [],
+        "threads_touched": [],
+        "new_characters": [],
+        "rationale": "r",
+        "delta_summary": ["d"],
+    }
+    provider = MockProvider(lambda _r: canned(payload))
+    layer = PreferenceLayer(seed=0)
+    layer.set_exemplars(
+        ["Kael ran. He did not look back."],
+        ["In the long grey hours before the ash began to settle over the rooftops..."],
+    )
+    engine = Engine(
+        fixture.repo,
+        Router({"gemini": provider, "groq": provider}),
+        ids=IdGenerator(seed=1, stream="ex"),
+        selection=SelectionConfig(
+            n=1, k=1, selector=Selector.topk_temperature, use_judge=False, use_dial=False
+        ),
+        use_nli=False,
+        preference=layer,
+    )
+    await engine.propose_at(Level.beat, node_id=fixture.scene, intent="Kael escapes")
+
+    prompt = provider.prompts_for("propose.beat")[0]
+    assert "THE WRITER KEPT THESE" in prompt
+    assert "Kael ran. He did not look back." in prompt
+    assert "THE WRITER TURNED THESE DOWN" in prompt
+
+
+async def test_a_disabled_layer_sends_no_exemplars(fixture: Fixture) -> None:
+    """The ablation must not merely rank differently; it must send the same prompt."""
+    from storygit.agents.schemas import Level
+    from storygit.domain.ids import IdGenerator
+    from storygit.engine import Engine
+    from storygit.selection.select import SelectionConfig, Selector
+
+    payload = {
+        "title": "t",
+        "what_happens": "w",
+        "audience_learns": "",
+        "audience_feels": "",
+        "location": "",
+        "time": "",
+        "produces": [],
+        "consumes": [],
+        "threads_touched": [],
+        "new_characters": [],
+        "rationale": "r",
+        "delta_summary": ["d"],
+    }
+    provider = MockProvider(lambda _r: canned(payload))
+    layer = PreferenceLayer(enabled=False)
+    layer.set_exemplars(["Kael ran."], ["In the long grey hours..."])
+    engine = Engine(
+        fixture.repo,
+        Router({"gemini": provider, "groq": provider}),
+        ids=IdGenerator(seed=1, stream="ex2"),
+        selection=SelectionConfig(
+            n=1, k=1, selector=Selector.topk_temperature, use_judge=False, use_dial=False
+        ),
+        use_nli=False,
+        preference=layer,
+    )
+    await engine.propose_at(Level.beat, node_id=fixture.scene, intent="Kael escapes")
+
+    prompt = provider.prompts_for("propose.beat")[0]
+    assert "THE WRITER KEPT THESE" not in prompt
+    assert "Kael ran." not in prompt
+
+
+def test_mined_rules_cannot_reach_a_prompt_without_being_visible(fixture: Fixture) -> None:
+    """A rule the writer cannot see is a rule they cannot disagree with.
+
+    Two gates: a mined rule needs a second observation before it enters a prompt, and
+    whatever does enter is exactly what the ledger pane shows.
+    """
+    from storygit.domain.apply import apply
+    from storygit.domain.diff import AddStyleNote, Diff
+    from storygit.domain.ledger import StyleNote, StyleNoteSource
+    from storygit.graph.slices import entity_slice
+
+    mined = StyleNote(text="shorter sentences", source=StyleNoteSource.mined)
+    once = apply(fixture.repo.state(), Diff(ops=(AddStyleNote(note=mined),)))
+    rendered = entity_slice(once, {fixture.kael}, fixture.beat_b).render()
+    assert "shorter sentences" not in rendered, "one observation is not a standing instruction"
+    assert once.ledger.style_notes[0].text == "shorter sentences", "but it is visible"
+
+    twice = apply(once, Diff(ops=(AddStyleNote(note=mined),)))
+    rendered = entity_slice(twice, {fixture.kael}, fixture.beat_b).render()
+    assert "shorter sentences" in rendered
+
+    # What reaches the prompt is exactly what the interface shows as active.
+    active = {n.text for n in twice.ledger.active_style_notes()}
+    for note in active:
+        assert note in rendered

@@ -93,13 +93,28 @@ def system_message(slice_: StateSlice, *, extra: str = "") -> Message:
 
 
 def _user_message(
-    slice_: StateSlice, intent: str, task: str, model_cls: type[BaseModel]
+    slice_: StateSlice,
+    intent: str,
+    task: str,
+    model_cls: type[BaseModel],
+    exemplars: str = "",
 ) -> Message:
-    """Build the user turn: current state, the writer's intent, the task, the schema."""
+    """Build the user turn: state, exemplars, intent, task, schema.
+
+    The exemplar block is the writer's own accepted sentences and the ones they turned
+    down. It goes *before* the intent, because showing a model what this writer keeps is a
+    stronger instruction than describing it, and because it should colour how the task is
+    read rather than arriving as an afterthought.
+
+    It is empty for a new writer and empty when the preference layer is disabled, so the
+    no-preference ablation produces byte-identical prompts to a system without one.
+    """
     rendered = slice_.render()
     blocks = []
     if rendered:
         blocks.append(f"CURRENT STATE\n{rendered}")
+    if exemplars:
+        blocks.append(exemplars)
     if intent:
         blocks.append(f"THE WRITER'S INTENT\n{intent}")
     blocks.append(f"YOUR TASK\n{task}")
@@ -115,7 +130,11 @@ def _user_message(
 
 
 def premise_prompt(
-    slice_: StateSlice, seed: str, intent: str, model_cls: type[BaseModel]
+    slice_: StateSlice,
+    seed: str,
+    intent: str,
+    model_cls: type[BaseModel],
+    exemplars: str = "",
 ) -> tuple[Message, Message]:
     """Develop the writer's one-line seed into a premise, a question, and a cast.
 
@@ -127,6 +146,8 @@ def premise_prompt(
         seed: The writer's original one-line idea.
         intent: What the writer asked for.
         model_cls: The response schema.
+        exemplars: The writer's own accepted and rejected work, rendered; empty for a
+            new writer and when the preference layer is off.
 
     Returns:
         The messages for the call.
@@ -141,11 +162,18 @@ def premise_prompt(
         "Develop it into a premise of two or three sentences, an existential question, "
         "a working title, and the opening cast."
     )
-    return (system_message(slice_, extra=extra), _user_message(slice_, intent, task, model_cls))
+    return (
+        system_message(slice_, extra=extra),
+        _user_message(slice_, intent, task, model_cls, exemplars),
+    )
 
 
 def episode_prompt(
-    slice_: StateSlice, intent: str, model_cls: type[BaseModel], position: int
+    slice_: StateSlice,
+    intent: str,
+    model_cls: type[BaseModel],
+    position: int,
+    exemplars: str = "",
 ) -> tuple[Message, Message]:
     """Propose one episode, with its hook, cliffhanger, recap, and threads.
 
@@ -153,6 +181,8 @@ def episode_prompt(
         slice_: State slice around the end of the story so far.
         intent: What the writer asked for.
         model_cls: The response schema.
+        exemplars: The writer's own accepted and rejected work, rendered; empty for a
+            new writer and when the preference layer is off.
         position: 1-based index of the episode being proposed.
 
     Returns:
@@ -170,11 +200,18 @@ def episode_prompt(
         "cliffhanger, the recap, and which threads you open, advance, and close (by id "
         "for existing ones)."
     )
-    return (system_message(slice_, extra=extra), _user_message(slice_, intent, task, model_cls))
+    return (
+        system_message(slice_, extra=extra),
+        _user_message(slice_, intent, task, model_cls, exemplars),
+    )
 
 
 def scene_prompt(
-    slice_: StateSlice, intent: str, model_cls: type[BaseModel], episode_title: str
+    slice_: StateSlice,
+    intent: str,
+    model_cls: type[BaseModel],
+    episode_title: str,
+    exemplars: str = "",
 ) -> tuple[Message, Message]:
     """Propose one scene inside an episode.
 
@@ -182,6 +219,8 @@ def scene_prompt(
         slice_: State slice around the episode.
         intent: What the writer asked for.
         model_cls: The response schema.
+        exemplars: The writer's own accepted and rejected work, rendered; empty for a
+            new writer and when the preference layer is off.
         episode_title: The parent episode, for context.
 
     Returns:
@@ -195,11 +234,18 @@ def scene_prompt(
         f"Propose the next scene of “{episode_title}”. Say what happens, what the "
         "audience learns, how they should feel, and where and when it takes place."
     )
-    return (system_message(slice_, extra=extra), _user_message(slice_, intent, task, model_cls))
+    return (
+        system_message(slice_, extra=extra),
+        _user_message(slice_, intent, task, model_cls, exemplars),
+    )
 
 
 def beat_prompt(
-    slice_: StateSlice, intent: str, model_cls: type[BaseModel], scene_title: str
+    slice_: StateSlice,
+    intent: str,
+    model_cls: type[BaseModel],
+    scene_title: str,
+    exemplars: str = "",
 ) -> tuple[Message, Message]:
     """Propose one beat, including the facts it establishes and relies on.
 
@@ -210,6 +256,8 @@ def beat_prompt(
         slice_: State slice around the scene.
         intent: What the writer asked for.
         model_cls: The response schema.
+        exemplars: The writer's own accepted and rejected work, rendered; empty for a
+            new writer and when the preference layer is off.
         scene_title: The parent scene, for context.
 
     Returns:
@@ -223,11 +271,18 @@ def beat_prompt(
         f"Propose the next beat of “{scene_title}”. Then list, precisely, the facts it "
         "establishes and the ids of the already-established facts it relies on."
     )
-    return (system_message(slice_, extra=extra), _user_message(slice_, intent, task, model_cls))
+    return (
+        system_message(slice_, extra=extra),
+        _user_message(slice_, intent, task, model_cls, exemplars),
+    )
 
 
 def prose_prompt(
-    slice_: StateSlice, intent: str, model_cls: type[BaseModel], beat: str
+    slice_: StateSlice,
+    intent: str,
+    model_cls: type[BaseModel],
+    beat: str,
+    exemplars: str = "",
 ) -> tuple[Message, Message]:
     """Write the prose for a beat.
 
@@ -235,6 +290,8 @@ def prose_prompt(
         slice_: State slice around the beat, including recent prose for voice.
         intent: What the writer asked for.
         model_cls: The response schema.
+        exemplars: The writer's own accepted and rejected work, rendered; empty for a
+            new writer and when the preference layer is off.
         beat: What the beat is meant to do.
 
     Returns:
@@ -247,7 +304,10 @@ def prose_prompt(
         "if any is shown."
     )
     task = f"Write the prose for this beat:\n  {beat}\n\nThen say why you made your choices."
-    return (system_message(slice_, extra=extra), _user_message(slice_, intent, task, model_cls))
+    return (
+        system_message(slice_, extra=extra),
+        _user_message(slice_, intent, task, model_cls, exemplars),
+    )
 
 
 def extraction_prompt(
@@ -262,6 +322,8 @@ def extraction_prompt(
         slice_: State slice, so known entities resolve to their canonical names.
         text: The prose to read.
         model_cls: The response schema.
+        exemplars: The writer's own accepted and rejected work, rendered; empty for a
+            new writer and when the preference layer is off.
 
     Returns:
         The messages for the call.

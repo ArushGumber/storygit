@@ -126,6 +126,7 @@ class Proposer:
         intent: str = "",
         k: int = 3,
         temperature: float = 0.95,
+        exemplars: str = "",
     ) -> list[Proposal]:
         """Generate ``k`` candidate diffs at one level.
 
@@ -137,6 +138,9 @@ class Proposer:
             intent: The writer's instruction, in their words.
             k: How many candidates to return.
             temperature: Sampling temperature.
+            exemplars: The writer's own accepted and rejected work, rendered for the
+                prompt. Empty for a new writer and when the preference layer is off, so
+                the no-preference ablation produces byte-identical prompts.
 
         Returns:
             Up to ``k`` proposals. Candidates whose output fails to validate twice are
@@ -149,7 +153,7 @@ class Proposer:
         parent_id = target_node_id or self._default_parent(state, level)
         slice_ = self._slice_for(state, level, parent_id)
         model_cls = SCHEMA_FOR_LEVEL[level]
-        messages = self._messages(state, level, slice_, intent, parent_id, model_cls)
+        messages = self._messages(state, level, slice_, intent, parent_id, model_cls, exemplars)
 
         results = await asyncio.gather(
             *(
@@ -288,6 +292,7 @@ class Proposer:
         intent: str,
         parent_id: NodeId | None,
         model_cls: type[ProposalBase],
+        exemplars: str = "",
     ) -> tuple[Message, Message]:
         """Dispatch to the right prompt builder for this level."""
         parent = state.nodes.get(parent_id) if parent_id else None
@@ -295,17 +300,19 @@ class Proposer:
         match level:
             case Level.premise:
                 seed = getattr(parent, "seed", "") if parent else ""
-                return prompts.premise_prompt(slice_, seed, intent, model_cls)
+                return prompts.premise_prompt(slice_, seed, intent, model_cls, exemplars)
             case Level.episode:
                 position = len(state.nodes_of_type(NodeType.episode)) + 1
-                return prompts.episode_prompt(slice_, intent, model_cls, position)
+                return prompts.episode_prompt(slice_, intent, model_cls, position, exemplars)
             case Level.scene:
-                return prompts.scene_prompt(slice_, intent, model_cls, parent_label)
+                return prompts.scene_prompt(slice_, intent, model_cls, parent_label, exemplars)
             case Level.beat:
-                return prompts.beat_prompt(slice_, intent, model_cls, parent_label)
+                return prompts.beat_prompt(slice_, intent, model_cls, parent_label, exemplars)
             case Level.prose:
                 beat_text = parent.what_happens if parent else ""
-                return prompts.prose_prompt(slice_, intent, model_cls, beat_text or parent_label)
+                return prompts.prose_prompt(
+                    slice_, intent, model_cls, beat_text or parent_label, exemplars
+                )
 
     # --- schema -> diff ---------------------------------------------------------
 

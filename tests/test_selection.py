@@ -279,3 +279,75 @@ def test_candidate_text_reads_from_the_diff(fixture: Fixture) -> None:
     )
     text = candidate_text(proposal)
     assert "The offer" in text and "way out" in text
+
+
+async def test_the_greedy_continuation_costs_one_extra_call_per_node(
+    fixture: Fixture,
+) -> None:
+    """The dial must cost at most one extra call, and moving it must cost none.
+
+    Surprise is measured against the model's own temperature-0 continuation. Generating
+    that per *candidate* rather than per node would multiply the dial's cost by n, and
+    re-generating it when the writer moves the slider would make the dial feel expensive —
+    which is exactly what would stop them using it.
+    """
+    from storygit.agents.propose import Proposer
+
+    calls: list[float] = []
+
+    def handler(req: object) -> str:
+        calls.append(getattr(req, "temperature", 1.0))
+        return canned(beat_payload("beat", "something happens here at some length"))
+
+    provider = MockProvider(handler)
+    router = Router({"gemini": provider, "groq": provider})
+    selector = CandidateSelector(
+        Proposer(router, IdGenerator(seed=5)),
+        router,
+        SelectionConfig(n=4, k=2, selector=Selector.mmr, use_judge=False, use_dial=True),
+    )
+
+    from storygit.domain.diff import Diff, SetDial
+
+    state = fixture.repo.preview_apply(Diff(ops=(SetDial(value=0.6),)))
+    await selector.select(state, Level.beat, target_node_id=fixture.scene)
+
+    greedy = [t for t in calls if t == 0.0]
+    assert len(greedy) == 1, f"the greedy continuation ran {len(greedy)} times, not once"
+    assert len(calls) == 5, "four candidates plus one greedy continuation"
+
+    # Moving the dial re-ranks the candidates already in hand; it does not regenerate.
+    from storygit.selection.dial import effective_quality
+
+    quality = [0.9, 0.5, 0.2]
+    surprise = [0.1, 0.5, 0.9]
+    before = len(calls)
+    coherent = effective_quality(quality, surprise, 0.0)
+    surprising = effective_quality(quality, surprise, 1.0)
+    assert len(calls) == before, "re-ranking makes no calls at all"
+    assert coherent.index(max(coherent)) != surprising.index(max(surprising))
+
+
+async def test_the_greedy_continuation_is_skipped_when_the_dial_is_at_zero(
+    fixture: Fixture,
+) -> None:
+    """At dial 0 the surprise term is multiplied by zero, so generating it is waste."""
+    from storygit.agents.propose import Proposer
+
+    calls: list[float] = []
+    provider = MockProvider(
+        lambda req: (calls.append(req.temperature), canned(beat_payload("b", "x" * 30)))[1]
+    )
+    router = Router({"gemini": provider, "groq": provider})
+    selector = CandidateSelector(
+        Proposer(router, IdGenerator(seed=5)),
+        router,
+        SelectionConfig(n=3, k=2, selector=Selector.mmr, use_judge=False, use_dial=True),
+    )
+
+    from storygit.domain.diff import Diff, SetDial
+
+    state = fixture.repo.preview_apply(Diff(ops=(SetDial(value=0.0),)))
+    await selector.select(state, Level.beat, target_node_id=fixture.scene)
+    assert 0.0 not in calls, "the greedy continuation was generated and then ignored"
+    assert len(calls) == 3

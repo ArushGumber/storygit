@@ -189,6 +189,7 @@ class CandidateSelector:
         *,
         target_node_id: NodeId | None = None,
         intent: str = "",
+        exemplars: str = "",
         quality_fn: Callable[[Sequence[Candidate]], Awaitable[list[float] | None]] | None = None,
     ) -> list[Candidate]:
         """Generate, check, rank, and shortlist candidates for one node.
@@ -198,6 +199,8 @@ class CandidateSelector:
             level: What to propose.
             target_node_id: The node to attach to.
             intent: The writer's instruction.
+            exemplars: The writer's own accepted and rejected work, rendered for the
+                prompt. Empty when the preference layer is off.
             quality_fn: Overrides the base-quality *ranking*. This is the chunk 4 seam:
                 the preference head is dropped in here and nothing else changes. It
                 receives candidates that already carry their judge sub-scores and flags,
@@ -215,7 +218,7 @@ class CandidateSelector:
             config.n, offset=axes_module.offset_for(str(parent_id or level.value))
         )
 
-        sampled = await self._sample(state, level, parent_id, intent, chosen_axes)
+        sampled = await self._sample(state, level, parent_id, intent, chosen_axes, exemplars)
         if not sampled:
             return []
 
@@ -293,6 +296,7 @@ class CandidateSelector:
         parent_id: NodeId | None,
         intent: str,
         chosen_axes: tuple[axes_module.Axis, ...],
+        exemplars: str = "",
     ) -> list[tuple[Proposal, axes_module.Axis]]:
         """Sample one candidate per axis, all at once."""
         results = await asyncio.gather(
@@ -304,6 +308,7 @@ class CandidateSelector:
                     intent=_with_axis(intent, axis),
                     k=1,
                     temperature=self.config.temperature,
+                    exemplars=exemplars,
                 )
                 for axis in chosen_axes
             )

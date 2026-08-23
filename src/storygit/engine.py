@@ -179,11 +179,16 @@ class Engine:
         Returns:
             Candidates, shortlisted ones first.
         """
+        # The writer's own accepted sentences, and the ones they turned down, retrieved
+        # against this intent. Empty for a new writer and when the layer is disabled, so
+        # the no-preference ablation sends byte-identical prompts.
+        exemplars = self.preference.exemplars.render(intent, enabled=self.preference.enabled)
         candidates = await self.selector.select(
             self.state(),
             level,
             target_node_id=node_id,
             intent=intent,
+            exemplars=exemplars,
             quality_fn=self._preference_quality,
         )
         features = self.preference.features_for(candidates)
