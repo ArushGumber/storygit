@@ -140,3 +140,40 @@ describe("request shapes", () => {
     expect(urls()[1]).toBe("/api/tree");
   });
 });
+
+describe("the calls behind the controls added last", () => {
+  function mock(body: unknown) {
+    const fetchMock = vi.fn(async () => respond(200, body));
+    vi.stubGlobal("fetch", fetchMock);
+    return () => fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+  }
+
+  it("previews a merge before committing one", async () => {
+    const first = mock({ clean: true, conflicts: [], summary: [] });
+    await api.mergeBranches("main", "what-if", false);
+    const [url, init] = first();
+    expect(url).toBe("/api/branch/merge");
+    expect(JSON.parse(init.body as string)).toEqual({
+      ours: "main",
+      theirs: "what-if",
+      commit: false,
+    });
+  });
+
+  it("asks for the slow audit explicitly", async () => {
+    const first = mock({ flags: [], summary: "" });
+    await api.flags(true);
+    expect(first()[0]).toBe("/api/flags?audit=true");
+  });
+
+  it("merges entities by id, never by name", async () => {
+    const first = mock({ ok: true });
+    await api.mergeEntities("e_dupe", "e_kael");
+    const [url, init] = first();
+    expect(url).toBe("/api/entity/merge");
+    expect(JSON.parse(init.body as string)).toEqual({
+      source_id: "e_dupe",
+      target_id: "e_kael",
+    });
+  });
+});

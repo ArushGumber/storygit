@@ -26,6 +26,7 @@ import {
   type Candidate,
   type Entity,
   type FactView,
+  type Flag,
   type LedgerResponse,
   type NodeDetail,
   type NodeSummary,
@@ -55,6 +56,9 @@ export function Live() {
   const [authorship, setAuthorship] = useState<AuthorshipResponse | null>(null);
   const [branches, setBranches] = useState<BranchesResponse | null>(null);
   const [threadAges, setThreadAges] = useState<Record<string, number>>({});
+  const [audit, setAudit] = useState<{ summary: string; flags: Flag[] } | null>(null);
+  const [history, setHistory] = useState<Array<Record<string, unknown>>>([]);
+  const [divergence, setDivergence] = useState<string | null>(null);
 
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [intent, setIntent] = useState("");
@@ -185,17 +189,122 @@ export function Live() {
         )}
 
         <h2>Branches</h2>
+        {branches && branches.current !== "main" && (
+          <p className="hint">
+            {divergence ?? "on a branch."}{" "}
+            <a
+              href="#"
+              onClick={(event) => {
+                event.preventDefault();
+                void run("diff", async () => {
+                  const diff = await api.diffBranches("main", branches.current);
+                  setDivergence(
+                    diff.op_count === 0
+                      ? "identical to main so far."
+                      : `${diff.op_count} change${diff.op_count === 1 ? "" : "s"} away from ` +
+                        `main: ${diff.summary.slice(0, 3).join("; ")}`,
+                  );
+                });
+              }}
+            >
+              compare with main
+            </a>
+          </p>
+        )}
+        <div className="inline">
+          <button
+            onClick={() =>
+              void run("branch", async () => {
+                const name = window.prompt("Name this line of exploration");
+                if (name) await api.createBranch(name);
+                await refresh();
+              })
+            }
+          >
+            branch from here
+          </button>
+          <button
+            onClick={() =>
+              void run("merge", async () => {
+                const others = Object.keys(branches?.branches ?? {}).filter(
+                  (name) => name !== branches?.current,
+                );
+                if (others.length === 0) {
+                  window.alert("There is nothing to merge in yet.");
+                  return;
+                }
+                const answer = window.prompt(
+                  `Merge which branch into ${branches?.current}?\n\n${others.join("\n")}`,
+                );
+                if (!answer) return;
+                const preview = await api.mergeBranches(branches?.current ?? "main", answer, false);
+                if (!preview.clean) {
+                  window.alert(
+                    `${preview.conflicts.length} conflict(s). Nothing was merged; the ` +
+                      `system will not guess which version you meant.`,
+                  );
+                  return;
+                }
+                const lines = preview.summary.slice(0, 12).join("\n");
+                if (!window.confirm(`This would:\n\n${lines}\n\nMerge it?`)) return;
+                await api.mergeBranches(branches?.current ?? "main", answer, true);
+                await refresh();
+              })
+            }
+            title="Three-way merge. Conflicts are returned, never resolved for you."
+          >
+            merge a branch in
+          </button>
+        </div>
+
+        <h2>Check the whole story</h2>
+        <p className="hint">
+          Per-accept checking is incremental and can miss drift assembled over ten episodes.
+          This walks the whole graph, and lists the threads you have stopped touching.
+        </p>
         <button
           onClick={() =>
-            void run("branch", async () => {
-              const name = window.prompt("Name this line of exploration");
-              if (name) await api.createBranch(name);
-              await refresh();
+            void run("audit", async () => {
+              const report = await api.flags(true);
+              setAudit({ summary: report.summary, flags: report.flags });
             })
           }
         >
-          branch from here
+          audit
         </button>
+        {audit && (
+          <>
+            <p className="hint">{audit.summary}</p>
+            <FlagList flags={audit.flags} onNavigate={setSelected} />
+          </>
+        )}
+
+        <h2>History</h2>
+        <div className="inline">
+          <button
+            onClick={() =>
+              void run("history", async () => {
+                setHistory((await api.history()).history);
+              })
+            }
+            title="Every accepted change is a snapshot. Nothing is ever overwritten in place."
+          >
+            {history.length > 0 ? "refresh" : "show"} the snapshot chain
+          </button>
+        </div>
+        {history.length > 0 && (
+          <ul className="facts">
+            {history.slice(0, 12).map((entry) => (
+              <li key={String(entry.id)}>
+                <div>{String(entry.intent || "(no stated intent)")}</div>
+                <div className="meta">
+                  {String(entry.author)} &middot;{" "}
+                  <span className="mono">{String(entry.id).slice(0, 8)}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
 
       <section className="pane">
