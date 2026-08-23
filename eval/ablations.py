@@ -174,10 +174,10 @@ single number, because the whole question is the trade-off."""
 
 PROBE_SAMPLE = RunConfig(
     name="probesample",
-    description="one episode per persona, to sample the held-out probe fixture from",
+    description="two episodes per persona, to sample the held-out probe fixture from",
     expectation="produces decisions with features and texts; never itself probed",
     selection=SelectionConfig(n=6, k=3),
-    episodes=1,
+    episodes=2,
     scenes_per_episode=2,
     beats_per_scene=2,
 )

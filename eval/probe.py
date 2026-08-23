@@ -249,19 +249,47 @@ def discrimination(features: list[dict[str, float]], *, trials: int = 200, seed:
     return 1.0 - top / len(winners)
 
 
-def build(runs: list[dict[str, Any]], *, per_run: int = 3, seed: int = 20260824) -> ProbeSet:
-    """Sample probe points from recorded runs, preferring the ones that discriminate.
+DISCRIMINATION_FLOOR = 0.40
+"""Below this a decision point is dropped: too many weight vectors agree on it.
 
-    Points are ranked by :func:`discrimination` and the most discriminating are taken. This
-    is not a thumb on the scale for any particular head — it removes decisions that *no*
-    weight vector gets wrong, which are exactly the decisions a learning curve cannot be
-    measured on. Chosen this way because the first fixture, sampled uniformly at random,
-    scored a fitted prior and an untrained uniform head identically on every persona.
+A floor, not a ranking. Taking the *most* discriminating points instead — which the first
+version did — concentrates the fixture on near-ties, where a hair of noise flips the
+winner, and so maximises the variance of every reading it is used for. The floor removes
+the points that measure nothing; the draw above it keeps the rest representative.
+"""
+
+
+def build(
+    runs: list[dict[str, Any]],
+    *,
+    per_run: int = 6,
+    seed: int = 20260824,
+    floor: float = DISCRIMINATION_FLOOR,
+) -> ProbeSet:
+    """Sample probe points from recorded runs: a discrimination floor, then a level draw.
+
+    Two rules, in order.
+
+    **The floor.** A candidate set where one option is better on every feature has the same
+    answer under every weight vector, so no head can get it wrong and replaying it measures
+    nothing. Points below ``floor`` on :func:`discrimination` are dropped. The first fixture
+    had no floor and scored a fitted prior and an untrained uniform head identically on
+    every persona.
+
+    **The stratified draw.** Above the floor, points are drawn per level rather than by
+    taking the maximum. Argmax would fill the fixture with near-ties — the points where the
+    answer is most sensitive to the weights *and* to noise — which is precisely how to make
+    every reading as noisy as possible. Levels are drawn round-robin so a fixture is not
+    all beats: the plan levels and the prose level exercise different features.
+
+    Neither rule ever consults a head, fitted or otherwise, which is what keeps the
+    instrument independent of what it measures.
 
     Args:
         runs: Loaded RunLog dictionaries.
-        per_run: How many decisions to take from each.
+        per_run: How many decisions to take from each run.
         seed: Sampling seed, so the fixture is reproducible from the same runs.
+        floor: Minimum discrimination to be eligible.
 
     Returns:
         The probe set, ready to commit.
@@ -269,15 +297,29 @@ def build(runs: list[dict[str, Any]], *, per_run: int = 3, seed: int = 20260824)
     rng = random.Random(seed)
     points: list[ProbePoint] = []
     for run in runs:
-        usable = [
-            a
-            for a in run.get("actions", ())
-            if len(a.get("features", ())) >= 2
-            and all(set(f) >= set(BASE_FEATURES) for f in a["features"])
-        ]
-        rng.shuffle(usable)
-        usable.sort(key=lambda a: -discrimination(list(a["features"]), seed=seed))
-        for action in usable[:per_run]:
+        eligible: dict[str, list[dict[str, Any]]] = {}
+        for action in run.get("actions", ()):
+            features = action.get("features", ())
+            if len(features) < 2 or not all(set(f) >= set(BASE_FEATURES) for f in features):
+                continue
+            if discrimination(list(features), seed=seed) < floor:
+                continue
+            eligible.setdefault(action.get("level", ""), []).append(action)
+
+        for bucket in eligible.values():
+            rng.shuffle(bucket)
+        # Round-robin over levels, so the draw is spread rather than concentrated in
+        # whichever level happens to have the most decisions.
+        levels = sorted(eligible)
+        taken: list[dict[str, Any]] = []
+        while len(taken) < per_run and any(eligible[level] for level in levels):
+            for level in levels:
+                if len(taken) >= per_run:
+                    break
+                if eligible[level]:
+                    taken.append(eligible[level].pop())
+
+        for action in taken:
             points.append(
                 ProbePoint(
                     source=f"{run.get('config', {}).get('name', 'unknown')}/{run['persona']}",
@@ -299,7 +341,7 @@ def main() -> None:
         default="probesample__*.json",
         help="which runs to sample from; the sampling run is never itself probed",
     )
-    parser.add_argument("--per-run", type=int, default=3)
+    parser.add_argument("--per-run", type=int, default=6)
     args = parser.parse_args()
     if not args.build:
         probe = ProbeSet.load()
