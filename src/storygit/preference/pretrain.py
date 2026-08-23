@@ -144,6 +144,7 @@ def evaluate_prior(
     n_decisions: int = 10,
     n_test: int = 200,
     seed: int = 99,
+    shrink_unidentified: bool = False,
 ) -> dict[str, float]:
     """Does starting from the prior beat starting from uniform, early on?
 
@@ -159,6 +160,8 @@ def evaluate_prior(
         n_decisions: How many comparisons the fresh writer has made.
         n_test: Held-out comparisons to score on.
         seed: RNG seed for the fresh writer.
+        shrink_unidentified: Pass through to the fit, so the shrinkage A/B can check that
+            the change does not cost the prior the thing the prior is for.
 
     Returns:
         ``{"prior": accuracy, "uniform": accuracy, "lift": difference}``.
@@ -168,8 +171,10 @@ def evaluate_prior(
     train = generate_pairs([fresh], per_persona=n_decisions, seed=seed + 1)
     test = generate_pairs([fresh], per_persona=n_test, seed=seed + 2)
 
-    from_prior = fit(train, prior=prior, l2=2.0)
-    from_uniform = fit(train, prior=BTWeights.uniform(), l2=2.0)
+    from_prior = fit(train, prior=prior, l2=2.0, shrink_unidentified=shrink_unidentified)
+    from_uniform = fit(
+        train, prior=BTWeights.uniform(), l2=2.0, shrink_unidentified=shrink_unidentified
+    )
 
     prior_accuracy = pairwise_accuracy(from_prior, test)
     uniform_accuracy = pairwise_accuracy(from_uniform, test)

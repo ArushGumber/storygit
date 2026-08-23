@@ -115,6 +115,7 @@ def fit(
     epochs: int = 400,
     learning_rate: float = 0.5,
     sample_weights: Sequence[float] | None = None,
+    shrink_unidentified: bool = False,
 ) -> BTWeights:
     """Fit weights to a set of (winner, loser) feature pairs.
 
@@ -130,6 +131,13 @@ def fit(
         learning_rate: Step size.
         sample_weights: Per-pair weights. Edited-then-accepted wins are weaker evidence
             than clean accepts and are down-weighted by the caller.
+        shrink_unidentified: Pull feature directions the data says nothing about towards
+            **zero** rather than towards the prior. A feature that never varies inside a
+            candidate set produces an all-zero column of differences, so it receives no
+            gradient and keeps whatever the prior asserted about it — invisible in session,
+            because a constant cannot reorder anything the writer sees, and wrong the moment
+            the head is applied to candidates drawn from anywhere else. Off by default; the
+            A/B that decides it is in ``eval/shrinkage.py``.
 
     Returns:
         The fitted weights, carrying the number of pairs they saw.
@@ -156,13 +164,20 @@ def fit(
     )
     weights = weights / weights.sum() * len(pairs)
 
+    # A direction with no spread in the observed differences is unidentified: the data
+    # cannot move it, so whatever it is regularized towards is what it ends up as.
+    target = prior_w.copy()
+    if shrink_unidentified:
+        identified = np.abs(x).max(axis=0) > 1e-9
+        target = np.where(identified, prior_w, 0.0)
+
     for _ in range(epochs):
         # The winner is always the first element, so the label is always 1 and the
         # gradient of the log-likelihood is (1 - sigma(w.x)) * x.
         logits = x @ w
         probabilities = 1.0 / (1.0 + np.exp(-np.clip(logits, -30, 30)))
         gradient = (x * ((1.0 - probabilities) * weights)[:, None]).sum(axis=0) / len(pairs)
-        gradient -= l2 * (w - prior_w) / max(1, len(pairs))
+        gradient -= l2 * (w - target) / max(1, len(pairs))
         w += learning_rate * gradient
 
     return BTWeights(names=names, weights=tuple(w.tolist()), pairs_seen=len(pairs), l2=l2)

@@ -751,3 +751,33 @@ def test_mined_rules_cannot_reach_a_prompt_without_being_visible(fixture: Fixtur
     active = {n.text for n in twice.ledger.active_style_notes()}
     for note in active:
         assert note in rendered
+
+
+def test_shrinkage_only_touches_directions_the_data_cannot_move() -> None:
+    """A column with no spread gets no gradient, so whatever it is pulled toward is its fate.
+
+    Prior-anchored, it keeps the population's opinion about a feature this writer has never
+    been given a choice on. Shrunk, it says nothing. The flag must change exactly that and
+    leave identified directions alone, or it is not an A/B, it is two different models.
+    """
+    from storygit.preference.bt_head import BTWeights, fit
+    from storygit.preference.features import BASE_FEATURES, FeatureVector
+
+    def vector(**overrides: float) -> FeatureVector:
+        values = dict.fromkeys(BASE_FEATURES, 0.5)
+        values.update(overrides)
+        return FeatureVector(values=values)
+
+    pairs = [(vector(judge_momentum=0.9), vector(judge_momentum=0.2))] * 20
+    prior = BTWeights(names=BASE_FEATURES, weights=tuple([1.5] * len(BASE_FEATURES)))
+
+    anchored = fit(pairs, prior=prior, l2=2.0)
+    shrunk = fit(pairs, prior=prior, l2=2.0, shrink_unidentified=True)
+
+    quiet = BASE_FEATURES.index("criterion_3")
+    loud = BASE_FEATURES.index("judge_momentum")
+    assert anchored.weights[quiet] == pytest.approx(1.5), "the prior survived, as it must"
+    assert shrunk.weights[quiet] == pytest.approx(0.0, abs=1e-6), "no data, no opinion"
+    assert shrunk.weights[loud] == pytest.approx(anchored.weights[loud]), (
+        "an identified direction must be untouched by the flag"
+    )
