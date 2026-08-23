@@ -1,0 +1,55 @@
+{
+  "name": "propagation_walk",
+  "title": "An edit marks what it affected, and rewrites nothing",
+  "summary": "Beat 1 establishes where Kael is. Beat 2 relies on it and establishes his goal; beat 3 relies on that. Changing beat 1 walks the declared dependency edges and marks both -- with the reason and the beat that established the fact. Beat 4, which depends on neither, is untouched. Nothing is regenerated.",
+  "branch": "main",
+  "steps": [
+    {
+      "index": 0,
+      "title": "The story so far",
+      "note": "Two facts, and the beats that declare they depend on them.",
+      "snapshot_id": "02ace95830874bef2220734a17d482d3",
+      "node_id": null,
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "",
+      "chosen": null,
+      "bible_diff": [
+        "+ Kael is at Ashfall.",
+        "+ Kael wants get out of the city before the gate closes."
+      ],
+      "marks": [],
+      "flags": []
+    },
+    {
+      "index": 1,
+      "title": "The writer moves Kael to Kell",
+      "note": "One fact changes. Two beats are marked stale, each citing the fact and the beat it came from. Beat 4 is not touched. Nothing is rewritten -- the writer chooses regenerate, edit, or dismiss.",
+      "snapshot_id": "9faf27542b993920c685272ece6d9b82",
+      "node_id": "n_4c749ebbf0",
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "edit",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [
+        {
+          "node_id": "n_8098a6c102",
+          "kind": "stale",
+          "reason": "Depends on a fact that changed: Kael's location (established in Caught in the market) is now “Kael is at Kell.”",
+          "origin_beat": "n_4c749ebbf0"
+        },
+        {
+          "node_id": "n_e682919836",
+          "kind": "stale",
+          "reason": "Depends on a fact that changed: Kael's goal (established in The Warden's offer) is now “Kael wants get out of the city before the gate closes.”",
+          "origin_beat": "n_8098a6c102"
+        }
+      ],
+      "flags": []
+    }
+  ],
+  "db_path": "/home/arush/Desktop/fabula_pro_max/storygit/eval/results/gallery/propagation_walk.db"
+}

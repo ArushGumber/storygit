@@ -1,0 +1,39 @@
+{
+  "name": "criterion_changes_ranking",
+  "title": "The writer's own criterion reorders the candidates",
+  "summary": "Two candidates, judged on the fixed narratology axes, rank one way. The writer adds a criterion in their own words -- 'menace: every scene should threaten something' -- and the judge scores it alongside the fixed axes, so the ranking changes. The objective is partly the writer's, which is the whole answer to being an arbiter of somebody else's objective.",
+  "branch": "main",
+  "steps": [
+    {
+      "index": 0,
+      "title": "Before: ranked on the fixed axes",
+      "note": "'Quiet' scores 0.461, 'threatening' 0.526. The polished, low-stakes candidate wins.",
+      "snapshot_id": "17c61a6568e68d62ffbb04b939550c2f",
+      "node_id": null,
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "propose",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [],
+      "flags": []
+    },
+    {
+      "index": 1,
+      "title": "After: the writer's criterion is in the objective",
+      "note": "With 'menace' weighted, 'quiet' scores 0.486 and 'threatening' 0.726. The order flips. The criterion is visible in the ledger and deletable.",
+      "snapshot_id": "2d2276146a960d52b49b246b2b7ded0b",
+      "node_id": null,
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "criterion",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [],
+      "flags": []
+    }
+  ],
+  "db_path": "/home/arush/Desktop/fabula_pro_max/storygit/eval/results/gallery/criterion_changes_ranking.db"
+}

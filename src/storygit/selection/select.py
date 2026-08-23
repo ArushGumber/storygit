@@ -71,8 +71,10 @@ class SelectionConfig(BaseModel):
         k: How many to show the writer. Three is Fabula's overwhelm lesson: more
             alternatives cost more to review than they save.
         selector: Which algorithm picks the k.
-        lambda_: MMR's quality/diversity trade-off. Ignored by DPP, which gets it from
-            the kernel.
+        lambda_: MMR's quality/diversity trade-off. 0.5 by measurement, not convention:
+            at the usual 0.7 MMR reproduces the top-k baseline exactly on realistic
+            quality spreads. See ``mmr.DEFAULT_LAMBDA``. Ignored by DPP, which gets the
+            trade-off from its kernel.
         use_judge: Whether to score candidates with the layer-3 judge. Off falls back to
             a continuity-only quality signal, which is what the no-judge ablation wants.
         use_dial: Whether to apply the coherent/surprising re-weighting.
@@ -84,7 +86,7 @@ class SelectionConfig(BaseModel):
     n: int = Field(default=6, ge=1, le=12)
     k: int = Field(default=3, ge=1, le=6)
     selector: Selector = Selector.mmr
-    lambda_: float = Field(default=0.7, ge=0.0, le=1.0)
+    lambda_: float = Field(default=0.5, ge=0.0, le=1.0)
     use_judge: bool = True
     use_dial: bool = True
     temperature: float = Field(default=0.95, ge=0.0, le=2.0)

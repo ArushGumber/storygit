@@ -53,7 +53,7 @@ def dpp_select(
     similarity: np.ndarray,
     k: int,
     *,
-    lambda_: float = 0.7,
+    lambda_: float = 0.5,
 ) -> list[int]:
     """Select ``k`` indices by greedy MAP inference over a quality-weighted DPP.
 
@@ -101,7 +101,7 @@ def topk_select(
     similarity: np.ndarray,
     k: int,
     *,
-    lambda_: float = 0.7,
+    lambda_: float = 0.5,
 ) -> list[int]:
     """Plain top-k by quality — the ablation baseline.
 

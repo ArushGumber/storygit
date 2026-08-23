@@ -79,6 +79,43 @@ def cosine(a: np.ndarray, b: np.ndarray) -> float:
     return float(np.dot(a, b) / denominator)
 
 
+def rescale_similarity(matrix: np.ndarray) -> np.ndarray:
+    """Rescale a similarity matrix so its off-diagonal entries span ``[0, 1]``.
+
+    Bi-encoder cosine has a high floor: two unrelated English sentences embedded by
+    bge-small still score around 0.6-0.7, because they share a language, a register, and a
+    topic. Feeding those raw into MMR mis-scales the trade-off badly --- a redundancy
+    penalty that is 0.7 for *everything* is a constant, and a constant subtracted from
+    every candidate changes no ordering at all, so MMR silently degenerates into top-k.
+
+    That is not hypothetical: it is what the first offline run showed. On six candidates
+    where three were near-paraphrases, MMR at lambda=0.7 picked exactly the three
+    paraphrases, identically to the top-k baseline.
+
+    Rescaling within the candidate set restores the intended meaning: 1.0 is "as similar as
+    anything here", 0.0 is "as different as anything here", and lambda is once again a
+    trade-off rather than a decoration.
+
+    Args:
+        matrix: An ``(n, n)`` similarity matrix.
+
+    Returns:
+        The same shape, off-diagonal entries rescaled, diagonal forced to 1.0.
+    """
+    import numpy as np
+
+    n = matrix.shape[0]
+    if n < 2:
+        return matrix
+    off = ~np.eye(n, dtype=bool)
+    values = matrix[off]
+    low, high = float(values.min()), float(values.max())
+    out = np.zeros_like(matrix) if high - low < 1e-9 else (matrix - low) / (high - low)
+    out = np.clip(out, 0.0, 1.0)
+    np.fill_diagonal(out, 1.0)
+    return np.asarray(out, dtype=np.float32)
+
+
 def min_max(values: Sequence[float]) -> list[float]:
     """Scale values into ``[0, 1]``.
 

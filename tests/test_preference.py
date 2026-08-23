@@ -487,6 +487,7 @@ def test_state_summary_is_renderable(fixture: Fixture) -> None:
     assert summary["voice_trained"] is False
     assert summary["bandit_safe"] == 0.5
     assert len(summary["top_weights"]) == 4
+    assert set(summary["top_weights"][0]) == {"feature", "weight"}
 
 
 async def test_turning_the_layer_off_reproduces_chunk_3_exactly(fixture: Fixture) -> None:

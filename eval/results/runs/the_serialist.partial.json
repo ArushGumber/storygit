@@ -1,0 +1,250 @@
+{
+  "persona": "the Serialist",
+  "config": {
+    "episodes": 1,
+    "scenes_per_episode": 1,
+    "beats_per_scene": 1,
+    "seed": 7,
+    "selection": {
+      "n": 3,
+      "k": 2,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_48fceb6d9c",
+      "level": "episode",
+      "shown": [
+        "p_c070843d39"
+      ],
+      "axes": [
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6898
+      ],
+      "chosen": "p_c070843d39",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "048b4df90a9a5b9d105f15532b01c4ae",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_0ec9446cd8",
+      "level": "scene",
+      "shown": [
+        "p_6290672b37",
+        "p_a78acf9ee3"
+      ],
+      "axes": [
+        "raise the stakes",
+        "slow down"
+      ],
+      "scores": [
+        0.8504,
+        0.8094
+      ],
+      "chosen": "p_6290672b37",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "53403e8a929e5d1dae8409c032f8aafd",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_a6280b8a8d",
+      "level": "beat",
+      "shown": [
+        "p_86fcbe219b",
+        "p_3efe116700"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.7645,
+        0.797
+      ],
+      "chosen": "p_3efe116700",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "5425400daec1ff6cde7d4abef832537e",
+      "stale_marked": 0
+    },
+    {
+      "node_id": "n_221f99c072",
+      "level": "prose",
+      "shown": [
+        "p_26da24b5ba",
+        "p_c4e2096485"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.8192,
+        0.7482
+      ],
+      "chosen": "p_26da24b5ba",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7ec675a2f0ffb2b0b53fc45f88aaf4d4",
+      "stale_marked": 0
+    }
+  ],
+  "episodes_completed": 1,
+  "call_summary": {
+    "calls": 67,
+    "prompt_tokens": 111835,
+    "completion_tokens": 53640,
+    "cost_usd": 0.0,
+    "cache_hits": 15,
+    "errors": 0,
+    "mean_latency_s": 5.097323771253721,
+    "total_tokens": 165475,
+    "cache_hit_rate": 0.22388059701492538,
+    "by_purpose": [
+      {
+        "purpose": "propose.beat",
+        "calls": 20,
+        "tokens": 59405,
+        "cost_usd": 0.0,
+        "cache_hits": 8
+      },
+      {
+        "purpose": "propose.beat.repair",
+        "calls": 4,
+        "tokens": 24611,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 3,
+        "tokens": 19997,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 4,
+        "tokens": 17436,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 21,
+        "tokens": 15397,
+        "cost_usd": 0.0,
+        "cache_hits": 6
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 3,
+        "tokens": 9016,
+        "cost_usd": 0.0,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "propose.scene.repair",
+        "calls": 4,
+        "tokens": 8850,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 4,
+        "tokens": 6532,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 4,
+        "tokens": 4231,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "gemini",
+        "calls": 64,
+        "tokens": 156459,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 3,
+        "tokens": 9016,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 0,
+      "misses": 37,
+      "entries": 52
+    },
+    "budget_remaining_usd": 12.0
+  },
+  "preference_summary": {
+    "pairs_seen": 3,
+    "edits_seen": 0,
+    "voice_trained": false,
+    "top_weights": [
+      {
+        "feature": "writer_criteria",
+        "weight": 1.9782
+      },
+      {
+        "feature": "judge_consequence",
+        "weight": 1.947
+      },
+      {
+        "feature": "judge_voice",
+        "weight": 1.9152
+      },
+      {
+        "feature": "judge_specificity",
+        "weight": 1.9001
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5
+  },
+  "hidden_weights": {
+    "judge_momentum": 1.0,
+    "judge_specificity": 0.4,
+    "judge_consequence": 0.9,
+    "judge_voice": 0.0,
+    "writer_criteria": 0.7,
+    "continuity": 0.8,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.0,
+    "length": 0.2,
+    "dialogue_ratio": 0.3
+  },
+  "errors": []
+}

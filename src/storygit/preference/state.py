@@ -61,7 +61,13 @@ class PreferenceState(BaseModel):
             "pairs_seen": self.pairs_seen,
             "edits_seen": self.edits_seen,
             "voice_trained": self.voice.is_trained,
-            "top_weights": self.weights.top_weights(4),
+            # A list of dicts rather than tuples: this goes through JSON on its way to
+            # the run log and the interface, and tuples come back as lists, which breaks
+            # round-trip equality.
+            "top_weights": [
+                {"feature": name, "weight": round(weight, 4)}
+                for name, weight in self.weights.top_weights(4)
+            ],
             "bandit_safe": round(self.bandit.mean_safe(), 3),
             "bandit_explore": round(self.bandit.mean_explore(), 3),
         }

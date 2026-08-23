@@ -1,0 +1,65 @@
+% eval_loop.tex -- the persona/engine loop, and where the measurements are taken.
+\documentclass[tikz, border=8pt]{standalone}
+\input{style.tex}
+\begin{document}\sgpage
+\begin{tikzpicture}[sg]
+
+% ---------------- persona ----------------
+\node[sgboxaccent, text width=34mm, align=center] (persona) at (0,0)
+  {\textbf{simulated writer}\\[-2pt]
+   {\scriptsize a hidden weight vector over\\[-1pt]
+    the head's own feature space,\\[-1pt]
+    plus style quirks and vetoes}};
+
+% ---------------- engine ----------------
+\node[sgbox, text width=34mm, align=center, right=30mm of persona] (engine)
+  {\textbf{the real engine}\\[-2pt]
+   {\scriptsize propose $\to$ check $\to$ rank $\to$\\[-1pt]
+    accept $\to$ propagate $\to$ learn}};
+
+\draw[sgedgeaccent] (persona.north east) to[out=25, in=155]
+  node[sglabel, pos=0.5, below=1pt] {intent} (engine.north west);
+\draw[sgedgeaccent] (engine.south west) to[out=210, in=330]
+  node[sglabel, pos=0.5, below] {accept / edit / reject} (persona.south east);
+
+\node[sgcaption, align=center, text width=44mm] at (33mm, 15mm)
+  {the engine is never told\\ the hidden weights};
+
+% ---------------- taps ----------------
+\node[sgsmall, text width=36mm, align=left, below=17mm of persona, xshift=-2mm] (t1)
+  {\textbf{acceptance} over decisions\\[-1pt]
+   {\scriptsize with edit distance beside it, so\\[-1pt]
+    "accepted more" cannot hide\\[-1pt] "rewrote every word"}};
+\node[sgsmall, text width=36mm, align=left, below=6mm of t1] (t2)
+  {\textbf{weight recovery}\\[-1pt]
+   {\scriptsize does the fitted vector correlate\\[-1pt] with the hidden one?}};
+\node[sgsmall, text width=36mm, align=left, below=17mm of engine, xshift=2mm] (t3)
+  {\textbf{checker recall} per layer\\[-1pt]
+   {\scriptsize against injected contradictions,\\[-1pt]
+    with the clean-story false rate}};
+\node[sgsmall, text width=36mm, align=left, below=6mm of t3] (t4)
+  {\textbf{stale precision / recall}\\[-1pt]
+   {\scriptsize declared edges vs embedding\\[-1pt] edges, threshold swept}};
+\node[sgsmall, text width=36mm, align=left, below=6mm of t4] (t5)
+  {\textbf{diversity vs quality}, \textbf{regret},\\[-1pt]
+   \textbf{tokens per action}};
+
+\draw[sgedgesoft] (persona.south) to[out=270, in=90] (t1.north);
+\draw[sgedgesoft] (engine.south) to[out=270, in=90] (t3.north);
+
+\begin{scope}[on background layer]
+  \node[sggroup, fit=(t1)(t2), inner sep=6pt,
+        label={[sgtitle]below:measured on the writer}] {};
+  \node[sggroup, fit=(t3)(t5), inner sep=6pt,
+        label={[sgtitle]below:measured on the system}] {};
+\end{scope}
+
+\node[sgcaption, anchor=north west, text width=124mm] at (-22mm,-72mm)
+  {The personas are defined over the same feature space the preference head is fitted on,
+   which turns the central question into a measurable one: not ``did acceptance rise'' ---
+   any degenerate system achieves that --- but ``did the machinery recover the taste it was
+   shown''. What this cannot measure is real taste, fatigue, or trust. A persona is a
+   linear functional plus noise; only a human study would settle those.};
+
+\end{tikzpicture}
+\end{document}

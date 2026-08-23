@@ -1,0 +1,70 @@
+{
+  "name": "locks_and_review",
+  "title": "Locks stop the walk; human prose is flagged, never staled",
+  "summary": "The same upstream edit, three times. Once normally: two beats stale. Once with beat 2 locked: the walk stops there and beat 3 is never reached, because a locked beat is not going to change. Once with human-written prose on beat 2: it is flagged for review rather than staled -- the system does not tell an author their own sentences are out of date.",
+  "branch": "main",
+  "steps": [
+    {
+      "index": 0,
+      "title": "The chain, plus prose the writer typed themselves",
+      "note": "Beat 2's prose is human-written; beat 3 depends on what beat 2 established.",
+      "snapshot_id": "ec21652a7579670813e7d1d2027d7d86",
+      "node_id": null,
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "",
+      "chosen": null,
+      "bible_diff": [
+        "+ Kael is at Ashfall.",
+        "+ Kael wants get out before the gate closes."
+      ],
+      "marks": [],
+      "flags": []
+    },
+    {
+      "index": 1,
+      "title": "Upstream changes: beat 2 is flagged for review, not staled",
+      "note": "Its status stays accepted. The reason says the writer's prose may be affected. Beat 3, which the AI wrote, is staled normally.",
+      "snapshot_id": "f3c9c478a0b2cf5bfa44ba3218723dbe",
+      "node_id": "n_4c749ebbf0",
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "edit",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [
+        {
+          "node_id": "n_8098a6c102",
+          "kind": "review",
+          "reason": "Your prose here may be affected: Kael's location (established in Caught in the market) is now “Kael is at Kell.”",
+          "origin_beat": "n_4c749ebbf0"
+        },
+        {
+          "node_id": "n_e682919836",
+          "kind": "stale",
+          "reason": "Depends on a fact that changed: Kael's goal (established in The Warden's offer) is now “Kael wants get out before the gate closes.”",
+          "origin_beat": "n_8098a6c102"
+        }
+      ],
+      "flags": []
+    },
+    {
+      "index": 2,
+      "title": "Now lock beat 2 and change it back",
+      "note": "The walk stops at the lock: beat 3 is never reached, because nothing a locked beat produces can change. The lock's facts also become hard constraints in every subsequent prompt.",
+      "snapshot_id": "572ca6bb029ca04d31981924a1456ec6",
+      "node_id": "n_8098a6c102",
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "lock",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [],
+      "flags": []
+    }
+  ],
+  "db_path": "/home/arush/Desktop/fabula_pro_max/storygit/eval/results/gallery/locks_and_review.db"
+}

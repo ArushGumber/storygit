@@ -10,7 +10,7 @@ it, so one artifact serves both.
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
@@ -91,7 +91,7 @@ def save(fig: Any, path: Path | str) -> Path:
 
 
 def line_plot(
-    series: dict[str, Sequence[float]],
+    series: Mapping[str, Sequence[float]],
     *,
     title: str,
     xlabel: str,

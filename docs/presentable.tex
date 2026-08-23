@@ -31,6 +31,7 @@
 \setlength{\parindent}{0pt}
 
 \newcommand{\storygit}{\textsf{storygit}}
+\newcommand{\file}[1]{\texttt{\small\detokenize{#1}}}
 \newcommand{\decision}[1]{\subsection{#1}}
 \newcommand{\rejected}[1]{\textit{Rejected:} #1}
 
@@ -621,8 +622,163 @@ a human study would settle it.
 \section{Evaluation}
 \label{sec:evaluation}
 
-\textit{[Chunk 5: simulated writers with hidden weight vectors, injected ground-truth
-contradictions, the metric definitions, the ablation table, and the curves.]}
+Every claim in this document is either measured or explicitly marked as unmeasured. This
+section is the first kind; \S\ref{sec:limitations} is the second.
+
+\subsection{Simulated writers}
+
+Four personas, each \textbf{a hidden weight vector over exactly the feature space the
+preference head is fitted on}, plus style quirks and forbidden moves --- absolutes a linear preference
+cannot express, and which real writers have.
+
+\begin{center}
+\begin{tabular}{@{}llp{0.40\textwidth}@{}}
+\toprule
+\textbf{Persona} & \textbf{Weighted towards} & \textbf{Character} \\
+\midrule
+the Serialist & momentum, consequence & Writes for retention; no flashbacks, they stall \\
+the Minimalist & specificity, \emph{negative} on length & Short, concrete, exposition-averse \\
+the Maximalist & voice, interiority, length & Dial at 0.70; dialogue low \\
+the Controller & continuity, own criteria & Accepts rarely, edits heavily, locks constantly \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Defining the personas over the head's own feature space is what makes the central question
+measurable: not \emph{did acceptance rise} --- a degenerate system achieves that by
+proposing the same safe thing repeatedly --- but \emph{did the fitted weight vector
+correlate with the hidden one}. Three constraints keep it from being circular, the first
+asserted in a test: the engine is never told the hidden weights; the persona sees only what
+the engine chose to show; and the model that performs the persona's edits is told their
+\emph{style}, never their objective.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{diagrams/eval_loop.pdf}
+\caption{The loop and where the measurements are taken. Metrics on the left are properties
+of the writer's behaviour; on the right, properties of the system.}
+\label{fig:evalloop}
+\end{figure}
+
+\subsection{Ground truth by construction}
+
+Recall needs a denominator. One contradiction of each class is injected into its own copy of
+a clean story --- separately, so a location conflict cannot accidentally also be a
+possession conflict --- and the checker is scored against what comes back. Extraction is
+scored against hand-written passages with known fact sets. Staleness is scored against a
+scripted edit whose true blast radius is known because the dependency edges were written by
+hand, and which deliberately includes a beat that \emph{depends on the changed fact but
+never declared it} --- otherwise the soft-edge ablation could only add false positives, and
+that would be an unfair test of an idea worth testing properly.
+
+\subsection{Results: the deterministic tier}
+
+These need no model calls, so they are exact --- a regression is a regression, not a bad
+sampling day --- and they cannot be improved by rerunning.
+
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Continuity checker} & \textbf{recall} & \textbf{precision} & \textbf{F1} \\
+\midrule
+layer 1 only (deterministic) & 80\% & 100\% & 0.89 \\
+layer 1 + layer 2 (NLI) & 100\% & 100\% & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Zero false positives per beat on a clean story.} That number matters more than
+recall: a checker that flags everything has perfect recall and is worthless, because the
+writer learns flags are noise and stops reading them. Layer 1 catches location conflicts,
+deaths followed by action, possession conflicts, and epistemic violations; the one class it
+cannot decide --- two free-text notes that contradict each other --- is exactly what layer 2
+is for, which is the partition the closed vocabulary was designed to produce.
+
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Staleness prediction} & \textbf{precision} & \textbf{recall} & \textbf{F1} \\
+\midrule
+declared edges only & 1.00 & 0.67 & 0.80 \\
++ embedding edges @ 0.62 & 0.75 & 1.00 & 0.86 \\
++ embedding edges @ 0.68 & 1.00 & 1.00 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Declared edges are exact and blind to what nobody declared. The prediction stated in advance
+was that embedding edges would trade recall for precision too poorly to be useful; on this
+case they recover the undeclared dependency at no precision cost above a threshold of 0.68.
+The case is six beats with lexically distinctive locations, so this is suggestive rather
+than settled --- but it is the opposite of the prediction, and it is recorded as such rather
+than explained away.
+
+\begin{center}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\textbf{Selector} & \textbf{mean pairwise distance} & \textbf{mean quality} \\
+\midrule
+top-$k$ (temperature only) & 0.254 & 0.900 \\
+MMR ($\lambda = 0.5$) & 0.483 & 0.833 \\
+DPP & 0.555 & 0.780 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Six candidates, of which the three highest-scoring are near-paraphrases of each other. The
+baseline takes all three. This measurement changed the system twice, described in
+\S\ref{sec:findings}.
+
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Preference head, fresh writer} & \textbf{from prior} & \textbf{from uniform} & \textbf{lift} \\
+\midrule
+after 5 comparisons & 0.770 & 0.660 & $+$0.110 \\
+after 10 comparisons & 0.775 & 0.645 & $+$0.130 \\
+after 40 comparisons & 0.815 & 0.835 & $-$0.020 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Held-out pairwise accuracy on a persona the prior never saw. The shape is what a population
+prior should look like: a real advantage while data is scarce, converging to irrelevance as
+the writer's own comparisons take over.
+
+The Thompson sampler reaches cumulative pseudo-regret 4.8 over 400 rounds against arms at
+0.40 and 0.70, and is flat after roughly the first fifty --- it pays its exploration cost
+early and stops. $\varepsilon$-greedy at 0.1 reaches 6.3 and is still climbing linearly,
+because it explores at a fixed rate forever and explores uniformly.
+
+\subsection{Results: the live tier}
+
+\textit{[Populated from \file{eval/results/summary.md}: acceptance and edit-distance curves
+per persona, weight recovery, and tokens per writer action. Regenerable with
+\texttt{python -m eval.run --config full}.]}
+
+\section{What the measurements changed}
+\label{sec:findings}
+
+Two things the design predicted turned out wrong, and both changed the system.
+
+\textbf{MMR at the conventional $\lambda = 0.7$ was identical to the top-$k$ baseline.}
+Bi-encoder cosine has a high floor --- six candidates here span 0.33 to 0.82, and any two
+English sentences on a related topic score well above zero. A redundancy penalty that is
+nearly constant across candidates subtracts nearly the same amount from every score, and a
+constant changes no ordering. The headline selector was reproducing the ablation it was
+meant to beat. Fixed twice: the similarity matrix is rescaled within the candidate set, and
+the default $\lambda$ moved to 0.5, chosen from a sweep.
+
+The same measurement produced a better argument for DPPs than the one this document
+originally made. The DPP reaches the diverse answer \emph{with no parameter at all}, because
+its kernel is multiplicative: a near-duplicate's contribution to the determinant collapses
+however good it is. MMR's additive penalty can always be outvoted by a large enough quality
+gap. That is a structural difference rather than a tuning difference.
+
+\textbf{Embedding-similarity dependency edges did better than predicted}, as above.
+
+Both are recorded here rather than quietly folded into the design, because a system that
+only reports the measurements that agreed with it has not been measured.
 
 \section{Decisions, and what was rejected}
 \label{sec:decisions}
@@ -698,8 +854,37 @@ feature set, the simulated-writer evaluation --- are added as their chunks land.
 \section{Limitations}
 \label{sec:limitations}
 
-\textit{[Chunk 5: what the simulated-writer evaluation can and cannot measure; the data
-regime for the preference layer; single-writer assumption; cost model.]}
+\textbf{The evaluation cannot measure taste.} A persona is a linear functional over ten
+features plus noise. It cannot be surprised, cannot change its mind, and cannot tell you the
+tool is exhausting to use. Every number here is a property of the machinery. Whether the
+system helps a human write a better serial is not established by anything in this document,
+and only a human study would establish it.
+
+\textbf{The preference layer is validated against writers built from its own hypothesis
+class.} The head is linear in ten features; the personas score linearly in the same ten. The
+model is therefore correctly specified by construction, which is why the claim is
+\emph{recoverability} --- the estimator is not broken --- rather than \emph{it learns
+taste}. A real writer's preferences are not linear in ten features.
+
+\textbf{The prior is synthetic.} Nothing in the data it was fitted on ever met a reader. The
+bet is that the adaptation machinery transfers even though the values do not, and that bet is
+measured (a $+0.13$ lift at ten comparisons) rather than assumed.
+
+\textbf{Injected errors are the errors we thought of.} Checker recall is over five known
+classes. A class nobody imagined is a class nobody measured. The periodic audit exists partly
+for that, and the honest phrasing throughout is ``recall over five classes''.
+
+\textbf{Single writer, single story.} SQLite, one process, no auth, no concurrency. The
+scaling discussion is architectural rather than demonstrated.
+
+\textbf{Development ran on a small free-tier model.} Prose quality here is a floor, not a
+ceiling, and the same evaluation reruns on a stronger model to separate ``the system works''
+from ``the model is good''.
+
+\textbf{Fact extraction is a single point of failure.} Everything downstream --- continuity,
+propagation, the world-state pane --- depends on the world graph being populated correctly.
+Extraction recall is measured, but a fact that is never extracted is invisible to every layer
+that follows, and no amount of downstream cleverness recovers it.
 
 \bibliographystyle{plain}
 \bibliography{refs}

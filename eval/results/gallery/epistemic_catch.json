@@ -1,0 +1,67 @@
+{
+  "name": "epistemic_catch",
+  "title": "A character acts on something nobody told her",
+  "summary": "Kael's secret is established in beat 2. In beat 4 Mara acts on it. Nothing about the *facts* is wrong -- the secret is true -- so a checker that only compares facts sees nothing. The epistemic layer asks whether Mara has been told, finds no edge, and says so, naming the beat where the secret was established.",
+  "branch": "main",
+  "steps": [
+    {
+      "index": 0,
+      "title": "Kael's secret is established",
+      "note": "Only Kael knows it. The knows-edge says exactly that.",
+      "snapshot_id": "72365189a4d631ef624a69414c50a53c",
+      "node_id": null,
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "",
+      "chosen": null,
+      "bible_diff": [
+        "+ Kael keeps a secret: the ash answers him."
+      ],
+      "marks": [],
+      "flags": []
+    },
+    {
+      "index": 1,
+      "title": "Mara acts on it two beats later",
+      "note": "The flag names who does not know, what they are acting on, where it was established, and that they never learn it anywhere in the story.",
+      "snapshot_id": "7b2b8c77a27a081dd937c16edd2d3988",
+      "node_id": "n_3886f60d95",
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "accept",
+      "chosen": null,
+      "bible_diff": [
+        "+ Mara wants use what Kael can do."
+      ],
+      "marks": [],
+      "flags": [
+        {
+          "kind": "epistemic",
+          "severity": "hard",
+          "layer": 1,
+          "message": "Mara acts on “Kael keeps a secret: the ash answers him.” here, but does not know it yet — never learns it anywhere in the story. It was established in The Warden's offer.",
+          "established_by": "n_8098a6c102",
+          "node_id": "n_3886f60d95"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "title": "The writer tells her, one beat earlier",
+      "note": "The fix is a knows-edge, not a rewrite. The flag clears.",
+      "snapshot_id": "4bdfa3cd170ebe62028a3e727f17b2ee",
+      "node_id": "n_e682919836",
+      "level": "",
+      "intent": "",
+      "shown": [],
+      "action": "edit",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [],
+      "flags": []
+    }
+  ],
+  "db_path": "/home/arush/Desktop/fabula_pro_max/storygit/eval/results/gallery/epistemic_catch.db"
+}

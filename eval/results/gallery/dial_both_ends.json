@@ -1,0 +1,233 @@
+{
+  "name": "dial_both_ends",
+  "title": "The same beat, at both ends of the dial",
+  "summary": "The dial re-weights the objective, not the sampler. At 0 the ranking is quality alone; at 1 it is distance from the model's own temperature-0 continuation -- so the system explicitly selects against what it would have done anyway. Same six candidates both times; different three shown.",
+  "branch": "main",
+  "steps": [
+    {
+      "index": 0,
+      "title": "Dial at 0 (coherent)",
+      "note": "Shown: slow down, shift the point of view, deepen the interiority.",
+      "snapshot_id": "53e0f286b001eb2f5e2dd32888b37224",
+      "node_id": "n_c6fbb2e448",
+      "level": "beat",
+      "intent": "Kael's ability shows itself",
+      "shown": [
+        {
+          "proposal_id": "p_6de9412748",
+          "axis_label": "slow down",
+          "delta_summary": [
+            "adds beat “The static in the air”",
+            "introduces character The gate",
+            "establishes: Kael is possesses an involuntary temporal sensitivity.",
+            "establishes: The gate: the trigger for Kael's temporal displacement",
+            "Kael learns this at The static in the air"
+          ],
+          "rationale": "By freezing the world around Kael, we force the audience to inhabit his immediate, singular realization of his own power without the interference of the crowd, setting the stage for a solitary discovery.",
+          "text": "The static in the air As the gate thuds shut, Kael feels a sudden, sharp hum vibrating in his teeth—a sensation of localized time stuttering. He glances at the crowd; they remain frozen in a mid-step, the dust motes suspended in golden shafts of light. Only Kael can move. He reaches out to touch the cold, iron surface of the gate, feeling a strange, magnetic heat radiating from it that matches the hum in his head. He realizes the gate didn't just close; it locked him in a moment of his own making. Kael has the ability to manipulate or perceive time distortions, and the gate triggered it.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.0,
+          "effective_quality": 1.0,
+          "selected": true
+        },
+        {
+          "proposal_id": "p_65fc31cafd",
+          "axis_label": "shift the point of view",
+          "delta_summary": [
+            "Mara observes Kael",
+            "Mara witnesses physical manifestation of Kael's stress",
+            "Mara dismisses magical occurrence as natural",
+            "adds beat “Mara's Observation”",
+            "establishes: Mara: believes Kael is physically ill",
+            "establishes: Mara: witnesses Kael's physical distress",
+            "Mara learns this at Mara's Observation"
+          ],
+          "rationale": "By showing Mara's reaction, we establish that Kael's powers are not immediately obvious as 'magic' to bystanders, keeping the mystery alive while creating interpersonal tension.",
+          "text": "Mara's Observation Mara, standing near the gate, watches Kael struggle as it closes. She doesn't see the air ripple or hear the sound Kael heard; to her, Kael simply freezes and claws at his own neck as if struggling to breathe. She notices a brief, unnatural shadow stretch from his feet toward the heavy iron mechanism just before the gate fully latches, though she dismisses it as a trick of the fading sunlight. Mara is observant but lacks the context to understand Kael's ability, creating a gap in perception.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.0,
+          "effective_quality": 1.0,
+          "selected": true
+        },
+        {
+          "proposal_id": "p_c9dd1ceef9",
+          "axis_label": "deepen the interiority",
+          "delta_summary": [
+            "Kael's secret power revealed",
+            "Kael experiences internal panic",
+            "adds beat “The spark in the stone”",
+            "establishes: Kael keeps a secret: Ability to manipulate stone.",
+            "establishes: Kael wants Hide his nature from Mara and others.",
+            "Kael learns this at The spark in the stone"
+          ],
+          "rationale": "This beat externalizes Kael's internal tension without tipping his hand to other characters, establishing the stakes of his secrecy immediately.",
+          "text": "The spark in the stone As the heavy iron of the gate slams shut, Kael instinctively reaches out to steady himself against the stone pillar. Under his palm, the cold, weathered granite briefly pulses with a dull, rhythmic heat, syncing with his own heartbeat. He jerks his hand away, checking if anyone noticed, but Mara is already busy fumbling with her satchel, and the nearby guards are focused on the mechanism. He pockets his trembling hand, his breathing quickening, while he forces a look of casual annoyance toward the locked gate. Kael has a physical influence over stone that he is terrified of others discovering.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.0,
+          "effective_quality": 1.0,
+          "selected": true
+        },
+        {
+          "proposal_id": "p_d9d1c4dfe7",
+          "axis_label": "subvert the expectation",
+          "delta_summary": [
+            "The gate opens",
+            "Kael discovers his power",
+            "Kael and Mara enter Ashfall",
+            "adds beat “A hollow victory”",
+            "establishes: Kael keeps a secret: Can manipulate mechanical objects.",
+            "establishes: Kael is at Ashfall.",
+            "establishes: Mara is at Ashfall.",
+            "Kael learns this at A hollow victory",
+            "Mara learns this at A hollow victory"
+          ],
+          "rationale": "Instead of a loud, kinetic display that marks Kael as a threat, I chose a quiet, 'impossible' event that highlights his detachment from reality and creates a lingering mystery about the cost of his ability.",
+          "text": "A hollow victory Rather than the gate shattering or Kael panicking, the heavy iron mechanism simply hums and slides open as if he had the master key. Kael stares at his own hands, which feel freezing cold, while Mara assumes the Warden simply changed his mind at the last second. They slip through the gate into Ashfall, unchallenged, while the guards look past them as if they were made of glass. Kael's power works on mechanical systems and potentially influences perception; he has no control over it yet.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.0,
+          "effective_quality": 1.0,
+          "selected": false
+        },
+        {
+          "proposal_id": "p_92007ed46b",
+          "axis_label": "pay off an open thread",
+          "delta_summary": [
+            "adds beat “A momentary ripple”",
+            "establishes: Kael is metal manipulation.",
+            "establishes: Kael is injured: minor hand burn.",
+            "Kael learns this at A momentary ripple"
+          ],
+          "rationale": "This advances Kael's internal arc by manifesting his power in a high-stakes moment, while the Warden's ignorance establishes a power dynamic where Kael is vulnerable but uniquely dangerous.",
+          "text": "A momentary ripple As the heavy iron gate of Kell slams shut, Kael desperately grips the rusted latch. For a heartbeat, the iron glows a faint, sickly amber under his touch, and the metal resists the closing force, groaning against the mechanism. The Warden of Kell stares at the gate, confused by the sudden, brief vibration, but assumes it is merely a mechanical defect. Kael pulls his hand away, skin stinging, fully aware that he alone caused the impossible pause. Kael has an involuntary, latent ability to influence metal, and the Warden remains ignorant of the truth.",
+          "flags": [],
+          "base_quality": 0.75,
+          "surprise": 0.0,
+          "effective_quality": 0.0,
+          "selected": false
+        }
+      ],
+      "action": "propose",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [],
+      "flags": []
+    },
+    {
+      "index": 1,
+      "title": "Dial at 1 (surprising)",
+      "note": "Shown: shift the point of view, slow down, deepen the interiority.",
+      "snapshot_id": "55a1eafd9a483ed6d65a3514954bdb89",
+      "node_id": "n_c6fbb2e448",
+      "level": "beat",
+      "intent": "Kael's ability shows itself",
+      "shown": [
+        {
+          "proposal_id": "p_67a3c7e828",
+          "axis_label": "shift the point of view",
+          "delta_summary": [
+            "Mara observes Kael",
+            "Mara witnesses physical manifestation of Kael's stress",
+            "Mara dismisses magical occurrence as natural",
+            "adds beat “Mara's Observation”",
+            "establishes: Mara: believes Kael is physically ill",
+            "establishes: Mara: witnesses Kael's physical distress",
+            "Mara learns this at Mara's Observation"
+          ],
+          "rationale": "By showing Mara's reaction, we establish that Kael's powers are not immediately obvious as 'magic' to bystanders, keeping the mystery alive while creating interpersonal tension.",
+          "text": "Mara's Observation Mara, standing near the gate, watches Kael struggle as it closes. She doesn't see the air ripple or hear the sound Kael heard; to her, Kael simply freezes and claws at his own neck as if struggling to breathe. She notices a brief, unnatural shadow stretch from his feet toward the heavy iron mechanism just before the gate fully latches, though she dismisses it as a trick of the fading sunlight. Mara is observant but lacks the context to understand Kael's ability, creating a gap in perception.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.2354,
+          "effective_quality": 1.0,
+          "selected": true
+        },
+        {
+          "proposal_id": "p_fae3cf25f2",
+          "axis_label": "slow down",
+          "delta_summary": [
+            "adds beat “The static in the air”",
+            "introduces character The gate",
+            "establishes: Kael is possesses an involuntary temporal sensitivity.",
+            "establishes: The gate: the trigger for Kael's temporal displacement",
+            "Kael learns this at The static in the air"
+          ],
+          "rationale": "By freezing the world around Kael, we force the audience to inhabit his immediate, singular realization of his own power without the interference of the crowd, setting the stage for a solitary discovery.",
+          "text": "The static in the air As the gate thuds shut, Kael feels a sudden, sharp hum vibrating in his teeth—a sensation of localized time stuttering. He glances at the crowd; they remain frozen in a mid-step, the dust motes suspended in golden shafts of light. Only Kael can move. He reaches out to touch the cold, iron surface of the gate, feeling a strange, magnetic heat radiating from it that matches the hum in his head. He realizes the gate didn't just close; it locked him in a moment of his own making. Kael has the ability to manipulate or perceive time distortions, and the gate triggered it.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.1959,
+          "effective_quality": 0.6843,
+          "selected": true
+        },
+        {
+          "proposal_id": "p_6b507d18fe",
+          "axis_label": "deepen the interiority",
+          "delta_summary": [
+            "Kael's secret power revealed",
+            "Kael experiences internal panic",
+            "adds beat “The spark in the stone”",
+            "establishes: Kael keeps a secret: Ability to manipulate stone.",
+            "establishes: Kael wants Hide his nature from Mara and others.",
+            "Kael learns this at The spark in the stone"
+          ],
+          "rationale": "This beat externalizes Kael's internal tension without tipping his hand to other characters, establishing the stakes of his secrecy immediately.",
+          "text": "The spark in the stone As the heavy iron of the gate slams shut, Kael instinctively reaches out to steady himself against the stone pillar. Under his palm, the cold, weathered granite briefly pulses with a dull, rhythmic heat, syncing with his own heartbeat. He jerks his hand away, checking if anyone noticed, but Mara is already busy fumbling with her satchel, and the nearby guards are focused on the mechanism. He pockets his trembling hand, his breathing quickening, while he forces a look of casual annoyance toward the locked gate. Kael has a physical influence over stone that he is terrified of others discovering.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.1791,
+          "effective_quality": 0.5509,
+          "selected": true
+        },
+        {
+          "proposal_id": "p_814b769c87",
+          "axis_label": "subvert the expectation",
+          "delta_summary": [
+            "The gate opens",
+            "Kael discovers his power",
+            "Kael and Mara enter Ashfall",
+            "adds beat “A hollow victory”",
+            "establishes: Kael keeps a secret: Can manipulate mechanical objects.",
+            "establishes: Kael is at Ashfall.",
+            "establishes: Mara is at Ashfall.",
+            "Kael learns this at A hollow victory",
+            "Mara learns this at A hollow victory"
+          ],
+          "rationale": "Instead of a loud, kinetic display that marks Kael as a threat, I chose a quiet, 'impossible' event that highlights his detachment from reality and creates a lingering mystery about the cost of his ability.",
+          "text": "A hollow victory Rather than the gate shattering or Kael panicking, the heavy iron mechanism simply hums and slides open as if he had the master key. Kael stares at his own hands, which feel freezing cold, while Mara assumes the Warden simply changed his mind at the last second. They slip through the gate into Ashfall, unchallenged, while the guards look past them as if they were made of glass. Kael's power works on mechanical systems and potentially influences perception; he has no control over it yet.",
+          "flags": [],
+          "base_quality": 0.8125,
+          "surprise": 0.1101,
+          "effective_quality": 0.0,
+          "selected": false
+        },
+        {
+          "proposal_id": "p_4d3ae10f6e",
+          "axis_label": "pay off an open thread",
+          "delta_summary": [
+            "adds beat “A momentary ripple”",
+            "establishes: Kael is metal manipulation.",
+            "establishes: Kael is injured: minor hand burn.",
+            "Kael learns this at A momentary ripple"
+          ],
+          "rationale": "This advances Kael's internal arc by manifesting his power in a high-stakes moment, while the Warden's ignorance establishes a power dynamic where Kael is vulnerable but uniquely dangerous.",
+          "text": "A momentary ripple As the heavy iron gate of Kell slams shut, Kael desperately grips the rusted latch. For a heartbeat, the iron glows a faint, sickly amber under his touch, and the metal resists the closing force, groaning against the mechanism. The Warden of Kell stares at the gate, confused by the sudden, brief vibration, but assumes it is merely a mechanical defect. Kael pulls his hand away, skin stinging, fully aware that he alone caused the impossible pause. Kael has an involuntary, latent ability to influence metal, and the Warden remains ignorant of the truth.",
+          "flags": [],
+          "base_quality": 0.75,
+          "surprise": 0.1184,
+          "effective_quality": 0.0664,
+          "selected": false
+        }
+      ],
+      "action": "propose",
+      "chosen": null,
+      "bible_diff": [],
+      "marks": [],
+      "flags": []
+    }
+  ],
+  "db_path": "/home/arush/Desktop/fabula_pro_max/storygit/eval/results/gallery/dial_both_ends.db"
+}

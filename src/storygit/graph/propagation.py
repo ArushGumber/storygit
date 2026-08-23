@@ -125,14 +125,20 @@ def propagate(
         origin_label = _label(state if origin_beat in state.nodes else edges, origin_beat)
         sentence = fact.sentence(names) if fact is not None else "a fact it relies on"
         if fact is None:
-            detail = f"a fact established in {origin_label} was struck"
+            detail = f"a fact established in {origin_label} was struck."
         else:
-            detail = f"“{sentence}” (established in {origin_label}) changed"
+            # Read against the post-change state, so the sentence shows the *new* value --
+            # which is what the writer needs to see. Phrased so it reads that way.
+            subject = names.get(fact.subject, str(fact.subject))
+            detail = (
+                f"{subject}'s {fact.predicate.value} (established in {origin_label}) "
+                f"is now “{sentence}”"
+            )
         if _human_touched(state, node_id):
             marks[node_id] = StaleMark(
                 node_id=node_id,
                 kind=MarkKind.review,
-                reason=f"Your prose here may be affected: {detail}.",
+                reason=f"Your prose here may be affected: {detail}",
                 origin_fact=fact_id,
                 origin_beat=origin_beat,
             )
@@ -140,7 +146,7 @@ def propagate(
             marks[node_id] = StaleMark(
                 node_id=node_id,
                 kind=MarkKind.stale,
-                reason=f"Depends on a fact that changed: {detail}.",
+                reason=f"Depends on a fact that changed: {detail}",
                 origin_fact=fact_id,
                 origin_beat=origin_beat,
             )
