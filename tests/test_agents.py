@@ -340,28 +340,92 @@ async def test_extraction_failure_is_an_empty_diff_not_a_crash(fixture: Fixture)
     assert len(diff) == 0
 
 
-def test_over_long_fields_truncate_rather_than_reject() -> None:
+SENTENCES = (
+    "Ronnie leans on the bus shelter and lets the cast take his weight. "
+    "Marguerite watches from the bench with the tin on her knees. "
+    "Nobody says anything about Zurich. "
+    "The 42 is late again, which is the only honest thing on the road. "
+)
+
+
+def test_over_long_prose_is_cut_at_a_sentence_rather_than_mid_word() -> None:
     """Gemini does not enforce maxLength, and a repair call per proposal is not free.
 
     Measured during the first evaluation run: roughly 80% of proposals were failing
-    validation on a single over-long field and costing a whole extra call to recover.
+    validation on a single over-long field and costing a whole extra call to recover. So
+    the contract is truncate, not reject -- but the first version of it cut mid-word, and
+    the fragment became permanent state that every later prompt read back as context.
+    Roughly a third of one writer's candidates ended mid-clause.
     """
-    from storygit.agents.schemas import EpisodeProposal
+    from storygit.agents.schemas import PARAGRAPH, EpisodeProposal
 
     episode = EpisodeProposal.model_validate(
         {
-            "title": "x" * 400,
-            "what_happens": "y" * 4000,
-            "time": "a long sentence about when this happens " * 20,
+            "title": "The Ballast Announcement",
+            "what_happens": SENTENCES * 6,
             "threads_opened": [f"thread {i}" for i in range(30)],
-            "rationale": "z" * 4000,
+            "rationale": SENTENCES * 4,
         }
     )
-    assert len(episode.title) == 80
-    assert len(episode.what_happens) == 600
-    assert len(episode.time) <= 80, "trailing whitespace is stripped after the cut"
+    assert len(episode.what_happens) <= PARAGRAPH
+    assert episode.what_happens.endswith("."), "a bounded field ends where a sentence ends"
+    assert "  " not in episode.what_happens
+    assert SENTENCES.strip().split(". ")[0] in episode.what_happens, "the start survives"
     assert len(episode.threads_opened) == 4
-    assert len(episode.rationale) == 600
+    assert len(episode.rationale) <= PARAGRAPH
+
+
+def test_a_field_with_no_sentence_inside_its_bound_is_re_asked_not_committed() -> None:
+    """Every available cut is mid-clause, so there is nothing safe to commit.
+
+    Raising here is what reaches ``complete_structured``, which repairs once by
+    construction. A dropped candidate costs one sample out of six; a committed fragment
+    costs every prompt that reads it afterwards.
+    """
+    import pytest
+    from pydantic import ValidationError
+
+    from storygit.agents.schemas import EpisodeProposal
+
+    with pytest.raises(ValidationError, match="no sentence ending inside it"):
+        EpisodeProposal.model_validate(
+            {
+                "title": "The Ballast Announcement",
+                "what_happens": "and then " + "a very long unbroken clause that never ends " * 40,
+            }
+        )
+
+
+def test_padding_and_keyboard_mash_are_re_asked_not_committed() -> None:
+    """One field came back as literal mash padded to a minimum length, and was committed.
+
+    Two cheap signals, neither of which touches real prose: too few distinct characters
+    for the length, and one short chunk repeated to fill the space.
+    """
+    import pytest
+    from pydantic import ValidationError
+
+    from storygit.agents.schemas import EpisodeProposal
+
+    for mash in (
+        "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "beat beat beat beat beat beat beat beat beat beat beat beat.",
+    ):
+        with pytest.raises(ValidationError, match="padding rather than writing"):
+            EpisodeProposal.model_validate(
+                {"title": "The Ballast Announcement", "what_happens": mash}
+            )
+
+
+def test_ordinary_prose_is_never_mistaken_for_padding() -> None:
+    """The guard has to be free on real writing, or it is worse than the bug."""
+    from storygit.agents.schemas import EpisodeProposal
+
+    episode = EpisodeProposal.model_validate(
+        {"title": "The Hollow Knock", "what_happens": SENTENCES}
+    )
+    assert episode.what_happens == SENTENCES
 
 
 def test_truncation_leaves_well_formed_output_alone() -> None:
@@ -418,3 +482,43 @@ def test_recovery_never_invents_a_required_field() -> None:
     with pytest.raises(SchemaParseError):
         # `title` and `what_happens` are required and were never reached.
         parse_into(BeatProposal, '{"audience_feels": "wary and a little')
+
+
+async def test_a_degenerate_field_costs_one_re_ask_and_then_the_candidate() -> None:
+    """The whole contract, through the real call path: truncate, re-ask once, then drop.
+
+    Rejecting outright is what the bounds used to do and it cost an 80% repair rate; not
+    checking at all is what let a keyboard-mash field become permanent state. One re-ask is
+    the middle, and it is cheap: a dropped candidate is one sample out of six, while a
+    committed fragment is read back as context by every prompt after it.
+    """
+    from tests.mockprovider import MockProvider
+
+    from storygit.agents.parse import complete_structured
+    from storygit.agents.schemas import EpisodeProposal
+    from storygit.providers.base import LLMRequest, SchemaParseError
+    from storygit.providers.router import Router
+
+    mash = json.dumps({"title": "The Ballast Announcement", "what_happens": "asdf" * 30})
+    good = json.dumps({"title": "The Ballast Announcement", "what_happens": SENTENCES})
+
+    # Mash, then a real answer: the re-ask rescues the candidate.
+    rescued = MockProvider([mash, good])
+    router = Router({"gemini": rescued})
+    parsed, _ = await complete_structured(
+        router,
+        LLMRequest(messages=(), purpose="propose.episode"),
+        EpisodeProposal,
+    )
+    assert parsed.what_happens == SENTENCES
+    assert len(rescued.requests) == 2, "exactly one re-ask, not a retry loop"
+
+    # Mash twice: the candidate is dropped rather than committed.
+    hopeless = MockProvider([mash, mash])
+    with pytest.raises(SchemaParseError, match="failed to validate twice"):
+        await complete_structured(
+            Router({"gemini": hopeless}),
+            LLMRequest(messages=(), purpose="propose.episode"),
+            EpisodeProposal,
+        )
+    assert len(hopeless.requests) == 2, "and it stops after one re-ask"

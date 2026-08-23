@@ -14,6 +14,7 @@ never sees an unexplained candidate.
 
 from __future__ import annotations
 
+import re
 from enum import StrEnum
 from typing import Any
 
@@ -58,6 +59,69 @@ def _declared_max_length(field: Any) -> int | None:
     return None
 
 
+SENTENCE_END = re.compile(r"[.!?][\"\u201d\')\]]*(?=\s|$)")
+"""Terminal punctuation, plus any closing quote or bracket that belongs with it."""
+
+MIN_SENTENCE_CHARS = 24
+"""Below this a "sentence" is a fragment the model was still assembling."""
+
+DEGENERATE_MIN_LENGTH = 40
+"""Only text long enough for a pattern to be visible is checked for one."""
+
+DISTINCT_CHARS_FLOOR = 12
+"""Below this many distinct characters, text of any length is padding rather than prose."""
+
+
+def looks_degenerate(text: str) -> bool:
+    """Whether a field is padding rather than writing.
+
+    The writer's session produced a ``what_happens`` that was literal keyboard mash padded
+    out to a minimum length, and it was committed and then read back as context by every
+    later prompt. Two cheap signals catch that without touching real prose: too few
+    distinct characters for the length, and one short chunk repeated to fill the space.
+
+    Args:
+        text: The field value.
+
+    Returns:
+        True when the text is padding.
+    """
+    stripped = text.strip()
+    if len(stripped) < DEGENERATE_MIN_LENGTH:
+        return False
+    # Absolute counts, not ratios. A distinct-character *ratio* falls as text gets longer
+    # whatever the text is -- the alphabet is bounded and the length is not -- so the first
+    # version of this flagged four sentences of ordinary prose. English prose past forty
+    # characters is never below a dozen distinct characters; "asdfasdf..." is four.
+    if len(set(stripped.lower())) < DISTINCT_CHARS_FLOOR:
+        return True
+    if re.search(r"(.)\1{9,}", stripped):
+        return True
+    # One sentence repeated to fill the space. Four is enough to be deliberate; a writer
+    # repeating a line three times for rhythm is doing something on purpose.
+    sentences = [part.strip() for part in SENTENCE_END.split(stripped) if part.strip()]
+    return len(sentences) >= 4 and len(set(sentences)) == 1
+
+
+def _cut_at_sentence(text: str, limit: int) -> str | None:
+    """Trim to ``limit`` at the last sentence boundary inside it.
+
+    Args:
+        text: The over-long value.
+        limit: Its declared bound.
+
+    Returns:
+        The trimmed text, or ``None`` when nothing inside the bound ends a sentence --
+        which means every cut available is mid-clause, and the caller should re-ask rather
+        than commit a fragment.
+    """
+    window = text[:limit]
+    ends = [m.end() for m in SENTENCE_END.finditer(window)]
+    if not ends or ends[-1] < MIN_SENTENCE_CHARS:
+        return None
+    return window[: ends[-1]].rstrip()
+
+
 class BoundedModel(BaseModel):
     """A response model whose length bounds truncate rather than reject.
 
@@ -69,15 +133,30 @@ class BoundedModel(BaseModel):
     Rejecting on that costs a whole repair call to recover a candidate that was fine
     except for being twenty characters long. During the first evaluation run it was
     happening on roughly 80% of proposals, doubling the cost of the entire experiment.
+    That history is why the contract is truncate-then-re-ask and not reject.
 
-    So: truncate on the way in. The bound still does its job -- nothing unbounded reaches
-    the diff -- and a good candidate is no longer thrown away over punctuation.
+    But truncation as originally written cut mid-word, and the fragment became permanent
+    state that every later prompt read back as context -- roughly a third of one writer's
+    candidates ended mid-clause. So the contract has three steps, in order:
+
+    1. **Truncate at a sentence boundary.** A bounded field ends where a sentence ends.
+    2. **Re-ask once** when nothing inside the bound ends a sentence, or when the value is
+       degenerate -- padding, repetition, keyboard mash. Raising here reaches
+       ``complete_structured``, which repairs once by construction.
+    3. **Fail the candidate** if the second attempt is no better. A dropped candidate costs
+       one sample out of six; a committed fragment costs every prompt that reads it after.
     """
 
     @model_validator(mode="before")
     @classmethod
     def _truncate_to_bounds(cls, data: Any) -> Any:
-        """Trim over-long strings and over-long lists to their declared bounds."""
+        """Trim over-long strings to a sentence boundary and over-long lists to bounds.
+
+        Raises:
+            ValueError: When a field is degenerate, or when trimming it to its bound would
+                leave no complete sentence. ``parse_into`` turns this into a
+                ``SchemaParseError``, which is the signal to re-ask.
+        """
         if not isinstance(data, dict):
             return data
         out = dict(data)
@@ -86,10 +165,22 @@ class BoundedModel(BaseModel):
             if limit is None or name not in out:
                 continue
             value = out[name]
-            if isinstance(value, str) and len(value) > limit:
-                out[name] = value[:limit].rstrip()
-            elif isinstance(value, list) and len(value) > limit:
+            if isinstance(value, list) and len(value) > limit:
                 out[name] = value[:limit]
+                continue
+            if not isinstance(value, str):
+                continue
+            if looks_degenerate(value):
+                raise ValueError(f"{name!r} is padding rather than writing; write it again")
+            if len(value) <= limit:
+                continue
+            trimmed = _cut_at_sentence(value, limit)
+            if trimmed is None:
+                raise ValueError(
+                    f"{name!r} runs past its {limit}-character bound with no sentence "
+                    "ending inside it; say it in fewer words"
+                )
+            out[name] = trimmed
         return out
 
 

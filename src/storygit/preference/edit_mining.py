@@ -26,6 +26,7 @@ from collections.abc import Sequence
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from storygit.agents.schemas import looks_degenerate
 from storygit.domain.diff import AddStyleNote, Diff, DiffAuthor, Op
 from storygit.domain.ledger import StyleNote, StyleNoteSource, WriterLedger
 from storygit.preference.signals import EditPair
@@ -166,6 +167,11 @@ def to_diff(
     Returns:
         A ``system``-authored diff of style-note operations.
     """
+    # A mined rule is permanent ledger state and reaches every later prompt, so it gets
+    # the same guard as a generated field: padding and repetition do not become a rule the
+    # writer has to notice and delete. The proposal schemas enforce this at parse time;
+    # mined rules have no per-string bound to hang it on, so it is enforced here.
+    rules = [rule for rule in rules if rule.strip() and not looks_degenerate(rule)]
     fresh = dedupe(rules, threshold=threshold)
     if not fresh:
         return Diff(author=DiffAuthor.system, intent="mine style rules")
