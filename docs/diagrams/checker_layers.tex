@@ -1,0 +1,65 @@
+% checker_layers.tex -- three layers, cheapest and most certain first.
+\documentclass[tikz, border=8pt]{standalone}
+\input{style.tex}
+\begin{document}\sgpage
+\begin{tikzpicture}[sg]
+
+\node[sgsmall, text width=26mm, align=center] (input) at (0,0)
+  {new facts from\\ an accepted change};
+
+% ---------------- layer 1 ----------------
+\node[sgboxaccent, text width=42mm, align=left, right=9mm of input, anchor=west] (l1)
+  {\textbf{Layer 1 \quad deterministic}\\[2pt]
+   {\scriptsize dict lookup on (subject, predicate),\\[-1pt]
+    then equality. No model, by construction.}\\[4pt]
+   {\scriptsize two locations at once\\[-1pt]
+    a dead character acting\\[-1pt]
+    two holders of one object\\[-1pt]
+    acting on a secret before learning it}};
+\node[sglabel, above=1mm of l1.north] {free, instant};
+
+% ---------------- layer 2 ----------------
+\node[sgbox, text width=42mm, align=left, right=11mm of l1, anchor=west] (l2)
+  {\textbf{Layer 2 \quad local NLI}\\[2pt]
+   {\scriptsize DeBERTa-MNLI cross-encoder on CPU,\\[-1pt]
+    scoring the pairs layer 1 cannot decide.}\\[4pt]
+   {\scriptsize free-text \textsf{note} facts\\[-1pt]
+    multi-valued predicates whose\\[-1pt] object strings differ\\[-1pt]
+    threshold 0.35, swept in evaluation}};
+\node[sglabel, above=1mm of l2.north] {free, ms per pair};
+
+% ---------------- layer 3 ----------------
+\node[sgbox, text width=42mm, align=left, right=11mm of l2, anchor=west] (l3)
+  {\textbf{Layer 3 \quad soft judge}\\[2pt]
+   {\scriptsize LLM, argue before rating.\\[-1pt]
+    Also supplies the ranking score.}\\[4pt]
+   {\scriptsize motivation implausibility\\[-1pt]
+    tone breaks\\[-1pt]
+    the writer's own criteria\\[-1pt]
+    \phantom{x}}};
+\node[sglabel, above=1mm of l3.north] {one call per candidate};
+
+\draw[sgedge] (input) -- (l1);
+\draw[sgedge] (l1) -- node[sglabel, pos=0.5] {residue} (l2);
+\draw[sgedge] (l2) -- node[sglabel, pos=0.5] {always} (l3);
+
+% ---------------- outputs ----------------
+\node[sgboxaccent, text width=36mm, align=center, below=16mm of l1.south] (hard)
+  {\textbf{hard flags}\\[-2pt]{\scriptsize deterministic; every one cites\\[-1pt]
+   the beat that established it}};
+\node[sgbox, draw=sgmute, text width=36mm, align=center, below=16mm of l3.south] (soft)
+  {\textbf{soft flags}\\[-2pt]{\scriptsize model opinions; shown\\[-1pt]
+   differently, never blocking}};
+
+\draw[sgedgeaccent] (l1.south) -- (hard.north);
+\draw[sgedgesoft] (l2.south) to[out=270, in=140] (soft.north west);
+\draw[sgedgesoft] (l3.south) -- (soft.north);
+
+\node[sgcaption, below=4mm of hard.south west, anchor=north west, text width=136mm]
+  {Each check is pushed to the cheapest layer that can decide it, and each layer's recall
+   is reported separately --- which is what turns "it keeps the story consistent" from an
+   assertion into a measurement. Nothing is ever auto-fixed: a flag is information, and a
+   contradiction can be exactly what the writer meant.};
+
+\end{tikzpicture}
+\end{document}

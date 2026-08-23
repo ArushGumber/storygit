@@ -348,7 +348,6 @@ propagation marks as a second snapshot.
 beside --- which is what makes an accept a \emph{preference} rather than an event.
 \end{enumerate}
 
-\label{sec:diversity-fwd}
 
 \section{Propagation}
 \label{sec:propagation}
@@ -385,9 +384,131 @@ stale''}. The blast radius is visible before the decision, not after it.
 \section{Continuity checking}
 \label{sec:continuity}
 
-\textit{[Chunk 3: three layers --- deterministic graph checks, local NLI for free-text
-facts, and an LLM soft judge --- with the recall each layer contributes and why the
-order is deterministic-first.]}
+Three layers, cheapest and most certain first. Each check is pushed to the cheapest layer
+that can decide it, and each layer's recall is reported separately --- which is what turns
+``it keeps the story consistent'' from an assertion into a measurement.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{diagrams/checker_layers.pdf}
+\caption{The checker. Layer 1 is deterministic and, by construction, cannot call a model:
+it imports nothing from the provider layer, and a test parses its imports to prove it.
+Layer 2 handles only the residue layer 1 cannot decide. Layer 3 is an opinion, labelled as
+one.}
+\label{fig:checker}
+\end{figure}
+
+\textbf{Layer 1 --- deterministic.} For each new fact, look up existing facts with the same
+subject and predicate, valid at that beat. With a closed vocabulary that is a dictionary
+lookup returning zero to three facts, and the contradiction check is equality. It catches
+conflicting single-valued facts (a character in two places, alive and dead, in two
+factions), dead characters who act, two holders of one object, and --- the important one
+--- \textbf{epistemic violations}: a beat that relies on a fact, performed by a character
+who has not been told it. The flag says whether they learn it later (``learns it in
+\emph{Beat D}'') or never.
+
+It deliberately does not flag a properly ended fact being replaced (a change, not a
+contradiction), a fact re-established with the same value (repetition), two goals at once
+(a character), or a character acting on their own secret.
+
+\textbf{Layer 2 --- local NLI.} The residue is the free-text \textsf{note} predicate and
+multi-valued facts whose object strings differ. A DeBERTa cross-encoder fine-tuned on MNLI
+scores each pair for contradiction. A cross-encoder rather than a bi-encoder because the
+distinction we need is exactly the one a bi-encoder structurally cannot make: ``Kael is in
+Ashfall'' and ``Kael is not in Ashfall'' embed almost identically, being about the same
+thing, but a model that reads both sentences together sees the negation.
+
+The threshold is calibrated, not chosen. On the local checkpoint a blunt contradiction
+scores 1.00, a paraphrase 0.00, and a real but universal-versus-specific contradiction
+0.43 --- so a 0.5 threshold would miss the third. The default is 0.35, and
+\S\ref{sec:evaluation} sweeps it.
+
+\textbf{Layer 3 --- soft judge.} Motivation plausibility and tone, plus the ranking score.
+It argues before it rates: one sentence of reasoning is required before a number, which is
+Fabula's own finding about their auto-rater and matches the general result that a score
+conditioned on an explanation is better calibrated. It scores the writer's own criteria, in
+the writer's words, alongside fixed narratology axes.
+
+\subsection{What a flag must carry}
+
+Two properties are non-negotiable. \textbf{Every flag cites its establishing beat} ---
+``Kael cannot be in Ashfall here'' is useless; ``Kael was established in Kell in \emph{The
+Warden's Offer}'' is actionable. And \textbf{nothing is ever auto-fixed}. A contradiction
+can be exactly what the writer meant: characters lie, narrators are unreliable, a flashback
+contradicts the present on purpose. A system that silently repairs those is worse than one
+that says nothing.
+
+Hard flags (deterministic) and soft flags (opinions) are structurally distinct in the data
+model, sorted apart, and rendered differently.
+
+\subsection{The bible diff}
+
+On accept the writer sees what changed in the world, in sentences:
+
+\begin{quote}\ttfamily\small
++ Kael keeps a secret: he can hear the ash.\\
+\textasciitilde{} Kael is at Ashfall. (no longer true from here)\\
+- Kael has the Warden's token.
+\end{quote}
+
+They can strike any line. Striking is not an undo: it produces a normal diff --- delete if
+the fact was never true, end it if it stopped being true --- which propagates like any
+other change and re-runs layer 1 on whatever depended on it. Even correcting the machine
+goes through the same reviewable path as everything else.
+
+\subsection{The audit}
+
+Per-accept checking is incremental and can miss slow drift: a contradiction assembled over
+ten episodes where no single accept was wrong. A periodic audit walks the whole graph
+through layers 1 and 2. It also answers a question no per-fact check can --- which threads
+are being dropped. A thread opened in episode 2 and untouched since episode 3 is not a
+contradiction, so nothing else in the system would ever mention it, and for a serial it is
+the most expensive kind of mistake.
+
+\section{Diversity, and the dial}
+
+Sampling three continuations from one prompt gives three phrasings of one idea, and the
+writer has no choice to make. Fabula's answer was to penalize similarity against previous
+suggestions, which produces variants that differ but are not \emph{nameably} different ---
+and their own finding is that unlabeled alternatives cost more to review than they save.
+Diversity in the embedding space is not diversity in the interface.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{diagrams/selection.pdf}
+\caption{Six axis-conditioned candidates become three labelled ones. The label is the
+mechanism: three named directions cost a decision, three unlabeled paragraphs cost three
+readings.}
+\label{fig:selection}
+\end{figure}
+
+\textbf{Axes.} Seven named conditioning instructions --- raise the stakes, slow down,
+subvert the expectation, shift the point of view, deepen the interiority, introduce a
+complication, pay off an open thread. Six are rotated deterministically per node, sampled
+in parallel, and the label travels with the candidate to the screen.
+
+\textbf{Selection.} MMR by default:
+$\lambda q_i - (1-\lambda)\max_{j \in S}\mathrm{sim}(i,j)$, so the second pick is the best
+candidate that is not the first one again. A determinantal point process is implemented as
+a drop-in alternative: with kernel $L = \mathrm{diag}(q)\,S\,\mathrm{diag}(q)$, the
+determinant of a subset is the squared volume its quality-scaled vectors span --- large
+when they are good \emph{and} mutually dissimilar, zero when two are parallel. The
+diversity trade-off is the structure of the distribution rather than a tuned
+parameter~\cite{kulesza2012dpp,carbonell1998mmr}. Plain top-$k$ is the ablation baseline.
+All three share one signature, so the comparison is one config value.
+
+\textbf{The dial.} Fabula's writers asked for an ``absurdity dial''. The request is deeper
+than it sounds: it asks to control the objective, not the output. A writer at 3am on
+episode 40 wants safe continuations; the same writer opening a new arc wants to be
+surprised. Take the greedy temperature-0 continuation as ``what this model would obviously
+do next''; each candidate's surprise is its embedding distance from that; effective quality
+is $(1-d)\tilde q + d\tilde s$. At $d = 1$ the system is explicitly selecting against what
+the model would have done anyway. One extra cached call per node.
+
+\textbf{Candidates arrive already checked.} Layer 1 runs on each candidate's would-be facts
+--- the diff is applied to a scratch state and checked there --- so a candidate that
+contradicts the bible reaches the writer with the contradiction attached. Hard flags push a
+candidate down the ranking but never remove it.
 
 \section{The preference layer}
 \label{sec:preference}
@@ -439,6 +560,19 @@ materialized states.} Full copies do not survive a few hundred snapshots. A pure
 log makes ``what is true right now'' a replay, and makes branch comparison hard.
 Content addressing gives cheap versions, free structural sharing, and diff as set
 arithmetic.
+
+\decision{Axis-conditioned sampling rather than a similarity penalty}
+Candidates are generated under named instructions and the name reaches the writer.
+\rejected{Sampling $k$ times and reranking for dissimilarity.} That is Fabula's approach,
+and it produces variants that differ without being \emph{nameably} different. The reranker
+is still there --- it stops two candidates that came out similar anyway --- but the axes are
+what make three options a decision rather than three readings.
+
+\decision{A calibrated NLI threshold rather than a chosen one}
+0.35, measured against the local checkpoint, and swept in the evaluation.
+\rejected{A round number.} The interesting case is a real contradiction the model is only
+moderately confident about (0.43), which a 0.5 threshold silently misses --- and silent
+misses in a continuity checker are the failure that matters.
 
 \decision{Marking rather than auto-repair}
 \rejected{Automatically regenerating stale downstream nodes.} This is the single most

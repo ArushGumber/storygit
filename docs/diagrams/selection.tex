@@ -1,0 +1,71 @@
+% selection.tex -- n axis-conditioned samples become k labelled candidates.
+\documentclass[tikz, border=8pt]{standalone}
+\input{style.tex}
+\begin{document}\sgpage
+\begin{tikzpicture}[sg]
+
+% ---------------- axes ----------------
+\node[sgsmall, minimum width=36mm] (a1) at (0,0)     {raise the stakes};
+\node[sgsmall, minimum width=36mm] (a2) at (0,-7mm)  {slow down};
+\node[sgsmall, minimum width=36mm] (a3) at (0,-14mm) {subvert the expectation};
+\node[sgsmall, minimum width=36mm] (a4) at (0,-21mm) {shift the point of view};
+\node[sgsmall, minimum width=36mm] (a5) at (0,-28mm) {deepen the interiority};
+\node[sgsmall, minimum width=36mm] (a6) at (0,-35mm) {introduce a complication};
+\node[sgsmall, draw=sgmute, minimum width=36mm] (a7) at (0,-42mm) {pay off an open thread};
+
+\begin{scope}[on background layer]
+  \node[sggroup, fit=(a1)(a7), inner sep=6pt,
+        label={[sgtitle]above:7 axes, 6 rotated per node}] (axesbox) {};
+\end{scope}
+
+% ---------------- sampling ----------------
+\node[sgbox, text width=26mm, align=center] (sample) at (52mm,-17.5mm)
+  {sample in parallel\\[-2pt]{\scriptsize 6 calls, distinct\\[-1pt] cache keys}};
+
+\foreach \a in {a1,a2,a3,a4,a5,a6} { \draw[sgedge] (\a.east) -- (sample.west); }
+
+% ---------------- scoring stack ----------------
+\node[sgsmall, text width=30mm, align=center, right=10mm of sample, yshift=17mm] (embed)
+  {embed\\[-2pt]{\scriptsize bge-small, cosine kernel}};
+\node[sgsmall, text width=30mm, align=center, right=10mm of sample, yshift=6mm] (check)
+  {layer 1 on each\\[-2pt]{\scriptsize flags before the writer sees it}};
+\node[sgsmall, text width=30mm, align=center, right=10mm of sample, yshift=-5mm] (judge)
+  {layer 3 judge\\[-2pt]{\scriptsize quality, argue then rate}};
+\node[sgsmall, text width=30mm, align=center, right=10mm of sample, yshift=-16mm] (dial)
+  {the dial\\[-2pt]{\scriptsize $(1{-}d)\,q + d\,s$}};
+
+\draw[sgedge] (sample.east) -- (embed.west);
+\draw[sgedge] (sample.east) -- (check.west);
+\draw[sgedge] (sample.east) -- (judge.west);
+\draw[sgedge] (sample.east) -- (dial.west);
+
+% ---------------- selector ----------------
+\node[sgboxaccent, text width=28mm, align=center] (select) at (128mm,-17.5mm)
+  {\textbf{MMR} $|$ DPP $|$ top-$k$\\[-2pt]{\scriptsize one config value}};
+\foreach \n in {embed,check,judge,dial} { \draw[sgedge] (\n.east) -- (select.west); }
+
+% ---------------- shown ----------------
+\node[sgbox, text width=32mm, align=center, right=10mm of select, yshift=9mm] (s1)
+  {\textbf{raise the stakes}\\[-2pt]{\scriptsize diff + rationale + flags}};
+\node[sgbox, text width=32mm, align=center, right=10mm of select] (s2)
+  {\textbf{slow down}\\[-2pt]{\scriptsize diff + rationale + flags}};
+\node[sgbox, text width=32mm, align=center, right=10mm of select, yshift=-9mm] (s3)
+  {\textbf{introduce a complication}\\[-2pt]{\scriptsize diff + rationale + flags}};
+
+\draw[sgedgeaccent] (select.east) -- (s1.west);
+\draw[sgedgeaccent] (select.east) -- (s2.west);
+\draw[sgedgeaccent] (select.east) -- (s3.west);
+
+\begin{scope}[on background layer]
+  \node[sggroup, fit=(s1)(s3), inner sep=6pt,
+        label={[sgtitle]above:$k=3$ shown, each one labelled}] {};
+\end{scope}
+
+\node[sgcaption, anchor=north west, text width=178mm] at (-6mm,-55mm)
+  {The label is the point. Three unlabelled variants cost three times as much to review as
+   one; three named directions cost a decision. The other three candidates are kept ---
+   the evaluation measures diversity over the whole set, and the preference layer needs
+   them as the negative side of a pair.};
+
+\end{tikzpicture}
+\end{document}
