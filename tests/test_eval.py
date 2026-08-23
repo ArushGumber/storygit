@@ -47,7 +47,7 @@ TINY = SelectionConfig(
 
 
 def mock_engine(
-    fixture: Fixture, *, router: Router | None = None, **kwargs: object
+    fixture: Fixture, *, router: Router | None = None, stream: str = "eval-test", **kwargs: object
 ) -> tuple[Engine, MockProvider]:
     """An engine whose every call returns the same canned beat.
 
@@ -55,6 +55,7 @@ def mock_engine(
         fixture: The story to run against.
         router: Share a router (and therefore one call log) across two engines, the way
             an evaluation invocation shares one across four personas.
+        stream: Id-generator stream, so two engines over one repository cannot collide.
         **kwargs: Passed through to the engine.
     """
     provider = MockProvider(lambda req: canned(dict(BEAT, title=f"b{req.sample_index}")))
@@ -62,7 +63,7 @@ def mock_engine(
     engine = Engine(
         fixture.repo,
         router,
-        ids=IdGenerator(seed=3, stream="eval-test"),
+        ids=IdGenerator(seed=3, stream=stream),
         selection=TINY,
         use_nli=False,
         **kwargs,  # type: ignore[arg-type]
@@ -465,7 +466,10 @@ def test_persona_thresholds_discriminate() -> None:
 
         rng = random.Random(7)
         draws = [
-            max(persona._raw_score(reference_features(rng)) for _ in range(BEST_OF))
+            max(
+                persona._raw_score(reference_features(rng, criteria=len(persona.criteria)))
+                for _ in range(BEST_OF)
+            )
             for _ in range(2000)
         ]
         rate = sum(1 for d in draws if d >= accept) / len(draws)
@@ -510,7 +514,7 @@ async def test_a_run_is_billed_only_for_its_own_calls(fixture: Fixture, tmp_path
         seed=2,
         use_llm_edits=False,
     )
-    engine_two, _ = mock_engine(fixture, router=engine.router)
+    engine_two, _ = mock_engine(fixture, router=engine.router, stream="eval-test-2")
     second = await run_writer(
         get("the Minimalist"),
         engine_two,

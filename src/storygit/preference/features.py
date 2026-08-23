@@ -3,36 +3,58 @@
 Exactly the list from the design, no more and no less:
 
 1. judge sub-scores on the fixed narratology criteria,
-2. judge sub-scores on the writer's own criteria,
+2. judge sub-scores on the writer's own criteria, one slot each,
 3. continuity score (from the checker's flags),
 4. voice cosine (contrastive head, chunk 4),
 5. edit-direction projection,
 6. length,
 7. dialogue ratio.
 
-Two things are worth defending. The features are **few and interpretable** — a dozen
+Two things are worth defending. The features are **few and interpretable** — a dozen or so
 numbers, each of which a human can name — because the preference head has to learn from
 ten or twenty comparisons, not ten thousand, and a high-dimensional head would simply
 memorize. And they are **the same features the simulated writers' hidden weights are
 defined over**, which is what makes the evaluation's central claim measurable: if the
 fitted weights correlate with the hidden ones, the machinery recovers taste.
+
+The writer's own criteria get **one slot each**, not one shared average. Averaging them
+made the head structurally unable to learn that a writer weights *menace* twice as heavily
+as *warmth*, which is the single thing writer-defined criteria exist to express; a writer
+who defines two criteria and cares about one of them was indistinguishable from a writer
+who cared equally about both.
 """
 
 from __future__ import annotations
 
 import re
+from collections.abc import Sequence
 
 from pydantic import BaseModel, ConfigDict
 
 FIXED_CRITERIA = ("momentum", "specificity", "consequence", "voice")
 """The narratology axes the judge always scores. Mirrors ``layer3_judge.FIXED_CRITERIA``."""
 
+MAX_CRITERION_SLOTS = 4
+"""How many writer-defined criteria the head can weight independently.
+
+A fixed width is what lets the head be a plain vector: the feature space cannot change
+shape every time a writer adds a criterion, because the persisted weights are indexed by
+position. Four is chosen against the data regime rather than the interface — the head is
+fitted on tens of comparisons, and every extra slot is a parameter competing for them. A
+writer may define more than four criteria; the judge scores all of them and they all reach
+the prompt, but only the first four are separately *weighted*. Slot order is creation
+order, so a slot's meaning never moves under a persisted model.
+"""
+
+CRITERION_SLOTS = tuple(f"criterion_{i + 1}" for i in range(MAX_CRITERION_SLOTS))
+"""The per-criterion feature names, in slot order."""
+
 BASE_FEATURES = (
     "judge_momentum",
     "judge_specificity",
     "judge_consequence",
     "judge_voice",
-    "writer_criteria",
+    *CRITERION_SLOTS,
     "continuity",
     "voice_cosine",
     "edit_direction",
@@ -129,10 +151,32 @@ def continuity_score(hard_flags: int, soft_flags: int) -> float:
     return float(max(0.0, 1.0 - 0.35 * hard_flags - 0.08 * soft_flags))
 
 
+def criterion_slots(scores: dict[str, float], order: Sequence[str]) -> dict[str, float]:
+    """Place writer-criterion scores into their fixed slots.
+
+    Args:
+        scores: Judge scores on the writer's criteria, by name, on a 1-5 scale.
+        order: The writer's criteria in creation order. A criterion's slot is its
+            position here, so adding a criterion never renumbers the existing ones.
+
+    Returns:
+        One entry per slot. An unfilled slot is **0.0**, not the neutral 0.5 a missing
+        judge score gets: "this writer has not defined a third criterion" is a fact about
+        the writer, and a fixed constant carries no gradient into the head.
+    """
+    scaled = {k: float(max(0.0, min(1.0, (v - 1.0) / 4.0))) for k, v in scores.items()}
+    out: dict[str, float] = dict.fromkeys(CRITERION_SLOTS, 0.0)
+    for index, name in enumerate(order[:MAX_CRITERION_SLOTS]):
+        # A defined criterion the judge did not score is neutral, like any missing score.
+        out[CRITERION_SLOTS[index]] = scaled.get(name, 0.5)
+    return out
+
+
 def build(
     *,
     judge_scores: dict[str, float] | None = None,
     writer_criteria_scores: dict[str, float] | None = None,
+    criterion_order: Sequence[str] = (),
     hard_flags: int = 0,
     soft_flags: int = 0,
     voice_cosine: float = 0.0,
@@ -144,6 +188,8 @@ def build(
     Args:
         judge_scores: Per-axis judge scores on a 1-5 scale.
         writer_criteria_scores: Judge scores on the writer's own criteria, 1-5.
+        criterion_order: The writer's criteria in creation order, which fixes which slot
+            each one occupies. Empty means the writer has defined none.
         hard_flags: Deterministic contradictions found.
         soft_flags: Soft flags found.
         voice_cosine: Cosine to the writer-voice centroid, already in ``[0, 1]``.
@@ -155,6 +201,9 @@ def build(
     """
     judge = judge_scores or {}
     writer = writer_criteria_scores or {}
+    # Falling back to the scored names keeps callers that never had an order (the gallery
+    # scripts, ad-hoc tests) producing the same slots they would have with one.
+    order = tuple(criterion_order) or tuple(writer)
 
     def scaled(name: str) -> float:
         raw = judge.get(name)
@@ -162,19 +211,13 @@ def build(
             return 0.5  # a missing judge score is neutral, not bad
         return float(max(0.0, min(1.0, (raw - 1.0) / 4.0)))
 
-    writer_mean = (
-        sum(max(0.0, min(1.0, (v - 1.0) / 4.0)) for v in writer.values()) / len(writer)
-        if writer
-        else 0.5
-    )
-
     return FeatureVector(
         values={
             "judge_momentum": scaled("momentum"),
             "judge_specificity": scaled("specificity"),
             "judge_consequence": scaled("consequence"),
             "judge_voice": scaled("voice"),
-            "writer_criteria": writer_mean,
+            **criterion_slots(writer, order),
             "continuity": continuity_score(hard_flags, soft_flags),
             "voice_cosine": float(max(0.0, min(1.0, voice_cosine))),
             "edit_direction": float(max(0.0, min(1.0, edit_direction))),
@@ -185,7 +228,11 @@ def build(
 
 
 def from_candidate(
-    candidate: object, *, voice_cosine: float = 0.0, edit_direction: float = 0.0
+    candidate: object,
+    *,
+    voice_cosine: float = 0.0,
+    edit_direction: float = 0.0,
+    criterion_order: Sequence[str] = (),
 ) -> FeatureVector:
     """Build features from a :class:`storygit.selection.select.Candidate`.
 
@@ -193,6 +240,7 @@ def from_candidate(
         candidate: The candidate.
         voice_cosine: Voice-model score, if one has been fitted.
         edit_direction: Edit-direction projection, if one exists.
+        criterion_order: The writer's criteria in creation order.
 
     Returns:
         The feature vector.
@@ -206,6 +254,7 @@ def from_candidate(
     return build(
         judge_scores=fixed,
         writer_criteria_scores=writer,
+        criterion_order=criterion_order,
         hard_flags=sum(1 for f in flags if f.is_hard),
         soft_flags=sum(1 for f in flags if not f.is_hard),
         voice_cosine=voice_cosine,

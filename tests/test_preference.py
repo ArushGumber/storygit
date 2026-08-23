@@ -29,6 +29,7 @@ from storygit.preference.bt_head import (
 from storygit.preference.exemplars import ExemplarPool
 from storygit.preference.features import (
     BASE_FEATURES,
+    MAX_CRITERION_SLOTS,
     FeatureVector,
     build,
     continuity_score,
@@ -126,11 +127,57 @@ def test_feature_helpers_behave_sensibly() -> None:
 def test_feature_vector_is_exactly_the_designed_list() -> None:
     features = build(text="A sentence.")
     assert set(features.values) == set(BASE_FEATURES)
-    assert len(BASE_FEATURES) == 10
+    assert len(BASE_FEATURES) == 9 + MAX_CRITERION_SLOTS
     assert all(0.0 <= v <= 1.0 for v in features.values.values())
     # A missing judge score is neutral, not zero: an unreachable judge must not make every
     # candidate look bad.
     assert features.values["judge_momentum"] == 0.5
+
+
+def test_each_writer_criterion_gets_its_own_slot_in_creation_order() -> None:
+    """The collapsed average could not express "menace matters twice as much as warmth"."""
+    features = build(
+        writer_criteria_scores={"menace": 5.0, "warmth": 1.0},
+        criterion_order=("menace", "warmth"),
+        text="A sentence.",
+    )
+    assert features.values["criterion_1"] == 1.0
+    assert features.values["criterion_2"] == 0.0
+    # Slots the writer has not defined are zero, not the neutral 0.5 a missing judge score
+    # gets: "there is no third criterion" is a fact about the writer, and a constant
+    # carries no gradient into the head.
+    assert features.values["criterion_3"] == 0.0
+    assert features.values["criterion_4"] == 0.0
+
+    # Adding a criterion never renumbers the ones already there.
+    later = build(
+        writer_criteria_scores={"menace": 5.0, "warmth": 1.0, "dread": 3.0},
+        criterion_order=("menace", "warmth", "dread"),
+        text="A sentence.",
+    )
+    assert later.values["criterion_1"] == features.values["criterion_1"]
+    assert later.values["criterion_2"] == features.values["criterion_2"]
+    assert later.values["criterion_3"] == 0.5
+
+    # A criterion the writer defined but the judge did not score is neutral, not absent.
+    unscored = build(
+        writer_criteria_scores={"menace": 5.0},
+        criterion_order=("menace", "warmth"),
+        text="A sentence.",
+    )
+    assert unscored.values["criterion_2"] == 0.5
+
+
+def test_only_the_first_four_criteria_are_separately_weighted() -> None:
+    """The head is a fixed-width vector; the cap is documented and enforced here."""
+    order = ("a", "b", "c", "d", "e")
+    features = build(
+        writer_criteria_scores=dict.fromkeys(order, 5.0),
+        criterion_order=order,
+        text="A sentence.",
+    )
+    assert sum(1 for k in features.values if k.startswith("criterion_")) == MAX_CRITERION_SLOTS
+    assert all(features.values[f"criterion_{i}"] == 1.0 for i in range(1, 5))
 
 
 # --- Bradley-Terry ------------------------------------------------------------

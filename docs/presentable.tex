@@ -968,11 +968,15 @@ tempting feature in the system and the one that would destroy it. It is precisel
 Fabula's writers complained about, and the reason is not technical: a system that
 rewrites approved work without asking cannot be trusted with a manuscript.
 
-\decision{Ten interpretable features rather than a learned representation}
+\decision{\rFeatures{} interpretable features rather than a learned representation}
 \rejected{Embedding the candidate and letting the head learn its own features.} With twenty
 comparisons that head would memorize rather than generalize, and --- decisively --- its
 weights would say nothing a writer could read. An interpretable feature vector is what lets
-the system explain its own ranking back to the person it is ranking for.
+the system explain its own ranking back to the person it is ranking for. Nine are fixed;
+the remaining \rCriterionSlots{} are one slot per writer-defined criterion, in creation
+order, zero when unfilled --- a single averaged criterion score could not express that a
+writer weights \emph{menace} twice as heavily as \emph{warmth}, which is the one thing
+writer-defined criteria exist to say.
 
 \decision{SQLite}
 \rejected{Postgres.} One writer, one story, a few megabytes, and a file the author can
@@ -985,17 +989,17 @@ feature set, the simulated-writer evaluation --- are added as their chunks land.
 \section{Limitations}
 \label{sec:limitations}
 
-\textbf{The evaluation cannot measure taste.} A persona is a linear functional over ten
-features plus noise. It cannot be surprised, cannot change its mind, and cannot tell you the
+\textbf{The evaluation cannot measure taste.} A persona is a linear functional over the
+same \rFeatures{} features plus noise. It cannot be surprised, cannot change its mind, and cannot tell you the
 tool is exhausting to use. Every number here is a property of the machinery. Whether the
 system helps a human write a better serial is not established by anything in this document,
 and only a human study would establish it.
 
 \textbf{The preference layer is validated against writers built from its own hypothesis
-class.} The head is linear in ten features; the personas score linearly in the same ten. The
-model is therefore correctly specified by construction, which is why the claim is
-\emph{recoverability} --- the estimator is not broken --- rather than \emph{it learns
-taste}. A real writer's preferences are not linear in ten features.
+class.} The head is linear in \rFeatures{} features; the personas score linearly in the same
+\rFeatures{}. The model is therefore correctly specified by construction, which is why the
+claim is \emph{recoverability} --- the estimator is not broken --- rather than \emph{it
+learns taste}. A real writer's preferences are not linear in \rFeatures{} features.
 
 \textbf{The prior is synthetic.} Nothing in the data it was fitted on ever met a reader. The
 bet is that the adaptation machinery transfers even though the values do not, and that bet is

@@ -21,6 +21,7 @@ from typing import Any, get_args
 
 from storygit.domain.diff import Op
 from storygit.domain.world import Predicate
+from storygit.preference.features import BASE_FEATURES, MAX_CRITERION_SLOTS
 
 RESULTS = Path(__file__).parent / "results"
 OUTPUT = Path(__file__).resolve().parents[1] / "docs" / "results.tex"
@@ -169,6 +170,8 @@ def collect() -> dict[str, str]:
     # says "the 30 operations" while the union holds 31 is wrong in a way no rerun fixes.
     macros["DiffOps"] = str(len(get_args(get_args(Op)[0])))
     macros["Predicates"] = str(len([p for p in Predicate if p is not Predicate.note]))
+    macros["Features"] = str(len(BASE_FEATURES))
+    macros["CriterionSlots"] = str(MAX_CRITERION_SLOTS)
     return macros
 
 

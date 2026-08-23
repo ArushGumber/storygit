@@ -26,7 +26,7 @@ from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from storygit.preference.features import BASE_FEATURES, FeatureVector
+from storygit.preference.features import BASE_FEATURES, CRITERION_SLOTS, FeatureVector
 
 
 class ForbiddenMove(StrEnum):
@@ -67,6 +67,12 @@ class Persona(BaseModel):
             than rejecting it.
         noise: Decision noise, so choices are not perfectly separable.
         forbidden: Moves that are always rejected.
+        criteria: Writer-defined scoring axes as ``(name, description)``, in the order
+            this writer would have created them. The run adds them to the ledger, so the
+            judge scores every candidate on them and each one lands in its own feature
+            slot. Before this existed the personas defined none, which meant the collapsed
+            ``writer_criteria`` feature was the constant 0.5 in every live run and the two
+            personas that carried weight on it were weighting a constant.
         target_words: Preferred prose length.
         dialogue_appetite: Preferred dialogue ratio in ``[0, 1]``.
         lock_probability: Chance of locking a node after accepting it.
@@ -87,6 +93,7 @@ class Persona(BaseModel):
     lock_probability: float = 0.05
     dial: float = 0.35
     style_notes: tuple[str, ...] = ()
+    criteria: tuple[tuple[str, str], ...] = ()
 
     def thresholds(self) -> tuple[float, float]:
         """The accept and edit thresholds, in score units.
@@ -115,7 +122,10 @@ class Persona(BaseModel):
             return cached
         rng = random.Random(20260823)
         scores = sorted(
-            max(self._raw_score(reference_features(rng)) for _ in range(BEST_OF))
+            max(
+                self._raw_score(reference_features(rng, criteria=len(self.criteria)))
+                for _ in range(BEST_OF)
+            )
             for _ in range(REFERENCE_SAMPLES)
         )
 
@@ -184,7 +194,10 @@ REFERENCE_RANGES: dict[str, tuple[float, float]] = {
     "judge_specificity": (0.60, 1.00),
     "judge_consequence": (0.55, 1.00),
     "judge_voice": (0.55, 1.00),
-    "writer_criteria": (0.55, 0.98),
+    "criterion_1": (0.55, 0.98),
+    "criterion_2": (0.55, 0.98),
+    "criterion_3": (0.55, 0.98),
+    "criterion_4": (0.55, 0.98),
     "continuity": (0.65, 1.00),
     "voice_cosine": (0.45, 0.58),
     "edit_direction": (0.42, 0.60),
@@ -215,13 +228,20 @@ actually happens.
 _THRESHOLDS: dict[str, tuple[float, float]] = {}
 
 
-def reference_features(rng: random.Random) -> FeatureVector:
-    """A synthetic candidate drawn from the ranges real candidates occupy."""
-    return FeatureVector(
-        values={
-            name: rng.uniform(*REFERENCE_RANGES.get(name, (0.0, 1.0))) for name in BASE_FEATURES
-        }
-    )
+def reference_features(rng: random.Random, *, criteria: int = 0) -> FeatureVector:
+    """A synthetic candidate drawn from the ranges real candidates occupy.
+
+    Args:
+        rng: Draw source.
+        criteria: How many criteria the writer has defined. Slots beyond that are exactly
+            zero in a real run, and drawing them from a range would calibrate the
+            thresholds against candidates that cannot occur.
+    """
+    values = {name: rng.uniform(*REFERENCE_RANGES.get(name, (0.0, 1.0))) for name in BASE_FEATURES}
+    for index, slot in enumerate(CRITERION_SLOTS):
+        if index >= criteria:
+            values[slot] = 0.0
+    return FeatureVector(values=values)
 
 
 def _weights(**overrides: float) -> dict[str, float]:
@@ -236,9 +256,14 @@ SERIALIST = Persona(
         judge_consequence=0.9,
         judge_specificity=0.4,
         continuity=0.8,
-        writer_criteria=0.7,
+        criterion_1=0.9,
+        criterion_2=0.3,
         length=0.2,
         dialogue_ratio=0.3,
+    ),
+    criteria=(
+        ("pull", "Does the end of this make me need the next one?"),
+        ("payoff", "Does it move an open thread towards being answered?"),
     ),
     accept_quantile=0.35,
     edit_quantile=0.10,
@@ -259,6 +284,12 @@ MINIMALIST = Persona(
         length=-0.9,
         judge_momentum=0.3,
         dialogue_ratio=0.2,
+        criterion_1=0.8,
+        criterion_2=0.2,
+    ),
+    criteria=(
+        ("restraint", "Is anything here said twice, or said at all when it could be shown?"),
+        ("concreteness", "Nouns a reader can see, rather than gestures at them."),
     ),
     accept_quantile=0.65,
     edit_quantile=0.20,
@@ -280,6 +311,12 @@ MAXIMALIST = Persona(
         continuity=0.4,
         judge_consequence=0.5,
         dialogue_ratio=-0.3,
+        criterion_1=0.7,
+        criterion_2=0.4,
+    ),
+    criteria=(
+        ("interiority", "Are we inside someone, or watching from outside?"),
+        ("texture", "Does the world have weather, smell, and wear on it?"),
     ),
     accept_quantile=0.55,
     edit_quantile=0.15,
@@ -296,10 +333,15 @@ CONTROLLER = Persona(
     weights=_weights(
         continuity=1.0,
         judge_consequence=0.7,
-        writer_criteria=0.9,
+        criterion_1=1.0,
+        criterion_2=0.15,
         judge_specificity=0.5,
         edit_direction=0.6,
         length=-0.2,
+    ),
+    criteria=(
+        ("no loose ends", "Does this leave anything unexplained that was not meant to be?"),
+        ("earned", "Has the story paid for what happens here?"),
     ),
     accept_quantile=0.92,
     edit_quantile=0.15,

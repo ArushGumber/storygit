@@ -187,6 +187,10 @@ class Engine:
         # against this intent. Empty for a new writer and when the layer is disabled, so
         # the no-preference ablation sends byte-identical prompts.
         exemplars = self.preference.exemplars.render(intent, enabled=self.preference.enabled)
+        # Which feature slot each writer-defined criterion occupies is a property of the
+        # ledger, and the layer is persisted independently of any repository, so the
+        # engine is the one that knows both and hands the order over.
+        self.preference.criterion_order = tuple(c.name for c in self.state().ledger.criteria)
         candidates = await self.selector.select(
             self.state(),
             level,

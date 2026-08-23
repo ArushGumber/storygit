@@ -39,6 +39,10 @@ class PreferenceLayer:
     Attributes:
         state: The current learned state.
         enabled: When False, the layer contributes nothing — the ablation switch.
+        criterion_order: The writer's criteria in creation order, refreshed from the
+            ledger by the engine. It decides which feature slot each criterion occupies,
+            and it is deliberately not read from the ledger here: the layer is fitted and
+            persisted independently of any repository.
     """
 
     def __init__(
@@ -57,6 +61,7 @@ class PreferenceLayer:
         """
         self.state = state or PreferenceState()
         self.enabled = enabled
+        self.criterion_order: tuple[str, ...] = ()
         self._seed = seed
         self._bandit = ThompsonBandit(self.state.bandit, seed=seed)
         self._exemplars = ExemplarPool()
@@ -77,7 +82,10 @@ class PreferenceLayer:
 
         Voice and edit-direction scores are computed over the whole set at once, because
         both are relative measures — the direction projection is min-max scaled across the
-        candidates on offer.
+        candidates on offer. The writer's criterion order comes from
+        :attr:`criterion_order`, which the engine refreshes from the ledger before every
+        proposal; a criterion's slot is its creation position, so a persisted head keeps
+        meaning what it meant.
 
         Args:
             candidates: :class:`storygit.selection.select.Candidate` objects.
@@ -97,6 +105,7 @@ class PreferenceLayer:
                 candidate,
                 voice_cosine=voice_scores[i],
                 edit_direction=direction_scores[i],
+                criterion_order=self.criterion_order,
             )
             for i, candidate in enumerate(candidates)
         ]

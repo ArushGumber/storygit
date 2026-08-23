@@ -17,7 +17,7 @@ the same pairwise-comparison likelihood over the same kind of human feedback. He
 learned score orders three candidates rather than training a policy, which is the right
 scale for one writer's few dozen decisions.
 
-Fitted with L2-regularized gradient descent in pure NumPy. At ten features and a few
+Fitted with L2-regularized gradient descent in pure NumPy. At thirteen features and a few
 hundred pairs the whole fit is milliseconds, needs no ML framework, and — usefully — is
 deterministic under a seed.
 """

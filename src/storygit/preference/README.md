@@ -45,10 +45,22 @@ It is the same construction as the reward model in RLHF, minus the policy-gradie
 
 ## The feature vector is exactly the designed list
 
-Ten features: four judge sub-scores on fixed narratology axes, the writer's own criteria,
-continuity, voice cosine, edit-direction projection, length, and dialogue ratio. Few and
-interpretable, because the head has to learn from tens of comparisons and a
-high-dimensional head would memorize.
+Thirteen features: four judge sub-scores on fixed narratology axes, **four slots for the
+writer's own criteria**, continuity, voice cosine, edit-direction projection, length, and
+dialogue ratio. Few and interpretable, because the head has to learn from tens of
+comparisons and a high-dimensional head would memorize.
+
+The criterion slots are the one thing here that is not obvious. A writer's criteria used to
+collapse into a single averaged score, which made the head structurally unable to learn
+that a writer weights *menace* twice as heavily as *warmth* — the single thing
+writer-defined criteria exist to express. Each criterion now gets its own slot, in creation
+order so a slot's meaning never moves under a persisted model, capped at
+`MAX_CRITERION_SLOTS = 4` because the head is fitted on tens of comparisons and every
+extra slot is a parameter competing for them. A writer may define more: the judge scores
+all of them and they all reach the prompt, but only the first four are separately
+*weighted*. An unfilled slot is `0.0`, not the neutral `0.5` a missing judge score gets —
+"this writer has not defined a third criterion" is a fact about the writer, and a fixed
+constant carries no gradient.
 
 They are also **the same features the simulated writers' hidden weights are defined over**,
 which is what makes the evaluation's central claim measurable: if the fitted weights

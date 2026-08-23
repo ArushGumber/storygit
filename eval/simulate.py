@@ -408,6 +408,10 @@ async def run_writer(
     engine.set_dial(persona.dial)
     for note in persona.style_notes:
         engine.add_style_note(note)
+    # Creation order fixes each criterion's feature slot, so this loop is also what makes
+    # the persona's per-criterion hidden weights line up with the head's.
+    for name, description in persona.criteria:
+        engine.add_criterion(name, description)
 
     def snapshot_log() -> RunLog:
         return RunLog(

@@ -44,17 +44,18 @@ export function Evaluation() {
 
   const available = summary?.available === true;
   const runs = (summary?.runs as RunRow[] | undefined) ?? [];
-  const skipped = (summary?.skipped as Array<Record<string, string>> | undefined) ?? [];
+  const skipped =
+    (summary?.skipped as Array<Record<string, string>> | undefined) ?? [];
   const offline = summary?.offline as Record<string, any> | undefined;
 
   return (
     <div className="prose-page">
       <h1>Evaluation</h1>
       <p className="lede">
-        Every claim is either measured here or marked as unmeasured. The deterministic tier
-        needs no model calls, so it is exact — a regression is a regression rather than a
-        bad sampling day, and it cannot be improved by rerunning until the numbers look
-        better.
+        Every claim is either measured here or marked as unmeasured. The
+        deterministic tier needs no model calls, so it is exact — a regression
+        is a regression rather than a bad sampling day, and it cannot be
+        improved by rerunning until the numbers look better.
       </p>
 
       {error && <div className="error">{error}</div>}
@@ -79,23 +80,35 @@ export function Evaluation() {
             <tbody>
               <tr>
                 <td>layer 1 only (deterministic)</td>
-                <td className="num">{fmtPct(offline.checker_ablation.layer1_only.recall)}</td>
-                <td className="num">{fmtPct(offline.checker_ablation.layer1_only.precision)}</td>
-                <td className="num">{offline.checker_ablation.layer1_only.f1.toFixed(2)}</td>
+                <td className="num">
+                  {fmtPct(offline.checker_ablation.layer1_only.recall)}
+                </td>
+                <td className="num">
+                  {fmtPct(offline.checker_ablation.layer1_only.precision)}
+                </td>
+                <td className="num">
+                  {offline.checker_ablation.layer1_only.f1.toFixed(2)}
+                </td>
               </tr>
               <tr>
                 <td>layer 1 + layer 2 (NLI)</td>
-                <td className="num">{fmtPct(offline.checker_ablation.layer1_and_2.recall)}</td>
-                <td className="num">{fmtPct(offline.checker_ablation.layer1_and_2.precision)}</td>
-                <td className="num">{offline.checker_ablation.layer1_and_2.f1.toFixed(2)}</td>
+                <td className="num">
+                  {fmtPct(offline.checker_ablation.layer1_and_2.recall)}
+                </td>
+                <td className="num">
+                  {fmtPct(offline.checker_ablation.layer1_and_2.precision)}
+                </td>
+                <td className="num">
+                  {offline.checker_ablation.layer1_and_2.f1.toFixed(2)}
+                </td>
               </tr>
             </tbody>
           </table>
           <p className="hint">
-            {offline.checker?.false_positives_per_beat?.toFixed(2)} false positives per beat
-            on a clean story. That number matters more than recall — a checker that flags
-            everything has perfect recall and is worthless, because the writer learns flags
-            are noise.
+            {offline.checker?.false_positives_per_beat?.toFixed(2)} false
+            positives per beat on a clean story. That number matters more than
+            recall — a checker that flags everything has perfect recall and is
+            worthless, because the writer learns flags are noise.
           </p>
         </>
       )}
@@ -124,10 +137,11 @@ export function Evaluation() {
             </tbody>
           </table>
           <p className="hint">
-            Declared dependency edges are exact and blind to what nobody declared. The
-            prediction stated in advance was that embedding edges would trade recall for
-            precision too poorly to use; on this case they do better than that, which is
-            recorded as found rather than explained away.
+            Declared dependency edges are exact and blind to what nobody
+            declared. The prediction stated in advance was that embedding edges
+            would trade recall for precision too poorly to use; on this case
+            they do better than that, which is recorded as found rather than
+            explained away.
           </p>
         </>
       )}
@@ -144,18 +158,21 @@ export function Evaluation() {
               </tr>
             </thead>
             <tbody>
-              {(offline.selector_diversity.points as Array<any>).map((point) => (
-                <tr key={point.label}>
-                  <td>{point.label}</td>
-                  <td className="num">{point.diversity.toFixed(3)}</td>
-                  <td className="num">{point.quality.toFixed(3)}</td>
-                </tr>
-              ))}
+              {(offline.selector_diversity.points as Array<any>).map(
+                (point) => (
+                  <tr key={point.label}>
+                    <td>{point.label}</td>
+                    <td className="num">{point.diversity.toFixed(3)}</td>
+                    <td className="num">{point.quality.toFixed(3)}</td>
+                  </tr>
+                ),
+              )}
             </tbody>
           </table>
           <p className="hint">
-            Six candidates whose three highest-scoring entries are near-paraphrases of each
-            other. The temperature-only baseline takes all three.
+            Six candidates whose three highest-scoring entries are
+            near-paraphrases of each other. The temperature-only baseline takes
+            all three.
           </p>
         </>
       )}
@@ -186,7 +203,9 @@ export function Evaluation() {
                   <td className="num">{fmtPct(row.acceptance_last_third)}</td>
                   <td className="num">{row.mean_edit_distance.toFixed(2)}</td>
                   <td className="num">
-                    {row.weight_recovery === null ? "—" : row.weight_recovery.toFixed(2)}
+                    {row.weight_recovery === null
+                      ? "—"
+                      : row.weight_recovery.toFixed(2)}
                   </td>
                   <td className="num">{Math.round(row.tokens_per_action)}</td>
                 </tr>
@@ -194,10 +213,10 @@ export function Evaluation() {
             </tbody>
           </table>
           <p className="hint">
-            Weight recovery is the sharpest number here: the correlation between what the
-            preference head learned and the persona's hidden weights. Not “did acceptance
-            rise” — any degenerate system achieves that — but “did the machinery recover the
-            taste it was shown”.
+            Weight recovery is the sharpest number here: the correlation between
+            what the preference head learned and the persona's hidden weights.
+            Not “did acceptance rise” — any degenerate system achieves that —
+            but “did the machinery recover the taste it was shown”.
           </p>
         </>
       )}
@@ -224,8 +243,8 @@ export function Evaluation() {
             </tbody>
           </table>
           <p className="hint">
-            Listed because a results table that silently omits the runs that did not happen
-            is a lie.
+            Listed because a results table that silently omits the runs that did
+            not happen is a lie.
           </p>
         </>
       )}
@@ -244,11 +263,12 @@ export function Evaluation() {
 
       <h2>What this cannot measure</h2>
       <p>
-        Real taste, fatigue, trust, or whether a listener would press next episode. A
-        persona is a linear functional over ten features plus noise; it cannot be surprised
-        and cannot change its mind. Worse, it is built from the same hypothesis class the
-        preference head is fitted on, so the head is correctly specified by construction.
-        That is exactly why the claim is <em>recoverability</em> — the estimator is not
+        Real taste, fatigue, trust, or whether a listener would press next
+        episode. A persona is a linear functional over the same thirteen
+        features plus noise; it cannot be surprised and cannot change its mind.
+        Worse, it is built from the same hypothesis class the preference head is
+        fitted on, so the head is correctly specified by construction. That is
+        exactly why the claim is <em>recoverability</em> — the estimator is not
         broken — rather than <em>it learns taste</em>.
       </p>
     </div>
