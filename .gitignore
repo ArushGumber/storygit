@@ -42,3 +42,7 @@ demo/*.db-wal
 /story.db
 /story.db-shm
 /story.db-wal
+
+# Build and tool artifacts that a clone should regenerate rather than inherit.
+.coverage
+frontend/tsconfig.tsbuildinfo

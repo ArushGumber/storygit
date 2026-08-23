@@ -96,11 +96,9 @@ example, and the invariants it maintains.
 ## Quickstart
 
 ```bash
-uv venv --python 3.11 && uv pip install -e '.[dev,ml,api]'
-cd frontend && npm install && cd ..
-
+make setup        # venv, dependencies, frontend build
 make check        # tests, lint, types
-make all          # + frontend build, end-to-end smoke, and the paper
+make all          # + end-to-end smoke, and the paper
 make help         # every regeneration command, named
 ```
 

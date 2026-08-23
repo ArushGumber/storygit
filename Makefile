@@ -9,6 +9,11 @@ PY   := $(VENV)/python
 
 .PHONY: help check test coverage lint types frontend e2e docs diagrams numbers eval probe costing demo gallery screenshots all clean
 
+setup:  ## Create the venv, install everything, and build the frontend
+	uv venv --python 3.11
+	uv pip install -e '.[dev,ml,api]'
+	cd frontend && npm install && npm run build
+
 help:  ## Show this help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[1m%-14s\033[0m %s\n", $$1, $$2}'
