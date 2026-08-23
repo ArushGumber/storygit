@@ -658,11 +658,13 @@ def session_criterion() -> Session:
     quiet = build(
         judge_scores={"momentum": 4.0, "specificity": 4.5, "consequence": 3.0, "voice": 4.0},
         writer_criteria_scores={"menace": 1.5},
+        criterion_order=("menace",),
         text="They talk for a while, and nothing much is decided. " * 8,
     )
     threatening = build(
         judge_scores={"momentum": 3.5, "specificity": 3.5, "consequence": 4.0, "voice": 3.5},
         writer_criteria_scores={"menace": 5.0},
+        criterion_order=("menace",),
         text="The Warden does not raise her voice. That is what frightens him. " * 8,
     )
     weights = BTWeights.uniform()
