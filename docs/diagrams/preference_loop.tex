@@ -1,0 +1,53 @@
+% preference_loop.tex -- writer actions become a ranking, which changes what they see next.
+\documentclass[tikz, border=8pt]{standalone}
+\input{style.tex}
+\begin{document}\sgpage
+\begin{tikzpicture}[sg]
+
+% ---------------- the writer ----------------
+\node[sgboxaccent, text width=30mm, align=center] (writer) at (0,0)
+  {\textbf{the writer}\\[-2pt]{\scriptsize accept, reject, edit,\\[-1pt] lock, criterion, dial}};
+
+% ---------------- signals ----------------
+\node[sgbox, text width=34mm, align=center, right=13mm of writer] (signals)
+  {signals\\[-2pt]{\scriptsize each accept recorded with\\[-1pt] the alternatives it was\\[-1pt] shown beside}};
+\draw[sgedgeaccent] (writer) -- (signals);
+
+% ---------------- four learners ----------------
+\node[sgsmall, text width=38mm, align=left, right=13mm of signals, yshift=22mm] (exemplars)
+  {\textbf{exemplar retrieval}\\[-1pt]{\scriptsize their own sentences, in the prompt.\\[-1pt] works from 1 accept}};
+\node[sgsmall, text width=38mm, align=left, right=13mm of signals, yshift=8mm] (mining)
+  {\textbf{edit mining}\\[-1pt]{\scriptsize edits become style rules.\\[-1pt] gated on a 2nd observation}};
+\node[sgsmall, text width=38mm, align=left, right=13mm of signals, yshift=-8mm] (voice)
+  {\textbf{voice model}\\[-1pt]{\scriptsize frozen encoder + InfoNCE head,\\[-1pt] plus edit-direction vectors}};
+\node[sgsmall, text width=38mm, align=left, right=13mm of signals, yshift=-24mm] (head)
+  {\textbf{Bradley-Terry head}\\[-1pt]{\scriptsize $\sigma(w^\top(f_a-f_b))$ on the\\[-1pt] comparisons. $\sim$10 pairs}};
+
+\foreach \n in {exemplars,mining,voice,head} { \draw[sgedge] (signals.east) -- (\n.west); }
+
+% ---------------- ranking ----------------
+\node[sgboxaccent, text width=30mm, align=center, right=13mm of voice, yshift=-8mm] (rank)
+  {\textbf{ranking}\\[-2pt]{\scriptsize 10 features $\to$ one score}};
+\foreach \n in {voice,head} { \draw[sgedge] (\n.east) -- (rank.west); }
+\draw[sgedgesoft] (exemplars.east) to[out=0, in=110] (rank.north);
+\draw[sgedgesoft] (mining.east) to[out=0, in=130] (rank.north west);
+
+% ---------------- bandit ----------------
+\node[sgbox, text width=34mm, align=center, below=9mm of rank] (bandit)
+  {Thompson bandit\\[-2pt]{\scriptsize 3 safe, or 2 safe + 1 surprising}};
+\draw[sgedge] (rank) -- (bandit);
+
+% ---------------- back to the writer ----------------
+\node[sgbox, text width=30mm, align=center, below=26mm of signals] (shown)
+  {\textbf{3 shown}\\[-2pt]{\scriptsize labelled, checked, ranked}};
+\draw[sgedge] (bandit.west) to[out=180, in=0] (shown.east);
+\draw[sgedgeaccent] (shown.west) to[out=180, in=270] (writer.south);
+
+\node[sgcaption, anchor=north west, text width=150mm] at (-14mm,-44mm)
+  {Every learner degrades to ``no opinion'' at zero data rather than to a confident guess:
+   an unfitted head returns nothing and the judge ranks instead, which is what makes the
+   no-preference ablation exact. Learned state is persisted per branch, so taste explored
+   on a what-if branch cannot leak back to the main line.};
+
+\end{tikzpicture}
+\end{document}

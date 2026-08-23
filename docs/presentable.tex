@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{enumitem}
+\usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage{caption}
@@ -513,9 +514,109 @@ candidate down the ranking but never remove it.
 \section{The preference layer}
 \label{sec:preference}
 
-\textit{[Chunk 4: exemplar retrieval, edit-pair mining, the contrastive voice model,
-edit direction vectors, the Bradley-Terry preference head, and Thompson sampling over
-safe and exploratory slots. Includes the honest paragraph about the data regime.]}
+Iteration thirty should not repeat iteration one's mistakes. Four learners over the same
+signal --- accept, reject, edit --- feed one ranking.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{diagrams/preference_loop.pdf}
+\caption{The loop. Every learner degrades to ``no opinion'' at zero data rather than to a
+confident guess, which is what makes the no-preference ablation exact. Learned state is
+persisted per branch, so taste explored on a what-if branch cannot leak back to the main
+line.}
+\label{fig:preference}
+\end{figure}
+
+\subsection{The signal is a comparison}
+
+Every accept is recorded with the alternatives that were on screen. ``The writer liked A''
+is weak; ``the writer preferred A to B and C, having seen all three'' is a comparison, and
+comparisons are what Bradley-Terry is defined on. Pairs are formed only \emph{within} one
+shown set --- comparing a candidate accepted on Monday against one rejected in a different
+scene on Friday would compare two different questions. An edited-then-accepted win is
+weaker evidence than a clean accept and is weighted accordingly.
+
+\subsection{Four learners, four data appetites}
+
+A writer produces about twenty comparisons in a session, which is nowhere near enough to
+fit one model that does everything. So each signal is exploited by the cheapest mechanism
+that can use it, and each contributes as soon as it has enough.
+
+\begin{center}
+\begin{tabular}{@{}llp{0.44\textwidth}@{}}
+\toprule
+\textbf{Learner} & \textbf{Needs} & \textbf{What it contributes} \\
+\midrule
+Exemplar retrieval & 1 accept & The writer's own sentences in the prompt, and their
+rejected ones as negatives \\
+Edit direction & 1 edit & Mean embedding shift from the model's version to the
+writer's; score by projection onto it \\
+Edit mining & 2 similar edits & Plain-language style rules, into the visible ledger \\
+Bradley-Terry head & $\sim$10 comparisons & The ranking \\
+Voice model & $\sim$dozens of texts & ``Sounds like this writer'' \\
+Thompson bandit & $\sim$20 shown sets & How much of the shown set to spend on exploration \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The head}
+
+$P(a \succ b) = \sigma\!\left(w^\top(f_a - f_b)\right)$ --- logistic regression on feature
+differences, the intercept cancelling. Convex, milliseconds in NumPy, and the fitted $w$ is
+directly readable, which is what lets the interface say \emph{``you have been choosing for
+specificity and against length''}. It is the same construction as an RLHF reward
+model~\cite{bradley1952rank,christiano2017preferences,ouyang2022instructgpt} minus the
+policy-gradient half; at one writer and a few dozen decisions, ordering candidates is the
+right ambition.
+
+The feature vector is ten numbers: four judge sub-scores on fixed narratology axes, the
+writer's own criteria, continuity, voice cosine, edit-direction projection, length, and
+dialogue ratio. Few and interpretable on purpose --- a high-dimensional head would memorize
+twenty comparisons rather than learn from them. They are also the features the simulated
+writers' hidden weights are defined over, which is what makes
+\S\ref{sec:evaluation}'s central question answerable.
+
+\subsection{Voice}
+
+A judge can score whether a passage is well constructed; it cannot say whether it sounds
+like \emph{this} writer, because that is an identity rather than a quality. A frozen
+bge-small encoder plus a $384 \times 128$ projection trained with
+InfoNCE~\cite{oord2018cpc}: anchors are prose the writer wrote or edited, positives are what
+they accepted, negatives are what they rejected and the pre-edit versions of what they
+changed. Frozen encoder because a session's worth of prose would damage an encoder far more
+than it would personalize it; the projection only has to find which directions in an
+already-good space this writer cares about.
+
+\subsection{Exploration}
+
+A ranker that always shows its top three converges: the writer only ever sees what the model
+already believes, so the model never learns it was wrong. Two arms over the composition of
+the shown set --- three safe, or two safe plus one high-surprise --- chosen by Thompson
+sampling~\cite{russo2018thompson}. Exploration anneals itself out of the posterior width,
+with no schedule to tune; $\varepsilon$-greedy would keep paying a fixed exploration cost
+forever and would explore uniformly, spending as much on an arm it is sure about as on a
+marginal one.
+
+\subsection{The data regime, stated plainly}
+
+The head starts from a prior fitted across synthetic proto-personas and adapts per writer
+from there, because twenty comparisons cannot fit a model from scratch and there is no
+population of real writers to fit a prior on.
+
+\textbf{That prior cannot contain real human taste.} Nothing in its data ever met a reader.
+What it can contain is the structure of the problem --- that features have consistent
+signs, that the signal is noisy, that some axes matter more than others. The bet is that the
+adaptation \emph{machinery} transfers even though the values do not, and the bet is measured
+rather than asserted: a prior-initialized head reaches 0.775 held-out pairwise accuracy
+after a fresh writer's first ten decisions, against 0.645 from uniform initialization. Were
+that lift zero, the prior would be worthless and should be dropped.
+
+There is a deeper circularity worth naming: the preference layer is validated against
+simulated writers made of the same feature vector the head is fitted on. That is why the
+evaluation measures \emph{recoverability} --- whether the fitted weights correlate with the
+hidden ones --- rather than claiming the system learns taste. Recoverability is a real
+property of the machinery. Taste is not something this evaluation can measure at all; only
+a human study would settle it.
 
 \section{Evaluation}
 \label{sec:evaluation}
@@ -579,6 +680,12 @@ misses in a continuity checker are the failure that matters.
 tempting feature in the system and the one that would destroy it. It is precisely what
 Fabula's writers complained about, and the reason is not technical: a system that
 rewrites approved work without asking cannot be trusted with a manuscript.
+
+\decision{Ten interpretable features rather than a learned representation}
+\rejected{Embedding the candidate and letting the head learn its own features.} With twenty
+comparisons that head would memorize rather than generalize, and --- decisively --- its
+weights would say nothing a writer could read. An interpretable feature vector is what lets
+the system explain its own ranking back to the person it is ranking for.
 
 \decision{SQLite}
 \rejected{Postgres.} One writer, one story, a few megabytes, and a file the author can
