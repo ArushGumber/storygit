@@ -23,9 +23,9 @@
       "node_id": "n_5be9e443dc",
       "level": "episode",
       "shown": [
-        "p_c97840cf34",
-        "p_6290672b37",
-        "p_a78acf9ee3"
+        "p_a78acf9ee3",
+        "p_c070843d39",
+        "p_6290672b37"
       ],
       "axes": [
         "pay off an open thread",
@@ -33,32 +33,32 @@
         "introduce a complication"
       ],
       "scores": [
-        0.8785,
+        0.7779,
         0.8261,
-        0.8138
+        0.72
       ],
-      "chosen": "p_c97840cf34",
+      "chosen": "p_c070843d39",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "73a3b06cab13c927eb6e5e661d3ad56a",
+      "snapshot_id": "437999c9fc2222a03d35a6865df94719",
       "stale_marked": 0,
       "features": [
         {
-          "judge_momentum": 1.0,
+          "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
-          "judge_voice": 0.5,
-          "criterion_1": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.75,
           "criterion_2": 1.0,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5744,
+          "length": 0.5353,
           "dialogue_ratio": 0.0
         },
         {
@@ -81,7 +81,7 @@
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.5,
-          "criterion_1": 1.0,
+          "criterion_1": 0.5,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
@@ -93,149 +93,55 @@
         }
       ],
       "texts": [
-        "The Ashfall Ledger Elias discovers the ledger buried beneath the floorboards of the Ashfall archives, proving the city council authorized the toxic dumping five years ago. Just as he secures the evidence, the heavy iron door of the archives is welded shut from the outside. The city council actively orchestrated the environmental collapse of Ashfall for profit.",
+        "The Ashfall Ledger Elias uncovers the ledger proving the city council authorized the toxic dumping. As he secures the evidence, the archive door is welded shut from the outside.",
         "The Weight of Ash Elara returns to her abandoned family home in Ashfall to secure a hidden ledger, only to find the dust has been disturbed by someone else. She masks her frantic desperation with cold efficiency while bargaining with the local scavengers who claim the house as their own. Elara is running from a debt involving more than just money, and Ashfall is legally classified as a dead zone.",
         "The Ashfall Gate Elias prepares to breach the Ashfall gate, only to discover the kinetic lock has been fused by internal sabotage, rendering his key useless. He realizes someone within his own inner circle has been manipulating his access codes since he arrived. The sabotage is local, not external, and the key Elias carries is now a liability that signals his location to whoever fused the lock."
       ]
     },
     {
-      "node_id": "n_a993a15652",
+      "node_id": "n_0ec9446cd8",
       "level": "scene",
       "shown": [
-        "p_c4e2096485",
-        "p_26da24b5ba",
-        "p_883aab2752"
+        "p_ddb57bc4ac",
+        "p_f11cddf88f",
+        "p_3200b8a5fb"
       ],
       "axes": [
-        "slow down",
+        "deepen the interiority",
         "pay off an open thread",
-        "subvert the expectation"
-      ],
-      "scores": [
-        0.8596,
-        0.8876,
-        0.9062
-      ],
-      "chosen": "p_883aab2752",
-      "kind": "accept",
-      "veto": null,
-      "edit_distance": 0.0,
-      "flags_shown": 0,
-      "hard_flags_shown": 0,
-      "snapshot_id": "f617c3a3610bf1d011a3a2a377d98115",
-      "stale_marked": 0,
-      "features": [
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6111,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.5,
-          "criterion_1": 1.0,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.618,
-          "dialogue_ratio": 0.3333
-        },
-        {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6268,
-          "dialogue_ratio": 0.0
-        }
-      ],
-      "texts": [
-        "The Smell of Ozone Elias presses his ear to the cooling iron door, listening to the rhythmic, metallic scrape of a blowtorch extinguishing. As the air in the archives grows heavy with ozone and heat, he realizes the ventilation intake has been blocked from the exterior as well, leaving him to suffocate in silence with the ledger in his hands. The council is not just covering up the past; they are willing to commit murder in real-time to silence him.",
-        "The Oxygen Tax As the air recyclers in the archive room hum to a halt, a digital voice broadcast from the wall panels informs Elias that his personal oxygen allocation has been revoked due to 'unauthorized document handling.' A hidden pneumatic tube in the corner floorboard pops open, revealing a gas mask and a note signed by Sarah, the council archivist, asking if he is ready to die for the truth. The council is monitoring his oxygen usage and Sarah knows his current location.",
-        "The Ventilation Grate Instead of panicking or searching for an exit, Elias realizes the ledger contains a handwritten note by Councilman Halloway dated yesterday. A low hum vibrates through the floor as the room begins to fill with a sweet-smelling, colorless gas meant to incinerate the evidence—and him—before the welding cools. Elias presses his ear to the grate, hearing not guards, but his own sister’s voice whispering through the vent. The council is using incinerator gas to erase the evidence, and Elias's sister is somehow complicit in his containment."
-      ]
-    },
-    {
-      "node_id": "n_4550b01c39",
-      "level": "beat",
-      "shown": [
-        "p_3210c6de8e",
-        "p_d628369452",
-        "p_e886444d4e"
-      ],
-      "axes": [
-        "pay off an open thread",
-        "subvert the expectation",
         "slow down"
       ],
       "scores": [
-        0.9314,
-        0.8757,
-        0.8808
+        0.7135,
+        0.8667,
+        0.7629
       ],
-      "chosen": "p_3210c6de8e",
+      "chosen": "p_f11cddf88f",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "3d8e27be5601ccb5b4c25b1f3bd9a5e7",
+      "snapshot_id": "20bf16df4f13e8a961fb05dec65977cb",
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 1.0,
+          "judge_consequence": 0.75,
           "judge_voice": 0.5,
-          "criterion_1": 1.0,
+          "criterion_1": 0.75,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6128,
-          "dialogue_ratio": 0.25
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6647,
+          "length": 0.6044,
           "dialogue_ratio": 0.0
         },
         {
-          "judge_momentum": 0.75,
+          "judge_momentum": 1.0,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
@@ -246,35 +152,50 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6304,
-          "dialogue_ratio": 0.25
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6875,
+          "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Sister's Bargain Elias smashes the vent with the ledger's heavy binding to force a response. His sister, Sarah, speaks through the metal, revealing she is not a prisoner but an initiate of the Council, tasked with ensuring Elias's silence to 'protect the greater order' of Ashfall. She offers him a choice: surrender the ledger to be burned in the gas, or suffocate with it. Sarah serves the Council voluntarily, framing the cover-up as a necessary sacrifice for the city's stability.",
-        "The Sister's Cipher Instead of begging for help or pleading for his life, Elias realizes the voice on the other side of the vent is reciting a sequence of archive codes—the exact combination to the secondary internal release hatch. As the gas thickens, he inputs the sequence, but the mechanism doesn't unlock; it triggers a loud, mechanical alarm that floods the room with blinding spotlights instead. Elias stares into the vent, seeing a camera lens swivel to track his movement as his sister's voice changes from a whisper to a pre-recorded broadcast. The sister is using Elias to test the archive's automated security protocols; the voice wasn't real-time contact.",
-        "Breathless Elias coughs, the sweet, cloying gas searing his throat as he presses his mouth against the cold metal mesh of the vent. He begs his sister, Sarah, to unlock the door, but she remains silent, only her steady, rhythmic breathing audible on the other side. As his vision begins to swim, she finally speaks, her voice devoid of emotion: 'The ledger has to burn, Elias, or Ashfall dies tonight.' Sarah understands the stakes of the ledger's contents, and she believes destroying them is a necessary sacrifice for the city's survival."
+        "The Floorboards Elara kneels by the hearth in the ruined kitchen, using a rusted cold chisel to pry up the flagged hearthstone where the ledger should be. Instead of the book, she uncovers a heavy canvas pouch containing her brother's silver signet ring and a fresh, damp cartridge casing that smells of gun-oil. Her brother Marcus is either still alive in the dead zone or someone else has been using his signet to bait a trap.",
+        "The Ledger Beneath the Floorboards Elara forces open the jammed floorboards of the master study, only to find the family ledger missing and replaced by an active thermal detonator bearing the crest of the Red-Mark Syndicate. As the countdown clicks softly, local scavenger Bram steps through the doorway with the missing book in his hand, offering it in exchange for Elara's transit codes off-world. The debt-collectors tracking Elara are using the Red-Mark Syndicate, and Bram knows she cannot leave Ashfall without his help.",
+        "The Scavenger's Toll Elara stands in the foyer, her boots crunching on broken glass, as Silas and his scavenger crew emerge from the shadows with weapons leveled. Rather than fight, Elara slowly produces a rusted, heavy key from her coat and places it on the floor, sliding it toward them as an offering for her safe passage to the study. Silas picks it up, weighing it in his palm, and asks why she would risk her life for a ledger that hasn't been worth a drop of water in ten years. The house is guarded by Silas, a man who clearly knows more about the family's history than he lets on, and the ledger holds secrets beyond mere financial value."
       ]
     }
   ],
   "episodes_completed": 0,
   "call_summary": {
-    "calls": 54,
-    "prompt_tokens": 57771,
-    "completion_tokens": 38050,
+    "calls": 125,
+    "prompt_tokens": 38990,
+    "completion_tokens": 27260,
     "cost_usd": 0.0,
-    "cache_hits": 52,
-    "errors": 2,
-    "mean_latency_s": 0.0,
-    "total_tokens": 95821,
-    "cache_hit_rate": 0.9629629629629629,
+    "cache_hits": 20,
+    "errors": 95,
+    "mean_latency_s": 0.14616556430386846,
+    "total_tokens": 66250,
+    "cache_hit_rate": 0.16,
     "by_purpose": [
       {
-        "purpose": "propose.beat",
-        "calls": 7,
-        "tokens": 30059,
+        "purpose": "propose.episode.repair",
+        "calls": 4,
+        "tokens": 24125,
         "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 4
       },
       {
         "purpose": "propose.episode",
@@ -284,29 +205,29 @@
         "cache_hits": 7
       },
       {
-        "purpose": "judge.soft",
-        "calls": 24,
-        "tokens": 21569,
-        "cost_usd": 0.0,
-        "cache_hits": 24
-      },
-      {
-        "purpose": "propose.prose",
-        "calls": 7,
-        "tokens": 12515,
-        "cost_usd": 0.0,
-        "cache_hits": 7
-      },
-      {
         "purpose": "propose.scene",
-        "calls": 7,
-        "tokens": 8504,
+        "calls": 9,
+        "tokens": 8552,
         "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 4
       },
       {
-        "purpose": "extract.facts",
-        "calls": 2,
+        "purpose": "judge.soft",
+        "calls": 31,
+        "tokens": 8100,
+        "cost_usd": 0.0,
+        "cache_hits": 5
+      },
+      {
+        "purpose": "propose.scene.repair",
+        "calls": 1,
+        "tokens": 2299,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.beat",
+        "calls": 73,
         "tokens": 0,
         "cost_usd": 0.0,
         "cache_hits": 0
@@ -315,64 +236,59 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 53,
-        "tokens": 95821,
-        "cost_usd": 0.0
-      },
-      {
-        "provider": "groq",
-        "calls": 1,
-        "tokens": 0,
+        "calls": 125,
+        "tokens": 66250,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 52,
-      "misses": 2,
-      "entries": 8631
+      "hits": 20,
+      "misses": 88,
+      "entries": 8995
     },
-    "budget_remaining_usd": 12.0
+    "budget_remaining_usd": 5.20603375
   },
   "preference_summary": {
-    "pairs_seen": 6,
+    "pairs_seen": 4,
     "edits_seen": 0,
     "voice_trained": false,
     "top_weights": [
       {
         "feature": "judge_voice",
-        "weight": 2.171
+        "weight": 2.4494
       },
       {
         "feature": "criterion_2",
-        "weight": 1.9448
+        "weight": 1.7539
       },
       {
         "feature": "judge_consequence",
-        "weight": 1.8166
+        "weight": 1.6923
       },
       {
-        "feature": "judge_momentum",
-        "weight": 1.6894
+        "feature": "criterion_1",
+        "weight": 1.6339
       }
     ],
     "bandit_safe": 0.5,
     "bandit_explore": 0.5,
     "fitted_weights": {
-      "judge_momentum": 1.6894466905289862,
-      "judge_specificity": -0.07406421910173061,
-      "judge_consequence": 1.816638373249216,
-      "judge_voice": 2.170965344354406,
-      "criterion_1": 3.374513154350874e-82,
-      "criterion_2": 1.944840946214602,
-      "criterion_3": 4.1903137126010805e-82,
-      "criterion_4": 3.345639307493945e-82,
-      "continuity": 4.5405509608004454e-82,
-      "voice_cosine": 9.219254548011257e-83,
-      "edit_direction": 2.943012440402197e-82,
-      "length": 0.04173049349254009,
-      "dialogue_ratio": 0.6080866209684099
+      "judge_momentum": 1.565120038369404,
+      "judge_specificity": 1.3897888583663449e-50,
+      "judge_consequence": 1.6922728960031956,
+      "judge_voice": 2.449432616779811,
+      "criterion_1": 1.6338949413594037,
+      "criterion_2": 1.753922254534913,
+      "criterion_3": 1.9712647555535335e-50,
+      "criterion_4": 1.5739014555937609e-50,
+      "continuity": 2.136028157725853e-50,
+      "voice_cosine": 4.3370479657214516e-51,
+      "edit_direction": 1.384492211519713e-50,
+      "length": 0.0699829451827288,
+      "dialogue_ratio": 7.100708245393332e-51
     },
-    "weight_recovery": 0.24289164095516372
+    "weight_recovery": 0.38538192057044435,
+    "weight_recovery_identified": 0.526708438100161
   },
   "hidden_weights": {
     "judge_momentum": 1.0,
@@ -391,8 +307,8 @@
   },
   "probe": [],
   "errors": [
-    "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 53s"
+    "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 52s"
   ],
-  "waited_seconds": 0.0,
-  "rate_limit_waits": 0
+  "waited_seconds": 171.8,
+  "rate_limit_waits": 12
 }
