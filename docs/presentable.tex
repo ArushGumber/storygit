@@ -637,6 +637,34 @@ candidate down the ranking but never remove it.
 Iteration thirty should not repeat iteration one's mistakes. Six learners over the same
 signal --- accept, reject, edit --- feed one ranking.
 
+\textbf{Why this layer exists, in one measurement.} A writer ran a two-episode session
+through this system, and out of roughly twenty selections took the top-ranked candidate
+about four times. The best joke in episode one --- hiring your own physiotherapist, at
+\pounds45 an hour, to supervise a recovery you do not need --- ranked \emph{fifth of six},
+at a quality score of 0.158. What ranked first, nearly every time, was the candidate that
+restated the writer's own instruction most literally.
+
+That is the sharpest available statement of the problem. The judge is an LLM scoring a
+passage against axes, and what an LLM is reliably good at is recognising whether a text
+does what it was asked to do. \emph{Compliance is what it can see.} A joke that works by
+going somewhere the instruction did not mention is, to a compliance grader, a candidate
+that drifted. So the ranker's first choice is systematically the least surprising member of
+the set --- which is precisely the candidate a writer with taste is least likely to want.
+
+Two things follow, and they are the whole design of this section. First, the shortlist is a
+shortlist and not an authority: all six candidates are shown, in full, and the ordering is
+a convenience rather than a verdict. Second, the ranking has to be able to move away from
+the judge, which is what the head is for --- it consumes the judge's sub-scores as
+\emph{features} rather than as a score, so a writer who keeps choosing fifth-ranked
+candidates teaches it to weight those axes differently. A system with only a judge cannot
+learn that its judge is wrong. That is the argument for everything below.
+
+It is also an argument for a specific thing the fixed axes do not currently have: an axis
+that rewards a candidate for going somewhere the instruction did not specify. Every fixed
+axis here --- momentum, specificity, consequence, voice --- can be satisfied by a literal
+restatement. Adding one that cannot is the obvious next experiment, and it is not in this
+document because it has not been run.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{diagrams/preference_loop.pdf}
