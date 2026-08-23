@@ -32,12 +32,14 @@ from storygit.continuity.bible_diff import compute as compute_bible_diff
 from storygit.continuity.flags import Flag, sort_flags
 from storygit.domain.diff import (
     AddCriterion,
+    AddHardConstraint,
     AddNode,
     AddRejectedDirection,
     AddStyleNote,
     ClearLock,
     Diff,
     DiffAuthor,
+    MergeEntities,
     Op,
     RemoveCriterion,
     RemoveStyleNote,
@@ -46,7 +48,7 @@ from storygit.domain.diff import (
     SetNodeStatus,
     SetProse,
 )
-from storygit.domain.ids import FactId, IdGenerator, NodeId, ProposalId, SnapshotId
+from storygit.domain.ids import EntityId, FactId, IdGenerator, NodeId, ProposalId, SnapshotId
 from storygit.domain.ledger import Criterion, StyleNote
 from storygit.domain.nodes import NodeStatus, Prose
 from storygit.domain.provenance import Authorship, ProvenanceSpan
@@ -482,6 +484,53 @@ class Engine:
                 ops=(AddStyleNote(note=StyleNote(text=text)),),
                 author=DiffAuthor.human,
                 intent="add a style note",
+            ),
+            branch=self.branch,
+        )
+
+    def add_hard_constraint(self, text: str) -> SnapshotId:
+        """Add a rule generation must never break.
+
+        Harder than a style note: hard constraints go into every prompt built from this
+        point on, alongside the facts of every locked node, and they are not soft
+        preferences the ranking can outvote.
+        """
+        self.signals.record(
+            Signal(kind=SignalKind.hard_constraint, branch=self.branch, payload={"text": text})
+        )
+        return self.repo.commit_diff(
+            Diff(
+                ops=(AddHardConstraint(text=text),),
+                author=DiffAuthor.human,
+                intent="add a hard constraint",
+            ),
+            branch=self.branch,
+        )
+
+    def merge_entities(self, source_id: EntityId, target_id: EntityId) -> SnapshotId:
+        """Fold one entity into another, keeping the source's names as aliases.
+
+        Alias resolution is deliberately conservative — it matches exactly or creates a
+        new entity — which means it will sometimes create a duplicate rather than risk
+        welding two characters together. This is the writer's correction for that case,
+        and it is the reason the conservative rule is safe to have.
+
+        Every fact whose subject or object was the source is re-pointed at the target, and
+        the source's epistemic edges move with it, so nothing is left referring to an
+        entity that no longer exists.
+        """
+        self.signals.record(
+            Signal(
+                kind=SignalKind.entities_merged,
+                branch=self.branch,
+                payload={"source": str(source_id), "target": str(target_id)},
+            )
+        )
+        return self.repo.commit_diff(
+            Diff(
+                ops=(MergeEntities(source_id=source_id, target_id=target_id),),
+                author=DiffAuthor.human,
+                intent="merge two entities the resolver kept apart",
             ),
             branch=self.branch,
         )

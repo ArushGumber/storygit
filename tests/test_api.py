@@ -493,3 +493,43 @@ def test_a_writer_can_delete_a_rule_the_system_mined(api) -> None:  # type: igno
     ledger = client.get("/api/ledger").json()
     assert [n["text"] for n in ledger["style_notes"]] == []
     assert [c["name"] for c in ledger["criteria"]] == []
+
+
+def test_a_duplicate_entity_can_be_merged_and_a_hard_rule_added(api) -> None:  # type: ignore[no-untyped-def]
+    """Two operations that existed with no caller anywhere until this was written.
+
+    Alias resolution is deliberately conservative — exact match or create — which means it
+    will sometimes leave a duplicate rather than risk welding two characters together. The
+    docstring says the writer can then merge them "in one click"; this is the click.
+    """
+    client, state, _ = api
+    engine = state.engine()
+    before = engine.state()
+    kael = next(e for e in before.entities.values() if e.name == "Kael")
+
+    from storygit.domain.diff import AddEntity, Diff
+    from storygit.domain.ids import EntityId
+    from storygit.domain.world import Entity, EntityKind
+
+    duplicate = EntityId("e_dupe")
+    state.repo.commit_diff(
+        Diff(
+            ops=(AddEntity(entity=Entity(id=duplicate, kind=EntityKind.character, name="the boy")),)
+        )
+    )
+
+    response = client.post(
+        "/api/entity/merge", json={"source_id": str(duplicate), "target_id": str(kael.id)}
+    )
+    assert response.status_code == 200
+    after = state.engine().state()
+    assert duplicate not in after.entities
+    assert "the boy" in after.entities[kael.id].aliases
+
+    assert (
+        client.post(
+            "/api/ledger/hard-constraint", json={"text": "nobody dies off-page"}
+        ).status_code
+        == 200
+    )
+    assert "nobody dies off-page" in client.get("/api/ledger").json()["hard_constraints"]

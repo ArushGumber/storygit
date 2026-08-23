@@ -19,7 +19,7 @@ from storygit.agents.schemas import Level
 from storygit.api import schemas
 from storygit.api.deps import AppState, app_state
 from storygit.continuity import bible_diff
-from storygit.domain.ids import FactId, NodeId, ProposalId
+from storygit.domain.ids import EntityId, FactId, NodeId, ProposalId
 from storygit.domain.nodes import NodeStatus
 
 router = APIRouter(prefix="/api", tags=["actions"])
@@ -253,6 +253,13 @@ class NameRequest(BaseModel):
     name: str
 
 
+class MergeRequest(BaseModel):
+    """Fold `source_id` into `target_id`, keeping the source's names as aliases."""
+
+    source_id: str
+    target_id: str
+
+
 @router.post("/ledger/dial")
 def set_dial(state: State, request: DialRequest) -> dict[str, Any]:
     """Move the dial."""
@@ -272,6 +279,27 @@ def add_criterion(state: State, request: CriterionRequest) -> dict[str, Any]:
     """Add a writer-defined scoring axis, which the judge then scores every candidate on."""
     snapshot = state.engine().add_criterion(
         request.name, request.description, weight=request.weight
+    )
+    return {"ok": True, "snapshot_id": str(snapshot)}
+
+
+@router.post("/ledger/hard-constraint")
+def add_hard_constraint(state: State, request: NoteRequest) -> dict[str, Any]:
+    """Add a rule generation must never break, as opposed to a style preference."""
+    snapshot = state.engine().add_hard_constraint(request.text)
+    return {"ok": True, "snapshot_id": str(snapshot)}
+
+
+@router.post("/entity/merge")
+def merge_entities(state: State, request: MergeRequest) -> dict[str, Any]:
+    """Fold one entity into another after the resolver kept a duplicate apart.
+
+    Conservative alias resolution will sometimes create a second entity for a name it
+    could not match exactly. This is the one-click correction the resolver's caution
+    assumes exists.
+    """
+    snapshot = state.engine().merge_entities(
+        EntityId(request.source_id), EntityId(request.target_id)
     )
     return {"ok": True, "snapshot_id": str(snapshot)}
 

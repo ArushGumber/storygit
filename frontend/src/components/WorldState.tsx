@@ -9,7 +9,7 @@
  * like any other change — so the button says what it does.
  */
 
-import type { AuthorshipResponse, FactView, SliceResponse, Thread } from "../api";
+import type { AuthorshipResponse, Entity, FactView, SliceResponse, Thread } from "../api";
 
 function ThreadRow(props: { thread: Thread; sinceTouched?: number }) {
   const { thread, sinceTouched } = props;
@@ -32,8 +32,9 @@ export function WorldState(props: {
   authorship: AuthorshipResponse | null;
   onStrike: (fact: FactView) => void;
   onNavigate: (nodeId: string) => void;
+  onMerge: (source: Entity) => void;
 }) {
-  const { slice, threadAges, authorship, onStrike, onNavigate } = props;
+  const { slice, threadAges, authorship, onStrike, onNavigate, onMerge } = props;
   if (!slice) return <p className="empty">Select a node to see the world around it.</p>;
 
   const ratios = authorship?.overall ?? {};
@@ -52,6 +53,13 @@ export function WorldState(props: {
             <span key={entity.id} className="entity" title={entity.description}>
               {entity.name}
               {entity.aliases.length > 0 && ` (${entity.aliases.join(", ")})`}
+              <button
+                className="quiet"
+                title="Already in the bible under another name? Fold this one into it."
+                onClick={() => onMerge(entity)}
+              >
+                merge
+              </button>
             </span>
           ))}
         </div>

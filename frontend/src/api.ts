@@ -345,6 +345,9 @@ export const api = {
   addStyleNote: (text: string) => post<{ ok: boolean }>("/api/ledger/style-note", { text }),
   addCriterion: (name: string, description: string) =>
     post<{ ok: boolean }>("/api/ledger/criterion", { name, description, weight: 1.0 }),
+  addHardConstraint: (text: string) => post<{ ok: boolean }>("/api/ledger/hard-constraint", { text }),
+  mergeEntities: (sourceId: string, targetId: string) =>
+    post<{ ok: boolean }>("/api/entity/merge", { source_id: sourceId, target_id: targetId }),
   removeStyleNote: (text: string) => post<{ ok: boolean }>("/api/ledger/style-note/remove", { text }),
   removeCriterion: (name: string) => post<{ ok: boolean }>("/api/ledger/criterion/remove", { name }),
   mineEdits: () => post<{ ok: boolean; style_notes: StyleNote[] }>("/api/ledger/mine-edits"),

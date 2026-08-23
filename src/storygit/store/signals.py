@@ -51,6 +51,8 @@ class SignalKind(StrEnum):
     style_note_removed = "style_note_removed"
     criterion_added = "criterion_added"
     criterion_removed = "criterion_removed"
+    hard_constraint = "hard_constraint"
+    entities_merged = "entities_merged"
     dial_moved = "dial_moved"
     dismiss_stale = "dismiss_stale"
     strike_fact = "strike_fact"

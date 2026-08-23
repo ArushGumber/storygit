@@ -24,6 +24,7 @@ import {
   type AuthorshipResponse,
   type BranchesResponse,
   type Candidate,
+  type Entity,
   type FactView,
   type LedgerResponse,
   type NodeDetail,
@@ -381,6 +382,27 @@ export function Live() {
           onStrike={(fact: FactView) =>
             void run("strike", async () => afterAction(await api.strikeFact(fact.fact.id)))
           }
+          onMerge={(source: Entity) =>
+            void run("merge", async () => {
+              const others = (slice?.entities ?? []).filter((e) => e.id !== source.id);
+              const answer = window.prompt(
+                `Fold ${source.name} into which entity?\n\n${others.map((e) => e.name).join("\n")}`,
+              );
+              if (!answer) return;
+              const wanted = answer.trim().toLowerCase();
+              const target = others.find(
+                (e) =>
+                  e.name.toLowerCase() === wanted ||
+                  e.aliases.some((alias) => alias.toLowerCase() === wanted),
+              );
+              if (!target) {
+                window.alert(`No entity here is called ${answer}.`);
+                return;
+              }
+              await api.mergeEntities(source.id, target.id);
+              await refresh();
+            })
+          }
         />
 
         {ledger && (
@@ -467,6 +489,30 @@ export function Live() {
                 learn from my edits
               </button>
             </div>
+
+            <h2>Rules it must not break</h2>
+            {ledger.hard_constraints.length === 0 ? (
+              <p className="empty">
+                None. A rule here is not a preference the ranking can outvote.
+              </p>
+            ) : (
+              <ul className="facts">
+                {ledger.hard_constraints.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            )}
+            <button
+              onClick={() =>
+                void run("constraint", async () => {
+                  const text = window.prompt("A rule generation must never break");
+                  if (text) await api.addHardConstraint(text);
+                  await refresh();
+                })
+              }
+            >
+              add a hard rule
+            </button>
 
             <h2>Your criteria</h2>
             {ledger.criteria.length === 0 ? (

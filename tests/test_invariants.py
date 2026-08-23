@@ -305,3 +305,29 @@ def test_the_prose_agrees_with_the_code_about_how_many_operations_there_are() ->
     stated = re.findall(r"(\d+) diff operations", readme)
     assert stated, "the README no longer states the operation count"
     assert all(int(n) == count for n in stated), f"README says {stated}, the union has {count}"
+
+
+def test_every_operation_can_actually_be_produced() -> None:
+    """An operation nothing constructs is a capability the product does not have.
+
+    `apply` handling an op proves only that the op *would* work. Four ops were defined,
+    handled, and constructed by nothing when this was written — and two of them backed
+    promises made in the interface and the paper: that a mined style rule can be deleted,
+    and that a duplicate entity can be merged in one click. Both promises were false.
+
+    `diff.py` defines them and `apply.py` handles them, so neither counts as a caller.
+    """
+    exempt = {SRC / "domain" / "diff.py", SRC / "domain" / "apply.py"}
+    roots = [SRC, SRC.parents[1] / "eval", SRC.parents[1] / "scripts"]
+    orphans = []
+    for member in get_args(get_args(Op)[0]):
+        name = member.__name__
+        constructed = any(
+            re.search(rf"\b{name}\s*\(", path.read_text())
+            for root in roots
+            for path in root.rglob("*.py")
+            if path not in exempt
+        )
+        if not constructed:
+            orphans.append(name)
+    assert orphans == [], "operations nothing can produce: " + ", ".join(orphans)
