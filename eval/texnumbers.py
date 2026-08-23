@@ -21,6 +21,7 @@ from typing import Any, get_args
 
 from storygit.domain.diff import Op
 from storygit.domain.world import Predicate
+from storygit.graph.soft_edges import DEFAULT_THRESHOLD as SOFT_EDGE_DEFAULT
 from storygit.preference.features import BASE_FEATURES, MAX_CRITERION_SLOTS
 
 RESULTS = Path(__file__).parent / "results"
@@ -86,12 +87,27 @@ def collect() -> dict[str, str]:
         macros["StaleDeclaredPrecision"] = _num(declared.get("precision"))
         macros["StaleDeclaredRecall"] = _num(declared.get("recall"))
         macros["StaleDeclaredFOne"] = _num(declared.get("f1"))
-        best = max(points[1:], key=lambda p: p["f1"], default=None)
-        if best is not None:
-            macros["StaleSoftBestLabel"] = str(best["label"]).replace("_", "\\_")
-            macros["StaleSoftBestPrecision"] = _num(best.get("precision"))
-            macros["StaleSoftBestRecall"] = _num(best.get("recall"))
-            macros["StaleSoftBestFOne"] = _num(best.get("f1"))
+        # Not argmax. Six thresholds are swept on one six-beat case with three true
+        # positives, and four of the six tie at a perfect score -- so "the best threshold"
+        # would name a maximum that was never located, chosen on the only data there is.
+        # What the sweep actually establishes is a *range* over which the mechanism is
+        # indistinguishable from perfect, which is the stronger claim and the honest one.
+        soft = points[1:]
+        if soft:
+            top = max(p["f1"] for p in soft)
+            tied = [p for p in soft if p["f1"] >= top - 1e-9]
+            macros["StaleSoftBestLabel"] = str(tied[0]["label"]).replace("_", "\\_")
+            macros["StaleSoftBestPrecision"] = _num(tied[0].get("precision"))
+            macros["StaleSoftBestRecall"] = _num(tied[0].get("recall"))
+            macros["StaleSoftBestFOne"] = _num(tied[0].get("f1"))
+            macros["StaleSoftTiedCount"] = str(len(tied))
+            macros["StaleSoftSweptCount"] = str(len(soft))
+            macros["StaleSoftTiedRange"] = (
+                str(tied[0]["label"]).replace("_", "\\_")
+                + "--"
+                + str(tied[-1]["label"]).replace("_", "\\_")
+            )
+            macros["StaleSoftShippedThreshold"] = _num(SOFT_EDGE_DEFAULT)
     for name in (
         "StaleDeclaredPrecision",
         "StaleDeclaredRecall",
@@ -138,14 +154,60 @@ def collect() -> dict[str, str]:
         lift = entry.get("lift")
         macros[f"LiftAt{word}"] = MISSING if lift is None else f"{lift:+.3f}"
 
+    # Row 0 is the cold-start row, the one a reader most wants, and it is the row where the
+    # lift is negative. A table that starts at five comparisons is choosing where to start.
+    entry = by_decisions.get("0", {})
+    macros["PriorAtZero"] = _num(entry.get("prior"), 3)
+    macros["UniformAtZero"] = _num(entry.get("uniform"), 3)
+    zero_lift = entry.get("lift")
+    macros["LiftAtZero"] = MISSING if zero_lift is None else f"{zero_lift:+.3f}"
+
     ceiling_points = _get(offline, "recovery_ceiling", "points", default=[]) or []
     for point in ceiling_points:
         if point.get("decisions") == 25:
             macros["CeilingAtTwentyFive"] = _num(point.get("mean"))
+            macros["CeilingAtTwentyFiveSd"] = _num(point.get("sd"))
         if point.get("decisions") == 200:
             macros["CeilingAtTwoHundred"] = _num(point.get("mean"))
+            macros["CeilingAtTwoHundredSd"] = _num(point.get("sd"))
     macros.setdefault("CeilingAtTwentyFive", MISSING)
     macros.setdefault("CeilingAtTwoHundred", MISSING)
+    macros.setdefault("CeilingAtTwentyFiveSd", MISSING)
+    macros.setdefault("CeilingAtTwoHundredSd", MISSING)
+
+    # The shrinkage A/B. These decided a change to the learner, so they are the last
+    # numbers in the document that should have been typed by hand -- which is what they
+    # were until this block existed.
+    ab = _get(offline, "shrinkage_ab", default={}) or {}
+    if ab:
+        macros["ShrinkRunsReplayed"] = str(ab.get("runs_replayed", 0))
+        macros["ShrinkTauAnchored"] = _num(_get(ab, "probe_tau", "prior_anchored"), 3)
+        macros["ShrinkTauShrunk"] = _num(_get(ab, "probe_tau", "shrunk"), 3)
+        macros["ShrinkTopOneAnchored"] = _pct(_get(ab, "probe_top1", "prior_anchored"))
+        macros["ShrinkTopOneShrunk"] = _pct(_get(ab, "probe_top1", "shrunk"))
+        anchored = _get(ab, "cold_start_lift", "prior_anchored", default=[]) or []
+        shrunk = _get(ab, "cold_start_lift", "shrunk", default=[]) or []
+        if anchored and shrunk:
+            import statistics
+
+            macros["ShrinkColdStartAnchored"] = f"{statistics.fmean(anchored):+.3f}"
+            macros["ShrinkColdStartShrunk"] = f"{statistics.fmean(shrunk):+.3f}"
+            macros["ShrinkColdStartSeedSd"] = _num(
+                statistics.pstdev(anchored) if len(anchored) > 1 else 0.0, 3
+            )
+            macros["ShrinkColdStartSeeds"] = str(len(anchored))
+    for name in (
+        "ShrinkRunsReplayed",
+        "ShrinkTauAnchored",
+        "ShrinkTauShrunk",
+        "ShrinkTopOneAnchored",
+        "ShrinkTopOneShrunk",
+        "ShrinkColdStartAnchored",
+        "ShrinkColdStartShrunk",
+        "ShrinkColdStartSeedSd",
+        "ShrinkColdStartSeeds",
+    ):
+        macros.setdefault(name, MISSING)
 
     runs = _get(summary, "runs", default=[]) or []
     macros["LiveRunCount"] = str(len(runs)) if runs else MISSING
@@ -221,9 +283,21 @@ def collect() -> dict[str, str]:
             macros["ProbeTauUniform"] = f"{sum(uni) / len(uni):+.3f}"
         if pri:
             macros["ProbeTauPrior"] = f"{sum(pri) / len(pri):+.3f}"
+        # Every run must have been measured against the same fixture, or the averaged
+        # ProbeTau macros above are silently mixing two measuring sticks. min() would print
+        # the smaller and say nothing; this refuses to print a single number when the runs
+        # disagree, which is the case the fixture was rebuilt mid-evaluation and half the
+        # archive predates it.
         points = [r["probe"][0].get("points") for r in runs if r.get("probe")]
-        if points:
-            macros["ProbePoints"] = str(int(min(p for p in points if p is not None)))
+        sizes = {int(p) for p in points if p is not None}
+        if len(sizes) == 1:
+            macros["ProbePoints"] = str(sizes.pop())
+        elif sizes:
+            macros["ProbePoints"] = MISSING
+            print(
+                f"  warning: runs were probed against different fixtures ({sorted(sizes)}); "
+                "ProbePoints and every averaged tau are not comparable"
+            )
     for name in (
         "LiveDecisionsTotal",
         "LiveWeightRecoveryMean",

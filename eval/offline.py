@@ -382,6 +382,29 @@ def recovery_ceiling_curve(
     return {"points": points}
 
 
+def _shrinkage_ab() -> dict[str, Any]:
+    """The shrinkage A/B, so the numbers that changed the learner get macros like the rest.
+
+    These were the only measured numbers in the results section typed into the document by
+    hand, which is exactly backwards: they are the ones that justified a change to the
+    learner, so they are the ones a reader is entitled to see regenerate. The replay makes
+    no model calls -- it refits both variants from the features already recorded in the run
+    logs -- so it belongs here with the rest of the deterministic tier, and it degrades to
+    an empty result rather than a zero when no run log is on disk.
+
+    Returns:
+        The A/B result, or ``{}`` if there is nothing recorded to replay.
+    """
+    from eval import probe, shrinkage
+
+    try:
+        if not probe.FIXTURE.exists():
+            return {}
+        return shrinkage.run_ab()
+    except (FileNotFoundError, ValueError, KeyError):
+        return {}
+
+
 def run_all(*, results: Path = RESULTS) -> dict[str, Any]:
     """Compute every offline metric and write the figures.
 
@@ -401,6 +424,7 @@ def run_all(*, results: Path = RESULTS) -> dict[str, Any]:
         "pretraining": pretraining(),
         "recovery_ceiling": recovery_ceiling_curve(),
         "audit": audit_report(),
+        "shrinkage_ab": _shrinkage_ab(),
     }
     _write_figures(out, results)
     results.mkdir(parents=True, exist_ok=True)

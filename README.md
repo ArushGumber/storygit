@@ -179,7 +179,7 @@ needs no model calls, so it is exact and cannot be improved by rerunning:
 | Staleness prediction | declared edges P=1.00 R=0.67; + embedding edges at threshold 0.68 P=1.00 R=1.00 |
 | Selector diversity | top-k 0.254 / MMR 0.483 / DPP 0.555 mean pairwise distance, at 0.90 / 0.83 / 0.78 quality |
 | Bandit | Thompson pseudo-regret 4.8 and flat after ~50 rounds; ε-greedy 6.3 and still climbing |
-| Preference prior | +0.13 held-out pairwise accuracy over uniform after a fresh writer's first 10 comparisons |
+| Preference prior | +0.08 held-out pairwise accuracy over uniform after a fresh writer's first 10 comparisons (and −0.01 before any comparison — the prior earns its place in the small-data middle, not at zero) |
 
 The live tier: four simulated writers drove the real engine through 139 decisions against
 the free-tier provider, with no run cut short. Learning is measured on a **held-out probe** —

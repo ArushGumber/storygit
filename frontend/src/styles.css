@@ -388,6 +388,14 @@ th.num {
   color: var(--locked);
   border-color: var(--locked);
 }
+/* The two quiet statuses. They still carry their word -- see PlanTree -- but a tree where
+   every node shouts "draft" is a tree nobody reads, so they recede instead of disappearing. */
+.badge.draft,
+.badge.accepted {
+  color: var(--slate);
+  border-color: transparent;
+  opacity: 0.7;
+}
 
 /* --- candidates -------------------------------------------------------------- */
 

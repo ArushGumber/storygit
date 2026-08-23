@@ -353,12 +353,21 @@ settles each before the next exists. This is Fabula's progressive-build-up lesso
 literally: writers rejected systems that produced a whole plan before they had agreed to
 its premise.
 
-Every level has a schema the model must fill, and the schema is where the requirements
-live. A beat proposal cannot come back without saying which facts it establishes and which
-existing facts it relies on, because those are required fields --- so the dependency graph
-that propagation walks cannot quietly go unmaintained. The same schema requires, for each
-new fact, the list of characters who \emph{learn} it at this beat: not everyone present,
-and not everyone it is true of.
+Every level has a schema the model must fill, and the schema is where the shape of the
+answer lives. A beat proposal has fields for which facts it establishes and which existing
+facts it relies on, and for each new fact, the list of characters who \emph{learn} it at
+this beat: not everyone present, and not everyone it is true of. That declaration is what
+the propagation walk later reads.
+
+It is worth being exact about how strong that guarantee is, because the rest of the system
+leans on it. Those fields are \emph{described and prompted for, not schema-required}: only
+the title and the body of a beat are mandatory, so a model that returns a beat and no
+dependencies validates, and a \texttt{consumes} id naming a fact that does not exist is
+dropped without a flag. The dependency graph is therefore as good as the model's
+compliance, and this system does not measure that compliance --- see
+\S\ref{sec:limitations}. The design decision behind the fields is still the right one: a
+declared edge is checkable and a guessed one is not. But ``cannot go unmaintained'' would
+be a claim about the model, not about the schema.
 
 Every field carries a length bound, forwarded into the provider's own response schema. This
 keeps candidates readable, and it closes a failure mode observed in the first live test: a
@@ -505,22 +514,32 @@ distinction we need is exactly the one a bi-encoder structurally cannot make: ``
 Ashfall'' and ``Kael is not in Ashfall'' embed almost identically, being about the same
 thing, but a model that reads both sentences together sees the negation.
 
-The threshold is calibrated, not chosen. On the local checkpoint a blunt contradiction
-scores 1.00, a paraphrase 0.00, and a real but universal-versus-specific contradiction
-0.43 --- so a 0.5 threshold would miss the third. The default is 0.35, and
-\S\ref{sec:evaluation} sweeps it.
+The threshold is sanity-checked against cases whose answers are known rather than picked
+off a round number. On the local checkpoint a blunt contradiction scores near 1, a
+paraphrase near 0, and a real but universal-versus-specific contradiction near 0.43 --- so a
+0.5 threshold would miss the third. The default is 0.35, and a regression test pins the
+ordering of those three cases so a checkpoint change that inverts them fails the suite.
+What this is not is a calibration curve: three sentence pairs establish that the model
+separates the cases, not where the boundary should sit, and no sweep of this threshold is
+reported. The soft-edge threshold in \S\ref{sec:evaluation} is a different mechanism.
 
 \textbf{Layer 3 --- soft judge.} Motivation plausibility and tone, plus the ranking score.
-It argues before it rates: one sentence of reasoning is required before a number, which is
-Fabula's own finding about their auto-rater and matches the general result that a score
-conditioned on an explanation is better calibrated. It scores the writer's own criteria, in
+It argues before it rates: the schema declares a sentence of reasoning ahead of each
+number, and field order is preserved, which is Fabula's own finding about their auto-rater
+and matches the general result that a score conditioned on an explanation is better
+calibrated. The honest version of that sentence is that the \emph{ordering} is enforced
+where the provider honours schemas at all; the argument itself has a default and is not
+read back, so a model that skips it is not detected. It scores the writer's own criteria, in
 the writer's words, alongside fixed narratology axes.
 
 \subsection{What a flag must carry}
 
-Two properties are non-negotiable. \textbf{Every flag cites its establishing beat} ---
-``Kael cannot be in Ashfall here'' is useless; ``Kael was established in Kell in \emph{The
-Warden's Offer}'' is actionable. And \textbf{nothing is ever auto-fixed}. A contradiction
+Two properties are non-negotiable. \textbf{A deterministic flag cites its establishing
+beat} --- ``Kael cannot be in Ashfall here'' is useless; ``Kael was established in Kell in
+\emph{The Warden's Offer}'' is actionable. That holds for layers 1 and 2, where the flag is
+raised by a rule that knows which fact it read. Layer 3 is an opinion about a passage rather
+than a consequence of a fact, so it carries no such citation, and the interface does not
+pretend otherwise. And \textbf{nothing is ever auto-fixed}. A contradiction
 can be exactly what the writer meant: characters lie, narrators are unreliable, a flashback
 contradicts the present on purpose. A system that silently repairs those is worse than one
 that says nothing.
@@ -640,7 +659,8 @@ writer's; score by projection onto it \\
 Edit mining & 2 similar edits & Plain-language style rules, into the visible ledger \\
 Bradley-Terry head & $\sim$10 comparisons & The ranking \\
 Voice model & $\sim$dozens of texts & ``Sounds like this writer'' \\
-Thompson bandit & $\sim$20 shown sets & How much of the shown set to spend on exploration \\
+Thompson bandit & $\sim$20 shown sets & How much of the shown set to spend on exploration
+\emph{(built and measured; not yet on the writer's path --- see below)} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -655,9 +675,9 @@ model~\cite{bradley1952rank,christiano2017preferences,ouyang2022instructgpt} min
 policy-gradient half; at one writer and a few dozen decisions, ordering candidates is the
 right ambition.
 
-The feature vector is ten numbers: four judge sub-scores on fixed narratology axes, the
-writer's own criteria, continuity, voice cosine, edit-direction projection, length, and
-dialogue ratio. Few and interpretable on purpose --- a high-dimensional head would memorize
+The feature vector is \rFeatures{} numbers: four judge sub-scores on fixed narratology
+axes, four slots for the writer's own criteria, continuity, voice cosine, edit-direction
+projection, length, and dialogue ratio. Few and interpretable on purpose --- a high-dimensional head would memorize
 twenty comparisons rather than learn from them. They are also the features the simulated
 writers' hidden weights are defined over, which is what makes
 \S\ref{sec:evaluation}'s central question answerable.
@@ -676,26 +696,39 @@ already-good space this writer cares about.
 \subsection{Exploration}
 
 A ranker that always shows its top three converges: the writer only ever sees what the model
-already believes, so the model never learns it was wrong. Two arms over the composition of
-the shown set --- three safe, or two safe plus one high-surprise --- chosen by Thompson
-sampling~\cite{russo2018thompson}. Exploration anneals itself out of the posterior width,
-with no schedule to tune; $\varepsilon$-greedy would keep paying a fixed exploration cost
-forever and would explore uniformly, spending as much on an arm it is sure about as on a
-marginal one.
+already believes, so the model never learns it was wrong. The answer built for this is two
+arms over the composition of the shown set --- three safe, or two safe plus one
+high-surprise --- chosen by Thompson sampling~\cite{russo2018thompson}. Exploration anneals
+itself out of the posterior width, with no schedule to tune; $\varepsilon$-greedy would keep
+paying a fixed exploration cost forever and would explore uniformly, spending as much on an
+arm it is sure about as on a marginal one. One detail is worth the line: the arm is reported
+as \emph{safe} whenever no unseen surprising candidate existed, so the bandit is never
+credited for exploration that did not happen.
+
+\textbf{It is not wired to the writer.} The engine hands the writer the selector's top
+$k$; the bandit composes nothing on that path, its posterior never leaves
+$\mathrm{Beta}(1,1)$, and the regret curve below is a simulator with the arms held at fixed
+rates. So the convergence problem this subsection opens with is stated, not solved, in the
+running system. Saying so costs a paragraph and is cheaper than being asked.
 
 \subsection{The data regime, stated plainly}
 
 The head starts from a prior fitted across synthetic proto-personas and adapts per writer
 from there, because twenty comparisons cannot fit a model from scratch and there is no
-population of real writers to fit a prior on.
+population of real writers to fit a prior on. The same caveat as the bandit applies and is
+worth stating in the same breath: the evaluation harness starts its heads from that prior;
+the product does not. A writer opening the application today starts at uniform weights.
+What makes the no-preference ablation exact is therefore not the prior's shape at zero data
+but an engine gate --- below one recorded comparison the layer returns no opinion at all,
+and the ranker it would have influenced is bypassed.
 
 \textbf{That prior cannot contain real human taste.} Nothing in its data ever met a reader.
 What it can contain is the structure of the problem --- that features have consistent
 signs, that the signal is noisy, that some axes matter more than others. The bet is that the
 adaptation \emph{machinery} transfers even though the values do not, and the bet is measured
-rather than asserted: a prior-initialized head reaches 0.775 held-out pairwise accuracy
-after a fresh writer's first ten decisions, against 0.645 from uniform initialization. Were
-that lift zero, the prior would be worthless and should be dropped.
+rather than asserted: a prior-initialized head reaches \rPriorAtTen{} held-out pairwise
+accuracy after a fresh writer's first ten decisions, against \rUniformAtTen{} from uniform
+initialization. Were that lift zero, the prior would be worthless and should be dropped.
 
 There is a deeper circularity worth naming: the preference layer is validated against
 simulated writers made of the same feature vector the head is fitted on. That is why the
@@ -747,9 +780,14 @@ of the writer's behaviour; on the right, properties of the system.}
 
 \subsection{Ground truth by construction}
 
-Recall needs a denominator. One contradiction of each class is injected into its own copy of
-a clean story --- separately, so a location conflict cannot accidentally also be a
-possession conflict --- and the checker is scored against what comes back. Extraction is
+Recall needs a denominator. One contradiction of each class is injected into its own
+story, built fresh from the same clean scenario, and each is scored on its own --- because
+injected together they interact: two of the five land on the same beat and a third kills a
+character the others need alive, and a catch is credited when a flag names any of an
+injection's facts, so shared-story cross-talk would score a location conflict as caught
+because the possession conflict beside it was. That isolation was added after this review
+found the fixture had been sharing one story; the reported numbers did not move, which is
+the useful outcome --- the defect was real and the measurement survived it. Extraction is
 scored against hand-written passages with known fact sets. Staleness is scored against a
 scripted edit whose true blast radius is known because the dependency edges were written by
 hand, and which deliberately includes a beat that \emph{depends on the changed fact but
@@ -823,6 +861,7 @@ baseline takes all three. This measurement changed the system twice, described i
 \toprule
 \textbf{Preference head, fresh writer} & \textbf{from prior} & \textbf{from uniform} & \textbf{lift} \\
 \midrule
+before any comparison & \rPriorAtZero & \rUniformAtZero & \rLiftAtZero \\
 after 5 comparisons & \rPriorAtFive & \rUniformAtFive & \rLiftAtFive \\
 after 10 comparisons & \rPriorAtTen & \rUniformAtTen & \rLiftAtTen \\
 after 40 comparisons & \rPriorAtForty & \rUniformAtForty & \rLiftAtForty \\
@@ -830,9 +869,23 @@ after 40 comparisons & \rPriorAtForty & \rUniformAtForty & \rLiftAtForty \\
 \end{tabular}
 \end{center}
 
-Held-out pairwise accuracy on a persona the prior never saw. The shape is what a population
-prior should look like: a real advantage while data is scarce, converging to irrelevance as
-the writer's own comparisons take over.
+Pairwise accuracy on comparisons held out from a proto-persona the prior was not fitted on.
+Two things about this table are easy to overclaim and are worth reading carefully.
+
+The cold-start row is the one to read first, and it is negative: with no data at all the
+uniform head is the better ranker. The prior's advantage appears only once a small number of
+comparisons exists, and most of it is the \emph{uniform} head being damaged by small-sample
+fitting rather than the prior being informative --- the uniform column falls before it
+recovers, and a zero-data uniform head outscores the prior-initialised head at ten
+comparisons. The generator that produces proto-personas forces judge, criterion and
+continuity weights positive, which is the sign structure real personas have too, so an
+all-equal-positive vector is a decent ranker on this population before it is told anything.
+The prior is being compared against a baseline that starts strong.
+
+And the held-out writer, while genuinely not one of the eight the prior was fitted on, is
+drawn from the same generator. This measures that the prior generalises within its own
+distribution. It is not a transfer test, and the four personas the live evaluation uses come
+from a distribution this generator cannot produce at all.
 
 The Thompson sampler reaches cumulative pseudo-regret \rBanditThompsonRegret{} over 400
 rounds against arms at 0.40 and 0.70, and is flat after roughly the first fifty --- it pays
@@ -865,6 +918,17 @@ earlier version did, fills the set with near-ties: the decisions most sensitive 
 weights and equally to noise, which maximises the variance of every reading. The rule is a
 floor and then a draw stratified across levels, and it never consults a head, fitted or
 otherwise.
+
+Two details of the label are worth stating, because both were wrong until this document's
+final review. The persona's ranking is computed from the features as they were
+\emph{recorded}, not as the current voice model would recompute them --- refreshing both
+sides let the ground truth drift between episodes, driven by the learner being measured,
+which is the leakage the held-out design exists to prevent. And the label reads only the nine
+features whose meaning is shared across writers: the criterion slots are positional, so one
+writer's first criterion is a different thing from another's, and every probe point comes
+from a different writer by construction. Scoring those columns across personas is not noise,
+it is a category error, and it lands on the highest-weighted feature each persona has. The
+head still learns and uses them; the held-out label does not read them.
 
 A rank correlation means little on its own, so each reading carries two references scored
 over the same points at the same moment: a head that has learned nothing, and the population
@@ -899,22 +963,39 @@ writer sees, which is exactly why nothing had caught it, and wrong the moment th
 applied to candidates drawn from anywhere else. Only an off-distribution instrument could
 see it, and that is what the probe is.
 
-Two things followed. Three of those features were dead for reasons that had nothing to do
+Three things followed. Two of those features were dead for reasons that had nothing to do
 with the stories and everything to do with the code: dialogue ratio counted only double
 quotation marks while the model writes speech in single ones, so prose that was a third
 dialogue scored zero; and the voice model, which trains on prose the \emph{writer} wrote or
 rewrote, had never once been trained, because no simulated writer had ever used the
-hand-write or polish paths the interface offers. Both are fixed, and all three features now
-vary.
+hand-write or polish paths the interface offers. Both are fixed and both features now move.
 
-The fourth is a property rather than a bug, and it changed the learner. A direction the
-data cannot identify should not inherit an opinion from a population prior, so fitting now
-shrinks unidentified directions towards zero instead. That was decided by an A/B rather
+They do not move \emph{much}, and the reason is the third thing, which is structural and is
+not a bug at all. The judge emits five levels. Four fixed axes and every writer-defined
+criterion are that judge's output rescaled, and with three candidates in a set the expected
+outcome is a tie: across the shipped probe fixture the two unfilled criterion slots are
+constant in every decision, two of the four judge axes are constant in more than half of
+them, and voice cosine --- now that it varies --- varies across a range too narrow to
+reorder anything at any weight the head can learn. That is the dominant cause of the constant
+columns, it was not fixed by fixing the two bugs, and it bounds how much a
+\rFeatures{}-dimensional head can be identified from a few dozen three-way comparisons at
+all.
+
+The fourth finding is a property rather than a bug, and it changed the learner. A direction
+the data cannot identify should not inherit an opinion from a population prior, so fitting
+now shrinks unidentified directions towards zero instead. \emph{Unidentified} here means
+exactly one thing and it is worth not overselling: a column that is constant across every
+comparison. Rank deficiency from two columns that always move together --- which is the
+diagnosis the next paragraph gives for the writer who did worst --- is invisible to this
+check and is not addressed by it. That was decided by an A/B rather
 than by argument: both variants were refitted from the decisions already recorded and
-scored on the same held-out probe, which moved agreement from 0.426 to 0.565 and top-1 from
-58\,\% to 68\,\% while leaving the prior's cold-start advantage unchanged. The rule the
-result had to clear was written down before the number existed, and the replay costs
-nothing, so there was no opportunity to rerun until a variant won. Each run still reports
+scored on the same held-out probe, which moved agreement from \rShrinkTauAnchored{} to
+\rShrinkTauShrunk{} and top-1 from \rShrinkTopOneAnchored{} to \rShrinkTopOneShrunk{} over
+\rShrinkRunsReplayed{} replayed runs, while the prior's cold-start lift held at
+\rShrinkColdStartShrunk{} against \rShrinkColdStartAnchored{} --- inside the
+\rShrinkColdStartSeedSd{} spread across \rShrinkColdStartSeeds{} seeds, which is what the
+rule asked. The rule the result had to clear was written down before the number existed,
+and the replay costs nothing, so there was no opportunity to rerun until a variant won. Each run still reports
 its own unexercised features in \file{summary.md}.
 
 \textbf{Why one writer did worst, in detail.} The Minimalist was worst on every measure,
@@ -1098,9 +1179,6 @@ writer-defined criteria exist to say.
 copy is the actual workload. Postgres buys concurrency this system does not have. What
 would change at a serialized-fiction platform scale is discussed in the systems documentation.
 
-\textit{[Further decisions --- provider routing, MMR versus DPP, the preference head's
-feature set, the simulated-writer evaluation --- are added as their chunks land.]}
-
 \section{Limitations}
 \label{sec:limitations}
 
@@ -1118,7 +1196,7 @@ learns taste}. A real writer's preferences are not linear in \rFeatures{} featur
 
 \textbf{The prior is synthetic.} Nothing in the data it was fitted on ever met a reader. The
 bet is that the adaptation machinery transfers even though the values do not, and that bet is
-measured (a $+0.13$ lift at ten comparisons) rather than assumed.
+measured (a \rLiftAtTen{} lift at ten comparisons) rather than assumed.
 
 \textbf{Injected errors are the errors we thought of.} Checker recall is over five known
 classes. A class nobody imagined is a class nobody measured. The periodic audit exists partly
@@ -1131,6 +1209,56 @@ scaling discussion is architectural rather than demonstrated.
 propagation, the world-state pane --- depends on the world graph being populated correctly.
 Extraction recall is measured, but a fact that is never extracted is invisible to every layer
 that follows, and no amount of downstream cleverness recovers it.
+
+\textbf{Declaration is a second single point of failure, and it has no number.} Extraction's
+failure mode at least has a measurement. The dependency edges the propagation walk reads are
+\emph{declared} by the proposing model into optional fields, so a beat that quietly omits
+what it consumes produces no edge and no warning, and a consumed id that names nothing is
+dropped silently. The staleness figures above are measured on a dependency graph written by
+hand. Nothing here measures the graph a model actually produces, and it is the more likely
+of the two to fail.
+
+\textbf{Two of the learners are not on the writer's path.} The Thompson bandit and the
+population prior are built, tested and measured, and they are exercised only by the
+evaluation harness: the product ranks with the selector's top $k$ and starts a new writer at
+uniform weights. A third, smaller version of the same gap: the candidate \emph{text} a
+comparison was fitted from is held in memory rather than persisted, so a restart leaves the
+head fitting on this session's pairs alone.
+
+\textbf{The instrument is coarser than the thing it measures.} The judge emits five levels.
+Four of the \rFeatures{} features and every writer-defined criterion come from it, and with
+three candidates in a set most of those features tie --- in the shipped probe fixture, the
+two criterion slots no persona fills are constant by construction, and several judge axes are
+constant in more than half the decisions. The effective dimensionality of a decision is far
+below \rFeatures{}. That is a property of the measuring instrument, not of the two feature
+bugs \S\ref{sec:findings} reports fixing, and fixing those did not change it.
+
+\textbf{The probe's ground truth is not well defined across writers.} The held-out probe
+scores each head against another writer's decisions, which is what deconfounds learning from
+task difficulty. But writer-defined criteria occupy positional slots, and two writers' first
+criteria are different things --- so the cross-persona move and the per-writer criterion
+slots are in permanent tension. The probe resolves it by reading only the nine features whose
+meaning is shared. The criterion axes, which are the highest-weighted features for every
+persona, are therefore outside the number the learning curve reports.
+
+\textbf{The cost accounting is not complete, though the dollar figure is.} Embeddings and
+the NLI checkpoint run locally and are called directly rather than through the router, so
+they produce no call-log row and no token count. Everything metered is free-tier; nothing
+unmetered is paid. But ``every call is logged with its tokens'' is true of the routed calls
+and not of all of them.
+
+\textbf{Nothing here carries an interval, and the $n$s are small.} Four runs. Five injected
+errors. Three true positives in the staleness case. One sentence pair reaching layer 2. Six
+candidates in the selector case. The per-run ceiling spreads are computed and reported in the
+run summary; the figures in this document are point estimates, and several of them are single
+observations.
+
+\textbf{The labelling claim is the thesis and is unmeasured.} ``Three options labelled
+\emph{raise the stakes / slow down / introduce a complication} cost one decision; three
+unlabelled paragraphs cost three readings'' is what the whole selection chapter serves. There
+is no measurement of it here, not even a proxy --- no reading time, no interaction count. A
+human study is the honest answer for whether the system helps someone write a better serial,
+but this narrower claim is testable for far less and was not tested.
 
 \bibliographystyle{plain}
 \bibliography{refs}

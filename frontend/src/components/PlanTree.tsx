@@ -60,9 +60,11 @@ export function PlanTree(props: {
                   {node.flag_count}
                 </span>
               )}
-              {(word === "stale" || word === "review" || word === "locked") && (
-                <span className={`badge ${word}`}>{word}</span>
-              )}
+              {/* Every status, not only the three that alarm. The README promises status
+                  is never carried by colour alone, and the muted palette makes four
+                  statuses close in hue -- so "draft" and "accepted" need the word as much
+                  as "stale" does, and the dot beside them is aria-hidden. */}
+              <span className={`badge ${word}`}>{word}</span>
               {node.node_type !== "story" && (
                 <button
                   className="quiet"

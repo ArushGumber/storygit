@@ -5,7 +5,7 @@
 %
 %   python -m eval.offline && python -m eval.texnumbers && tectonic presentable.tex
 %
-% 66 macros.
+% 84 macros.
 
 \newcommand{\rBanditEpsilonRegret}{6.3}
 \newcommand{\rBanditPosteriorExplore}{0.707}
@@ -14,9 +14,11 @@
 \newcommand{\rBanditPullsSafe}{16}
 \newcommand{\rBanditThompsonRegret}{4.8}
 \newcommand{\rCeilingAtTwentyFive}{0.72}
+\newcommand{\rCeilingAtTwentyFiveSd}{0.11}
 \newcommand{\rCeilingAtTwoHundred}{0.83}
-\newcommand{\rCeilingBest}{0.67}
-\newcommand{\rCeilingMean}{0.64}
+\newcommand{\rCeilingAtTwoHundredSd}{0.07}
+\newcommand{\rCeilingBest}{0.64}
+\newcommand{\rCeilingMean}{0.51}
 \newcommand{\rCheckerBothFOne}{1.00}
 \newcommand{\rCheckerBothPrecision}{100\%}
 \newcommand{\rCheckerBothRecall}{100\%}
@@ -34,35 +36,46 @@
 \newcommand{\rLiftAtFive}{+0.110}
 \newcommand{\rLiftAtForty}{+0.010}
 \newcommand{\rLiftAtTen}{+0.080}
-\newcommand{\rLiveAcceptanceMean}{94\%}
-\newcommand{\rLiveDecisionsTotal}{139}
+\newcommand{\rLiftAtZero}{-0.010}
+\newcommand{\rLiveAcceptanceMean}{81\%}
+\newcommand{\rLiveDecisionsTotal}{69}
 \newcommand{\rLiveRunCount}{4}
 \newcommand{\rLiveRunPlural}{runs}
-\newcommand{\rLiveTokensPerAction}{54,053}
-\newcommand{\rLiveWeightRecoveryBest}{0.69}
-\newcommand{\rLiveWeightRecoveryMean}{0.46}
+\newcommand{\rLiveTokensPerAction}{44,644}
+\newcommand{\rLiveWeightRecoveryBest}{0.51}
+\newcommand{\rLiveWeightRecoveryMean}{0.27}
 \newcommand{\rMmrConventionalDiversity}{0.254}
 \newcommand{\rMmrConventionalQuality}{0.900}
 \newcommand{\rPredicates}{10}
 \newcommand{\rPriorAtFive}{0.795}
 \newcommand{\rPriorAtForty}{0.825}
 \newcommand{\rPriorAtTen}{0.780}
-\newcommand{\rProbeAboveUniform}{3}
-\newcommand{\rProbeAtOrAbovePrior}{3}
-\newcommand{\rProbePoints}{12}
+\newcommand{\rPriorAtZero}{0.785}
+\newcommand{\rProbeAboveUniform}{1}
+\newcommand{\rProbeAtOrAbovePrior}{1}
+\newcommand{\rProbePoints}{18}
 \newcommand{\rProbeRose}{1}
-\newcommand{\rProbeTauDelta}{-0.069}
-\newcommand{\rProbeTauFirst}{+0.597}
-\newcommand{\rProbeTauLast}{+0.528}
-\newcommand{\rProbeTauPrior}{+0.569}
-\newcommand{\rProbeTauUniform}{+0.514}
-\newcommand{\rProbeTopOneLast}{69\%}
-\newcommand{\rProviderCacheHitRate}{8\%}
-\newcommand{\rProviderCalls}{1993}
+\newcommand{\rProbeTauDelta}{+0.019}
+\newcommand{\rProbeTauFirst}{+0.444}
+\newcommand{\rProbeTauLast}{+0.463}
+\newcommand{\rProbeTauPrior}{+0.370}
+\newcommand{\rProbeTauUniform}{+0.296}
+\newcommand{\rProbeTopOneLast}{56\%}
+\newcommand{\rProviderCacheHitRate}{20\%}
+\newcommand{\rProviderCalls}{1655}
 \newcommand{\rQualityDpp}{0.780}
 \newcommand{\rQualityMmr}{0.833}
 \newcommand{\rQualityTopK}{0.900}
-\newcommand{\rRecoveryFractionOfCeiling}{72\%}
+\newcommand{\rRecoveryFractionOfCeiling}{52\%}
+\newcommand{\rShrinkColdStartAnchored}{+0.067}
+\newcommand{\rShrinkColdStartSeedSd}{0.040}
+\newcommand{\rShrinkColdStartSeeds}{5}
+\newcommand{\rShrinkColdStartShrunk}{+0.067}
+\newcommand{\rShrinkRunsReplayed}{8}
+\newcommand{\rShrinkTauAnchored}{0.426}
+\newcommand{\rShrinkTauShrunk}{0.458}
+\newcommand{\rShrinkTopOneAnchored}{62\%}
+\newcommand{\rShrinkTopOneShrunk}{63\%}
 \newcommand{\rStaleDeclaredFOne}{0.80}
 \newcommand{\rStaleDeclaredPrecision}{1.00}
 \newcommand{\rStaleDeclaredRecall}{0.67}
@@ -70,6 +83,11 @@
 \newcommand{\rStaleSoftBestLabel}{+ soft edges @ 0.68}
 \newcommand{\rStaleSoftBestPrecision}{1.00}
 \newcommand{\rStaleSoftBestRecall}{1.00}
+\newcommand{\rStaleSoftShippedThreshold}{0.72}
+\newcommand{\rStaleSoftSweptCount}{6}
+\newcommand{\rStaleSoftTiedCount}{4}
+\newcommand{\rStaleSoftTiedRange}{+ soft edges @ 0.68--+ soft edges @ 0.85}
 \newcommand{\rUniformAtFive}{0.685}
 \newcommand{\rUniformAtForty}{0.815}
 \newcommand{\rUniformAtTen}{0.700}
+\newcommand{\rUniformAtZero}{0.795}
