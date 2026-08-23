@@ -104,5 +104,15 @@ PROBLEM=$(curl -sS -X POST "http://127.0.0.1:$PORT/api/action/accept" \
   -H 'content-type: application/json' -d '{"proposal_id":"p_nope"}')
 echo "$PROBLEM" | grep -qv "Traceback" || fail "a traceback leaked to the client"
 
+echo "==> a rule the writer adds is a rule the writer can delete"
+curl -sS -X POST "http://127.0.0.1:$PORT/api/ledger/style-note" \
+  -H 'content-type: application/json' -d '{"text":"shorter sentences"}' >/dev/null
+curl -sS "http://127.0.0.1:$PORT/api/ledger" | grep -q "shorter sentences" \
+  || fail "the style note was not stored"
+curl -sS -X POST "http://127.0.0.1:$PORT/api/ledger/style-note/remove" \
+  -H 'content-type: application/json' -d '{"text":"shorter sentences"}' >/dev/null
+curl -sS "http://127.0.0.1:$PORT/api/ledger" | grep -q "shorter sentences" \
+  && fail "the style note survived being deleted"
+
 echo
 echo "PASS  $BEFORE -> $AFTER nodes, served from one process on :$PORT"
