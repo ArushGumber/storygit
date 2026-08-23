@@ -392,7 +392,14 @@ def recovery_ceiling_curve(
             [reference_features(rng, criteria=2).values for _ in range(3)] for _ in range(size)
         ]
         stats = ceiling_for(matrices, noise=0.08, seeds=seeds)
-        points.append({"decisions": size, "mean": stats["mean"], "sd": stats["sd"]})
+        points.append(
+            {
+                "decisions": size,
+                "mean": stats["mean"],
+                "sd": stats["sd"],
+                "identified_mean": stats["identified_mean"],
+            }
+        )
     return {"points": points}
 
 

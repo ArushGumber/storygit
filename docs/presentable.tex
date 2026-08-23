@@ -952,10 +952,32 @@ scale is not $1.0$: twenty-odd noisy comparisons over \rFeatures{} features do n
 \rFeatures{} weights. The \emph{oracle ceiling} --- the same estimator, on the same
 candidate sets, at the same decision count, fitted to weights it is told --- is
 \rCeilingMean{} on average. Measured recovery is therefore \rRecoveryFractionOfCeiling{} of
-what was achievable, and one run reaches its own ceiling within noise. Sample size, not the
-estimator, is what caps this: swept independently, the ceiling is \rCeilingAtTwentyFive{} at
-twenty-five decisions and still only \rCeilingAtTwoHundred{} at two hundred, because real
-candidate features are clustered and correlated and the design matrix is badly conditioned.
+what was achievable. Sample size, not the estimator, is what caps this: swept independently,
+the ceiling is \rCeilingAtTwentyFive{} $\pm$ \rCeilingAtTwentyFiveSd{} at twenty-five
+decisions and still only \rCeilingAtTwoHundred{} $\pm$ \rCeilingAtTwoHundredSd{} at two
+hundred, because real candidate features are clustered and correlated and the design matrix
+is badly conditioned.
+
+``The same estimator'' is the clause this whole scale rests on, so it is worth saying what it
+cost to make true. The first version of the ceiling was a different estimator in five ways:
+half the regularization, a uniform anchor instead of the population prior, no edited-win
+down-weighting, shrinkage off, and a dense random weight vector where every persona is sparse
+by construction. It also added the persona's noise to an \emph{un-normalised} score, which
+made its labels several times cleaner than a real writer's, and it emitted a winner for every
+decision including the ones the writer rejected --- which produce no comparison at all in
+reality --- so it was fitted on materially more data than the run it was scaling. Every one of
+those errors pushed the ceiling *up* and the reported fraction *down*, so the earlier figure
+was conservative rather than flattering; but a sentence claiming a controlled comparison has to
+have one. All six are now matched, and the ceiling is correspondingly lower.
+
+One more thing a reader is entitled to. Recovery is a \rFeatures{}-dimensional correlation,
+and five or six of every persona's \rFeatures{} weights are exactly zero --- including the two
+criterion slots no writer here fills, which are constant across every recorded decision. The
+shrinkage change drives the fitted values on precisely those dead coordinates towards zero, so
+it improves this metric without anyone learning anything. Restricted to the coordinates the
+writer actually weights, recovery is \rLiveWeightRecoveryIdentified{}. The difference between
+that and the headline is the size of the effect, and it is reported rather than left for a
+reader to find in \file{personas.py} and \file{bt\_head.py} side by side.
 
 \textbf{What the probe found, and what changed because of it.} Several of the
 \rFeatures{} features never varied inside a single writer's candidate sets. A constant

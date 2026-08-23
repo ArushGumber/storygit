@@ -107,6 +107,9 @@ async def run_one(
             | {
                 "fitted_weights": fitted,
                 "weight_recovery": metrics.weight_recovery(fitted, persona.weights),
+                "weight_recovery_identified": metrics.weight_recovery_on_axes_the_writer_has(
+                    fitted, persona.weights
+                ),
             }
         }
     )
@@ -268,6 +271,9 @@ def summarize(
                 "stale_marked": sum(a.stale_marked for a in log.actions),
                 "vetoes": sum(1 for a in log.actions if a.veto),
                 "weight_recovery": log.preference_summary.get("weight_recovery"),
+                "weight_recovery_identified": log.preference_summary.get(
+                    "weight_recovery_identified"
+                ),
                 "weight_recovery_ceiling": ceilings.get(log.persona, {}).get("mean"),
                 "weight_recovery_ceiling_sd": ceilings.get(log.persona, {}).get("sd"),
                 "probe_tau_first": log.probe[0]["tau"] if log.probe else None,

@@ -221,6 +221,19 @@ def collect() -> dict[str, str]:
             sum(recoveries) / len(recoveries) if recoveries else None
         )
         macros["LiveWeightRecoveryBest"] = _num(max(recoveries) if recoveries else None)
+        # The same correlation restricted to the coordinates the writer actually weights.
+        # The headline is over all thirteen, five or six of which are exactly zero for
+        # every persona -- and shrinkage drives the fitted values on those same dead
+        # coordinates to zero, so it improves the headline without learning anything. Both
+        # are reported so a reader can see the size of that effect rather than discover it.
+        identified = [
+            r["weight_recovery_identified"]
+            for r in runs
+            if r.get("weight_recovery_identified") is not None
+        ]
+        macros["LiveWeightRecoveryIdentified"] = _num(
+            sum(identified) / len(identified) if identified else None
+        )
         macros["LiveTokensPerAction"] = (
             f"{round(sum(r.get('tokens_per_action', 0) for r in runs) / len(runs)):,}"
         )
@@ -302,6 +315,7 @@ def collect() -> dict[str, str]:
         "LiveDecisionsTotal",
         "LiveWeightRecoveryMean",
         "LiveWeightRecoveryBest",
+        "LiveWeightRecoveryIdentified",
         "LiveTokensPerAction",
         "LiveAcceptanceMean",
         "CeilingMean",

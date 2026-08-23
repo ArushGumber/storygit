@@ -444,7 +444,38 @@ def weight_recovery(fitted: dict[str, float], hidden: dict[str, float]) -> float
     Returns:
         Pearson r, or 0.0 if either vector is constant.
     """
-    names = sorted(set(fitted) | set(hidden))
+    return _pearson(fitted, hidden, sorted(set(fitted) | set(hidden)))
+
+
+def weight_recovery_on_axes_the_writer_has(
+    fitted: dict[str, float], hidden: dict[str, float]
+) -> float:
+    """Weight recovery over the coordinates the writer actually weights.
+
+    The headline figure is a thirteen-dimensional Pearson r, and five or six of a persona's
+    thirteen weights are *exactly* zero -- including the two criterion slots no persona
+    fills, which are constant 0.0 in every recorded decision. Shrinkage drives the fitted
+    values on those same dead coordinates towards zero, so it mechanically improves
+    agreement on dimensions nobody chose anything about. That is a real effect and it is
+    not learning, and a reader who notices it before the author does has found something.
+
+    So both are reported. This one asks the narrower and more honest question: over the
+    axes this writer actually has an opinion on, how close is the fitted vector? It cannot
+    be flattered by getting the zeros right, because the zeros are not in it.
+
+    Args:
+        fitted: What the head learned.
+        hidden: The persona's true weights.
+
+    Returns:
+        Pearson r over the non-zero hidden coordinates, or 0.0 if there are fewer than two.
+    """
+    names = sorted(n for n, w in hidden.items() if w != 0.0)
+    return _pearson(fitted, hidden, names) if len(names) >= 2 else 0.0
+
+
+def _pearson(fitted: dict[str, float], hidden: dict[str, float], names: list[str]) -> float:
+    """Pearson r between two weight dictionaries over a fixed coordinate list."""
     a = [fitted.get(n, 0.0) for n in names]
     b = [hidden.get(n, 0.0) for n in names]
     n = len(names)
