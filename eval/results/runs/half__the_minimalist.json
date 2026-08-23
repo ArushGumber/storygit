@@ -1,0 +1,1495 @@
+{
+  "persona": "the Minimalist",
+  "config": {
+    "name": "half",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 1,
+    "seed": 8,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_31da68fce3",
+      "level": "episode",
+      "shown": [
+        "p_873122e25c",
+        "p_460df6b626",
+        "p_a758791887"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.3655,
+        0.5328,
+        0.42
+      ],
+      "chosen": "p_460df6b626",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "5474811a7d2affa332187b32c67a9688",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Tin Soldier Kael, a young scavenger, finds a working music box in a ruined library. The unexpected melody attracts Lena, a rival scavenger. She corners him, ignoring the relic and demanding a map he secretly carries. The world is a ruin where survival is a daily struggle. Old-world relics are less valuable than information. Sound travels, and sound is danger.",
+        "First Light Over Ashfall A lone traveler, Kael, reaches a ridge overlooking Ashfall at dawn. He is exhausted, his supplies low. He studies the quiet settlement below, a collection of low buildings huddled in a dusty basin. After consulting a worn map, he begins the walk down into the town. Ashfall is an isolated settlement in a bleak landscape. Kael is a traveler on a specific mission, guided by a map. The world is harsh and resources are scarce.",
+        "The Grey Mark Kaelen and his younger sister Elara scavenge in a ruined library. Elara reveals a strange grey mark on her hand she had hidden. A silent patrol, the Collectors, appears. They see the mark and take a terrified Elara, leaving Kaelen paralyzed and alone. Ashfall is a desolate ruin. People scavenge to survive. A silent group called the Collectors takes people who bear a specific grey mark. Resistance seems impossible."
+      ]
+    },
+    {
+      "node_id": "n_dcce5f9e0a",
+      "level": "scene",
+      "shown": [
+        "p_d839718cae",
+        "p_ac3446d4ee",
+        "p_5a6f2a0894"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.4155,
+        0.3333,
+        0.6246
+      ],
+      "chosen": "p_5a6f2a0894",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a27aeca21ab4f565885a25eee0392ff2",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6286,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The First House Kael follows his map to a small house on Ashfall's edge. The door hangs open on a leather hinge. Inside, dust coats a table set for one. On the mantle sits a small, carved wooden bird. Kael pulls an identical bird from his pocket and sets it next to the first one. The house is empty. Kael sought a specific person, who is now gone [t_2208edb741]. The map was not for the town, but for this house [t_5c8f6138a3]. The town's silence is not peaceful, it's wrong [t_ed3f6fd1d8].",
+        "The Watcher in the Tower A young woman, Elara, keeps watch from the Ashfall bell tower. She sees a silhouette on the east ridge against the sunrise. The figure is alone. He consults something small, then begins walking down the path into the basin. Elara's hand rests on the thick bell rope, but she does not pull it. Ashfall is not just isolated; it is watchful. A lone arrival is observed but does not trigger an alarm. The bell serves a specific, deliberate purpose.",
+        "The First Resident Kael walks Ashfall’s main street. The buildings are low, made of packed earth and scrap. Windows are shuttered. As he passes a squat stone bell tower, a single, clear bell rings out once. A door opens. A woman with grey hair in a tight braid steps out, carrying two empty buckets. She does not look at Kael. She walks past him toward a covered well in the center of the street. Ashfall is inhabited, but not welcoming. There is a daily routine, signaled by a bell. The people here are wary or disciplined."
+      ]
+    },
+    {
+      "node_id": "n_e7879cd94c",
+      "level": "beat",
+      "shown": [
+        "p_2bcd317a07",
+        "p_3d64749e31",
+        "p_7fcb44b77b"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.2675,
+        0.2544,
+        0.2479
+      ],
+      "chosen": "p_2bcd317a07",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5714,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Water Bearer's Watch Elara stands inside her doorway. The morning bell rings. One clear note. The signal for water. She lifts her buckets. The door creaks open. A man stands in the street. A stranger, coated in dust. He holds a map. The bell should have rung twice for a stranger. Someone is slow. She sets her eyes on the well. She walks. She does not look at him. The bell is a coded signal system. One ring is for water, two for a stranger. The system has failed, as the wrong signal was given for Kael's arrival.",
+        "The Dry Well Kael watches the woman. She reaches the well and works a hand crank. The chain rattles down. The crank turns again, harder this time. The bucket rises, scraping the stone sides. She pulls it onto the well's lip. It holds only dust and cracked earth. Ashfall's well, its apparent life source, is dry. The residents' daily routine may be a ritual without a practical result.",
+        "The Wooden Bird The woman reaches the well. She begins to lower a bucket. Kael sees a small, carved wooden bird pinned to her collar. He touches an identical one inside his shirt. He takes a step. 'Lyra?' The woman freezes. The rope goes slack in her hand. The bucket clatters down the well shaft."
+      ]
+    },
+    {
+      "node_id": "n_e7879cd94c",
+      "level": "beat",
+      "shown": [
+        "p_2d6235cc75",
+        "p_a1aa668e97",
+        "p_68ac8e1de7"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "slow down"
+      ],
+      "scores": [
+        0.3522,
+        0.3759,
+        0.4658
+      ],
+      "chosen": "p_68ac8e1de7",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6358,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Watcher in the Tower From a narrow slit in the bell tower, a boy watches the stranger. The man is coated in dust. He holds a map. The boy, Finn, pulls the bell rope. One chime echoes. He sees Mara exit her home, buckets empty. She walks past the stranger. She does not look at him. Finn steps back from the light. An old man, Silas, sits on a stool in the tower's shadow. Silas nods once. A boy under supervision rang the bell intentionally. Ashfall is organized and is observing Kael closely.",
+        "The Dry Well The woman reaches the well. She lowers a bucket. The rope unwinds. It stops. The bucket hits bottom with a wooden clatter. No splash. She hauls the rope up. The bucket is empty, coated in dust. She looks into it, then back at the door she came from. She walks, her empty buckets swinging. The town's water source has failed. This community is on the brink of collapse.",
+        "The Silent Exchange Kael stops. The woman pulls her door shut. The bolt scrapes. The sound is final. She turns. Her face is lined, her eyes clear. They find Kael, register him, dismiss him. It takes one second. She walks toward the well. Her back is straight. The empty buckets do not swing. The people of Ashfall are disciplined, wary, and ignore outsiders."
+      ]
+    },
+    {
+      "node_id": "n_dcce5f9e0a",
+      "level": "scene",
+      "shown": [
+        "p_6e5a4c9ec4",
+        "p_42af527a9b",
+        "p_7f1a17df7b"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.3748,
+        0.3569,
+        0.3936
+      ],
+      "chosen": "p_7f1a17df7b",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6044,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Water Ritual Kael remains still. The woman reaches the well. She works the crank, lowering one bucket into the darkness. The rope goes taut. She hauls it up, hand over hand. The bucket is full of black, wet sand. She tips the sand onto the roots of a dead sapling planted beside the well. She drops the bucket, turns, and walks back to her door. The daily routine is not for survival, but for ritual. The well does not provide water. The people of Ashfall are engaged in a desperate, nonsensical act.",
+        "The Watcher in the Tower From a high window, a boy named Elian watches Kael descend the ridge. He tracks the stranger's progress into the empty street. When Kael nears the bell tower, Elian pulls a thick rope once. He watches a door open below, and a woman named Mara emerge. Elian remains at his post as the stranger and the woman pass one another. The bell was a deliberate signal about Kael. Ashfall has a system of surveillance. Its residents' actions are a coordinated response to a perceived threat or anomaly.",
+        "The Second Door Kael watches the grey-haired woman walk. A door further down the street scrapes open. A man with a shaved head and a scarred cheek steps out. He carries two empty buckets. He nods once to the woman and falls into step behind her. He does not look at Kael. The bell is a summons for a communal task. The residents share an unspoken discipline. They acknowledge each other but not strangers. [t_26bbe90c33] [t_ed3f6fd1d8]"
+      ]
+    },
+    {
+      "node_id": "n_dcce5f9e0a",
+      "level": "scene",
+      "shown": [
+        "p_3e361812bc",
+        "p_120b878de8",
+        "p_3828b2694a"
+      ],
+      "axes": [
+        "shift the point of view",
+        "raise the stakes",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.3354,
+        0.1896,
+        0.4287
+      ],
+      "chosen": "p_3828b2694a",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6232,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Bell Ringer From a high, narrow window in the stone tower, a boy named Finn watches the stranger. He sees the worn pack. He sees the gait of a long journey. The stranger, Kael, consults a map. Finn pulls the thick rope once. He watches Mara emerge below. He watches her ignore the stranger. It is the protocol. The bell was a deliberate signal about Kael. The town's inhabitants have a practiced, non-violent protocol for handling outsiders. Ashfall is more organized and vigilant than it appears.",
+        "The Price at the Well The grey-haired woman reaches the well. A small boy lies on the packed earth beside it. His lips are cracked. He does not move. The woman lowers her bucket. It comes up empty. She turns and walks away, leaving the boy on the ground. The water is gone, not just low. People are dying now. The residents prioritize survival over sentiment. [t_ed3f6fd1d8]",
+        "The Mismatched Landmark The woman walks past the well without stopping. She turns down an alley Kael did not see from the ridge. Kael unfolds his map, comparing the ink drawing to the street. The map shows the well on the east side of the street, but it stands on the west. Kael's map is inaccurate or outdated. The town is not what he expected. [t_5c8f6138a3]"
+      ]
+    },
+    {
+      "node_id": "n_e7879cd94c",
+      "level": "beat",
+      "shown": [
+        "p_2424f2b977",
+        "p_1bb9517629",
+        "p_9813dd5a64"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.294,
+        0.3447,
+        0.3212
+      ],
+      "chosen": "p_1bb9517629",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Water Carrier The bell rang. Lena set down her mending. One chime meant a stranger. She took her buckets from the hook by the door. Her instructions were clear. She did not use the spyhole. She opened the door and stepped into the street. The man was there. Tall, worn by the road. His gaze moved over the rooftops. She walked past. Her eyes stayed on the well ahead. She saw the paper folded in his hand. The map. Ashfall has a protocol for strangers, signaled by the bell. The woman's actions are deliberate and she is aware of Kael.",
+        "The Wrong Sound The woman reaches the covered well. She sets her buckets down. The wood cover slides aside with a grating sound. She lowers one bucket into the dark. Kael listens for a splash. He hears only rope scraping stone. She strains at the rope. The bucket rises, heavy. It is full of black dust. She tips the dust onto a growing pile beside the well. The well is dry, or used for something other than water. The residents are mining black dust from it.",
+        "The Grey Mark The woman works the well's crank. The bucket rises, full of grey sludge. She carries it to the building next to the one she exited. She dips her fingers in the sludge. She draws a wet, grey line down the center of the door. Kael looks from the marked door to his map. A small circle, drawn in red, marks that same building."
+      ]
+    },
+    {
+      "node_id": "n_e7879cd94c",
+      "level": "beat",
+      "shown": [
+        "p_9247856346",
+        "p_65a09dd5fe",
+        "p_e68675b242"
+      ],
+      "axes": [
+        "raise the stakes",
+        "introduce a complication",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.5706,
+        0.4305,
+        0.3638
+      ],
+      "chosen": "p_9247856346",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a01ceaae8614250cf3fcb3c56046d1d9",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6433,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6044,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of Water The woman reaches the well. A gaunt man waits there, watched by another man holding a club. The woman stands back. The gaunt man offers a small, carved wooden bird to the man with the club. In exchange, he receives a half-full waterskin drawn from the well. The gaunt man leaves. The woman steps forward. She shows her empty hands. The guard shakes his head. She turns, buckets still empty, and walks back the way she came. Water is strictly rationed and must be paid for with personal items. Some residents cannot afford it.",
+        "A Ritual of Dust The woman reaches the covered well. She works the crank. She lowers one bucket into the dark. It comes up splashing, full of clear water. She heaves the bucket onto the well's stone rim, then deliberately tips it over. Water spills into the dust. The dark patch shrinks in the dry air. She picks up her two empty buckets and walks back the way she came. The residents of Ashfall perform a daily ritual where they pour fresh water into the dust.",
+        "The Water Token The woman reaches the covered well. A man in a leather harness sits on a stool beside it, a weighted club across his lap. He nods. The woman slides the heavy cover aside and lowers a bucket. It comes up full. She offers the man a small, carved wooden token. He takes it and drops it into a pouch at his belt. Water in Ashfall is a controlled, rationed resource, exchanged for tokens."
+      ]
+    },
+    {
+      "node_id": "n_bc87c7f385",
+      "level": "prose",
+      "shown": [
+        "p_4445225b60",
+        "p_6dd679a2f6",
+        "p_d38aad1769"
+      ],
+      "axes": [
+        "slow down",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.2376,
+        0.2698,
+        0.2609
+      ],
+      "chosen": "p_6dd679a2f6",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8907,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6027,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7942,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The woman with the grey braid stops. She stands behind a man at the well. His clothes hang from his bones. A second man watches them both. He holds a wooden club. The club is dark with use. It rests on his shoulder.\n\nThe gaunt man opens his hand. A small bird rests on his palm. It is carved from white wood. The guard takes the bird. He turns it over in his fingers. He nods once. He reaches for a lever on the wellhead. A chain clanks. He draws up a bucket, dark and wet. He pours a measure of water into a leather skin. He hands the skin to the gaunt man. The man clutches it to his chest and walks away. His feet raise small clouds of dust.\n\nThe woman steps forward. She stands where the man stood. She holds out her hands. They are empty. Her palms face the sky.\n\nThe guard looks at her hands. He looks at her face. He shakes his head.\n\nThe woman lowers her arms. Her buckets are still. She turns and walks back down the street. Her footsteps are the only sound.",
+        "prose The woman turns from the well. She walks past Kael. Her face is stone. She does not stop at the door she left. She walks to the bell tower. She sets down her buckets. She takes the frayed rope in one hand. She pulls. The bell rings out. She pulls again. A second ring follows the first. She picks up her buckets. She returns to her door and steps inside. The latch clicks shut.",
+        "prose The woman stops a few paces from the well. A gaunt man stands before the guard. The guard holds a thick club. The gaunt man holds out a small wooden bird, carved from pale wood. The guard takes it. He turns it over in his hand. He nods. He works a crank. A wet rope brings up a leather bucket. He pours water into a skin, filling it halfway. He hands the skin to the gaunt man. The man leaves. The woman steps forward. She holds up her empty hands. The guard shakes his head once. The woman turns. Her buckets are silent as she walks. She passes Kael. She reaches the door she left. It opens before she touches it. A small girl stands in the doorway. The girl looks at the empty buckets. She looks at the woman’s face. The woman puts a hand on the girl’s shoulder and guides her back inside. The door closes. A bolt scrapes shut."
+      ]
+    },
+    {
+      "node_id": "n_bc87c7f385",
+      "level": "prose",
+      "shown": [
+        "p_7a299d14da",
+        "p_ea2878228b",
+        "p_8f018dac7c"
+      ],
+      "axes": [
+        "slow down",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.183,
+        0.2726,
+        0.303
+      ],
+      "chosen": "p_8f018dac7c",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "5cec14eaa7fa89f0b6aa2fc6a86751f0",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9205,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7285,
+          "dialogue_ratio": 0.0909
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The woman stopped a few paces from the well. The stone rim was high. A wooden roof covered it. A man stood beside the well's crank. He held a thick club. Another man waited before him. His clothes were rags. His face was hollow. The woman stood apart. Her buckets rested on the ground at her feet. She watched.\n\nThe man with the club said nothing. His eyes were flat. The hollow man held out a hand. On his palm was a bird carved from pale wood. Its wings were spread. The guard took the bird. He looked at it. He slid it into a leather pouch at his belt. Then he turned to the well. He worked the crank. A rope creaked. A wooden bucket rose from the dark. Water slopped over its edge. The guard filled a waterskin. He stopped when it was half full. He handed the skin to the hollow man. The man clutched it to his chest. He turned and walked away. His feet shuffled in the dust.\n\nThe woman stepped forward. She lifted her empty hands, palms up. The guard watched her. He did not move. She let her hands fall. The guard shook his head once. A slow, final motion. She bent down. She picked up her empty buckets. The metal handles scraped. She turned. She walked back toward the shuttered buildings. Her steps were even. The buckets did not swing.",
+        "prose The woman walks past Kael. Her face is stone. She returns to the door she came from and goes inside. The street is quiet. Only Kael, the guard, and the man with the club remain.\n\nKael walks to the well. He stops before the guard. The club rests on the guard’s shoulder, a knot of dark wood. Kael unslings his waterskin. He holds it up. It is flat.\n\nHe reaches into a pouch on his belt. He pulls out a brass compass. The needle quivers. He offers it to the guard.\n\nThe guard does not take it. His eyes travel down Kael’s worn tunic. They stop on the leather map tube at his hip.\n\nThe guard points at the tube with his chin.\n\n\"That,\" he says. His voice is dry, like stones grinding. \"For a full skin.\"",
+        "prose The woman walks back. Her empty buckets knock her legs. She passes Kael. Her eyes stay on her own door. A different door opens. A thin crack of shadow. A small hand places a cloth sack on the stone step. The door clicks shut. The woman stops. She crosses the street. She picks up the sack. She does not look at the closed door. She tears the sack open with her teeth. Two potatoes. She drops them in a bucket. A hollow clatter. She walks to her own door, steps inside, and closes it."
+      ]
+    },
+    {
+      "node_id": "n_31da68fce3",
+      "level": "episode",
+      "shown": [
+        "p_cb05bb0280",
+        "p_4d4c17b643",
+        "p_3a4f9cc2f7"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.4054,
+        0.298,
+        0.3953
+      ],
+      "chosen": "p_cb05bb0280",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6728,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Empty Buckets Kael watches the woman with empty buckets return to her home. She does not enter. She sits on the dusty doorstep. Kael decides to act. He uncorks his own waterskin and walks toward her. Before he reaches her, she collapses. The guard from the well walks over. He picks up the woman's body and drags it into a narrow alley. He leaves the empty buckets on the step. The guard looks at Kael, points his club at him, then at the well, and shakes his head. In Ashfall, those who cannot provide for themselves are left to die. Their bodies are disposed of without ceremony. Outsiders are not welcome to interfere.",
+        "The Man with the Club The guard, Borr, stands his post at the well. From his perspective, we see the familiar ritual: Elan's carving for water, Mara's empty-handed request. Borr denies Mara, following a rule. He then focuses on Kael, the stranger. He assesses Kael's gear and posture, judging him a threat just as Kael walks toward the well. The guard is named Borr. He knows the locals. He is not acting on whim, but enforcing rules. Outsiders are automatically viewed as dangerous.",
+        "The Price of a Question Kael approaches the well guard and offers a silver coin. The guard takes the coin but gives no water. He points to a low, windowless building. Kael crosses the street and enters the building. The woman with the grey braid sits behind a desk. His silver coin is on the wood in front of her. The woman from the well holds a position of authority. The guard is a gatekeeper. Information in Ashfall has a price, just like water."
+      ]
+    },
+    {
+      "node_id": "n_31da68fce3",
+      "level": "episode",
+      "shown": [
+        "p_6efb7fa08a",
+        "p_88412cfa80",
+        "p_2956fcca1c"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.5075,
+        0.2171,
+        0.2873
+      ],
+      "chosen": "p_6efb7fa08a",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.734,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "aa6bb889ca74073b3a2a5176f0f9b4d4",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5116,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Bell Tower Kael investigates the bell tower, seeking the person who rang the bell. He finds an old man, Silas, who admits to ringing it as an alarm for outsiders. Silas tests Kael, asking what he saw at the well, before looking at his map and giving him a new, cryptic objective. The bell is an alarm for outsiders. The map is a list of people, not just places. The person Kael seeks may already be lost to him. There are factions in Ashfall beyond the guards at the well.",
+        "The Bell Rope The well guard, Silas, goes to the door where the potatoes were left. He drags a young boy from the house and takes him to the bell tower. As a public punishment for the unauthorized charity, Silas ties the boy's hands to the bell rope, leaving him there as a living warning. The social order in Ashfall is actively and brutally enforced. The bell is a tool of punishment. Kindness is a dangerous act.",
+        "The Giver From inside a neighboring house, a young girl"
+      ]
+    },
+    {
+      "node_id": "n_6239df864c",
+      "level": "scene",
+      "shown": [
+        "p_ddd58868c2",
+        "p_03f95203ff",
+        "p_0fe555b7c7"
+      ],
+      "axes": [
+        "shift the point of view",
+        "pay off an open thread",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.3025,
+        0.4027,
+        0.3631
+      ],
+      "chosen": "p_03f95203ff",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6667,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Watcher in the Tower From the bell tower’s high window, Silas sees Kael on the ridge. He pulls the bell rope. A single, clear ring. He watches Kael enter the town. He sees Mara turned away from the well. He sees the other door open, the sack of potatoes left on the step. Silas’s eyes stay on Kael. The stranger watches the exchange, his face unreadable. Silas waits by the bell rope. He knows what Kael saw. Now he will see what Kael does. The bell was a deliberate signal about Kael's arrival. Silas is a vigilant observer who tests newcomers based on their reactions to Ashfall's harsh realities.",
+        "The Cairn Silas's directions lead Kael from the town. He walks to a rock shelf in the grey flats. A new cairn sits in its shadow, a pile of dark, flat stones. Kael kneels. He pulls a stone from the stack. He reaches into the gap. His hand finds a small brass navigator's tool. Its needle is broken. The person Kael came for is dead. The navigator's tool implies the deceased was also a traveler, or was connected to the cartographer.",
+        "The Price of Potatoes Silas points from the tower window. Below, the well guards stand at the door where the potatoes appeared. One guard smashes the door with his club. They drag a young boy into the street. The woman with the grey braid watches from her own doorway, her face unreadable. The guards are not just rationing water; they are enforcing a brutal social order. Unauthorized charity is forbidden and punished swiftly."
+      ]
+    },
+    {
+      "node_id": "n_6239df864c",
+      "level": "scene",
+      "shown": [
+        "p_c8f38223fe",
+        "p_d50d636837",
+        "p_e828b744ff"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.2945,
+        0.3311,
+        0.294
+      ],
+      "chosen": "p_d50d636837",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.649,
+          "dialogue_ratio": 0.125
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Crack in the Door A girl, Elia, watches through a narrow gap in a door. She sees her mother, Mara, turned away from the well. She also sees a tall stranger, Kael, watching everything. Elia waits until her mother walks past. She pushes the door open, places a cloth sack on the stone step, and pulls it shut. She listens in the darkness for the sound of her mother taking the sack. The woman is Mara, and the hand from the door belongs to her daughter, Elia. Their survival depends on this secret, risky exchange.",
+        "The Watcher's Test Kael stands in the cramped bell chamber. The old man, Silas, is there. He does not hold a weapon. He points one finger through a slat in the wall. It aims at the street below. \"The well,\" Silas says. \"Tell me what you saw.\" Kael describes the guard, the barter, the woman's empty buckets. He stops. Then he tells of the other door. The dropped sack. The potatoes. Silas lowers his hand. He nods once. Silas seeks allies who see the town's real dynamics, not just its obvious power structures. Kael's quiet observation is a form of strength.",
+        "The Price of a Name From the bell tower overlook, Silas points to the well. He says the name from Kael's map: Elian. Kael looks down. He sees the gaunt man from before, bartering a second, smaller carved bird for a half-skin of water. The guard takes the bird and gives the water. The person Kael came to find, Elian, is the gaunt man from the well. He is trapped in a cycle of bartering his craft for survival."
+      ]
+    },
+    {
+      "node_id": "n_6239df864c",
+      "level": "scene",
+      "shown": [
+        "p_1559845d68",
+        "p_05d22ce6da",
+        "p_8f837033ca"
+      ],
+      "axes": [
+        "slow down",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.2786,
+        0.2159,
+        0.4763
+      ],
+      "chosen": "p_8f837033ca",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ascent Kael crosses to the bell tower. The heavy wooden door is unbarred. He pushes it open into darkness. Inside, the air is cold and smells of dust and dry rot. A spiral stair of worn stone hugs the curved wall. He climbs, his hand trailing on the rough stone. Thin slits of light cut the dark at intervals. Near the top, a floorboard creaks overhead. The bell tower is old and neglected but not abandoned. Someone is waiting at the top. The tower itself is a defensive structure, a relic of a different time.",
+        "The Circle on the Skin Silas taps a name on Kael's map. He says the man, the cartographer, died of ash-lung. He points through a window slat. Below, one of the well guards turns. A fresh, circular brand marks the skin of their neck. Silas says the guard's name: Lena, the cartographer’s daughter. The cartographer is dead. His daughter, Lena, has been conscripted by the well guards. The guards brand those who serve them.",
+        "The Watcher from the Tower From a high window in the bell tower, Silas watches Kael. He tracks Kael's gaze as it follows the woman with the buckets. Silas sees Kael notice the well guards, the failed barter, and the secret sack of potatoes. He nods once, a silent judgment made. The man in the tower, Silas, rang the bell. He is actively watching and assessing Kael's character based on how he reacts to the town's cruelty and secret kindness."
+      ]
+    },
+    {
+      "node_id": "n_6239df864c",
+      "level": "scene",
+      "shown": [
+        "p_bd1a188590",
+        "p_b7613a09cc",
+        "p_599f9ad987"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.2629,
+        0.2777,
+        0.3269
+      ],
+      "chosen": "p_599f9ad987",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.712,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Bell Tower Kael climbs to the top of the stone tower. An old man, Silas, sits under the silent bell, mending a fishing net. Silas does not look up. He says the bell is for outsiders. He asks Kael what he saw at the well. Kael describes the man with the bird, the woman with empty buckets, and the sack of potatoes left on a step. Silas nods. He takes Kael's map, points to a name, then out the window at the woodcarver's shack. He calls the map a list of ghosts and tells Kael to find the cartographer. Kael's quarry is already a victim of Ashfall's system. The map is not a guide to treasure, but a list of the lost. A hidden figure, the cartographer, is the key.",
+        "A Debt of Potatoes From behind a shutter, a young woman named Mara watches Kael arrive. She sees Lyra, her neighbor, turned away from the well. After Kael passes, Mara cracks open her door, leaves a sack of potatoes on the step, and listens until she hears Lyra collect it. The benefactor is a woman named Mara. She knows the woman with the buckets (Lyra). She acts in secret defiance of the people who control the well.",
+        "The Ledger of the Lost Kael finds Silas in the belfry amid piles of personal effects. Silas asks what Kael saw at the well. After Kael’s answer, Silas points to a pile of carved wooden birds. He then indicates Kael's map, takes a leather-worker's awl from a second pile, and sets it alone on the floor. Kael recognizes the tool. The person Kael seeks is the desperate bird-carver. His father is dead. Silas is the town's chronicler of the lost and he is testing Kael."
+      ]
+    }
+  ],
+  "episodes_completed": 2,
+  "call_summary": {
+    "calls": 244,
+    "prompt_tokens": 414740,
+    "completion_tokens": 478703,
+    "cost_usd": 5.125795,
+    "cache_hits": 6,
+    "errors": 1,
+    "mean_latency_s": 30.065811291819255,
+    "total_tokens": 893443,
+    "cache_hit_rate": 0.02459016393442623,
+    "by_purpose": [
+      {
+        "purpose": "propose.scene",
+        "calls": 49,
+        "tokens": 210800,
+        "cost_usd": 1.2625975,
+        "cache_hits": 3
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 93,
+        "tokens": 183243,
+        "cost_usd": 1.1600275,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.beat",
+        "calls": 28,
+        "tokens": 165559,
+        "cost_usd": 0.94036625,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 21,
+        "tokens": 93599,
+        "cost_usd": 0.5185575,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 14,
+        "tokens": 64188,
+        "cost_usd": 0.39359125,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "propose.beat.repair",
+        "calls": 6,
+        "tokens": 52398,
+        "cost_usd": 0.2556875,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 13,
+        "tokens": 42126,
+        "cost_usd": 0.18251625,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene.repair",
+        "calls": 7,
+        "tokens": 30926,
+        "cost_usd": 0.17707375,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.prose.repair",
+        "calls": 5,
+        "tokens": 24984,
+        "cost_usd": 0.12883625,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 3,
+        "tokens": 20406,
+        "cost_usd": 0.10654125,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 3,
+        "tokens": 2670,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 2,
+        "tokens": 2544,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "openrouter",
+        "calls": 239,
+        "tokens": 888229,
+        "cost_usd": 5.125795
+      },
+      {
+        "provider": "groq",
+        "calls": 4,
+        "tokens": 2670,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "gemini",
+        "calls": 1,
+        "tokens": 2544,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 6,
+      "misses": 266,
+      "entries": 8920
+    },
+    "budget_remaining_usd": 6.3400075
+  },
+  "preference_summary": {
+    "pairs_seen": 8,
+    "edits_seen": 0,
+    "voice_trained": false,
+    "top_weights": [
+      {
+        "feature": "length",
+        "weight": 0.4546
+      },
+      {
+        "feature": "continuity",
+        "weight": 0.1585
+      },
+      {
+        "feature": "judge_momentum",
+        "weight": 0.0
+      },
+      {
+        "feature": "judge_specificity",
+        "weight": 0.0
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 2e-323,
+      "judge_specificity": 2e-323,
+      "judge_consequence": 2e-323,
+      "judge_voice": 2e-323,
+      "criterion_1": 2e-323,
+      "criterion_2": 2e-323,
+      "criterion_3": 2e-323,
+      "criterion_4": 2e-323,
+      "continuity": 0.15849161828572697,
+      "voice_cosine": 2e-323,
+      "edit_direction": 2e-323,
+      "length": 0.4546162171143634,
+      "dialogue_ratio": 2e-323
+    },
+    "weight_recovery": -0.5957055590059952,
+    "weight_recovery_identified": -0.802160338359172
+  },
+  "hidden_weights": {
+    "judge_momentum": 0.3,
+    "judge_specificity": 1.0,
+    "judge_consequence": 0.0,
+    "judge_voice": 0.7,
+    "criterion_1": 0.8,
+    "criterion_2": 0.2,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 0.6,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.0,
+    "length": -0.9,
+    "dialogue_ratio": 0.2
+  },
+  "probe": [
+    {
+      "tau": 0.18518518518518523,
+      "top1": 0.5,
+      "points": 18.0,
+      "tau_uniform": 0.48148148148148145,
+      "top1_uniform": 0.6111111111111112,
+      "tau_prior": 0.5185185185185186,
+      "top1_prior": 0.6111111111111112,
+      "decisions": 10.0,
+      "episode": 1.0
+    },
+    {
+      "tau": 0.18518518518518523,
+      "top1": 0.5,
+      "points": 18.0,
+      "tau_uniform": 0.48148148148148145,
+      "top1_uniform": 0.6111111111111112,
+      "tau_prior": 0.5185185185185186,
+      "top1_prior": 0.6111111111111112,
+      "decisions": 16.0,
+      "episode": 2.0
+    }
+  ],
+  "errors": [],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
+}

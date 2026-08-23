@@ -783,6 +783,26 @@ The spend figure is the one to read alongside the free-tier claim: \rMeteredUsdP
 per writer decision, under a hard in-code cap of \$12.00 that refuses a call it cannot
 afford rather than noticing afterwards. The cap was not raised for this run.
 
+\textbf{What this comparison can and cannot support.} The cost column is clean and is the
+result worth quoting. The acceptance column is not, and the reason is a design fault in the
+evaluation rather than in the system. A persona accepts when a candidate clears a quantile of
+a \emph{reference score distribution} that was fitted to an earlier free-tier run. Change the
+model and the score distribution moves underneath a threshold that did not, so acceptance
+changes for reasons that have nothing to do with whether the writing got better. One run here
+stopped at its first episode because nothing cleared the bar, which is a statement about a
+stale calibration and not about the model.
+
+Weight recovery and the probe are less exposed, since both ask whether the head recovers a
+persona's weights from whatever candidates it happened to see rather than whether those
+candidates were good. They are still small: a halved decision count on a run that the budget
+guard may end early is a handful of comparisons per writer.
+
+So the honest reading of this table is that it establishes the cost of the strong model and
+demonstrates that the system runs unmodified against a different provider, and that it does
+not settle whether the prose improved. Settling that needs the personas recalibrated against
+each model's own distribution, which is a change to the evaluation and is named in
+\S\ref{sec:limitations} rather than performed here.
+
 \section{What the measurements changed}
 \label{sec:findings}
 
@@ -894,6 +914,13 @@ the NLI checkpoint run locally and are called directly rather than through the r
 they produce no call-log row and no token count. Everything metered is free-tier; nothing
 unmetered is paid. But ``every call is logged with its tokens'' is true of the routed calls
 and not of all of them.
+
+\textbf{A persona's bar is calibrated against one model's output.} Acceptance is a quantile
+of a reference score distribution fitted to an earlier free-tier run, so any comparison across
+models confounds the writing with the calibration. The strong-model rerun in
+\S\ref{sec:metered} is reported with that caveat rather than corrected for it, because the
+correction is to refit the thresholds per model, which is an evaluation change rather than an
+analysis one.
 
 \textbf{Nothing here carries an interval, and the $n$s are small.} Four runs. Five injected
 errors. Three true positives in the staleness case. One sentence pair reaching layer 2. Six
