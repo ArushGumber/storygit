@@ -22,6 +22,9 @@ frontend/dist/
 eval/results/runs/*.db
 eval/results/runs/*.db-shm
 eval/results/runs/*.db-wal
+# Per-episode checkpoints. They exist so an interrupted run can resume, not so anyone
+# can read them; the finished `full__*.json` beside them is the result.
+eval/results/runs/*.partial.json
 eval/results/gallery/*.db-shm
 eval/results/gallery/*.db-wal
 # TeX build junk
