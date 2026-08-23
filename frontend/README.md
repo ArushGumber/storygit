@@ -34,10 +34,14 @@ understand what was built, how it works, what it does, that it does it, and how 
 
 ## The Live tab
 
-**Left — the plan tree.** Status by dot and word, lock toggles, stale badges whose tooltip
-is the reason, and the reason always names the beat that established the fact that moved.
-The branch selector sits here: a branch is a pointer at a snapshot, so exploring costs
-nothing.
+**Left — the plan tree, and the story's history.** Status by dot and word, lock toggles,
+stale badges whose tooltip is the reason, and the reason always names the beat that
+established the fact that moved. The branch selector sits here: a branch is a pointer at a
+snapshot, so exploring costs nothing. Below it, branching, comparing against `main`, and a
+three-way merge that previews first and refuses to commit through a conflict; the
+whole-story audit, which walks the graph rather than the last accept and names the threads
+that have stopped moving; and the snapshot chain itself, which is the product's thesis made
+visible.
 
 **Centre — the work.** The selected node, an intent box, and the candidates. Every candidate
 is a **diff**: what it would change in English, what it would invalidate, its axis label,
@@ -47,7 +51,15 @@ Below them, the hand-write path for beats — the writer types, the system only 
 **Right — the world.** The entities in this scene, the facts true here with who established
 them and who has been told, open threads with how long they have gone untouched, hard
 constraints, the authorship ratio, the dial, and the writer's own rules and criteria —
-including the ones mined from their edits, each marked as mined and deletable.
+including the ones mined from their edits, each marked as mined and each with a control
+that deletes it. Every entity carries a `merge` control, because alias resolution is
+deliberately conservative and will leave a duplicate rather than risk welding two
+characters together; that caution is only safe because this correction exists.
+
+**Nothing is API-only.** A capability the writer cannot reach is a capability the product
+does not have, so every backend capability has a control here — and
+`test_no_client_method_is_unreachable_from_the_interface` fails if a method in `api.ts` is
+called by no component.
 
 ## Two rules the implementation follows
 
