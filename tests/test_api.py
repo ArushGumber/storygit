@@ -533,3 +533,18 @@ def test_a_duplicate_entity_can_be_merged_and_a_hard_rule_added(api) -> None:  #
         == 200
     )
     assert "nobody dies off-page" in client.get("/api/ledger").json()["hard_constraints"]
+
+
+def test_the_whole_story_audit_answers_over_http(api) -> None:  # type: ignore[no-untyped-def]
+    """The audit is the check that catches drift no single accept was wrong about.
+
+    Layer 2 is off in this fixture, so this proves the route reaches the engine and the
+    engine degrades to layer 1 rather than raising — which is what a deployment without
+    the NLI model does.
+    """
+    client, state, _ = api
+    state.engine().use_nli = False
+    body = client.get("/api/flags?audit=true").json()
+    assert body["flags"] == []
+    assert body["by_layer"] == {}, "a clean story has nothing to report per layer"
+    assert body["summary"].startswith("audit: 0 flags")

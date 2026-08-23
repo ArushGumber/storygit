@@ -13,7 +13,6 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from storygit.api import schemas
 from storygit.api.deps import AppState, app_state
 from storygit.continuity import layer1
-from storygit.continuity.audit import run_audit
 from storygit.domain.ids import EntityId, NodeId
 from storygit.graph.slices import entities_in_scope
 
@@ -126,9 +125,13 @@ def flags(state: State, branch: str | None = None, audit: bool = False) -> dict[
     Returns:
         Flags, hard first.
     """
-    story = state.repo.state(branch or state.branch)
+    name = branch or state.branch
+    story = state.repo.state(name)
     if audit:
-        report = run_audit(story, use_nli=True)
+        # Through the engine rather than calling the audit directly: the engine knows
+        # whether layer 2 is available in this deployment, and an audit that hard-coded
+        # it would raise on a machine with no NLI model rather than degrading to layer 1.
+        report = state.engine(name).audit()
         return {
             "flags": [f.model_dump(mode="json") for f in report.flags],
             "summary": report.summary(),
