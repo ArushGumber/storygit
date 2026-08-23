@@ -27,6 +27,10 @@ eval/results/runs/*.db-wal
 eval/results/runs/*.partial.json
 eval/results/gallery/*.db-shm
 eval/results/gallery/*.db-wal
+# SQLite sidecars beside the committed demo story. The database itself is committed;
+# the write-ahead log and shared-memory files are per-process scratch.
+demo/*.db-shm
+demo/*.db-wal
 # TeX build junk
 *.aux
 *.fls
