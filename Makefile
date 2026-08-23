@@ -7,7 +7,7 @@
 VENV := .venv/bin
 PY   := $(VENV)/python
 
-.PHONY: help check test coverage lint types frontend e2e docs diagrams numbers eval probe costing gallery screenshots all clean
+.PHONY: help check test coverage lint types frontend e2e docs diagrams numbers eval probe costing demo gallery screenshots all clean
 
 help:  ## Show this help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -53,6 +53,10 @@ probe:  ## Rebuild the held-out probe fixture (costs quota; changes the measurin
 
 costing:  ## Project the chunk-7 metered rerun against the budget cap (no calls)
 	$(PY) -m eval.costing
+
+demo: frontend  ## Serve the finished demo story (browsing needs no keys; proposing does)
+	@echo "==> http://127.0.0.1:8000 -- the demo story, read-only without provider keys"
+	STORYGIT_DB=demo/story.db $(PY) -m storygit.api.app
 
 gallery:  ## Re-record the Gallery sessions (--offline for the free six)
 	$(PY) -m eval.record_gallery
