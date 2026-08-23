@@ -854,6 +854,29 @@ preference head learned and the persona's hidden weight vector. Mean
 --- a degenerate system achieves that by proposing the same safe thing repeatedly --- but
 \emph{did the machinery recover the taste it was shown}.
 
+\textbf{Acceptance did not rise, and in three of four runs it fell.} The Minimalist held at
+100\%, the Maximalist went 100\% to 91\%, the Serialist 91\% to 84\%, the Controller 100\%
+to 73\%. Two runs ended early because their persona rejected all six episode candidates and
+the harness stops rather than pretending a writer would keep clicking.
+
+That is worth stating plainly rather than framing away, and it is also worth saying what it
+does and does not show. The comparison is confounded: as a story grows, every new candidate
+must stay consistent with more established facts, more open threads, and more of the
+writer's accumulated rules, while the persona's acceptance bar stays exactly where it
+started. A flat or falling acceptance curve under a rising task difficulty is not evidence
+that the preference layer failed, and a rising one would not have been evidence that it
+worked --- which is precisely why the headline metric here is weight recovery against a
+known hidden vector, decided before any of these runs. The first-third figures also sit on
+seven or eight decisions each, so the endpoints are noisy.
+
+The honest summary of the live tier: the machinery runs end to end against a real provider
+for a hundred-odd decisions without human intervention, and the preference head recovers
+roughly half the structure of a hidden weight vector from about twenty-five comparisons.
+Separating writer satisfaction from rising task difficulty needs a design this evaluation
+does not have --- a fixed held-out decision set replayed at several points in a run, scored
+by the same persona --- and that is the first thing to build if the evaluation gets another
+pass.
+
 Acceptance and edit-distance curves per persona are in
 \file{eval/results/acceptance.svg} and \file{eval/results/edit_distance.svg}, and the full
 table including anything that did not run is in \file{eval/results/summary.md}. Every
@@ -979,6 +1002,12 @@ measured (a $+0.13$ lift at ten comparisons) rather than assumed.
 \textbf{Injected errors are the errors we thought of.} Checker recall is over five known
 classes. A class nobody imagined is a class nobody measured. The periodic audit exists partly
 for that, and the honest phrasing throughout is ``recall over five classes''.
+
+\textbf{Acceptance over a run confounds two things.} Task difficulty rises as a story
+accumulates facts, threads, and rules, while a persona's bar does not move, so the
+acceptance curve measures both at once and separates neither. The fix is a fixed held-out
+decision set replayed at intervals within a run; it is not built, and until it is, the
+acceptance trend is reported and not interpreted.
 
 \textbf{Single writer, single story.} SQLite, one process, no auth, no concurrency. The
 scaling discussion is architectural rather than demonstrated.

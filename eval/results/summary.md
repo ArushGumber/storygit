@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T02:32:37.376527+00:00.
+Generated 2026-08-23T03:33:55.082003+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
@@ -51,20 +51,19 @@ Pseudo-regret after 400 rounds: Thompson 4.8, epsilon-greedy 6.3. Pulls: {'safe'
 
 | run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | tokens/action |
 |---|---|---|---|---|---|---|---|
-| full/the Controller | 0 | 0% | 0% | 0% | 0.00 | 0.33 | 0 |
-| full/the Maximalist | 0 | 0% | 0% | 0% | 0.00 | 0.06 | 0 |
-| full/the Minimalist | 1 | 100% | 100% | 100% | 0.00 | 0.47 | 1393682 |
-| full/the Serialist | 33 | 94% | 91% | 98% | 0.44 | 0.65 | 41102 |
+| full/the Controller | 23 | 83% | 100% | 73% | 0.66 | 0.51 | 197223 |
+| full/the Maximalist | 22 | 91% | 100% | 91% | 0.92 | 0.27 | 153346 |
+| full/the Minimalist | 32 | 97% | 100% | 100% | 0.22 | 0.53 | 76632 |
+| full/the Serialist | 30 | 83% | 91% | 84% | 0.19 | 0.46 | 42144 |
 
 ## Errors during runs
 
-- `full/the Controller`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s
-- `full/the Maximalist`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s
-- `full/the Minimalist`: RateLimited: groq: rate limited
+- `full/the Controller`: episode 3 was not accepted; stopping
+- `full/the Maximalist`: episode 3 was not accepted; stopping
 
 ## Provider cost
 
-- calls: 498
-- tokens: 1393682
-- cache hit rate: 9%
+- calls: 1641
+- tokens: 4536130
+- cache hit rate: 2%
 - estimated cost: $0.0000 (free tier; the price table would apply on a metered provider)

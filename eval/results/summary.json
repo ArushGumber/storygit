@@ -1,76 +1,74 @@
 {
-  "generated_at": "2026-08-23T02:32:37.376527+00:00",
+  "generated_at": "2026-08-23T03:33:55.082003+00:00",
   "runs": [
     {
       "run": "full/the Controller",
       "persona": "the Controller",
-      "decisions": 0,
-      "acceptance": 0.0,
-      "acceptance_first_third": 0.0,
-      "acceptance_last_third": 0.0,
-      "mean_edit_distance": 0.0,
-      "hard_flags_shown": 0,
+      "decisions": 23,
+      "acceptance": 0.8260869565217391,
+      "acceptance_first_third": 1.0,
+      "acceptance_last_third": 0.7321428571428571,
+      "mean_edit_distance": 0.6555333333333332,
+      "hard_flags_shown": 9,
       "stale_marked": 0,
-      "vetoes": 0,
-      "weight_recovery": 0.3283968223344251,
-      "tokens_per_action": 0.0,
+      "vetoes": 2,
+      "weight_recovery": 0.5115725441827065,
+      "tokens_per_action": 197223.04347826086,
       "usd_per_action": 0.0,
-      "episodes": 0,
+      "episodes": 2,
       "errors": [
-        "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s"
+        "episode 3 was not accepted; stopping"
       ]
     },
     {
       "run": "full/the Maximalist",
       "persona": "the Maximalist",
-      "decisions": 0,
-      "acceptance": 0.0,
-      "acceptance_first_third": 0.0,
-      "acceptance_last_third": 0.0,
-      "mean_edit_distance": 0.0,
-      "hard_flags_shown": 0,
+      "decisions": 22,
+      "acceptance": 0.9090909090909091,
+      "acceptance_first_third": 1.0,
+      "acceptance_last_third": 0.9107142857142857,
+      "mean_edit_distance": 0.9245,
+      "hard_flags_shown": 6,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.06352391435843598,
-      "tokens_per_action": 0.0,
+      "weight_recovery": 0.27464021990720694,
+      "tokens_per_action": 153346.0,
       "usd_per_action": 0.0,
-      "episodes": 0,
+      "episodes": 2,
       "errors": [
-        "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 4s"
+        "episode 3 was not accepted; stopping"
       ]
     },
     {
       "run": "full/the Minimalist",
       "persona": "the Minimalist",
-      "decisions": 1,
-      "acceptance": 1.0,
+      "decisions": 32,
+      "acceptance": 0.96875,
       "acceptance_first_third": 1.0,
       "acceptance_last_third": 1.0,
-      "mean_edit_distance": 0.0,
-      "hard_flags_shown": 0,
+      "mean_edit_distance": 0.21816666666666665,
+      "hard_flags_shown": 12,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.4688120141284616,
-      "tokens_per_action": 1393682.0,
+      "weight_recovery": 0.5266466659322037,
+      "tokens_per_action": 76632.03125,
       "usd_per_action": 0.0,
-      "episodes": 0,
-      "errors": [
-        "RateLimited: groq: rate limited"
-      ]
+      "episodes": 3,
+      "errors": []
     },
     {
       "run": "full/the Serialist",
       "persona": "the Serialist",
-      "decisions": 33,
-      "acceptance": 0.9393939393939394,
-      "acceptance_first_third": 0.9082251082251083,
-      "acceptance_last_third": 0.9772727272727273,
-      "mean_edit_distance": 0.4411,
-      "hard_flags_shown": 13,
+      "decisions": 30,
+      "acceptance": 0.8333333333333334,
+      "acceptance_first_third": 0.911547619047619,
+      "acceptance_last_third": 0.8375,
+      "mean_edit_distance": 0.1867,
+      "hard_flags_shown": 14,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.6541374062930565,
-      "tokens_per_action": 41102.36363636364,
+      "weight_recovery": 0.4618237626693748,
+      "tokens_per_action": 42143.7,
       "usd_per_action": 0.0,
       "episodes": 3,
       "errors": []
@@ -78,98 +76,105 @@
   ],
   "skipped": [],
   "call_summary": {
-    "calls": 498,
-    "prompt_tokens": 1083818,
-    "completion_tokens": 309864,
+    "calls": 1641,
+    "prompt_tokens": 3678347,
+    "completion_tokens": 857783,
     "cost_usd": 0.0,
-    "cache_hits": 44,
-    "errors": 25,
-    "mean_latency_s": 5.013311444074302,
-    "total_tokens": 1393682,
-    "cache_hit_rate": 0.08835341365461848,
+    "cache_hits": 32,
+    "errors": 194,
+    "mean_latency_s": 5.541169571468697,
+    "total_tokens": 4536130,
+    "cache_hit_rate": 0.019500304692260818,
     "by_purpose": [
       {
         "purpose": "propose.beat",
-        "calls": 84,
-        "tokens": 436567,
+        "calls": 304,
+        "tokens": 1532391,
         "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 4
       },
       {
         "purpose": "judge.soft",
-        "calls": 209,
-        "tokens": 410203,
+        "calls": 720,
+        "tokens": 1280354,
         "cost_usd": 0.0,
-        "cache_hits": 9
+        "cache_hits": 12
       },
       {
         "purpose": "propose.prose",
-        "calls": 85,
-        "tokens": 224105,
+        "calls": 260,
+        "tokens": 733328,
         "cost_usd": 0.0,
-        "cache_hits": 6
+        "cache_hits": 1
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 161,
+        "tokens": 407437,
+        "cost_usd": 0.0,
+        "cache_hits": 1
       },
       {
         "purpose": "propose.episode",
-        "calls": 40,
-        "tokens": 116666,
+        "calls": 89,
+        "tokens": 405349,
         "cost_usd": 0.0,
         "cache_hits": 14
       },
       {
-        "purpose": "propose.scene",
-        "calls": 48,
-        "tokens": 113096,
-        "cost_usd": 0.0,
-        "cache_hits": 7
-      },
-      {
         "purpose": "extract.facts",
-        "calls": 18,
-        "tokens": 44505,
+        "calls": 70,
+        "tokens": 114478,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
         "purpose": "propose.beat.repair",
         "calls": 4,
-        "tokens": 33130,
+        "tokens": 34098,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
-        "purpose": "extract.facts.repair",
-        "calls": 6,
-        "tokens": 11236,
+        "purpose": "judge.soft.repair",
+        "calls": 3,
+        "tokens": 11324,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
         "purpose": "simulate.edit",
-        "calls": 4,
-        "tokens": 4174,
+        "calls": 29,
+        "tokens": 9525,
         "cost_usd": 0.0,
-        "cache_hits": 1
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 1,
+        "tokens": 7846,
+        "cost_usd": 0.0,
+        "cache_hits": 0
       }
     ],
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 479,
-        "tokens": 1374566,
+        "calls": 1593,
+        "tokens": 4530461,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 19,
-        "tokens": 19116,
+        "calls": 48,
+        "tokens": 5669,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 44,
-      "misses": 457,
-      "entries": 1495
+      "hits": 32,
+      "misses": 1457,
+      "entries": 3064
     },
     "budget_remaining_usd": 12.0
   },

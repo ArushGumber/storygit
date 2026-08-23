@@ -179,6 +179,12 @@ needs no model calls, so it is exact and cannot be improved by rerunning:
 | Bandit | Thompson pseudo-regret 4.8 and flat after ~50 rounds; ε-greedy 6.3 and still climbing |
 | Preference prior | +0.13 held-out pairwise accuracy over uniform after a fresh writer's first 10 comparisons |
 
+The live tier: four simulated writers drove the real engine through 107 decisions against
+the free-tier provider. Mean acceptance 88%, weight recovery against each persona's hidden
+vector 0.44 mean / 0.53 best. Acceptance did **not** rise over a run — it fell in three of
+four — and `docs/presentable.tex` says why that is confounded with rising task difficulty
+rather than reading it either way.
+
 Two predictions written in advance turned out **wrong**, and both changed the system rather
 than the write-up: MMR at the conventional λ = 0.7 was identical to the top-k baseline, and
 embedding dependency edges did better than expected. Both are in
