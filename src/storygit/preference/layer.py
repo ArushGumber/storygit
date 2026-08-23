@@ -32,6 +32,22 @@ MIN_PAIRS_TO_FIT = 4
 MIN_ANCHORS_TO_TRAIN_VOICE = 4
 """Below this the voice model stays untrained and scores everything 0.5."""
 
+SHRINK_UNIDENTIFIED = True
+"""Pull feature directions this writer's data says nothing about towards zero.
+
+A direction with no spread inside any candidate set the writer saw receives no gradient, so
+whatever it is regularized towards is simply what it becomes. Anchored to the population
+prior, that means the head asserts an opinion about a feature this writer was never given a
+choice on — harmless in session, because a constant cannot reorder anything they see, and
+wrong the moment the head is applied anywhere else.
+
+On by default because an A/B decided it, not because it sounds right: refitting the four
+recorded runs and scoring both variants on the held-out probe moved agreement from 0.426 to
+0.565 and top-1 from 58% to 68%, while the prior's cold-start lift at five comparisons was
+unchanged. The rule that decision had to clear was written down before the number existed
+(``arush/logs/final_pass.md``), and ``eval/shrinkage.py`` reproduces it.
+"""
+
 
 class PreferenceLayer:
     """Scores candidates from what the writer has done, and learns from what they do.
@@ -215,6 +231,7 @@ class PreferenceLayer:
             prior=self.state.weights,
             l2=2.0,
             sample_weights=sample_weights,
+            shrink_unidentified=SHRINK_UNIDENTIFIED,
         )
 
     def _train_voice(

@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T14:08:43.718535+00:00.
+Generated 2026-08-23T15:55:21.147833+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
@@ -51,27 +51,16 @@ Pseudo-regret after 400 rounds: Thompson 4.8, epsilon-greedy 6.3. Pulls: {'safe'
 
 | run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | same-n ceiling | tokens/action |
 |---|---|---|---|---|---|---|---|---|
-| full/the Controller | 33 | 100% | 100% | 100% | 0.00 | 0.69 | 0.67 ± 0.12 | 56580 |
-| full/the Maximalist | 33 | 100% | 100% | 100% | 0.93 | 0.44 | 0.61 ± 0.14 | 54855 |
-| full/the Minimalist | 38 | 82% | 100% | 77% | 0.32 | 0.29 | 0.66 ± 0.12 | 49582 |
-| full/the Serialist | 35 | 94% | 91% | 100% | 0.00 | 0.43 | 0.63 ± 0.13 | 55195 |
+| probesample/the Controller | 23 | 83% | 100% | 86% | 0.50 | 0.25 | 0.57 ± 0.13 | 40713 |
+| probesample/the Maximalist | 25 | 84% | 81% | 92% | 0.79 | 0.53 | 0.61 ± 0.12 | 40682 |
+| probesample/the Minimalist | 27 | 63% | 84% | 46% | 0.27 | 0.46 | 0.56 ± 0.13 | 35231 |
+| probesample/the Serialist | 23 | 87% | 96% | 77% | 0.44 | 0.60 | 0.62 ± 0.13 | 39545 |
 
-### Held-out probe
-
-The same frozen decisions, drawn from other personas' runs, re-ranked by the head after every episode. Nothing here can move because the task got harder: the probe set does not change.
-
-| run | probe points | tau, first | tau, last | uniform head | prior head | top-1, last |
-|---|---|---|---|---|---|---|
-| full/the Controller | 12 | +0.667 | +0.778 | +0.667 | +0.778 | 92% |
-| full/the Maximalist | 12 | +0.667 | +0.611 | +0.500 | +0.611 | 75% |
-| full/the Minimalist | 12 | +0.444 | +0.111 | +0.000 | +0.056 | 33% |
-| full/the Serialist | 12 | +0.611 | +0.611 | +0.889 | +0.833 | 75% |
-
-The informed retry was offered on 7 rejected candidate set(s) and rescued 5 of them; the rest were rejected twice, which is a writer meaning it.
+The informed retry was offered on 10 rejected candidate set(s) and rescued 7 of them; the rest were rejected twice, which is a writer meaning it.
 
 ## Provider cost
 
-- calls: 1993
-- tokens: 7493302
-- cache hit rate: 8%
+- calls: 2128
+- tokens: 3814214
+- cache hit rate: 12%
 - estimated cost: $0.0000 (free tier; the price table would apply on a metered provider)

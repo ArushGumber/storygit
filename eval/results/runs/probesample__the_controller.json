@@ -1,0 +1,1997 @@
+{
+  "persona": "the Controller",
+  "config": {
+    "name": "probesample",
+    "episodes": 2,
+    "scenes_per_episode": 2,
+    "beats_per_scene": 2,
+    "seed": 10,
+    "selection": {
+      "n": 6,
+      "k": 3,
+      "selector": "mmr",
+      "lambda_": 0.5,
+      "use_judge": true,
+      "use_dial": true,
+      "temperature": 0.95
+    },
+    "preference_enabled": true,
+    "use_nli": true
+  },
+  "actions": [
+    {
+      "node_id": "n_e098a02bf7",
+      "level": "episode",
+      "shown": [
+        "p_5e93234260",
+        "p_5d00954fe6",
+        "p_a33a166a1a"
+      ],
+      "axes": [
+        "raise the stakes",
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.7637,
+        0.7756,
+        0.7397
+      ],
+      "chosen": "p_5d00954fe6",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7c4ed092217296a63a9267c8be378d63",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ashfall Audit Elias Thorne attempts to bypass the perimeter security at Ashfall to recover his confiscated research data, but discovers his former partner, Sarah, has already been repurposed as a system node. The facility's automated defense protocols trigger a lockdown, forcing Elias to choose between rescuing Sarah's consciousness and escaping with his own life. Ashfall is not just a storage site, but a facility that integrates biological hosts into its central processing network.",
+        "The Ashfall Silence Elara returns to her family home in Ashfall expecting to find it abandoned, but instead discovers a tea set still steaming on the parlor table and a back door swinging open into the wind. When she follows a trail of damp footprints toward the cellar, she realizes the house is not empty; someone is deliberately leaving the doors unlocked to invite her deeper inside. The house in Ashfall is actively occupied despite years of abandonment, and someone knows Elara has returned.",
+        "The Weight of Ash Elias spends the episode struggling to clear the thick, grey soot from the intake valves of the Ashfall climate shield. He pauses to listen to the settling of the mountain, experiencing the claustrophobic silence and the persistent, metallic grit that coats everything he touches. The climate shield in Ashfall is failing incrementally, requiring constant, manual maintenance that is taking a physical toll on the staff."
+      ]
+    },
+    {
+      "node_id": "n_9a7cd87837",
+      "level": "scene",
+      "shown": [
+        "p_19d3d2cbd3",
+        "p_e2fcb3e961",
+        "p_f68bc0b58b"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "subvert the expectation",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.7955,
+        0.8327,
+        0.7157
+      ],
+      "chosen": "p_e2fcb3e961",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "d652b1a22c5a48accc053462804efff1",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Root Cellar Elara descends into the cellar, finding her father's old desk cleared of dust and a single, fresh, handwritten ledger open to today's date. As she reads the entries, she hears the cellar door latch click shut from the outside, trapping her in the dark with the smell of wet earth and jasmine tea. The house is not just occupied, but maintained; someone has been documenting Elara's life from afar.",
+        "The False Trail Instead of entering the cellar, Elara locks the parlor door behind her and begins smashing the teacups. The house responds not with a ghost, but with a rhythmic thumping from the attic that matches the exact cadence of her father's old walking cane. Elara knows exactly who is in the house, and she is baiting them rather than investigating.",
+        "The Cellar Lock As Elara descends the stairs, she finds the cellar door not just open, but the heavy iron deadbolt has been welded shut from the outside. A familiar, rusted locket belonging to her mother lies on the bottom step, vibrating with a mechanical hum that matches the rhythmic ticking of the tea set upstairs. The house is not just occupied, but heavily fortified against anyone trying to leave, and her mother's history is tied to the anomaly."
+      ]
+    },
+    {
+      "node_id": "n_fe94f4623e",
+      "level": "beat",
+      "shown": [
+        "p_6193a5fd64",
+        "p_4da5fde850",
+        "p_6cbe3f4730"
+      ],
+      "axes": [
+        "raise the stakes",
+        "introduce a complication",
+        "slow down"
+      ],
+      "scores": [
+        0.7066,
+        0.7039,
+        0.6903
+      ],
+      "chosen": "p_6193a5fd64",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.7179,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "ad6b2da92b50f7b26053de9fe7efd05a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Attic Threshold As the thumping hits a deafening crescendo, Elara stops her assault on the china and sprints for the attic stairs. She pulls a jagged porcelain shard from her pocket and jams it into the locking mechanism of the attic door, effectively trapping whoever—or whatever—is inside, forcing them to remain as the house begins to groan and tilt on its foundation. Elara is prepared to physically sacrifice the house to stop her father from escaping the attic.",
+        "The Floorboards Give Way As the thumping reaches a crescendo, the floorboards in the hallway beneath Elara's feet buckle, revealing a hidden compartment containing her father's ledger. The thumping stops abruptly, and the parlor door she just locked begins to slowly creak open from the other side, despite the lock still being engaged. The house is physically altering its own architecture to force a confrontation.",
+        "The Standoff of Shards Elara stops moving as the thumping grows louder, vibrating through the parlor floorboards. She presses her back against the locked door and begins to methodically crush the remaining porcelain shards into the rug with the heel of her boot, turning the rhythmic sound into a duel of noise. Elara is choosing to engage with the entity in the house rather than flee."
+      ]
+    },
+    {
+      "node_id": "n_11c5f55a96",
+      "level": "prose",
+      "shown": [
+        "p_cf60fb1cf6",
+        "p_505d0d9d16",
+        "p_7e81923ccb"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.9439,
+        0.8604,
+        0.8577
+      ],
+      "chosen": "p_cf60fb1cf6",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0862,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "8939f39eac7461b7c4dd32ef28471fbe",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8271,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7237,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8333,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The thumping rattles the floorboards right through the soles of Elara's boots—one, two, heavy, pause, the exact rhythm her father used to pace the hallway when he wanted the whole house to know he was displeased. She drops the last unbroken saucer, lets it shatter against the hearth, and doesn't look back as she takes the stairs three at a time. The air at the top smells of dry ash and stale pipe tobacco. Behind the narrow tongue-and-groove door, the cane strikes the wood once, twice, a sharp demand for entry. Elara drives the jagged rim of the blue-willow teapot shard deep into the brass latch, wedging it hard against the frame until the metal screams under the pressure. From below, the main support beams groan, a long, tearing sound of timber giving up its grip as the floorboards tilt sharply toward the west. The house is sliding off its stone foundation, pulling the walls with it, and through the bolted door, her father's voice stops its rhythmic beating and begins to scream.",
+        "prose From inside the dark attic, the sound of splintering china below is not an attack; it is an invitation recognized too late. The heavy oak door shudders against the frame as the old man drives the black-iron head of his cane into the panels, matching the furious rhythm of the teacups shattering downstairs. When the frantic footsteps rush up the stairs, he raises the cane to strike, expecting the door to swing wide—instead, a jagged piece of white porcelain jams hard into the iron latch, locking from the outside with a sharp, final click. The floorboards beneath his slippers immediately begin to groan and cant violently to the left, and the old man realizes his daughter has not come to rescue him from Ashfall, but to let the collapsing house finish what the fire started.",
+        "prose The rhythmic pounding overhead became a furious rattling of the floorboards, matching the exact heavy-footed cadence of her father's old walking cane. Elara dropped the broken china, the handle of her mother's rose-patterned teacup still slick with cold brew, and sprinted through the narrow hallway. She vaulted the bottom three steps of the staircase, her boots finding the worn grooves in the wood she had memorized as a child. Above her, the latch of the attic door rattled violently in its frame, a dry, wooden voice hissing from the gap beneath it. Ignoring the sound, she pulled the jagged porcelain shard from her coat pocket, shoved it deep into the rusted iron tumbler of the attic lock, and hammered it home with the heel of her palm. The wood groaned, bending outward as something massive threw its weight against the inside of the door. Beneath her boots, the floorboards pitched sharply toward the eastern wall, the entire foundation of Ashfall sliding on its shale shelf as the weight inside the attic fought to break free."
+      ]
+    },
+    {
+      "node_id": "n_fe94f4623e",
+      "level": "beat",
+      "shown": [
+        "p_edcc225d12",
+        "p_18f288e7b8",
+        "p_30eacb058b"
+      ],
+      "axes": [
+        "introduce a complication",
+        "deepen the interiority",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.7987,
+        0.6323,
+        0.7552
+      ],
+      "chosen": "p_edcc225d12",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "6b8c9fbcad4af278d980a23bc9edff20",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5459,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6571,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Floor Gives Way As Elara tries to hold the attic door shut against the tilting of the collapsing house, the floorboards beneath her feet shear away entirely, plunging her backward down the stairwell and leaving her father trapped above as the entire upper storey separates from the rest of the structure. The structural failure of Ashfall is too advanced to contain, making Elara's attempt to trap her father self-defeating.",
+        "The Screaming Latch Elara forces the teapot shard into the attic latch as the house groans and begins to slide off its foundation, transforming her father's rhythmic cane thumping into high-pitched screams from behind the locked door.",
+        "The Slipping Floor Clinging to the tilting hallway as the house shears off its stone footing, Elara realizes her father cannot escape the attic while the weight of the shifting timber pins the door frame shut. Elara's father is physically trapped in the attic not just by the latch, but by the structural deformation of the collapsing house."
+      ]
+    },
+    {
+      "node_id": "n_99dd5c49e0",
+      "level": "prose",
+      "shown": [
+        "p_4b452cefbc",
+        "p_7269592c6d",
+        "p_5ec3d6a55b"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "slow down",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.8269,
+        0.7704,
+        0.6452
+      ],
+      "chosen": "p_4b452cefbc",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "dc18f12145a476652c6a9830a1ba86c0",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.7857,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.694,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6708,
+          "length": 0.7942,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose She throws her full weight against the tongue-and-groove door, her palms flat on the splintered pine as the entire frame cants drunkenly to the left. The screaming behind the wood turns high and thin, no longer a voice of authority but of pure terror. Elara digs the heels of her boots into the grain, trying to brace against the sickening slide of the walls, but the nails holding the landing together pop in rapid succession like pistol shots. With a sharp groan of tearing lath and plaster, the floorboards directly beneath her feet shear away entirely. She falls backward into open air, tumbling headfirst down the pitch of the stairwell as the ceiling of the upper hall rips completely free from the studs below. Wood splinters, plaster rains like grey snow, and by the time she slams hard onto the mid-level landing, the upper storey has separated entirely, drifting off into the dark with her father still trapped inside.",
+        "prose Her shoulder braces hard against the wood, leaning her entire weight into the tongue-and-groove door to keep the latch from slipping as the world beneath her tilts on its axis. The entire staircase drops three inches with a deafening crack, wood-screws tearing out of the lath and plaster with the sound of snapping bone. Elara throws her hands out to catch herself, but her boots find empty air where the landing used to join the hall. The floorboards sheer away from the wall in one long, groaning strip, and she falls backward into the dark, tumbling down the open spine of the stairwell as the upper storey peels entirely away from the foundation, leaving her father shouting from the isolated dark above.",
+        "prose The weight of the attic door is all wrong; it is not the wood pushing back against Elara’s shoulder, but the entire skeleton of Ashfall tearing itself apart at the joints. She braces her boots against the wide oak boards of the landing, her palms flat against the grain as the walls groan and split with the sound of snapping bone. Beneath her, the floor gives a sickening, greasy slide, the nails pulling free from the joists in a single, sustained screech of rusted iron. She catches only a glimpse of the stairwell dropping away into dark empty air before the landing shears off entirely, a square of timber plunging backward into the void below. Through the narrow gap where the floor used to meet the frame, the upper storey breaks clean away from the foundation like a cap pulled from a bottle, leaving her father pounding at the wood above while the world beneath him falls out into the grey wind."
+      ]
+    },
+    {
+      "node_id": "n_9a7cd87837",
+      "level": "scene",
+      "shown": [
+        "p_818f177b44",
+        "p_78c0987ead",
+        "p_a4e28ae2d7"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "raise the stakes",
+        "slow down"
+      ],
+      "scores": [
+        0.8398,
+        0.6881,
+        0.7466
+      ],
+      "chosen": "p_818f177b44",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "80d9c9fa712f514547d814061993e3e9",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.2635,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Mid-Level Void Coughing in the choking cloud of grey gypsum dust, Elara drags herself across the tilted boards of the mid-level landing. Above her, the severed upper storey hangs suspended in the dark void of the storm, while below, the main staircase has collapsed into a jagged maw of broken lath. Elara has survived the structural shear, but she is now entirely cut off from both the ground floor and her father in the upper storey.",
+        "The Severed Hall Stunned and bruised on the mid-level landing, Elara watches the upper storey vanish into the ash-choked night, leaving only jagged, splintered laths open to the elements. Through the gaping tear where the stairs used to meet the second floor, a single drop of fresh blood falls from the void, pattering onto the dust beside her boot. The separation of the upper storey was real and physical, but her father left tangible proof behind before he drifted away.",
+        "The Mid-Level Landing Gasping for breath on the mid-level landing amid a drift of grey plaster dust, Elara stares up at the jagged tear where the upper storey used to be. Above her, nothing remains except the night sky and the hollow sound of wind blowing through empty space. The separation of the upper storey is absolute; there is no immediate way back up to where her father is trapped."
+      ]
+    },
+    {
+      "node_id": "n_d3f648efbc",
+      "level": "beat",
+      "shown": [
+        "p_d754399faf",
+        "p_6c37140046",
+        "p_9dc0914730"
+      ],
+      "axes": [
+        "slow down",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8289,
+        0.7978,
+        0.6439
+      ],
+      "chosen": "p_d754399faf",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "18c012612ddf405af283b739344c4d80",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.9998,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Dust Pinned beneath a fallen beam on the tilted mid-level landing, Elara strains to reach her dropped teapot shard while gypsum dust settles over her eyelashes and lips. Above, her father's muffled screams turn to desperate, rattling coughs against the locked door. Elara sustained a bruised shoulder and trapped leg during the fall, but remains fully conscious and determined.",
+        "The Weight of the Lintels Pinned beneath a fallen timber on the tilted landing, Elara watches the severed upper storey begin to slide completely off its remaining joists, only to be held suspended by a single, massive iron lightning rod hooked into the oak beams. The upper storey is anchored to the tilting mid-level by external ironwork rather than falling clear.",
+        "The Severed Stair Clinging to the jagged edge of the collapsing landing as the house continues to slide away, Elara watches the upper storey break entirely free and slip sideways into the dark void, taking her father's frantic screams with it into the storm. The upper storey has completely detached, cutting off any possible rescue of her father."
+      ]
+    },
+    {
+      "node_id": "n_9154383f31",
+      "level": "prose",
+      "shown": [
+        "p_c20637238e",
+        "p_4c72ad7571",
+        "p_54671436f3"
+      ],
+      "axes": [
+        "slow down",
+        "deepen the interiority",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8219,
+        0.7733,
+        0.6305
+      ],
+      "chosen": "p_c20637238e",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.4274,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "2ac72de4d3beff662fd19692a2e36df7",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6962,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5316,
+          "length": 0.7971,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6918,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The fallen pine beam across Elara’s thigh is heavy with plaster and old iron nails, holding her hard against the canted floorboards of the mid-level landing. Grey gypsum dust coats her eyelashes and cakes her lips, turning every breath into a dry, metallic rasp. Just inches beyond her fingertips, the blue-willow teapot shard lies in the debris, catching a sliver of pale storm-light. Above, through the dark void where the staircase used to be, her father’s muffled screams change character, dropping from desperate shouts to wet, rattling coughs that hitch in the thin air. The wood of the severed upper storey groans against the wind, a high, thin timber-shriek, while below, the jagged maw of broken lath yawns open over nothing at all.",
+        "prose The fallen pine rafter pins her left thigh with the solid, immovable weight of an anvil, pressing the fabric of her trousers into the bruised flesh beneath. Elara ignores the flare of pain in her shoulder, her fingers clawing blindly across the buckled tongue-and-groove boards until her fingernails scrape against the cold porcelain edge of the blue-willow shard. The gypsum dust settles thick upon her eyelashes, graying her hair and coating her tongue like dry lime every time she pulls a ragged breath through her teeth. High above, through the black ragged void where the stairs used to be, the muffled pounding against the attic door resumes—weaker now, interrupted by a wet, rattling cough that shakes the remaining lath in the walls. She does not call back to him. Instead, she wedges the razor edge of the porcelain shard into a gap in the floorboards and begins to saw at the trapped hem of her coat, her movements sharp, rhythmic, and entirely silent.",
+        "prose Grey dust clogs her throat, tasting of old lime and dry rot. Elara twists her shoulder, the sharp edge of the fallen pine beam biting hard into her collarbone as she reaches out with numb fingers. The blue-willow teapot shard lies just an inch beyond her fingertips, half-buried in the sifted ruins of the lath. Above her, where the floor of the upper storey used to join the stairwell, there is only an open ceiling of torn laths and whistling storm wind. Through that black gap, her father’s voice ceases its frantic screaming, replaced by a wet, rattling cough that echoes directly down into the void. The house settles with another metal shriek of bending nails, tilting further toward the ravine."
+      ]
+    },
+    {
+      "node_id": "n_d3f648efbc",
+      "level": "beat",
+      "shown": [
+        "p_e926a4a598",
+        "p_2f0eebb32f",
+        "p_abdfb04b82"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.6526,
+        0.5845,
+        0.6856
+      ],
+      "chosen": "p_abdfb04b82",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.7317,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "81048728f2d62393443067752d827525",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5048,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Echo in the Beams As Elara fights to pull herself clear of the pinning pine beam, a heavy wooden cane drops through the gap in the collapsed stairwell from the severed upper storey, clattering onto the tilted landing beside her. She realizes the rhythmic thumping was never her father walking, but something trapped using his cane to force her hand. The entity in the attic has possession of the father's cane and is deliberately weaponizing his memory.",
+        "The Weight of Dust Pinned beneath a fallen pine beam on the tilted mid-level landing, Elara strains to reach her dropped teapot shard while gypsum dust settles over her eyelashes and lips. Above, her father's muffled screams turn to desperate, rattling coughs against the locked door. Elara is physically pinned and struggling to move, yet entirely conscious and aware of her isolation.",
+        "The Weight of Dust Pinned beneath a fallen pine beam on the tilted mid-level landing, Elara strains against the debris while gypsum dust settles over her eyelashes and lips. Above her, the severed upper storey drifts further into the storm, carrying her father's muffled screams into the dark. Elara is trapped on the mid-level landing with a bruised shoulder and a pinned leg while her father vanishes into the night."
+      ]
+    },
+    {
+      "node_id": "n_851fc686bc",
+      "level": "prose",
+      "shown": [
+        "p_0682b8ffb3",
+        "p_e02d39bbd4",
+        "p_06c47115d1"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.6973,
+        0.7257,
+        0.6183
+      ],
+      "chosen": "p_e02d39bbd4",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.1875,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "f179e9edec1fb13b8cd0520d848910ea",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6548,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.1855,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.694,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Through the splintered gap in the door frame, the father looks down at the void where the stairs used to be. His hand, white-knuckled around the horn handle of his walking cane, taps the pine floor once, twice, testing the hollow echo of the drop. Below, pinned in the gray dust of the mid-level landing, Elara's fingers claw uselessly at the timber across her thigh. He does not shout down to her; he only watches the storm catch the edge of the roof and pull it another foot into the dark, listening to the iron nails groan as they give up the studs.",
+        "prose Elara twists her hip against the rough grain of the timber, ignoring the tear of denim and skin as the heavy iron nails of the pine beam bite deeper into her thigh. The storm howls through the missing wall, sweeping freezing rain across her face and turning the grey gypsum dust on her lips into wet clay. Above the howling gale, the drifting upper storey gives one final, sickening lurch into the black void, and her father's muffled screams are abruptly sheared off, swallowed entirely by the wind as the wreckage vanishes into the dark.",
+        "prose Elara twists her torso, ignoring the hot tear of wood against her thigh as she claws at the grit of the landing. Her fingers find the rusted iron head of a spike protruding from the pine beam. She does not reach up toward the drifting darkness where the upper storey hangs; she hooks her fingers beneath the rusted iron and pulls until her knuckles split against the floorboards. The house gives a sickening lurch, sliding another foot toward the open air of the storm. The muffled screams above grow faint, swallowed by the howling wind, but Elara does not look up. She sets her shoulder against the timber and heaves, trading the skin of her arm for a single inch of clearance."
+      ]
+    },
+    {
+      "node_id": "n_e098a02bf7",
+      "level": "episode",
+      "shown": [
+        "p_1b02d870db",
+        "p_d5ea36e390",
+        "p_c1c33b56b2"
+      ],
+      "axes": [
+        "slow down",
+        "subvert the expectation",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.7104,
+        0.6287,
+        0.7624
+      ],
+      "chosen": "p_c1c33b56b2",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.5674,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "fb5d313afaf05ec0e2ba0ecad9f1f493",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9925,
+          "edit_direction": 1.0,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9928,
+          "edit_direction": 0.0,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9944,
+          "edit_direction": 0.1756,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Dust Pinned beneath the fallen pine beam on the tilted mid-level landing, Elara struggles to free her trapped thigh while the rain freezes over her skin. She realizes the cane thumping has not stopped with the upper storey's departure, but is now echoing from directly beneath the floorboards of the landing itself. The entity mimicking her father's cane is not trapped in the upper storey, but beneath the mid-level landing.",
+        "The Weight of Dust Pinned beneath the heavy pine beam on the mid-level landing, Elara forces herself free from the trapped denim and drags her bleeding thigh across the tilted floorboards. Ignoring the drop into the dark void below, she reaches the jagged edge of the remaining stairwell and discovers her father's heavy oak walking cane jammed upright into the floor joints, tapping out an automated rhythm against the lath. The house is operating the walking cane mechanically, proving her father's presence in the attic was an engineered illusion.",
+        "The Weight of Dust Pinned beneath the fallen pine beam on the tilted mid-level landing, Elara struggles to free her trapped thigh while the storm howls through the missing upper storey. When she manages to wrench herself free, she discovers that the beam was not holding her down by accident; it has been nailed directly through her father's old walking cane, which is planted deep into the subfloor like a marker. The house is physically trapping Elara using her father's personal belongings as structural anchors."
+      ]
+    },
+    {
+      "node_id": "n_d0bd15e9bb",
+      "level": "scene",
+      "shown": [
+        "p_e568842276",
+        "p_de9713d4de",
+        "p_f613b3cb78"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.7653,
+        0.6238,
+        0.6884
+      ],
+      "chosen": "p_e568842276",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.7529,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7addbd546edec7d13d3f65b980c5db77",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9895,
+          "edit_direction": 1.0,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9892,
+          "edit_direction": 0.0,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9904,
+          "edit_direction": 0.171,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Walking Cane Straining against the fallen pine beam, Elara wrenches her trapped thigh free from the iron nails. As she crawls away from the edge of the void, she discovers the beam was not pinning her by accident; it has been nailed directly through her father's old walking cane, which is planted deep into the subfloor like a deliberate marker. The pine beam pinning Elara was deliberately anchored using her father's old walking cane as a marker.",
+        "The Walking Cane Straining against the fallen pine beam pinning her thigh, Elara wrenches herself free from the debris on the tilted mid-level landing. As she scrambles backward away from the jagged drop, she discovers that the heavy timber was not holding her down by chance; it has been nailed directly through her father's old walking cane, which is planted deep into the subfloor like a deliberate marker. The house is not just collapsing; it is actively marking and anchoring its presence around the memory of her father using his own possessions.",
+        "The Walking Cane Elara wrenches her trapped thigh free from the heavy pine beam, leaving behind a strip of denim and torn skin, only to discover the timber was driven through her father's old walking cane, planted deep into the subfloor like a marker. The house is deliberately anchoring artifacts related to her father, treating him as a constructed presence rather than a trapped person."
+      ]
+    },
+    {
+      "node_id": "n_54c5ab12f6",
+      "level": "beat",
+      "shown": [
+        "p_29ff7e6bf8",
+        "p_5e324acef0",
+        "p_858116cfa6"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.78,
+        0.6104,
+        0.5611
+      ],
+      "chosen": "p_29ff7e6bf8",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "d508d01a3d6e9c61f2c092c024611d6f",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9893,
+          "edit_direction": 1.0,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9868,
+          "edit_direction": 0.0,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.5,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9897,
+          "edit_direction": 0.8036,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Walking Cane Struggling against the fallen pine beam, Elara wrenches her trapped thigh free from the heavy iron nails. As she drags herself across the tilted landing, she discovers that the beam was not holding her down by accident: it is nailed directly through her father's old wooden walking cane, which has been planted deep into the subfloor like a deliberate marker. The pine beam pinning Elara was deliberately anchored using her father's old walking cane.",
+        "The Root and the Marker Elara wrenches herself free from the heavy pine beam, tearing denim and skin from her thigh, only to discover the timber was nailed directly through her father's old walking cane, planted deep in the subfloor like a malicious marker. The fallen beam is pinned down by her father's walking cane, proving someone rigged the landing.",
+        "The Father's Witness From the perspective of the trapped man in the severed upper storey, the floor tilts violently as the timber frame separates, revealing Elara pinned far below on the landing. He watches through the dark gap in the floorboards as she wrenches herself free from the pine beam, realizing too late that his own old walking cane was the anchor holding her down. The father watches Elara's struggle from the severed upper storey and knows the cane was used as a marker."
+      ]
+    },
+    {
+      "node_id": "n_2bfc5a047d",
+      "level": "prose",
+      "shown": [
+        "p_e77dfdc741",
+        "p_ddddf82773",
+        "p_3781cbb2fb"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.7883,
+        0.7591,
+        0.6569
+      ],
+      "chosen": "p_ddddf82773",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.5311,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "c6da27de94a0821db13563a5dedd0821",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9933,
+          "edit_direction": 1.0,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9924,
+          "edit_direction": 0.3127,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9893,
+          "edit_direction": 0.0,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Elara twists her torso, planting her boot heels against the canted baseboard and heaving upward until fabric tears and skin strips free from the rusted iron. Panting, she drags herself across the buckled floorboards toward the inner wall. But the pine beam refuses to roll aside. She drops to her knees in the wet grit, gripping the timber to shove it clear—and stops. Driven straight through the dense heart of the pine and deep into the heart-pine subfloor is her father's cherrywood walking cane, its brass ferrule wedged immovable beneath the joists like a stake through a corpse.",
+        "prose Beneath the canted rafters of the mid-level landing, the iron nails scream against the grain as Elara rips her torn thigh away from the pine beam. She leaves a smear of dark blood across the grey dust. Dragging her dead weight across the sloping floorboards toward the inner wall, she reaches down to steady herself and freezes. The heavy timber that pinned her was never part of the collapse; it has been spiked straight through the polished crook of her father's old wooden walking cane, driving the ash shaft deep into the tongue-and-groove subfloor like a surveyor's peg.",
+        "prose The iron bites hard, but Elara twists until the fabric screams and her skin tears free with a wet, hot snap. She rolls onto her palms, sliding across the canted boards through wet plaster and grit while the rain stings her bare ankle. Her fingers strike wood before she hits the drop-off—something rounded and stubborn driven vertically through the grain. She grips the polished crook of her father's old ash walking cane, only to find the entire shaft immovable, pinned straight down into the subfloor by the very beam that held her."
+      ]
+    },
+    {
+      "node_id": "n_54c5ab12f6",
+      "level": "beat",
+      "shown": [
+        "p_f7fcfc1667",
+        "p_116609f16f",
+        "p_32180923a4"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.7868,
+        0.7165,
+        0.6379
+      ],
+      "chosen": "p_f7fcfc1667",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "e1a4950eaaf03ce82e3f6f246a73fb9c",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9844,
+          "edit_direction": 1.0,
+          "length": 0.5584,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9852,
+          "edit_direction": 0.0,
+          "length": 0.5714,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9867,
+          "edit_direction": 0.7419,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The False Floor Instead of attempting to pull the cane from the subfloor, Elara tests the surrounding boards and finds they are hinged, concealing a narrow vertical drop-chute built directly into the core of the framing. The house contains secret internal channels connected to the framing.",
+        "The Hidden Floorboard Ignoring the burning pain in her thigh, Elara grips the brass-capped handle of the walking cane and wrenches upward, discovering that the floorboard beneath it is loose and covers a concealed cavity in the joists. The walking cane acts as a secret latch for a hidden compartment in the mid-level landing subfloor.",
+        "The Hidden Floorboard Tracing her fingers along the smooth grain of the anchored walking cane, Elara discovers a recessed iron ring set flush into the tongue-and-groove subfloor beneath the beam. She pulls it upward, hinging open a concealed compartment that reveals her father's missing journal and a heavy iron ring of spare keys. Elara finds her father's hidden journal and spare keys concealed beneath the mid-level landing floorboards."
+      ]
+    },
+    {
+      "node_id": "n_805c88a4c6",
+      "level": "prose",
+      "shown": [
+        "p_98232b6750",
+        "p_84b7421ea8",
+        "p_78029e2b23"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.7284,
+        0.6772,
+        0.7988
+      ],
+      "chosen": "p_78029e2b23",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.4104,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "e153f97d661ef7fc8a1665d5a2aea826",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9894,
+          "edit_direction": 0.7987,
+          "length": 0.6811,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9899,
+          "edit_direction": 0.0,
+          "length": 0.6667,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9928,
+          "edit_direction": 1.0,
+          "length": 0.6627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Instead of tugging at the brass-capped ash shaft, Elara drags her palm flat across the adjoining planks. Beneath the layer of gypsum dust, the grain does not run true. Her bleeding fingertips catch on a fine, unweathered seam cut flush with the baseboard. When she throws her weight onto the edge of the plank, it gives way with a dull, oiled click, swinging downward on concealed iron hinges into the pitch-black core of the framing. A sudden draft rushes upward from the dark, smelling sharply of wet lime and cold cellar stone. There are no stairs inside the narrow vertical drop-chute, only a slick metal ladder plunging down between the studs into the foundations of Ashfall.",
+        "prose She leaves the cane where it stands, refusing to grant whatever watches her the satisfaction of seeing her fight a dead man's toy. Her fingers press against the square of pine flooring immediately beside the ash shaft. The wood gives with a dry, muffled click that has nothing to do with the storm. Kneeling in the wet grit of her own blood, she pries at the tongue-and-groove seam with her fingernails until a section of the decking lifts on oiled brass hinges. Beneath it lies a vertical drop-chute, black and narrow as a chimney flue, plunging straight down into the cold dark of the foundations where no light reaches.",
+        "prose Instead of tugging at the brass-capped crook, Elara runs her palm along the grain of the surrounding pine boards, searching for the give she knows must be there. Her fingers catch on a narrow brass seam running parallel to the baseboard. With a sharp wrench, she hoists upward, and a three-foot section of the tongue-and-groove flooring swings open on heavy iron hinges like a cellar door turned on its side. Inside, the darkness drops straight down into the foundation, smelling of damp lime and old tallow. A vertical drop-chute, narrow enough to scrape a shoulder, plunges directly through the core of the framing toward the cellars below."
+      ]
+    },
+    {
+      "node_id": "n_d0bd15e9bb",
+      "level": "scene",
+      "shown": [
+        "p_7db25fb280",
+        "p_21480f13bb",
+        "p_074dc4d8f8"
+      ],
+      "axes": [
+        "shift the point of view",
+        "deepen the interiority",
+        "slow down"
+      ],
+      "scores": [
+        0.7401,
+        0.6396,
+        0.6388
+      ],
+      "chosen": "p_7db25fb280",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.7273,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "e10d2aaea26c41a6e6b466464949dca9",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.986,
+          "edit_direction": 0.9426,
+          "length": 0.5598,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9852,
+          "edit_direction": 1.0,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9889,
+          "edit_direction": 0.0,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Watcher in the Ash Hidden in the dark cavity beneath the roof's remaining angle, a watcher observes Elara's escape down the drop-chute, testing the tension of a secondary wire attached to the walking cane. Elara is being actively guided, not merely trapped, into the lower levels.",
+        "The Lime Cellar Descending the vertical drop-chute into the dark foundation, Elara drops onto the packed lime floor of the lower cellar. As she fumbles for her matches in the damp, a rhythmic scraping echoes from the darkness beyond the stone partition, proving someone is already waiting for her below. The house's internal architecture is designed to funnel people downward, and Elara is not alone in the cellar.",
+        "The Brass Handle Kneeling in the grey gypsum dust beside the nailed pine beam, Elara studies the way her father's walking cane has been driven deep into the subfloor. Instead of immediately fleeing down the newly revealed drop-chute, she reaches out and touches the polished brass crook, realizing the wood bears fresh knife-whittling marks that her father never made. The cane was modified recently by an unknown hand mimicking her father's work."
+      ]
+    },
+    {
+      "node_id": "n_898a0f639f",
+      "level": "beat",
+      "shown": [
+        "p_1f4a3c4239",
+        "p_51d8d1c8a2",
+        "p_4b8bc5cd61"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.7448,
+        0.6245,
+        0.544
+      ],
+      "chosen": "p_1f4a3c4239",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.8305,
+      "flags_shown": 4,
+      "hard_flags_shown": 1,
+      "snapshot_id": "425189ef30af9a7d1b6a3a5f597b2a0e",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9903,
+          "edit_direction": 0.515,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9865,
+          "edit_direction": 0.0,
+          "length": 0.5699,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.57,
+          "voice_cosine": 0.9921,
+          "edit_direction": 1.0,
+          "length": 0.5685,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Cellar Descent Descending the vertical drop-chute into the dark foundation stone, Elara lands in the flooded cellar beneath Ashfall Parlor just as heavy footsteps begin pacing directly overhead on the main floorboards. The house's cellar is intentionally flooded, and someone is actively tracking her descent from above.",
+        "The Wire's Tension Crouched in the dark cavity beneath the roof's remaining angle, the watcher pulls taut the secondary wire connected to the walking cane just as the drop-chute slams shut below, confirming Elara's descent into the trap. The watcher is actively monitoring Elara's movements through the house framing via connected wires and traps.",
+        "The Descent Descending into the cold dark of the drop-chute, Elara drops from rung to rung until her boots touch the stone flags of the cellar floor, where a single flickering lantern illuminates an open crate filled with her father's missing journals. Elara's father's journals are stored in the cellar, left out deliberately."
+      ]
+    },
+    {
+      "node_id": "n_ff2534d983",
+      "level": "prose",
+      "shown": [
+        "p_87f8f668c1",
+        "p_6867ae36b2",
+        "p_8452d861aa"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.8412,
+        0.7194,
+        0.636
+      ],
+      "chosen": "p_87f8f668c1",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.2406,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7f808824505bd73ed821a5d2406333c2",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.994,
+          "edit_direction": 0.8835,
+          "length": 0.6854,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.992,
+          "edit_direction": 1.0,
+          "length": 0.712,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9914,
+          "edit_direction": 0.0,
+          "length": 0.6627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The iron rungs bite into Elara's gloved palms as she drops the final length of the shaft, her boots splashing ankle-deep into the dark, stagnant water pooling across the foundation flags. The chill of the cellar rises instantly, smelling of rot and old iron. She presses her back against the damp limestone wall, drawing breath to steady the thumping in her throat, when the first impact hits the floorboards directly above. Thud. Thud. Heavy, deliberate strides pace the exact perimeter of Ashfall Parlor, vibrating through the overhead joists and raining flakes of dried plaster into the black water around her shins. Whoever stands up there is not searching; they are waiting for the splash to give her away.",
+        "prose The iron rungs bite through the soles of Elara's boots as she drops three fathoms into the dark, her shoulder clipping the damp limestone casing of the shaft before her heels splash down in three inches of stagnant cellar water. She stifles a sharp gasp, biting hard into the heel of her hand. Above her, muffled by thick oak and stone, a heavy boot heel strikes the main parlor floorboards with deliberate, echoing weight. Another steps beside it, pacing a slow, even rhythm from east to west directly over the cellar head. Elara presses her back against the freezing foundation wall, her fingers wrapping around the hilt of her belt knife as the rhythmic tramping overhead pauses, waits, and then resumes with a sharp, dragging scrape of wood against timber.",
+        "prose The drop-chute delivers her hard into the dark, her boots splashing ankle-deep into stagnant, freezing water that pools across the uneven flagstones of the lower cellar. The air here is thick with the stench of rotting lime and river silt. Before she can catch her breath against the damp chill, a slow, deliberate cadence begins directly overhead on the main floorboards of Ashfall Parlor. The rhythmic, heavy thumping of a wooden shaft striking the planks sends fine particles of plaster sifting down from the ceiling joists. It is the exact measure of her father's cane, moving with calculated, unhurried steps toward the hidden seam of the drop-chute."
+      ]
+    },
+    {
+      "node_id": "n_898a0f639f",
+      "level": "beat",
+      "shown": [
+        "p_b18852f186",
+        "p_25427c7579",
+        "p_5e9234e20f"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.6747,
+        0.4417,
+        0.6372
+      ],
+      "chosen": "p_b18852f186",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 1,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.989,
+          "edit_direction": 0.4836,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9857,
+          "edit_direction": 0.0,
+          "length": 0.5744,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.57,
+          "voice_cosine": 0.9904,
+          "edit_direction": 1.0,
+          "length": 0.5598,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Sinking Floor Dropping down the vertical shaft, Elara hits the standing water of the flooded cellar just as heavy iron boots begin descending the outer stone steps. Trapped between the rising water and an unknown pursuer, she realizes the chute was never an escape route—it is a funnel. The cellar is flooded, and someone is already coming down the stone stairs to intercept her.",
+        "The Watcher's Pull Hidden in the dark cavity beneath the roof's remaining angle, Silas tests the tension of the secondary wire connected to the walking cane as Elara disappears down the drop-chute, ensuring the trap remains set for her return. Silas is the watcher in the ash cavity and controls the wire rigged to the walking cane.",
+        "The Cellar Floor Landing hard in the damp stone foundation of the cellar, Elara dampens her breathing and listens to the heavy footfalls pacing overhead, realizing whoever is above is searching for the release mechanism of the drop-chute. The watcher is actively tracking her through the house."
+      ]
+    },
+    {
+      "node_id": "n_898a0f639f",
+      "level": "beat",
+      "shown": [
+        "p_0844c809e6",
+        "p_58c971b2f4",
+        "p_10bd9424ab"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "slow down"
+      ],
+      "scores": [
+        0.7043,
+        0.5699,
+        0.5874
+      ],
+      "chosen": "p_0844c809e6",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "58ddb257f26fbb1679878400eab1e506",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9877,
+          "edit_direction": 0.3822,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9879,
+          "edit_direction": 1.0,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9887,
+          "edit_direction": 0.0,
+          "length": 0.567,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Wading Step Standing knee-deep in the stagnant water of the flooded cellar, Elara discovers that the heavy boots pacing overhead are not human at all, but a mechanical winch dragging a weighted iron beam back and forth across the joists to test the house's structural integrity. The pacing overhead is a mechanical mechanism, not a person walking.",
+        "The Drowning Step Standing knee-deep in the stagnant water of the cellar, Elara discovers a rotting wooden crate just beneath the surface. As she reaches out to steady herself against it, the lid gives way, revealing her father's leather ledger resting inside, perfectly dry and weighted with a heavy brass key. The ledger contains records proving the house was deliberately rigged, and the brass key fits the iron box hidden in the foundation wall.",
+        "The Stagnant Water Standing knee-deep in the freezing cellar water, Elara suppresses a shiver as the rhythmic footsteps overhead suddenly halt directly above her hiding spot, followed by the metallic scrape of a heavy latch sliding home. The person pacing overhead knows exactly which part of the cellar corresponds to the drop-chute."
+      ]
+    },
+    {
+      "node_id": "n_e10a41f95e",
+      "level": "prose",
+      "shown": [
+        "p_d050b9c0e7",
+        "p_ec28bd87ae",
+        "p_4c4e13acd8"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "slow down"
+      ],
+      "scores": [
+        0.8678,
+        0.8335,
+        0.7559
+      ],
+      "chosen": "p_d050b9c0e7",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0929,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "9b4394bb22e15bf7102262d31967a0ec",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9931,
+          "edit_direction": 0.9623,
+          "length": 0.7333,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.989,
+          "edit_direction": 1.0,
+          "length": 0.7097,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9935,
+          "edit_direction": 0.0,
+          "length": 0.6567,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The rhythmic grinding above pauses. A screech of rusted iron echoes through the damp air, followed by a heavy, scraping groan that rattles the lime-washed foundation stones. Elara reaches out in the dark, her fingers brushing against a cold steel cable taut as a bowstring, vibrating with immense tension. She follows the line upward with her hand until it disappears into a pulley block bolted directly into the ceiling joists. It is not a person pacing the parlor at all. Above her, a weighted iron beam drags back and forth across the floorboards with mechanical precision, slowly grinding the remaining framing into splinters to test the house's structural integrity. With every pass of the winch, another shower of debris plunges through the gaps in the timber, bringing the collapsing weight of Ashfall closer to the water at her feet.",
+        "prose Elara grips the cold edge of a rusted water pipe to steady herself as another grating screech vibrates down from the parlor. It is not a heel striking the oak. It is the rhythmic, metallic scrape of an iron flange dragging across the grain. She leans her weight against the slimy stone and strains her eyes upward through the gap between the foundation wall and the main joist. A heavy square timber, bound in iron strapping and lashed to a braided wire cable, slides smoothly across the overhead boards, reversing its course with a dull clank as a gear catches somewhere inside the wall framing. There is no footfall. There is only the winch, methodical and cold, testing the load-bearing strength of the remaining frame with every deliberate pull.",
+        "prose The rhythmic grinding of metal against dry pine scrapes through the joists above, drowning out the steady drip of cellar water. Elara reaches out in the dark, her fingers brushing the rusted links of a heavy chain trailing down from the subfloor. Following the links upward into the gloom, she traces the path of a thick iron cable pulled taut across a rotating winch drum mounted to the foundation wall. With every mechanical heave of the motor, the weighted beam overhead drags across the floorboards above, testing the structural load of a house that has already begun to tear itself apart from the foundation."
+      ]
+    }
+  ],
+  "episodes_completed": 2,
+  "call_summary": {
+    "calls": 479,
+    "prompt_tokens": 793705,
+    "completion_tokens": 142695,
+    "cost_usd": 0.0,
+    "cache_hits": 34,
+    "errors": 151,
+    "mean_latency_s": 1.5380044653947322,
+    "total_tokens": 936400,
+    "cache_hit_rate": 0.0709812108559499,
+    "by_purpose": [
+      {
+        "purpose": "propose.beat",
+        "calls": 115,
+        "tokens": 305810,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 164,
+        "tokens": 263706,
+        "cost_usd": 0.0,
+        "cache_hits": 12
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 96,
+        "tokens": 169264,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 28,
+        "tokens": 73174,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 14,
+        "tokens": 49768,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "propose.beat.repair",
+        "calls": 3,
+        "tokens": 28382,
+        "cost_usd": 0.0,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 16,
+        "tokens": 25795,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft.repair",
+        "calls": 4,
+        "tokens": 14977,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 39,
+        "tokens": 5524,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "gemini",
+        "calls": 457,
+        "tokens": 935310,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 22,
+        "tokens": 1090,
+        "cost_usd": 0.0
+      }
+    ],
+    "cache": {
+      "hits": 252,
+      "misses": 1337,
+      "entries": 7335
+    },
+    "budget_remaining_usd": 12.0
+  },
+  "preference_summary": {
+    "pairs_seen": 16,
+    "edits_seen": 4,
+    "voice_trained": true,
+    "top_weights": [
+      {
+        "feature": "edit_direction",
+        "weight": 4.8262
+      },
+      {
+        "feature": "judge_specificity",
+        "weight": 3.5749
+      },
+      {
+        "feature": "judge_voice",
+        "weight": 3.4004
+      },
+      {
+        "feature": "judge_momentum",
+        "weight": 2.4673
+      }
+    ],
+    "bandit_safe": 0.5,
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 2.4672564776628305,
+      "judge_specificity": 3.574872167015789,
+      "judge_consequence": -0.5536064908195277,
+      "judge_voice": 3.4003527798128794,
+      "criterion_1": 2.33082436426082,
+      "criterion_2": 1.6453986130352034,
+      "criterion_3": 1.863114734593474,
+      "criterion_4": 1.4875520827193216,
+      "continuity": 1.9622089432387082,
+      "voice_cosine": 0.4076259183093914,
+      "edit_direction": 4.826227814428175,
+      "length": 0.07257107579792238,
+      "dialogue_ratio": 0.6711140206190536
+    },
+    "weight_recovery": 0.24523042451884658
+  },
+  "hidden_weights": {
+    "judge_momentum": 0.0,
+    "judge_specificity": 0.5,
+    "judge_consequence": 0.7,
+    "judge_voice": 0.0,
+    "criterion_1": 1.0,
+    "criterion_2": 0.15,
+    "criterion_3": 0.0,
+    "criterion_4": 0.0,
+    "continuity": 1.0,
+    "voice_cosine": 0.0,
+    "edit_direction": 0.6,
+    "length": -0.2,
+    "dialogue_ratio": 0.0
+  },
+  "probe": [],
+  "errors": [],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
+}
