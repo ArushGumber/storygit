@@ -43,7 +43,7 @@
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "be684ec631e1a5575c413226958d9534",
+      "snapshot_id": "3a95c0127ba04e2e6a59bdcccd0584ee",
       "stale_marked": 0,
       "features": [
         {
@@ -122,7 +122,7 @@
       "edit_distance": 0.0,
       "flags_shown": 1,
       "hard_flags_shown": 0,
-      "snapshot_id": "39d8b4ac7af82dfaa6af9b50dccca7c8",
+      "snapshot_id": "4e46ebf55b952d60ae310310569e5c72",
       "stale_marked": 0,
       "features": [
         {
@@ -201,7 +201,7 @@
       "edit_distance": 0.0,
       "flags_shown": 1,
       "hard_flags_shown": 0,
-      "snapshot_id": "158bf56372e8711fedceb3e35277cb20",
+      "snapshot_id": "7a400325a3d0296d9c2cecc663dea51a",
       "stale_marked": 0,
       "features": [
         {
@@ -259,22 +259,29 @@
   ],
   "episodes_completed": 0,
   "call_summary": {
-    "calls": 137,
-    "prompt_tokens": 139433,
-    "completion_tokens": 67316,
+    "calls": 221,
+    "prompt_tokens": 148019,
+    "completion_tokens": 80893,
     "cost_usd": 0.0,
-    "cache_hits": 105,
-    "errors": 30,
-    "mean_latency_s": 0.029441047014467193,
-    "total_tokens": 206749,
-    "cache_hit_rate": 0.7664233576642335,
+    "cache_hits": 118,
+    "errors": 101,
+    "mean_latency_s": 0.013694356547574286,
+    "total_tokens": 228912,
+    "cache_hit_rate": 0.5339366515837104,
     "by_purpose": [
       {
         "purpose": "propose.prose",
-        "calls": 79,
-        "tokens": 114628,
+        "calls": 60,
+        "tokens": 102230,
         "cost_usd": 0.0,
-        "cache_hits": 66
+        "cache_hits": 60
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 140,
+        "tokens": 51159,
+        "cost_usd": 0.0,
+        "cache_hits": 37
       },
       {
         "purpose": "propose.episode",
@@ -291,15 +298,8 @@
         "cache_hits": 7
       },
       {
-        "purpose": "judge.soft",
-        "calls": 35,
-        "tokens": 16598,
-        "cost_usd": 0.0,
-        "cache_hits": 18
-      },
-      {
         "purpose": "propose.scene",
-        "calls": 9,
+        "calls": 7,
         "tokens": 10090,
         "cost_usd": 0.0,
         "cache_hits": 7
@@ -308,21 +308,21 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 130,
-        "tokens": 204646,
+        "calls": 164,
+        "tokens": 196584,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 7,
-        "tokens": 2103,
+        "calls": 57,
+        "tokens": 32328,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 281,
-      "misses": 915,
-      "entries": 8629
+      "hits": 260,
+      "misses": 185,
+      "entries": 8640
     },
     "budget_remaining_usd": 12.0
   },
@@ -386,6 +386,6 @@
   "errors": [
     "RateLimited: groq: rate limited"
   ],
-  "waited_seconds": 335.9,
-  "rate_limit_waits": 12
+  "waited_seconds": 989.0,
+  "rate_limit_waits": 9
 }

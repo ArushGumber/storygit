@@ -565,3 +565,61 @@ def test_soft_edge_marks_are_weaker_than_stale(fixture: Fixture) -> None:
     assert marks[fixture.beat_b].kind is MarkKind.stale
     assert marks[fixture.beat_d].kind is MarkKind.maybe_affected
     assert "Not a declared dependency" in marks[fixture.beat_d].reason
+
+
+def test_a_duplicate_entity_is_flagged_on_the_candidate_that_creates_it() -> None:
+    """The hot path dropped the flag in the one case that produces duplicates.
+
+    ``check_new_facts`` filtered to flags mentioning one of the new facts. A
+    duplicate-entity flag carries entity ids and no fact ids, so it survived only when the
+    change introduced no facts at all -- the opposite of the case that matters, since a
+    duplicate is created by extracting a fact about a name under a slightly different
+    spelling. The filter cannot simply pass every duplicate through, either: the pair is a
+    property of the story, so all three candidates in a shown set would carry the same flag.
+    Both halves are asserted here.
+    """
+    from storygit.continuity import layer1
+    from storygit.continuity.flags import FlagKind
+    from storygit.domain.ids import EntityId, FactId, NodeId
+    from storygit.domain.nodes import Beat, Scene, Story
+    from storygit.domain.state import StoryState
+    from storygit.domain.world import Entity, EntityKind, Fact, Predicate
+
+    story = Story(id=NodeId("n_root"), title="S")
+    scene = Scene(id=NodeId("n_scene"), parent_id=story.id, title="One", position=0)
+    beat = Beat(id=NodeId("n_beat"), parent_id=scene.id, title="B", position=0)
+    marguerite = Entity(id=EntityId("e_full"), name="Marguerite Osei", kind=EntityKind.character)
+    short = Entity(id=EntityId("e_short"), name="Marguerite", kind=EntityKind.character)
+    other = Entity(id=EntityId("e_other"), name="Ronnie Fenn", kind=EntityKind.character)
+
+    new_fact = Fact(
+        id=FactId("f_new"),
+        subject=short.id,
+        predicate=Predicate.note,
+        object_text="announced the pledges",
+        valid_from_beat=beat.id,
+        established_by_beat=beat.id,
+    )
+    unrelated = Fact(
+        id=FactId("f_other"),
+        subject=other.id,
+        predicate=Predicate.note,
+        object_text="said nothing at all",
+        valid_from_beat=beat.id,
+        established_by_beat=beat.id,
+    )
+    state = StoryState.build(
+        nodes={story.id: story, scene.id: scene, beat.id: beat},
+        entities={e.id: e for e in (marguerite, short, other)},
+        facts={new_fact.id: new_fact, unrelated.id: unrelated},
+    )
+
+    about_the_duplicate = layer1.check_new_facts(state, {new_fact.id})
+    assert any(f.kind is FlagKind.duplicate_entity for f in about_the_duplicate), (
+        "a fact about the short name is what creates the duplicate; the flag must survive"
+    )
+
+    about_someone_else = layer1.check_new_facts(state, {unrelated.id})
+    assert not any(f.kind is FlagKind.duplicate_entity for f in about_someone_else), (
+        "a candidate that does not touch either name must not carry the story's duplicate"
+    )

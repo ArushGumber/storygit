@@ -153,14 +153,17 @@ async def regenerate(
     Args:
         state: Application state.
         node_id: The stale node.
-        subtree: Include every stale node beneath it.
+        subtree: Tell the model how much is stale beneath this node, so the regeneration
+            accounts for it. It does **not** regenerate those nodes -- one node comes back,
+            and the stale descendants stay stale until the writer asks for each. Cascading
+            regeneration would be the system deciding how much of the manuscript to rewrite.
         intent: Optional extra instruction.
 
     Returns:
         Candidates for the node.
 
     Raises:
-        HTTPException: 404 if the node does not exist.
+        HTTPException: 404 if the node does not exist, 400 if it is the story root.
     """
     engine = state.engine()
     story = engine.state()
@@ -168,13 +171,29 @@ async def regenerate(
     if target is None:
         raise HTTPException(status_code=404, detail=f"no node {node_id}")
 
+    # The story root has no level to propose at and no parent to propose under, so the
+    # two lines below would raise ValueError and AttributeError respectively and the
+    # writer would see a 500. There is a real answer here and it is not an error page:
+    # regenerating the whole story is not an action this system offers.
+    if target.parent_id is None or target.node_type.value not in set(Level):
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"{node_id} is the story root; regeneration works on an episode, scene, "
+                "beat or prose node, not on the whole story"
+            ),
+        )
+
     reason = target.stale_reason or "this node's dependencies changed"
     stale_below = [
         n.id for n in story.descendants_of(NodeId(node_id)) if n.status is NodeStatus.stale
     ]
     prompt = f"This needs revisiting: {reason}"
     if subtree and stale_below:
-        prompt += f" There are {len(stale_below)} stale nodes beneath it."
+        prompt += (
+            f" There are {len(stale_below)} stale nodes beneath it; write this so they can "
+            "be revised to follow, rather than assuming they already do."
+        )
     if intent:
         prompt = f"{intent}\n\n{prompt}"
 

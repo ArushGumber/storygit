@@ -162,7 +162,13 @@ def fit(
         if sample_weights is not None
         else np.ones(len(pairs), dtype=np.float64)
     )
-    weights = weights / weights.sum() * len(pairs)
+    # Deliberately *not* renormalised to sum to the pair count. Doing that rescaled the
+    # mean weight back to 1, so a session in which every win was an edited win -- every
+    # weight 0.5 -- came out identical to one in which none was. The down-weighting became
+    # purely relative, and "an edited-then-accepted win is weaker evidence and is weighted
+    # accordingly" was true only of sessions that happened to contain a mix. Used as they
+    # are, the gradient from a session of weak wins is genuinely smaller against the same
+    # L2 pull, so the head stays nearer the prior. Which is what weaker evidence means.
 
     # A direction with no spread in the observed differences is unidentified: the data
     # cannot move it, so whatever it is regularized towards is what it ends up as.

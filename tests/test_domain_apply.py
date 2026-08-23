@@ -11,6 +11,7 @@ from storygit.domain.diff import (
     AddFact,
     AddKnows,
     AddNode,
+    ClearLock,
     Diff,
     DiffAuthor,
     InvalidateFact,
@@ -401,3 +402,38 @@ def test_two_siblings_claiming_one_slot_are_ordered_by_acceptance(fixture: Fixtu
     order = [state.nodes[n].title for n in state.children[fixture.scene]]
     assert order.index("setup") < order.index("payoff"), order
     assert state.nodes[second].position > state.nodes[first].position
+
+
+def test_removing_a_beat_does_not_leave_a_fact_ended_by_a_beat_that_is_gone(
+    fixture: Fixture,
+) -> None:
+    """A dangling ``valid_until_beat`` reads as "true forever", silently.
+
+    ``valid_at`` treats an end beat it cannot find in the sequence as no end at all, so a
+    fact whose closing beat was removed became eternal with nothing anywhere recording that
+    it had changed. Removal now clears the reference, which says the same thing explicitly:
+    the event that ended the fact did not happen, so the fact did not end.
+    """
+    from storygit.domain.world import Fact, Predicate
+
+    state = fixture.repo.state()
+    subject = next(iter(state.entities))
+    fact = Fact(
+        id=FactId("f_ends_at_b"),
+        subject=subject,
+        predicate=Predicate.location,
+        object_text="Bellamy Road",
+        valid_from_beat=fixture.beat_a,
+        valid_until_beat=fixture.beat_b,
+        established_by_beat=fixture.beat_a,
+    )
+    with_fact = apply(state, Diff(ops=(AddFact(fact=fact),)))
+    assert not with_fact.valid_at(with_fact.facts[fact.id], fixture.beat_b)
+
+    state = apply(with_fact, Diff(ops=(ClearLock(node_id=fixture.beat_b),)))
+    after = apply(state, Diff(ops=(RemoveNode(node_id=fixture.beat_b, recursive=True),)))
+    survivor = after.facts[fact.id]
+    assert survivor.valid_until_beat is None, (
+        "the end beat is gone; the reference must be cleared rather than left dangling"
+    )
+    assert after.valid_at(survivor, fixture.beat_a)

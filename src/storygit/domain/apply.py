@@ -361,6 +361,15 @@ def _remove_node(work: _Working, node_id: NodeId, recursive: bool) -> None:
         work.nodes.pop(nid, None)
     if doomed_facts:
         _remove_facts(work, doomed_facts)
+
+    # A fact ended *by* a removed beat has lost the event that ended it. Left as it is, the
+    # id dangles: ``valid_at`` reads a missing end as no end, so the fact silently becomes
+    # true forever -- exactly the kind of quiet corruption the typed state exists to make
+    # impossible. Clearing it says the same thing on purpose. If the beat where Ronnie left
+    # Bellamy Road is deleted, he never left.
+    for fid, fact in list(work.facts.items()):
+        if fact.valid_until_beat in doomed:
+            work.facts[fid] = fact.model_copy(update={"valid_until_beat": None})
     for tid, thread in list(work.threads.items()):
         if thread.opened_at_beat in doomed:
             work.threads.pop(tid)

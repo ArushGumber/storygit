@@ -119,11 +119,33 @@ def check_new_facts(state: StoryState, fact_ids: set[FactId]) -> list[Flag]:
         Hard flags concerning those facts.
     """
     beats = {state.facts[fid].established_by_beat for fid in fact_ids if fid in state.facts}
-    return [
-        flag
-        for flag in check_state(state, beats=tuple(sorted(beats)))
-        if not fact_ids or set(flag.fact_ids) & fact_ids or flag.kind is FlagKind.epistemic
-    ]
+
+    # The entities this change actually touches. A duplicate-entity flag carries entity ids
+    # and no fact ids, so the fact-id filter below dropped it in exactly the case that
+    # creates duplicates -- a candidate that introduces facts about a name the extractor
+    # has not seen before. Letting every duplicate through instead would be worse: the pair
+    # is a property of the story, so every candidate in the set would carry the same flag,
+    # which is the noise problem the checker exists to avoid. So: only when the change is
+    # about one of the two.
+    touched: set[EntityId] = set()
+    for fid in fact_ids:
+        fact = state.facts.get(fid)
+        if fact is None:
+            continue
+        touched.add(fact.subject)
+        if fact.object_entity is not None:
+            touched.add(fact.object_entity)
+
+    def keep(flag: Flag) -> bool:
+        if not fact_ids:
+            return True
+        if flag.kind is FlagKind.epistemic:
+            return True
+        if flag.kind is FlagKind.duplicate_entity:
+            return bool(set(flag.entity_ids) & touched)
+        return bool(set(flag.fact_ids) & fact_ids)
+
+    return [flag for flag in check_state(state, beats=tuple(sorted(beats))) if keep(flag)]
 
 
 # --- individual checks --------------------------------------------------------

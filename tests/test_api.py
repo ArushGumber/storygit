@@ -628,3 +628,22 @@ def test_the_app_shell_route_cannot_be_walked_out_of(tmp_path: Path) -> None:
         assert "shell" in response.text, attack
 
     assert "shell" in client.get("/index.html").text
+
+
+def test_regenerating_the_story_root_is_refused_rather_than_a_five_hundred(api) -> None:
+    """The one node in every story that has no level and no parent.
+
+    ``Level(target.node_type.value)`` raises ValueError on "story" and ``target.parent_id``
+    is None, so asking to regenerate the root produced an unhandled 500 -- from a button the
+    interface renders on every node. There is a real answer and it is not an error page:
+    regenerating the entire story is not something this system offers.
+    """
+    client, _, _ = api
+    root = client.get("/api/tree").json()["root_id"]
+
+    response = client.post(f"/api/node/{root}/regenerate")
+    assert response.status_code == 400, response.text
+    assert "story root" in response.json()["detail"]
+
+    missing = client.post("/api/node/n_does_not_exist/regenerate")
+    assert missing.status_code == 404

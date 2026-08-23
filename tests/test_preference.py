@@ -781,3 +781,42 @@ def test_shrinkage_only_touches_directions_the_data_cannot_move() -> None:
     assert shrunk.weights[loud] == pytest.approx(anchored.weights[loud]), (
         "an identified direction must be untouched by the flag"
     )
+
+
+def test_a_session_of_edited_wins_moves_the_head_less_than_clean_wins() -> None:
+    """The edited-win down-weight was a no-op on any session that was all edits.
+
+    ``fit`` renormalised the sample weights to sum to the pair count, which rescaled the
+    mean back to 1 -- so a session where every win was edited (every weight
+    ``EDITED_WIN_WEIGHT``) produced exactly the fit of a session where none was. The
+    down-weighting survived only as a *relative* effect within a mixed session, while the
+    paper and the constant's own docstring describe it as absolute. This asserts the
+    absolute version: same comparisons, weaker evidence, less movement from the prior.
+    """
+    import random
+
+    from storygit.preference.bt_head import BTWeights, fit
+    from storygit.preference.features import BASE_FEATURES, FeatureVector
+
+    rng = random.Random(4)
+    hidden = {name: rng.uniform(-1.0, 1.0) for name in BASE_FEATURES}
+    pairs = []
+    for _ in range(24):
+        a = FeatureVector(values={n: rng.random() for n in BASE_FEATURES})
+        b = FeatureVector(values={n: rng.random() for n in BASE_FEATURES})
+        sa = sum(hidden[k] * v for k, v in a.values.items())
+        sb = sum(hidden[k] * v for k, v in b.values.items())
+        pairs.append((a, b) if sa >= sb else (b, a))
+
+    prior = BTWeights.uniform(BASE_FEATURES)
+
+    def distance(weights: BTWeights) -> float:
+        return sum((x - y) ** 2 for x, y in zip(weights.weights, prior.weights, strict=True)) ** 0.5
+
+    clean = fit(pairs, prior=prior, l2=2.0)
+    edited = fit(pairs, prior=prior, l2=2.0, sample_weights=[0.5] * len(pairs))
+
+    assert distance(edited) < distance(clean), (
+        "a session of edited-then-accepted wins is weaker evidence and must move the head "
+        "less far from where it started"
+    )
