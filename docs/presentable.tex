@@ -209,10 +209,7 @@ measurable with no server.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.80\textwidth]{diagrams/system.pdf}
-\caption{One writer, one story, one process. There is no session, no auth, and no queue,
-because there is nothing to serialize between. Every state change goes through
-\texttt{Repository.commit\_diff} and nowhere else, which is what makes the snapshot history
-a complete record rather than a partial one.}
+\caption{System components and the one path that writes state.}
 \label{fig:system}
 \end{figure}
 
@@ -375,10 +372,7 @@ that can decide it, and each layer's recall is reported separately, which is wha
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.80\textwidth]{diagrams/checker_layers.pdf}
-\caption{The checker. Layer 1 is deterministic and, by construction, cannot call a model:
-it imports nothing from the provider layer, and a test parses its imports to prove it.
-Layer 2 handles only the residue layer 1 cannot decide. Layer 3 is an opinion, labelled as
-one.}
+\caption{The three continuity layers, cheapest and most certain first.}
 \label{fig:checker}
 \end{figure}
 
@@ -454,10 +448,7 @@ document because it has not been run.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.80\textwidth]{diagrams/preference_loop.pdf}
-\caption{The loop. Every learner degrades to ``no opinion'' at zero data rather than to a
-confident guess, which is what makes the no-preference ablation exact. Learned state is
-persisted per branch, so taste explored on a what-if branch cannot leak back to the main
-line.}
+\caption{The preference loop: six learners over one signal.}
 \label{fig:preference}
 \end{figure}
 
@@ -1062,10 +1053,7 @@ would be a lie.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.78\textwidth]{diagrams/state_model.pdf}
-\caption{The three stores and how they reference each other. The plan tree holds
-structure; the world graph holds truth with validity intervals; snapshots hold history.
-A beat's \textsf{produces} and \textsf{consumes} lists are the only dependency edges
-propagation walks, which is what makes the walk exact.}
+\caption{The three stores and how they reference each other.}
 \label{fig:state-model}
 \end{figure}
 
@@ -1181,9 +1169,7 @@ see the cause of.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{diagrams/routing.pdf}
-\caption{Purpose tags decide the provider; rotation, caching, budget, and logging are
-layered around it rather than baked into each backend. The metered provider is locked by
-two independent fail-closed checks.}
+\caption{Purpose-tag routing, with rotation, caching, budget and logging around it.}
 \label{fig:routing}
 \end{figure}
 
@@ -1388,9 +1374,7 @@ Diversity in the embedding space is not diversity in the interface.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{diagrams/selection.pdf}
-\caption{Six axis-conditioned candidates become three labelled ones. The label is the
-mechanism: three named directions cost a decision, three unlabeled paragraphs cost three
-readings.}
+\caption{Axis-conditioned sampling and diverse selection.}
 \label{fig:selection}
 \end{figure}
 
@@ -1570,8 +1554,7 @@ the engine chose to show; and the model that performs the persona's edits is tol
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.92\textwidth]{diagrams/eval_loop.pdf}
-\caption{The loop and where the measurements are taken. Metrics on the left are properties
-of the writer's behaviour; on the right, properties of the system.}
+\caption{The evaluation loop and where each measurement is taken.}
 \label{fig:evalloop}
 \end{figure}
 
