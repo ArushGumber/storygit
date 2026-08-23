@@ -497,6 +497,17 @@ th.num {
   font-size: 0.84em;
   color: var(--slate);
 }
+/* The merge control sits inside the chip and stays recessive: it is a correction the
+   writer reaches for occasionally, not a primary action on every name they read. */
+.entity button.quiet {
+  margin-left: 5px;
+  padding: 0 2px;
+  font-size: 0.95em;
+  color: var(--mute);
+}
+.entity button.quiet:hover {
+  color: var(--slate);
+}
 
 .bar {
   display: flex;
