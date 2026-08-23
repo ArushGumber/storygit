@@ -269,6 +269,11 @@ def summarize(
         except (ValueError, KeyError):
             continue
         config_name = (log.config or {}).get("name") or path.name.split("__", 1)[0]
+        # The probe-sampling pass exists to source the fixture and is deliberately never
+        # probed, so its rows would sit in the summary as runs with no learning curve and
+        # invite exactly the wrong comparison.
+        if config_name == "probesample":
+            continue
         on_disk[f"{config_name}/{log.persona}"] = log
     logs = on_disk | dict(logs)
 
