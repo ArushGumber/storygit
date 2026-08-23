@@ -16,6 +16,14 @@ frontend/dist/
 # Local caches and artifacts
 .cache/
 *.log
+# Per-run evaluation databases: large, regenerable, and only meaningful next to the
+# run log that describes them. The gallery databases ARE committed -- replay reads the
+# story out of them, which is what makes a recorded session a record rather than a copy.
+eval/results/runs/*.db
+eval/results/runs/*.db-shm
+eval/results/runs/*.db-wal
+eval/results/gallery/*.db-shm
+eval/results/gallery/*.db-wal
 # TeX build junk
 *.aux
 *.fls

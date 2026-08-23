@@ -459,9 +459,7 @@ def main() -> None:
         # "matrix" means every ablation; "full" is the single all-components-on config,
         # which is also the reference point the ablations are compared against.
         configs = (
-            list(ablations.ABLATIONS)
-            if args.config == "matrix"
-            else [ablations.get(args.config)]
+            list(ablations.ABLATIONS) if args.config == "matrix" else [ablations.get(args.config)]
         )
         names = (
             [n.strip() for n in args.personas.split(",") if n.strip()]
