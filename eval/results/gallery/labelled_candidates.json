@@ -8,13 +8,13 @@
       "index": 0,
       "title": "Six sampled, three shown",
       "note": "Every candidate carries its axis label, its rationale, and its flags.",
-      "snapshot_id": "4e33f9425b9857ba29d283a06fca2a9d",
+      "snapshot_id": "56d65337f054673f90dd455fa489da4c",
       "node_id": "n_c6fbb2e448",
       "level": "beat",
       "intent": "",
       "shown": [
         {
-          "proposal_id": "p_6b553ec493",
+          "proposal_id": "p_adba03c11b",
           "axis_label": "deepen the interiority",
           "delta_summary": [
             "adds beat “The Whisper at the Iron”"
@@ -28,7 +28,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_fb44df1455",
+          "proposal_id": "p_2ce64f9232",
           "axis_label": "introduce a complication",
           "delta_summary": [
             "adds beat “The Warden's Decree”"
@@ -42,7 +42,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_d9c085cc59",
+          "proposal_id": "p_fb44df1455",
           "axis_label": "pay off an open thread",
           "delta_summary": [
             "adds beat “The Voice in the Ash”"
@@ -65,7 +65,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_1aae46d56a",
+          "proposal_id": "p_6b553ec493",
           "axis_label": "slow down",
           "delta_summary": [
             "Kael is cornered",
@@ -96,7 +96,7 @@
           "selected": false
         },
         {
-          "proposal_id": "p_f749606f79",
+          "proposal_id": "p_7039f30179",
           "axis_label": "subvert the expectation",
           "delta_summary": [
             "Kael is not alone",
@@ -128,7 +128,7 @@
           "selected": false
         },
         {
-          "proposal_id": "p_9990838877",
+          "proposal_id": "p_5559a2752d",
           "axis_label": "shift the point of view",
           "delta_summary": [
             "adds beat “Mara watches”"
@@ -161,13 +161,13 @@
       "index": 1,
       "title": "The writer takes 'deepen the interiority'",
       "note": "Accepting commits the diff, extracts facts from any new prose, and shows the bible diff. The alternatives are recorded too, and that is what makes this a preference rather than an event.",
-      "snapshot_id": "9a1174fdc90d269d8f7e0e969465343e",
+      "snapshot_id": "cc8dc20f81e44164e036327fe5030259",
       "node_id": null,
       "level": "",
       "intent": "",
       "shown": [
         {
-          "proposal_id": "p_6b553ec493",
+          "proposal_id": "p_adba03c11b",
           "axis_label": "deepen the interiority",
           "delta_summary": [
             "adds beat “The Whisper at the Iron”"
@@ -181,7 +181,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_fb44df1455",
+          "proposal_id": "p_2ce64f9232",
           "axis_label": "introduce a complication",
           "delta_summary": [
             "adds beat “The Warden's Decree”"
@@ -195,7 +195,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_d9c085cc59",
+          "proposal_id": "p_fb44df1455",
           "axis_label": "pay off an open thread",
           "delta_summary": [
             "adds beat “The Voice in the Ash”"
@@ -218,7 +218,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_1aae46d56a",
+          "proposal_id": "p_6b553ec493",
           "axis_label": "slow down",
           "delta_summary": [
             "Kael is cornered",
@@ -249,7 +249,7 @@
           "selected": false
         },
         {
-          "proposal_id": "p_f749606f79",
+          "proposal_id": "p_7039f30179",
           "axis_label": "subvert the expectation",
           "delta_summary": [
             "Kael is not alone",
@@ -281,7 +281,7 @@
           "selected": false
         },
         {
-          "proposal_id": "p_9990838877",
+          "proposal_id": "p_5559a2752d",
           "axis_label": "shift the point of view",
           "delta_summary": [
             "adds beat “Mara watches”"
@@ -305,7 +305,7 @@
         }
       ],
       "action": "accept",
-      "chosen": "p_6b553ec493",
+      "chosen": "p_adba03c11b",
       "bible_diff": [],
       "marks": [],
       "flags": []

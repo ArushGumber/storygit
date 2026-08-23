@@ -229,7 +229,7 @@ export function Evaluation() {
             Weight recovery is the correlation between what the preference head
             learned and the persona's hidden weights. It is read against the
             ceiling beside it: what the same estimator scores on the same number
-            of decisions from the same candidate sets, given weights it is
+            of decisions from the same candidate sets, given weights it is{" "}
             <em>told</em>. Twenty-odd noisy comparisons over thirteen features
             do not identify thirteen weights, so the ceiling — not 1.0 — is the
             scale.

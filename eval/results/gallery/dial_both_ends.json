@@ -8,13 +8,13 @@
       "index": 0,
       "title": "Dial at 0 (coherent)",
       "note": "Shown: shift the point of view, pay off an open thread, introduce a complication.",
-      "snapshot_id": "7eecf04ca16c4923ad320ff192578125",
+      "snapshot_id": "280a7d65f31db6bd99950f4f8de526bb",
       "node_id": "n_c6fbb2e448",
       "level": "beat",
       "intent": "Kael's ability shows itself",
       "shown": [
         {
-          "proposal_id": "p_593ed6e5aa",
+          "proposal_id": "p_6bceeaad0e",
           "axis_label": "shift the point of view",
           "delta_summary": [
             "Mara notices Kael's strange reaction",
@@ -30,7 +30,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_68e732dc52",
+          "proposal_id": "p_593ed6e5aa",
           "axis_label": "pay off an open thread",
           "delta_summary": [
             "Kael discovers his ability",
@@ -46,7 +46,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_6de9412748",
+          "proposal_id": "p_9d8b06b6ff",
           "axis_label": "introduce a complication",
           "delta_summary": [
             "adds beat “The Sealed Exit”"
@@ -60,7 +60,7 @@
           "selected": true
         },
         {
-          "proposal_id": "p_9d8b06b6ff",
+          "proposal_id": "p_6de9412748",
           "axis_label": "slow down",
           "delta_summary": [
             "adds beat “The Weight in the Palms”"
@@ -74,7 +74,7 @@
           "selected": false
         },
         {
-          "proposal_id": "p_6bceeaad0e",
+          "proposal_id": "p_68e732dc52",
           "axis_label": "subvert the expectation",
           "delta_summary": [
             "adds beat “The Silent Pulse”"
@@ -112,7 +112,7 @@
       "index": 1,
       "title": "Dial at 1 (surprising)",
       "note": "Shown: shift the point of view, introduce a complication, subvert the expectation.",
-      "snapshot_id": "d41a37a3eeb9d4a76f22eaf58d422a58",
+      "snapshot_id": "7b3a8a6b8b73e76c9ec7b600dbdfee81",
       "node_id": "n_c6fbb2e448",
       "level": "beat",
       "intent": "Kael's ability shows itself",

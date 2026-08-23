@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T12:40:21.885442+00:00.
+Generated 2026-08-23T13:36:19.736796+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
@@ -49,16 +49,29 @@ Pseudo-regret after 400 rounds: Thompson 4.8, epsilon-greedy 6.3. Pulls: {'safe'
 
 ## Live runs
 
-| run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | tokens/action |
-|---|---|---|---|---|---|---|---|
-| probesample/the Controller | 11 | 100% | 100% | 100% | 0.80 | 0.46 | 34440 |
-| probesample/the Maximalist | 12 | 83% | 100% | 75% | 0.92 | 0.27 | 36574 |
-| probesample/the Minimalist | 12 | 92% | 100% | 91% | 0.00 | 0.58 | 31053 |
-| probesample/the Serialist | 11 | 100% | 100% | 100% | 0.00 | 0.34 | 36696 |
+| run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | same-n ceiling | tokens/action |
+|---|---|---|---|---|---|---|---|---|
+| full/the Controller | 33 | 100% | 100% | 100% | 0.00 | 0.69 | 0.67 ± 0.12 | 56580 |
+| full/the Maximalist | 33 | 100% | 100% | 100% | 0.93 | 0.44 | 0.61 ± 0.14 | 54855 |
+| full/the Minimalist | 38 | 82% | 100% | 77% | 0.32 | 0.29 | 0.66 ± 0.12 | 49582 |
+| full/the Serialist | 35 | 94% | 91% | 100% | 0.00 | 0.43 | 0.63 ± 0.13 | 55195 |
+
+### Held-out probe
+
+The same frozen decisions, drawn from other personas' runs, re-ranked by the head after every episode. Nothing here can move because the task got harder: the probe set does not change.
+
+| run | probe points | tau, first | tau, last | uniform head | prior head | top-1, last |
+|---|---|---|---|---|---|---|
+| full/the Controller | 12 | +0.667 | +0.778 | +0.667 | +0.778 | 92% |
+| full/the Maximalist | 12 | +0.667 | +0.611 | +0.500 | +0.611 | 75% |
+| full/the Minimalist | 12 | +0.444 | +0.111 | +0.000 | +0.056 | 33% |
+| full/the Serialist | 12 | +0.611 | +0.611 | +0.889 | +0.833 | 75% |
+
+The informed retry was offered on 7 rejected candidate set(s) and rescued 5 of them; the rest were rejected twice, which is a writer meaning it.
 
 ## Provider cost
 
-- calls: 658
-- tokens: 1594018
-- cache hit rate: 0%
+- calls: 1993
+- tokens: 7493302
+- cache hit rate: 8%
 - estimated cost: $0.0000 (free tier; the price table would apply on a metered provider)

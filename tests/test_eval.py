@@ -850,7 +850,7 @@ def test_a_feature_that_never_varies_is_reported_as_unexercised() -> None:
 
 
 def test_retry_rescues_are_counted_from_the_decision_sequence() -> None:
-    """ "The runs stopped truncating" is weaker than "the retry rescued N decisions"."""
+    """Reporting that runs stopped truncating is weaker than counting what was rescued."""
     levels = ["beat", "beat", "scene", "beat", "beat", "prose"]
     kinds = ["reject", "accept", "accept", "reject", "reject", "accept"]
     assert metrics.retry_rescues(levels, kinds) == {

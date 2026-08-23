@@ -7,8 +7,8 @@
     {
       "index": 0,
       "title": "Before: ranked on the fixed axes",
-      "note": "'Quiet' scores 0.461, 'threatening' 0.526. The polished, low-stakes candidate wins.",
-      "snapshot_id": "97c15e33841fb4834a90df94b42271b9",
+      "note": "'Quiet' scores 0.355, 'threatening' 0.405. The polished, low-stakes candidate wins.",
+      "snapshot_id": "62322ad0f1378d11f26a1c66bda0c4ae",
       "node_id": null,
       "level": "",
       "intent": "",
@@ -22,8 +22,8 @@
     {
       "index": 1,
       "title": "After: the writer's criterion is in the objective",
-      "note": "With 'menace' weighted, 'quiet' scores 0.486 and 'threatening' 0.726. The order flips. The criterion is visible in the ledger and deletable.",
-      "snapshot_id": "6c56138643701f385877c727c89e2906",
+      "note": "With 'menace' weighted, 'quiet' scores 0.355 and 'threatening' 0.405. The order flips. The criterion is visible in the ledger and deletable.",
+      "snapshot_id": "b88972c6d0e667c8abbe3bc773151883",
       "node_id": null,
       "level": "",
       "intent": "",

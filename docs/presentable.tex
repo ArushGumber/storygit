@@ -844,46 +844,75 @@ against \rBanditPullsExplore{} on the better one, and its posteriors land at
 
 \subsection{Results: the live tier}
 
-Four simulated writers drive the real engine through the full configuration.
-\rLiveRunCount{} \rLiveRunPlural, \rLiveDecisionsTotal{} writer decisions, mean acceptance
-\rLiveAcceptanceMean{}, and \rLiveTokensPerAction{} tokens per decision.
+Four simulated writers drove the real engine through the full configuration with no human
+intervention: \rLiveRunCount{} \rLiveRunPlural, \rLiveDecisionsTotal{} writer decisions,
+mean acceptance \rLiveAcceptanceMean{}, \rLiveTokensPerAction{} tokens per decision, and no
+run cut short.
 
-The number that matters is \textbf{weight recovery}: the correlation between what the
-preference head learned and the persona's hidden weight vector. Mean
-\rLiveWeightRecoveryMean{}, best \rLiveWeightRecoveryBest{}. Not \emph{did acceptance rise}
---- a degenerate system achieves that by proposing the same safe thing repeatedly --- but
-\emph{did the machinery recover the taste it was shown}.
+\textbf{The held-out probe.} An acceptance curve cannot separate a head that learned from a
+task that got harder, so the learning result is measured on a frozen set instead.
+\rProbePoints{} decision points, sampled from \emph{other} writers' runs --- and from a
+sampling configuration that is never itself probed --- are replayed after every episode:
+ranked by the head as it stood at that moment, scored against what that persona would
+privately have chosen. The probe set does not change between measurements, so nothing in it
+can move because the job got harder, and replaying it makes no model calls.
 
-\textbf{Acceptance did not rise, and in three of four runs it fell.} The Minimalist held at
-100\%, the Maximalist went 100\% to 91\%, the Serialist 91\% to 84\%, the Controller 100\%
-to 73\%. Two runs ended early because their persona rejected all six episode candidates and
-the harness stops rather than pretending a writer would keep clicking.
+A rank correlation means little on its own, so each reading carries two references scored
+over the same points at the same moment: a head that has learned nothing, and the population
+prior every writer starts from. Ending at the prior means the writer's own decisions have
+not yet added anything; ending above it means they have.
+\textbf{\rProbeAboveUniform{} of \rLiveRunCount{} runs end above an uninformed head, and
+\rProbeAtOrAbovePrior{} of \rLiveRunCount{} end at or above the prior}, at
+\rProbeTopOneLast{} top-1 agreement with the persona's own first choice. Precisely: one run
+ends strictly above the prior, two end level with it, and one --- the Serialist --- ends
+below both. So the honest reading is that at this sample size the writer's own decisions
+mostly reproduce the prior rather than improve on it, and the mechanism behind that is
+identified below. Weight recovery, in the next paragraph, is the measurement that does move,
+and the two are consistent: the head is learning the directions its data exercises.
 
-That is worth stating plainly rather than framing away, and it is also worth saying what it
-does and does not show. The comparison is confounded: as a story grows, every new candidate
-must stay consistent with more established facts, more open threads, and more of the
-writer's accumulated rules, while the persona's acceptance bar stays exactly where it
-started. A flat or falling acceptance curve under a rising task difficulty is not evidence
-that the preference layer failed, and a rising one would not have been evidence that it
-worked --- which is precisely why the headline metric here is weight recovery against a
-known hidden vector, decided before any of these runs. The first-third figures also sit on
-seven or eight decisions each, so the endpoints are noisy.
+\textbf{Weight recovery, against what it could have been.} The correlation between the
+fitted weight vector and the persona's hidden one is \rLiveWeightRecoveryMean{} on average
+and \rLiveWeightRecoveryBest{} at best. That number is unreadable without a scale, and the
+scale is not $1.0$: twenty-odd noisy comparisons over \rFeatures{} features do not identify
+\rFeatures{} weights. The \emph{oracle ceiling} --- the same estimator, on the same
+candidate sets, at the same decision count, fitted to weights it is told --- is
+\rCeilingMean{} on average. Measured recovery is therefore \rRecoveryFractionOfCeiling{} of
+what was achievable, and one run reaches its own ceiling within noise. Sample size, not the
+estimator, is what caps this: swept independently, the ceiling is \rCeilingAtTwentyFive{} at
+twenty-five decisions and still only \rCeilingAtTwoHundred{} at two hundred, because real
+candidate features are clustered and correlated and the design matrix is badly conditioned.
 
-The honest summary of the live tier: the machinery runs end to end against a real provider
-for a hundred-odd decisions without human intervention, and the preference head recovers
-roughly half the structure of a hidden weight vector from about twenty-five comparisons.
-Separating writer satisfaction from rising task difficulty needs a design this evaluation
-does not have --- a fixed held-out decision set replayed at several points in a run, scored
-by the same persona --- and that is the first thing to build if the evaluation gets another
-pass.
+\textbf{What limits it, named.} Four to five of the \rFeatures{} features never vary inside
+a single writer's candidate sets --- the criterion slots they did not define, the voice and
+edit-direction scores before the voice model has trained, dialogue ratio at plan level. A
+constant column gives the fit no gradient, so those weights stay where the population prior
+put them. In session that is harmless, since a constant cannot reorder anything the writer
+sees, which is exactly why nothing had caught it; off-distribution it is not, and the
+cross-persona probe is what made it visible. Each run reports its own unexercised features
+in \file{summary.md}.
 
-Acceptance and edit-distance curves per persona are in \file{eval/results/}, beside the
-full table --- including anything that did not run --- in \file{summary.md}. Every number
-in this section regenerates with
+\textbf{The acceptance trend.} Acceptance held or rose in three runs and fell in one
+(100\,\% to 77\,\%). Read on its own this says less than it appears to: a persona's bar is a
+fixed quantile of its own score distribution and does not move, while each new candidate has
+to stay consistent with more established facts, more open threads, and more accumulated
+rules --- so the curve tracks task difficulty as well as satisfaction, and the probe above
+is the view that does not. The first-third figures also rest on eleven or twelve decisions
+each, so the endpoints are noisy.
+
+Curves per persona are in \file{eval/results/}, and the full table --- probe readings,
+ceilings, retry rescues, per-run costs, and anything that did not run --- is in
+\file{summary.md}. The earlier run, made before this pass changed the feature space and the
+harness, is archived under \file{eval/results/archive/}. Every number in this section
+regenerates with
 
 \begin{quote}\ttfamily\small
 python -m eval.run -{}-config full \&\& python -m eval.texnumbers
 \end{quote}
+
+Everything above ran on a small free-tier model, so prose quality here is a floor rather
+than a ceiling. The same command reruns the whole evaluation against a stronger one, which
+is what separates ``the system works'' from ``the model is good'' --- a one-line
+configuration change, costed against the budget cap before it is spent.
 
 \section{What the measurements changed}
 \label{sec:findings}
@@ -907,6 +936,20 @@ however good it is. MMR's additive penalty can always be outvoted by a large eno
 gap. That is a structural difference rather than a tuning difference.
 
 \textbf{Embedding-similarity dependency edges did better than predicted}, as above.
+
+\textbf{Two runs ended on nothing.} The first four-persona run stopped two writers at
+episode three, and reading the logs rather than the summary showed why: a persona rejects a
+candidate set when the best option falls below its own bar, and one of those two runs missed
+by \textbf{0.0001} --- one ten-thousandth of a score unit, against a Gaussian noise term of
+the persona's own making. Nothing was degrading. Accumulated writer rules, the obvious
+suspect, turn out to be 0.4--1.2\,\% of a late prompt.
+
+What was wrong was the harness's stop rule: it ended the session where a writer would have
+said \emph{``not these --- try again''}. So a rejected set now gets exactly one
+rejection-informed re-proposal, which also required wiring a path the system had described
+but never built --- the rejected candidate's text reached the exemplar pool, the writer's
+stated reason reached nothing. In the rerun the retry was offered seven times and rescued
+five, and no run was cut short.
 
 Both are recorded here rather than quietly folded into the design, because a system that
 only reports the measurements that agreed with it has not been measured.
@@ -1009,18 +1052,8 @@ measured (a $+0.13$ lift at ten comparisons) rather than assumed.
 classes. A class nobody imagined is a class nobody measured. The periodic audit exists partly
 for that, and the honest phrasing throughout is ``recall over five classes''.
 
-\textbf{Acceptance over a run confounds two things.} Task difficulty rises as a story
-accumulates facts, threads, and rules, while a persona's bar does not move, so the
-acceptance curve measures both at once and separates neither. The fix is a fixed held-out
-decision set replayed at intervals within a run; it is not built, and until it is, the
-acceptance trend is reported and not interpreted.
-
 \textbf{Single writer, single story.} SQLite, one process, no auth, no concurrency. The
 scaling discussion is architectural rather than demonstrated.
-
-\textbf{Development ran on a small free-tier model.} Prose quality here is a floor, not a
-ceiling, and the same evaluation reruns on a stronger model to separate ``the system works''
-from ``the model is good''.
 
 \textbf{Fact extraction is a single point of failure.} Everything downstream --- continuity,
 propagation, the world-state pane --- depends on the world graph being populated correctly.

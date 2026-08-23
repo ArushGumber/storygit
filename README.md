@@ -181,11 +181,16 @@ needs no model calls, so it is exact and cannot be improved by rerunning:
 | Bandit | Thompson pseudo-regret 4.8 and flat after ~50 rounds; ε-greedy 6.3 and still climbing |
 | Preference prior | +0.13 held-out pairwise accuracy over uniform after a fresh writer's first 10 comparisons |
 
-The live tier: four simulated writers drove the real engine through 107 decisions against
-the free-tier provider. Mean acceptance 88%, weight recovery against each persona's hidden
-vector 0.44 mean / 0.53 best. Acceptance did **not** rise over a run — it fell in three of
-four — and `docs/presentable.tex` says why that is confounded with rising task difficulty
-rather than reading it either way.
+The live tier: four simulated writers drove the real engine through 139 decisions against
+the free-tier provider, with no run cut short. Learning is measured on a **held-out probe** —
+12 frozen decisions sampled from *other* writers' runs, replayed after every episode, so
+nothing in the curve can move because the task got harder. Three of four runs end at or
+above the population prior on that set and above an uninformed head, at 69% top-1 agreement
+with the writer's own first choice. Weight recovery averages 0.46 against an **oracle
+ceiling of 0.64** — the same estimator on the same data fitted to weights it is told — so
+72% of what was achievable at this sample size, with one run at its ceiling. Acceptance held
+or rose in three runs and fell in one; that trend is confounded with rising task difficulty
+and `docs/presentable.tex` says so rather than reading it either way.
 
 Two predictions written in advance turned out **wrong**, and both changed the system rather
 than the write-up: MMR at the conventional λ = 0.7 was identical to the top-k baseline, and

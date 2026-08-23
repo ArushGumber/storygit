@@ -195,6 +195,24 @@ def collect() -> dict[str, str]:
                     if (r.get("probe_tau_last") or 0) > (r.get("probe_tau_first") or 0)
                 )
             )
+            # The readable statement is not "did the line go up" but "where did it end,
+            # relative to a head that learned nothing and to the prior it started from".
+            macros["ProbeAtOrAbovePrior"] = str(
+                sum(
+                    1
+                    for r in runs
+                    if r.get("probe_tau_last") is not None
+                    and r["probe_tau_last"] >= (r.get("probe_tau_prior") or 0) - 1e-9
+                )
+            )
+            macros["ProbeAboveUniform"] = str(
+                sum(
+                    1
+                    for r in runs
+                    if r.get("probe_tau_last") is not None
+                    and r["probe_tau_last"] > (r.get("probe_tau_uniform") or 0) + 1e-9
+                )
+            )
         if tops:
             macros["ProbeTopOneLast"] = _pct(sum(tops) / len(tops))
         uni = [r["probe_tau_uniform"] for r in runs if r.get("probe_tau_uniform") is not None]
@@ -223,6 +241,8 @@ def collect() -> dict[str, str]:
         "ProbePoints",
         "ProbeTauUniform",
         "ProbeTauPrior",
+        "ProbeAtOrAbovePrior",
+        "ProbeAboveUniform",
     ):
         macros.setdefault(name, MISSING)
 
