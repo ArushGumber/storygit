@@ -1,6 +1,6 @@
 # Evaluation summary
 
-Generated 2026-08-23T17:13:21.843412+00:00.
+Generated 2026-08-23T18:03:02.414677+00:00.
 
 ## Offline metrics (deterministic, no model calls)
 
@@ -51,31 +51,23 @@ Pseudo-regret after 400 rounds: Thompson 4.8, epsilon-greedy 6.3. Pulls: {'safe'
 
 | run | decisions | acceptance | first third | last third | mean edit dist | weight recovery | same-n ceiling | tokens/action |
 |---|---|---|---|---|---|---|---|---|
-| full/the Controller | 3 | 100% | 100% | 100% | 0.20 | 0.20 | 0.43 ± 0.16 | 33534 |
-| full/the Maximalist | 3 | 100% | 100% | 100% | 0.00 | 0.51 | 0.37 ± 0.19 | 68916 |
-| full/the Minimalist | 26 | 54% | 68% | 48% | 0.46 | -0.06 | 0.61 ± 0.12 | 32045 |
-| full/the Serialist | 37 | 70% | 89% | 61% | 0.48 | 0.42 | 0.64 ± 0.13 | 44080 |
+| full/the Controller | 3 | 100% | 100% | 100% | 0.20 | 0.20 | 0.43 ± 0.16 | 27360 |
+| full/the Maximalist | 3 | 100% | 100% | 100% | 0.00 | 0.51 | 0.37 ± 0.19 | 76304 |
+| full/the Minimalist | 5 | 60% | 100% | 60% | 0.39 | 0.18 | 0.47 ± 0.15 | 34729 |
+| full/the Serialist | 3 | 100% | 100% | 100% | 0.00 | 0.24 | 0.38 ± 0.18 | 31940 |
 
-### Held-out probe
-
-The same frozen decisions, drawn from other personas' runs, re-ranked by the head after every episode. Nothing here can move because the task got harder: the probe set does not change.
-
-| run | probe points | tau, first | tau, last | uniform head | prior head | top-1, last |
-|---|---|---|---|---|---|---|
-| full/the Minimalist | 18 | +0.148 | +0.259 | +0.370 | +0.444 | 44% |
-| full/the Serialist | 18 | +0.741 | +0.667 | +0.222 | +0.296 | 67% |
-
-The informed retry was offered on 9 rejected candidate set(s) and rescued 4 of them; the rest were rejected twice, which is a writer meaning it.
+The informed retry was offered on 1 rejected candidate set(s) and rescued 0 of them; the rest were rejected twice, which is a writer meaning it.
 
 ## Errors during runs
 
-- `full/the Controller`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 57s
+- `full/the Controller`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 58s
 - `full/the Maximalist`: RateLimited: groq: rate limited
-- `full/the Minimalist`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 0s
+- `full/the Minimalist`: RateLimited: groq: rate limited
+- `full/the Serialist`: RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 53s
 
 ## Provider cost
 
-- calls: 1655
-- tokens: 2771486
-- cache hit rate: 20%
+- calls: 602
+- tokens: 580461
+- cache hit rate: 50%
 - estimated cost: $0.0000 (free tier; the price table would apply on a metered provider)

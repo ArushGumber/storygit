@@ -43,7 +43,7 @@
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "808947c3d6f1f20312cbb7db2255cd75",
+      "snapshot_id": "c264bc76971b07734fafe9a3da8ae01b",
       "stale_marked": 0,
       "features": [
         {
@@ -122,7 +122,7 @@
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "bdcb6cd4b3835f8923c2500d2d677966",
+      "snapshot_id": "f9e6885825455983c1fdb8177d6f94fb",
       "stale_marked": 0,
       "features": [
         {
@@ -201,7 +201,7 @@
       "edit_distance": 0.2025,
       "flags_shown": 1,
       "hard_flags_shown": 0,
-      "snapshot_id": "b3a2a7a5e3d6f5b4a84f4c9c66c89e35",
+      "snapshot_id": "c5722e0f21a492c55684bb6722af788f",
       "stale_marked": 0,
       "features": [
         {
@@ -259,15 +259,15 @@
   ],
   "episodes_completed": 0,
   "call_summary": {
-    "calls": 69,
-    "prompt_tokens": 64835,
-    "completion_tokens": 35767,
+    "calls": 121,
+    "prompt_tokens": 49677,
+    "completion_tokens": 32404,
     "cost_usd": 0.0,
-    "cache_hits": 54,
-    "errors": 15,
-    "mean_latency_s": 0.0,
-    "total_tokens": 100602,
-    "cache_hit_rate": 0.782608695652174,
+    "cache_hits": 41,
+    "errors": 79,
+    "mean_latency_s": 0.011428076429687024,
+    "total_tokens": 82081,
+    "cache_hit_rate": 0.33884297520661155,
     "by_purpose": [
       {
         "purpose": "propose.episode",
@@ -277,13 +277,6 @@
         "cache_hits": 7
       },
       {
-        "purpose": "judge.soft",
-        "calls": 34,
-        "tokens": 23700,
-        "cost_usd": 0.0,
-        "cache_hits": 25
-      },
-      {
         "purpose": "propose.beat",
         "calls": 7,
         "tokens": 19876,
@@ -291,11 +284,11 @@
         "cache_hits": 7
       },
       {
-        "purpose": "propose.prose",
-        "calls": 7,
-        "tokens": 12309,
+        "purpose": "judge.soft",
+        "calls": 24,
+        "tokens": 17488,
         "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 19
       },
       {
         "purpose": "propose.scene",
@@ -312,15 +305,15 @@
         "cache_hits": 1
       },
       {
-        "purpose": "extract.facts",
-        "calls": 2,
+        "purpose": "propose.prose",
+        "calls": 73,
         "tokens": 0,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
         "purpose": "simulate.edit",
-        "calls": 4,
+        "calls": 2,
         "tokens": 0,
         "cost_usd": 0.0,
         "cache_hits": 0
@@ -329,21 +322,21 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 61,
-        "tokens": 98499,
+        "calls": 117,
+        "tokens": 78636,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 8,
-        "tokens": 2103,
+        "calls": 4,
+        "tokens": 3445,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 335,
-      "misses": 924,
-      "entries": 8629
+      "hits": 301,
+      "misses": 266,
+      "entries": 8641
     },
     "budget_remaining_usd": 12.0
   },
@@ -405,8 +398,8 @@
   },
   "probe": [],
   "errors": [
-    "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 57s"
+    "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 58s"
   ],
-  "waited_seconds": 0.0,
-  "rate_limit_waits": 0
+  "waited_seconds": 636.1,
+  "rate_limit_waits": 12
 }
