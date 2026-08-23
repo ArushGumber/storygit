@@ -299,3 +299,41 @@ def test_hard_constraints_reach_the_slice(fixture: Fixture) -> None:
     rendered = entity_slice(state, {fixture.kael}, fixture.beat_c).render()
     assert "Kael never kills anyone." in rendered
     assert "Locked fact" in rendered
+
+
+def test_a_turned_down_direction_reaches_the_prompt(fixture: Fixture) -> None:
+    """`ledger.py` has always said rejected directions are "fed to generation".
+
+    Until the fix pass nothing carried them into a prompt: the rejected candidate's text
+    reached the exemplar pool, and the writer's stated reason reached nothing. A writer who
+    said "not this" got the same proposal back, which makes the whole feedback loop --
+    reject, re-propose, better set -- half-wired.
+    """
+    from storygit.agents.prompts import system_message
+    from storygit.domain.diff import AddRejectedDirection
+    from storygit.graph.slices import RECENT_REJECTIONS
+
+    state = apply(
+        fixture.repo.state(),
+        Diff(
+            ops=tuple(
+                AddRejectedDirection(text=f"no dream sequence {i}")
+                for i in range(RECENT_REJECTIONS + 3)
+            ),
+            author=DiffAuthor.human,
+        ),
+    )
+    slice_ = entity_slice(state, {fixture.kael}, fixture.beat_c)
+    content = system_message(slice_).content
+
+    assert "already turned these down" in content
+    newest = f"no dream sequence {RECENT_REJECTIONS + 2}"
+    assert newest in content, "the most recent rejection must reach the model"
+    # Bounded: all of them would crowd out the state and would keep warning the model away
+    # from something the story moved past ten beats ago.
+    assert len(slice_.rejected_directions) == RECENT_REJECTIONS
+    assert "no dream sequence 0" not in content
+
+    # And they are directions to avoid, not hard constraints -- turning something down here
+    # is not the same as banning it from the story.
+    assert "HARD CONSTRAINTS" not in content
