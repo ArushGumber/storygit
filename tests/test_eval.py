@@ -831,3 +831,19 @@ def test_a_probe_reading_carries_its_references() -> None:
     )
     assert "tau_uniform" in out and "top1_uniform" in out
     assert out["tau"] == pytest.approx(out["tau_uniform"]), "same head, same reading"
+
+
+def test_a_feature_that_never_varies_is_reported_as_unexercised() -> None:
+    """A constant column gets no gradient, so the head keeps whatever the prior said.
+
+    Harmless in session — it cannot reorder anything the writer sees — and precisely why it
+    goes unnoticed. It stops being harmless the moment the head is applied off-distribution,
+    which is what the cross-persona probe does. Reported per run so the claim is checkable
+    in the artifact.
+    """
+    matrices = [
+        [{"a": 0.1, "b": 0.5, "c": 0.0}, {"a": 0.9, "b": 0.5, "c": 0.0}],
+        [{"a": 0.4, "b": 0.5, "c": 0.0}, {"a": 0.2, "b": 0.5, "c": 0.0}],
+    ]
+    assert metrics.unexercised_features(matrices) == ["b", "c"]
+    assert metrics.unexercised_features([]) == []

@@ -245,6 +245,9 @@ def summarize(
                 "probe_tau_last": log.probe[-1]["tau"] if log.probe else None,
                 "probe_top1_last": log.probe[-1]["top1"] if log.probe else None,
                 "probe": [dict(r) for r in log.probe],
+                "unexercised_features": metrics.unexercised_features(
+                    [list(a.features) for a in log.actions if len(a.features) >= 2]
+                ),
                 "tokens_per_action": cost["tokens"],
                 "usd_per_action": cost["usd"],
                 "episodes": log.episodes_completed,

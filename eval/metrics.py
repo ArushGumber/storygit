@@ -357,6 +357,43 @@ def diversity_quality_point(
 # --- learning -----------------------------------------------------------------
 
 
+def unexercised_features(
+    matrices: list[list[dict[str, float]]], *, tolerance: float = 1e-9
+) -> list[str]:
+    """Features that never varied within any candidate set the writer was shown.
+
+    A feature constant across every set carries **no gradient**, so the fitted head keeps
+    whatever the population prior said about it. In session that is harmless — a constant
+    column cannot reorder anything the writer sees — and it is the reason it goes unnoticed.
+    It stops being harmless the moment the head is applied to candidates drawn from a
+    different distribution, which is exactly what the cross-persona probe does: the weight
+    is then a prior artifact asserting a preference this writer never expressed.
+
+    Reported per run so the claim is checkable in the artifact rather than asserted in
+    prose.
+
+    Args:
+        matrices: One list of candidate feature dicts per decision.
+        tolerance: Spread below which a feature counts as constant.
+
+    Returns:
+        Feature names, sorted, that never varied within a set.
+    """
+    names: set[str] = set()
+    for shown in matrices:
+        names |= set().union(*(set(f) for f in shown)) if shown else set()
+    constant = []
+    for name in sorted(names):
+        spread = 0.0
+        for shown in matrices:
+            values = [f.get(name, 0.0) for f in shown]
+            if values:
+                spread = max(spread, max(values) - min(values))
+        if spread <= tolerance:
+            constant.append(name)
+    return constant
+
+
 def weight_recovery(fitted: dict[str, float], hidden: dict[str, float]) -> float:
     """Pearson correlation between the fitted and hidden weight vectors.
 
