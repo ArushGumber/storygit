@@ -18,6 +18,11 @@ interface RunRow {
   acceptance_last_third: number;
   mean_edit_distance: number;
   weight_recovery: number | null;
+  weight_recovery_ceiling: number | null;
+  weight_recovery_ceiling_sd: number | null;
+  probe_tau_first: number | null;
+  probe_tau_last: number | null;
+  probe_top1_last: number | null;
   tokens_per_action: number;
   errors: string[];
 }
@@ -190,6 +195,7 @@ export function Evaluation() {
                 <th className="num">last third</th>
                 <th className="num">mean edit</th>
                 <th className="num">weight recovery</th>
+                <th className="num">same-n ceiling</th>
                 <th className="num">tokens/action</th>
               </tr>
             </thead>
@@ -207,17 +213,68 @@ export function Evaluation() {
                       ? "—"
                       : row.weight_recovery.toFixed(2)}
                   </td>
+                  <td className="num">
+                    {row.weight_recovery_ceiling === null
+                      ? "—"
+                      : `${row.weight_recovery_ceiling.toFixed(2)} ± ${(
+                          row.weight_recovery_ceiling_sd ?? 0
+                        ).toFixed(2)}`}
+                  </td>
                   <td className="num">{Math.round(row.tokens_per_action)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           <p className="hint">
-            Weight recovery is the sharpest number here: the correlation between
-            what the preference head learned and the persona's hidden weights.
-            Not “did acceptance rise” — any degenerate system achieves that —
-            but “did the machinery recover the taste it was shown”.
+            Weight recovery is the correlation between what the preference head
+            learned and the persona's hidden weights. It is read against the
+            ceiling beside it: what the same estimator scores on the same number
+            of decisions from the same candidate sets, given weights it is
+            <em>told</em>. Twenty-odd noisy comparisons over thirteen features
+            do not identify thirteen weights, so the ceiling — not 1.0 — is the
+            scale.
           </p>
+
+          {runs.some((row) => row.probe_tau_last !== null) && (
+            <>
+              <h2>Held-out probe</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>run</th>
+                    <th className="num">tau, first episode</th>
+                    <th className="num">tau, last episode</th>
+                    <th className="num">top-1 agreement</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {runs
+                    .filter((row) => row.probe_tau_last !== null)
+                    .map((row) => (
+                      <tr key={`probe-${row.run}`}>
+                        <td>{row.run}</td>
+                        <td className="num">
+                          {(row.probe_tau_first ?? 0).toFixed(3)}
+                        </td>
+                        <td className="num">
+                          {(row.probe_tau_last ?? 0).toFixed(3)}
+                        </td>
+                        <td className="num">
+                          {fmtPct(row.probe_top1_last ?? 0)}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              <p className="hint">
+                The same frozen decisions, sampled from other writers' runs,
+                re-ranked after every episode by the head as it stood at that
+                moment. The probe set never changes, so nothing in this table
+                can move because the task got harder — which is the one thing
+                the acceptance column cannot promise.
+              </p>
+            </>
+          )}
         </>
       )}
 
