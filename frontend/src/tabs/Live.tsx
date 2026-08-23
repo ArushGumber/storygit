@@ -225,7 +225,7 @@ export function Live() {
           </button>
           <button
             onClick={() =>
-              void run("merge", async () => {
+              void run("merge-branch", async () => {
                 const others = Object.keys(branches?.branches ?? {}).filter(
                   (name) => name !== branches?.current,
                 );
@@ -269,8 +269,10 @@ export function Live() {
               setAudit({ summary: report.summary, flags: report.flags });
             })
           }
+          disabled={busy !== null}
+          title="Runs layers 1 and 2 over the whole story. Slower than the per-accept check."
         >
-          audit
+          {busy === "audit" ? "checking the whole story…" : "audit"}
         </button>
         {audit && (
           <>
@@ -492,7 +494,7 @@ export function Live() {
             void run("strike", async () => afterAction(await api.strikeFact(fact.fact.id)))
           }
           onMerge={(source: Entity) =>
-            void run("merge", async () => {
+            void run("merge-entity", async () => {
               const others = (slice?.entities ?? []).filter((e) => e.id !== source.id);
               const answer = window.prompt(
                 `Fold ${source.name} into which entity?\n\n${others.map((e) => e.name).join("\n")}`,
