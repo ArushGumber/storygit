@@ -13,14 +13,62 @@ a regression is a real regression — they are free, and they cannot be improved
 until the model has a good day.
 
 **Live runs** (`run.py`) drive the real engine with simulated writers. These produce the
-acceptance and edit-distance curves and the weight-recovery numbers, and they cost quota.
+acceptance and edit-distance curves, the held-out probe curve, and the weight-recovery
+numbers, and they cost quota.
 
 ```bash
 python -m eval.offline                          # everything deterministic, seconds
 python -m eval.run --config smoke --max-calls 200
 python -m eval.run --config full --max-calls 3000
 python -m eval.run --offline-only               # regenerate figures without spending quota
+python -m eval.run --config probesample         # sample the probe fixture (see below)
+python -m eval.probe --build                    # rebuild it from those runs
+python -m eval.costing                          # project a metered rerun, arithmetic only
 ```
+
+## The held-out probe, and why it exists
+
+Acceptance rate over a run measures two things at once. The writer's bar does not move, but
+the task gets harder every episode — each new candidate has to stay consistent with more
+established facts, more open threads, and more accumulated rules. So a falling acceptance
+curve is not evidence the preference layer failed, and a rising one would not be evidence
+that it worked. **A metric that moves for two reasons measures neither**, and no statistic
+computed on that curve separates them.
+
+The fix is a different experiment. `probe.py` freezes a set of decision points and replays
+them after every episode, ranking with the head as it stands at that moment and scoring
+that ranking against what the persona would privately have chosen (Kendall tau, plus top-1
+agreement). The probe set never changes, so difficulty is held fixed by construction and
+anything that moves is the head.
+
+Two properties keep it honest:
+
+- **No leakage.** Points come from a dedicated `probesample` run that is never itself
+  probed, and `ProbeSet.for_persona` additionally refuses any point sourced from the
+  persona being measured. A persona is never probed on a decision it trained on.
+- **No provider calls.** Each point stores the candidate-intrinsic features computed at
+  decision time. Replay recomputes only the two features that depend on the *learner's*
+  state — voice cosine and edit-direction projection — and re-ranks. Asserted by a test,
+  because a probe that quietly regenerated a candidate would stop being frozen.
+
+## The ceiling on weight recovery
+
+A correlation of 0.4 between a fitted weight vector and a hidden one is meaningless without
+a scale, and the scale is not 1.0 — that is the answer for infinite data. Twenty-odd noisy
+comparisons over thirteen features do not identify thirteen weights.
+
+`ceiling.py` measures the estimator's best case directly: take the feature matrices a
+persona actually saw and its actual decision count, generate choices from a *known* random
+weight vector at that persona's noise level, fit the same head the same way, correlate, and
+repeat over 200 seeds. Every reported recovery number carries this ceiling beside it,
+because 0.44 against 0.50 and 0.44 against 0.95 are different claims — and only one of them
+is about the system rather than about the sample size.
+
+The offline tier carries the same computation as a curve against decision count, drawn from
+the ranges real candidates occupy rather than from a uniform cube. That choice does most of
+the work: uniform draws report 0.88 at 25 decisions where realistic ones report 0.72,
+because real features are clustered and correlated and the design matrix is far worse
+conditioned than random data.
 
 ## The simulated writers
 

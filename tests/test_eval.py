@@ -781,3 +781,25 @@ def test_the_chunk_seven_costing_is_arithmetic_and_never_calls_anything() -> Non
     body = costing.render(summary, cap_usd=12.0)
     assert "No OpenRouter call was made" in body
     assert "half only" in body, "a run over the cap must say so rather than just printing it"
+
+
+@pytest.mark.asyncio
+async def test_replaying_the_probe_makes_no_provider_calls(fixture: Fixture) -> None:
+    """The probe runs after every episode, so it has to be free or it would not run.
+
+    Asserted against the call log rather than by inspection: a probe that quietly
+    regenerated a candidate would be both expensive and no longer a *frozen* decision.
+    """
+    engine, _ = mock_engine(fixture)
+    probe_set, hidden = _synthetic_probe()
+    before = engine.router.summary()["calls"]
+    reading = probe.agreement(
+        probe_set.points,
+        engine.preference.state.weights,
+        hidden,
+        learner=engine.preference.state.voice,
+    )
+    assert engine.router.summary()["calls"] == before, "the probe called a provider"
+    assert reading["points"] == float(len(probe_set.points))
+    assert -1.0 <= reading["tau"] <= 1.0
+    assert 0.0 <= reading["top1"] <= 1.0
