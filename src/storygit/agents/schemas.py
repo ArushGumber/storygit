@@ -15,8 +15,9 @@ never sees an unexplained candidate.
 from __future__ import annotations
 
 from enum import StrEnum
+from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from storygit.domain.world import EntityKind, Predicate
 
@@ -48,7 +49,51 @@ class Level(StrEnum):
     prose = "prose"
 
 
-class CharacterDraft(BaseModel):
+def _declared_max_length(field: Any) -> int | None:
+    """The ``max_length`` a field declares, if any."""
+    for constraint in getattr(field, "metadata", ()):
+        limit = getattr(constraint, "max_length", None)
+        if limit is not None:
+            return int(limit)
+    return None
+
+
+class BoundedModel(BaseModel):
+    """A response model whose length bounds truncate rather than reject.
+
+    The bounds exist to keep proposals readable and to stop a small model running away
+    inside one string field. They are forwarded into the provider's response schema, but
+    **Gemini does not enforce ``maxLength``** -- verified against the live API, where a
+    ``time`` field bounded at 80 characters came back with 300.
+
+    Rejecting on that costs a whole repair call to recover a candidate that was fine
+    except for being twenty characters long. During the first evaluation run it was
+    happening on roughly 80% of proposals, doubling the cost of the entire experiment.
+
+    So: truncate on the way in. The bound still does its job -- nothing unbounded reaches
+    the diff -- and a good candidate is no longer thrown away over punctuation.
+    """
+
+    @model_validator(mode="before")
+    @classmethod
+    def _truncate_to_bounds(cls, data: Any) -> Any:
+        """Trim over-long strings and over-long lists to their declared bounds."""
+        if not isinstance(data, dict):
+            return data
+        out = dict(data)
+        for name, field in cls.model_fields.items():
+            limit = _declared_max_length(field)
+            if limit is None or name not in out:
+                continue
+            value = out[name]
+            if isinstance(value, str) and len(value) > limit:
+                out[name] = value[:limit].rstrip()
+            elif isinstance(value, list) and len(value) > limit:
+                out[name] = value[:limit]
+        return out
+
+
+class CharacterDraft(BoundedModel):
     """A character, place, object, or faction the proposal introduces."""
 
     model_config = ConfigDict(extra="ignore")
@@ -65,7 +110,7 @@ class CharacterDraft(BaseModel):
     )
 
 
-class FactDraft(BaseModel):
+class FactDraft(BoundedModel):
     """One fact a beat establishes.
 
     ``object_is_entity`` tells the diff builder whether ``object`` names another entity
@@ -94,7 +139,7 @@ class FactDraft(BaseModel):
     )
 
 
-class ProposalBase(BaseModel):
+class ProposalBase(BoundedModel):
     """Fields every proposal carries, whatever its level."""
 
     model_config = ConfigDict(extra="ignore")
@@ -212,7 +257,7 @@ class ProseProposal(ProposalBase):
     )
 
 
-class ExtractionResult(BaseModel):
+class ExtractionResult(BoundedModel):
     """What a fact-extraction call returns for a passage of prose."""
 
     model_config = ConfigDict(extra="ignore")

@@ -50,6 +50,13 @@ continuity error in serialized fiction, and this field is what prevents it.
 """
 
 
+BREVITY = """\
+Keep every field inside its stated maxLength. Providers do not enforce these bounds, so \
+they are your responsibility: `location` and `time` are a few words, not a sentence; \
+`what_happens` is one or two sentences; `rationale` is one or two. A field that runs long \
+is truncated, and what you lose is the end of the sentence you cared about."""
+
+
 def _schema_block(model_cls: type[BaseModel]) -> str:
     """Render a response model's JSON Schema for inclusion in a prompt."""
     return json.dumps(model_cls.model_json_schema(), indent=2)
@@ -96,6 +103,7 @@ def _user_message(
     if intent:
         blocks.append(f"THE WRITER'S INTENT\n{intent}")
     blocks.append(f"YOUR TASK\n{task}")
+    blocks.append(BREVITY)
     blocks.append(
         "Reply with JSON only, matching this schema exactly. No commentary, no code "
         f"fences.\n{_schema_block(model_cls)}"

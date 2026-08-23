@@ -198,15 +198,15 @@
   ],
   "episodes_completed": 1,
   "call_summary": {
-    "calls": 131,
-    "prompt_tokens": 296312,
-    "completion_tokens": 190409,
+    "calls": 143,
+    "prompt_tokens": 334133,
+    "completion_tokens": 229282,
     "cost_usd": 0.0,
     "cache_hits": 35,
     "errors": 2,
-    "mean_latency_s": 7.280372167076395,
-    "total_tokens": 486721,
-    "cache_hit_rate": 0.26717557251908397,
+    "mean_latency_s": 7.808139912496572,
+    "total_tokens": 563415,
+    "cache_hit_rate": 0.24475524475524477,
     "by_purpose": [
       {
         "purpose": "propose.beat.repair",
@@ -224,8 +224,15 @@
       },
       {
         "purpose": "propose.episode.repair",
-        "calls": 6,
-        "tokens": 39440,
+        "calls": 12,
+        "tokens": 88788,
+        "cost_usd": 0.0,
+        "cache_hits": 3
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 13,
+        "tokens": 53490,
         "cost_usd": 0.0,
         "cache_hits": 3
       },
@@ -242,13 +249,6 @@
         "tokens": 27877,
         "cost_usd": 0.0,
         "cache_hits": 0
-      },
-      {
-        "purpose": "propose.episode",
-        "calls": 7,
-        "tokens": 26144,
-        "cost_usd": 0.0,
-        "cache_hits": 3
       },
       {
         "purpose": "propose.scene.repair",
@@ -282,8 +282,8 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 128,
-        "tokens": 482848,
+        "calls": 140,
+        "tokens": 559542,
         "cost_usd": 0.0
       },
       {
@@ -295,8 +295,8 @@
     ],
     "cache": {
       "hits": 35,
-      "misses": 96,
-      "entries": 171
+      "misses": 108,
+      "entries": 186
     },
     "budget_remaining_usd": 12.0
   },
@@ -323,7 +323,20 @@
       }
     ],
     "bandit_safe": 0.5,
-    "bandit_explore": 0.5
+    "bandit_explore": 0.5,
+    "fitted_weights": {
+      "judge_momentum": 1.7123696910578645,
+      "judge_specificity": 1.8865959178149103,
+      "judge_consequence": 2.5803339697724956,
+      "judge_voice": 1.2671100205937031,
+      "writer_criteria": 1.9782136890241964,
+      "continuity": 1.4757874435820895,
+      "voice_cosine": 0.3822474758870265,
+      "edit_direction": 0.470343118321227,
+      "length": 1.077293337048959,
+      "dialogue_ratio": 1.1584635848736151
+    },
+    "weight_recovery": 0.7949179377528633
   },
   "hidden_weights": {
     "judge_momentum": 1.0,
@@ -339,6 +352,8 @@
   },
   "errors": [
     "no candidates parsed at beat",
-    "no candidates parsed at beat"
+    "no candidates parsed at beat",
+    "no candidates parsed at episode",
+    "episode 2 was not accepted; stopping"
   ]
 }

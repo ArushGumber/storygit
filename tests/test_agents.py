@@ -336,3 +336,48 @@ async def test_extraction_failure_is_an_empty_diff_not_a_crash(fixture: Fixture)
     proposer = Proposer(router, IdGenerator(seed=20))
     diff = await proposer.extract(fixture.repo.state(), fixture.beat_c, "some prose")
     assert len(diff) == 0
+
+
+def test_over_long_fields_truncate_rather_than_reject() -> None:
+    """Gemini does not enforce maxLength, and a repair call per proposal is not free.
+
+    Measured during the first evaluation run: roughly 80% of proposals were failing
+    validation on a single over-long field and costing a whole extra call to recover.
+    """
+    from storygit.agents.schemas import EpisodeProposal
+
+    episode = EpisodeProposal.model_validate(
+        {
+            "title": "x" * 400,
+            "what_happens": "y" * 4000,
+            "time": "a long sentence about when this happens " * 20,
+            "threads_opened": [f"thread {i}" for i in range(30)],
+            "rationale": "z" * 4000,
+        }
+    )
+    assert len(episode.title) == 80
+    assert len(episode.what_happens) == 600
+    assert len(episode.time) <= 80, "trailing whitespace is stripped after the cut"
+    assert len(episode.threads_opened) == 4
+    assert len(episode.rationale) == 600
+
+
+def test_truncation_leaves_well_formed_output_alone() -> None:
+    from storygit.agents.schemas import BeatProposal
+
+    beat = BeatProposal.model_validate(BEAT_PAYLOAD)
+    assert beat.title == BEAT_PAYLOAD["title"]
+    assert beat.what_happens == BEAT_PAYLOAD["what_happens"]
+    assert len(beat.produces) == 2
+
+
+def test_the_prompt_states_the_bounds_because_the_provider_ignores_them(
+    fixture: Fixture,
+) -> None:
+    from storygit.agents import prompts
+    from storygit.agents.schemas import BeatProposal
+    from storygit.graph.slices import StateSlice
+
+    _, user = prompts.beat_prompt(StateSlice(), "go on", BeatProposal, "The market")
+    assert "maxLength" in user.content
+    assert "truncated" in user.content
