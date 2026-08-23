@@ -558,7 +558,7 @@ def test_editing_a_plan_candidate_keeps_the_writers_words(api) -> None:  # type:
     recording the edit signal, so the preference layer learned from a change that never
     happened. A writer found it by re-reading the node.
     """
-    client, state, _ = api
+    client, _, _ = api
     story = next(n for n in client.get("/api/tree").json()["nodes"] if n["node_type"] == "story")
     proposed = client.post(
         "/api/propose", json={"node_id": story["id"], "level": "episode", "intent": "go on"}
