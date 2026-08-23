@@ -293,11 +293,29 @@ class Router:
         self.budget.close()
 
 
+STRONG_MODEL_ROUTING: dict[str, str] = dict(ROUTING) | {
+    "propose": "openrouter",
+    "judge": "openrouter",
+}
+"""Routing for the strong-model rerun: generation and judging move to the metered provider.
+
+Extraction and classification stay on the free tier deliberately. The question the rerun
+answers is whether the *system* works or the *model* is good, and that question is about
+the prose and the ranking. Moving extraction too would change a second variable and cost
+money to learn nothing.
+
+This is the "one-line edit" the routing decision was made for: the policy lives in one
+table, so redirecting the expensive half of the pipeline is a dictionary literal rather
+than a sweep through forty call sites.
+"""
+
+
 def build_router(
     settings: Settings | None = None,
     *,
     cache_path: str | None = None,
     calllog_path: str | None = None,
+    strong_model: str | None = None,
 ) -> Router:
     """Construct the production router from settings.
 
@@ -309,6 +327,10 @@ def build_router(
         settings: Settings; loaded from the environment if omitted.
         cache_path: Override the cache database path.
         calllog_path: Override the call-log database path.
+        strong_model: Route generation and judging to the metered provider using this
+            model id. The lock and the budget guard are untouched: the provider still
+            refuses every call unless ``OPENROUTER_ENABLED`` is exactly ``"true"``, and
+            still refuses any call it cannot afford under the cap.
 
     Returns:
         A wired router.
@@ -347,7 +369,7 @@ def build_router(
 
     providers["openrouter"] = OpenRouterProvider(
         settings.openrouter_api_key.get_secret_value(),
-        model=settings.openrouter_model,
+        model=strong_model or settings.openrouter_model,
         enabled_flag=settings.openrouter_enabled,
         budget=budget,
         timeout_s=settings.request_timeout_s,
@@ -359,5 +381,6 @@ def build_router(
         cache=LLMCache(cache_db),
         calllog=CallLog(log_db, redactor=settings.redact),
         budget=budget,
+        routing=STRONG_MODEL_ROUTING if strong_model else None,
         settings=settings,
     )

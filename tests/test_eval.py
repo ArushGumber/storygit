@@ -7,6 +7,9 @@ exercise by spending quota is a metrics module nobody checks.
 
 from __future__ import annotations
 
+import tempfile
+from pathlib import Path
+
 import pytest
 from eval import ablations, ceiling, costing, inject, metrics, offline, personas, probe
 from eval.gallery_record import Recorder, Session, replay
@@ -1042,3 +1045,50 @@ def test_the_probe_can_see_the_features_it_is_asked_about() -> None:
         if spread <= 1e-9:
             blind.append(name)
     assert blind == [], f"the probe cannot distinguish any head on: {', '.join(blind)}"
+
+
+def test_the_evaluation_refuses_the_metered_provider_unless_it_was_asked_for() -> None:
+    """An enabled flag is not consent to spend; naming the model is.
+
+    The metered provider being enabled is normally a mistake, and an evaluation that
+    quietly spent money because a flag was left set somewhere would be a bad way to find
+    out. Both directions are refused: enabled without a model named, and a model named
+    without the provider enabled, which would otherwise run to completion producing
+    nothing because every call is refused at the provider.
+    """
+    import asyncio
+
+    import pytest
+    from eval import ablations, run
+    from eval.personas import PERSONAS
+
+    from storygit.config import Settings
+
+    # Constructed explicitly rather than subclassed: Settings reads a workspace .env, so a
+    # subclass default would be silently overridden by whatever is on disk, and the test
+    # would depend on the machine it runs on. It would also have reached a real provider.
+    enabled = Settings(openrouter_enabled="true")
+    disabled = Settings(openrouter_enabled="false")
+    assert enabled.openrouter_is_enabled and not disabled.openrouter_is_enabled
+
+    def go(settings: Settings, strong: str | None, tmp: Path) -> None:
+        original = run.get_settings
+        run.get_settings = lambda: settings  # type: ignore[assignment]
+        try:
+            asyncio.run(
+                run.run_matrix(
+                    configs=[ablations.get("smoke")],
+                    personas=[PERSONAS["the Serialist"]],
+                    results=tmp,
+                    max_calls=1,
+                    strong_model=strong,
+                )
+            )
+        finally:
+            run.get_settings = original  # type: ignore[assignment]
+
+    with tempfile.TemporaryDirectory() as d:
+        with pytest.raises(RuntimeError, match="no --strong-model was given"):
+            go(enabled, None, Path(d))
+        with pytest.raises(RuntimeError, match="needs OPENROUTER_ENABLED=true"):
+            go(disabled, "some/model", Path(d))

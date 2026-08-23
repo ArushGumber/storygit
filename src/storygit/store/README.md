@@ -60,4 +60,4 @@ else:
 
 One writer, one story, a few megabytes, and a file the writer can copy. Postgres buys
 concurrency this system does not have. See `learning_systems.tex` for what would change
-at a serialized-fiction platform scale.
+at platform scale.

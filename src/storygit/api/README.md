@@ -62,7 +62,7 @@ Two consequences are handled rather than assumed. SQLite connections are opened 
 if two requests arrive together. Without the lock, two concurrent commits could both branch
 from the same parent and one would silently vanish.
 
-`learning_systems.tex` describes what would change at a serialized-fiction platform scale.
+`learning_systems.tex` describes what would change at platform scale.
 
 ## Everything goes through `commit_diff`
 

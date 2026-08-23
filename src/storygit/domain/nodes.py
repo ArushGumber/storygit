@@ -92,7 +92,8 @@ class Story(BaseNode):
 
 
 class Episode(BaseNode):
-    """One serialized episode — the unit a serialized-fiction platform ships and listeners return to.
+    """One serialized episode, the unit a serialized-fiction platform ships and listeners
+    return to.
 
     Attributes:
         hook: Opening pull that earns the first minute.

@@ -127,6 +127,7 @@ async def run_matrix(
     seed: int = 7,
     use_llm_edits: bool = True,
     probe_set: probe.ProbeSet | None = None,
+    strong_model: str | None = None,
 ) -> dict[str, Any]:
     """Run every (configuration, persona) pair that fits in the call budget.
 
@@ -138,15 +139,34 @@ async def run_matrix(
         seed: Base seed.
         use_llm_edits: Whether the simulated writer's edits go through the cheap model.
         probe_set: The held-out probe, replayed after every episode at no provider cost.
+        strong_model: Route generation and judging to the metered provider on this model,
+            for the rerun that separates "the system works" from "the model is good".
 
     Returns:
         Logs by ``config/persona``, plus what was skipped and why.
     """
     settings = get_settings()
-    if settings.openrouter_is_enabled:
+    # The metered provider being enabled is normally a mistake, and an evaluation that
+    # quietly spent money because a flag was left set would be a bad way to find out. So
+    # the default remains a hard abort. The strong-model rerun is the one case where
+    # spending is the point, and it says so on the command line: passing --strong-model
+    # is the deliberate act, and the environment flag alone is never enough.
+    if settings.openrouter_is_enabled and strong_model is None:
         raise RuntimeError(
-            "OpenRouter is enabled. The evaluation never uses it; enable it only for "
-            "chunk 7, with Arush present."
+            "OPENROUTER_ENABLED is true but no --strong-model was given. A normal "
+            "evaluation never uses the metered provider; if you meant the strong-model "
+            "rerun, name the model explicitly."
+        )
+    if strong_model is not None and not settings.openrouter_is_enabled:
+        raise RuntimeError(
+            f"--strong-model {strong_model!r} needs OPENROUTER_ENABLED=true. The "
+            "provider refuses every call otherwise, so the run would produce nothing."
+        )
+    if strong_model is not None:
+        print(
+            f"metered rerun: generation and judging on {strong_model} via OpenRouter, "
+            f"under a ${settings.openrouter_budget_usd:.2f} in-code cap that refuses "
+            "rather than overspends"
         )
 
     # A per-invocation call log, so "calls so far" means this run rather than every run
@@ -156,7 +176,7 @@ async def run_matrix(
     log_db.parent.mkdir(parents=True, exist_ok=True)
     if log_db.exists():
         log_db.unlink()
-    router = build_router(settings, calllog_path=str(log_db))
+    router = build_router(settings, calllog_path=str(log_db), strong_model=strong_model)
     logs: dict[str, RunLog] = {}
     skipped: list[dict[str, str]] = []
 
@@ -501,6 +521,15 @@ def main() -> None:
     parser.add_argument("--personas", default="", help="comma-separated persona names")
     parser.add_argument("--max-calls", type=int, default=600, help="provider call budget")
     parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument(
+        "--strong-model",
+        default="",
+        help=(
+            "route generation and judging to the metered provider on this model id, for "
+            "the rerun that separates 'the system works' from 'the model is good'. The "
+            "lock and the budget cap are untouched and still refuse."
+        ),
+    )
     parser.add_argument("--results", default=str(RESULTS))
     parser.add_argument("--offline-only", action="store_true", help="skip every live run")
     parser.add_argument(
@@ -564,6 +593,7 @@ def main() -> None:
                 results=results,
                 max_calls=args.max_calls,
                 seed=args.seed,
+                strong_model=args.strong_model or None,
                 use_llm_edits=not args.no_llm_edits,
                 probe_set=probe_set,
             )

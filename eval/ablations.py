@@ -168,6 +168,27 @@ SMOKE = RunConfig(
 """The configuration to run first, always. It costs almost nothing and catches everything
 structural."""
 
+HALF = RunConfig(
+    name="half",
+    description="the full configuration at half the decisions, for the metered rerun",
+    expectation=(
+        "the same mechanisms on a stronger model, at a cost that fits the in-code cap; "
+        "the comparison against `full` is the one that separates the system from the model"
+    ),
+    episodes=2,
+    scenes_per_episode=2,
+    beats_per_scene=1,
+)
+"""Half the decision count of ``FULL``, and nothing else changed.
+
+The metered rerun exists to separate "the system works" from "the model is good", which
+only holds if the two runs differ in exactly one variable. So every component stays on:
+same axes, same selector, same dial, same checker, same preference layer, same personas,
+same seed. What changes is the decision count, because the full configuration on the
+cheapest model that fits does not fit the $12 cap, and reporting a partial run of the full
+configuration would confound the comparison with where it stopped.
+"""
+
 SOFT_EDGE_THRESHOLDS = (0.55, 0.62, 0.68, 0.72, 0.78, 0.85)
 """Threshold sweep for the 2d'' ablation. Reported as a precision/recall curve, not a
 single number, because the whole question is the trade-off."""
@@ -188,7 +209,7 @@ they are used to measure would make the probe a memory test even with the cross-
 rule; taking them from a run that is never itself probed removes the question entirely.
 """
 
-BY_NAME: dict[str, RunConfig] = {c.name: c for c in (*ABLATIONS, SMOKE, PROBE_SAMPLE)}
+BY_NAME: dict[str, RunConfig] = {c.name: c for c in (*ABLATIONS, SMOKE, PROBE_SAMPLE, HALF)}
 
 
 def get(name: str) -> RunConfig:

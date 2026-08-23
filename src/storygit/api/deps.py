@@ -9,7 +9,7 @@ constructed per request.
 story database, one writer, one process. There is no session, no auth, and no locking
 between concurrent writers, because there are none. That is the right shape for a tool a
 novelist runs on their own machine, and `learning_systems.tex` describes exactly what would
-change at a serialized-fiction platform scale.
+change at platform scale.
 """
 
 from __future__ import annotations
