@@ -42,6 +42,13 @@ numbers:  ## Recompute the deterministic metrics and regenerate the TeX macros
 	$(PY) -m eval.texnumbers
 
 docs: diagrams numbers  ## Rebuild the outward-facing document
+	@# The register is part of the deliverable: an em dash is a sentence that was not
+	@# finished. Rewrite it with a comma, a colon, a semicolon, parentheses, or two
+	@# sentences. Hyphens in compound words and minus signs in maths are untouched.
+	@if grep -n -- '---' docs/presentable.tex || grep -n '\xe2\x80\x94' docs/presentable.tex; then \
+		echo "docs: em dash found above; rewrite the sentence rather than swapping the dash" >&2; \
+		exit 1; \
+	fi
 	cd docs && tectonic presentable.tex
 
 eval:  ## Run the live evaluation (costs provider quota)

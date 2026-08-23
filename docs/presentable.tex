@@ -1,34 +1,21 @@
-% presentable.tex -- storygit, the outward-facing document.
+% presentable.tex -- storygit.
 % Compile: tectonic presentable.tex
-\documentclass[11pt,a4paper]{article}
+\documentclass{article}
 
+\usepackage[preprint]{neurips_2023}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{charter}
-\usepackage[charter]{mathdesign}
-\usepackage[margin=2.6cm]{geometry}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{amsmath}
-\usepackage{xcolor}
-\usepackage{titlesec}
 \usepackage{caption}
+\usepackage{url}
 \usepackage[hidelinks]{hyperref}
 
-\definecolor{sgink}{HTML}{2B2A28}
-\definecolor{sgslate}{HTML}{5C5A55}
-\definecolor{sgaccent}{HTML}{8C5A3C}
-\definecolor{sgrule}{HTML}{D6D2C8}
-
-\color{sgink}
-\captionsetup{font=small, labelfont={small,it}, textfont=small}
-\titleformat{\section}{\large\bfseries}{\thesection}{0.7em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\captionsetup{font=small, labelfont={small,bf}, textfont=small}
 \setlist{itemsep=1pt, topsep=3pt, parsep=0pt}
-\setlength{\parskip}{0.4em}
-\setlength{\parindent}{0pt}
 
 \newcommand{\storygit}{\textsf{storygit}}
 \newcommand{\file}[1]{\texttt{\small\detokenize{#1}}}
@@ -40,36 +27,42 @@
 \newcommand{\decision}[1]{\subsection{#1}}
 \newcommand{\rejected}[1]{\textit{Rejected:} #1}
 
-\title{\storygit\\[0.3em]\large Version control for story state}
-\author{Arush Gumber}
-\date{}
+\title{\storygit: version control for story state}
+\author{%
+  Arush Gumber\\
+  \texttt{arush23136@iiitd.ac.in}\\
+}
 
 \begin{document}
 \maketitle
-\thispagestyle{empty}
 
 \begin{abstract}
-\noindent
-\storygit{} is an AI-assisted storytelling system that develops a one-line premise into
-a structured serial --- Story, Episodes, Scenes, Beats, Prose --- while keeping the
-writer in authority over every change. Its claim is that the hard part of long-form
-AI-assisted fiction is not generation but \emph{state}: what is true, who knows it,
-what depends on it, and what a given edit therefore invalidates. \storygit{} models the
-story as a versioned typed state graph, makes every AI action a reviewable diff against
-it, propagates edits by \emph{marking} affected nodes rather than rewriting them,
-checks continuity graph-first before it ever asks a model, and learns the writer's taste
-from their accept, reject, and edit signals. This document states the problem, the
-design, the decisions and their rejected alternatives, and the measurements.
+The hard part of long-form AI-assisted fiction is not generation but \emph{state}: what is
+true, who knows it, what depends on it, and what a given edit therefore invalidates.
+\storygit{} develops a one-line premise into a structured serial of episodes, scenes, beats
+and prose by modelling the story as a versioned typed state graph. Three mechanisms follow
+from that model. Every AI action is a reviewable diff against the graph rather than a block
+of replacement text. Edits propagate along declared dependency edges by \emph{marking} what
+they affect and never by rewriting it. Continuity is checked graph-first, by a deterministic
+pass over a closed predicate vocabulary, before any model is asked for an opinion. A
+preference layer learns the writer's taste from the accept, reject and edit signals they
+already produce, and is measured on a held-out cross-writer probe against an oracle ceiling
+for the same estimator on the same data, which separates what the learner did from what the
+sample size allowed. The deterministic evaluation catches four of five injected
+contradiction classes at layer 1 and the fifth at layer 2, at
+\rCheckerFalsePositivesPerBeat{} false positives per beat on a clean story, and predicts an
+edit's blast radius at precision \rStaleDeclaredPrecision{} and recall
+\rStaleDeclaredRecall{} from declared edges alone. All of it ran on free-tier inference at a
+total spend of \$0.00.
 \end{abstract}
 
-\vspace{1em}
-
-\section{The problem}
+\section{Introduction}
+\label{sec:intro}
 
 A writer starts with a sentence: \emph{a powerless orphan discovers an ability that
-could change the balance of power in a world at war.} They want to end with a serial ---
-tens or hundreds of episodes, coherent, in their voice, with the mechanics that make a
-listener press \emph{next episode}. The naive form of AI assistance, prompt to story,
+could change the balance of power in a world at war.} They want to end with a serial of tens or
+hundreds of episodes: coherent, in their voice, with the mechanics that make a listener
+press \emph{next episode}. The naive form of AI assistance, prompt to story,
 fails at this in five reliable ways.
 
 \textbf{State drift.} Facts established early are forgotten or contradicted later. The
@@ -80,8 +73,8 @@ reader forgives an inconsistent hair colour; they do not forgive a character who
 somehow already knows the secret.
 
 \textbf{Broken edit semantics.} The writer changes one scene. Either nothing downstream
-responds --- the story now contains a contradiction nobody flagged --- or the system
-regenerates the plan and destroys work the writer had already approved. Both come from
+responds, leaving a contradiction nobody flagged, or the system regenerates the plan and
+destroys work the writer had already approved. Both come from
 the same absence: nothing records what depends on what. Fabula's own study~\cite{mirowski2026fabula} reports
 exactly this, from several writers independently.
 
@@ -103,15 +96,14 @@ cliffhangers, recaps, and the open threads a listener is waiting to see paid off
 retention surface of the product, and a general-purpose story generator does not track
 any of them.
 
-\section{Thesis}
 
 Treat the story as a \textbf{versioned, typed state graph}. Make every AI action a
 \textbf{reviewable diff} against that graph rather than a block of replacement text.
 Make dependencies \textbf{explicit}, so that an edit propagates by \emph{marking} what it
 affected and never by rewriting it. Let the writer \textbf{own the objective}, in their
 own words, rather than ranking against the system's. And \textbf{learn the writer's
-taste} from the signals they are already producing --- what they accept, what they
-reject, and how they edit.
+taste} from the signals they are already producing: what they accept, what they reject,
+and how they edit.
 
 The division of labour follows: \textbf{the AI handles coherence and mechanics; the human
 handles taste, voice, and retention.}
@@ -120,18 +112,43 @@ Stated as a difference: Fabula is a chain of prompts with a user interface. \sto
 is a state machine with a learning loop. The chain is fast to build and pleasant to
 demonstrate; the state machine is what survives episode~40.
 
-\section{Fabula, and the gaps this exploits}
+
+
+\paragraph{Contributions.} The novelty here is not any single mechanism but the fact that
+they are derived from one commitment, that the story is a typed state graph under version
+control, and that the evaluation is designed so the central claim can fail. Specifically:
+
+\begin{enumerate}[label=(\arabic*)]
+\item A \textbf{versioned typed state graph} for a serial, with content-addressed
+snapshots, branches, and three-way merge, in which every AI action is a diff that is
+previewed, reviewed and committed rather than applied.
+\item \textbf{Deterministic dependency propagation with explicit staleness}: beats declare
+what they produce and consume, an edit walks those edges, and what it reaches is
+\emph{marked}, never rewritten. Human prose is marked for review rather than staled.
+\item A \textbf{three-layer graph-first continuity checker}, in which a dictionary lookup
+over a closed predicate vocabulary runs before a cross-encoder, which runs before a model
+is asked anything, so the cheap and exact layer answers most questions.
+\item A \textbf{preference layer with a deconfounded measurement design}: a held-out
+cross-writer probe that cannot move because the task got harder, scored against an oracle
+ceiling computed with the same estimator on the same candidate sets at the same decision
+count.
+\item \textbf{Serialized-fiction mechanics} as first-class state: hooks, cliffhangers,
+recaps, and an open-thread ledger that reports how many beats each thread has gone
+untouched.
+\end{enumerate}
+
+\section{Related work}
 \label{sec:fabula}
 
-Fabula~\cite{mirowski2026fabula} (DeepMind, 2026) builds a two-level hierarchical plan --- a
-story plan of scenes, then beat plans per scene --- and then a script, using
-prompt-chaining orchestrators with structured output. It is editable at every level, with
+Fabula~\cite{mirowski2026fabula} (DeepMind, 2026) builds a two-level hierarchical plan (a
+story plan of scenes, then beat plans per scene) and then a script, using prompt-chaining
+orchestrators with structured output. It is editable at every level, with
 top-down propagation and partial bottom-up updates. It ships 26 orchestrator variants, an
 auto-rater over 63 narratology guidelines that argues before it rates (to reduce position
 bias) and correlates 0.83 with human preference after tuning, a generate--critique--select
 search loop, and suggestion diversity implemented as embedding cosine against past
-suggestions. It was evaluated with 42 writers --- 18 design interviews and 25 three-hour
-sessions --- plus hundreds of testers. It is the closest published system to this problem,
+suggestions. It was evaluated with 42 writers, comprising 18 design interviews and 25 three-hour
+sessions, plus hundreds of testers. It is the closest published system to this problem,
 and the immediate predecessor of these questions; Dramatron~\cite{mirowski2023dramatron}
 and Wordcraft~\cite{yuan2022wordcraft} are the hierarchical-generation and
 writer-in-the-loop lines it builds on, and the creativity-support
@@ -146,8 +163,8 @@ insert and delete controls, progressive build-up, and an ``absurdity dial''. And
 authors' own conclusion is that the system is most useful as feedback on the writer's own
 script, not as a generator.
 
-Three of those complaints --- edits rewriting the plan, stale scenes going unflagged, and
-the inability to add a character locally --- are the same missing abstraction seen from
+Three of those complaints, namely edits rewriting the plan, stale scenes going unflagged,
+and the inability to add a character locally, are the same missing abstraction seen from
 three angles: there is no explicit dependency graph. \storygit{} builds that abstraction
 first and derives the rest from it.
 
@@ -174,16 +191,17 @@ kernel \\
 \end{tabular}
 \end{center}
 
-\section{Architecture}
+
+\section{System}
 \label{sec:architecture}
 
 Five components and an interface. Everything below the interface is a pure Python library
-with no web machinery in it --- which is why most of it is testable with no network and
+with no web machinery in it, which is why most of it is testable with no network and
 measurable with no server.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{diagrams/system.pdf}
+\includegraphics[width=0.80\textwidth]{diagrams/system.pdf}
 \caption{One writer, one story, one process. There is no session, no auth, and no queue,
 because there is nothing to serialize between. Every state change goes through
 \texttt{Repository.commit\_diff} and nowhere else, which is what makes the snapshot history
@@ -191,82 +209,19 @@ a complete record rather than a partial one.}
 \label{fig:system}
 \end{figure}
 
-\begin{center}
-\begin{tabular}{@{}lp{0.60\textwidth}@{}}
-\toprule
-\textbf{Package} & \textbf{What it does} \\
-\midrule
-\file{domain/} & The typed state and the \rDiffOps{} diff operations that are the only way
-to change any of it. Frozen models, a pure \texttt{apply}, typed errors. \\
-\file{store/} & Content-addressed objects, snapshot manifests, branch pointers, three-way
-merge. Git's data model, in one SQLite file. \\
-\file{graph/} & Declared dependency edges, propagation that marks and never rewrites, and
-the entity-scoped slices generation prompts consume. \\
-\file{providers/} & One interface over four backends, with key rotation, a read-through
-cache, a budget guard, and a call log. No key is ever logged. \\
-\file{agents/} & Schema-constrained generation converted into typed diffs, plus fact
-extraction from accepted prose. \\
-\file{selection/} & Named axes, MMR / DPP / top-$k$ behind one signature, and the dial. \\
-\file{continuity/} & The three checker layers, the bible diff, and the periodic audit. \\
-\file{preference/} & Exemplars, edit mining, the voice model, the ranking head, the
-bandit. \\
-\file{eval/} & Simulated writers, injected ground truth, metrics, ablations, the gallery
-recorder. \\
-\file{api/} + \file{frontend/} & A thin HTTP adapter and a five-tab interface. No logic
-lives in either. \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{The interface, and why it is part of the argument}
-
-The interface is where the design either lands or does not. Fabula's finding that writers
-became ``an arbiter of good or bad'' is not fixed by a better model; it is fixed by changing
-what the writer is asked to do.
-
-\textbf{Diffs, not drafts.} A writer reading a wall of replacement text is judging prose. A
-writer reading \emph{``introduces Mara; changes Kael's goal; would mark 2 downstream beats
-stale''} is authorizing a change. Same underlying output, entirely different job.
-
-\textbf{Named directions, not variants.} Three options labelled \emph{raise the stakes /
-slow down / introduce a complication} cost one decision. Three unlabelled paragraphs cost
-three readings, and a writer who has done that twice stops opening the third.
-
-\textbf{The blast radius before the decision.} Every candidate says how many downstream nodes
-it would mark. That one line is the difference between a system a writer trusts with a
-manuscript and one they do not, because it makes the consequence visible while it is still
-avoidable.
-
-\textbf{Learning that is visible.} Every rule mined from the writer's edits lands in the
-ledger, is shown, and can be deleted, and enters prompts only after being observed twice. A
-system that quietly adjusted its own prompts from inferred preferences would work slightly
-better and would be untrustworthy the first time it inferred wrong --- and the writer would
-have no way to find out.
-
-\textbf{Nothing the system can do is API-only.} A capability the writer cannot reach is a
-capability the product does not have, however well it is tested. The whole-graph audit,
-the three-way merge with its conflicts, the snapshot chain, striking a fact, merging a
-duplicate entity, deleting a mined rule --- each is a control in the tool, not just a
-route. This is checked rather than asserted: a test fails if any method in the API client
-is called by no component, and another fails if any state operation is constructed by
-nothing outside the two modules that define and apply it.
-
-The five tabs run in the order the story is told: problem, architecture, tool, proof,
-numbers.
 
 
-\section{The state model}
-\label{sec:state}
+\subsection{The state model}
 
 Five things are stored, and everything else is derived from them.
 
 \textbf{The plan tree.} Story, Episode, Scene, Beat, Prose. Every node carries the four
-planning questions Fabula found writers actually use --- what happens, what the audience
-learns, how they feel, where and when --- plus a review status
+planning questions Fabula found writers actually use (what happens, what the audience
+learns, how they feel, where and when) plus a review status
 (\textsf{draft}, \textsf{accepted}, \textsf{locked}, \textsf{stale}) and, when stale, the
 reason. Episode nodes add the serial mechanics: hook, cliffhanger, recap of the previous
 episode, threads carried in and left out, writer-set goals, and a target length. Beat
-nodes add \textsf{produces} and \textsf{consumes} --- the declared fact dependencies that
+nodes add \textsf{produces} and \textsf{consumes}, the declared fact dependencies that
 make propagation exact.
 
 \textbf{The world graph.} Entities (characters, places, objects, factions) with an alias
@@ -294,38 +249,11 @@ nine episodes'' is a query, not a judgement.
 
 \textbf{The writer ledger.} Locks, hard constraints, style notes, writer-defined scoring
 criteria in the writer's own words, rejected directions, and the coherent-to-surprising
-dial. This is the object that keeps the human in authority, and everything in it is
-visible and deletable --- including the rules the system mined from the writer's own
-edits, which must never influence generation invisibly.
-
-A hard constraint reaches the generation prompt \emph{and} is checked at judge time: the
-judge receives the constraint list as explicit check items alongside the scoring axes, and
-returns the ones a candidate breaks, quoting each. Those become soft flags citing the
-constraint verbatim. Never blocked --- the writer decides, as with every other flag --- but
-checked, which is the difference between a constraint and a wish. That is a change this
-system needed and did not have: a writer testing it added ``Present day. No ten-shilling
-notes, no shillings, no Austin Cambridges'' and was then offered four pounds ten, a Morris
-Minor and three-shilling bits. Their sentence for it is the one to keep: \emph{a hard
-constraint that is not enforced at generation or at check time is a style note with a more
-confident name.} The check rides the judge call that already runs per candidate rather than
-adding one per constraint, which would multiply the most expensive stage of the pipeline by
-the size of the ledger.
-
-Provenance is recorded per sentence (\textsf{human}, \textsf{ai},
-\textsf{ai\_edited\_by\_human}), because the interesting case is mixed: the AI proposed a
-paragraph and the writer rewrote two sentences of it. A node-level flag would lose exactly
-the information the writer cares about, and the authorship ratio shown in the interface
-would be a lie.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.95\textwidth]{diagrams/state_model.pdf}
-\caption{The three stores and how they reference each other. The plan tree holds
-structure; the world graph holds truth with validity intervals; snapshots hold history.
-A beat's \textsf{produces} and \textsf{consumes} lists are the only dependency edges
-propagation walks, which is what makes the walk exact.}
-\label{fig:state-model}
-\end{figure}
+dial. This is the object that keeps the human in authority, and everything in it is visible
+and deletable, including the rules the system mined from the writer's own edits, which must
+never influence generation invisibly. Appendix~\ref{app:ledger} covers what each entry
+does, including how a hard constraint is checked rather than merely stated, and how
+provenance is tracked per sentence.
 
 \subsection{Snapshots, branches, and why the project is called \storygit}
 
@@ -340,15 +268,15 @@ diff needs no heuristics: what changed between two versions is a set comparison 
 manifests. And the whole thing is reproducible: identical content yields an identical
 manifest, so ``apply the same diff twice and get the same object hashes'' is a test rather
 than a hope. The snapshot \emph{id} additionally hashes the timestamp, because a snapshot is
-an entry in a history and two identical edits an hour apart are two entries --- with the
+an entry in a history and two identical edits an hour apart are two entries. With the
 clock pinned it too is content-derived, and the test asserts both halves.
 
 Merging is three-way at object granularity. Where only one side changed an object, that
 side wins. Where both changed it differently, the merge returns a conflict. It never
 guesses which version of a scene the author meant.
 
-\section{The proposal engine}
-\label{sec:proposals}
+
+\subsection{The proposal engine}
 
 Every AI action is a \textbf{diff}: a list of typed operations against the current state,
 carrying a rationale and a delta summary in English. The writer reads \emph{``introduces
@@ -360,48 +288,13 @@ character locally'' is, in this model, a single \textsf{AddEntity} operation. An
 ``editing one scene rewrote the whole plan'' cannot happen, because a diff that would
 rewrite the plan is visibly a diff that rewrites the plan.
 
-\subsection{Progressive levels}
 
-Generation is a function \texttt{propose(level, state slice, intent, k)}. The levels run
-seed $\to$ premise $\to$ episodes $\to$ scenes $\to$ beats $\to$ prose, and the writer
-settles each before the next exists. This is Fabula's progressive-build-up lesson taken
-literally: writers rejected systems that produced a whole plan before they had agreed to
-its premise.
+Levels are proposed in order, and a level's schema requires the fields the level below it
+will need, so the writer settles the premise before episodes exist and episodes before
+beats. Appendix~\ref{app:engine} gives the schemas and what each level's proposal must
+carry.
 
-Every level has a schema the model must fill, and the schema is where the shape of the
-answer lives. A beat proposal has fields for which facts it establishes and which existing
-facts it relies on, and for each new fact, the list of characters who \emph{learn} it at
-this beat: not everyone present, and not everyone it is true of. That declaration is what
-the propagation walk later reads.
-
-It is worth being exact about how strong that guarantee is, because the rest of the system
-leans on it. Those fields are \emph{described and prompted for, not schema-required}: only
-the title and the body of a beat are mandatory, so a model that returns a beat and no
-dependencies validates, and a \texttt{consumes} id naming a fact that does not exist is
-dropped without a flag. The dependency graph is therefore as good as the model's
-compliance, and this system does not measure that compliance --- see
-\S\ref{sec:limitations}. The design decision behind the fields is still the right one: a
-declared edge is checkable and a guessed one is not. But ``cannot go unmaintained'' would
-be a claim about the model, not about the schema.
-
-Every field carries a length bound, forwarded into the provider's own response schema where
-the provider honours one. This keeps candidates readable, and it closes a failure mode
-observed in the first live test: a small model fell into a repetition loop and filled a
-field until it hit the token cap, turning a good candidate into truncated JSON.
-
-The bound is enforced client-side, and \emph{how} is worth a sentence, because the obvious
-answer is wrong twice over. Rejecting an over-long field costs a repair call to recover a
-candidate that was fine except for being twenty characters long --- measured at roughly 80\%
-of proposals during the first evaluation run, which doubled the cost of the experiment. So
-the bound truncates. But truncating naively cuts mid-word, and the fragment becomes permanent
-state that every later prompt reads back as context: about a third of one writer's candidates
-ended mid-clause, and one field arrived as literal keyboard mash padded to a minimum length
-and was committed. So the contract is neither: cut at the last sentence boundary inside the
-bound; ask again once when nothing inside the bound ends a sentence, or when the value is
-padding rather than writing; drop the candidate if the second answer is no better. A dropped
-candidate costs one sample out of six. A committed fragment costs every prompt after it.
-
-\subsection{What the model is allowed to see}
+\subsubsection{What the model is allowed to see}
 
 Never the story. Generation is fed an \textbf{entity-scoped slice}: the entities in scope,
 the facts about them \emph{valid at that beat} with their ids, who knows what, the open
@@ -415,63 +308,8 @@ relevant}; a query against a typed graph returns what is \emph{exactly true, at 
 in the story, about these entities}. That precision is what makes the continuity claims in
 \S\ref{sec:continuity} checkable rather than aspirational.
 
-\subsection{Extraction, and the closed vocabulary}
 
-When prose is accepted --- whether the model wrote it or the writer typed it --- a cheap
-model reads it back and returns structured facts. A hand-written beat therefore
-participates in continuity exactly like a generated one: the system does not generate
-anything, it only reads what was written and updates the graph.
-
-Predicates come from a closed vocabulary of ten, plus a free-text \textsf{note}. Closed is
-what makes the first checker layer a dictionary lookup and an equality test rather than a
-semantic judgement, and the escape hatch isolates exactly the residue that needs the more
-expensive check.
-
-Names are canonicalized conservatively: exact match after normalization, otherwise a new
-entity \emph{and} a note telling the writer what it might duplicate. No similarity
-threshold is used. A fuzzy match that is occasionally wrong would weld two characters
-together silently, which is the failure this whole system exists to prevent.
-
-
-One routing table maps purpose tags to backends: prose and judging to Gemini, extraction
-and classification to Groq's small fast model, embeddings and NLI to local CPU models, and
-a metered provider that is locked. Around the chosen backend sit a read-through cache, a
-budget guard, and a call log that records tokens for every call.
-
-Three details are load-bearing. Gemini's six free-tier keys carry per-\texttt{(key, model)}
-cooldowns, because free-tier quota is per model per key --- exhausting a key on one model
-says nothing about its allowance on another. The cache key includes a per-sample index, so
-the six axis-conditioned candidates of \S\ref{sec:diversity-fwd} are six entries rather
-than one. And non-prose purposes fall back across providers when one is down, while prose
-does not: a beat silently served by an 8B model is a quality regression the writer cannot
-see the cause of.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.95\textwidth]{diagrams/routing.pdf}
-\caption{Purpose tags decide the provider; rotation, caching, budget, and logging are
-layered around it rather than baked into each backend. The metered provider is locked by
-two independent fail-closed checks.}
-\label{fig:routing}
-\end{figure}
-
-\subsection{The loop}
-
-\begin{enumerate}[label=\arabic*.]
-\item The writer states an intent at a node.
-\item The engine slices the state, samples $k$ candidates, converts each into a typed diff,
-and previews what each would invalidate.
-\item The writer accepts, edits, or rejects. Editing keeps the writer's words and records
-the before/after pair; rejecting records the direction so it is not proposed again.
-\item Accepting commits the diff, extracts facts from any new prose, and commits the
-propagation marks as a second snapshot.
-\item Every action is recorded as a signal, along with the alternatives it was shown
-beside --- which is what makes an accept a \emph{preference} rather than an event.
-\end{enumerate}
-
-
-\section{Propagation}
-\label{sec:propagation}
+\subsection{Propagation}
 
 Dependency edges are declared, not inferred: a beat states the facts it establishes and
 the facts it relies on, and an edge from beat $A$ to beat $B$ exists exactly when $B$
@@ -490,13 +328,13 @@ author that their own sentences are out of date; it tells them something they re
 moved, and leaves the judgement where it belongs.
 \item \textbf{Nothing is ever rewritten.} The writer chooses: regenerate (previewed as a
 diff, respecting locks and current facts, and replacing the node rather than adding a sibling
-beside it), edit by hand, or dismiss --- ``it still works''. Regenerating a whole stale
+beside it), edit by hand, or dismiss it as still working. Regenerating a whole stale
 subtree exists, as an explicit, confirmed, previewed action.
 \item \textbf{And accepting is not one-way.} An accepted node can be revised or deleted, on
 the same terms as striking a fact: the blast radius is shown before the commit, propagation
 marks what depended on it, and nothing below it is regenerated. Locks refuse, because a lock
 has to mean what it says. This is here because a writer using the system said the
-irreversibility changed how they worked --- they over-deliberated on every candidate, because
+irreversibility changed how they worked: they over-deliberated on every candidate, because
 accept could not be taken back. A tool whose main verb is one-way makes its user slow, which
 is the failure mode this whole design is arguing against.
 \end{enumerate}
@@ -509,16 +347,16 @@ The same walk, run against a candidate that has not been accepted, is what produ
 line the writer reads under every proposal: \emph{``would mark 2 downstream beats
 stale''}. The blast radius is visible before the decision, not after it.
 
-\section{Continuity checking}
-\label{sec:continuity}
+
+\subsection{Continuity checking}
 
 Three layers, cheapest and most certain first. Each check is pushed to the cheapest layer
-that can decide it, and each layer's recall is reported separately --- which is what turns
+that can decide it, and each layer's recall is reported separately, which is what turns
 ``it keeps the story consistent'' from an assertion into a measurement.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{diagrams/checker_layers.pdf}
+\includegraphics[width=0.80\textwidth]{diagrams/checker_layers.pdf}
 \caption{The checker. Layer 1 is deterministic and, by construction, cannot call a model:
 it imports nothing from the provider layer, and a test parses its imports to prove it.
 Layer 2 handles only the residue layer 1 cannot decide. Layer 3 is an opinion, labelled as
@@ -526,140 +364,48 @@ one.}
 \label{fig:checker}
 \end{figure}
 
-\textbf{Layer 1 --- deterministic.} For each new fact, look up existing facts with the same
+\textbf{Layer 1: deterministic.} For each new fact, look up existing facts with the same
 subject and predicate, valid at that beat. With a closed vocabulary that is a dictionary
 lookup returning zero to three facts, and the contradiction check is equality. It catches
 conflicting single-valued facts (a character in two places, alive and dead, in two
-factions), dead characters who act, two holders of one object, and --- the important one
---- \textbf{epistemic violations}: a beat that relies on a fact, performed by a character
-who has not been told it. The flag says whether they learn it later (``learns it in
+factions), dead characters who act, two holders of one object, and, the important one,
+\textbf{epistemic violations}: a beat that relies on a fact, performed by a character who
+has not been told it. The flag says whether they learn it later (``learns it in
 \emph{Beat D}'') or never.
 
 It deliberately does not flag a properly ended fact being replaced (a change, not a
 contradiction), a fact re-established with the same value (repetition), two goals at once
 (a character), or a character acting on their own secret.
 
-\textbf{Layer 2 --- local NLI.} The residue is the free-text \textsf{note} predicate and
-multi-valued facts whose object strings differ. A DeBERTa
-cross-encoder~\cite{he2021deberta} fine-tuned on MNLI scores each pair for contradiction ---
-the same instrument, and for the same reason, that the summarization-consistency literature
-uses to detect claims a source does not support~\cite{laban2022summac}. A cross-encoder rather than a bi-encoder because the
-distinction we need is exactly the one a bi-encoder structurally cannot make: ``Kael is in
-Ashfall'' and ``Kael is not in Ashfall'' embed almost identically, being about the same
-thing, but a model that reads both sentences together sees the negation.
+\textbf{Layers 2 and 3.} The residue that layer 1 cannot type, chiefly free-text notes and
+prose, goes to a local natural-language-inference cross-encoder, and only what survives both
+reaches a model asked for an opinion. The ordering is the design: the cheap exact layer
+answers most questions, the expensive uncertain one is asked least often, and every flag
+carries which layer raised it so the writer knows what kind of claim it is.
+Appendix~\ref{app:continuity} gives both layers, the threshold, and what a flag must carry.
 
-The threshold is sanity-checked against cases whose answers are known rather than picked
-off a round number. On the local checkpoint a blunt contradiction scores near 1, a
-paraphrase near 0, and a real but universal-versus-specific contradiction near 0.43 --- so a
-0.5 threshold would miss the third. The default is 0.35, and a regression test pins the
-ordering of those three cases so a checkpoint change that inverts them fails the suite.
-What this is not is a calibration curve: three sentence pairs establish that the model
-separates the cases, not where the boundary should sit, and no sweep of this threshold is
-reported. The soft-edge threshold in \S\ref{sec:evaluation} is a different mechanism.
+\subsection{Diversity, and the dial}
 
-\textbf{Layer 3 --- soft judge.} Motivation plausibility and tone, plus the ranking score.
-It argues before it rates: the schema declares a sentence of reasoning ahead of each
-number, and field order is preserved, which is Fabula's own finding about their auto-rater
-and matches the general result that a score conditioned on an explanation is better
-calibrated. The honest version of that sentence is that the \emph{ordering} is enforced
-where the provider honours schemas at all; the argument itself has a default and is not
-read back, so a model that skips it is not detected. It scores the writer's own criteria, in
-the writer's words, alongside fixed narratology axes.
+Six candidates that are near-paraphrases of each other are one candidate with a wider
+error bar. Diversity is therefore produced rather than filtered for: each sample is
+conditioned on a \emph{named} axis, so the writer receives options labelled \emph{raise
+the stakes}, \emph{slow down}, \emph{introduce a complication} rather than three unlabelled
+paragraphs, and the shortlist is selected by maximal marginal relevance or by a determinantal
+point process over a quality-scaled similarity kernel. A single coherent-to-surprising dial
+re-ranks the same sample by distance from the model's own temperature-zero continuation,
+which is a smaller claim than the label implies and is stated as such.
+Appendix~\ref{app:diversity} gives the selectors, the kernel, and the sweep behind the
+default.
 
-\subsection{What a flag must carry}
-
-Two properties are non-negotiable. \textbf{A deterministic flag cites its establishing
-beat} --- ``Kael cannot be in Ashfall here'' is useless; ``Kael was established in Kell in
-\emph{The Warden's Offer}'' is actionable. That holds for layers 1 and 2, where the flag is
-raised by a rule that knows which fact it read. Layer 3 is an opinion about a passage rather
-than a consequence of a fact, so it carries no such citation, and the interface does not
-pretend otherwise. And \textbf{nothing is ever auto-fixed}. A contradiction
-can be exactly what the writer meant: characters lie, narrators are unreliable, a flashback
-contradicts the present on purpose. A system that silently repairs those is worse than one
-that says nothing.
-
-Hard flags (deterministic) and soft flags (opinions) are structurally distinct in the data
-model, sorted apart, and rendered differently.
-
-\subsection{The bible diff}
-
-On accept the writer sees what changed in the world, in sentences:
-
-\begin{quote}\ttfamily\small
-+ Kael keeps a secret: he can hear the ash.\\
-\textasciitilde{} Kael is at Ashfall. (no longer true from here)\\
-- Kael has the Warden's token.
-\end{quote}
-
-They can strike any line. Striking is not an undo: it produces a normal diff --- delete if
-the fact was never true, end it if it stopped being true --- which propagates like any
-other change and re-runs layer 1 on whatever depended on it. Even correcting the machine
-goes through the same reviewable path as everything else.
-
-\subsection{The audit}
-
-Per-accept checking is incremental and can miss slow drift: a contradiction assembled over
-ten episodes where no single accept was wrong. A periodic audit walks the whole graph
-through layers 1 and 2. It also answers a question no per-fact check can --- which threads
-are being dropped. A thread opened in episode 2 and untouched since episode 3 is not a
-contradiction, so nothing else in the system would ever mention it, and for a serial it is
-the most expensive kind of mistake.
-
-\section{Diversity, and the dial}
-
-Sampling three continuations from one prompt gives three phrasings of one idea, and the
-writer has no choice to make. Fabula's answer was to penalize similarity against previous
-suggestions, which produces variants that differ but are not \emph{nameably} different ---
-and their own finding is that unlabeled alternatives cost more to review than they save.
-Diversity in the embedding space is not diversity in the interface.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.98\textwidth]{diagrams/selection.pdf}
-\caption{Six axis-conditioned candidates become three labelled ones. The label is the
-mechanism: three named directions cost a decision, three unlabeled paragraphs cost three
-readings.}
-\label{fig:selection}
-\end{figure}
-
-\textbf{Axes.} Seven named conditioning instructions --- raise the stakes, slow down,
-subvert the expectation, shift the point of view, deepen the interiority, introduce a
-complication, pay off an open thread. Six are rotated deterministically per node, sampled
-in parallel, and the label travels with the candidate to the screen.
-
-\textbf{Selection.} MMR by default:
-$\lambda q_i - (1-\lambda)\max_{j \in S}\mathrm{sim}(i,j)$, so the second pick is the best
-candidate that is not the first one again. A determinantal point process is implemented as
-a drop-in alternative: with kernel $L = \mathrm{diag}(q)\,S\,\mathrm{diag}(q)$, the
-determinant of a subset is the squared volume its quality-scaled vectors span --- large
-when they are good \emph{and} mutually dissimilar, zero when two are parallel. The
-diversity trade-off is the structure of the distribution rather than a tuned
-parameter~\cite{kulesza2012dpp,carbonell1998mmr}. Plain top-$k$ is the ablation baseline.
-All three share one signature, so the comparison is one config value.
-
-\textbf{The dial.} Fabula's writers asked for an ``absurdity dial''. The request is deeper
-than it sounds: it asks to control the objective, not the output. A writer at 3am on
-episode 40 wants safe continuations; the same writer opening a new arc wants to be
-surprised. Take the greedy temperature-0 continuation as ``what this model would obviously
-do next''; each candidate's surprise is its embedding distance from that; effective quality
-is $(1-d)\tilde q + d\tilde s$. At $d = 1$ the system is explicitly selecting against what
-the model would have done anyway. One extra cached call per node.
-
-\textbf{Candidates arrive already checked.} Layer 1 runs on each candidate's would-be facts
---- the diff is applied to a scratch state and checked there --- so a candidate that
-contradicts the bible reaches the writer with the contradiction attached. Hard flags push a
-candidate down the ranking but never remove it.
-
-\section{The preference layer}
-\label{sec:preference}
+\subsection{The preference layer}
 
 Iteration thirty should not repeat iteration one's mistakes. Six learners over the same
-signal --- accept, reject, edit --- feed one ranking.
+signal, namely accept, reject and edit, feed one ranking.
 
 \textbf{Why this layer exists, in one measurement.} A writer ran a two-episode session
 through this system, and out of roughly twenty selections took the top-ranked candidate
-about four times. The best joke in episode one --- hiring your own physiotherapist, at
-\pounds45 an hour, to supervise a recovery you do not need --- ranked \emph{fifth of six},
+about four times. The best joke in episode one, hiring your own physiotherapist at
+\pounds45 an hour to supervise a recovery you do not need, ranked \emph{fifth of six},
 at a quality score of 0.158. What ranked first, nearly every time, was the candidate that
 restated the writer's own instruction most literally.
 
@@ -668,25 +414,25 @@ passage against axes, and what an LLM is reliably good at is recognising whether
 does what it was asked to do. \emph{Compliance is what it can see.} A joke that works by
 going somewhere the instruction did not mention is, to a compliance grader, a candidate
 that drifted. So the ranker's first choice is systematically the least surprising member of
-the set --- which is precisely the candidate a writer with taste is least likely to want.
+the set, which is precisely the candidate a writer with taste is least likely to want.
 
 Two things follow, and they are the whole design of this section. First, the shortlist is a
 shortlist and not an authority: all six candidates are shown, in full, and the ordering is
 a convenience rather than a verdict. Second, the ranking has to be able to move away from
-the judge, which is what the head is for --- it consumes the judge's sub-scores as
+the judge, which is what the head is for. It consumes the judge's sub-scores as
 \emph{features} rather than as a score, so a writer who keeps choosing fifth-ranked
 candidates teaches it to weight those axes differently. A system with only a judge cannot
 learn that its judge is wrong. That is the argument for everything below.
 
 It is also an argument for a specific thing the fixed axes do not currently have: an axis
 that rewards a candidate for going somewhere the instruction did not specify. Every fixed
-axis here --- momentum, specificity, consequence, voice --- can be satisfied by a literal
+axis here (momentum, specificity, consequence, voice) can be satisfied by a literal
 restatement. Adding one that cannot is the obvious next experiment, and it is not in this
 document because it has not been run.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{diagrams/preference_loop.pdf}
+\includegraphics[width=0.80\textwidth]{diagrams/preference_loop.pdf}
 \caption{The loop. Every learner degrades to ``no opinion'' at zero data rather than to a
 confident guess, which is what makes the no-preference ablation exact. Learned state is
 persisted per branch, so taste explored on a what-if branch cannot leak back to the main
@@ -694,43 +440,15 @@ line.}
 \label{fig:preference}
 \end{figure}
 
-\subsection{The signal is a comparison}
 
-Every accept is recorded with the alternatives that were on screen. ``The writer liked A''
-is weak; ``the writer preferred A to B and C, having seen all three'' is a comparison, and
-comparisons are what Bradley-Terry is defined on. Pairs are formed only \emph{within} one
-shown set --- comparing a candidate accepted on Monday against one rejected in a different
-scene on Friday would compare two different questions. An edited-then-accepted win is
-weaker evidence than a clean accept and is weighted accordingly.
+Every accept is recorded with the alternatives that were on screen, so the unit of learning
+is a comparison rather than a rating; Appendix~\ref{app:preference} sets out how pairs are
+formed and why they never cross shown sets.
 
-\subsection{Six learners, six data appetites}
+\subsubsection{The head}
 
-A writer produces about twenty comparisons in a session, which is nowhere near enough to
-fit one model that does everything. So each signal is exploited by the cheapest mechanism
-that can use it, and each contributes as soon as it has enough.
-
-\begin{center}
-\begin{tabular}{@{}llp{0.44\textwidth}@{}}
-\toprule
-\textbf{Learner} & \textbf{Needs} & \textbf{What it contributes} \\
-\midrule
-Exemplar retrieval & 1 accept & The writer's own sentences in the prompt, and their
-rejected ones as negatives \\
-Edit direction & 1 edit & Mean embedding shift from the model's version to the
-writer's; score by projection onto it \\
-Edit mining & 2 similar edits & Plain-language style rules, into the visible ledger \\
-Bradley-Terry head & $\sim$10 comparisons & The ranking \\
-Voice model & $\sim$dozens of texts & ``Sounds like this writer'' \\
-Thompson bandit & $\sim$20 shown sets & How much of the shown set to spend on exploration
-\emph{(built and measured; not yet on the writer's path --- see below)} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{The head}
-
-$P(a \succ b) = \sigma\!\left(w^\top(f_a - f_b)\right)$ --- logistic regression on feature
-differences, the intercept cancelling. Convex, milliseconds in NumPy, and the fitted $w$ is
+The head is logistic regression on feature differences,
+$P(a \succ b) = \sigma\!\left(w^\top(f_a - f_b)\right)$, with the intercept cancelling. Convex, milliseconds in NumPy, and the fitted $w$ is
 directly readable, which is what lets the interface say \emph{``you have been choosing for
 specificity and against length''}. It is the same construction as an RLHF reward
 model~\cite{bradley1952rank,christiano2017preferences,ouyang2022instructgpt} minus the
@@ -739,65 +457,71 @@ right ambition.
 
 The feature vector is \rFeatures{} numbers: four judge sub-scores on fixed narratology
 axes, four slots for the writer's own criteria, continuity, voice cosine, edit-direction
-projection, length, and dialogue ratio. Few and interpretable on purpose --- a high-dimensional head would memorize
-twenty comparisons rather than learn from them. They are also the features the simulated
+projection, length, and dialogue ratio. Few and interpretable on purpose: a high-dimensional head would
+memorize twenty comparisons rather than learn from them. They are also the features the simulated
 writers' hidden weights are defined over, which is what makes
 \S\ref{sec:evaluation}'s central question answerable.
 
-\subsection{Voice}
 
-A judge can score whether a passage is well constructed; it cannot say whether it sounds
-like \emph{this} writer, because that is an identity rather than a quality. A frozen
-bge-small encoder plus a $384 \times 128$ projection trained with
-InfoNCE~\cite{oord2018cpc}: anchors are prose the writer wrote or edited, positives are what
-they accepted, negatives are what they rejected and the pre-edit versions of what they
-changed. Frozen encoder because a session's worth of prose would damage an encoder far more
-than it would personalize it; the projection only has to find which directions in an
-already-good space this writer cares about.
+The head starts from a prior fitted across synthetic proto-personas rather than from
+uniform weights, because twenty comparisons cannot fit a model from scratch. What that
+prior can and cannot transfer, and the cold-start row where it does not help at all, are in
+Appendix~\ref{app:preference}.
 
-\subsection{Exploration}
+\subsection{The interface, and why it is part of the argument}
 
-A ranker that always shows its top three converges: the writer only ever sees what the model
-already believes, so the model never learns it was wrong. The answer built for this is two
-arms over the composition of the shown set --- three safe, or two safe plus one
-high-surprise --- chosen by Thompson sampling~\cite{russo2018thompson}. Exploration anneals
-itself out of the posterior width, with no schedule to tune; $\varepsilon$-greedy would keep
-paying a fixed exploration cost forever and would explore uniformly, spending as much on an
-arm it is sure about as on a marginal one. One detail is worth the line: the arm is reported
-as \emph{safe} whenever no unseen surprising candidate existed, so the bandit is never
-credited for exploration that did not happen.
+The interface is where the design either lands or does not. Fabula's finding that writers
+became ``an arbiter of good or bad'' is not fixed by a better model; it is fixed by changing
+what the writer is asked to do.
 
-\textbf{It is not wired to the writer.} The engine hands the writer the selector's top
-$k$; the bandit composes nothing on that path, its posterior never leaves
-$\mathrm{Beta}(1,1)$, and the regret curve below is a simulator with the arms held at fixed
-rates. So the convergence problem this subsection opens with is stated, not solved, in the
-running system. Saying so costs a paragraph and is cheaper than being asked.
+\textbf{Diffs, not drafts.} A writer reading a wall of replacement text is judging prose. A
+writer reading \emph{``introduces Mara; changes Kael's goal; would mark 2 downstream beats
+stale''} is authorizing a change. Same underlying output, entirely different job.
 
-\subsection{The data regime, stated plainly}
+\textbf{Named directions, not variants.} Three options labelled \emph{raise the stakes /
+slow down / introduce a complication} cost one decision. Three unlabelled paragraphs cost
+three readings, and a writer who has done that twice stops opening the third.
 
-The head starts from a prior fitted across synthetic proto-personas and adapts per writer
-from there, because twenty comparisons cannot fit a model from scratch and there is no
-population of real writers to fit a prior on. The same caveat as the bandit applies and is
-worth stating in the same breath: the evaluation harness starts its heads from that prior;
-the product does not. A writer opening the application today starts at uniform weights.
-What makes the no-preference ablation exact is therefore not the prior's shape at zero data
-but an engine gate --- below one recorded comparison the layer returns no opinion at all,
-and the ranker it would have influenced is bypassed.
+\textbf{The blast radius before the decision.} Every candidate says how many downstream nodes
+it would mark. That one line is the difference between a system a writer trusts with a
+manuscript and one they do not, because it makes the consequence visible while it is still
+avoidable.
 
-\textbf{That prior cannot contain real human taste.} Nothing in its data ever met a reader.
-What it can contain is the structure of the problem --- that features have consistent
-signs, that the signal is noisy, that some axes matter more than others. The bet is that the
-adaptation \emph{machinery} transfers even though the values do not, and the bet is measured
-rather than asserted: a prior-initialized head reaches \rPriorAtTen{} held-out pairwise
-accuracy after a fresh writer's first ten decisions, against \rUniformAtTen{} from uniform
-initialization. Were that lift zero, the prior would be worthless and should be dropped.
+\textbf{Learning that is visible.} Every rule mined from the writer's edits lands in the
+ledger, is shown, and can be deleted, and enters prompts only after being observed twice. A
+system that quietly adjusted its own prompts from inferred preferences would work slightly
+better and would be untrustworthy the first time it inferred wrong, and the writer would
+have no way to find out.
 
-There is a deeper circularity worth naming: the preference layer is validated against
-simulated writers made of the same feature vector the head is fitted on. That is why the
-evaluation measures \emph{recoverability} --- whether the fitted weights correlate with the
-hidden ones --- rather than claiming the system learns taste. Recoverability is a real
-property of the machinery. Taste is not something this evaluation can measure at all; only
-a human study would settle it.
+\textbf{Nothing the system can do is API-only.} A capability the writer cannot reach is a
+capability the product does not have, however well it is tested. The whole-graph audit,
+the three-way merge with its conflicts, the snapshot chain, striking a fact, merging a
+duplicate entity and deleting a mined rule are each a control in the tool, not just a
+route. This is checked rather than asserted: a test fails if any method in the API client
+is called by no component, and another fails if any state operation is constructed by
+nothing outside the two modules that define and apply it.
+
+\subsubsection{What the running system presents}
+\label{sec:website}
+
+The application is a five-tab site, and the tabs run in the order the story is told.
+\textbf{Problem and Decisions} states the five failure modes and the design decisions taken
+against them, each with the alternative that was rejected. \textbf{Architecture} shows the
+component diagram and the routing table. \textbf{Live} is the tool itself, in three panes: a
+plan tree carrying each node's status, its lock, its staleness reason and its flag count; a
+centre pane of labelled candidate diffs with their continuity flags, their blast radius and
+the coherent-to-surprising dial; and a right pane showing world state at the selected beat,
+including the epistemic view of who has been told what, the bible diff produced by the last
+accept, the branch list, the revise and delete controls on accepted nodes, and the
+whole-graph audit. \textbf{Gallery} replays eight recorded sessions from stored JSON, so the
+mechanisms can be watched without a model call. \textbf{Eval} carries the curves and tables
+in this document, generated from the same artifacts.
+
+Everything the backend can do is reachable from that interface, and a test fails if it is
+not. That is a stronger property than it sounds: it is the difference between a capability
+the product has and a capability its test suite has.
+
+
 
 \section{Evaluation}
 \label{sec:evaluation}
@@ -805,61 +529,11 @@ a human study would settle it.
 Every claim in this document is either measured or explicitly marked as unmeasured. This
 section is the first kind; \S\ref{sec:limitations} is the second.
 
-\subsection{Simulated writers}
-
-Four personas, each \textbf{a hidden weight vector over exactly the feature space the
-preference head is fitted on}, plus style quirks and forbidden moves --- absolutes a linear preference
-cannot express, and which real writers have.
-
-\begin{center}
-\begin{tabular}{@{}llp{0.40\textwidth}@{}}
-\toprule
-\textbf{Persona} & \textbf{Weighted towards} & \textbf{Character} \\
-\midrule
-the Serialist & momentum, consequence & Writes for retention; no flashbacks, they stall \\
-the Minimalist & specificity, \emph{negative} on length & Short, concrete, exposition-averse \\
-the Maximalist & voice, interiority, length & Dial at 0.70; dialogue low \\
-the Controller & continuity, own criteria & Accepts rarely, edits heavily, locks constantly \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Defining the personas over the head's own feature space is what makes the central question
-measurable: not \emph{did acceptance rise} --- a degenerate system achieves that by
-proposing the same safe thing repeatedly --- but \emph{did the fitted weight vector
-correlate with the hidden one}. Three constraints keep it from being circular, the first
-asserted in a test: the engine is never told the hidden weights; the persona sees only what
-the engine chose to show; and the model that performs the persona's edits is told their
-\emph{style}, never their objective.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.92\textwidth]{diagrams/eval_loop.pdf}
-\caption{The loop and where the measurements are taken. Metrics on the left are properties
-of the writer's behaviour; on the right, properties of the system.}
-\label{fig:evalloop}
-\end{figure}
-
-\subsection{Ground truth by construction}
-
-Recall needs a denominator. One contradiction of each class is injected into its own
-story, built fresh from the same clean scenario, and each is scored on its own --- because
-injected together they interact: two of the five land on the same beat and a third kills a
-character the others need alive, and a catch is credited when a flag names any of an
-injection's facts, so shared-story cross-talk would score a location conflict as caught
-because the possession conflict beside it was. That isolation was added after this review
-found the fixture had been sharing one story; the reported numbers did not move, which is
-the useful outcome --- the defect was real and the measurement survived it. Extraction is
-scored against hand-written passages with known fact sets. Staleness is scored against a
-scripted edit whose true blast radius is known because the dependency edges were written by
-hand, and which deliberately includes a beat that \emph{depends on the changed fact but
-never declared it} --- otherwise the soft-edge ablation could only add false positives, and
-that would be an unfair test of an idea worth testing properly.
 
 \subsection{Results: the deterministic tier}
 
-These need no model calls, so they are exact --- a regression is a regression, not a bad
-sampling day --- and they cannot be improved by rerunning.
+These need no model calls, so they are exact: a regression is a regression rather than a
+bad sampling day, and they cannot be improved by rerunning.
 
 \begin{center}
 \begin{tabular}{@{}lrrr@{}}
@@ -878,8 +552,8 @@ layer 1 + layer 2 (NLI) & \rCheckerBothRecall & \rCheckerBothPrecision
 recall: a checker that flags everything has perfect recall and is worthless, because the
 writer learns flags are noise and stops reading them. Layer 1 catches location conflicts,
 deaths followed by action, possession conflicts, and epistemic violations; the one class it
-cannot decide --- two free-text notes that contradict each other --- is exactly what layer 2
-is for, which is the partition the closed vocabulary was designed to produce.
+cannot decide, two free-text notes that contradict each other, is exactly what layer 2 is
+for, which is the partition the closed vocabulary was designed to produce.
 
 \begin{center}
 \begin{tabular}{@{}lrrr@{}}
@@ -899,8 +573,8 @@ was that embedding edges would trade recall for precision too poorly to be usefu
 case the best threshold reaches \rStaleSoftBestPrecision{} precision at
 \rStaleSoftBestRecall{} recall (\rStaleSoftBestLabel).
 The case is six beats with lexically distinctive locations, so this is suggestive rather
-than settled --- but it is the opposite of the prediction, and it is recorded as such rather
-than explained away.
+than settled. It is nonetheless the opposite of the prediction, and it is recorded as such
+rather than explained away.
 
 \begin{center}
 \begin{tabular}{@{}lrr@{}}
@@ -937,7 +611,7 @@ Two things about this table are easy to overclaim and are worth reading carefull
 The cold-start row is the one to read first, and it is negative: with no data at all the
 uniform head is the better ranker. The prior's advantage appears only once a small number of
 comparisons exists, and most of it is the \emph{uniform} head being damaged by small-sample
-fitting rather than the prior being informative --- the uniform column falls before it
+fitting rather than the prior being informative: the uniform column falls before it
 recovers, and a zero-data uniform head outscores the prior-initialised head at ten
 comparisons. The generator that produces proto-personas forces judge, criterion and
 continuity weights positive, which is the sign structure real personas have too, so an
@@ -950,12 +624,13 @@ distribution. It is not a transfer test, and the four personas the live evaluati
 from a distribution this generator cannot produce at all.
 
 The Thompson sampler reaches cumulative pseudo-regret \rBanditThompsonRegret{} over 400
-rounds against arms at 0.40 and 0.70, and is flat after roughly the first fifty --- it pays
-its exploration cost early and stops. $\varepsilon$-greedy at 0.1 reaches
+rounds against arms at 0.40 and 0.70, and is flat after roughly the first fifty, because it
+pays its exploration cost early and then stops. $\varepsilon$-greedy at 0.1 reaches
 \rBanditEpsilonRegret{} and is still climbing linearly, because it explores at a fixed rate
 forever and explores uniformly. It spent \rBanditPullsSafe{} of 400 pulls on the safe arm
 against \rBanditPullsExplore{} on the better one, and its posteriors land at
 \rBanditPosteriorSafe{} and \rBanditPosteriorExplore{} against true rates of 0.40 and 0.70.
+
 
 \subsection{Results: the live tier}
 
@@ -966,15 +641,15 @@ run cut short.
 
 \textbf{The held-out probe.} An acceptance curve cannot separate a head that learned from a
 task that got harder, so the learning result is measured on a frozen set instead.
-\rProbePoints{} decision points, sampled from \emph{other} writers' runs --- and from a
-sampling configuration that is never itself probed --- are replayed after every episode:
+\rProbePoints{} decision points, sampled from \emph{other} writers' runs, and from a
+sampling configuration that is never itself probed, are replayed after every episode:
 ranked by the head as it stood at that moment, scored against what that persona would
 privately have chosen. The probe set does not change between measurements, so nothing in it
 can move because the job got harder, and replaying it makes no model calls.
 
 Which decisions go in is itself a design choice with a wrong answer. A candidate set where
 one option is better on every feature has the same winner under every weight vector, so no
-head can get it wrong and replaying it measures nothing --- those are dropped by a
+head can get it wrong and replaying it measures nothing, so those are dropped by a
 discrimination floor. But taking the \emph{most} discriminating points instead, which an
 earlier version did, fills the set with near-ties: the decisions most sensitive to the
 weights and equally to noise, which maximises the variance of every reading. The rule is a
@@ -983,9 +658,9 @@ otherwise.
 
 Two details of the label are worth stating, because both were wrong until this document's
 final review. The persona's ranking is computed from the features as they were
-\emph{recorded}, not as the current voice model would recompute them --- refreshing both
-sides let the ground truth drift between episodes, driven by the learner being measured,
-which is the leakage the held-out design exists to prevent. And the label reads only the nine
+\emph{recorded}, not as the current voice model would recompute them.
+Refreshing both sides let the ground truth drift between episodes, driven by the learner
+being measured, which is the leakage the held-out design exists to prevent. And the label reads only the nine
 features whose meaning is shared across writers: the criterion slots are positional, so one
 writer's first criterion is a different thing from another's, and every probe point comes
 from a different writer by construction. Scoring those columns across personas is not noise,
@@ -999,8 +674,8 @@ not yet added anything; ending above it means they have.
 \textbf{\rProbeAboveUniform{} of \rLiveRunCount{} runs end above an uninformed head, and
 \rProbeAtOrAbovePrior{} of \rLiveRunCount{} end at or above the prior}, at
 \rProbeTopOneLast{} top-1 agreement with the persona's own first choice. Precisely: one run
-ends strictly above the prior, two end level with it, and one --- the Serialist --- ends
-below both. So the honest reading is that at this sample size the writer's own decisions
+ends strictly above the prior, two end level with it, and one, the Serialist, ends below
+both. So the honest reading is that at this sample size the writer's own decisions
 mostly reproduce the prior rather than improve on it, and the mechanism behind that is
 identified below. Weight recovery, in the next paragraph, is the measurement that does move,
 and the two are consistent: the head is learning the directions its data exercises.
@@ -1009,8 +684,8 @@ and the two are consistent: the head is learning the directions its data exercis
 fitted weight vector and the persona's hidden one is \rLiveWeightRecoveryMean{} on average
 and \rLiveWeightRecoveryBest{} at best. That number is unreadable without a scale, and the
 scale is not $1.0$: twenty-odd noisy comparisons over \rFeatures{} features do not identify
-\rFeatures{} weights. The \emph{oracle ceiling} --- the same estimator, on the same
-candidate sets, at the same decision count, fitted to weights it is told --- is
+\rFeatures{} weights. The \emph{oracle ceiling}, which is the same estimator on
+the same candidate sets at the same decision count fitted to weights it is told, is
 \rCeilingMean{} on average. Measured recovery is therefore \rRecoveryFractionOfCeiling{} of
 what was achievable. Sample size, not the estimator, is what caps this: swept independently,
 the ceiling is \rCeilingAtTwentyFive{} $\pm$ \rCeilingAtTwentyFiveSd{} at twenty-five
@@ -1024,14 +699,14 @@ half the regularization, a uniform anchor instead of the population prior, no ed
 down-weighting, shrinkage off, and a dense random weight vector where every persona is sparse
 by construction. It also added the persona's noise to an \emph{un-normalised} score, which
 made its labels several times cleaner than a real writer's, and it emitted a winner for every
-decision including the ones the writer rejected --- which produce no comparison at all in
-reality --- so it was fitted on materially more data than the run it was scaling. Every one of
-those errors pushed the ceiling *up* and the reported fraction *down*, so the earlier figure
-was conservative rather than flattering; but a sentence claiming a controlled comparison has to
+decision, including the ones the writer rejected, which produce no comparison at all in
+reality, so it was fitted on materially more data than the run it was scaling. Every one of
+those errors pushed the ceiling up and the reported fraction down, so the earlier figure was
+conservative rather than flattering; but a sentence claiming a controlled comparison has to
 have one. All six are now matched, and the ceiling is correspondingly lower.
 
 One more thing a reader is entitled to. Recovery is a \rFeatures{}-dimensional correlation,
-and five or six of every persona's \rFeatures{} weights are exactly zero --- including the two
+and five or six of every persona's \rFeatures{} weights are exactly zero, including the two
 criterion slots no writer here fills, which are constant across every recorded decision. The
 shrinkage change drives the fitted values on precisely those dead coordinates towards zero, so
 it improves this metric without anyone learning anything. Restricted to the coordinates the
@@ -1039,97 +714,12 @@ writer actually weights, recovery is \rLiveWeightRecoveryIdentified{}. The diffe
 that and the headline is the size of the effect, and it is reported rather than left for a
 reader to find in \file{personas.py} and \file{bt\_head.py} side by side.
 
-\textbf{What the probe found, and what changed because of it.} Several of the
-\rFeatures{} features never varied inside a single writer's candidate sets. A constant
-column gives the fit no gradient, so those weights simply stayed wherever the population
-prior had put them --- harmless in session, since a constant cannot reorder anything the
-writer sees, which is exactly why nothing had caught it, and wrong the moment the head is
-applied to candidates drawn from anywhere else. Only an off-distribution instrument could
-see it, and that is what the probe is.
-
-Three things followed. Two of those features were dead for reasons that had nothing to do
-with the stories and everything to do with the code: dialogue ratio counted only double
-quotation marks while the model writes speech in single ones, so prose that was a third
-dialogue scored zero; and the voice model, which trains on prose the \emph{writer} wrote or
-rewrote, had never once been trained, because no simulated writer had ever used the
-hand-write or polish paths the interface offers. Both are fixed and both features now move.
-
-They do not move \emph{much}, and the reason is the third thing, which is structural and is
-not a bug at all. The judge emits five levels. Four fixed axes and every writer-defined
-criterion are that judge's output rescaled, and with three candidates in a set the expected
-outcome is a tie: across the shipped probe fixture the two unfilled criterion slots are
-constant in every decision, two of the four judge axes are constant in more than half of
-them, and voice cosine --- now that it varies --- varies across a range too narrow to
-reorder anything at any weight the head can learn. That is the dominant cause of the constant
-columns, it was not fixed by fixing the two bugs, and it bounds how much a
-\rFeatures{}-dimensional head can be identified from a few dozen three-way comparisons at
-all.
-
-The fourth finding is a property rather than a bug, and it changed the learner. A direction
-the data cannot identify should not inherit an opinion from a population prior, so fitting
-now shrinks unidentified directions towards zero instead. \emph{Unidentified} here means
-exactly one thing and it is worth not overselling: a column that is constant across every
-comparison. Rank deficiency from two columns that always move together --- which is the
-diagnosis the next paragraph gives for the writer who did worst --- is invisible to this
-check and is not addressed by it. That was decided by an A/B rather
-than by argument: both variants were refitted from the decisions already recorded and
-scored on the same held-out probe, which moved agreement from \rShrinkTauAnchored{} to
-\rShrinkTauShrunk{} and top-1 from \rShrinkTopOneAnchored{} to \rShrinkTopOneShrunk{} over
-\rShrinkRunsReplayed{} replayed runs, while the prior's cold-start lift held at
-\rShrinkColdStartShrunk{} against \rShrinkColdStartAnchored{} --- inside the
-\rShrinkColdStartSeedSd{} spread across \rShrinkColdStartSeeds{} seeds, which is what the
-rule asked. The rule the result had to clear was written down before the number existed,
-and the replay costs nothing, so there was no opportunity to rerun until a variant won. Each run still reports
-its own unexercised features in \file{summary.md}.
-
-\textbf{Why one writer did worst, in detail.} The Minimalist was worst on every measure,
-and the recorded feature vectors say why --- not "too little data", which was the obvious
-guess and is wrong: its candidate sets are \emph{more} separated than the best performer's.
-Two of its three largest hidden weights fit with the wrong sign, and each has a cause that
-is a property of that writer rather than a defect in the machinery.
-
-Its largest weight is on \emph{specificity}, and the writer has also defined a criterion
-called \emph{concreteness} which the judge scores $+0.73$ correlated with it --- a
-near-duplicate column. Two collinear columns at forty-eight comparisons is a textbook
-small-sample regression: the fit hands the credit to one and compensates with a sign flip on
-the other, and here the fixed axis is the one that flips. Its second-largest weight is a
-large \emph{negative} one on length, and its standing style note --- ``shorter sentences''
---- is \emph{followed}, so every candidate comes back at about the same length and the
-length feature carries a spread of 0.03. The head cannot learn a large negative weight from
-a column that does not vary.
-
-That second mechanism generalises and is worth stating: \textbf{a writer whose instruction
-is obeyed leaves the preference layer nothing to learn on the same axis}. The prompt side
-and the learning side are two halves of one system competing for the same signal, and this
-run is what it looks like when the prompt side wins. Neither is patched: rewriting the
-persona's criteria to be less collinear would be tuning the experiment to flatter the
-estimator.
-
-\textbf{The acceptance trend.} Acceptance held or rose in three runs and fell in one
-(100\,\% to 77\,\%). Read on its own this says less than it appears to: a persona's bar is a
-fixed quantile of its own score distribution and does not move, while each new candidate has
-to stay consistent with more established facts, more open threads, and more accumulated
-rules --- so the curve tracks task difficulty as well as satisfaction, and the probe above
-is the view that does not. The first-third figures also rest on eleven or twelve decisions
-each, so the endpoints are noisy.
-
-Curves per persona are in \file{eval/results/}, and the full table --- probe readings,
-ceilings, retry rescues, per-run costs, and anything that did not run --- is in
-\file{summary.md}. The earlier run, made before this pass changed the feature space and the
-harness, is archived under \file{eval/results/archive/}. Every number in this section
-regenerates with
-
-\begin{quote}\ttfamily\small
-python -m eval.run -{}-config full \&\& python -m eval.texnumbers
-\end{quote}
-
-Everything above ran on **free-tier keys** --- six rotated Gemini keys, Groq for
-extraction, CPU models here for embeddings and NLI --- at a total spend of \textbf{\$0.00}
-across \rProviderTokens{} of routed tokens. Prose quality is therefore a floor rather than
-a ceiling,
-and that is deliberate: the metered budget is held in reserve for the strong-model rerun,
-which is the run that separates ``the system works'' from ``the model is good''. It is a
-one-line configuration change, costed against the cap before it is spent.
+Two findings from the probe changed the learner rather than the write-up, and one
+explains the writer who did worst. Both are set out in Appendix~\ref{app:eval}, with the
+feature-level evidence; the summary is that several features never varied inside a single
+writer's candidate sets, that two of those were code defects and one was a property of the
+measuring instrument, and that the fix which shipped was decided by an offline replay
+against a rule written down before the number existed.
 
 \section{What the measurements changed}
 \label{sec:findings}
@@ -1137,11 +727,11 @@ one-line configuration change, costed against the cap before it is spent.
 Two things the design predicted turned out wrong, and both changed the system.
 
 \textbf{MMR at the conventional $\lambda = 0.7$ was identical to the top-$k$ baseline.}
-Bi-encoder cosine has a high floor --- six candidates here span 0.33 to 0.82, and any two
+Bi-encoder cosine has a high floor: six candidates here span 0.33 to 0.82, and any two
 English sentences on a related topic score well above zero. A redundancy penalty that is
 nearly constant across candidates subtracts nearly the same amount from every score, and a
 constant changes no ordering. At $\lambda = 0.7$ MMR selected at diversity
-\rMmrConventionalDiversity{} and quality \rMmrConventionalQuality{} --- exactly the top-$k$
+\rMmrConventionalDiversity{} and quality \rMmrConventionalQuality{}, exactly the top-$k$
 baseline's \rDiversityTopK{} and \rQualityTopK{}. The headline selector was reproducing the
 ablation it was meant to beat. Fixed twice: the similarity matrix is rescaled within the candidate set, and
 the default $\lambda$ moved to 0.5, chosen from a sweep.
@@ -1157,115 +747,20 @@ gap. That is a structural difference rather than a tuning difference.
 \textbf{Two runs ended on nothing.} The first four-persona run stopped two writers at
 episode three, and reading the logs rather than the summary showed why: a persona rejects a
 candidate set when the best option falls below its own bar, and one of those two runs missed
-by \textbf{0.0001} --- one ten-thousandth of a score unit, against a Gaussian noise term of
+by \textbf{0.0001}, one ten-thousandth of a score unit, against a Gaussian noise term of
 the persona's own making. Nothing was degrading. Accumulated writer rules, the obvious
 suspect, turn out to be 0.4--1.2\,\% of a late prompt.
 
 What was wrong was the harness's stop rule: it ended the session where a writer would have
-said \emph{``not these --- try again''}. So a rejected set now gets exactly one
+said \emph{``not these, try again''}. So a rejected set now gets exactly one
 rejection-informed re-proposal, which also required wiring a path the system had described
-but never built --- the rejected candidate's text reached the exemplar pool, the writer's
+but never built: the rejected candidate's text reached the exemplar pool, while the writer's
 stated reason reached nothing. In the rerun the retry was offered seven times and rescued
 five, and no run was cut short.
 
 Both are recorded here rather than quietly folded into the design, because a system that
 only reports the measurements that agreed with it has not been measured.
 
-\section{Decisions, and what was rejected}
-\label{sec:decisions}
-
-\decision{Free-tier keys for all of it, with the metered budget held in reserve}
-\rejected{Paying for a strong model from day one.} Every number in this document was
-produced on free-tier keys: six rotated Gemini keys for generation and judging, Groq for
-extraction and classification, and CPU models on this machine for embeddings and natural
-language inference. \textbf{Total spend across \rProviderCalls{} routed calls and
-\rProviderTokens{} tokens: \$0.00.} The read-through cache served \rProviderCacheHitRate{}
-of those calls. Embeddings and the NLI checkpoint run locally and bypass the router, so they
-are outside that token count --- and outside nothing else, since they are free.
-
-That is a choice about where the risk is, not a constraint that was worked around. A
-metered key from day one buys better prose immediately and hides every cost bug until the
-bill arrives; a free tier forces the cost controls to exist before they are needed, and
-they are the same controls a production system needs --- purpose-tag routing so extraction
-never touches the expensive model, a read-through cache keyed on the full request so a
-rerun of an identical configuration is nearly free, key rotation with per-(key, model)
-cooldowns, and a budget guard that refuses a call it cannot afford. Every one of those was
-exercised in anger rather than written and hoped for.
-
-The metered budget is therefore still unspent, which is the point: it is reserved for the
-strong-model rerun, where the same evaluation runs against a better model to separate
-\emph{the system works} from \emph{the model is good}. That comparison is only meaningful
-because nothing has been re-engineered in between --- the model id is a configuration
-value, and the run is one command.
-
-\decision{Purpose-tag routing rather than per-call-site provider choice}
-The cost policy is six lines in one table. \rejected{Choosing a provider where the call is
-made.} That scatters the policy across forty call sites and makes it impossible to audit
-or change. It also makes the ablation in \S\ref{sec:evaluation} --- rerunning everything on
-a stronger model --- a one-line edit rather than a refactor.
-
-\decision{Diffs rather than replacement text}
-Every AI action is a typed operation list against the current state, not a block of prose
-that overwrites what was there. \rejected{Text-level replacement with a visual diff.} It
-looks similar in the interface and is far weaker underneath: a text diff cannot say
-``this introduces a character'', cannot be checked against the world graph before it is
-applied, and cannot tell the writer what it would invalidate.
-
-\decision{Declared dependencies rather than inferred ones}
-A beat states what it produces and consumes; propagation walks those edges only.
-\rejected{Inferring dependencies with a model.} A dependency oracle that is wrong ten
-percent of the time makes every propagation result untrustworthy, which is worse than no
-propagation at all --- the writer stops reading the marks. Embedding-similarity edges are
-implemented, but as a clearly weaker ``maybe affected'' signal and as an ablation to
-measure, never as the primary mechanism.
-
-\decision{A closed predicate vocabulary}
-Ten predicates plus a free-text escape hatch. \rejected{Open-vocabulary relation
-extraction.} Closed predicates make the first checker layer a dictionary lookup and an
-equality test --- free, instant, and never wrong for the wrong reason. The escape hatch
-is exactly the set of facts that needs the more expensive NLI check, which is a useful
-way to have partitioned the problem.
-
-\decision{Content-addressed snapshots}
-\rejected{Storing a full copy of the story per version, or an event log without
-materialized states.} Full copies do not survive a few hundred snapshots. A pure event
-log makes ``what is true right now'' a replay, and makes branch comparison hard.
-Content addressing gives cheap versions, free structural sharing, and diff as set
-arithmetic.
-
-\decision{Axis-conditioned sampling rather than a similarity penalty}
-Candidates are generated under named instructions and the name reaches the writer.
-\rejected{Sampling $k$ times and reranking for dissimilarity.} That is Fabula's approach,
-and it produces variants that differ without being \emph{nameably} different. The reranker
-is still there --- it stops two candidates that came out similar anyway --- but the axes are
-what make three options a decision rather than three readings.
-
-\decision{A calibrated NLI threshold rather than a chosen one}
-0.35, measured against the local checkpoint, and swept in the evaluation.
-\rejected{A round number.} The interesting case is a real contradiction the model is only
-moderately confident about (0.43), which a 0.5 threshold silently misses --- and silent
-misses in a continuity checker are the failure that matters.
-
-\decision{Marking rather than auto-repair}
-\rejected{Automatically regenerating stale downstream nodes.} This is the single most
-tempting feature in the system and the one that would destroy it. It is precisely what
-Fabula's writers complained about, and the reason is not technical: a system that
-rewrites approved work without asking cannot be trusted with a manuscript.
-
-\decision{\rFeatures{} interpretable features rather than a learned representation}
-\rejected{Embedding the candidate and letting the head learn its own features.} With twenty
-comparisons that head would memorize rather than generalize, and --- decisively --- its
-weights would say nothing a writer could read. An interpretable feature vector is what lets
-the system explain its own ranking back to the person it is ranking for. Nine are fixed;
-the remaining \rCriterionSlots{} are one slot per writer-defined criterion, in creation
-order, zero when unfilled --- a single averaged criterion score could not express that a
-writer weights \emph{menace} twice as heavily as \emph{warmth}, which is the one thing
-writer-defined criteria exist to say.
-
-\decision{SQLite}
-\rejected{Postgres.} One writer, one story, a few megabytes, and a file the author can
-copy is the actual workload. Postgres buys concurrency this system does not have. What
-would change at a serialized-fiction platform scale is discussed in the systems documentation.
 
 \section{Limitations}
 \label{sec:limitations}
@@ -1279,7 +774,7 @@ and only a human study would establish it.
 \textbf{The preference layer is validated against writers built from its own hypothesis
 class.} The head is linear in \rFeatures{} features; the personas score linearly in the same
 \rFeatures{}. The model is therefore correctly specified by construction, which is why the
-claim is \emph{recoverability} --- the estimator is not broken --- rather than \emph{it
+claim is \emph{recoverability}, meaning the estimator is not broken, rather than \emph{it
 learns taste}. A real writer's preferences are not linear in \rFeatures{} features.
 
 \textbf{The prior is synthetic.} Nothing in the data it was fitted on ever met a reader. The
@@ -1293,8 +788,8 @@ for that, and the honest phrasing throughout is ``recall over five classes''.
 \textbf{Single writer, single story.} SQLite, one process, no auth, no concurrency. The
 scaling discussion is architectural rather than demonstrated.
 
-\textbf{Fact extraction is a single point of failure.} Everything downstream --- continuity,
-propagation, the world-state pane --- depends on the world graph being populated correctly.
+\textbf{Fact extraction is a single point of failure.} Everything downstream, meaning continuity,
+propagation and the world-state pane, depends on the world graph being populated correctly.
 Extraction recall is measured, but a fact that is never extracted is invisible to every layer
 that follows, and no amount of downstream cleverness recovers it.
 
@@ -1315,8 +810,8 @@ head fitting on this session's pairs alone.
 
 \textbf{The instrument is coarser than the thing it measures.} The judge emits five levels.
 Four of the \rFeatures{} features and every writer-defined criterion come from it, and with
-three candidates in a set most of those features tie --- in the shipped probe fixture, the
-two criterion slots no persona fills are constant by construction, and several judge axes are
+three candidates in a set most of those features tie. In the shipped probe fixture the two
+criterion slots no persona fills are constant by construction, and several judge axes are
 constant in more than half the decisions. The effective dimensionality of a decision is far
 below \rFeatures{}. That is a property of the measuring instrument, not of the two feature
 bugs \S\ref{sec:findings} reports fixing, and fixing those did not change it.
@@ -1324,8 +819,8 @@ bugs \S\ref{sec:findings} reports fixing, and fixing those did not change it.
 \textbf{The probe's ground truth is not well defined across writers.} The held-out probe
 scores each head against another writer's decisions, which is what deconfounds learning from
 task difficulty. But writer-defined criteria occupy positional slots, and two writers' first
-criteria are different things --- so the cross-persona move and the per-writer criterion
-slots are in permanent tension. The probe resolves it by reading only the nine features whose
+criteria are different things, so the cross-persona move and the per-writer criterion slots
+are in permanent tension. The probe resolves it by reading only the nine features whose
 meaning is shared. The criterion axes, which are the highest-weighted features for every
 persona, are therefore outside the number the learning curve reports.
 
@@ -1344,11 +839,701 @@ observations.
 \textbf{The labelling claim is the thesis and is unmeasured.} ``Three options labelled
 \emph{raise the stakes / slow down / introduce a complication} cost one decision; three
 unlabelled paragraphs cost three readings'' is what the whole selection chapter serves. There
-is no measurement of it here, not even a proxy --- no reading time, no interaction count. A
+is no measurement of it here, not even a proxy: no reading time, no interaction count. A
 human study is the honest answer for whether the system helps someone write a better serial,
 but this narrower claim is testable for far less and was not tested.
 
-\bibliographystyle{plain}
+
+\section{Conclusion}
+
+The system described here is a bet that the durable part of AI-assisted long-form fiction is
+the state model rather than the generator. A chain of prompts is faster to build and easier
+to demonstrate; a state machine is what still works at episode forty, because it is the only
+one of the two that can answer what an edit invalidates.
+
+Everything measurable about that bet is reported above, including where it does not yet pay.
+The deterministic tier is exact and free and says the mechanisms work: the checker catches
+what is injected into it, the dependency walk predicts a blast radius, the selector produces
+diverse shortlists. The live tier is four simulated writers, which is a measurement of the
+machinery and not of taste, and it says the preference head recovers a meaningful fraction
+of what its estimator could recover on that much data. Whether any of this helps a human
+write a better serial is a question only a human study answers, and this document does not
+claim otherwise.
+
+Three things would move the work furthest, in order. Measuring how often the model maintains
+the dependency graph it is asked to declare, which is currently the system's least-guarded
+assumption. Wiring the two learners that are built and measured but not yet on the writer's
+path. And running the evaluation against a writer who is not a linear functional over the
+head's own feature space.
+
+\bibliographystyle{plainnat}
 \bibliography{refs}
+
+\appendix
+
+\section{Decisions, and the alternatives rejected}
+\label{app:decisions}
+
+\decision{Free-tier keys for all of it, with the metered budget held in reserve}
+\rejected{Paying for a strong model from day one.} Every number in this document was
+produced on free-tier keys: six rotated Gemini keys for generation and judging, Groq for
+extraction and classification, and CPU models on this machine for embeddings and natural
+language inference. \textbf{Total spend across \rProviderCalls{} routed calls and
+\rProviderTokens{} tokens: \$0.00.} The read-through cache served \rProviderCacheHitRate{}
+of those calls. Embeddings and the NLI checkpoint run locally and bypass the router, so they
+are outside that token count, and outside nothing else, since they are free.
+
+That is a choice about where the risk is, not a constraint that was worked around. A
+metered key from day one buys better prose immediately and hides every cost bug until the
+bill arrives; a free tier forces the cost controls to exist before they are needed, and
+they are the same controls a production system needs: purpose-tag routing so extraction
+never touches the expensive model, a read-through cache keyed on the full request so a
+rerun of an identical configuration is nearly free, key rotation with per-(key, model)
+cooldowns, and a budget guard that refuses a call it cannot afford. Every one of those was
+exercised in anger rather than written and hoped for.
+
+The metered budget is therefore still unspent, which is the point: it is reserved for the
+strong-model rerun, where the same evaluation runs against a better model to separate
+\emph{the system works} from \emph{the model is good}. That comparison is only meaningful
+because nothing has been re-engineered in between. The model id is a configuration value,
+and the run is one command.
+
+\decision{Purpose-tag routing rather than per-call-site provider choice}
+The cost policy is six lines in one table. \rejected{Choosing a provider where the call is
+made.} That scatters the policy across forty call sites and makes it impossible to audit
+or change. It also makes the ablation in \S\ref{sec:evaluation}, rerunning everything on a stronger
+model, a one-line edit rather than a refactor.
+
+\decision{Diffs rather than replacement text}
+Every AI action is a typed operation list against the current state, not a block of prose
+that overwrites what was there. \rejected{Text-level replacement with a visual diff.} It
+looks similar in the interface and is far weaker underneath: a text diff cannot say
+``this introduces a character'', cannot be checked against the world graph before it is
+applied, and cannot tell the writer what it would invalidate.
+
+\decision{Declared dependencies rather than inferred ones}
+A beat states what it produces and consumes; propagation walks those edges only.
+\rejected{Inferring dependencies with a model.} A dependency oracle that is wrong ten
+percent of the time makes every propagation result untrustworthy, which is worse than no
+propagation at all, because the writer stops reading the marks. Embedding-similarity edges are
+implemented, but as a clearly weaker ``maybe affected'' signal and as an ablation to
+measure, never as the primary mechanism.
+
+\decision{A closed predicate vocabulary}
+Ten predicates plus a free-text escape hatch. \rejected{Open-vocabulary relation
+extraction.} Closed predicates make the first checker layer a dictionary lookup and an
+equality test: free, instant, and never wrong for the wrong reason. The escape hatch
+is exactly the set of facts that needs the more expensive NLI check, which is a useful
+way to have partitioned the problem.
+
+\decision{Content-addressed snapshots}
+\rejected{Storing a full copy of the story per version, or an event log without
+materialized states.} Full copies do not survive a few hundred snapshots. A pure event
+log makes ``what is true right now'' a replay, and makes branch comparison hard.
+Content addressing gives cheap versions, free structural sharing, and diff as set
+arithmetic.
+
+\decision{Axis-conditioned sampling rather than a similarity penalty}
+Candidates are generated under named instructions and the name reaches the writer.
+\rejected{Sampling $k$ times and reranking for dissimilarity.} That is Fabula's approach,
+and it produces variants that differ without being \emph{nameably} different. The reranker
+is still there, and it stops two candidates that came out similar anyway, but the axes are
+what make three options a decision rather than three readings.
+
+\decision{A calibrated NLI threshold rather than a chosen one}
+0.35, measured against the local checkpoint, and swept in the evaluation.
+\rejected{A round number.} The interesting case is a real contradiction the model is only
+moderately confident about (0.43), which a 0.5 threshold silently misses, and silent
+misses in a continuity checker are the failure that matters.
+
+\decision{Marking rather than auto-repair}
+\rejected{Automatically regenerating stale downstream nodes.} This is the single most
+tempting feature in the system and the one that would destroy it. It is precisely what
+Fabula's writers complained about, and the reason is not technical: a system that
+rewrites approved work without asking cannot be trusted with a manuscript.
+
+\decision{\rFeatures{} interpretable features rather than a learned representation}
+\rejected{Embedding the candidate and letting the head learn its own features.} With twenty
+comparisons that head would memorize rather than generalize, and, decisively, its weights
+would say nothing a writer could read. An interpretable feature vector is what lets
+the system explain its own ranking back to the person it is ranking for. Nine are fixed;
+the remaining \rCriterionSlots{} are one slot per writer-defined criterion, in creation
+order, zero when unfilled. A single averaged criterion score could not express that a
+writer weights \emph{menace} twice as heavily as \emph{warmth}, which is the one thing
+writer-defined criteria exist to say.
+
+\decision{SQLite}
+\rejected{Postgres.} One writer, one story, a few megabytes, and a file the author can
+copy is the actual workload. Postgres buys concurrency this system does not have. What
+would change at a serialized-fiction platform scale is discussed in the systems documentation.
+
+
+\section{The writer ledger, and provenance}
+\label{app:ledger}
+
+Provenance is recorded per sentence (\textsf{human}, \textsf{ai},
+\textsf{ai\_edited\_by\_human}), because the interesting case is mixed: the AI proposed a
+paragraph and the writer rewrote two sentences of it. A node-level flag would lose exactly
+the information the writer cares about, and the authorship ratio shown in the interface
+would be a lie.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{diagrams/state_model.pdf}
+\caption{The three stores and how they reference each other. The plan tree holds
+structure; the world graph holds truth with validity intervals; snapshots hold history.
+A beat's \textsf{produces} and \textsf{consumes} lists are the only dependency edges
+propagation walks, which is what makes the walk exact.}
+\label{fig:state-model}
+\end{figure}
+
+
+
+\section{Components}
+\label{app:components}
+
+\begin{center}
+\begin{tabular}{@{}lp{0.60\textwidth}@{}}
+\toprule
+\textbf{Package} & \textbf{What it does} \\
+\midrule
+\file{domain/} & The typed state and the \rDiffOps{} diff operations that are the only way
+to change any of it. Frozen models, a pure \texttt{apply}, typed errors. \\
+\file{store/} & Content-addressed objects, snapshot manifests, branch pointers, three-way
+merge. Git's data model, in one SQLite file. \\
+\file{graph/} & Declared dependency edges, propagation that marks and never rewrites, and
+the entity-scoped slices generation prompts consume. \\
+\file{providers/} & One interface over four backends, with key rotation, a read-through
+cache, a budget guard, and a call log. No key is ever logged. \\
+\file{agents/} & Schema-constrained generation converted into typed diffs, plus fact
+extraction from accepted prose. \\
+\file{selection/} & Named axes, MMR / DPP / top-$k$ behind one signature, and the dial. \\
+\file{continuity/} & The three checker layers, the bible diff, and the periodic audit. \\
+\file{preference/} & Exemplars, edit mining, the voice model, the ranking head, the
+bandit. \\
+\file{eval/} & Simulated writers, injected ground truth, metrics, ablations, the gallery
+recorder. \\
+\file{api/} + \file{frontend/} & A thin HTTP adapter and a five-tab interface. No logic
+lives in either. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The proposal engine in detail}
+\label{app:engine}
+
+\subsection{Progressive levels}
+
+Generation is a function \texttt{propose(level, state slice, intent, k)}. The levels run
+seed $\to$ premise $\to$ episodes $\to$ scenes $\to$ beats $\to$ prose, and the writer
+settles each before the next exists. This is Fabula's progressive-build-up lesson taken
+literally: writers rejected systems that produced a whole plan before they had agreed to
+its premise.
+
+Every level has a schema the model must fill, and the schema is where the shape of the
+answer lives. A beat proposal has fields for which facts it establishes and which existing
+facts it relies on, and for each new fact, the list of characters who \emph{learn} it at
+this beat: not everyone present, and not everyone it is true of. That declaration is what
+the propagation walk later reads.
+
+It is worth being exact about how strong that guarantee is, because the rest of the system
+leans on it. Those fields are \emph{described and prompted for, not schema-required}: only
+the title and the body of a beat are mandatory, so a model that returns a beat and no
+dependencies validates, and a \texttt{consumes} id naming a fact that does not exist is
+dropped without a flag. The dependency graph is therefore as good as the model's
+compliance, and this system does not measure that compliance; see
+\S\ref{sec:limitations}. The design decision behind the fields is still the right one: a
+declared edge is checkable and a guessed one is not. But ``cannot go unmaintained'' would
+be a claim about the model, not about the schema.
+
+Every field carries a length bound, forwarded into the provider's own response schema where
+the provider honours one. This keeps candidates readable, and it closes a failure mode
+observed in the first live test: a small model fell into a repetition loop and filled a
+field until it hit the token cap, turning a good candidate into truncated JSON.
+
+The bound is enforced client-side, and \emph{how} is worth a sentence, because the obvious
+answer is wrong twice over. Rejecting an over-long field costs a repair call to recover a
+candidate that was fine except for being twenty characters long, measured at roughly 80\%
+of proposals during the first evaluation run, which doubled the cost of the experiment. So
+the bound truncates. But truncating naively cuts mid-word, and the fragment becomes permanent
+state that every later prompt reads back as context: about a third of one writer's candidates
+ended mid-clause, and one field arrived as literal keyboard mash padded to a minimum length
+and was committed. So the contract is neither: cut at the last sentence boundary inside the
+bound; ask again once when nothing inside the bound ends a sentence, or when the value is
+padding rather than writing; drop the candidate if the second answer is no better. A dropped
+candidate costs one sample out of six. A committed fragment costs every prompt after it.
+
+
+
+\subsection{Extraction, and the closed vocabulary}
+
+When prose is accepted, whether the model wrote it or the writer typed it, a cheap model
+reads it back and returns structured facts. A hand-written beat therefore
+participates in continuity exactly like a generated one: the system does not generate
+anything, it only reads what was written and updates the graph.
+
+Predicates come from a closed vocabulary of ten, plus a free-text \textsf{note}. Closed is
+what makes the first checker layer a dictionary lookup and an equality test rather than a
+semantic judgement, and the escape hatch isolates exactly the residue that needs the more
+expensive check.
+
+Names are canonicalized conservatively: exact match after normalization, otherwise a new
+entity \emph{and} a note telling the writer what it might duplicate. No similarity
+threshold is used. A fuzzy match that is occasionally wrong would weld two characters
+together silently, which is the failure this whole system exists to prevent.
+
+
+One routing table maps purpose tags to backends: prose and judging to Gemini, extraction
+and classification to Groq's small fast model, embeddings and NLI to local CPU models, and
+a metered provider that is locked. Around the chosen backend sit a read-through cache, a
+budget guard, and a call log that records tokens for every call.
+
+Three details are load-bearing. Gemini's six free-tier keys carry per-\texttt{(key, model)}
+cooldowns, because free-tier quota is per model per key, and exhausting a key on one model says
+nothing about its allowance on another. The cache key includes a per-sample index, so
+the six axis-conditioned candidates of \S\ref{sec:diversity-fwd} are six entries rather
+than one. And non-prose purposes fall back across providers when one is down, while prose
+does not: a beat silently served by an 8B model is a quality regression the writer cannot
+see the cause of.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{diagrams/routing.pdf}
+\caption{Purpose tags decide the provider; rotation, caching, budget, and logging are
+layered around it rather than baked into each backend. The metered provider is locked by
+two independent fail-closed checks.}
+\label{fig:routing}
+\end{figure}
+
+
+\subsection{The generation loop}
+
+\begin{enumerate}[label=\arabic*.]
+\item The writer states an intent at a node.
+\item The engine slices the state, samples $k$ candidates, converts each into a typed diff,
+and previews what each would invalidate.
+\item The writer accepts, edits, or rejects. Editing keeps the writer's words and records
+the before/after pair; rejecting records the direction so it is not proposed again.
+\item Accepting commits the diff, extracts facts from any new prose, and commits the
+propagation marks as a second snapshot.
+\item Every action is recorded as a signal, along with the alternatives it was shown
+beside, which is what makes an accept a \emph{preference} rather than an event.
+\end{enumerate}
+
+
+
+\section{Continuity checking in detail}
+\label{app:continuity}
+
+\textbf{Layer 2: local NLI.} The residue is the free-text \textsf{note} predicate and
+multi-valued facts whose object strings differ. A DeBERTa
+cross-encoder~\cite{he2021deberta} fine-tuned on MNLI scores each pair for contradiction.
+It is the same instrument, and used for the same reason, that the summarization-consistency
+literature uses to detect claims a source does not support~\cite{laban2022summac}. A cross-encoder rather than a bi-encoder because the
+distinction we need is exactly the one a bi-encoder structurally cannot make: ``Kael is in
+Ashfall'' and ``Kael is not in Ashfall'' embed almost identically, being about the same
+thing, but a model that reads both sentences together sees the negation.
+
+The threshold is sanity-checked against cases whose answers are known rather than picked
+off a round number. On the local checkpoint a blunt contradiction scores near 1, a
+paraphrase near 0, and a real but universal-versus-specific contradiction near 0.43, so a
+0.5 threshold would miss the third. The default is 0.35, and a regression test pins the
+ordering of those three cases so a checkpoint change that inverts them fails the suite.
+What this is not is a calibration curve: three sentence pairs establish that the model
+separates the cases, not where the boundary should sit, and no sweep of this threshold is
+reported. The soft-edge threshold in \S\ref{sec:evaluation} is a different mechanism.
+
+\textbf{Layer 3: soft judge.} Motivation plausibility and tone, plus the ranking score.
+It argues before it rates: the schema declares a sentence of reasoning ahead of each
+number, and field order is preserved, which is Fabula's own finding about their auto-rater
+and matches the general result that a score conditioned on an explanation is better
+calibrated. The honest version of that sentence is that the \emph{ordering} is enforced
+where the provider honours schemas at all; the argument itself has a default and is not
+read back, so a model that skips it is not detected. It scores the writer's own criteria, in
+the writer's words, alongside fixed narratology axes.
+
+
+
+\subsection{What a flag must carry}
+
+Two properties are non-negotiable. \textbf{A deterministic flag cites its establishing
+beat.} ``Kael cannot be in Ashfall here'' is useless; ``Kael was established in Kell in
+\emph{The Warden's Offer}'' is actionable. That holds for layers 1 and 2, where the flag is
+raised by a rule that knows which fact it read. Layer 3 is an opinion about a passage rather
+than a consequence of a fact, so it carries no such citation, and the interface does not
+pretend otherwise. And \textbf{nothing is ever auto-fixed}. A contradiction
+can be exactly what the writer meant: characters lie, narrators are unreliable, a flashback
+contradicts the present on purpose. A system that silently repairs those is worse than one
+that says nothing.
+
+Hard flags (deterministic) and soft flags (opinions) are structurally distinct in the data
+model, sorted apart, and rendered differently.
+
+
+\subsection{The bible diff}
+
+On accept the writer sees what changed in the world, in sentences:
+
+\begin{quote}\ttfamily\small
++ Kael keeps a secret: he can hear the ash.\\
+\textasciitilde{} Kael is at Ashfall. (no longer true from here)\\
+- Kael has the Warden's token.
+\end{quote}
+
+They can strike any line. Striking is not an undo. It produces a normal diff, deleting the fact if it was never true
+and ending it if it stopped being true, which propagates like any other change and re-runs
+layer 1 on whatever depended on it. Even correcting the machine
+goes through the same reviewable path as everything else.
+
+
+\subsection{The periodic audit}
+
+Per-accept checking is incremental and can miss slow drift: a contradiction assembled over
+ten episodes where no single accept was wrong. A periodic audit walks the whole graph
+through layers 1 and 2. It also answers a question no per-fact check can: which threads are
+being dropped. A thread opened in episode 2 and untouched since episode 3 is not a
+contradiction, so nothing else in the system would ever mention it, and for a serial it is
+the most expensive kind of mistake.
+
+
+\section{The preference layer in detail}
+\label{app:preference}
+
+\subsection{The signal is a comparison}
+
+Every accept is recorded with the alternatives that were on screen. ``The writer liked A''
+is weak; ``the writer preferred A to B and C, having seen all three'' is a comparison, and
+comparisons are what Bradley-Terry is defined on. Pairs are formed only \emph{within} one
+shown set, because comparing a candidate accepted on Monday against one rejected in a
+different scene on Friday would compare two different questions. An edited-then-accepted win is
+weaker evidence than a clean accept and is weighted accordingly.
+
+
+
+\subsection{The data regime}
+
+The head starts from a prior fitted across synthetic proto-personas and adapts per writer
+from there, because twenty comparisons cannot fit a model from scratch and there is no
+population of real writers to fit a prior on. The same caveat as the bandit applies and is
+worth stating in the same breath: the evaluation harness starts its heads from that prior;
+the product does not. A writer opening the application today starts at uniform weights.
+What makes the no-preference ablation exact is therefore not the prior's shape at zero data
+but an engine gate: below one recorded comparison the layer returns no opinion at all, and
+the ranker it would have influenced is bypassed.
+
+\textbf{That prior cannot contain real human taste.} Nothing in its data ever met a reader.
+What it can contain is the structure of the problem: that features have consistent signs,
+that the signal is noisy, that some axes matter more than others. The bet is that the
+adaptation \emph{machinery} transfers even though the values do not, and the bet is measured
+rather than asserted: a prior-initialized head reaches \rPriorAtTen{} held-out pairwise
+accuracy after a fresh writer's first ten decisions, against \rUniformAtTen{} from uniform
+initialization. Were that lift zero, the prior would be worthless and should be dropped.
+
+There is a deeper circularity worth naming: the preference layer is validated against
+simulated writers made of the same feature vector the head is fitted on. That is why the
+evaluation measures \emph{recoverability}, meaning whether the fitted weights correlate
+with the hidden ones, rather than claiming the system learns taste. Recoverability is a real
+property of the machinery. Taste is not something this evaluation can measure at all; only
+a human study would settle it.
+
+
+
+\subsection{Six learners, six data appetites}
+
+A writer produces about twenty comparisons in a session, which is nowhere near enough to
+fit one model that does everything. So each signal is exploited by the cheapest mechanism
+that can use it, and each contributes as soon as it has enough.
+
+\begin{center}
+\begin{tabular}{@{}llp{0.44\textwidth}@{}}
+\toprule
+\textbf{Learner} & \textbf{Needs} & \textbf{What it contributes} \\
+\midrule
+Exemplar retrieval & 1 accept & The writer's own sentences in the prompt, and their
+rejected ones as negatives \\
+Edit direction & 1 edit & Mean embedding shift from the model's version to the
+writer's; score by projection onto it \\
+Edit mining & 2 similar edits & Plain-language style rules, into the visible ledger \\
+Bradley-Terry head & $\sim$10 comparisons & The ranking \\
+Voice model & $\sim$dozens of texts & ``Sounds like this writer'' \\
+Thompson bandit & $\sim$20 shown sets & How much of the shown set to spend on exploration
+\emph{(built and measured; not yet on the writer's path, see below)} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\subsection{The voice model}
+
+A judge can score whether a passage is well constructed; it cannot say whether it sounds
+like \emph{this} writer, because that is an identity rather than a quality. A frozen
+bge-small encoder plus a $384 \times 128$ projection trained with
+InfoNCE~\cite{oord2018cpc}: anchors are prose the writer wrote or edited, positives are what
+they accepted, negatives are what they rejected and the pre-edit versions of what they
+changed. Frozen encoder because a session's worth of prose would damage an encoder far more
+than it would personalize it; the projection only has to find which directions in an
+already-good space this writer cares about.
+
+
+\subsection{Exploration}
+
+A ranker that always shows its top three converges: the writer only ever sees what the model
+already believes, so the model never learns it was wrong. The answer built for this is two
+arms over the composition of the shown set, either three safe or two safe plus one
+high-surprise, chosen by Thompson sampling~\cite{russo2018thompson}. Exploration anneals
+itself out of the posterior width, with no schedule to tune; $\varepsilon$-greedy would keep
+paying a fixed exploration cost forever and would explore uniformly, spending as much on an
+arm it is sure about as on a marginal one. One detail is worth the line: the arm is reported
+as \emph{safe} whenever no unseen surprising candidate existed, so the bandit is never
+credited for exploration that did not happen.
+
+\textbf{It is not wired to the writer.} The engine hands the writer the selector's top
+$k$; the bandit composes nothing on that path, its posterior never leaves
+$\mathrm{Beta}(1,1)$, and the regret curve below is a simulator with the arms held at fixed
+rates. So the convergence problem this subsection opens with is stated, not solved, in the
+running system. Saying so costs a paragraph and is cheaper than being asked.
+
+
+\section{Diversity and the dial in detail}
+\label{app:diversity}
+
+Sampling three continuations from one prompt gives three phrasings of one idea, and the
+writer has no choice to make. Fabula's answer was to penalize similarity against previous
+suggestions, which produces variants that differ but are not \emph{nameably} different,
+and their own finding is that unlabeled alternatives cost more to review than they save.
+Diversity in the embedding space is not diversity in the interface.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{diagrams/selection.pdf}
+\caption{Six axis-conditioned candidates become three labelled ones. The label is the
+mechanism: three named directions cost a decision, three unlabeled paragraphs cost three
+readings.}
+\label{fig:selection}
+\end{figure}
+
+\textbf{Axes.} Seven named conditioning instructions: raise the stakes, slow down, subvert
+the expectation, shift the point of view, deepen the interiority, introduce a complication,
+and pay off an open thread. Six are rotated deterministically per node, sampled
+in parallel, and the label travels with the candidate to the screen.
+
+\textbf{Selection.} MMR by default:
+$\lambda q_i - (1-\lambda)\max_{j \in S}\mathrm{sim}(i,j)$, so the second pick is the best
+candidate that is not the first one again. A determinantal point process is implemented as
+a drop-in alternative: with kernel $L = \mathrm{diag}(q)\,S\,\mathrm{diag}(q)$, the
+determinant of a subset is the squared volume its quality-scaled vectors span, which is
+large when they are good \emph{and} mutually dissimilar and zero when two are parallel. The
+diversity trade-off is the structure of the distribution rather than a tuned
+parameter~\cite{kulesza2012dpp,carbonell1998mmr}. Plain top-$k$ is the ablation baseline.
+All three share one signature, so the comparison is one config value.
+
+\textbf{The dial.} Fabula's writers asked for an ``absurdity dial''. The request is deeper
+than it sounds: it asks to control the objective, not the output. A writer at 3am on
+episode 40 wants safe continuations; the same writer opening a new arc wants to be
+surprised. Take the greedy temperature-0 continuation as ``what this model would obviously
+do next''; each candidate's surprise is its embedding distance from that; effective quality
+is $(1-d)\tilde q + d\tilde s$. At $d = 1$ the system is explicitly selecting against what
+the model would have done anyway. One extra cached call per node.
+
+\textbf{Candidates arrive already checked.} Layer 1 runs on each candidate's would-be facts,
+by applying the diff to a scratch state and checking it there, so a candidate that
+contradicts the bible reaches the writer with the contradiction attached. Hard flags push a
+candidate down the ranking but never remove it.
+
+
+
+\subsection{Hard constraints, and what enforcing them cost}
+
+A hard constraint reaches the generation prompt \emph{and} is checked at judge time: the
+judge receives the constraint list as explicit check items alongside the scoring axes, and
+returns the ones a candidate breaks, quoting each. Those become soft flags citing the
+constraint verbatim. Never blocked, since the writer decides here as with every
+other flag, but checked, which is the difference between a constraint and a wish. That is a change this
+system needed and did not have: a writer testing it added ``Present day. No ten-shilling
+notes, no shillings, no Austin Cambridges'' and was then offered four pounds ten, a Morris
+Minor and three-shilling bits. Their sentence for it is the one to keep: \emph{a hard
+constraint that is not enforced at generation or at check time is a style note with a more
+confident name.} The check rides the judge call that already runs per candidate rather than
+adding one per constraint, which would multiply the most expensive stage of the pipeline by
+the size of the ledger.
+
+
+\section{Evaluation design in detail}
+\label{app:eval}
+
+\subsection{What the probe found, in detail}
+
+\textbf{What the probe found, and what changed because of it.} Several of the
+\rFeatures{} features never varied inside a single writer's candidate sets. A constant
+column gives the fit no gradient, so those weights simply stayed wherever the population
+prior had put them. That is harmless in session, since a constant cannot reorder anything
+the writer sees, which is exactly why nothing had caught it, and wrong the moment the head
+is applied to candidates drawn from anywhere else. Only an off-distribution instrument could
+see it, and that is what the probe is.
+
+Three things followed. Two of those features were dead for reasons that had nothing to do
+with the stories and everything to do with the code: dialogue ratio counted only double
+quotation marks while the model writes speech in single ones, so prose that was a third
+dialogue scored zero; and the voice model, which trains on prose the \emph{writer} wrote or
+rewrote, had never once been trained, because no simulated writer had ever used the
+hand-write or polish paths the interface offers. Both are fixed and both features now move.
+
+They do not move \emph{much}, and the reason is the third thing, which is structural and is
+not a bug at all. The judge emits five levels. Four fixed axes and every writer-defined
+criterion are that judge's output rescaled, and with three candidates in a set the expected
+outcome is a tie: across the shipped probe fixture the two unfilled criterion slots are
+constant in every decision, two of the four judge axes are constant in more than half of
+them, and voice cosine, now that it varies at all, varies across a range too narrow to reorder
+anything at any weight the head can learn. That is the dominant cause of the constant
+columns, it was not fixed by fixing the two bugs, and it bounds how much a
+\rFeatures{}-dimensional head can be identified from a few dozen three-way comparisons at
+all.
+
+The fourth finding is a property rather than a bug, and it changed the learner. A direction
+the data cannot identify should not inherit an opinion from a population prior, so fitting
+now shrinks unidentified directions towards zero instead. \emph{Unidentified} here means
+exactly one thing and it is worth not overselling: a column that is constant across every
+comparison. Rank deficiency from two columns that always move together, which is the
+diagnosis the next paragraph gives for the writer who did worst, is invisible to this check
+and is not addressed by it. That was decided by an A/B rather
+than by argument: both variants were refitted from the decisions already recorded and
+scored on the same held-out probe, which moved agreement from \rShrinkTauAnchored{} to
+\rShrinkTauShrunk{} and top-1 from \rShrinkTopOneAnchored{} to \rShrinkTopOneShrunk{} over
+\rShrinkRunsReplayed{} replayed runs, while the prior's cold-start lift held at
+\rShrinkColdStartShrunk{} against \rShrinkColdStartAnchored{}, inside the
+\rShrinkColdStartSeedSd{} spread across \rShrinkColdStartSeeds{} seeds, which is what the
+rule asked. The rule the result had to clear was written down before the number existed,
+and the replay costs nothing, so there was no opportunity to rerun until a variant won. Each run still reports
+its own unexercised features in \file{summary.md}.
+
+\textbf{Why one writer did worst, in detail.} The Minimalist was worst on every measure,
+and the recorded feature vectors say why. It is not ``too little data'', which was the
+obvious guess and is wrong: its candidate sets are \emph{more} separated than the best performer's.
+Two of its three largest hidden weights fit with the wrong sign, and each has a cause that
+is a property of that writer rather than a defect in the machinery.
+
+Its largest weight is on \emph{specificity}, and the writer has also defined a criterion
+called \emph{concreteness} which the judge scores $+0.73$ correlated with it, a
+near-duplicate column. Two collinear columns at forty-eight comparisons is a textbook
+small-sample regression: the fit hands the credit to one and compensates with a sign flip on
+the other, and here the fixed axis is the one that flips. Its second-largest weight is a
+large \emph{negative} one on length, and its standing style note, ``shorter
+sentences'', is \emph{followed}, so every candidate comes back at about the same length and
+the length feature carries a spread of 0.03. The head cannot learn a large negative weight from
+a column that does not vary.
+
+That second mechanism generalises and is worth stating: \textbf{a writer whose instruction
+is obeyed leaves the preference layer nothing to learn on the same axis}. The prompt side
+and the learning side are two halves of one system competing for the same signal, and this
+run is what it looks like when the prompt side wins. Neither is patched: rewriting the
+persona's criteria to be less collinear would be tuning the experiment to flatter the
+estimator.
+
+\textbf{The acceptance trend.} Acceptance held or rose in three runs and fell in one
+(100\,\% to 77\,\%). Read on its own this says less than it appears to: a persona's bar is a
+fixed quantile of its own score distribution and does not move, while each new candidate has
+to stay consistent with more established facts, more open threads, and more accumulated
+rules, so the curve tracks task difficulty as well as satisfaction, and the probe above is
+the view that does not. The first-third figures also rest on eleven or twelve decisions
+each, so the endpoints are noisy.
+
+Curves per persona are in \file{eval/results/}, and the full table of probe readings,
+ceilings, retry rescues, per-run costs, and anything that did not run is in
+\file{summary.md}. The earlier run, made before this pass changed the feature space and the
+harness, is archived under \file{eval/results/archive/}. Every number in this section
+regenerates with
+
+\begin{quote}\ttfamily\small
+python -m eval.run -{}-config full \&\& python -m eval.texnumbers
+\end{quote}
+
+Everything above ran on \textbf{free-tier keys}: six rotated Gemini keys, Groq for
+extraction, and CPU models on this machine for embeddings and NLI, at a total spend of
+\textbf{\$0.00} across \rProviderTokens{} of routed tokens. Prose quality is therefore a floor rather than
+a ceiling,
+and that is deliberate: the metered budget is held in reserve for the strong-model rerun,
+which is the run that separates ``the system works'' from ``the model is good''. It is a
+one-line configuration change, costed against the cap before it is spent.
+
+
+
+\subsection{Simulated writers}
+
+Four personas, each \textbf{a hidden weight vector over exactly the feature space the
+preference head is fitted on}, plus style quirks and forbidden moves, which are
+absolutes a linear preference cannot express and which real writers have.
+
+\begin{center}
+\begin{tabular}{@{}llp{0.40\textwidth}@{}}
+\toprule
+\textbf{Persona} & \textbf{Weighted towards} & \textbf{Character} \\
+\midrule
+the Serialist & momentum, consequence & Writes for retention; no flashbacks, they stall \\
+the Minimalist & specificity, \emph{negative} on length & Short, concrete, exposition-averse \\
+the Maximalist & voice, interiority, length & Dial at 0.70; dialogue low \\
+the Controller & continuity, own criteria & Accepts rarely, edits heavily, locks constantly \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Defining the personas over the head's own feature space is what makes the central question
+measurable: not \emph{did acceptance rise}, which a degenerate system
+achieves by proposing the same safe thing repeatedly, but \emph{did the fitted weight
+vector correlate with the hidden one}. Three constraints keep it from being circular, the first
+asserted in a test: the engine is never told the hidden weights; the persona sees only what
+the engine chose to show; and the model that performs the persona's edits is told their
+\emph{style}, never their objective.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{diagrams/eval_loop.pdf}
+\caption{The loop and where the measurements are taken. Metrics on the left are properties
+of the writer's behaviour; on the right, properties of the system.}
+\label{fig:evalloop}
+\end{figure}
+
+
+\subsection{Ground truth by construction}
+
+Recall needs a denominator. One contradiction of each class is injected into its own
+story, built fresh from the same clean scenario, and each is scored on its own, because
+injected together they interact: two of the five land on the same beat and a third kills a
+character the others need alive, and a catch is credited when a flag names any of an
+injection's facts, so shared-story cross-talk would score a location conflict as caught
+because the possession conflict beside it was. That isolation was added after this review
+found the fixture had been sharing one story; the reported numbers did not move, which is
+the useful outcome: the defect was real and the measurement survived it. Extraction is
+scored against hand-written passages with known fact sets. Staleness is scored against a
+scripted edit whose true blast radius is known because the dependency edges were written by
+hand, and which deliberately includes a beat that \emph{depends on the changed fact but
+never declared it}. Otherwise the soft-edge ablation could only add false positives, and
+that would be an unfair test of an idea worth testing properly.
+
+
+\section{Reproduction}
+\label{app:repro}
+
+Every number in this document is a macro generated from the evaluation's own output.
+The deterministic tier needs no network and no keys:
+
+\begin{verbatim}
+python -m eval.offline        # every exact metric, plus the figures
+python -m eval.texnumbers     # emit docs/results.tex
+tectonic docs/presentable.tex
+\end{verbatim}
+
+The live tier needs provider keys in a workspace \file{.env} and takes a few hours on a free
+tier, because it waits out rate limits rather than working around them:
+
+\begin{verbatim}
+python -m eval.run --config full --max-calls 2000
+python -m eval.texnumbers
+\end{verbatim}
+
+\file{scripts/rerun_until_quota.sh} wraps that call for an unattended run: it probes for
+capacity rather than sleeping until a clock time, and relaunches on failure, which resumes
+from the per-episode checkpoints rather than restarting. The suite, the linters and the type
+checker run with \file{make check}; \file{scripts/e2e\_smoke.sh} drives the whole stack over
+HTTP against a mock provider, so it needs neither network nor quota.
 
 \end{document}
