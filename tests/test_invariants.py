@@ -331,3 +331,26 @@ def test_every_operation_can_actually_be_produced() -> None:
         if not constructed:
             orphans.append(name)
     assert orphans == [], "operations nothing can produce: " + ", ".join(orphans)
+
+
+def test_no_client_method_is_unreachable_from_the_interface() -> None:
+    """The same dead-code standard, on the other side of the wire.
+
+    `api.ts` is the only way the interface talks to the server, so a method there that no
+    component calls is a capability the backend has and the writer cannot reach. Four were
+    unreachable when this was written — the audit, the merge, the snapshot history, and the
+    branch comparison — and the flags route's own docstring claimed the interface offered
+    the audit as an explicit action.
+
+    Checked from Python because this file is where the repo-wide standards live; it reads
+    the TypeScript as text, which is all the check needs.
+    """
+    frontend = SRC.parents[1] / "frontend" / "src"
+    client = (frontend / "api.ts").read_text()
+    components = "\n".join(
+        path.read_text() for path in frontend.rglob("*.tsx") if "__tests__" not in str(path)
+    )
+    methods = re.findall(r"^  (\w+):\s*(?:\(|=)", client, re.M)
+    assert methods, "api.ts no longer looks like a method table"
+    unreachable = [name for name in methods if f".{name}(" not in components]
+    assert unreachable == [], "client methods no component calls: " + ", ".join(unreachable)
