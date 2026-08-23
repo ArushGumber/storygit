@@ -74,6 +74,20 @@ def build_frontend(out: Path) -> None:
     shutil.copytree(dist, out)
 
 
+def build_frontend_normal() -> None:
+    """Build the frontend the way the local application serves it.
+
+    The screenshots have to be of the real Live tab, so this build must not set
+    ``VITE_STATIC``. It also leaves ``frontend/dist`` in the state ``make demo`` expects,
+    which is why it runs again at the end of the export.
+    """
+    print("building the frontend for screenshots")
+    env = {k: v for k, v in _env().items() if k != "VITE_STATIC"}
+    subprocess.run(
+        ["npm", "run", "build"], cwd=FRONTEND, check=True, env=env, stdout=subprocess.DEVNULL
+    )
+
+
 def _env() -> dict[str, str]:
     import os
 
@@ -100,9 +114,7 @@ def record_api(out: Path) -> list[str]:
     work = out / "_demo.db"
     shutil.copy(DEMO_DB, work)
 
-    state = build_state(
-        work, router=build_router(), results_dir=ROOT / "eval" / "results", seed=7
-    )
+    state = build_state(work, router=build_router(), results_dir=ROOT / "eval" / "results", seed=7)
     failures: list[str] = []
     # A context manager, because the application attaches its state in a lifespan handler
     # and TestClient only runs lifespan when used as one. Without this every route 500s on
@@ -176,7 +188,7 @@ def capture_shots(out: Path, port: int = 8129) -> list[str]:
             try:
                 urllib.request.urlopen(f"{base}/api/health", timeout=1)
                 break
-            except Exception:  # noqa: BLE001 -- waiting for a socket, any failure retries
+            except Exception:
                 time.sleep(0.5)
         else:
             return ["the demo server did not come up; the Live tab will have no images"]
@@ -185,26 +197,41 @@ def capture_shots(out: Path, port: int = 8129) -> list[str]:
             browser = play.chromium.launch()
             page = browser.new_page(viewport={"width": 1600, "height": 1000})
             page.goto(f"{base}/#live", wait_until="networkidle")
-            page.wait_for_timeout(1200)
+            page.wait_for_timeout(1500)
 
-            # 1. The tree, with a beat selected so the other panes are populated.
-            page.screenshot(path=str(shots / "live-tree.png"))
-
-            beat = page.locator(".tree .row", has_text="The Hollow Knock").first
+            # The three panes, with a beat selected so the right-hand one is populated.
+            beat = page.get_by_text("The Hollow Knock at the bus stop", exact=False).first
             if beat.count():
                 beat.click()
-                page.wait_for_timeout(900)
+                page.wait_for_timeout(1200)
+            page.screenshot(path=str(shots / "live-tree.png"))
+
+            # The world state at that beat, scrolled so the epistemic column and the open
+            # threads are both in frame.
+            page.mouse.move(1450, 600)
+            page.mouse.wheel(0, 420)
+            page.wait_for_timeout(600)
             page.screenshot(path=str(shots / "live-world.png"))
 
-            # 2. The centre pane. Without keys there are no live candidates, so this shows
-            #    the node detail the writer reviews, which is what the caption describes.
-            page.screenshot(path=str(shots / "live-candidates.png"))
-
-            audit = page.get_by_role("button", name="Check the whole story")
+            # The audit over the whole story. It runs layers 1 and 2 with no model call,
+            # so it works here with no keys.
+            page.mouse.wheel(0, -1200)
+            page.wait_for_timeout(400)
+            audit = page.get_by_role("button", name="audit", exact=True)
             if audit.count():
                 audit.first.click()
-                page.wait_for_timeout(4000)
+                page.wait_for_timeout(6000)
             page.screenshot(path=str(shots / "live-audit.png"))
+
+            # Candidates need provider keys, so the recorded Gallery session is the honest
+            # place to photograph them: it is the real interface over real recorded output.
+            page.goto(f"{base}/#gallery", wait_until="networkidle")
+            page.wait_for_timeout(1200)
+            labelled = page.get_by_text("labelled", exact=False).first
+            if labelled.count():
+                labelled.click()
+                page.wait_for_timeout(1500)
+            page.screenshot(path=str(shots / "live-candidates.png"))
 
             browser.close()
     finally:
@@ -225,15 +252,33 @@ def main() -> None:
     args = parser.parse_args()
 
     out = Path(args.out)
-    build_frontend(out)
-    problems = record_api(out)
+    # Screenshots first, and against a *normal* build. The static build replaces the Live
+    # tab with this page, so screenshotting after it would photograph this page's own
+    # placeholders -- which is exactly what the first version did.
+    shots: list[Path] = []
+    problems: list[str] = []
     if not args.no_shots:
-        problems += capture_shots(out)
+        build_frontend_normal()
+        problems += capture_shots(Path(args.out + ".shots"))
+        shots = sorted((Path(args.out + ".shots") / "shots").glob("*.png"))
+
+    build_frontend(out)
+    problems += record_api(out)
+
+    if shots:
+        target = out / "shots"
+        target.mkdir(parents=True, exist_ok=True)
+        for shot in shots:
+            shutil.copy(shot, target / shot.name)
+        shutil.rmtree(Path(args.out + ".shots"), ignore_errors=True)
 
     # A dumb file server has no rewrite rule, so the hash-routed shell is the only entry
     # point; 404.html makes a mistyped path land somewhere sensible on hosts that use it.
     shutil.copy(out / "index.html", out / "404.html")
     (out / ".nojekyll").write_text("")
+
+    # Leave the working tree as `make demo` expects it: a normal build, not the static one.
+    build_frontend_normal()
 
     files = sum(1 for _ in out.rglob("*") if _.is_file())
     print(f"\nwrote {out} ({files} files)")

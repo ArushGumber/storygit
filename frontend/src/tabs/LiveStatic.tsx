@@ -20,7 +20,7 @@ interface Shot {
 const SHOTS: Shot[] = [
   {
     file: "shots/live-tree.png",
-    title: "The plan tree",
+    title: "The three panes",
     caption:
       "Story, episodes, scenes, beats and prose, each node carrying its status as a word " +
       "rather than only a colour, with its lock, its staleness reason and its flag count.",
@@ -30,7 +30,9 @@ const SHOTS: Shot[] = [
     title: "Candidates as diffs",
     caption:
       "Each candidate is shown as what it would change, under the axis it was generated " +
-      "along, with its continuity flags and the number of downstream nodes it would mark.",
+      "along, with its continuity flags and the number of downstream nodes it would mark. " +
+      "Generating candidates needs provider keys, so this is a recorded session in the " +
+      "Gallery tab, which is the same interface over real recorded output.",
   },
   {
     file: "shots/live-world.png",
