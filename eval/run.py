@@ -244,6 +244,8 @@ def summarize(
                 "probe_tau_first": log.probe[0]["tau"] if log.probe else None,
                 "probe_tau_last": log.probe[-1]["tau"] if log.probe else None,
                 "probe_top1_last": log.probe[-1]["top1"] if log.probe else None,
+                "probe_tau_uniform": log.probe[-1].get("tau_uniform") if log.probe else None,
+                "probe_tau_prior": log.probe[-1].get("tau_prior") if log.probe else None,
                 "probe": [dict(r) for r in log.probe],
                 "unexercised_features": metrics.unexercised_features(
                     [list(a.features) for a in log.actions if len(a.features) >= 2]
@@ -395,8 +397,9 @@ def _render_markdown(summary: dict[str, Any]) -> str:
                 "the head after every episode. Nothing here can move because the task got "
                 "harder: the probe set does not change.",
                 "",
-                "| run | probe points | tau, first | tau, last | top-1, last |",
-                "|---|---|---|---|---|",
+                "| run | probe points | tau, first | tau, last | uniform head | "
+                "prior head | top-1, last |",
+                "|---|---|---|---|---|---|---|",
             ]
             for row in summary["runs"]:
                 if not row.get("probe"):
@@ -404,7 +407,10 @@ def _render_markdown(summary: dict[str, Any]) -> str:
                 points = int(row["probe"][0].get("points", 0))
                 lines.append(
                     f"| {row['run']} | {points} | {row['probe_tau_first']:+.3f} | "
-                    f"{row['probe_tau_last']:+.3f} | {row['probe_top1_last']:.0%} |"
+                    f"{row['probe_tau_last']:+.3f} | "
+                    f"{row.get('probe_tau_uniform') or 0.0:+.3f} | "
+                    f"{row.get('probe_tau_prior') or 0.0:+.3f} | "
+                    f"{row['probe_top1_last']:.0%} |"
                 )
 
     if summary["skipped"]:

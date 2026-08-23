@@ -197,6 +197,12 @@ def collect() -> dict[str, str]:
             )
         if tops:
             macros["ProbeTopOneLast"] = _pct(sum(tops) / len(tops))
+        uni = [r["probe_tau_uniform"] for r in runs if r.get("probe_tau_uniform") is not None]
+        pri = [r["probe_tau_prior"] for r in runs if r.get("probe_tau_prior") is not None]
+        if uni:
+            macros["ProbeTauUniform"] = f"{sum(uni) / len(uni):+.3f}"
+        if pri:
+            macros["ProbeTauPrior"] = f"{sum(pri) / len(pri):+.3f}"
         points = [r["probe"][0].get("points") for r in runs if r.get("probe")]
         if points:
             macros["ProbePoints"] = str(int(min(p for p in points if p is not None)))
@@ -215,6 +221,8 @@ def collect() -> dict[str, str]:
         "ProbeTopOneLast",
         "ProbeRose",
         "ProbePoints",
+        "ProbeTauUniform",
+        "ProbeTauPrior",
     ):
         macros.setdefault(name, MISSING)
 
