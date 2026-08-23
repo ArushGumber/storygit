@@ -142,6 +142,14 @@ export interface StaleMark {
   origin_fact: string | null;
 }
 
+export interface RevisionPreview {
+  removed_nodes: string[];
+  removed_facts: string[];
+  marks: { node_id: string; kind: string; reason: string }[];
+  lines: string[];
+  summary: string;
+}
+
 export interface ActionResponse {
   snapshot_id: string;
   bible_diff: string[];
@@ -340,6 +348,13 @@ export const api = {
   regenerate: (nodeId: string, subtree: boolean) =>
     post<ProposeResponse>(`/api/node/${nodeId}/regenerate?subtree=${subtree}`),
   strikeFact: (factId: string) => post<ActionResponse>(`/api/fact/${factId}/strike`),
+
+  previewRevision: (nodeId: string, fields: Record<string, unknown>) =>
+    post<RevisionPreview>(`/api/node/${nodeId}/revise/preview`, { fields }),
+  revise: (nodeId: string, fields: Record<string, unknown>) =>
+    post<ActionResponse>(`/api/node/${nodeId}/revise`, { fields }),
+  previewRemoval: (nodeId: string) => post<RevisionPreview>(`/api/node/${nodeId}/remove/preview`),
+  remove: (nodeId: string) => post<ActionResponse>(`/api/node/${nodeId}/remove`),
 
   setDial: (value: number) => post<{ ok: boolean }>("/api/ledger/dial", { value }),
   addStyleNote: (text: string) => post<{ ok: boolean }>("/api/ledger/style-note", { text }),

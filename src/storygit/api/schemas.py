@@ -446,6 +446,40 @@ def mark_dict(mark: StaleMark) -> dict[str, Any]:
     }
 
 
+class RevisionPreviewResponse(BaseModel):
+    """What a revision or removal would cost, before it is committed.
+
+    The blast radius shown *before* the writer commits is what makes an accepted node
+    revisable rather than frozen -- the same contract striking a fact already had.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    removed_nodes: tuple[str, ...] = ()
+    removed_facts: tuple[str, ...] = ()
+    marks: tuple[dict[str, Any], ...] = ()
+    lines: tuple[str, ...] = ()
+    summary: str = ""
+
+
+def revision_preview(preview: Any) -> RevisionPreviewResponse:
+    """Map an engine revision preview onto the wire shape."""
+    parts: list[str] = []
+    if preview.removed_nodes:
+        parts.append(f"removes {len(preview.removed_nodes)} node(s)")
+    if preview.removed_facts:
+        parts.append(f"invalidates {len(preview.removed_facts)} fact(s)")
+    if preview.marks:
+        parts.append(f"marks {len(preview.marks)} node(s) for review")
+    return RevisionPreviewResponse(
+        removed_nodes=tuple(str(n) for n in preview.removed_nodes),
+        removed_facts=tuple(str(f) for f in preview.removed_facts),
+        marks=tuple(mark_dict(m) for m in preview.marks),
+        lines=tuple(preview.bible_diff.lines),
+        summary=", ".join(parts) or "changes this node only",
+    )
+
+
 def action_response(result: Any) -> ActionResponse:
     """Map an accept result onto the wire shape."""
     counts = result.bible_diff.counts()

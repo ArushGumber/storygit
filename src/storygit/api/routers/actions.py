@@ -23,6 +23,7 @@ from storygit.agents.schemas import Level
 from storygit.api import schemas
 from storygit.api.deps import AppState, app_state
 from storygit.continuity import bible_diff
+from storygit.domain.diff import Diff, DiffAuthor, RemoveNode, UpdateNode
 from storygit.domain.ids import EntityId, FactId, NodeId, ProposalId
 from storygit.domain.nodes import NodeStatus
 
@@ -203,15 +204,103 @@ async def regenerate(
     if intent:
         prompt = f"{intent}\n\n{prompt}"
 
-    candidates = await engine.propose_at(
-        Level(target.node_type.value),
-        node_id=target.parent_id,
-        intent=prompt,
-    )
+    candidates = await engine.regenerate_at(NodeId(node_id), intent=prompt)
     return schemas.ProposeResponse(
         candidates=tuple(schemas.candidate_view(c) for c in candidates),
         shown=engine.shown(),
     )
+
+
+class ReviseRequest(BaseModel):
+    """New values for an accepted node's own fields."""
+
+    fields: dict[str, Any]
+
+
+@router.post("/node/{node_id}/revise/preview", response_model=schemas.RevisionPreviewResponse)
+def preview_revision(
+    state: State, node_id: str, request: ReviseRequest
+) -> schemas.RevisionPreviewResponse:
+    """What revising this node would cost, before anything is committed.
+
+    Args:
+        state: Application state.
+        node_id: The node to revise.
+        request: The fields to change.
+
+    Returns:
+        What would go, and what would be marked.
+
+    Raises:
+        HTTPException: 404 if the node does not exist.
+    """
+    engine = state.engine()
+    story = engine.state()
+    node = story.nodes.get(NodeId(node_id))
+    if node is None:
+        raise HTTPException(status_code=404, detail=f"no node {node_id}")
+    diff = Diff(
+        ops=(UpdateNode(node_id=NodeId(node_id), fields=dict(request.fields)),),
+        author=DiffAuthor.human,
+        intent="preview a revision",
+    )
+    return schemas.revision_preview(engine.preview_revision(diff))
+
+
+@router.post("/node/{node_id}/revise", response_model=schemas.ActionResponse)
+def revise(state: State, node_id: str, request: ReviseRequest) -> schemas.ActionResponse:
+    """Change an accepted node, marking whatever depended on it.
+
+    Args:
+        state: Application state.
+        node_id: The node to revise.
+        request: The fields to change.
+
+    Returns:
+        The bible diff, the stale marks, and the resulting flags.
+    """
+    engine = state.engine()
+    return schemas.action_response(engine.revise(NodeId(node_id), request.fields))
+
+
+@router.post("/node/{node_id}/remove/preview", response_model=schemas.RevisionPreviewResponse)
+def preview_removal(state: State, node_id: str) -> schemas.RevisionPreviewResponse:
+    """What deleting this node and its subtree would cost.
+
+    Args:
+        state: Application state.
+        node_id: The node to remove.
+
+    Returns:
+        The nodes and facts that would go, and the marks left behind.
+
+    Raises:
+        HTTPException: 404 if the node does not exist.
+    """
+    engine = state.engine()
+    if NodeId(node_id) not in engine.state().nodes:
+        raise HTTPException(status_code=404, detail=f"no node {node_id}")
+    diff = Diff(
+        ops=(RemoveNode(node_id=NodeId(node_id), recursive=True),),
+        author=DiffAuthor.human,
+        intent="preview a removal",
+    )
+    return schemas.revision_preview(engine.preview_revision(diff))
+
+
+@router.post("/node/{node_id}/remove", response_model=schemas.ActionResponse)
+def remove(state: State, node_id: str) -> schemas.ActionResponse:
+    """Delete a node and its subtree, marking whatever depended on it.
+
+    Args:
+        state: Application state.
+        node_id: The node to remove.
+
+    Returns:
+        The bible diff, the stale marks, and the resulting flags.
+    """
+    engine = state.engine()
+    return schemas.action_response(engine.remove(NodeId(node_id)))
 
 
 @router.post("/fact/{fact_id}/strike", response_model=schemas.ActionResponse)

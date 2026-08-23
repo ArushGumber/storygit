@@ -114,5 +114,32 @@ curl -sS -X POST "http://127.0.0.1:$PORT/api/ledger/style-note/remove" \
 curl -sS "http://127.0.0.1:$PORT/api/ledger" | grep -q "shorter sentences" \
   && fail "the style note survived being deleted"
 
+echo "==> an accepted node can be revised, and the cost is shown first"
+BEAT=$(curl -fsS "http://127.0.0.1:$PORT/api/tree" \
+  | "$PY" -c "import json,sys; ns=json.load(sys.stdin)['nodes']; print(next(n['id'] for n in ns if n['node_type']=='beat'))")
+PREVIEW=$(curl -fsS -X POST "http://127.0.0.1:$PORT/api/node/$BEAT/revise/preview" \
+  -H 'content-type: application/json' -d '{"fields":{"title":"Revised in the smoke test"}}')
+echo "$PREVIEW" | grep -q '"summary"' || fail "the revision preview said nothing"
+echo "$PREVIEW" | grep -q '"removed_nodes":\[\]' || fail "a revision must remove nothing"
+
+curl -fsS -X POST "http://127.0.0.1:$PORT/api/node/$BEAT/revise" \
+  -H 'content-type: application/json' -d '{"fields":{"title":"Revised in the smoke test"}}' \
+  | grep -q '"snapshot_id"' || fail "revise returned no snapshot"
+
+REVISED=$(curl -fsS "http://127.0.0.1:$PORT/api/tree" \
+  | "$PY" -c "import json,sys; ns=json.load(sys.stdin)['nodes']; print(sum(1 for n in ns if n['title']=='Revised in the smoke test'))")
+[ "$REVISED" = "1" ] || fail "revise produced $REVISED nodes with the new title, not exactly one"
+
+SAME=$(curl -fsS "http://127.0.0.1:$PORT/api/tree" \
+  | "$PY" -c "import json,sys; print(len(json.load(sys.stdin)['nodes']))")
+[ "$SAME" = "$AFTER" ] || fail "revising changed the node count ($AFTER -> $SAME)"
+
+echo "==> and a locked node refuses, naming the way out"
+curl -sS -X POST "http://127.0.0.1:$PORT/api/node/$BEAT/lock" >/dev/null
+LOCKED=$(curl -sS -X POST "http://127.0.0.1:$PORT/api/node/$BEAT/revise" \
+  -H 'content-type: application/json' -d '{"fields":{"title":"nope"}}')
+echo "$LOCKED" | grep -q "unlock" || fail "a locked node was revised, or refused without saying why"
+curl -sS -X POST "http://127.0.0.1:$PORT/api/node/$BEAT/unlock" >/dev/null
+
 echo
 echo "PASS  $BEFORE -> $AFTER nodes, served from one process on :$PORT"

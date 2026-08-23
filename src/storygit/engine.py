@@ -20,6 +20,7 @@ Three things happen on every accept, in this order, and the order matters:
 from __future__ import annotations
 
 from collections.abc import Sequence
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict
 
@@ -42,20 +43,31 @@ from storygit.domain.diff import (
     MergeEntities,
     Op,
     RemoveCriterion,
+    RemoveNode,
     RemoveStyleNote,
     SetDial,
     SetLock,
     SetNodeStatus,
     SetProse,
+    UpdateNode,
 )
-from storygit.domain.errors import LockedNodeError
+from storygit.domain.errors import (
+    InvalidStructureError,
+    LockedNodeError,
+    UnknownNodeError,
+)
 from storygit.domain.ids import EntityId, FactId, IdGenerator, NodeId, ProposalId, SnapshotId
 from storygit.domain.ledger import Criterion, StyleNote
 from storygit.domain.nodes import NodeStatus, Prose
 from storygit.domain.provenance import Authorship, ProvenanceSpan
 from storygit.domain.state import StoryState
 from storygit.graph.dependency import EdgeProvider
-from storygit.graph.propagation import StaleMark, marks_to_diff, propagate_change
+from storygit.graph.propagation import (
+    StaleMark,
+    marks_to_diff,
+    propagate_change,
+)
+from storygit.graph.propagation import preview as propagation_preview
 from storygit.preference.features import FeatureVector
 from storygit.preference.layer import PreferenceLayer
 from storygit.preference.signals import SignalReader
@@ -92,6 +104,79 @@ class AcceptResult(BaseModel):
     marks: tuple[StaleMark, ...] = ()
     extracted: bool = False
     flags: tuple[Flag, ...] = ()
+
+
+def _swap_node_id(op: Op, old: NodeId, new: NodeId) -> Op:
+    """Point every node reference in an op at ``new`` instead of ``old``.
+
+    A regenerated proposal was written against a node id that will never be created, and
+    the facts, entity knowledge and dependency edges it produces all cite that id -- as
+    ``established_by_beat``, ``valid_from_beat``, ``since_beat``, and so on. Committing
+    them unrewritten would put facts in the graph established by a beat that does not
+    exist, which is exactly the dangling-reference class of bug that makes ``valid_at``
+    silently answer "true forever".
+
+    Walks the model's own fields rather than naming them, so an op added later is covered
+    without anyone remembering to come back here.
+
+    Args:
+        op: The operation to rewrite.
+        old: The id the proposal generated and that will not be created.
+        new: The id of the node that already exists.
+
+    Returns:
+        The op, with references swapped.
+    """
+
+    def swap(value: Any) -> tuple[Any, bool]:
+        if isinstance(value, str) and value == str(old):
+            return type(value)(new), True
+        if isinstance(value, BaseModel):
+            inner = {}
+            for name in type(value).model_fields:
+                replacement, hit = swap(getattr(value, name))
+                if hit:
+                    inner[name] = replacement
+            return (value.model_copy(update=inner), True) if inner else (value, False)
+        if isinstance(value, (list, tuple)):
+            walked = [swap(item) for item in value]
+            if any(hit for _, hit in walked):
+                return type(value)(item for item, _ in walked), True
+            return value, False
+        if isinstance(value, dict):
+            mapped = {k: swap(v) for k, v in value.items()}
+            if any(hit for _, hit in mapped.values()):
+                return {k: v for k, (v, _) in mapped.items()}, True
+            return value, False
+        return value, False
+
+    updates = {}
+    for name in type(op).model_fields:
+        if name == "op":
+            continue
+        replacement, hit = swap(getattr(op, name))
+        if hit:
+            updates[name] = replacement
+    return op.model_copy(update=updates) if updates else op
+
+
+class RevisionPreview(BaseModel):
+    """What revising or removing an accepted node would cost, before committing it.
+
+    Attributes:
+        removed_nodes: Nodes that would cease to exist.
+        removed_facts: Facts that would cease to exist with them.
+        marks: What propagation would mark stale or send for review, each with its reason
+            and the fact that caused it.
+        bible_diff: The world-graph change, in the writer's own sentences.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    removed_nodes: tuple[NodeId, ...] = ()
+    removed_facts: tuple[FactId, ...] = ()
+    marks: tuple[StaleMark, ...] = ()
+    bible_diff: BibleDiff = BibleDiff()
 
 
 class Engine:
@@ -687,6 +772,218 @@ class Engine:
                 snapshot_id = self.repo.commit_diff(mark_diff, branch=self.branch)
                 after = self.repo.state(self.branch)
         return snapshot_id, recheck_after_strike(after, fact_id), tuple(marks)
+
+    # --- revising what was already accepted --------------------------------------
+
+    async def regenerate_at(self, node_id: NodeId, *, intent: str = "") -> list[Candidate]:
+        """Propose replacements *for* a node, not siblings beside it.
+
+        This used to call ``propose_at(level, node_id=parent)``, which is the call that
+        adds a new child under that parent -- so accepting a regenerated episode one gave
+        you two episode ones. The writer who used the tool hit exactly that. The generation
+        is the same; what changes is where the result lands, so each candidate's diff is
+        rewritten to update the node in place and to attach anything it produces to the
+        node that already exists.
+
+        Args:
+            node_id: The node being regenerated. Must not be the story root, which has no
+                level to propose at.
+            intent: Why, in the writer's words.
+
+        Returns:
+            Candidates whose diffs replace this node rather than adding one.
+
+        Raises:
+            UnknownNodeError: If the node does not exist.
+            LockedNodeError: If it is locked.
+            InvalidStructureError: If it is the story root.
+        """
+        state = self.state()
+        node = state.nodes.get(node_id)
+        if node is None:
+            raise UnknownNodeError(f"no node {node_id}")
+        if node_id in state.ledger.locks:
+            raise LockedNodeError(f"{node_id} is locked; unlock it before regenerating it")
+        if node.parent_id is None or node.node_type.value not in set(Level):
+            raise InvalidStructureError(
+                f"{node_id} is the story root; regeneration works on an episode, scene, "
+                "beat or prose node"
+            )
+
+        candidates = await self.propose_at(
+            Level(node.node_type.value), node_id=node.parent_id, intent=intent
+        )
+        replaced = [
+            candidate.model_copy(update={"proposal": self._retarget(candidate.proposal, node_id)})
+            for candidate in candidates
+        ]
+        # The pending map is keyed by proposal id, which the rewrite preserves, so the
+        # retargeted proposal has to replace the one propose_at stored or accept() would
+        # commit the sibling-adding version.
+        for candidate in replaced:
+            self._pending[candidate.proposal.id] = candidate.proposal
+        self._last_candidates = replaced
+        return replaced
+
+    def _retarget(self, proposal: Proposal, node_id: NodeId) -> Proposal:
+        """Rewrite a proposal's diff to replace ``node_id`` instead of adding a sibling.
+
+        The generated node's own ``AddNode`` becomes an ``UpdateNode`` carrying its
+        authored fields -- everything except identity and position, which belong to the
+        node that is already in the tree and to its place in the reading order. Anything
+        else the proposal produces (facts, entities, threads, dependency edges) is
+        retargeted from the id that was never created to the one that exists.
+
+        Args:
+            proposal: The proposal as generated.
+            node_id: The node it should replace.
+
+        Returns:
+            A proposal whose diff updates in place.
+        """
+        structural = {"id", "parent_id", "position", "node_type", "status", "stale_reason"}
+        generated: NodeId | None = None
+        ops: list[Op] = []
+        for op in proposal.diff.ops:
+            if isinstance(op, AddNode) and generated is None and op.node.parent_id is not None:
+                generated = op.node.id
+                fields = {
+                    name: value
+                    for name, value in op.node.model_dump().items()
+                    if name not in structural
+                }
+                ops.append(UpdateNode(node_id=node_id, fields=fields))
+            else:
+                ops.append(op)
+
+        if generated is not None:
+            ops = [_swap_node_id(op, generated, node_id) for op in ops]
+
+        return proposal.model_copy(
+            update={
+                "target_node_id": node_id,
+                "diff": proposal.diff.model_copy(
+                    update={"ops": tuple(ops), "author": DiffAuthor.ai}
+                ),
+            }
+        )
+
+    def preview_revision(self, diff: Diff) -> RevisionPreview:
+        """What a structural change would cost, before it is committed.
+
+        The whole argument for this operation is that the writer sees the blast radius
+        first. Striking a fact already works this way; accepting a plan node did not, and
+        the writer who used the tool said so plainly -- they stopped trusting accept and
+        over-deliberated on every candidate, because acceptance was irreversible. A tool
+        whose main verb cannot be undone makes its user slow, which is the opposite of what
+        this one is for.
+
+        Args:
+            diff: The candidate change.
+
+        Returns:
+            The nodes and facts that would go, and the marks propagation would leave.
+        """
+        before = self.state()
+        after = self.repo.preview_apply(diff, branch=self.branch)
+        marks = propagation_preview(before, diff, edge_provider=self.edge_provider)
+        return RevisionPreview(
+            removed_nodes=tuple(sorted(before.nodes.keys() - after.nodes.keys())),
+            removed_facts=tuple(sorted(before.facts.keys() - after.facts.keys())),
+            marks=tuple(marks),
+            bible_diff=compute_bible_diff(before, after),
+        )
+
+    def revise(self, node_id: NodeId, fields: dict[str, Any]) -> AcceptResult:
+        """Change an accepted node's own fields, marking whatever depended on it.
+
+        The same semantics as striking a fact, for the same reason: this is the writer
+        acting, so the system does not refuse, and it does not silently rewrite anything
+        either -- it *marks*. A revised beat's prose is not regenerated; it is flagged as
+        no longer following from what is above it, and the writer decides.
+
+        Args:
+            node_id: The node to revise.
+            fields: Field names to new values, validated against the node's model.
+
+        Returns:
+            The same shape an accept produces, so the interface renders it identically.
+
+        Raises:
+            LockedNodeError: If the node is locked. A lock means what it says; unlock
+                first. Refusing here rather than in ``apply`` gives the writer the sentence
+                that tells them what to do.
+            UnknownNodeError: If the node does not exist.
+        """
+        before = self.state()
+        node = before.nodes.get(node_id)
+        if node is None:
+            raise UnknownNodeError(f"no node {node_id}")
+        if node_id in before.ledger.locks:
+            raise LockedNodeError(f"{node_id} is locked; unlock it before revising it")
+
+        diff = Diff(
+            ops=(UpdateNode(node_id=node_id, fields=dict(fields)),),
+            author=DiffAuthor.human,
+            intent=f"revise {node.title or node_id}",
+        )
+        self.signals.record(
+            Signal(
+                kind=SignalKind.revise,
+                branch=self.branch,
+                node_id=node_id,
+                payload={"fields": sorted(fields)},
+            )
+        )
+        return self._commit_and_propagate(before, diff)
+
+    def remove(self, node_id: NodeId, *, recursive: bool = True) -> AcceptResult:
+        """Delete a node and its subtree, marking whatever depended on it.
+
+        Args:
+            node_id: The node to remove.
+            recursive: Take its children with it. False refuses when it has any.
+
+        Returns:
+            The same shape an accept produces.
+
+        Raises:
+            LockedNodeError: If the node is locked.
+            UnknownNodeError: If the node does not exist.
+        """
+        before = self.state()
+        node = before.nodes.get(node_id)
+        if node is None:
+            raise UnknownNodeError(f"no node {node_id}")
+        if node_id in before.ledger.locks:
+            raise LockedNodeError(f"{node_id} is locked; unlock it before removing it")
+
+        diff = Diff(
+            ops=(RemoveNode(node_id=node_id, recursive=recursive),),
+            author=DiffAuthor.human,
+            intent=f"remove {node.title or node_id}",
+        )
+        self.signals.record(Signal(kind=SignalKind.remove, branch=self.branch, node_id=node_id))
+        return self._commit_and_propagate(before, diff)
+
+    def _commit_and_propagate(self, before: StoryState, diff: Diff) -> AcceptResult:
+        """Commit a writer-authored structural diff and record what it made stale."""
+        snapshot_id = self.repo.commit_diff(diff, branch=self.branch)
+        after = self.repo.state(self.branch)
+        marks = propagate_change(before, after, edge_provider=self.edge_provider)
+        propagation_snapshot: SnapshotId | None = None
+        if marks:
+            mark_diff = marks_to_diff(after, marks)
+            if len(mark_diff):
+                propagation_snapshot = self.repo.commit_diff(mark_diff, branch=self.branch)
+                after = self.repo.state(self.branch)
+        return AcceptResult(
+            snapshot_id=snapshot_id,
+            propagation_snapshot_id=propagation_snapshot,
+            bible_diff=compute_bible_diff(before, after),
+            marks=tuple(marks),
+            flags=sort_flags(layer1.check_state(after)),
+        )
 
     # --- learning ---------------------------------------------------------------
 

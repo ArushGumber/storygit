@@ -56,6 +56,8 @@ class SignalKind(StrEnum):
     dial_moved = "dial_moved"
     dismiss_stale = "dismiss_stale"
     strike_fact = "strike_fact"
+    revise = "revise"
+    remove = "remove"
 
 
 class Signal(BaseModel):

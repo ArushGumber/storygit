@@ -647,3 +647,131 @@ def test_regenerating_the_story_root_is_refused_rather_than_a_five_hundred(api) 
 
     missing = client.post("/api/node/n_does_not_exist/regenerate")
     assert missing.status_code == 404
+
+
+def test_an_accepted_node_can_be_revised_and_the_cost_is_shown_first(api) -> None:  # type: ignore[no-untyped-def]
+    """Accept stops being irreversible, and the blast radius comes before the commit.
+
+    The writer who used this tool said the irreversibility changed their behaviour: they
+    over-deliberated on every candidate because acceptance could not be undone. Revising is
+    the same contract striking a fact already had -- preview what it costs, then commit, and
+    what depended on it is *marked* rather than rewritten.
+    """
+    client, _, _ = api
+    beat = next(n for n in client.get("/api/tree").json()["nodes"] if n["node_type"] == "beat")
+
+    preview = client.post(
+        f"/api/node/{beat['id']}/revise/preview",
+        json={"fields": {"title": "Caught, but later"}},
+    )
+    assert preview.status_code == 200, preview.text
+    body = preview.json()
+    assert body["removed_nodes"] == [], "a revision removes nothing"
+    assert body.get("summary")
+
+    before = client.get("/api/tree").json()["nodes"]
+    response = client.post(
+        f"/api/node/{beat['id']}/revise", json={"fields": {"title": "Caught, but later"}}
+    )
+    assert response.status_code == 200, response.text
+
+    after = client.get("/api/tree").json()["nodes"]
+    assert len(after) == len(before), "revising must not add a node"
+    revised = next(n for n in after if n["id"] == beat["id"])
+    assert revised["title"] == "Caught, but later"
+
+
+def test_a_locked_node_cannot_be_revised_or_removed(api) -> None:  # type: ignore[no-untyped-def]
+    """A lock means what it says, and the refusal names the way out."""
+    client, _, _ = api
+    beat = next(n for n in client.get("/api/tree").json()["nodes"] if n["node_type"] == "beat")
+    client.post(f"/api/node/{beat['id']}/lock")
+
+    revised = client.post(f"/api/node/{beat['id']}/revise", json={"fields": {"title": "no"}})
+    assert revised.status_code == 409, revised.text
+    assert "unlock" in revised.json()["detail"]
+
+    removed = client.post(f"/api/node/{beat['id']}/remove")
+    assert removed.status_code == 409, removed.text
+    assert "unlock" in removed.json()["detail"]
+
+
+def test_removing_a_node_previews_what_goes_with_it(api) -> None:  # type: ignore[no-untyped-def]
+    """The blast radius of a delete, shown before it happens and not after."""
+    client, _, _ = api
+    scene = next(n for n in client.get("/api/tree").json()["nodes"] if n["node_type"] == "scene")
+
+    preview = client.post(f"/api/node/{scene['id']}/remove/preview")
+    assert preview.status_code == 200, preview.text
+    body = preview.json()
+    assert scene["id"] in body["removed_nodes"], "the scene itself"
+    assert len(body["removed_nodes"]) > 1, "and its subtree"
+    assert "removes" in body["summary"]
+
+    before = len(client.get("/api/tree").json()["nodes"])
+    assert client.post(f"/api/node/{scene['id']}/remove").status_code == 200
+    after = client.get("/api/tree").json()["nodes"]
+    assert len(after) == before - len(body["removed_nodes"]), "the preview was exact"
+    assert scene["id"] not in {n["id"] for n in after}
+
+
+def test_regenerating_a_node_replaces_it_rather_than_adding_a_sibling(api) -> None:  # type: ignore[no-untyped-def]
+    """The writer's "two episode ones", made impossible.
+
+    ``regenerate`` called ``propose_at(level, node_id=parent)`` -- the call that adds a new
+    child under that parent -- so accepting a regenerated episode gave you two of them, in
+    the tree, in the audit, and in the slice the next generation reads. Regeneration now
+    rewrites each candidate's diff to update the node in place, and every id the proposal
+    generated for a node that will never exist is retargeted to the one that does.
+    """
+    client, _, _ = api
+    tree = client.get("/api/tree").json()["nodes"]
+    beat = next(n for n in tree if n["node_type"] == "beat")
+    before_ids = {n["id"] for n in tree}
+
+    response = client.post(f"/api/node/{beat['id']}/regenerate")
+    assert response.status_code == 200, response.text
+    candidates = response.json()["candidates"]
+    assert candidates, "regeneration must produce something to choose between"
+
+    accepted = client.post("/api/action/accept", json={"proposal_id": candidates[0]["proposal_id"]})
+    assert accepted.status_code == 200, accepted.text
+
+    after = client.get("/api/tree").json()["nodes"]
+    assert {n["id"] for n in after} == before_ids, (
+        "accepting a regeneration must not create a node: "
+        f"{ {n['id'] for n in after} - before_ids }"
+    )
+    beats = [n for n in after if n["node_type"] == "beat"]
+    assert len(beats) == len([n for n in tree if n["node_type"] == "beat"])
+
+
+def test_a_regenerated_proposal_leaves_no_fact_citing_a_beat_that_was_never_created(
+    api,  # type: ignore[no-untyped-def]
+) -> None:
+    """The retarget has to reach the facts, not just the node.
+
+    A generated beat proposal cites its own new node id as ``established_by_beat`` and
+    ``valid_from_beat`` on everything it produces. Rewriting only the AddNode would leave
+    those pointing at an id that is never created -- and ``valid_at`` reads an end beat it
+    cannot find as no end at all, so the fact would be silently true forever.
+    """
+    client, _, _ = api
+    beat = next(n for n in client.get("/api/tree").json()["nodes"] if n["node_type"] == "beat")
+
+    candidates = client.post(f"/api/node/{beat['id']}/regenerate").json()["candidates"]
+    assert (
+        client.post(
+            "/api/action/accept", json={"proposal_id": candidates[0]["proposal_id"]}
+        ).status_code
+        == 200
+    )
+
+    node_ids = {n["id"] for n in client.get("/api/tree").json()["nodes"]}
+    facts = client.get(f"/api/node/{beat['id']}").json().get("facts", [])
+    for fact in facts:
+        for field in ("established_by_beat", "valid_from_beat", "valid_until_beat"):
+            cited = fact.get(field)
+            assert cited is None or cited in node_ids, (
+                f"{fact['id']}.{field} cites {cited}, which is not a node in the story"
+            )

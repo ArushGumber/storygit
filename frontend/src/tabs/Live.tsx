@@ -347,34 +347,98 @@ export function Live() {
               <h2>
                 {detail.node.node_type} · {detail.node.title}
               </h2>
-              {detail.node.status === "stale" && (
-                <div className="inline">
-                  <button
-                    onClick={() =>
-                      void run("regen", async () => {
-                        const response = await api.regenerate(
-                          detail.node.id,
-                          false,
-                        );
-                        setCandidates(response.candidates);
-                      })
-                    }
-                  >
-                    regenerate (previewed)
-                  </button>
-                  <button
-                    onClick={() =>
-                      void run("dismiss", async () => {
-                        await api.dismissStale(detail.node.id);
-                        await refresh();
-                      })
-                    }
-                    title="It still works"
-                  >
-                    dismiss
-                  </button>
-                </div>
-              )}
+              <div className="inline">
+                {detail.node.status === "stale" && (
+                  <>
+                    <button
+                      onClick={() =>
+                        void run("regen", async () => {
+                          const response = await api.regenerate(
+                            detail.node.id,
+                            false,
+                          );
+                          setCandidates(response.candidates);
+                        })
+                      }
+                    >
+                      regenerate (previewed)
+                    </button>
+                    <button
+                      onClick={() =>
+                        void run("dismiss", async () => {
+                          await api.dismissStale(detail.node.id);
+                          await refresh();
+                        })
+                      }
+                      title="It still works"
+                    >
+                      dismiss
+                    </button>
+                  </>
+                )}
+                {/* Available on every node, not only stale ones. Accepting used to be
+                    irreversible, and the writer who used this said it made them
+                    over-deliberate on every candidate. Both controls preview what they
+                    would cost before anything is committed. */}
+                {detail.node.node_type !== "story" && !detail.node.locked && (
+                  <>
+                    <button
+                      className="quiet"
+                      title="Change this node; downstream nodes get marked, never rewritten"
+                      onClick={() =>
+                        void run("revise", async () => {
+                          const title = window.prompt(
+                            "New title for this node",
+                            detail.node.title,
+                          );
+                          if (title === null || title === detail.node.title) return;
+                          const preview = await api.previewRevision(
+                            detail.node.id,
+                            { title },
+                          );
+                          if (
+                            !window.confirm(
+                              `Revise this node?\n\n${preview.summary}` +
+                                (preview.marks.length
+                                  ? `\n\n${preview.marks
+                                      .map((m) => `· ${m.reason}`)
+                                      .join("\n")}`
+                                  : ""),
+                            )
+                          )
+                            return;
+                          await api.revise(detail.node.id, { title });
+                          await refresh();
+                        })
+                      }
+                    >
+                      revise
+                    </button>
+                    <button
+                      className="quiet"
+                      title="Delete this node and its subtree"
+                      onClick={() =>
+                        void run("remove", async () => {
+                          const preview = await api.previewRemoval(detail.node.id);
+                          if (
+                            !window.confirm(
+                              `Delete this node?\n\n${preview.summary}` +
+                                (preview.lines.length
+                                  ? `\n\n${preview.lines.join("\n")}`
+                                  : ""),
+                            )
+                          )
+                            return;
+                          await api.remove(detail.node.id);
+                          await refresh();
+                        })
+                      }
+                    >
+                      delete
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
 
             {detail.node.stale_reason && (
