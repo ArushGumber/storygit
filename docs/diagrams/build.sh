@@ -25,4 +25,13 @@ for name in "${targets[@]}"; do
     echo "    no pdftocairo or dvisvgm on PATH; skipped SVG for $name" >&2
   fi
 done
+# The Architecture tab serves the same SVGs the paper includes, so they are copied rather
+# than regenerated -- one source, one look, no chance of the two drifting apart.
+frontend_public="../../frontend/public/diagrams"
+if [ -d "$(dirname "$frontend_public")" ]; then
+  mkdir -p "$frontend_public"
+  cp -f ./*.svg "$frontend_public/" 2>/dev/null || true
+  echo "==> copied SVGs to frontend/public/diagrams"
+fi
+
 echo "done: ${#targets[@]} diagram(s)"

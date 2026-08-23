@@ -56,6 +56,85 @@ def extract_json(text: str) -> str:
     return stripped[start : end + 1] if end > start else stripped[start:]
 
 
+def close_truncated_json(text: str) -> str | None:
+    """Repair JSON that was cut off mid-generation, if it can be.
+
+    A small model can fall into a repetition loop inside one string field and run until it
+    hits the token cap, leaving a JSON object that is well formed right up to the point it
+    stops. Throwing that away costs a whole extra call to recover a candidate whose only
+    problem is one over-long field — and the schemas already truncate over-long fields, so
+    the recovered object is usually exactly what the bound wanted anyway.
+
+    Measured on the live free tier: this was happening on roughly a third of episode
+    proposals, and *every* one of the six samples for one episode, which stalled a run.
+
+    The repair is deliberately conservative. It closes an unterminated string, drops a
+    dangling key or comma, and closes open brackets in the order they were opened. It never
+    invents a value, so a required field that was never reached still fails validation —
+    which is the correct outcome, because that candidate genuinely does not exist.
+
+    Args:
+        text: JSON text that failed to parse.
+
+    Returns:
+        Repaired JSON, or ``None`` if the text was not truncated in a way this can fix.
+    """
+    if not text.strip().startswith(("{", "[")):
+        return None
+
+    stack: list[str] = []
+    in_string = False
+    escaped = False
+    last_structural = -1
+
+    for index, char in enumerate(text):
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+                last_structural = index
+            continue
+        if char == '"':
+            in_string = True
+        elif char in "{[":
+            stack.append("}" if char == "{" else "]")
+            last_structural = index
+        elif char in "}]":
+            if not stack:
+                return None
+            stack.pop()
+            last_structural = index
+        elif char in ",:" or not char.isspace():
+            last_structural = index
+
+    if not stack and not in_string:
+        return None  # not truncated; the failure is something else
+
+    repaired = text
+    if in_string:
+        # Cut back to the last complete escape so a half-written \u does not break it.
+        repaired = repaired.rstrip("\\")
+        repaired += '"'
+    else:
+        repaired = repaired[: last_structural + 1]
+
+    # A dangling key ("hook": ) or a trailing comma leaves the object unparseable.
+    stripped = repaired.rstrip()
+    while stripped.endswith((",", ":")):
+        stripped = stripped[:-1].rstrip()
+        if stripped.endswith('"'):
+            # Drop the orphaned key as well, back to the comma or brace before it.
+            cut = max(stripped.rfind(","), stripped.rfind("{"), stripped.rfind("["))
+            if cut < 0:
+                return None
+            stripped = stripped[: cut + 1] if stripped[cut] in "{[" else stripped[:cut]
+    repaired = stripped + "".join(reversed(stack))
+    return repaired
+
+
 def parse_into(model_cls: type[T], text: str) -> T:
     """Validate model output into a schema class.
 
@@ -74,6 +153,12 @@ def parse_into(model_cls: type[T], text: str) -> T:
     try:
         return model_cls.model_validate_json(payload)
     except (ValidationError, json.JSONDecodeError) as exc:
+        repaired = close_truncated_json(payload)
+        if repaired is not None:
+            try:
+                return model_cls.model_validate_json(repaired)
+            except (ValidationError, json.JSONDecodeError):
+                pass  # the truncation lost something required; fall through and report
         raise SchemaParseError(
             f"{model_cls.__name__}: model output did not validate ({exc})", raw=text
         ) from exc

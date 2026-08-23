@@ -295,7 +295,9 @@ th.num {
   color: var(--mute);
   margin: 0 0 8px;
 }
-.pane h2 + h2 {
+/* Every heading after the first in a pane gets air; a heading that sits flush against the
+ * control above it reads as a label for that control rather than as a new section. */
+.pane h2:not(:first-child) {
   margin-top: 22px;
 }
 

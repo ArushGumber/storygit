@@ -30,62 +30,14 @@ from eval.personas import PERSONAS, Persona
 from eval.plots import line_plot
 from eval.simulate import RunLog
 from storygit.config import get_settings
-from storygit.domain.diff import AddEntity, Diff, DiffAuthor
 from storygit.domain.ids import IdGenerator
-from storygit.domain.nodes import Story
-from storygit.domain.state import StoryState
-from storygit.domain.world import Entity, EntityKind
 from storygit.graph.soft_edges import EmbeddingEdgeProvider
 from storygit.preference.layer import PreferenceLayer
 from storygit.providers.router import Router, build_router
+from storygit.seed import seed_story
 from storygit.store.repository import Repository
 
 RESULTS = Path(__file__).parent / "results"
-
-SEED_PREMISE = (
-    "A powerless orphan discovers an ability that could change the balance of power "
-    "in a world at war."
-)
-
-
-def seed_story(repo: Repository, ids: IdGenerator) -> None:
-    """Put the orphan seed and its opening cast into a fresh repository."""
-    story_id = ids.node()
-    kael, ashfall, warden = ids.entity(), ids.entity(), ids.entity()
-    repo.initialize(
-        StoryState.build(
-            nodes={
-                story_id: Story(
-                    id=story_id,
-                    title="Ashfall",
-                    seed=SEED_PREMISE,
-                    premise=(
-                        "Kael, an orphan in a city under siege, discovers that the ash "
-                        "falling over Ashfall answers him."
-                    ),
-                    existential_question="Is power worth what it costs the powerless?",
-                )
-            }
-        )
-    )
-    repo.commit_diff(
-        Diff(
-            ops=(
-                AddEntity(entity=Entity(id=kael, kind=EntityKind.character, name="Kael")),
-                AddEntity(entity=Entity(id=ashfall, kind=EntityKind.place, name="Ashfall")),
-                AddEntity(
-                    entity=Entity(
-                        id=warden,
-                        kind=EntityKind.character,
-                        name="Warden of Kell",
-                        aliases=("the Warden",),
-                    )
-                ),
-            ),
-            author=DiffAuthor.human,
-            intent="seed the cast",
-        )
-    )
 
 
 def build_engine(repo: Repository, router: Router, config: RunConfig, *, seed: int) -> Any:

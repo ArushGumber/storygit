@@ -111,9 +111,9 @@ def seed_if_empty(state: AppState) -> None:
     """
     if state.repo.is_initialized(state.branch):
         return
-    from eval.run import seed_story
+    from storygit.seed import seed_story
 
-    seed_story(state.repo, IdGenerator(seed=state.seed, stream="seed"))
+    seed_story(state.repo, IdGenerator(seed=state.seed, stream="seed"), branch=state.branch)
 
 
 def app_state(request: Request) -> AppState:

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+
 import pytest
 from tests.conftest import Fixture
 from tests.mockprovider import MockProvider, canned
@@ -381,3 +383,38 @@ def test_the_prompt_states_the_bounds_because_the_provider_ignores_them(
     _, user = prompts.beat_prompt(StateSlice(), "go on", BeatProposal, "The market")
     assert "maxLength" in user.content
     assert "truncated" in user.content
+
+
+def test_truncated_json_is_recovered_rather_than_thrown_away() -> None:
+    """A model that runs out of tokens mid-string still produced a usable candidate.
+
+    Measured on the live free tier: roughly a third of episode proposals were being lost
+    this way, and once all six samples for one episode were lost, which stalled an
+    evaluation run. Recovering costs nothing; the alternative is a repair call, or a gap.
+    """
+    from storygit.agents.parse import close_truncated_json
+    from storygit.agents.schemas import EpisodeProposal
+
+    truncated = (
+        '{"title": "Echoes in the Grey", "what_happens": "Kael returns to the market and '
+        'finds the stalls burned", "hook": "The ash is falling upwards, and only he'
+    )
+    recovered = parse_into(EpisodeProposal, truncated)
+    assert recovered.title == "Echoes in the Grey"
+    assert recovered.hook.startswith("The ash is falling upwards")
+
+    # Nested structures close in the right order.
+    assert json.loads(close_truncated_json('{"a": [1, {"b": "x') or "") == {"a": [1, {"b": "x"}]}
+    # A dangling key is dropped rather than invented.
+    assert json.loads(close_truncated_json('{"a": 1, "b":') or "") == {"a": 1}
+    # Well-formed JSON is left alone.
+    assert close_truncated_json('{"a": 1}') is None
+
+
+def test_recovery_never_invents_a_required_field() -> None:
+    """If the truncation lost something required, the candidate genuinely does not exist."""
+    from storygit.agents.schemas import BeatProposal
+
+    with pytest.raises(SchemaParseError):
+        # `title` and `what_happens` are required and were never reached.
+        parse_into(BeatProposal, '{"audience_feels": "wary and a little')
