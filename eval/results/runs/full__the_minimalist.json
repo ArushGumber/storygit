@@ -23,34 +23,34 @@
       "node_id": "n_0417bf53f0",
       "level": "episode",
       "shown": [
-        "p_8b13838eda",
-        "p_742db7f448",
-        "p_873122e25c"
+        "p_115ee165d9",
+        "p_873122e25c",
+        "p_a758791887"
       ],
       "axes": [
-        "raise the stakes",
+        "pay off an open thread",
         "shift the point of view",
-        "subvert the expectation"
+        "raise the stakes"
       ],
       "scores": [
-        0.636,
+        0.6784,
         0.7002,
-        0.6557
+        0.6937
       ],
-      "chosen": "p_742db7f448",
+      "chosen": "p_873122e25c",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "729f4250e8f66d5becce3a4943098cc3",
+      "snapshot_id": "b685c2b325cc627005060f3d13869dc4",
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
           "judge_specificity": 1.0,
-          "judge_consequence": 1.0,
-          "judge_voice": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
           "criterion_1": 1.0,
           "criterion_2": 1.0,
           "criterion_3": 0.0,
@@ -58,7 +58,7 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.557,
+          "length": 0.5301,
           "dialogue_ratio": 0.0
         },
         {
@@ -77,8 +77,8 @@
           "dialogue_ratio": 0.0
         },
         {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
           "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 1.0,
@@ -88,45 +88,45 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5612,
+          "length": 0.557,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Weight of Ash Elara digs through the gray silt covering her cellar door. She finds her brother Elias's locket buried in the muck, crushed into the floorboards. The ash consumes metal and wood alike. Elias did not leave; he was buried where he stood.",
+        "The Ashfall Audit Elara digs through the blackened soil of Ashfall. She recovers a locked brass box buried beneath the foundation of the old chapel.",
         "Ashfall: The Gatekeeper Kael watches the gate from the shadows while the traveler ignores the warning signs. He sees the intruder pocket the iron key before the heavy doors groan open. The traveler does not know the gate requires a blood sacrifice to remain shut. Kael holds the burden of keeping the seal.",
-        "The Ashfall Gate Elias unearths a sealed iron trunk beneath the frozen soil of Ashfall. Instead of gold or secrets, the box contains a functioning, humming radio broadcasting his own voice from three days in the future. The Ashfall soil preserves sound. The future is mutable but predictable."
+        "The Weight of Ash Elara digs through the gray silt covering her cellar door. She finds her brother Elias's locket buried in the muck, crushed into the floorboards. The ash consumes metal and wood alike. Elias did not leave; he was buried where he stood."
       ]
     },
     {
-      "node_id": "n_fd5545cda2",
+      "node_id": "n_c5f73f0c40",
       "level": "scene",
       "shown": [
         "p_b2fa13dac6",
-        "p_e5da6af10d",
-        "p_87f308763b"
+        "p_87f308763b",
+        "p_ed3f6fd1d8"
       ],
       "axes": [
-        "subvert the expectation",
         "slow down",
+        "subvert the expectation",
         "raise the stakes"
       ],
       "scores": [
-        0.6572,
-        0.5553,
+        0.6395,
+        0.5569,
         0.8635
       ],
-      "chosen": "p_87f308763b",
+      "chosen": "p_ed3f6fd1d8",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "8ce17ec59e7e21f57c5665b0a6d8f906",
+      "snapshot_id": "8cef460f14bab0c941cf112168d4f355",
       "stale_marked": 0,
       "features": [
         {
-          "judge_momentum": 1.0,
+          "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
@@ -137,7 +137,7 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5612,
+          "length": 0.5699,
           "dialogue_ratio": 0.0
         },
         {
@@ -152,7 +152,7 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5699,
+          "length": 0.5612,
           "dialogue_ratio": 0.0
         },
         {
@@ -172,34 +172,34 @@
         }
       ],
       "texts": [
-        "The Silent Offering Kael steps from the shadows. He offers his own palm to the traveler instead of seizing the key. The traveler hesitates, then presses their blade into Kael's skin to satisfy the lock. Kael intends to force the traveler to carry the burden of the seal.",
         "The Price of Iron Kael steps from the alcove. His blade catches the dim light. He demands the traveler return the key before the gears lock. The traveler laughs and thrusts the iron into the slot. The gate mechanism reacts to human touch. Kael cannot stop the cycle once the key finds the hole.",
+        "The Silent Offering Kael steps from the shadows. He offers his own palm to the traveler instead of seizing the key. The traveler hesitates, then presses their blade into Kael's skin to satisfy the lock. Kael intends to force the traveler to carry the burden of the seal.",
         "The Price of Iron Kael lunges from the dark. He slams the traveler against the iron gate. The key in the traveler's hand slices Kael's palm. Blood coats the lock and the metal hums. The traveler stops moving as his own skin begins to turn to cold iron. The sacrifice does not have to be willing, and the gate consumes the intruder to seal itself."
       ]
     },
     {
-      "node_id": "n_e5cba71f8f",
+      "node_id": "n_26bbe90c33",
       "level": "beat",
       "shown": [
-        "p_370c3cbfb2",
         "p_9296a290f1",
-        "p_0edc086b75"
+        "p_0edc086b75",
+        "p_5f42f4fad2"
       ],
       "axes": [
-        "introduce a complication",
-        "shift the point of view",
-        "subvert the expectation"
+        "raise the stakes",
+        "pay off an open thread",
+        "deepen the interiority"
       ],
       "scores": [
-        0.3177,
-        0.2556,
-        0.2995
+        0.3659,
+        0.3362,
+        0.3191
       ],
-      "chosen": "p_370c3cbfb2",
+      "chosen": "p_9296a290f1",
       "kind": "reject",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 2,
+      "flags_shown": 0,
       "hard_flags_shown": 0,
       "snapshot_id": null,
       "stale_marked": 0,
@@ -207,8 +207,23 @@
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
           "judge_consequence": 0.75,
-          "judge_voice": 0.5,
+          "judge_voice": 0.75,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
@@ -216,22 +231,7 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5774,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.25,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5851,
+          "length": 0.6061,
           "dialogue_ratio": 0.0
         },
         {
@@ -240,64 +240,602 @@
           "judge_consequence": 0.75,
           "judge_voice": 0.75,
           "criterion_1": 0.25,
-          "criterion_2": 0.5,
+          "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
+          "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.582,
+          "length": 0.5882,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Gate Stalls The iron conversion reaches the traveler's shoulder, then stops. The gate trembles, failing to anchor the change, as the traveler's blood contains a strange, unnatural residue. Kael stares at the half-turned intruder, realizing the lock will not fully seal. The gate has a threshold for what it can consume; the traveler is defective in some way.",
-        "The Traveler's Final View Elara clutches the iron key, her fingers slick with sweat. She sees a shadow detach from the wall, but Kael is too fast. As he slams her against the gate, her desperate grip on the key slices his palm, feeding the lock she was desperate to open. Elara never intended to die; the sacrifice was an accident of her desperation.",
-        "The Gatekeeper's Debt Kael pulls the iron-skinned traveler from the lock. He drags the heavy body into the shadow of the gate. Kael cuts his own palm to drip fresh blood onto the stone floor instead of the gate itself. The seal hums but does not fully close. Kael can manipulate the sacrifice to save a life, but at a personal cost."
+        "The Weight of the Seal Kael stares at the new iron statue beside the gate. The traveler's face is frozen in shock within the metal. Kael picks up the dropped iron key and places it in his own pocket. The heavy doors lock shut behind the transformed intruder. The gate claims intruders permanently and Kael inherits the key.",
+        "The Weight of the Gate Kael pulls his bleeding hand away as the traveler finishes his transformation into an iron statue. Kael picks up the discarded iron key and places it back within the stone pedestal, his own hand now trembling from the cold. He wipes the blood from the lock, leaving a smear that refuses to dry. Kael is bound to the gate by more than just duty, and the gate consumes both blood and traveler.",
+        "The Weight of the Gate Kael pulls the iron key from the solidified traveler's frozen fingers. He stares at the statue, then turns his back to the gate and walks toward the dark interior of Ashfall. He touches the scar on his own palm to remind himself that he is still flesh. The traveler is truly dead and Kael survives by clinging to his own humanity."
       ]
     },
     {
-      "node_id": "n_e5cba71f8f",
+      "node_id": "n_26bbe90c33",
       "level": "beat",
       "shown": [
-        "p_cb50e4f927",
-        "p_5a6f2a0894",
-        "p_7693020210"
+        "p_68cc8e88d2",
+        "p_370c3cbfb2",
+        "p_14ca0b7252"
       ],
       "axes": [
-        "introduce a complication",
+        "pay off an open thread",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.631,
+        0.6042,
+        0.6553
+      ],
+      "chosen": "p_14ca0b7252",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "81d8d18dd9310925cace081e0d0555cb",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5685,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5685,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Duty Kael pulls the iron key from the cooling corpse's fingers. He presses his wounded palm against the cold metal gate to stem the flow of blood. The iron absorbs the red stain and the heavy lock snaps into place. Kael acts as a tether for the gate's hunger.",
+        "The Gatekeeper's Burden The gate absorbs the intruder, but the metal does not hold. The iron casing cracks. Kael feels a sudden, sharp pull against his own chest. He reaches for the iron key, but it dissolves into rust between his fingers. The gate requires more than a single sacrifice to stay closed.",
+        "The Gatekeeper's Toll Kael pulls the iron key from the hardening fingers of the traveler. His palm throbs where the jagged metal bit into his skin. He watches his own blood drip into the iron grout of the gate. The gate groans and Kael feels the cold iron creeping up his wrist, binding him to the threshold. The burden of the Gatekeeper is a progressive infection of iron."
+      ]
+    },
+    {
+      "node_id": "n_c7e83e7fe8",
+      "level": "prose",
+      "shown": [
+        "p_95b302365a",
+        "p_5a6f2a0894",
+        "p_ac3446d4ee"
+      ],
+      "axes": [
         "shift the point of view",
+        "deepen the interiority",
         "pay off an open thread"
       ],
       "scores": [
-        0.4815,
-        0.4585,
-        0.4717
+        0.6401,
+        0.6038,
+        0.5939
       ],
-      "chosen": "p_cb50e4f927",
-      "kind": "reject",
+      "chosen": "p_95b302365a",
+      "kind": "edit",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 3,
+      "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": null,
+      "snapshot_id": "0862eebe3242221ff79cec8a8c3b7bd2",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The iron statue clicks. The traveler's lungs hold a final, frozen breath. I pry the key from his rigid grip. Metal scrapes bone. My palm burns. Crimson beads fall, hitting the gray grout. The gate hungry. It drinks the red. A tremor runs through the hinges. I look at my wrist. The skin turns dull, hard, and gray. The iron spreads.",
+        "prose Kael pries the key loose. The traveler’s fingers snap like brittle glass. They fall into the dust. Kael clutches his palm. The wound spills dark liquid onto the gate’s rivets. He wipes the blood with his tunic. The fabric catches on the jagged metal. He stops. The iron sheen has already crossed his wrist. His pulse thumps against the locked door. He reaches for his knife. He stares at his own knuckles. He does not cut the grey skin. He shoves the key back into his belt.",
+        "prose Kael pries the key from the traveler’s rigid, silver-grey fingers. The metal is freezing. His palm pulses in time with his racing heart. Blood darkens the grout. The gate groans as the liquid hits the stone. Beneath Kael’s skin, a dull ache rises from his wrist to his elbow. The veins turn black. The iron takes root."
+      ]
+    },
+    {
+      "node_id": "n_26bbe90c33",
+      "level": "beat",
+      "shown": [
+        "p_031487159d",
+        "p_3d64749e31",
+        "p_fb295770bf"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5901,
+        0.3692,
+        0.752
+      ],
+      "chosen": "p_fb295770bf",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "fda0210d867e1cb1d75fc14404a7f651",
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
-          "judge_voice": 0.5,
+          "judge_voice": 0.75,
           "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5656,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5247,
+          "length": 0.5598,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5851,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Seal Closes Kael tries to pull the iron key from the gate, but it refuses to budge. The iron statue of the traveler begins to lean forward, its weight pulling the door shut against Kael's desperate tugs. The key is now fused to the gate, and the gate is closing.",
+        "The First Link Kael stares at his gray, stiffening wrist. He tries to flex his fingers, but the joints grind like rusted metal. He realizes the gate does not just consume travelers. It replaces the guardian. The iron infection is a permanent transformation, not a temporary ailment.",
+        "The Weight of the Gate Kael watches his own shadow stretch across the threshold, but the shadow refuses to move with him. He tries to pull his hand away, yet his fingers lock into the stone of the gatehouse. The iron infection pulses once, turning his fingernails black. He realizes he cannot leave the gatehouse. Kael is becoming a permanent fixture of the gate."
+      ]
+    },
+    {
+      "node_id": "n_6ef9528e77",
+      "level": "prose",
+      "shown": [
+        "p_f3b3e4f2aa",
+        "p_dd4e39abe1",
+        "p_357f29cf57"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5969,
+        0.5997,
+        0.594
+      ],
+      "chosen": "p_dd4e39abe1",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "97701e1ec19f08a84a7a55a462685836",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6932,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose My shadow stretches across the threshold. It sticks to the stone. I pull my arm back. My fingers do not obey. They fuse into the masonry like mortar. I tug again. The skin on my knuckles splits. No blood flows, only cold oil. The black rot crawls under my nails. It reaches my knuckles. I am not the keeper anymore. I am the gate.",
+        "prose The iron statue stands. The traveler is stone. I turn to leave. My shadow stays. It stretches across the threshold, tethered to the gate. My fingers dig into the stone. They do not slide. They are part of the wall now. A pulse shoots up my arm. My fingernails turn black. I pull. My skin stays. I am not the guard anymore. I am the gate.",
+        "prose My boots scrape the threshold. My feet remain in the courtyard. The shadow stretches, long and jagged, cast onto the inner wall. It does not follow me. It stays attached to the stone. My fingers curl into the mortar. They will not straighten. I pull. The skin at my knuckles tears, revealing no muscle, only dull, dark iron. Another pulse. My fingernails flake away like ash. They are black metal now. I am the anchor. The gate is the ship."
+      ]
+    },
+    {
+      "node_id": "n_c5f73f0c40",
+      "level": "scene",
+      "shown": [
+        "p_3769bf41c6",
+        "p_25d6be03e2",
+        "p_f3df5aacc6"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.3794,
+        0.5936,
+        0.4373
+      ],
+      "chosen": "p_25d6be03e2",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "100831da473d9e188e9d5e928df09808",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 0.92,
           "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5459,
+          "edit_direction": 0.6908,
+          "length": 0.5882,
           "dialogue_ratio": 0.0
         },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5714,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The First Layer Kael forces his hand to move. The stone skin cracks. He peels back a layer of gray scale, revealing fresh, pulsing muscle beneath. He stares at the wound on his palm. It is no longer bleeding, but the blood now flows inside the iron instead of his veins. Kael is not becoming a statue, but the iron is integrating into his biological systems.",
+        "Echoes in the Iron Kael tries to pull his hand from the stone. The iron key in his other hand glows white. He drops it. The key sinks into the stone floor as if the floor were water. The gatehouse does not just turn men to iron; it consumes inanimate objects into its own architecture.",
+        "The Echo of Flesh Kael stops pulling. He presses his hardening palm against the traveler's cold shoulder. The iron of the traveler's shoulder softens like cooling wax. Kael's own wrist flushes with sudden warmth. The gatehouse does not just consume; it trades substance between the living and the dead."
+      ]
+    },
+    {
+      "node_id": "n_b84f0196b8",
+      "level": "beat",
+      "shown": [
+        "p_13df337dd2",
+        "p_264fb7b514",
+        "p_7bd28e65d4"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.6812,
+        0.6043,
+        0.3429
+      ],
+      "chosen": "p_13df337dd2",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 1,
+      "snapshot_id": "360994490b11724736b7f7518c4a3dff",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5679,
+          "length": 0.5744,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of Flesh Kael scrapes the dried blood from the iron lock with his fingernails. He digs until his cut reopens. He presses his palm flat against the cold surface, hoping for an opening. The gate ignores him. Kael whispers a name he thought he forgot, his own voice sounding like grinding gears. Kael is trying to trigger the gate with his own identity, not just his blood.",
+        "A New Gatekeeper The traveler's iron skin flakes away, revealing not meat, but a hollow, ticking clockwork core. The gatehouse floor pulses, and Kael's trapped hand is pulled into the masonry as if the stone were soft wax, binding him fully to the structure. The gatehouse is not just transforming people into metal; it is harvesting them for mechanical parts. Kael is becoming a fixture of the site.",
+        "The Weight of the Gate Kael watches his own shadow stretch across the threshold, but the shadow refuses to move with him. He tries to pull his hand away, yet his fingers lock into the stone of the gatehouse. The iron infection pulses once, turning his fingernails black. Kael is becoming a permanent fixture of the gate."
+      ]
+    },
+    {
+      "node_id": "n_2bbce79909",
+      "level": "prose",
+      "shown": [
+        "p_88aef1a48e",
+        "p_6db25a0a7d",
+        "p_35fd8c7b8d"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.6054,
+        0.4727,
+        0.573
+      ],
+      "chosen": "p_88aef1a48e",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "cf69f6fefc273393b27eba5d1e29ec31",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.2424,
+          "length": 0.6358,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6027,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The iron hinges shiver. I am not Kael. I am the echo in the stone. I see the man with the bleeding palm. He clawed at the lock until his nails frayed. Now he presses his hand against my face. He speaks a name. It is a dry sound. A rattle of loose metal. He thinks he owns the gate. He thinks the iron remembers him. I swallow his blood. The iron in his wrist grows, a slow, gray frost. He is not the guard. He is the latest bolt I must secure.",
+        "prose The lock does not drink. My blood beads on the iron, sluggish and thick. It pools in the grooves of the metal nameplate, rejected. I press harder. The iron bites back. A serrated edge slices my palm deeper. The gate moans. It is not an opening. It is a feedback loop. The infection in my wrist flares. Dull gray skin creeps toward my thumb. The name I whispered, my own name, returns as static in my teeth. The gate speaks it back. It knows who I am. It does not care.",
+        "prose My nails drag across the lock. Dry flakes scatter. I dig deep. The old wound splits. Wet heat surges against the cold iron. I slap my palm onto the metal. I wait. The gate stays silent. The stone does not shiver. I whisper the name. Not the guard's name. Mine. The sound scrapes the air like rusted gears. The iron of my wrist pulses in answer. It drinks the blood. It ignores the sound."
+      ]
+    },
+    {
+      "node_id": "n_b84f0196b8",
+      "level": "beat",
+      "shown": [
+        "p_62bfc07717",
+        "p_96219287aa",
+        "p_3828b2694a"
+      ],
+      "axes": [
+        "raise the stakes",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.4343,
+        0.4429,
+        0.5019
+      ],
+      "chosen": "p_3828b2694a",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "604af48e77d92167ab3750407806419f",
+      "stale_marked": 0,
+      "features": [
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
@@ -307,88 +845,799 @@
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5542,
+          "continuity": 1.0,
+          "voice_cosine": 0.9953,
+          "edit_direction": 1.0,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9957,
+          "edit_direction": 0.0,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9935,
+          "edit_direction": 0.4731,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Iron Anchor The iron growth on Kael's wrist snaps taut, tethering him to the heavy door. He feels the gate pulling his arm inward, not just his skin, but the marrow of his bone. He tries to scream, but his jaw locks with a metallic grind. He is not just losing his mobility; he is losing the ability to distinguish his own flesh from the gate's cold surface. Kael's physical transformation into the gate is accelerating and now includes his skeletal structure.",
+        "The Gate Repels The gate shudders. It ejects Kael’s hand with a metallic shriek. His fingernails remain embedded in the iron surface while his bleeding palm tears away from the metal. The gate does not open for him, but instead, it seals the lock shut, drawing the key into its depths. Kael has lost his connection to the gate; the gate is hostile to him.",
+        "The Hollow Response The gate does not open for Kael. Instead, the iron pedestal mirrors his palm injury, weeping dark, viscous fluid onto the floor. The gate hums a low frequency that forces Kael to his knees. The gate requires more than just Kael's blood; it requires his compliance."
+      ]
+    },
+    {
+      "node_id": "n_21fbc36b02",
+      "level": "prose",
+      "shown": [
+        "p_96fc9b6087",
+        "p_46933f7f32",
+        "p_c6f4c38972"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.5429,
+        0.4378,
+        0.3987
+      ],
+      "chosen": "p_96fc9b6087",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.1429,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "cde86991cc82fb2d7138e5445cb5e4ca",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9964,
+          "edit_direction": 0.3295,
+          "length": 0.6707,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.994,
+          "edit_direction": 0.0,
+          "length": 0.6607,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9977,
+          "edit_direction": 1.0,
+          "length": 0.6358,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The gate does not groan. It hums. A low, vibrating thrum that rattles my teeth. I look to the pedestal. The iron stone splits. A jagged line opens exactly where my palm bled. Thick, black ichor leaks from the crack. It pools on the cold floor. I reach for the lock again. My fingers refuse. The iron in my wrist pulses, a rhythmic ache matching the gate's thrum. I try to stand. My legs are lead. The gate wants more than blood. It wants my bones. I drop to my knees. The stone floor bites into my skin. I am not opening the gate. I am becoming part of the architecture.",
+        "prose I hum against his palm. The stone feels like glass. He pushes, desperate for a way out. He does not see the vein in his wrist turning to rust. I mirror the red gash on his hand. A dark syrup leaks from my own seam. It stains the floor black. He falls. The vibration climbs his legs. It settles in his marrow. He tries to scream, but the air tastes of oxidized copper. I do not want his blood. I want his pulse. I want the rhythm of his lungs. I am the cage, and he is the lock. He will learn the song I sing.",
+        "prose The iron pedestal shudders. My palm is torn, a jagged red map. The stone splits in the same shape. Thick, black ichor pools in the depression. It does not smell of rot. It smells of pennies and ozone. The gate hums. The frequency rattles my teeth. It vibrates through my marrow. My knees hit the floor. The pedestal demands more than a key. It needs a surrender. I push my palm into the black fluid. My wrist pulses. The gray frost climbs past my elbow. I am the lock. I am the closing."
+      ]
+    },
+    {
+      "node_id": "n_0417bf53f0",
+      "level": "episode",
+      "shown": [
+        "p_5d3a14163a",
+        "p_8698dfe959",
+        "p_2424f2b977"
+      ],
+      "axes": [
+        "introduce a complication",
+        "deepen the interiority",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5028,
+        0.4843,
+        0.4186
+      ],
+      "chosen": "p_5d3a14163a",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "c239f09855a4b4592225962cf5b2b834",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9918,
+          "edit_direction": 0.0,
+          "length": 0.5641,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9861,
+          "edit_direction": 0.3064,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9908,
+          "edit_direction": 1.0,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Iron Tongue Kael tries to break the connection to the gate. The iron in his wrist demands history. The gate forces Kael to speak the names of those he betrayed. His hand hardens into metal. A stranger arrives. Kael's body moves against his will to greet the new arrival.",
+        "The Weight of the Bolt Kael tries to claw his hand free from the stone, but his flesh has fused with the gate's surface. He hears the traveler's metallic voice whispering from the statue's throat, pleading for Kael to finish the integration. Kael resists by trying to cut his own hand off with the jagged shard of a discarded gear. The gate communicates through the bodies of its past guards, and Kael's integration is not a passive process.",
+        "The Price of Iron Kael tries to peel his fingers from the gate, but his skin tears away, leaving bleeding strips of flesh on the iron. He notices his reflection in the polished surface; his eyes turn to gray glass while the traveler’s stone statue begins to inhale. The gate consumes Kael's physical form to sustain its own existence, and the previous traveler is not merely a statue but a dormant vessel."
+      ]
+    },
+    {
+      "node_id": "n_94dcbdbefd",
+      "level": "scene",
+      "shown": [
+        "p_93a7da0b7a",
+        "p_1d63cb444e",
+        "p_9f02e64f4e"
+      ],
+      "axes": [
+        "raise the stakes",
+        "pay off an open thread",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5143,
+        0.3215,
+        0.4454
+      ],
+      "chosen": "p_93a7da0b7a",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "27bf1afc25a7c32da368c7252a2153ea",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9843,
+          "edit_direction": 0.0,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9844,
+          "edit_direction": 1.0,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9877,
+          "edit_direction": 0.5869,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of Iron Kael tries to pull his hand away, but the gate welds his skin to the iron face. His wedding ring, stripped from his finger by the shifting metal, sinks into the door like a stone in a pond, leaving his bare finger fused to the surface. The gate discards Kael's personal history to make room for his anatomy.",
+        "The First Syllable Kael tries to scream, but the gate forces a metallic grating sound from his throat instead. The gate speaks through Kael's mouth, demanding the traveler's name as payment for entry. The gate can steal Kael's voice, and it requires names of the dead to open.",
+        "The Gate's Inheritance Kael pulls at his trapped limb, but the gate absorbs his shadow into the stone floor. He stops fighting. The iron in his wrist stops humming and begins to graft into the pedestal. He watches his reflection in the polished surface warp as he starts to mirror the traveler's frozen posture. Kael's assimilation is irreversible. The gate requires a new statue to function."
+      ]
+    },
+    {
+      "node_id": "n_2f41142502",
+      "level": "beat",
+      "shown": [
+        "p_fb8566aee9",
+        "p_96e271ec4e",
+        "p_e278189bf2"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "slow down",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.5527,
+        0.3391,
+        0.2783
+      ],
+      "chosen": "p_fb8566aee9",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "47f428edbd18ea9f5c59be020108e773",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9931,
+          "edit_direction": 1.0,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9915,
+          "edit_direction": 0.0,
+          "length": 0.5714,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.5,
           "judge_specificity": 0.5,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 0.25,
-          "criterion_2": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5805,
+          "continuity": 0.84,
+          "voice_cosine": 0.9904,
+          "edit_direction": 0.7118,
+          "length": 0.5914,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Second Key Kael pulls the traveler back from the metal teeth of the gate. A second traveler steps from the fog behind Kael. This new arrival holds an identical iron key. The gate requires two sacrifices.",
-        "The Traveler's Weight The traveler watches his fingers harden into grey metal while Kael bleeds onto the lock. He realizes the gate feeds on bone to stay shut, and his own blood is payment enough. The traveler understands the sacrifice before he dies.",
-        "The Weight of the Seal Kael kneels beside the finished statue of iron. He strips the brass ring from the dead traveler's cold finger. The massive doors lock completely. Kael wears the ring and accepts the toll on his own blood. The gate takes a life but leaves a toll behind, and Kael must bear the personal cost of the seal."
+        "The Gate's Gift The gate stops its hum. It forces the black fluid back into the stone. Kael's wrist iron stops throbbing. The gate pushes a sharp, cold object through the floor, offering it to Kael's hand. It is not the key. It is a rusted iron rivet, jagged and stained with the traveler's dried life. The gate waits for Kael to embed it into his own flesh to complete the cycle. The gate expects Kael to self-inflict the final stage of integration.",
+        "The Weight of the Gate Kael forces his heavy hand against the stone pedestal, searching for a seam. The iron in his wrist twists, biting into muscle. He hears the gate groan, not with hinges, but with his own name. A metallic voice whispers from the masonry. The gate has stolen Kael's voice or identity.",
+        "The Price of Iron Kael stares at his fingers, now fused to the cold gate stone. He tries to rip his hand away, but his skin tears, leaving behind a layer of his flesh bonded to the metal. A strange, calm hunger spreads through him, silencing his desire to escape. Kael is physically merging with the gate. His urge to escape is being suppressed by the gate's influence."
       ]
     },
     {
-      "node_id": "n_e5cba71f8f",
-      "level": "beat",
+      "node_id": "n_38b5a14fdc",
+      "level": "prose",
       "shown": [
-        "p_a7f9bf3a97",
-        "p_95d418d87e",
-        "p_b702f782a6"
+        "p_69363b4331",
+        "p_42a40cc4d9",
+        "p_83f0644277"
       ],
       "axes": [
-        "deepen the interiority",
         "raise the stakes",
-        "pay off an open thread"
+        "shift the point of view",
+        "deepen the interiority"
       ],
       "scores": [
-        0.5452,
-        0.3999,
-        0.4653
+        0.6535,
+        0.3871,
+        0.6469
       ],
-      "chosen": "p_a7f9bf3a97",
+      "chosen": "p_69363b4331",
       "kind": "edit",
       "veto": null,
-      "edit_distance": 0.3898,
-      "flags_shown": 3,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "0c2362825e356d2bfd8d13c7ee373d05",
+      "snapshot_id": "676083d87995bc966e7d3cbec96d31c6",
       "stale_marked": 0,
       "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.985,
+          "edit_direction": 0.7845,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
           "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9917,
+          "edit_direction": 1.0,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9867,
+          "edit_direction": 0.0,
+          "length": 0.6748,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The thrum dies. Silence fills the room. It is heavy. Cold. The black ichor retreats. It sinks into the stone floor. My wrist stills. The fire fades to a dull ache. From the floor, iron sprouts. A jagged, rusted rivet rises. It looks like a tooth. Stained with brown crust. The traveler's leavings. The gate does not want my blood now. It wants this steel in my skin. My hand moves. It grips the spike. My fingers tremble. I hold the rivet over my own bicep. The gate watches. It waits for the first strike.",
+        "prose Silence returns. The hum dies. The black pool retreats, sucked back into the stone. Kael stares at the floor. His wrist hangs limp. The gray frost halts its climb. I watch from the shadows. The iron shifts. A sliver of metal rises from the floor. It is a rivet. Old. Pitted. It wears the ghost of a previous traveler. It scrapes against the stone, sliding toward Kael. He touches his wrist. He knows. The gate demands his flesh to hold the piece. He is the anchor now. He reaches for the metal.",
+        "prose The thrum dies. Silence fills the chamber. The black oil retreats into the stone floor. It leaves a dry, puckered trail. My wrist stops its pulsing ache. I look at my hand. The skin is gray and stiff. The gate nudges a shard of metal from the ground. A rusted rivet. Dried blood cakes the ridges of the iron. It catches the dim light. My fingers twitch. I want to shove the metal into the open wound on my palm. I want to fix the leak. I reach for the rivet. My thumb brushes the jagged edge. My breath hitches. I am not deciding. The gate is waiting for the piece to fit."
+      ]
+    },
+    {
+      "node_id": "n_2f41142502",
+      "level": "beat",
+      "shown": [
+        "p_8df496621d",
+        "p_6dd679a2f6",
+        "p_6375d9ac38"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "introduce a complication",
+        "slow down"
+      ],
+      "scores": [
+        0.6173,
+        0.6103,
+        0.4509
+      ],
+      "chosen": "p_8df496621d",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "b51116b55c01a18c66e47097b181097a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5774,
+          "voice_cosine": 0.9876,
+          "edit_direction": 0.0,
+          "length": 0.5584,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 1.0,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9891,
+          "edit_direction": 0.7788,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9835,
+          "edit_direction": 1.0,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Rivet's Cost Kael forces the rusted iron rivet into his bicep. The metal sears his skin. The gate shudders as it accepts the offering. Kael's arm locks into the gate's frame, fusing flesh to stone. Kael is now a permanent structural element of the gate.",
+        "The Rivet's Rejection Kael forces the rivet toward his bicep. The metal skin on his arm refuses to pierce. The rivet bends against his muscle like soft wax. The gate shudders. The iron pedestal begins to dissolve, turning into a fine, choking grey dust. Kael's hand, still fused to the door, is ripped backward as the gate loses its form. The gate is not just consuming Kael, it is breaking down entirely.",
+        "The Rivet's Weight Kael's fingers twitch, closing around the cold, jagged rivet. He lifts it. The metal feels heavier than its size suggests. It vibrates against his palm, syncing with his own pulse. He stares at the empty, raw space on his bicep where the gate demands he place the iron. His breath hitches, clouding in the sudden, unnatural cold. The rivet is physically linked to Kael's biology."
+      ]
+    },
+    {
+      "node_id": "n_556fde57c8",
+      "level": "prose",
+      "shown": [
+        "p_2e9393c9c1",
+        "p_40a3eaa8f2",
+        "p_7325f7fddd"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5414,
+        0.5856,
+        0.6083
+      ],
+      "chosen": "p_7325f7fddd",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "9cc0115796067cb625ff87447d2d475b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9914,
+          "edit_direction": 0.0,
+          "length": 0.6027,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9948,
+          "edit_direction": 0.5697,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9925,
+          "edit_direction": 1.0,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose I watch from the threshold. The man kneels before the iron face. He holds the rivet. His hand shakes. He drives the metal into his own bicep. No scream. Only the wet sound of tearing skin. The gate shudders. It drinks the sudden heat. The stone pores open. They swallow his arm. He becomes a brace. A statue. His face turns to gray iron. He is the anchor now. The latch locks behind him.",
+        "prose My hand moves. I do not command it. The rusted rivet finds my skin. I press. The point bites. Pain flares, sharp and white. It is cold steel against warm meat. The metal slides beneath the muscle. It grinds against the bone. I try to scream. My throat is stone. The gate shudders. A heavy grinding sound fills the air. My bicep locks. The rivet turns. It pulls my arm flush against the frame. Flesh weaves into the iron grain. I am no longer a man standing at a door. I am the bolt that holds it shut.",
+        "prose My hand obeys. It slams the rivet into my bicep. The skin splits. Hot wet copper drips down my elbow. White light flashes behind my eyes. The iron bites deep. It grinds against the humerus. I scream but the sound chokes in my throat. The gate ripples like water. It reaches out. Gray stone tendrils wrap around my arm. They lace through the wound. I am fixed. My bicep is a hinge. I am the bolt holding the portal shut."
+      ]
+    },
+    {
+      "node_id": "n_94dcbdbefd",
+      "level": "scene",
+      "shown": [
+        "p_4be6a9bd3d",
+        "p_9bb81142dd",
+        "p_4d4c17b643"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.412,
+        0.3248,
+        0.2877
+      ],
+      "chosen": "p_4be6a9bd3d",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9878,
+          "edit_direction": 0.0,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9802,
+          "edit_direction": 1.0,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
           "judge_voice": 0.5,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.84,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
+          "continuity": 0.92,
+          "voice_cosine": 0.9841,
+          "edit_direction": 0.9169,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Stranger's Gift The stranger steps into the light. He wears a cowl of salt-crusted leather. He holds a heavy iron key, similar to the rivet fused to my arm. He places his hand on the gate, and the metal door begins to dissolve into liquid mercury, pulling me with it into the abyss. The gate is a liquid trap, not a solid barrier, and the stranger possesses the means to dismantle it.",
+        "The Stranger's Witness Elara stands in the doorway. She watches Kael drive the rivet into his own flesh. She does not intervene. She records the geometry of his suffering in a small, black notebook. As Kael fuses with the frame, she whispers a name that matches the seal on the gate. Elara is an observer of the gate's toll and Kael's integration was expected. She knows the gate's true identity.",
+        "The Stranger's Greeting Kael's arm remains locked to the gate frame. A cloaked figure stops inches away. The stranger pulls back a hood to reveal a face of smooth, polished steel. The figure touches Kael's trapped arm, and Kael's mouth opens wide to speak words he does not know. The gate uses Kael as a speaker. The stranger is another victim or construct of the gate."
+      ]
+    },
+    {
+      "node_id": "n_94dcbdbefd",
+      "level": "scene",
+      "shown": [
+        "p_eeb94d99d4",
+        "p_4d2fe74dc9",
+        "p_6db4869f5e"
+      ],
+      "axes": [
+        "shift the point of view",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5159,
+        0.3621,
+        0.5489
+      ],
+      "chosen": "p_6db4869f5e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "721975f16159cadb9997a7bc76cf89c8",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9803,
+          "edit_direction": 0.0,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9908,
+          "edit_direction": 0.1286,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9886,
+          "edit_direction": 1.0,
+          "length": 0.6044,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Witness The stranger steps from the shadows. He watches Kael fuse to the gate. He marks the moment in a leather ledger with a charcoal stick. He does not offer help. He waits for the iron to consume the rest of the man. The stranger is a record-keeper. He is here to document the gate's toll, not to intervene.",
+        "The Stranger's Shadow A figure steps from the dark. The stranger wears boots caked in gray salt. He stops before my fused arm. He traces the rivet with a gloved finger. My nerves spark. The gate mimics his touch, shifting its weight against my bone. The stranger looks at my face, then places his own hand over the rivet, forcing me to feel his cold pulse through my iron-bound flesh. The gate shares sensations between the metal parts, and the stranger has a direct, physical influence over Kael's body.",
+        "The Stranger's Silence The stranger stops before the gate. He ignores Kael's screams. He reaches out and gently presses his palm against the rivet in Kael's bicep. The metal glows white. Kael's pain vanishes, replaced by a terrifying, hollow stillness. The stranger leans in, his breath cold against Kael's ear, and whispers a name that sounds like grinding stone. The stranger has authority over the gate's mechanisms. The rivet is a tether to a specific identity."
+      ]
+    },
+    {
+      "node_id": "n_777bed821b",
+      "level": "beat",
+      "shown": [
+        "p_4394198961",
+        "p_8d9723d513",
+        "p_20ecdefe9f"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.3994,
+        0.4124,
+        0.5623
+      ],
+      "chosen": "p_20ecdefe9f",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 1,
+      "snapshot_id": "26e3ff4c6201d61779e36f5b59c11f64",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.57,
+          "voice_cosine": 0.9913,
+          "edit_direction": 0.0,
           "length": 0.5789,
           "dialogue_ratio": 0.0
         },
@@ -402,70 +1651,1621 @@
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5656,
+          "voice_cosine": 0.9883,
+          "edit_direction": 0.876,
+          "length": 0.6145,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9851,
+          "edit_direction": 1.0,
+          "length": 0.5744,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Weight of the Seal Kael kneels beside the iron statue of the traveler. He pries the iron key from the dead fingers. He opens the latch on his own chest instead of the gate. He forces the key into his ribs to keep the seal open. Kael uses his own body as the permanent anchor for the gate.",
-        "The Weight of the Seal Kael drops his knife. He drives the blade into his own shoulder to match the traveler's sacrifice. The heavy doors latch shut as the second drop of blood hits the iron floor. Kael falls against the metal frame. The gate demands blood from the keeper if the intruder lacks enough mass to finish the seal.",
-        "The Weight of the Seal Kael kneels by the iron-turned traveler. He pries the cold fingers apart to retrieve the key. The metal is freezing. Kael pockets the key and feels the first stiffness in his own bleeding hand. The sacrifice infection passes through contact with the key or the body."
+        "The Stranger's Toll A cloaked figure steps into the chamber. They do not look at Kael. They place a second, matching rusted rivet onto the gate's surface near Kael's trapped arm. The gate shudders, pulling Kael closer as it begins to draw the new rivet into the stone. the gate requires a pair of rivets to fully lock or open",
+        "The Gate's Rejection As Kael drives the iron into his arm, the gate shudders violently. It does not accept the offering. Instead, the iron rivet liquefies upon contact with his blood, flooding his bicep with hot, black liquid. The portal rejects the integration, throwing Kael backward. He hits the stone floor, his arm ruined and useless, while the gate remains sealed and hums with renewed, angry hunger. The gate specifically requires a pristine offering or has decided Kael is unworthy of fusion.",
+        "The Stranger's Silence The stranger approaches, but ignores Kael entirely. They reach into the stone near Kael's trapped arm, extract the rivet with a wet tug, and walk away. Kael's arm remains fused to the gate, now leaking more than blood. The gate has no interest in Kael beyond a temporary bridge; the stranger is a scavenger."
+      ]
+    },
+    {
+      "node_id": "n_504fbb41f5",
+      "level": "prose",
+      "shown": [
+        "p_61951db29b",
+        "p_d50d636837",
+        "p_e3ad190838"
+      ],
+      "axes": [
+        "shift the point of view",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6541,
+        0.6577,
+        0.4564
+      ],
+      "chosen": "p_d50d636837",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "eafc7dc8fae565483c9fe6968767f007",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9947,
+          "edit_direction": 0.0,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9936,
+          "edit_direction": 1.0,
+          "length": 0.6875,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9942,
+          "edit_direction": 0.506,
+          "length": 0.6832,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The gate holds the man. He is a stuttering mess of skin and iron, pinned to the frame. I do not look at his face. I do not listen to his breath. I step to the stone. My fingers find the seam. The rivet is buried deep, slick with red fluid. It is cold. I grip the head. I pull. The stone gives a wet, sucking sound. The iron comes free. I step back. The man's arm sags, anchored only by bone and mortar. Dark, viscous smoke rises from the hole where the steel sat. He is not mine to fix.",
+        "prose Footsteps drag against the grit. The stranger stops. He does not look at my face. He stares at the rivet buried in my arm. His fingers, long and gray, dig into the stone around my bicep. The gate grinds. It shrieks. The stranger pulls. A wet, tearing sound fills the room. He holds the rivet. My arm sags. It is a loose flap of meat, still tethered to the stone. Now, something else leaks from the wound. Not blood. Liquid metal. It glows. It drips onto the floor and eats into the stone. I try to pull back. My arm stays. It is part of the wall now. The stranger walks into the dark. He does not look back.",
+        "prose Footsteps crunch on grit. The figure walks past me. A shadow falls over my shoulder. They ignore my breath. They ignore the metal locked in my bicep. Fingers with skin like cured leather press into the wall. Not at me. At the stone. A grip. A twist. The rivet leaves my flesh with a wet pop. My arm hangs limp. Attached to nothing. The gate gapes wide at the hole where the steel sat. A gray slurry oozes from the frame. It smells like ozone and stagnant water. It coats my skin. It burns. The stranger turns away. They hold the rivet like a trophy. I am left as the frame. A hollow shell for the gate."
+      ]
+    },
+    {
+      "node_id": "n_777bed821b",
+      "level": "beat",
+      "shown": [
+        "p_678929356a",
+        "p_d0d3b9bf79",
+        "p_949f5ab251"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.441,
+        0.4115,
+        0.3839
+      ],
+      "chosen": "p_678929356a",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 2,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9902,
+          "edit_direction": 0.1715,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9892,
+          "edit_direction": 1.0,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.9873,
+          "edit_direction": 0.0,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Gate's Toll The Stranger turns from the gate. He presses the stolen rivet into the palm of his own hand. The metal softens like wax. He pushes it deep into his flesh, mimicking Kael's injury. He leaves the room without a word, leaving the Gate still thirsty for Kael's connection. The Stranger is a ritual participant, not a savior. His presence suggests the Gate demands a rotation of servants.",
+        "The Gate's Inheritance The stranger does not look at Kael. He presses his forehead against the cold stone of the gate. The gate vibrates in recognition. It shudders, and the stone ripples outward. Kael's trapped arm pulls loose, but the metal rivet stays embedded in the gate frame. The stranger turns to leave, dragging a trail of rust behind his feet. The stranger has authority over the gate that supersedes Kael's struggle.",
+        "The Archivist's Duty The Stranger pulls a small glass vial from his cloak. He moves to the pool of blood Kael leaked onto the stone. He scrapes the metallic residue into the glass. He ignores Kael's heavy breathing and the rhythmic grinding of the gate. He marks the vial with a scrap of charcoal. His hands move with the clinical detachment of a master clockmaker. The Stranger is cataloging the gate's activity; he views Kael as a specimen or a source of data."
+      ]
+    },
+    {
+      "node_id": "n_777bed821b",
+      "level": "beat",
+      "shown": [
+        "p_01034060aa",
+        "p_93fd228d7b",
+        "p_81e182db60"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.4046,
+        0.5461,
+        0.3768
+      ],
+      "chosen": "p_93fd228d7b",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "40b66ce6a9ed3b9e19332fab34619d1b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9933,
+          "edit_direction": 0.0,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9912,
+          "edit_direction": 1.0,
+          "length": 0.5774,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9826,
+          "edit_direction": 0.7087,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Gate's Cycle The Stranger drops the rivet into a hollow in the floor. Kael watches as the stone absorbs the iron. The Stranger looks at Kael, then presses his own palm to the hole where the rivet was. White light floods the room. Kael's bicep closes instantly. He falls to the floor, free of the gate but shivering with a sudden, bone-deep cold. The gate remains silent. The Stranger can manipulate the gate's connection to physical matter.",
+        "The Weight of Memory Kael watches the Stranger walk toward the dark exit. The Gate vibrates. It forces Kael's mouth open. A name, etched in iron, forces its way out of Kael's throat. The sound shatters the stillness. Kael realizes the name he uttered is his own daughter's. The Gate forces Kael to sacrifice his own memories as fuel.",
+        "The Gate's Refusal Kael attempts to drive the rusted rivet into his bicep. The gate ripples, turning from solid stone into viscous, swallowing black tar. The rivet sinks into the gate's surface rather than Kael's flesh. Kael remains tethered, arm sinking deeper into the aperture. The gate has no interest in the rivet as a mechanical seal, or it is mocking Kael's attempt to use it."
+      ]
+    },
+    {
+      "node_id": "n_b7613a09cc",
+      "level": "prose",
+      "shown": [
+        "p_610e4a9a93",
+        "p_45a55623e4",
+        "p_df8943c9d3"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.7361,
+        0.5437,
+        0.6272
+      ],
+      "chosen": "p_610e4a9a93",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "0e6f6391caabcf5a0f82b1a846583995",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9939,
+          "edit_direction": 0.0098,
+          "length": 0.6832,
+          "dialogue_ratio": 0.04
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9919,
+          "edit_direction": 0.0,
+          "length": 0.7051,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9912,
+          "edit_direction": 1.0,
+          "length": 0.6607,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The stranger fades into the black. My feet drag against the floor. I cannot follow. The gate hums. It is a low, serrated vibration. It travels up my spine. My jaw snaps open. I fight it. I bite my own tongue. Copper fills my mouth. The gate ignores the blood. It pushes a word through my teeth. 'Elara.' The sound hits the stone walls. It echoes. It is not my voice. It is the gate, scraping iron against bone. The name tears a hole in my chest. A memory of a blue ribbon vanishes. Then the smell of rain on her hair. Gone. The gate hungers. It forces my jaw wide. It demands more names. More life.",
+        "prose The stranger fades into the dark. My arm is a dead weight, locked to the stone. The gate hums again. It is a low, grinding vibration. My jaw unhinges. I try to clamp my teeth shut. I cannot. My throat tightens. A word tears through my vocal cords. Elara. The name tastes like hot iron and wet soil. It is my daughter. A hole opens in my mind. A memory of her birthday, the smell of fresh bread, the way she squinted at the sun—it burns away. Vapor rises from the stone. The gate drinks the warmth. I stand trapped as my own past feeds the machine. I want to forget. I want to keep her face. The gate pulls harder. Another name forms behind my teeth.",
+        "prose The stranger vanishes into the black throat of the exit. The gate wakes. It pulses against my bones. My jaw hinges wide. It is not my will. A vibration rattles my teeth. A name tastes of copper and rot. Elara. The word cuts the air. It shatters the silence. I know this name. The gate grips my mind. It pulls at the edges of a summer day. The smell of sun on tall grass. The weight of her hand in mine. Then the grey fog swallows it. The memory dissolves into static. I reach for her face. I find only the empty, scraping hunger of stone."
+      ]
+    },
+    {
+      "node_id": "n_0417bf53f0",
+      "level": "episode",
+      "shown": [
+        "p_d382b71888",
+        "p_bcb7366391",
+        "p_42181faed7"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6179,
+        0.3968,
+        0.3682
+      ],
+      "chosen": "p_d382b71888",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a889920cd27690ca6ae832f6a9cd23db",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9877,
+          "edit_direction": 1.0,
+          "length": 0.6011,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.5,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9876,
+          "edit_direction": 0.0,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.989,
+          "edit_direction": 0.1715,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Daughter's Echo Kael peels the liquid metal from his bicep. The gate screams. It demands more memories. Kael stares at a puddle of silver on the floor. It forms a wooden horse. He remembers a gift. He remembers his daughter, Elara. The gate ripples. The horse melts into the stone. His memory of her face vanishes. Elara is Kael's daughter. The gate consumes memories tied to the names it forces Kael to speak.",
+        "The Memory Debt The gate forces Kael to relive Elara's death. Each scream dissolves a memory of her face into gray dust. The stranger returns, jams a rusted cog into the gate's lock, and forces the portal open. Kael realizes his own flesh is the fuel sustaining the gate.",
+        "Echoes of the Hinge Kael pulls at his tethered arm. The wall resists. He finds his voice again but it carries the stranger's cadence. The liquid metal pooling on the floor begins to mimic Kael's own shadow, detaching from the ground to climb his legs like rising mercury. He realizes the gate does not consume victims; it replicates them. The gate uses stolen memories as a blueprint for replication."
+      ]
+    },
+    {
+      "node_id": "n_2af5b40c84",
+      "level": "scene",
+      "shown": [
+        "p_778ded4217",
+        "p_7cca6326d0",
+        "p_6516bf1bb3"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "pay off an open thread",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.4518,
+        0.3641,
+        0.4951
+      ],
+      "chosen": "p_6516bf1bb3",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9851,
+          "edit_direction": 0.0,
+          "length": 0.6358,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9917,
+          "edit_direction": 1.0,
+          "length": 0.6414,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.978,
+          "edit_direction": 0.7362,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Hollow Vessel Kael tries to hold onto the image of his daughter's face, but the Gate shreds the memory into raw data. He feels his bones begin to liquefy, mirroring the metallic leak in his arm. He pleads for the Gate to take his voice instead of his memories, but the Gate forces his hand to trace a map of his childhood home onto the cold stone floor with his own blood. The Gate does not want just names; it maps the physical history of the victim's life to expand its own architecture.",
+        "The Price of Silence The gate stops mid-vibration. It pulls at the liquid metal leaking from my arm, drawing it back into the stone. My jaw locks. The silence is heavy. It smells of ozone. My reflection in the metal wall is distorted. It shows a man without a face. The gate is not done. It uses my own hand to trace a map onto the floor with the remaining liquid metal. It is the route to my home. The gate knows Kael's history and his home; it is not just a portal, but a predatory map.",
+        "The Stranger's Ledger The Stranger stops in the shadows. He opens a heavy, iron-bound book. He records the name Elara. He traces the shape of Kael's screams in the air with a grey finger. The book captures the sound and stores it as a cooling, blackened smear on the page. The Stranger is a scribe collecting the echoes of the gate's victims."
+      ]
+    },
+    {
+      "node_id": "n_2af5b40c84",
+      "level": "scene",
+      "shown": [
+        "p_5a1b47c92a",
+        "p_df11110a86",
+        "p_1b36012c8c"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.4667,
+        0.4166,
+        0.6016
+      ],
+      "chosen": "p_1b36012c8c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "506d4cf54d9257b38a87d80f0a050695",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.993,
+          "edit_direction": 0.0,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9897,
+          "edit_direction": 0.465,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9893,
+          "edit_direction": 1.0,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Hollow Debt The gate pulls harder. It forces Kael's hand to carve his own name into the stone. Kael watches his fingertips shed skin and reveal iron. The gate discards his childhood home from his mind to fill the space where his name used to be. A heavy silence follows as the gate stops humming. The gate systematically replaces Kael's personal history with its own structural requirements.",
+        "The Gate's Sight The perspective shifts to the Gate. It senses Kael's resistance as a dull, metallic friction. It ignores his pain, focusing instead on the space where the memory of Elara once lived. It pulls the scrap of identity into its depths, digesting the daughter's name until the sound becomes a structural seal. The Gate does not just consume memories; it uses them as mortar to repair its own calcifying architecture.",
+        "The Hollow Chest The gate stops pulling memories. It leaves a void where Elara's laughter once lived. Kael tries to reach into the space behind his ribs. He finds only iron plates and cold stone. He hears his own voice echo from the gate, mimicking the pitch of his daughter's cries. The gate does not just consume memories; it replaces them with echoes of its own design."
+      ]
+    },
+    {
+      "node_id": "n_77ae529b94",
+      "level": "beat",
+      "shown": [
+        "p_f3ea0a512f",
+        "p_7bec8bf897",
+        "p_93c07ba145"
+      ],
+      "axes": [
+        "slow down",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.3381,
+        0.4739,
+        0.1647
+      ],
+      "chosen": "p_7bec8bf897",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 2,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9913,
+          "edit_direction": 1.0,
+          "length": 0.6647,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9934,
+          "edit_direction": 0.0,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.9829,
+          "edit_direction": 0.075,
+          "length": 0.5699,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Hollow Chest Kael stares at the space where the rivet once lived. The hole in his bicep does not bleed. It pulses with cold light. The Gate hums in his marrow. Kael tries to close his eyes, but his eyelids are frozen. He watches the liquid metal move. It crawls from the wound. It forms a thin silver thread. The thread weaves into the air between Kael and the wall. Kael feels a sudden, sharp tug. His soul feels thinner. A memory of his childhood home in the valley fades. The gate is physically stitching itself into Kael using his own living essence as the needle and thread.",
+        "The Price of Identity The Gate pulls the liquid metal from Kael's bicep. It shapes the metal into a miniature, perfect replica of Elara's face on the stone floor. As the metallic face hardens, Kael feels the last memory of her voice—her laugh—drain from his mind, leaving a silent void. The Gate then forces his hand to press against the miniature face, sealing his own life force into the stone. The Gate does not just consume memories; it builds physical totems from them to anchor Kael.",
+        "The Stranger's Assessment The Stranger stands in the shadow. He watches the Gate chew on the man's memories. He calculates the structural integrity of the Gate's current hinge. He ignores the man's agony, seeking only the source of the liquid metal. The Stranger views Kael as a component. The Stranger is not an ally."
+      ]
+    },
+    {
+      "node_id": "n_77ae529b94",
+      "level": "beat",
+      "shown": [
+        "p_51eb20734a",
+        "p_3589f8ec8c",
+        "p_6ca21e1f37"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.519,
+        0.3848,
+        0.3514
+      ],
+      "chosen": "p_51eb20734a",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 3,
+      "snapshot_id": "c15e2c87aeb66d8078c25ed18525d031",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9898,
+          "edit_direction": 0.4138,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.9772,
+          "edit_direction": 1.0,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9838,
+          "edit_direction": 0.0,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Gate's Toll The gate pulse forces Kael to reveal the location of the blue ribbon. His jaw cracks under the strain. He vomits a thick, viscous fluid onto the floor. The gate absorbs the memory of the ribbon's texture as it was in his mind. The metal walls around Kael tighten, pulling his body deeper into the architecture of the gate. The gate does not just take names; it physically harvests the sensory details of Kael's past to fuel its own expansion.",
+        "The Stranger's Ledger The Stranger stands in the dark beyond the Gate. He pulls a small, brass-bound book from his cloak. He opens it. The pages are blank save for a single, freshly written name: Elara. He traces the ink with a thumb. He does not feel pity. He marks the page with a symbol that mirrors the Gate's vibration. He sighs, his breath a puff of frost in the stale air, then closes the book. The stranger is documenting the Gate's harvest.",
+        "The Gate's Refusal Kael tries to pull his arm free from the stone, but the gate refuses to release him. The liquid metal leaking from his bicep hardens into rigid, crystalline spikes. These spikes pierce the stone and lock his arm into the wall more firmly than before. Kael is unable to move his hand or arm at all. The gate is physically anchoring Kael to stay."
+      ]
+    },
+    {
+      "node_id": "n_1c5702f460",
+      "level": "prose",
+      "shown": [
+        "p_544b4783dd",
+        "p_92957d5c1f",
+        "p_e261fe7c3f"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "introduce a complication",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.5581,
+        0.4487,
+        0.4881
+      ],
+      "chosen": "p_544b4783dd",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "43c30db4ad0766310b5d479028a68cb4",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9918,
+          "edit_direction": 0.3945,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9911,
+          "edit_direction": 0.0,
+          "length": 0.6433,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9918,
+          "edit_direction": 1.0,
+          "length": 0.6811,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The gate pulse slams into my skull. My jaw cracks. A raw, wet snap. I vomit thick silver sludge onto the stone. It quivers there, then rises. A ribbon. Coarse wool. The grit of it between my fingers. I remember the weave. I remember the frayed edges. The gate pulls the image from my mind. The wool dissolves into the stone. The wall constricts. It grinds my shoulder against the masonry. The gate pulls deeper. I am no longer just a hinge. I am becoming the wall.",
+        "prose The gate pulse drums. My jaw bone grinds. Teeth shift. I open my mouth. I do not speak. The gate forces a shape into my mind. A blue ribbon. Silk. Smooth silk against a rough wooden post. The sensation bleeds out. My tongue goes numb. I retch. A glob of silver slime hits the floor. It is my memory of that silk. The gate pulses again. The metal walls move. They slide forward. My ribs scrape against the stone. My flesh merges with the architecture. I am no longer just a hinge. I am becoming the frame.",
+        "prose The gate pulse hits my skull. A sharp pressure builds behind my eyes. I try to hold the image of the ribbon. I feel the silk. I feel the weave against my thumb. The wall jerks. My jaw cracks. A thick, grey sludge pours from my mouth. It hits the stone floor with a wet slap. The image of the silk dissolves in my mind. It leaves a hollow ache. The wall behind me shifts. It surges forward. Cold metal teeth lock into my skin. The architecture pulls me in. My ribs grind against the stone. I am a brick in its wall. It does not want my blood. It wants the texture of my life."
+      ]
+    },
+    {
+      "node_id": "n_77ae529b94",
+      "level": "beat",
+      "shown": [
+        "p_b9ce96b6a6",
+        "p_fe2c21d074",
+        "p_f0cac8de77"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.5441,
+        0.3357,
+        0.3901
+      ],
+      "chosen": "p_b9ce96b6a6",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 4,
+      "snapshot_id": "24f678b6f7f96f2c2b8249bc3d44cc3a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9922,
+          "edit_direction": 1.0,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.9825,
+          "edit_direction": 0.0,
+          "length": 0.5641,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.9841,
+          "edit_direction": 0.4404,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Gate's Silence The gate stops pulling. The silence is sudden, heavy. The silver sludge on the floor shifts, crawling toward my boots. It does not look for memories. It looks for a way out. I feel the gate's pulse in my teeth, but it is cold now, distant. The gate is not satisfied. The gate is independent of Kael's input for the moment; it is searching for an exit.",
+        "The Stranger's Toll The Stranger watches Kael convulse. He observes the silver sludge dissolving into the masonry. He notes the structural change as Kael's bicep bonds with the stone. He does not offer aid. He marks the moment in a small leather ledger. The Stranger is cataloging the Gate's consumption.",
+        "The Stranger's Choice The stranger stops walking. He turns. He moves toward the gate, not to save me, but to harvest the liquid metal dripping from my arm. He dips his fingers into the glowing puddle on the floor. He pulls the metal into a thin, vibrating thread and pushes it into his own palm. His skin swallows the silver. He is feeding on the gate's exhaust. The stranger can manipulate the liquid metal harvest. The gate is a source of fuel for others."
+      ]
+    },
+    {
+      "node_id": "n_0a1c48315b",
+      "level": "prose",
+      "shown": [
+        "p_1276ff13ae",
+        "p_8fa32b7ba0",
+        "p_b4d35ec0ea"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.5058,
+        0.51,
+        0.7114
+      ],
+      "chosen": "p_b4d35ec0ea",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "682dcc181789cf1d368d1b12fb3b83ee",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9956,
+          "edit_direction": 0.1113,
+          "length": 0.6567,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9908,
+          "edit_direction": 1.0,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9941,
+          "edit_direction": 0.0,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The gate goes quiet. The humming stops. My ribs ache. The space behind them feels hollow, stripped bare of Elara's laughter. I reach down. My fingers scrape the iron plates fused to my chest. The silver sludge on the floor ripples. It ignores my boots. It flows toward the archway. It seeks the light outside. The gate pulse thrums in my teeth, faint, cold. It is not done. It uses my body as a bridge. The sludge climbs my leg. It finds the open wound on my bicep. It enters. The metal bites my marrow. I am the lock. The gate is the key.",
+        "prose The hum stops. A vacuum fills the chamber. My ears pop. The silver sludge moves. It ripples across the floor in a single, slick wave. It stops at my boots. It flows over the leather. My skin prickles. The liquid does not hunt for memories. It hunts for a seam. It probes the gap between my heel and the iron floor. I want to move. I want to pull my foot away. I stay still. I watch it. I want to know if it will carry me out or if it will leave me here in the stone.",
+        "prose The gate halts. The thrumming dies. Silence hangs thick, sharp as broken glass. My ribs ache. The iron plate shifts. It feels heavy, cold, foreign. The silver puddle on the floor ripples. It ignores me now. It pulls itself toward the threshold. A long, thin strand of metal reaches for the doorframe. It hooks onto the stone. The wall vibrates. My bicep tears as the gate pulls, seeking its own leverage. It is not building a hinge anymore. It is trying to rip itself from the masonry."
+      ]
+    },
+    {
+      "node_id": "n_2af5b40c84",
+      "level": "scene",
+      "shown": [
+        "p_17a7622c31",
+        "p_4a31bb3c7b",
+        "p_7f50065811"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.4637,
+        0.4841,
+        0.4039
+      ],
+      "chosen": "p_4a31bb3c7b",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9834,
+          "edit_direction": 0.7681,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9804,
+          "edit_direction": 0.0,
+          "length": 0.6027,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9864,
+          "edit_direction": 1.0,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of Iron Kael forces his fingers into the soft meat of his bicep. He ignores the wet drag of muscle against iron. He pulls the rivet from his own flesh. The gate shudders as the anchor snaps. Kael drops the iron onto the stone. It turns into black smoke before it hits the ground. Kael prefers mutilation over becoming the gate's permanent hinge. The rivet is not merely metal; it is a catalyst for the gate's integration.",
+        "The Witness Silas stands in the shadow of the archway, recording the gate's mechanical spasms. He tracks the silver path from Kael's bicep to the stone floor. He marks his ledger with a single, brutal stroke as the gate rejects another fragment of memory. He notes the structural instability of the masonry Kael is anchored to. Silas is documenting the gate's consumption patterns for an unknown purpose, and he views Kael as a diagnostic tool.",
+        "The Structural Breach The silver sludge forces its way into the mortar between the stones. Kael watches the masonry crack under the pressure. The wall groans, bending outward. A shard of granite falls, pinning Kael's boot to the floor. The gate is no longer fixed; it tears its own frame apart to move. The gate does not care if the surrounding architecture survives; it will destroy its own housing to escape."
+      ]
+    },
+    {
+      "node_id": "n_2af5b40c84",
+      "level": "scene",
+      "shown": [
+        "p_0b759329f7",
+        "p_5df47c579b",
+        "p_d5e05f786c"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.4772,
+        0.4953,
+        0.4927
+      ],
+      "chosen": "p_5df47c579b",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.991,
+          "edit_direction": 0.1853,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9742,
+          "edit_direction": 1.0,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.983,
+          "edit_direction": 0.0,
+          "length": 0.6061,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Structural Shift The silver strand hooks into the masonry. It pulls. The wall screams, a sound of grinding rock. Kael’s arm tears wider. The gate does not want the memory anymore. It wants the hinge that holds it shut. The stone floor beneath Kael cracks. The void behind his ribs widens, and he feels the weight of the entire archway pressing down on his anchor point. The gate is not just a doorway, it is a physical structure that intends to tear itself free regardless of Kael's survival.",
+        "The Observer's Ledger Silas stands in the alcove. He tracks the gate's hunger with a brass calipers. He watches the silver thread bridge the gap between Kael and the archway. He marks his notebook with a charcoal stick when the stone cracks. The gate is not a machine. It is a parasite looking for a host. The stranger, Silas, is tracking the gate's growth metrics, not Kael's survival.",
+        "The Rivet's Choice The silver strand lashes out, finding the iron rivet embedded in my bicep. It pulls. I scream as the metal bites deeper into the meat. The gate grinds, shifting its weight from my arm to the floor. The rivet pops free, slick with my blood, and drifts into the silver puddle. I collapse against the cooling stone. The gate discards Kael once it finds a better anchor; Kael is no longer the primary hinge."
+      ]
+    },
+    {
+      "node_id": "n_77ae529b94",
+      "level": "beat",
+      "shown": [
+        "p_ca420f1280",
+        "p_0e0cb599bc",
+        "p_556771791e"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.6539,
+        0.508,
+        0.211
+      ],
+      "chosen": "p_ca420f1280",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "f89483bf3cdf06d67920557a09727671",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9733,
+          "edit_direction": 0.4528,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9877,
+          "edit_direction": 0.0,
+          "length": 0.5744,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.987,
+          "edit_direction": 1.0,
+          "length": 0.6286,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Observer's Calculus Silas adjusts his brass goggles. He notes the silver slime, ignoring Kael's shuddering form. He tracks the gate's movement with a sharp stylus. He does not see a man. He sees a failing seal. He marks a cross on his parchment, noting the exact second the iron plate shifted. Silas is an observer who views Kael's suffering as data. He is not here to help.",
+        "The Resonance of Metal Kael watches the silver thread bind to his own bicep wound instead of the doorframe. The gate is not escaping; it is tethering itself to his biology to use him as a portable bridge. His iron-infected arm burns with a new, impossible heat. The gate prefers Kael as a host to the masonry.",
+        "The Memory Harvest The silver sludge bypasses Kael and burrows into the stone archway behind his neck. The gate feeds on the architecture itself, pulling the masonry into a liquid state. Kael feels his own vertebrae shift, aligning with the gate's new internal structure. He hears Elara's voice again, but it sounds like grinding gravel. The memory of her wedding day—the color of her dress—is stripped from his mind by the gate's current. The gate can replace Kael's physical structure with its own and consumes memories to fuel this process."
+      ]
+    },
+    {
+      "node_id": "n_141b9b2ea3",
+      "level": "prose",
+      "shown": [
+        "p_1385ee8745",
+        "p_762c9ee602",
+        "p_0dd5ab1ae6"
+      ],
+      "axes": [
+        "raise the stakes",
+        "introduce a complication",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.4516,
+        0.4215,
+        0.5276
+      ],
+      "chosen": "p_0dd5ab1ae6",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "767da29143e78e962ba8582ffe0eb142",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9923,
+          "edit_direction": 0.914,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9933,
+          "edit_direction": 1.0,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9934,
+          "edit_direction": 0.0,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Silas slides his brass goggles over his eyes. The glass magnifies the silver slime. It pulses on the stone floor. He looks past Kael’s jerking limbs. He ignores the wet tearing of meat at the bicep. Silas holds a sharp stylus. He tracks the iron plate as it grinds against the wall. He sees a failing seal. Nothing more. He scratches a cross on his parchment. He marks the exact second of the shift. The gate groans. The sound does not move him.",
+        "prose Silas adjusts his brass goggles. The leather straps creak against his skull. He ignores the wet, rhythmic slapping of Kael against the wall. His gaze fixes on the silver slime. It pulses. A slow, rhythmic expansion. Silas tracks the movement with a sharp stylus. He does not see a man. He sees a failing seal. A pressure point losing cohesion. He marks a cross on his parchment. His pen records the exact second the iron plate shifts. He does not blink. The gate groans under the strain of the iron. Silas turns a page. He prepares for the next breach.",
+        "prose Silas slides the brass goggles low over his eyes. The lens clicks. He turns his head. The silver slime pools near the archway, thick and pulsing. It ignored the man. Kael shudders against the stone. Silas does not look at the blood or the torn bicep. He focuses on the iron plate. The metal groans. A thin, jagged line of light appears where the seal fractured. Silas holds his breath. The stylus scratches against the dry parchment. He marks a black cross. The gate is not a doorway. It is a measurement of entropy. He tracks the second the weight shifted."
+      ]
+    },
+    {
+      "node_id": "n_77ae529b94",
+      "level": "beat",
+      "shown": [
+        "p_ecc1ac91c2",
+        "p_b3907be897",
+        "p_ba5e0f6b87"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.3091,
+        0.2188,
+        0.4112
+      ],
+      "chosen": "p_ba5e0f6b87",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 1,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9775,
+          "edit_direction": 0.0,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.9766,
+          "edit_direction": 0.6298,
+          "length": 0.5836,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9912,
+          "edit_direction": 1.0,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Gate's Price The silver strand lashes out, coiling tight around the iron rivet in Kael's bicep. It yanks. The rivet tears through flesh and bone, dragging Kael inches across the stone. The gate feeds on the sudden, violent release of the anchor, slamming shut. Kael collapses, his arm a ruin of exposed muscle. The gate discards anchors once they are no longer useful; Kael is no longer the primary hinge.",
+        "The Observer's Calculus Silas adjusts his brass goggles. He notes the silver slime, ignoring Kael's shuddering form. He tracks the gate's movement with a sharp stylus. He does not see a man. He sees a failing seal. He marks a cross on his parchment, noting the exact second the iron plate shifted. Silas views Kael as an object. The gate is actively failing.",
+        "The Gate's Anatomy Kael stares at the silver thread. It anchors to the stone lintel with a wet, metallic snap. The gate sighs. The air grows cold. Silas moves closer, his boot pressing into the silver slime. He ignores Kael's ragged breaths and leans his face inches from the gate's surface. He traces a hairline fracture with a gloved finger. A low, harmonic hum vibrates through the floor, rattling Kael's bones. The gate is physically tearing its own masonry apart to move, and Silas views this destruction as a simple mechanical process."
+      ]
+    },
+    {
+      "node_id": "n_77ae529b94",
+      "level": "beat",
+      "shown": [
+        "p_34b55c1477",
+        "p_6da2ff3749",
+        "p_130612a705"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.4162,
+        0.587,
+        0.5506
+      ],
+      "chosen": "p_6da2ff3749",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 1,
+      "snapshot_id": "5de3e3b66cff77d760f2a84ef451d032",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.982,
+          "edit_direction": 1.0,
+          "length": 0.593,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.49,
+          "voice_cosine": 0.9749,
+          "edit_direction": 0.8106,
+          "length": 0.6286,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9806,
+          "edit_direction": 0.0,
+          "length": 0.5882,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Gate's Refusal The silver strand hooks into the stone lintel and pulls. The gate shudders. A violent screech of grinding metal erupts as the masonry cracks. The wall rejects the silver, which snaps like a broken elastic band and lashes back. It whips against Kael’s exposed bicep wound, searing the flesh with freezing cold. The gate is not just structural; it is actively resisting its own forced movement.",
+        "The Archivist's Toll Silas reaches into the silver puddle with a hollow glass vial. The slime does not resist; it flows into the container, coating the interior with a mirror-bright sheen. He seals it with wax. Silas offers a cold, clinical glance at the bleeding Kael, then turns toward the archway's underside, where the metal has begun to feed on its own frame. He leaves a small, etched silver token on the floor—a mark of his faction. Silas is not just recording the event; he is harvesting the gate's byproduct.",
+        "The Gate's Price The silver strand lashes out, coiling around the iron rivet. It pulls. The rivet tears free from Kael's bicep. Kael gasps as the silver strand drags the blood-slicked metal toward the archway. The gate's masonry shudders, settling into a new, wider configuration. Kael falls limp against the floor, severed from his anchor. The gate has no further use for Kael as a hinge."
+      ]
+    },
+    {
+      "node_id": "n_4fb16ca58a",
+      "level": "prose",
+      "shown": [
+        "p_9842451083",
+        "p_6e4addceff",
+        "p_6c660d1de3"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "slow down",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.4959,
+        0.7002,
+        0.4246
+      ],
+      "chosen": "p_6e4addceff",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "effcb13b1cd4f9b14879f7ba604fcfe7",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9869,
+          "edit_direction": 0.0,
+          "length": 0.6728,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9828,
+          "edit_direction": 1.0,
+          "length": 0.7166,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9802,
+          "edit_direction": 0.3893,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose Silas kneels. He extracts a hollow glass vial from his leather satchel. He plunges the neck into the silver puddle. The fluid climbs the glass walls, a mirror-bright sheen clinging to the interior. He presses a thumb into warm wax to seal the opening. Kael chokes, a wet rattling sound in his chest. Silas glances at the man. His eyes remain blank behind the brass frames. He turns his back. The metal at the archway base churns, tearing chunks from the masonry to mend its own frame. Silas drops a silver token onto the floor. It lands with a heavy, flat chime. He walks to the threshold. He does not look back.",
+        "prose Silas pulls a hollow vial from his coat. The glass is thin. He dips the mouth into the silver pool. The slime moves like liquid smoke. It fills the void without a sound. It coats the clear walls in a dull, grey mirror. He draws the vial out. A drop hangs from the edge. He wipes it away with a thumb. He drops a sphere of wax into the neck. The heat of his touch seals the seal. He glances at Kael. His eyes remain dry. He turns to the archway. The metal teeth bite into the stone frame. Dust falls. He reaches into a pocket and retrieves a coin. He presses the silver token into the dirt near Kael's boot. The stamp shows a blind eye. He does not look back.",
+        "prose Silas reaches into the silver puddle with a hollow glass vial. The slime does not resist. It flows into the container. It coats the interior with a mirror-bright sheen. He seals the glass with a thumb of wax. He glances at the bleeding Kael. The gaze is cold. It is clinical. Silas turns toward the archway underside. The metal feeds on its own frame there. He leaves a small, etched silver token on the stone floor. It is a mark of his faction."
       ]
     }
   ],
-  "episodes_completed": 0,
+  "episodes_completed": 3,
   "call_summary": {
-    "calls": 206,
-    "prompt_tokens": 124419,
-    "completion_tokens": 49228,
+    "calls": 576,
+    "prompt_tokens": 1864932,
+    "completion_tokens": 417482,
     "cost_usd": 0.0,
-    "cache_hits": 90,
-    "errors": 108,
-    "mean_latency_s": 0.06681681362131059,
-    "total_tokens": 173647,
-    "cache_hit_rate": 0.4368932038834951,
+    "cache_hits": 24,
+    "errors": 11,
+    "mean_latency_s": 4.277007685864444,
+    "total_tokens": 2282414,
+    "cache_hit_rate": 0.041666666666666664,
     "by_purpose": [
       {
         "purpose": "propose.beat",
-        "calls": 21,
-        "tokens": 70215,
+        "calls": 113,
+        "tokens": 644590,
         "cost_usd": 0.0,
-        "cache_hits": 21
-      },
-      {
-        "purpose": "propose.prose",
-        "calls": 112,
-        "tokens": 43893,
-        "cost_usd": 0.0,
-        "cache_hits": 23
+        "cache_hits": 10
       },
       {
         "purpose": "judge.soft",
-        "calls": 57,
-        "tokens": 24474,
+        "calls": 224,
+        "tokens": 612478,
         "cost_usd": 0.0,
-        "cache_hits": 32
+        "cache_hits": 0
       },
       {
-        "purpose": "propose.episode",
-        "calls": 7,
-        "tokens": 22809,
+        "purpose": "propose.prose",
+        "calls": 84,
+        "tokens": 295714,
         "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 0
       },
       {
         "purpose": "propose.scene",
-        "calls": 7,
-        "tokens": 12256,
+        "calls": 63,
+        "tokens": 236227,
         "cost_usd": 0.0,
         "cache_hits": 7
       },
       {
+        "purpose": "propose.beat.repair",
+        "calls": 22,
+        "tokens": 225824,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 21,
+        "tokens": 101411,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 9,
+        "tokens": 79117,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 20,
+        "tokens": 52845,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
         "purpose": "simulate.edit",
+        "calls": 16,
+        "tokens": 17848,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene.repair",
         "calls": 2,
-        "tokens": 0,
+        "tokens": 12216,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts.repair",
+        "calls": 2,
+        "tokens": 4144,
         "cost_usd": 0.0,
         "cache_hits": 0
       }
@@ -473,64 +3273,65 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 194,
-        "tokens": 173647,
+        "calls": 547,
+        "tokens": 2245952,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 12,
-        "tokens": 0,
+        "calls": 29,
+        "tokens": 36462,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 142,
-      "misses": 86,
-      "entries": 8638
+      "hits": 54,
+      "misses": 1034,
+      "entries": 10010
     },
-    "budget_remaining_usd": 12.0
+    "budget_remaining_usd": 5.20603375
   },
   "preference_summary": {
-    "pairs_seen": 4,
-    "edits_seen": 0,
-    "voice_trained": false,
+    "pairs_seen": 60,
+    "edits_seen": 8,
+    "voice_trained": true,
     "top_weights": [
       {
-        "feature": "judge_consequence",
-        "weight": 2.0483
-      },
-      {
         "feature": "judge_momentum",
-        "weight": 1.432
+        "weight": 5.3036
       },
       {
-        "feature": "criterion_2",
-        "weight": 1.1295
+        "feature": "continuity",
+        "weight": 4.5701
       },
       {
-        "feature": "judge_specificity",
-        "weight": 0.9601
+        "feature": "judge_voice",
+        "weight": 3.822
+      },
+      {
+        "feature": "judge_consequence",
+        "weight": 2.7581
       }
     ],
     "bandit_safe": 0.5,
     "bandit_explore": 0.5,
     "fitted_weights": {
-      "judge_momentum": 1.43198817109598,
-      "judge_specificity": 0.9600562219124298,
-      "judge_consequence": 2.0483267267790723,
-      "judge_voice": 2.882345130318956e-200,
-      "criterion_1": 0.8365232086487655,
-      "criterion_2": 1.1294588021530525,
-      "criterion_3": 2.334860979394633e-200,
-      "criterion_4": 1.864204736439057e-200,
-      "continuity": 2.530014693516825e-200,
-      "voice_cosine": 5.1370086298135946e-201,
-      "edit_direction": 1.6398592993894625e-200,
-      "length": 0.12639105546874363,
-      "dialogue_ratio": 8.410421056596808e-201
+      "judge_momentum": 5.303559975461491,
+      "judge_specificity": 0.05209271884098156,
+      "judge_consequence": 2.758116995102615,
+      "judge_voice": 3.8219633445515115,
+      "criterion_1": 1.922284454027932,
+      "criterion_2": 1.8149419010216892,
+      "criterion_3": 1.73e-322,
+      "criterion_4": 1.73e-322,
+      "continuity": 4.570083731941338,
+      "voice_cosine": -0.0945278737532888,
+      "edit_direction": -0.07552627251166166,
+      "length": 0.778506919841064,
+      "dialogue_ratio": 1.73e-322
     },
-    "weight_recovery": 0.17522562409656012
+    "weight_recovery": 0.3188227973857152,
+    "weight_recovery_identified": 0.19409848722660272
   },
   "hidden_weights": {
     "judge_momentum": 0.3,
@@ -547,10 +3348,42 @@
     "length": -0.9,
     "dialogue_ratio": 0.2
   },
-  "probe": [],
-  "errors": [
-    "RateLimited: groq: rate limited"
+  "probe": [
+    {
+      "tau": 0.3333333333333333,
+      "top1": 0.3888888888888889,
+      "points": 18.0,
+      "tau_uniform": 0.2222222222222222,
+      "top1_uniform": 0.4444444444444444,
+      "tau_prior": 0.2962962962962962,
+      "top1_prior": 0.4444444444444444,
+      "decisions": 12.0,
+      "episode": 1.0
+    },
+    {
+      "tau": 0.3703703703703704,
+      "top1": 0.4444444444444444,
+      "points": 18.0,
+      "tau_uniform": 0.14814814814814814,
+      "top1_uniform": 0.4444444444444444,
+      "tau_prior": 0.2222222222222222,
+      "top1_prior": 0.4444444444444444,
+      "decisions": 25.0,
+      "episode": 2.0
+    },
+    {
+      "tau": 0.4444444444444444,
+      "top1": 0.5555555555555556,
+      "points": 18.0,
+      "tau_uniform": 0.2222222222222222,
+      "top1_uniform": 0.5,
+      "tau_prior": 0.2962962962962962,
+      "top1_prior": 0.5,
+      "decisions": 40.0,
+      "episode": 3.0
+    }
   ],
-  "waited_seconds": 405.4,
-  "rate_limit_waits": 12
+  "errors": [],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
 }

@@ -71,7 +71,26 @@ async def main() -> int:
                 return 1
         return 0
     except Exception as exc:  # noqa: BLE001 -- the message is the whole point here
-        print(f"probe failed for a reason that is not quota: {type(exc).__name__}: {exc}")
+        # A transient network fault is not a broken configuration. The first version
+        # treated every non-rate-limit error as fatal and stopped the wrapper on a DNS
+        # blip at 12:37, which is the minute the quota it was waiting for came back, so
+        # the overnight window was lost to a failed name lookup. Transport faults go back
+        # to waiting; anything else still stops, because retrying a misconfigured run for
+        # twelve hours helps nobody.
+        text = f"{type(exc).__name__}: {exc}"
+        transient = (
+            "Name or service not known",
+            "Temporary failure in name resolution",
+            "transport error",
+            "Connection reset",
+            "Connection refused",
+            "timed out",
+            "ServerDisconnected",
+        )
+        if any(marker.lower() in text.lower() for marker in transient):
+            print(f"  probe: transient network fault, still waiting ({text[:110]})")
+            return 1
+        print(f"probe failed for a reason that is not quota: {text}")
         return 2
     finally:
         await router.aclose()

@@ -1,167 +1,261 @@
 {
-  "generated_at": "2026-08-23T21:47:13.107760+00:00",
+  "generated_at": "2026-08-24T16:05:55.559986+00:00",
   "runs": [
     {
       "run": "full/the Controller",
       "persona": "the Controller",
-      "decisions": 3,
-      "acceptance": 1.0,
+      "decisions": 14,
+      "acceptance": 0.7142857142857143,
       "acceptance_first_third": 1.0,
-      "acceptance_last_third": 1.0,
-      "mean_edit_distance": 0.2025,
-      "hard_flags_shown": 0,
+      "acceptance_last_third": 0.65625,
+      "mean_edit_distance": 0.33225,
+      "hard_flags_shown": 9,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.20017381889264227,
-      "weight_recovery_identified": null,
-      "weight_recovery_ceiling": 0.0,
-      "weight_recovery_ceiling_sd": 0.0,
-      "probe_tau_first": null,
-      "probe_tau_last": null,
-      "probe_top1_last": null,
-      "probe_tau_uniform": null,
-      "probe_tau_prior": null,
-      "probe": [],
+      "weight_recovery": 0.32497226740367896,
+      "weight_recovery_identified": 0.135471883552328,
+      "weight_recovery_ceiling": 0.5434437210811359,
+      "weight_recovery_ceiling_sd": 0.13118846082273114,
+      "probe_tau_first": 6.1679056923619804e-18,
+      "probe_tau_last": 6.1679056923619804e-18,
+      "probe_top1_last": 0.2222222222222222,
+      "probe_tau_uniform": 6.1679056923619804e-18,
+      "probe_tau_prior": -0.1111111111111111,
+      "probe": [
+        {
+          "tau": 6.1679056923619804e-18,
+          "top1": 0.2222222222222222,
+          "points": 18.0,
+          "tau_uniform": 6.1679056923619804e-18,
+          "top1_uniform": 0.2777777777777778,
+          "tau_prior": -0.1111111111111111,
+          "top1_prior": 0.2222222222222222,
+          "decisions": 12.0,
+          "episode": 1.0
+        }
+      ],
       "retry": {
-        "rejected_sets": 0,
-        "rescued": 0,
-        "stood": 0
+        "rejected_sets": 2,
+        "rescued": 1,
+        "stood": 1
       },
       "unexercised_features": [
-        "criterion_2",
         "criterion_3",
-        "criterion_4",
-        "dialogue_ratio",
-        "edit_direction",
-        "voice_cosine"
+        "criterion_4"
       ],
-      "tokens_per_action": 27360.333333333332,
+      "tokens_per_action": 62226.21428571428,
       "usd_per_action": 0.0,
-      "episodes": 0,
+      "episodes": 1,
       "errors": [
-        "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 58s"
+        "episode 2 was not accepted; stopping"
       ]
     },
     {
       "run": "full/the Maximalist",
       "persona": "the Maximalist",
-      "decisions": 3,
-      "acceptance": 1.0,
-      "acceptance_first_third": 1.0,
-      "acceptance_last_third": 1.0,
-      "mean_edit_distance": 0.0,
-      "hard_flags_shown": 0,
+      "decisions": 36,
+      "acceptance": 0.8055555555555556,
+      "acceptance_first_third": 0.6373015873015873,
+      "acceptance_last_third": 0.8854166666666666,
+      "mean_edit_distance": 0.8597500000000001,
+      "hard_flags_shown": 25,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.5134119985405033,
-      "weight_recovery_identified": null,
-      "weight_recovery_ceiling": 0.0,
-      "weight_recovery_ceiling_sd": 0.0,
-      "probe_tau_first": null,
-      "probe_tau_last": null,
-      "probe_top1_last": null,
-      "probe_tau_uniform": null,
-      "probe_tau_prior": null,
-      "probe": [],
+      "weight_recovery": 0.27805314493301947,
+      "weight_recovery_identified": 0.10038585673339091,
+      "weight_recovery_ceiling": 0.6502540675465305,
+      "weight_recovery_ceiling_sd": 0.12213524774681203,
+      "probe_tau_first": 0.33333333333333326,
+      "probe_tau_last": 0.40740740740740733,
+      "probe_top1_last": 0.5555555555555556,
+      "probe_tau_uniform": 0.2222222222222222,
+      "probe_tau_prior": 0.3333333333333333,
+      "probe": [
+        {
+          "tau": 0.33333333333333326,
+          "top1": 0.5,
+          "points": 18.0,
+          "tau_uniform": 0.3333333333333333,
+          "top1_uniform": 0.5,
+          "tau_prior": 0.3333333333333333,
+          "top1_prior": 0.6111111111111112,
+          "decisions": 13.0,
+          "episode": 1.0
+        },
+        {
+          "tau": 0.29629629629629634,
+          "top1": 0.3888888888888889,
+          "points": 18.0,
+          "tau_uniform": 0.3333333333333333,
+          "top1_uniform": 0.5,
+          "tau_prior": 0.3333333333333333,
+          "top1_prior": 0.6111111111111112,
+          "decisions": 24.0,
+          "episode": 2.0
+        },
+        {
+          "tau": 0.40740740740740733,
+          "top1": 0.5555555555555556,
+          "points": 18.0,
+          "tau_uniform": 0.2222222222222222,
+          "top1_uniform": 0.4444444444444444,
+          "tau_prior": 0.3333333333333333,
+          "top1_prior": 0.5555555555555556,
+          "decisions": 36.0,
+          "episode": 3.0
+        }
+      ],
       "retry": {
-        "rejected_sets": 0,
-        "rescued": 0,
+        "rejected_sets": 3,
+        "rescued": 3,
         "stood": 0
       },
       "unexercised_features": [
         "criterion_3",
-        "criterion_4",
-        "dialogue_ratio",
-        "edit_direction",
-        "voice_cosine"
+        "criterion_4"
       ],
-      "tokens_per_action": 76304.0,
+      "tokens_per_action": 65936.02777777778,
       "usd_per_action": 0.0,
-      "episodes": 0,
-      "errors": [
-        "RateLimited: groq: rate limited"
-      ]
+      "episodes": 3,
+      "errors": []
     },
     {
       "run": "full/the Minimalist",
       "persona": "the Minimalist",
-      "decisions": 5,
-      "acceptance": 0.6,
-      "acceptance_first_third": 1.0,
-      "acceptance_last_third": 0.6,
-      "mean_edit_distance": 0.3898,
-      "hard_flags_shown": 0,
+      "decisions": 40,
+      "acceptance": 0.75,
+      "acceptance_first_third": 0.887087912087912,
+      "acceptance_last_third": 0.6153846153846154,
+      "mean_edit_distance": 0.010207142857142857,
+      "hard_flags_shown": 15,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.17522562409656012,
-      "weight_recovery_identified": null,
-      "weight_recovery_ceiling": 0.16835359984869974,
-      "weight_recovery_ceiling_sd": 0.2053400906648779,
-      "probe_tau_first": null,
-      "probe_tau_last": null,
-      "probe_top1_last": null,
-      "probe_tau_uniform": null,
-      "probe_tau_prior": null,
-      "probe": [],
+      "weight_recovery": 0.3188227973857152,
+      "weight_recovery_identified": 0.19409848722660272,
+      "weight_recovery_ceiling": 0.6433040911039957,
+      "weight_recovery_ceiling_sd": 0.13328796465045412,
+      "probe_tau_first": 0.3333333333333333,
+      "probe_tau_last": 0.4444444444444444,
+      "probe_top1_last": 0.5555555555555556,
+      "probe_tau_uniform": 0.2222222222222222,
+      "probe_tau_prior": 0.2962962962962962,
+      "probe": [
+        {
+          "tau": 0.3333333333333333,
+          "top1": 0.3888888888888889,
+          "points": 18.0,
+          "tau_uniform": 0.2222222222222222,
+          "top1_uniform": 0.4444444444444444,
+          "tau_prior": 0.2962962962962962,
+          "top1_prior": 0.4444444444444444,
+          "decisions": 12.0,
+          "episode": 1.0
+        },
+        {
+          "tau": 0.3703703703703704,
+          "top1": 0.4444444444444444,
+          "points": 18.0,
+          "tau_uniform": 0.14814814814814814,
+          "top1_uniform": 0.4444444444444444,
+          "tau_prior": 0.2222222222222222,
+          "top1_prior": 0.4444444444444444,
+          "decisions": 25.0,
+          "episode": 2.0
+        },
+        {
+          "tau": 0.4444444444444444,
+          "top1": 0.5555555555555556,
+          "points": 18.0,
+          "tau_uniform": 0.2222222222222222,
+          "top1_uniform": 0.5,
+          "tau_prior": 0.2962962962962962,
+          "top1_prior": 0.5,
+          "decisions": 40.0,
+          "episode": 3.0
+        }
+      ],
       "retry": {
-        "rejected_sets": 1,
-        "rescued": 0,
+        "rejected_sets": 7,
+        "rescued": 6,
         "stood": 1
       },
       "unexercised_features": [
         "criterion_3",
-        "criterion_4",
-        "dialogue_ratio",
-        "edit_direction",
-        "voice_cosine"
+        "criterion_4"
       ],
-      "tokens_per_action": 34729.4,
+      "tokens_per_action": 57060.35,
       "usd_per_action": 0.0,
-      "episodes": 0,
-      "errors": [
-        "RateLimited: groq: rate limited"
-      ]
+      "episodes": 3,
+      "errors": []
     },
     {
       "run": "full/the Serialist",
       "persona": "the Serialist",
-      "decisions": 3,
-      "acceptance": 1.0,
-      "acceptance_first_third": 1.0,
-      "acceptance_last_third": 1.0,
-      "mean_edit_distance": 0.0,
-      "hard_flags_shown": 0,
+      "decisions": 35,
+      "acceptance": 0.8285714285714286,
+      "acceptance_first_third": 0.9264069264069263,
+      "acceptance_last_third": 0.8636363636363636,
+      "mean_edit_distance": 0.271925,
+      "hard_flags_shown": 25,
       "stale_marked": 0,
       "vetoes": 0,
-      "weight_recovery": 0.24289164095516372,
-      "weight_recovery_identified": null,
-      "weight_recovery_ceiling": 0.0,
-      "weight_recovery_ceiling_sd": 0.0,
-      "probe_tau_first": null,
-      "probe_tau_last": null,
-      "probe_top1_last": null,
-      "probe_tau_uniform": null,
-      "probe_tau_prior": null,
-      "probe": [],
+      "weight_recovery": 0.8084371544007918,
+      "weight_recovery_identified": 0.7915110464375735,
+      "weight_recovery_ceiling": 0.5442914154991577,
+      "weight_recovery_ceiling_sd": 0.13838603871876995,
+      "probe_tau_first": 0.5925925925925928,
+      "probe_tau_last": 0.7407407407407409,
+      "probe_top1_last": 0.6666666666666666,
+      "probe_tau_uniform": 0.2222222222222222,
+      "probe_tau_prior": 0.33333333333333326,
+      "probe": [
+        {
+          "tau": 0.5925925925925928,
+          "top1": 0.5,
+          "points": 18.0,
+          "tau_uniform": 0.7407407407407409,
+          "top1_uniform": 0.7222222222222222,
+          "tau_prior": 0.6666666666666667,
+          "top1_prior": 0.6666666666666666,
+          "decisions": 11.0,
+          "episode": 1.0
+        },
+        {
+          "tau": 0.6666666666666666,
+          "top1": 0.6111111111111112,
+          "points": 18.0,
+          "tau_uniform": 0.7407407407407409,
+          "top1_uniform": 0.7222222222222222,
+          "tau_prior": 0.6666666666666667,
+          "top1_prior": 0.6666666666666666,
+          "decisions": 23.0,
+          "episode": 2.0
+        },
+        {
+          "tau": 0.7407407407407409,
+          "top1": 0.6666666666666666,
+          "points": 18.0,
+          "tau_uniform": 0.2222222222222222,
+          "top1_uniform": 0.5,
+          "tau_prior": 0.33333333333333326,
+          "top1_prior": 0.5555555555555556,
+          "decisions": 35.0,
+          "episode": 3.0
+        }
+      ],
       "retry": {
-        "rejected_sets": 0,
-        "rescued": 0,
-        "stood": 0
+        "rejected_sets": 3,
+        "rescued": 2,
+        "stood": 1
       },
       "unexercised_features": [
-        "continuity",
-        "criterion_1",
         "criterion_3",
-        "criterion_4",
-        "edit_direction",
-        "voice_cosine"
+        "criterion_4"
       ],
-      "tokens_per_action": 31940.333333333332,
+      "tokens_per_action": 75456.68571428572,
       "usd_per_action": 0.0,
-      "episodes": 0,
-      "errors": [
-        "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 53s"
-      ]
+      "episodes": 3,
+      "errors": []
     },
     {
       "run": "half/the Controller",
@@ -371,36 +465,64 @@
   ],
   "skipped": [],
   "call_summary": {
-    "calls": 939,
-    "prompt_tokens": 905547,
-    "completion_tokens": 832230,
+    "calls": 2164,
+    "prompt_tokens": 7038092,
+    "completion_tokens": 2287486,
     "cost_usd": 6.79396625,
-    "cache_hits": 307,
-    "errors": 291,
-    "total_tokens": 1737777,
-    "cache_hit_rate": 0.32694355697550587
+    "cache_hits": 74,
+    "errors": 54,
+    "total_tokens": 9325578,
+    "cache_hit_rate": 0.034195933456561925
   },
   "ceilings": {
-    "the Controller": {
+    "full/the Controller": {
+      "mean": 0.5434437210811359,
+      "sd": 0.13118846082273114,
+      "identified_mean": 0.6409741321230586,
+      "n_decisions": 11.0,
+      "n_pairs": 22.0
+    },
+    "full/the Maximalist": {
+      "mean": 0.6502540675465305,
+      "sd": 0.12213524774681203,
+      "identified_mean": 0.6093509056770562,
+      "n_decisions": 33.0,
+      "n_pairs": 66.0
+    },
+    "full/the Minimalist": {
+      "mean": 0.6433040911039957,
+      "sd": 0.13328796465045412,
+      "identified_mean": 0.5906549840950632,
+      "n_decisions": 32.0,
+      "n_pairs": 64.0
+    },
+    "full/the Serialist": {
+      "mean": 0.5442914154991577,
+      "sd": 0.13838603871876995,
+      "identified_mean": 0.6076632796492545,
+      "n_decisions": 28.0,
+      "n_pairs": 54.0
+    },
+    "half/the Controller": {
       "mean": 0.0,
       "sd": 0.0,
       "n_decisions": 0.0,
       "n_pairs": 0.0
     },
-    "the Maximalist": {
+    "half/the Maximalist": {
       "mean": 0.0,
       "sd": 0.0,
       "n_decisions": 0.0,
       "n_pairs": 0.0
     },
-    "the Minimalist": {
+    "half/the Minimalist": {
       "mean": 0.16835359984869974,
       "sd": 0.2053400906648779,
       "identified_mean": 0.008146707968359652,
       "n_decisions": 5.0,
       "n_pairs": 10.0
     },
-    "the Serialist": {
+    "half/the Serialist": {
       "mean": 0.0,
       "sd": 0.0,
       "n_decisions": 0.0,
@@ -2045,44 +2167,44 @@
     "shrinkage_ab": {
       "runs_replayed": 8,
       "probe_tau": {
-        "prior_anchored": 0.41203703703703703,
-        "shrunk": 0.4675925925925926
+        "prior_anchored": 0.5,
+        "shrunk": 0.5231481481481481
       },
       "probe_top1": {
-        "prior_anchored": 0.625,
-        "shrunk": 0.638888888888889
+        "prior_anchored": 0.6736111111111112,
+        "shrunk": 0.6666666666666666
       },
       "detail": {
         "prior_anchored": [
           {
-            "tau": 0.6296296296296297,
-            "top1": 0.8333333333333334,
+            "tau": 0.8148148148148149,
+            "top1": 0.9444444444444444,
             "points": 18.0,
-            "pairs": 6.0,
+            "pairs": 22.0,
             "zeroed": 0.0,
             "run": "the Controller"
           },
           {
-            "tau": 0.37037037037037035,
-            "top1": 0.5555555555555556,
+            "tau": 0.5185185185185185,
+            "top1": 0.6666666666666666,
             "points": 18.0,
-            "pairs": 6.0,
+            "pairs": 66.0,
             "zeroed": 0.0,
             "run": "the Maximalist"
           },
           {
-            "tau": 0.33333333333333326,
-            "top1": 0.5555555555555556,
+            "tau": 0.5555555555555556,
+            "top1": 0.6666666666666666,
             "points": 18.0,
-            "pairs": 6.0,
+            "pairs": 64.0,
             "zeroed": 0.0,
             "run": "the Minimalist"
           },
           {
-            "tau": 0.3333333333333333,
-            "top1": 0.5555555555555556,
+            "tau": 0.48148148148148157,
+            "top1": 0.6111111111111112,
             "points": 18.0,
-            "pairs": 6.0,
+            "pairs": 54.0,
             "zeroed": 0.0,
             "run": "the Serialist"
           },
@@ -2121,35 +2243,35 @@
         ],
         "shrunk": [
           {
-            "tau": 0.2592592592592593,
-            "top1": 0.6666666666666666,
+            "tau": 0.8148148148148149,
+            "top1": 0.9444444444444444,
             "points": 18.0,
-            "pairs": 6.0,
-            "zeroed": 6.0,
+            "pairs": 22.0,
+            "zeroed": 0.0,
             "run": "the Controller"
           },
           {
-            "tau": 0.48148148148148145,
-            "top1": 0.6111111111111112,
+            "tau": 0.5185185185185185,
+            "top1": 0.6666666666666666,
             "points": 18.0,
-            "pairs": 6.0,
-            "zeroed": 5.0,
+            "pairs": 66.0,
+            "zeroed": 0.0,
             "run": "the Maximalist"
           },
           {
-            "tau": 0.5185185185185186,
-            "top1": 0.6111111111111112,
+            "tau": 0.5555555555555556,
+            "top1": 0.6666666666666666,
             "points": 18.0,
-            "pairs": 6.0,
-            "zeroed": 5.0,
+            "pairs": 64.0,
+            "zeroed": 0.0,
             "run": "the Minimalist"
           },
           {
-            "tau": 0.6666666666666666,
-            "top1": 0.7777777777777778,
+            "tau": 0.48148148148148157,
+            "top1": 0.6111111111111112,
             "points": 18.0,
-            "pairs": 6.0,
-            "zeroed": 6.0,
+            "pairs": 54.0,
+            "zeroed": 0.0,
             "run": "the Serialist"
           },
           {

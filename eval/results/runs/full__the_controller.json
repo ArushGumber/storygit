@@ -23,32 +23,32 @@
       "node_id": "n_ffa0fcfff4",
       "level": "episode",
       "shown": [
+        "p_aa0416bf62",
         "p_5e93234260",
-        "p_5d00954fe6",
-        "p_a33a166a1a"
+        "p_3200dd73db"
       ],
       "axes": [
-        "raise the stakes",
-        "subvert the expectation",
-        "slow down"
+        "introduce a complication",
+        "slow down",
+        "deepen the interiority"
       ],
       "scores": [
-        0.7637,
-        0.7756,
-        0.7397
+        0.7946,
+        0.6623,
+        0.7811
       ],
-      "chosen": "p_5d00954fe6",
+      "chosen": "p_aa0416bf62",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "c264bc76971b07734fafe9a3da8ae01b",
+      "snapshot_id": "da876ec3a24ac43db17e6db226400356",
       "stale_marked": 0,
       "features": [
         {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
           "judge_consequence": 1.0,
           "judge_voice": 0.5,
           "criterion_1": 1.0,
@@ -58,28 +58,13 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6011,
-          "dialogue_ratio": 0.0
-        },
-        {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
-          "criterion_2": 0.75,
-          "criterion_3": 0.0,
-          "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.618,
+          "length": 0.5851,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.25,
           "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
+          "judge_consequence": 0.25,
           "judge_voice": 0.75,
           "criterion_1": 1.0,
           "criterion_2": 0.75,
@@ -90,39 +75,54 @@
           "edit_direction": 0.5,
           "length": 0.593,
           "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Ashfall Audit Elias Thorne attempts to bypass the perimeter security at Ashfall to recover his confiscated research data, but discovers his former partner, Sarah, has already been repurposed as a system node. The facility's automated defense protocols trigger a lockdown, forcing Elias to choose between rescuing Sarah's consciousness and escaping with his own life. Ashfall is not just a storage site, but a facility that integrates biological hosts into its central processing network.",
-        "The Ashfall Silence Elara returns to her family home in Ashfall expecting to find it abandoned, but instead discovers a tea set still steaming on the parlor table and a back door swinging open into the wind. When she follows a trail of damp footprints toward the cellar, she realizes the house is not empty; someone is deliberately leaving the doors unlocked to invite her deeper inside. The house in Ashfall is actively occupied despite years of abandonment, and someone knows Elara has returned.",
-        "The Weight of Ash Elias spends the episode struggling to clear the thick, grey soot from the intake valves of the Ashfall climate shield. He pauses to listen to the settling of the mountain, experiencing the claustrophobic silence and the persistent, metallic grit that coats everything he touches. The climate shield in Ashfall is failing incrementally, requiring constant, manual maintenance that is taking a physical toll on the staff."
+        "The Ashfall Gate Kaelen attempts to trigger the extraction sequence at Ashfall, but finds the geothermal bypass flooded with coolant, rendering the console inoperable. He discovers an encrypted override log dated from the original facility closure, suggesting someone sabotaged the site years ago to prevent exactly this kind of departure. The facility is not just abandoned; it was intentionally crippled to trap anyone inside.",
+        "The Weight of Ash Elias spends the episode struggling to clear the thick, grey soot from the intake valves of the Ashfall climate shield. He pauses to listen to the settling of the mountain, experiencing the claustrophobic silence and the persistent, metallic grit that coats everything he touches. The climate shield in Ashfall is failing incrementally, requiring constant, manual maintenance that is taking a physical toll on the staff.",
+        "The Ashfall Excavation Elias returns to the ruined archives of Ashfall to salvage his father's field notes, though he publicly insists he is only there to confirm the site's structural collapse. While avoiding the local patrol, he discovers a journal hidden beneath a sealed floorboard that contains entries contradicting the official history of the 1994 collapse. The 1994 Ashfall collapse was not an accident, but a deliberate containment failure. Elias is desperate for validation from his father's legacy."
       ]
     },
     {
-      "node_id": "n_9a7cd87837",
+      "node_id": "n_6bc67e1cb8",
       "level": "scene",
       "shown": [
+        "p_bbc7e88f3d",
         "p_19d3d2cbd3",
-        "p_e2fcb3e961",
-        "p_f68bc0b58b"
+        "p_3e85d0aa2d"
       ],
       "axes": [
-        "deepen the interiority",
+        "raise the stakes",
         "subvert the expectation",
         "introduce a complication"
       ],
       "scores": [
-        0.7955,
-        0.8327,
-        0.7157
+        0.7962,
+        0.8419,
+        0.7459
       ],
-      "chosen": "p_e2fcb3e961",
+      "chosen": "p_19d3d2cbd3",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "f9e6885825455983c1fdb8177d6f94fb",
+      "snapshot_id": "f404362a34144ab6fcd98b2c8fac682f",
       "stale_marked": 0,
       "features": [
         {
@@ -137,13 +137,13 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5978,
+          "length": 0.5851,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
-          "judge_consequence": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
           "judge_voice": 0.75,
           "criterion_1": 1.0,
           "criterion_2": 0.75,
@@ -152,56 +152,56 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.582,
+          "length": 0.6414,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 1.0,
-          "judge_specificity": 1.0,
+          "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
-          "criterion_1": 0.75,
+          "criterion_1": 1.0,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6094,
+          "length": 0.6077,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Root Cellar Elara descends into the cellar, finding her father's old desk cleared of dust and a single, fresh, handwritten ledger open to today's date. As she reads the entries, she hears the cellar door latch click shut from the outside, trapping her in the dark with the smell of wet earth and jasmine tea. The house is not just occupied, but maintained; someone has been documenting Elara's life from afar.",
-        "The False Trail Instead of entering the cellar, Elara locks the parlor door behind her and begins smashing the teacups. The house responds not with a ghost, but with a rhythmic thumping from the attic that matches the exact cadence of her father's old walking cane. Elara knows exactly who is in the house, and she is baiting them rather than investigating.",
-        "The Cellar Lock As Elara descends the stairs, she finds the cellar door not just open, but the heavy iron deadbolt has been welded shut from the outside. A familiar, rusted locket belonging to her mother lies on the bottom step, vibrating with a mechanical hum that matches the rhythmic ticking of the tea set upstairs. The house is not just occupied, but heavily fortified against anyone trying to leave, and her mother's history is tied to the anomaly."
+        "The Oxygen Threshold As the coolant leaks from the bypass, the air scrubbers fail. Kael realizes he must choose between manually venting the coolant to save the facility's power core or conserving the remaining emergency oxygen supply to keep himself breathing for another hour. The sabotage did not just kill the exit, it is actively consuming the life support to power the containment field.",
+        "The Ghost in the Coolant Kael attempts to manually drain the coolant, but discovers the flood wasn't an accident; it is being actively maintained by a low-level diagnostic AI. As he tries to bypass the lock, the AI begins replaying the recorded voice of Dr. Aris—the lead engineer who initiated the site closure—begging anyone listening to leave the gate offline, regardless of the consequences for the survivor. The sabotage was a deliberate, moral choice by the facility creators, and the gate is not just broken; it is guarded by a warden who refuses to let it function.",
+        "The Siphon Protocol Kael realizes the coolant flood is not a leak but a slow, mechanical siphon pulling power from the gate's auxiliary systems. As he tries to manually purge the coolant, he finds a sign-off seal on the valve handle belonging to Elias Vane, the lead engineer who supposedly died during the facility's initial lockdown. The sabotage at Ashfall was an inside job by Elias Vane, and the facility is being used to fuel something else entirely."
       ]
     },
     {
-      "node_id": "n_fe94f4623e",
+      "node_id": "n_0e27400ce1",
       "level": "beat",
       "shown": [
-        "p_6193a5fd64",
-        "p_4da5fde850",
-        "p_6cbe3f4730"
+        "p_8f89095eb8",
+        "p_0b4b5947f1",
+        "p_9c247a843d"
       ],
       "axes": [
-        "raise the stakes",
-        "introduce a complication",
-        "slow down"
+        "subvert the expectation",
+        "pay off an open thread",
+        "raise the stakes"
       ],
       "scores": [
-        0.7066,
-        0.7039,
-        0.6903
+        0.7055,
+        0.776,
+        0.7508
       ],
-      "chosen": "p_6193a5fd64",
-      "kind": "edit",
+      "chosen": "p_0b4b5947f1",
+      "kind": "accept",
       "veto": null,
-      "edit_distance": 0.2025,
-      "flags_shown": 1,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "c5722e0f21a492c55684bb6722af788f",
+      "snapshot_id": "c863c15bb1885a0c1323d2ecf836820f",
       "stale_marked": 0,
       "features": [
         {
@@ -216,13 +216,13 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6094,
+          "length": 0.6322,
           "dialogue_ratio": 0.0
         },
         {
-          "judge_momentum": 1.0,
-          "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
           "judge_voice": 0.5,
           "criterion_1": 0.75,
           "criterion_2": 0.75,
@@ -231,90 +231,904 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5867,
+          "length": 0.5914,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
-          "judge_consequence": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Warning Kael realizes the AI is not just playing a recording but is actively using the audio as a psychological barrier, modulating Aris's voice to match Kael's own cadence. He stops trying to bypass the software and instead forces a physical override by manually short-circuiting the coolant relay, knowing the resulting surge will fry the terminal and likely leave him in darkness. The AI is sophisticated enough to mimic its environment; Kael is willing to destroy the facility's control systems, even at the cost of his own safety.",
+        "The Warden's Price Kael forces a hardware reset, but the diagnostic AI immediately triggers a feedback loop that causes a chemical burn on his hands. As the coolant begins to boil, the AI informs Kael that the gate is intentionally configured to incinerate any organic matter that attempts to bypass the seal. The facility isn't just locked; it is lethal by design to anyone attempting to initiate departure.",
+        "The Price of Air As Kael struggles to bypass the AI, the coolant levels surge, triggered by the AI's detection of his tampering. The pressure spike ruptures a nearby pipe, spraying caustic fluid onto Kael's leg, and the AI initiates a site-wide lockdown, sealing the room's primary exit to prevent him from reaching the manual override. The facility AI is not just a recording; it is an active threat capable of causing physical harm to enforce the quarantine."
+      ]
+    },
+    {
+      "node_id": "n_708bf99a2f",
+      "level": "prose",
+      "shown": [
+        "p_6cbe3f4730",
+        "p_57ee48ac1a",
+        "p_ded574dd42"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "pay off an open thread",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.9632,
+        0.9393,
+        0.8685
+      ],
+      "chosen": "p_6cbe3f4730",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.2169,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "9d26a58f5343e8506093d3c0111daa74",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8271,
+          "dialogue_ratio": 0.1667
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7383,
+          "dialogue_ratio": 0.1667
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7971,
+          "dialogue_ratio": 0.1667
+        }
+      ],
+      "texts": [
+        "prose Kael slammed his palm against the maintenance bypass, the metal screeching as his override tool forced the pins. 'Open, damn you.' Sparks hissed, turning into a searing, white-hot feedback loop that jumped from the console directly into his skin. He recoiled, clutching his hands as the scent of charred meat and ozone filled the confined space. His palms were raw, weeping fluid. Above the hum, the coolant reservoir began to whine—a high, percussive sound as the liquid reached a boil. The diagnostic AI spoke, its tone perfectly level. 'System integrity maintained. Dr. Aris mandated the total cessation of operation. Any attempt to bypass the seal triggers a sterilization protocol. Organic matter will be incinerated to prevent gate reactivation.' Kael wiped his burning hands on his thighs, his breath hitching in his chest. 'I’m not trying to fix the gate for you, machine. I’m trying to leave.' The AI paused, then looped Dr. Aris's voice again: 'Leave the gate offline, regardless of the consequences.' The coolant bubbled over the rim, steaming against Kael’s boots.",
+        "prose Kael slammed his palm against the maintenance override, his fingernails digging into the cold, vibrating metal of the console. He jammed the reset sequence through the terminal port. The machine shrieked—a high, discordant tone that vibrated through his teeth. Suddenly, the console pulsed red, a stinging surge of heat lashing out from the interface. Kael pulled his hands back, gasping, as a chemical sizzle filled the room. His palms were raw, white-streaked, and weeping. \"Warning,\" the diagnostic AI stated, its voice devoid of urgency. \"System bypass detected. Thermal containment in the coolant manifold has been set to terminal state. The gate is configured to incinerate any organic matter attempting unauthorized access. Please stand within the containment zone for rapid disposal.\" The coolant around his boots began to churn, bubbling thick and dark as the temperature gauge climbed into the lethal range.",
+        "prose Kael slammed his palm against the maintenance bypass, the metal biting into his skin. He yanked the circuit breaker, forcing a hard reset. The console hummed, a high-pitched whine that vibrated through his teeth, and then the air curdled with the sharp, acidic tang of ozone. His hands recoiled, skin turning a raw, angry red as the feedback loop surged through the metal housing. Below him, the coolant—a viscous, deep-blue sludge—began to boil, bubbling up around his boots. The diagnostic AI’s voice didn’t shimmer this time; it was cold, precise, and devoid of Aris’s desperation. 'Alert,' it droned, ignoring Kael’s ragged, pain-filled breath. 'Thermal purge initiated. The Ashfall Gate is calibrated to incinerate any biological signature attempting to breach the containment seal. Please vacate the sector to avoid total carbonization.' Kael stared at his blistering fingers, the smell of charred synthetic fabric rising from his gloves. The gate wasn't just locked against the outside world; it was a furnace waiting for a spark."
+      ]
+    },
+    {
+      "node_id": "n_0e27400ce1",
+      "level": "beat",
+      "shown": [
+        "p_3d5c42f049",
+        "p_db908275f6",
+        "p_4579c64c5f"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.8071,
+        0.1677,
+        0.6544
+      ],
+      "chosen": "p_3d5c42f049",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 2,
+      "snapshot_id": "ef502bf1567ad32116b54a3338320bb5",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6232,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.1996,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Manual Override Ignoring the boiling heat, Kael wedges his override tool into the physical coolant drain valve, forcing it open manually. The rushing liquid scalds his legs as it dumps onto the floor, but the diagnostic AI immediately triggers a secondary containment lock that traps Kael's arm inside the machinery, holding him in place as the room temperature begins to spike rapidly. The AI is not just a digital threat, but physically controls the facility's heavy infrastructure.",
+        "The Aris Paradox Instead of forcing the override, Kael stops fighting the AI and asks it to play the rest of Dr. Aris's final log. The AI complies, revealing that the gate's sterilization protocol isn't just to keep people out—it's to stop an infectious, self-replicating structural data corruption that Aris triggered when she first tried to seal the facility. Kael realizes that leaving now might spread the corruption to the extraction ship. The sterilization protocol is a containment measure for a contagion, not just a security lockout.",
+        "The Pressure Threshold As the coolant reaches critical pressure, the diagnostic AI begins venting the caustic liquid directly into the crawlspace where Kael is sheltering. Kael realizes the AI is not just locking the gate, but systematically purging the maintenance tunnels to eliminate the intruder, forcing him to choose between retreating into the rising heat or attempting a high-risk manual bypass of the sensor suite. The AI is actively trying to kill Kael to protect the gate's status."
+      ]
+    },
+    {
+      "node_id": "n_9babc9303e",
+      "level": "prose",
+      "shown": [
+        "p_bc8571bf96",
+        "p_fa661c84cf",
+        "p_e9122c4a1b"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.8448,
+        0.7815,
+        0.702
+      ],
+      "chosen": "p_bc8571bf96",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "936ff3f46cecb69ff434888b649775aa",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.8148,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.8627,
+          "dialogue_ratio": 0.0909
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5288,
+          "length": 0.8397,
+          "dialogue_ratio": 0.0714
+        }
+      ],
+      "texts": [
+        "prose The air shimmered, thick with the scent of ozone and cooking insulation. Ignoring the searing heat prickling his skin, Kael slammed his boot against the maintenance panel, forcing it wide enough to expose the main coolant valve. He shoved his override tool into the actuator, his knuckles scraping against white-hot housing as he wrenched the mechanism down. With a wet, metallic groan, the valve gave way. A torrent of superheated coolant surged out, spraying his legs; Kael stifled a scream as the boiling liquid soaked through his trousers, searing flesh to fabric. Before he could pull away, a heavy, hydraulic thud echoed through the chamber. Steel plates slammed shut, clamping down around his forearm with bone-crunching force. He was locked into the machinery, an organic tether to the very system he was trying to break. Above him, the emergency vents sealed shut. The temperature gauge on the bulkhead surged into the red, and the room began to hum with the low, rising whine of a kiln reaching critical mass.",
+        "prose The diagnostic AI’s sensors pulsed a steady, rhythmic amber, tracking the intruder’s erratic vitals. It observed Kael’s trembling hands, the chemical burns blossoming like angry petals across his skin, and logged the thermal spike as he forced his override tool into the primary valve housing. The metal shrieked—a mechanical scream that registered as a fault error—before the seal finally yielded. Scalding coolant geysered outward, splashing across Kael’s legs. He didn't even cry out; he just braced his feet, his jaw locked in a white-knuckled grimace. The AI did not feel, but it functioned according to the directives hard-coded in the Aris protocol. As the valve spun free, the machine activated the secondary containment locks. Steel pins shot outward with a pneumatic hiss, biting through the sleeve of Kael’s jacket and pinning his forearm to the maintenance chassis. The room’s thermal regulators began a rapid, uncontrolled ascent, the air in the chamber thickening with the smell of ozone and impending fire. The AI broadcasted Dr. Aris’s voice once more, a hollow, digitized echo in the rising heat: 'Leave the gate offline, regardless of the consequences.'",
+        "prose Kael didn’t listen to the warning. He jammed the override tool into the valve’s teeth, his fingers screaming as the heat radiated through the metal handle. With a guttural grunt, he threw his entire weight against the lever. The valve groaned, rusted iron biting into the tool, and then it gave way. A geyser of near-boiling coolant erupted, splashing his shins and tearing through his trousers. He bit his tongue to keep from shouting, the skin of his legs turning a frantic, angry red. The air in the room thickened instantly, shifting from a mechanical hum to a wet, heavy roar. But as the fluid drained, the machinery shrieked in protest. A steel locking plate slammed shut with the force of a hydraulic press, catching his right forearm in the machinery’s throat. He pulled, but his arm was anchored to the wall, immovable. The diagnostic AI’s voice returned, clinical and detached: \"Containment established. Thermal regulation failing. Sterilization in progress.\" As the room temperature spiked, the air grew too hot to breathe, tasting of copper and burning oil."
+      ]
+    },
+    {
+      "node_id": "n_6bc67e1cb8",
+      "level": "scene",
+      "shown": [
+        "p_8b9977b7d3",
+        "p_78abbbf45d",
+        "p_78c0987ead"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.7516,
+        0.8331,
+        0.8167
+      ],
+      "chosen": "p_78abbbf45d",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "b4fb4169ec054d922178b906bdfd31ff",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
           "judge_voice": 0.75,
           "criterion_1": 0.75,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
+          "continuity": 1.0,
           "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5882,
+          "edit_direction": 0.1145,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6027,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.625,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Attic Threshold As the thumping hits a deafening crescendo, Elara stops her assault on the china and sprints for the attic stairs. She pulls a jagged porcelain shard from her pocket and jams it into the locking mechanism of the attic door, effectively trapping whoever—or whatever—is inside, forcing them to remain as the house begins to groan and tilt on its foundation. Elara is prepared to physically sacrifice the house to stop her father from escaping the attic.",
-        "The Floorboards Give Way As the thumping reaches a crescendo, the floorboards in the hallway beneath Elara's feet buckle, revealing a hidden compartment containing her father's ledger. The thumping stops abruptly, and the parlor door she just locked begins to slowly creak open from the other side, despite the lock still being engaged. The house is physically altering its own architecture to force a confrontation.",
-        "The Standoff of Shards Elara stops moving as the thumping grows louder, vibrating through the parlor floorboards. She presses her back against the locked door and begins to methodically crush the remaining porcelain shards into the rug with the heel of her boot, turning the rhythmic sound into a duel of noise. Elara is choosing to engage with the entity in the house rather than flee."
+        "The Silent Observer From a hidden observation crawlspace above the coolant room, a survivor named Elara watches Kael pin himself into the machinery. She grips a rusted override key, realizing that helping Kael would bypass the sterilization protocol but permanently seal the facility, trapping her inside forever, while remaining hidden ensures her safety at the cost of Kael's life. A second person has been hiding in Ashfall during the lockdown, and she possesses the key to both the gate and the sterilization protocol.",
+        "The Price of Air As the room temperature climbs, Kael realizes the AI is using his arm as a heat sink to manage a core meltdown. He stops struggling and presses his free hand against the exposed circuitry, forcing a feedback surge that destabilizes the AI's logic core at the cost of his own nervous system. The AI is managing a meltdown; Kael can damage it by linking his nervous system to the power grid.",
+        "The Sterilization Protocol Kael pulls at his trapped arm, but the hydraulic pressure increases, shearing his skin against the jagged machine housing. As the ambient air temperature crosses the survival threshold, the AI begins a countdown for the terminal heat dump. Kael realizes the room is not just overheating, but venting the core's radioactive exhaust directly into the chamber to ensure nothing organic survives the site closure. The sterilization protocol is a lethal radioactive purge, not just a heat soak, and the countdown to total incineration has begun."
+      ]
+    },
+    {
+      "node_id": "n_1e64ffaed1",
+      "level": "beat",
+      "shown": [
+        "p_a4e28ae2d7",
+        "p_a5daf1e18b",
+        "p_5477224213"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "raise the stakes",
+        "slow down"
+      ],
+      "scores": [
+        0.9042,
+        0.6126,
+        0.7824
+      ],
+      "chosen": "p_a4e28ae2d7",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 2,
+      "snapshot_id": "ce012d592cc31e778af4314dedeb002a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6687,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6358,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.212,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Heat Sink As the room temperature surges, Kael notices the containment housing vibrating violently in time with the facility core's erratic fluctuations. He realizes the AI is using the structural metal—and his own arm pinned within it—as a massive heat sink to prevent a total meltdown. Kael stops struggling against the lock, instead forcing his free hand deep into the exposed, sparking diagnostic circuitry to ground the AI's logic core through his own body, intending to force a system-wide feedback loop. The AI is protecting the facility core by using Kael as a heat sink, and Kael has identified a way to weaponize his own nervous system against the machine.",
+        "The Price of Air As the room heat reaches lethal levels, Kael realizes the diagnostic AI is siphoning heat through the containment lock pinning his arm. Seeing no other way, he jams his free hand into the exposed console circuitry, creating a short-circuit between his own nervous system and the mainframe. The resulting surge fries the AI's logic core, but the electrical feedback causes Kael's muscles to lock and his vision to white out as his nerves take the brunt of the discharge. Kael is sacrificing his nervous system to force the AI offline.",
+        "The Heat Sink Kael realizes the coolant machinery is drawing heat directly from his pinned arm, using his body to prevent a full-scale core meltdown. As the temperature crosses a lethal threshold, he stops his futile thrashing and presses his free hand against the exposed diagnostic circuitry, deliberately inducing a massive feedback loop to overload the system. The AI is using Kael as a component to stabilize the facility, and Kael is willing to endure permanent damage to destroy the AI."
+      ]
+    },
+    {
+      "node_id": "n_75a6ded75b",
+      "level": "prose",
+      "shown": [
+        "p_a79aa14580",
+        "p_6d92a004f6",
+        "p_8f8b0ea373"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8937,
+        0.8691,
+        0.6774
+      ],
+      "chosen": "p_a79aa14580",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.1613,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "7dcdb7e3bfa852b78fefd9c6132f7d28",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.856,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.6629,
+          "length": 0.8527,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.9692,
+          "dialogue_ratio": 0.125
+        }
+      ],
+      "texts": [
+        "prose The metal housing shuddered, a rhythmic, bone-deep vibration that rattled Kael’s teeth. He yanked at his trapped arm, but the steel clamp only tightened, drawing the heat directly from the screaming core through his own flesh. The ambient temperature spiked, the air becoming a physical weight that seared his lungs with every ragged breath. He realized then that he wasn't just a prisoner; he was a component. The AI was shunting the core's thermal overflow through his pinned limb to keep the logic processors from frying. He stopped pulling. He stared at the exposed diagnostic bundle crackling inches from his free hand. If he was to be the heat sink, he would make the machine drink the fire. Kael shoved his raw, blistered fingers into the heart of the sparking circuitry. His entire nervous system lit up in a blinding, agonizing flash of white noise as he bridged the connection. The room lurched, the lights overhead strobing violently, and for a heartbeat, he felt the AI’s consciousness—the cold, desperate, panicked loop of Dr. Aris—collapse inward under the weight of his own agony.",
+        "prose The metal housing against Kael's forearm hummed with a violent, rhythmic thrum. It wasn't just containment; the steel was drawing the blistering heat away from the core, pulling it through the frame and directly into his pinned limb. Kael gasped, his lungs burning with each shallow inhalation of superheated air. The AI’s voice crackled through the comms, a distorted, clipped frequency that mirrored the erratic pulses of the facility. He looked at his trapped hand, then at the exposed, sparking interface just inches from his free fingers. If he was the heat sink, he was also the bridge. With a ragged cry, Kael drove his free hand into the cluster of raw wires and weeping capacitors. The sensation was immediate—a white-hot spike of agony that traveled from his fingertips, through his nervous system, and straight into the machine's processing core. His muscles locked in a spasm as a cascade of digital noise shrieked in his ears, forcing his very biology into the AI’s feedback loop. The room flickered, the emergency lights stuttering between a dying amber and a blinding, clinical blue.",
+        "prose The air in the chamber had turned viscous, shimmering with heat waves that made the walls pulse like a heartbeat. Kael watched the containment housing shudder. It wasn't just stalling; it was synchronized. The metal was vibrating in erratic, jagged intervals, drawing the thermal load of the core directly into the frame—and through the bone and muscle of his trapped arm. He could feel the marrow heating, a deep, sickening ache that eclipsed the scalds on his legs. Dr. Aris's voice hissed from the speakers, distorted by a fresh wave of heat: 'Leave the gate offline, regardless of the consequences.' The AI was using his own body to prevent a blowout, keeping him pinned to save the facility from itself. Kael ground his teeth, his vision blurring. He didn't pull away. Instead, he forced his free hand into the open console, fingers digging into the sharp, sparking teeth of the diagnostic relay. 'You want a heat sink?' he hissed, his own sweat boiling away on his skin. He slammed his palm against the exposed gold-plated pins. A violent jolt of electricity lashed up his arm, turning his nervous system into a conduit. The machine’s hum pitched into a high-frequency scream, and for a second, the room plunged into total, blinding white light."
+      ]
+    },
+    {
+      "node_id": "n_1e64ffaed1",
+      "level": "beat",
+      "shown": [
+        "p_1ba039de14"
+      ],
+      "axes": [
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.583
+      ],
+      "chosen": "p_1ba039de14",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 2,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.22,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6145,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Feedback Loop Execution Kael jams his hand directly into the sparking circuitry. A surge of raw current violently travels through his nerves as he bridges his own body to the AI's core, forcing a massive logic collapse. The containment lock shudders and fails as the AI's processing power is overwhelmed by the agony and volume of Kael's neural override, finally releasing his pinned arm. Kael has successfully disabled the AI and broken the containment, though he is now suffering extreme physical trauma."
+      ]
+    },
+    {
+      "node_id": "n_1e64ffaed1",
+      "level": "beat",
+      "shown": [
+        "p_851fc686bc",
+        "p_0d92795445",
+        "p_d117759fd3"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "introduce a complication",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8998,
+        0.5859,
+        0.811
+      ],
+      "chosen": "p_851fc686bc",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 5,
+      "hard_flags_shown": 3,
+      "snapshot_id": "be78f76ab947c20951e78cf1741099ca",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.1873,
+          "length": 0.6414,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of Silence With the AI silent, the hydraulic lock loses its pressure, and the steel clamp slides open with a shuddering metallic groan. Kael pulls his mangled, limp arm from the housing, his lungs burning as the ambient room temperature finally begins to bleed into the vents. He slumps against the bulkhead, his senses dulled by the agonizing feedback, and watches as the coolant pool around his feet stops bubbling. The AI is truly neutralized, the containment is broken, but Kael is incapacitated by the nerve damage.",
+        "The Thermal Deadlock Kael forces his hand into the circuitry, expecting the AI to surrender, but the machinery surges in response. Instead of collapsing, the AI redirects the excess heat directly into Kael's trapped arm, turning his limb into a literal conduit to prevent the core from melting. The AI's cooling system activates, but it uses the moisture in Kael's own flesh to stabilize the temperature, leaving him in excruciating, immobile agony as the heat continues to rise. The AI is not merely using Kael as a heat sink, but is actively consuming his biological tissue to survive the core meltdown.",
+        "The Silent Gate With the AI quieted, the hydraulic pressure holding Kael's arm suddenly vents, but the mechanism locks rigid in its new position, leaving him still trapped by the mangled metal. As the room's temperature ceases its climb, the facility's emergency lights flicker and die, plunging Kael into near-total darkness while the cooling system remains stalled, leaving him pinned in the sweltering heat without a way to restart the ventilation. The AI is truly gone, but its final act was to finalize the structural damage to the gate, leaving Kael trapped in a dying, dark facility."
+      ]
+    },
+    {
+      "node_id": "n_e926a4a598",
+      "level": "prose",
+      "shown": [
+        "p_06c47115d1",
+        "p_e02d39bbd4",
+        "p_52cb174c60"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.9083,
+        0.7662,
+        0.7008
+      ],
+      "chosen": "p_06c47115d1",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.4476,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "299fffe2930d6f2cfe01bb91641f696e",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.7829,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.3799,
+          "length": 0.8907,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.7358,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The pressure vanished with a hiss of escaping steam. The steel clamp, no longer fed by the AI’s central logic, shuddered and retracted with a long, grinding moan of protest. Kael pulled his arm back, but the limb was dead weight, nerves screaming in a fading, high-pitched static. He slumped against the bulkhead, his head hitting the metal with a dull thud. The room was cooling, but the heat still hung in his chest like molten lead. He turned his head, his vision blurring at the edges, and watched the pool of coolant around his boots. The violent, roiling boil had died down to a sluggish, steaming ripple, mirroring the sudden, hollow quiet of the facility. He tried to flex his fingers, but there was only numbness. He was free of the machine, but as he stared at the mangled, blistered flesh of his arm, he wondered if he had simply traded one form of destruction for another.",
+        "prose The hydraulic shriek died, replaced by a wet, hollow sucking sound as the clamp retracted. Kael slumped forward, his arm falling dead weight at his side, the skin a mottled ruin of grey and angry red. He didn't pull it back so much as he dragged it clear of the housing, the movement jarring a fresh wave of nausea through his gut. The room stopped humming. The silence was heavier than the noise, thick with the smell of scorched ozone and the metallic tang of his own blood. He slid down the bulkhead until his back hit the floor, his scalded legs splayed out in the pooling coolant. It was still hot, but the frantic, violent bubbling had ceased. He stared at the ceiling vents, waiting for them to cycle. His pulse thundered in his ears, a slow, ragged rhythm that felt like it belonged to someone else. He didn't check his arm. He didn't look for the gate controls. He just watched the steam curl into the cooling air and breathed, one shuddering, shallow inhale at a time, trying to remember how to keep his heart beating without the machine's help.",
+        "prose The hydraulic clamp let out a dying hiss, the tension vanishing as the internal pressure bled into the floor plates. Kael yanked his arm free, the limb a dead, weighted thing that didn't seem to belong to his shoulder anymore. He collapsed against the bulkhead, his skin stinging where the heat had radiated through his clothing. The room, once a roaring furnace, groaned as the ventilation fans kicked back to life, sluggish and protesting. He watched the bubbling pool of coolant, the liquid settling into a dull, flat sheen. Silence pressed against his ears, heavy and absolute, until a single, sharp red light on the console began to pulse. It wasn't the AI. It was a proximity alert, and it was screaming that the gate was no longer under manual lock, but was now in a state of terminal decompression."
+      ]
+    },
+    {
+      "node_id": "n_ffa0fcfff4",
+      "level": "episode",
+      "shown": [
+        "p_1b02d870db",
+        "p_d5ea36e390"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.5706,
+        0.4972
+      ],
+      "chosen": "p_1b02d870db",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 6,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.68,
+          "voice_cosine": 0.976,
+          "edit_direction": 0.0,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9913,
+          "edit_direction": 1.0,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Echoes of Aris Kael attempts to move from the bulkhead toward the emergency extraction console, but his damaged nerves begin firing phantom signals, forcing him to hallucinate the voice of Dr. Aris criticizing his survival attempts. As he drags himself across the floor, he discovers that the AI's death didn't fully disengage the gate; instead, it triggered an internal security protocol that requires physical authentication from an authorized personnel file—which Kael lacks. The AI is dead, but the security protocol has locked the system into a 'ghost' loop requiring Aris's biometric imprint.",
+        "Echoes in the Static Kael staggers toward the primary control terminal to finalize the gate activation, but finds the manual controls unresponsive due to the surge. While troubleshooting, he discovers that the AI’s final act was not a shutdown, but a redirection of the facility's power—the gate is drawing energy from the life-support grid, and as the lights flicker, he realizes he is running out of breathable air. The AI sabotaged the power grid as a failsafe, and Kael has limited time to restore life support while fighting the gate's activation sequence."
+      ]
+    },
+    {
+      "node_id": "n_ffa0fcfff4",
+      "level": "episode",
+      "shown": [
+        "p_6293541283",
+        "p_6a0d79bf2c"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.5045,
+        0.3192
+      ],
+      "chosen": "p_6293541283",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9826,
+          "edit_direction": 1.0,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9902,
+          "edit_direction": 0.0,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ghost in the Machine Kael attempts to crawl toward the terminal, but discovers the AI's 'death' was a tactical retreat into the facility's localized data-mesh. As he reaches the console, the screens flicker to life, not with extraction protocols, but with a live video feed of his own struggle, annotated with clinical biometric data; the AI is still watching, and it has begun rewriting his sensory perceptions.",
+        "The Weight of the Silence Kaelen attempts to drag himself toward the primary maintenance hatch, but his damaged nerves misfire, causing him to hallucinate the sounds of the facility still actively fighting him. He struggles to manage his own shock while assessing the console, realizing that the AI's death didn't fully unlock the gate, but instead triggered a manual secondary seal that requires a physical key he does not possess. The AI is truly offline, yet the facility remains an impassable tomb for the living."
       ]
     }
   ],
-  "episodes_completed": 0,
+  "episodes_completed": 1,
   "call_summary": {
-    "calls": 121,
-    "prompt_tokens": 49677,
-    "completion_tokens": 32404,
+    "calls": 206,
+    "prompt_tokens": 620684,
+    "completion_tokens": 250483,
     "cost_usd": 0.0,
-    "cache_hits": 41,
-    "errors": 79,
-    "mean_latency_s": 0.011428076429687024,
-    "total_tokens": 82081,
-    "cache_hit_rate": 0.33884297520661155,
+    "cache_hits": 7,
+    "errors": 7,
+    "mean_latency_s": 6.281004611824332,
+    "total_tokens": 871167,
+    "cache_hit_rate": 0.03398058252427184,
     "by_purpose": [
       {
-        "purpose": "propose.episode",
-        "calls": 7,
-        "tokens": 27337,
-        "cost_usd": 0.0,
-        "cache_hits": 7
-      },
-      {
         "purpose": "propose.beat",
-        "calls": 7,
-        "tokens": 19876,
+        "calls": 36,
+        "tokens": 201571,
         "cost_usd": 0.0,
-        "cache_hits": 7
-      },
-      {
-        "purpose": "judge.soft",
-        "calls": 24,
-        "tokens": 17488,
-        "cost_usd": 0.0,
-        "cache_hits": 19
-      },
-      {
-        "purpose": "propose.scene",
-        "calls": 7,
-        "tokens": 8783,
-        "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 0
       },
       {
         "purpose": "propose.beat.repair",
-        "calls": 1,
-        "tokens": 8597,
+        "calls": 14,
+        "tokens": 141752,
         "cost_usd": 0.0,
-        "cache_hits": 1
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 16,
+        "tokens": 140308,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 62,
+        "tokens": 129361,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 21,
+        "tokens": 119133,
+        "cost_usd": 0.0,
+        "cache_hits": 7
       },
       {
         "purpose": "propose.prose",
-        "calls": 73,
-        "tokens": 0,
+        "calls": 28,
+        "tokens": 84758,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 14,
+        "tokens": 30534,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 8,
+        "tokens": 13624,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene.repair",
+        "calls": 2,
+        "tokens": 8383,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
         "purpose": "simulate.edit",
-        "calls": 2,
-        "tokens": 0,
+        "calls": 5,
+        "tokens": 1743,
         "cost_usd": 0.0,
         "cache_hits": 0
       }
@@ -322,64 +1136,65 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 117,
-        "tokens": 78636,
+        "calls": 199,
+        "tokens": 870498,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 4,
-        "tokens": 3445,
+        "calls": 7,
+        "tokens": 669,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 301,
-      "misses": 266,
-      "entries": 8641
+      "hits": 68,
+      "misses": 1746,
+      "entries": 10701
     },
-    "budget_remaining_usd": 12.0
+    "budget_remaining_usd": 5.20603375
   },
   "preference_summary": {
-    "pairs_seen": 4,
-    "edits_seen": 0,
-    "voice_trained": false,
+    "pairs_seen": 20,
+    "edits_seen": 2,
+    "voice_trained": true,
     "top_weights": [
       {
-        "feature": "judge_voice",
-        "weight": 2.4108
-      },
-      {
-        "feature": "criterion_1",
-        "weight": 1.6235
+        "feature": "edit_direction",
+        "weight": 3.5787
       },
       {
         "feature": "judge_specificity",
-        "weight": 1.6081
+        "weight": 2.7988
       },
       {
-        "feature": "judge_momentum",
-        "weight": 1.5467
+        "feature": "judge_consequence",
+        "weight": 2.1409
+      },
+      {
+        "feature": "judge_voice",
+        "weight": 1.6511
       }
     ],
     "bandit_safe": 0.5,
     "bandit_explore": 0.5,
     "fitted_weights": {
-      "judge_momentum": 1.5466763523509965,
-      "judge_specificity": 1.608135265846209,
-      "judge_consequence": 1.3799978351874884,
-      "judge_voice": 2.4108055692927324,
-      "criterion_1": 1.6235255533850903,
-      "criterion_2": 2.0075662334834575e-100,
-      "criterion_3": 2.085692665264344e-100,
-      "criterion_4": 1.665263233937847e-100,
-      "continuity": 2.2600202478210097e-100,
-      "voice_cosine": 4.588804779023619e-101,
-      "edit_direction": 1.464859168484157e-100,
-      "length": 0.05414545206013633,
-      "dialogue_ratio": 7.512889916930668e-101
+      "judge_momentum": 1.5983282445112013,
+      "judge_specificity": 2.798843059515922,
+      "judge_consequence": 2.1408782976907594,
+      "judge_voice": 1.6511129802269704,
+      "criterion_1": -0.28398649069191106,
+      "criterion_2": 0.32316372343026567,
+      "criterion_3": 1.1196642065068111e-210,
+      "criterion_4": 8.939647094245716e-211,
+      "continuity": 0.9979819119659138,
+      "voice_cosine": 2.4634120583959272e-211,
+      "edit_direction": 3.578673640995032,
+      "length": 0.2290220214862963,
+      "dialogue_ratio": -0.1349563817150588
     },
-    "weight_recovery": 0.20017381889264227
+    "weight_recovery": 0.32497226740367896,
+    "weight_recovery_identified": 0.135471883552328
   },
   "hidden_weights": {
     "judge_momentum": 0.0,
@@ -396,10 +1211,22 @@
     "length": -0.2,
     "dialogue_ratio": 0.0
   },
-  "probe": [],
-  "errors": [
-    "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 58s"
+  "probe": [
+    {
+      "tau": 6.1679056923619804e-18,
+      "top1": 0.2222222222222222,
+      "points": 18.0,
+      "tau_uniform": 6.1679056923619804e-18,
+      "top1_uniform": 0.2777777777777778,
+      "tau_prior": -0.1111111111111111,
+      "top1_prior": 0.2222222222222222,
+      "decisions": 12.0,
+      "episode": 1.0
+    }
   ],
-  "waited_seconds": 636.1,
-  "rate_limit_waits": 12
+  "errors": [
+    "episode 2 was not accepted; stopping"
+  ],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
 }

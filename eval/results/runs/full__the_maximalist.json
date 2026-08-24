@@ -23,48 +23,45 @@
       "node_id": "n_c6646cb9bc",
       "level": "episode",
       "shown": [
-        "p_7c532f914b",
-        "p_0f401473ce",
-        "p_e08489a0da"
+        "p_671fe06a6d",
+        "p_0f401473ce"
       ],
       "axes": [
-        "slow down",
-        "shift the point of view",
-        "pay off an open thread"
+        "introduce a complication",
+        "deepen the interiority"
       ],
       "scores": [
-        0.6243,
-        0.5853,
-        0.8312
+        0.4117,
+        0.5606
       ],
-      "chosen": "p_e08489a0da",
-      "kind": "accept",
+      "chosen": "p_0f401473ce",
+      "kind": "reject",
       "veto": null,
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "3a95c0127ba04e2e6a59bdcccd0584ee",
+      "snapshot_id": null,
       "stale_marked": 0,
       "features": [
         {
           "judge_momentum": 0.75,
-          "judge_specificity": 0.75,
+          "judge_specificity": 0.5,
           "judge_consequence": 1.0,
-          "judge_voice": 0.5,
-          "criterion_1": 1.0,
-          "criterion_2": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5962,
+          "length": 0.593,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.25,
           "judge_specificity": 0.75,
-          "judge_consequence": 0.5,
+          "judge_consequence": 0.25,
           "judge_voice": 0.5,
           "criterion_1": 0.5,
           "criterion_2": 0.75,
@@ -73,58 +70,136 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5962,
+          "length": 0.5867,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ash of Yesterday Elias prepares to leave Ashfall, but finds the local atmospheric filtration unit—the very thing keeping his lungs clear—has been cannibalized for parts by someone he trusted. He is forced to confront the reality that the dust storms outside are no longer survivable for him, rendering his planned escape route a death sentence. The filtration unit was the only thing protecting Elias; his betrayal is personal.",
+        "The Taste of Sulfur Elias sweeps the thick, grey ash from his doorstep in Ashfall, obsessively scrubbing until his knuckles bleed. He avoids looking at the neighbor's boarded-up windows, choosing instead to focus on the rhythmic, metallic scrape of his brush against the rotting porch boards. The ash is pervasive and constant; Elias is a man defined by rigid, self-imposed rituals in a decaying environment."
+      ]
+    },
+    {
+      "node_id": "n_c6646cb9bc",
+      "level": "episode",
+      "shown": [
+        "p_386eeab903",
+        "p_9f28e0c2f2",
+        "p_b52eac3be8"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "shift the point of view",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.8329,
+        0.7592,
+        0.6725
+      ],
+      "chosen": "p_386eeab903",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "aed12869d1323eb74f995f58979e3d97",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5685,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5805,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
-          "judge_voice": 0.75,
-          "criterion_1": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.5946,
+          "length": 0.5641,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Ash Settles Elara spends the morning scraping volcanic grit from the window seal while struggling to ignore the metallic tang of sulfur on her tongue. She finds a handwritten note wedged in the door frame, dated three days ago, written in a hand she barely recognizes as her own. The volcanic activity is worsening, and Elara is suffering from memory gaps or a dissociative state related to the town's isolation.",
-        "The Archivist's Breath Kaelen watches Elara fumble with the archives, his nose raw from the sulfurous grit blowing through the cracks in the Ashfall vault. He knows she is hiding the ledger, not because she's malicious, but because she fears the truth about the source of the falling ash will break her faith. Kaelen has been tracking the source of the ash for months; Elara is physically shielding the incriminating documents.",
-        "The Ash That Won't Settle Elias sifts through the grey, biting soot of Ashfall to find his missing cache, grappling with the phantom smell of scorched cedar. He discovers the lock box not emptied, but filled with a perfectly preserved, ticking pocket watch that isn't his. Elias's past holds a debt to someone who knows exactly where he hides his failures; the ash is not just debris, it is encroaching."
+        "The Weight of Grey Elias spends the morning methodically filtering his water supply, his movements precise and devoid of hesitation. When a heavy knock rattles his front door—a sound unheard in months—he ignores it, focusing instead on the taste of the tap water, checking for the metallic tang that signals a failing filter.",
+        "The Scraper's Shadow Mara watches Elias from her second-story window, noting how the rhythmic scraping of his brush sounds exactly like teeth grinding. She knows the ash he clears isn't just fallout, but something sentient that reacts to his obsessive cleanliness by settling thicker every hour. The ash has a rudimentary, hostile consciousness; Elias is unknowingly feeding it through his compulsion.",
+        "The Weight of Grey Elias prepares his respirator to leave Ashfall for the supply caches, but discovers his primary air filter has been punctured by a needle-like shard of volcanic glass. His departure plan collapses as the cabin vents begin to whistle, signaling an incoming surge of toxic, heavy ash."
       ]
     },
     {
-      "node_id": "n_418ea7cf36",
+      "node_id": "n_4f022c7e9a",
       "level": "scene",
       "shown": [
+        "p_e726000836",
         "p_cfacf527c6",
-        "p_b024ba568d",
-        "p_0a6917b1ea"
+        "p_8373df834b"
       ],
       "axes": [
-        "subvert the expectation",
-        "pay off an open thread",
-        "deepen the interiority"
+        "deepen the interiority",
+        "raise the stakes",
+        "subvert the expectation"
       ],
       "scores": [
-        0.8545,
-        0.484,
-        0.6052
+        0.7568,
+        0.8216,
+        0.7704
       ],
       "chosen": "p_cfacf527c6",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 1,
+      "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "4e46ebf55b952d60ae310310569e5c72",
+      "snapshot_id": "21d1f42f2bb34ee1b76d5b1e03e51059",
       "stale_marked": 0,
       "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        },
         {
           "judge_momentum": 1.0,
           "judge_specificity": 0.75,
@@ -137,13 +212,852 @@
           "continuity": 1.0,
           "voice_cosine": 0.5,
           "edit_direction": 0.5,
-          "length": 0.6304,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Threshold Elias sits with his back to the door, listening to the rhythmic, wet scraping of the visitor’s boots on the porch. He methodically dissects the filter cartridge on his kitchen table, realizing that the grit inside isn't just mineral buildup but a fine, pulverized bone dust, and he begins to wonder if his isolation is a sanctuary or a cage. The filter is compromised by organic material, not just malfunction; the visitor remains a persistent, patient force.",
+        "The Silence Between Knocks Elias leans his forehead against the door, feeling the vibration of a second, sharper knock that isn't just wood on wood, but metal on metal—the Warden's signet ring. He realizes the air in the room has grown stagnant and thin, the hum of the internal filter dying into a final, pathetic click, leaving him with only the acrid smell of burnt plastic and his own frantic, shallow breaths. The Warden of Kell has arrived in person, and the water filtration system has not just failed, it has been catastrophically sabotaged from within.",
+        "The Scent of Stagnation Elias dismantles the water filter, expecting a mechanical failure, but instead finds a clump of damp, grey hair jammed into the intake valve. He sits in the silence of his kitchen, the smell of damp earth rising from the pipes, while the knocking on his door shifts from a rhythmic pulse to the steady, patient scrape of a fingernail against the wood. The filter failure is intentional sabotage, and the visitor at the door is aware of the interior space."
+      ]
+    },
+    {
+      "node_id": "n_b1f2a01f2d",
+      "level": "beat",
+      "shown": [
+        "p_84319fce2a",
+        "p_3605782a0d",
+        "p_364238559d"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.7175,
+        0.726,
+        0.5541
+      ],
+      "chosen": "p_3605782a0d",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 1,
+      "snapshot_id": "ab5858c6a215445aa08027c624d69cbc",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5759,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "An Invitation, Not an Intrusion Instead of kicking the door in, the Warden sets a small, velvet-lined box on the threshold and walks away into the suffocating grey. Elias watches from the window as the figure retreats, then finds the box contains not a weapon or a warning, but a pristine, factory-sealed oxygen canister that tastes of nothing but cold, clean steel. The Warden is deliberately keeping Elias alive; the filtration system failure was a deliberate message, not just a threat.",
+        "The Warden's Patience The Warden of Kell waits on the threshold, her gloved fingers resting against the cool, grime-streaked wood of Elias's door. She listens to the frantic, ragged cadence of his breathing on the other side, finding the lack of an immediate reply not defiance, but the predictable panic of a man who knows his survival relies on a lie she has already dismantled. The Warden knows the filtration system is broken and expects Elias to break along with it.",
+        "The Seal of Kell Elias watches through the door's eye-slit as the Warden of Kell places a heavy, lead-lined seal across the frame. The action renders the door immovable and effectively traps Elias inside, turning his home into his coffin as the internal air quality continues to plummet. The Warden is intentionally sealing Elias inside, not just visiting."
+      ]
+    },
+    {
+      "node_id": "n_a70898354e",
+      "level": "prose",
+      "shown": [
+        "p_8a76ece169",
+        "p_a7f1a90846",
+        "p_d8b3650035"
+      ],
+      "axes": [
+        "slow down",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.7521,
+        0.8274,
+        0.8215
+      ],
+      "chosen": "p_a7f1a90846",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.8317,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "d6d74b29350bac2a43d3a575653fa312",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.719,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7719,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7801,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The wood is cold, a dead thing, damp with the morning’s particulate drift. My glove leaves a damp patch where I press, oil-darkened leather against grain that hasn't seen polish in a decade. I wait, listening. On the other side, the air is thin, starved of the rhythmic pulse of the filter. I hear the hitch in his chest, the ragged intake of a man inhaling the very dust he’s spent his life trying to scrub from his floorboards. He’s listening for the sound of my movement, but I am perfectly, painfully still. I don't need to force the lock. I can hear the collapse already happening—the exact moment his internal geometry shifts, the terror of realizing that the barrier between him and the grey outside is no longer the machine, but me.",
+        "prose The wood is cold, a dead weight beneath the Warden's fingertips. She keeps her hand pressed flat against the grain, feeling the shuddering heat of Elias’s panicked breathing vibrate through the panels. It is a pathetic rhythm—the frantic, uneven thrum of a bird slamming against glass. She imagines him back there, eyes wide, throat tight with the realization that the silence of his home has just become a tomb. He believes he is holding the door against her, but he is only holding himself inside the ruin. She lets her thumb graze the indentation where her ring struck the timber. The filtration unit is dead, the air is thickening with the fine, suffocating grit of Ashfall, and she knows that every lungful of that grey dust Elias draws is a second of his life being erased. She does not need to force the lock; the environment will dismantle him long before she has to.",
+        "prose Elias presses his palm against the doorframe, his skin slick with the cold sweat of a man who has forgotten how to breathe. Beyond the wood, the Warden is a shadow of stillness. He can hear the faint, rhythmic tap of her signet ring against the grain—a patient, metronomic count—and it tells him everything. He thinks of the water logs, the ones he spent weeks doctoring to show a surplus of purity. He realizes now that the numbers never mattered. She isn't here because of the water. She is here because the smell of the room has changed, and he can no longer mask the scent of his own terror. His lungs hitch as the air grows heavy, the filter’s failure leaving him exposed, naked to the silence that bleeds through the door. He imagines her gloved hand, perfectly still, waiting for the exact moment the realization takes root in his chest, turning his blood to lead."
+      ]
+    },
+    {
+      "node_id": "n_b1f2a01f2d",
+      "level": "beat",
+      "shown": [
+        "p_d3c236f2fe",
+        "p_beecb5472d",
+        "p_a62c396cc0"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.506,
+        0.68,
+        0.588
+      ],
+      "chosen": "p_beecb5472d",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.9093,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "c863271e3bd375e1885b308a634511a5",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of Air Elias pries open the service panel to reveal the filtration unit, only to find the intake valve has been replaced with a jagged piece of scrap metal—his own stolen wedding ring. The realization hits him that his survival was not just undermined, but bought with the last relic of his past, leaving him suffocating in a room that is actively poisoning him as the air quality drops. The sabotage of the air filter is a personal, calculated message using Elias's own history against him.",
+        "The Warden's Audit The Warden turns away from the door, her boots crunching softly on the coarse, grey grit covering the hallway floor. She pulls a small, brass-cased ledger from her belt, tapping the spine with her signet ring; she isn't here for Elias's submission, but to confirm his failure as a test of the sector's remaining oxygen reserves. The Warden is documenting the collapse of the district, and Elias's filtration failure is a calculated data point for her records.",
+        "The Weight of the Door Elias presses his ear to the frame, listening to the silence of the corridor. He realizes his own hands are trembling so violently he cannot reach for the heavy iron bolt to engage the secondary lock, the cold metal mocking his inability to control his own shaking skin. Elias is physically unable to secure his own home, signaling his total loss of agency before the Warden."
+      ]
+    },
+    {
+      "node_id": "n_0ca47a65f1",
+      "level": "prose",
+      "shown": [
+        "p_996e43aa80",
+        "p_4b7632b8f3",
+        "p_f33c44d871"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.7121,
+        0.8419,
+        0.8185
+      ],
+      "chosen": "p_4b7632b8f3",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "b0be98ef3aa2adfb97a0cbec8c690ec9",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9865,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8907,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose I pull my hand away from the wood, the lingering chill of the door clinging to my skin like a second layer of grime. I check the pressure gauge on my belt—a routine motion, flicking the brass casing open—only to see the needle vibrating in the red. The sector filter isn't just failing in his room; the entire corridor’s intake has been throttled to a stutter. My own oxygen levels are dropping faster than the ledger’s projections allowed for, a sharp, metallic tang rising in my throat that tells me the failure is not local, but systemic. The air is thinner here than it was a moment ago, a hollow space opening up in my chest where the certainty of my duty used to reside. If the central exchange is compromised, the audit is already obsolete. I stare at the silent, darkened vent above my head, the realization settling in: I am not just auditing a resident, I am marking the expiration date of the district itself. Every breath I draw now feels like a theft from a storehouse that has already run dry.",
+        "prose The grit grinds beneath my boots, a familiar, abrasive soundtrack to this hollow corridor. I turn away from his door, leaving the silence to thicken behind me. Elias will keep cowering in there, convinced that his stillness will make him invisible to the math. He is wrong. I adjust the brass ledger at my hip, the metal cold and sharp against my thigh, a reminder of the binary nature of this life. Every breath he draws is an unauthorized drain on the reserve, a decimal point dragging the sector closer to the red. I don't need to hear his voice to know he is already failing. My fingers drift to the signet ring—a blunt instrument of bureaucracy that has signed away more lives than I care to count. I feel the thinness of the air, a metallic, recycled ghost of oxygen that tastes of ancient filtration failures. It is not personal. It is merely that the equation of our survival has no room for his inefficiency. As I walk, I calculate the projected depletion, the numbers dancing behind my eyelids like cold, unyielding stars. If the district is to endure, the weak links must be categorized and discarded. My breathing stays steady, rhythmically paced to conserve what little remains, while behind me, the air in Elias’s room continues its slow, inevitable collapse.",
+        "prose I slide my thumb over the brass catch of the ledger. It is cold, a stark, grounding bite against my skin that reminds me of the cost of mercy. I do not knock again. There is no need. The sound of the filtration unit behind the door has not just ceased; it has been replaced by the sound of a man trying to breathe through a shroud of his own making. I know the rhythm of that particular suffocation—the sharp, shallow intake, the desperate, hollow rattle as the lungs realize the oxygen has turned to ash. Elias thinks he is waiting for me to leave, but he is merely waiting for the room to finish its work. I step back, letting my boots leave clear, lonely prints in the grey dust that blankets the floor. I open the ledger to the sector map, my quill already poised, the ink a dark, wet promise against the yellowing parchment. I write his name, and beside it, I mark the filtration index with a zero. It is not an act of cruelty; it is the ledger’s demand. The sector has run out of space for his struggle. I turn to leave, but I pause, casting one final look at the door. I can feel the change in the air, the way the pressure shifts as he finally gives up the fight to keep the room sealed, and for a heartbeat, I wonder if the next entry will be mine."
+      ]
+    },
+    {
+      "node_id": "n_4f022c7e9a",
+      "level": "scene",
+      "shown": [
+        "p_254bb643a8",
+        "p_51de9b6562",
+        "p_2f0ef347aa"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.5093,
+        0.6345,
+        0.6987
+      ],
+      "chosen": "p_2f0ef347aa",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.943,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "8226a45a8b583219ee5fd167e3ea3e85",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6286,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5978,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Registry's Toll Kael, an apprentice maintenance worker in the corridor, watches from the shadows as the Warden marks Elias’s unit for disconnection. Kael’s hands tremble, his fingers tracing the stolen filter housing hidden inside his own utility pack, realizing the warden is not just auditing consumption, but actively purging anyone whose inefficiency threatens her own survival quota. The Warden is deliberately starving sectors to prolong her own safety; Kael is the one who took the parts from Elias's filter.",
+        "The Registry of Omissions Inside the room, Elias stops trying to hold the door. He slides down against the peeling wallpaper, pressing his ear to the floorboards to hear the Warden’s receding footsteps. He pulls a hidden compartment in the floor, revealing not supplies, but a series of hand-drawn maps of the ventilation ducts, marked with strange, rhythmic notations that indicate he has been mapping the sector's decay far longer than the Warden realizes. Elias has been tracking the ventilation failures independently and possesses unauthorized knowledge of the sector's structure.",
+        "The Stagnant Air Elias remains pinned to the interior of his door, listening to the Warden’s receding footsteps. He watches a single, heavy particle of grey dust drift through a shaft of failing amber light, realizing that without the filter's hum, the silence is not empty—it is predatory and hungry. The ventilation system is not just failing; it has been systematically compromised, and the Warden is aware of its precise depletion rate."
+      ]
+    },
+    {
+      "node_id": "n_e897a82355",
+      "level": "beat",
+      "shown": [
+        "p_95485cd85e",
+        "p_8441e47602",
+        "p_174b90a530"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.641,
+        0.5025,
+        0.4149
+      ],
+      "chosen": "p_95485cd85e",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 1,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6077,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.57,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5946,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Warden's Offer Instead of forcing the door, the Warden slides a single, pristine filter cartridge through the slot at the base of the frame. She speaks through the wood, her voice devoid of malice, offering Elias a choice: install the replacement and accept his new, assigned workload in the reclamation pits, or let the room seal shut forever. The Warden controls the spare parts supply, and she uses them to manipulate the remaining population into dangerous labor.",
+        "The Auditor's Ledger Sora, an junior scribe accompanying the Warden, watches the Warden's back as she stands before Elias's door. Sora records the pressure readings from the corridor sensors into her own slate, noting that the oxygen depletion in this specific sector is accelerating faster than the Warden’s official projection suggests. The Warden is not the only one auditing the district, and the situation is worse than the Warden believes.",
+        "The Weight of the Silence Elias remains pressed against the door, listening to the absolute stillness outside. He watches as the last trace of the filter's hum fades, replaced by the sound of his own pulse, which feels too loud in the suffocating room. He realizes the dust motes in the air are settling onto the floor, coating his hands in a fine, grey powder, and that the Warden has not moved; she is simply waiting for his inevitable collapse. The Warden is deliberately waiting for Elias to suffocate, and the atmosphere in the room is rapidly becoming toxic."
+      ]
+    },
+    {
+      "node_id": "n_e897a82355",
+      "level": "beat",
+      "shown": [
+        "p_1bc0a0a3fc",
+        "p_63b58ae58d",
+        "p_abee5b7dfa"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.7089,
+        0.3992,
+        0.698
+      ],
+      "chosen": "p_1bc0a0a3fc",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 1,
+      "snapshot_id": "13804de124725d63ff3e934e175cd257",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5914,
+          "dialogue_ratio": 0.3333
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.57,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6111,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Registry of Scarcity Elias pries open the service panel and finds the filter's core missing, replaced by a jagged scrap of brass plate stamped with the Warden's insignia. He realizes the system wasn't malfunctioning; it was intentionally harvested to force his displacement, leaving him with no air and no recourse. The Warden is deliberately decommissioning rooms to cull the population, and the 'malfunction' was a targeted eviction.",
+        "The Ghost in the Circuit Kael, an undocumented maintenance worker hiding in the ventilation shafts, watches the encounter between Elias and the Warden through a rusted viewing grate. He sees the Warden's precise, calculated movements and realizes she is not just auditing the air; she is hunting for the bypass Kael installed to keep Elias's unit running illegally. Kael realizes his secret repair is what doomed the unit's structural integrity, turning his act of mercy into a death warrant for Elias. Kael is responsible for the filter failing, and the Warden is aware of the bypass.",
+        "The Seal of Silence Instead of speaking, the Warden slides a heavy, stamped iron plate into the door's frame, mechanically locking the room from the outside. She doesn't offer a repair or a demand, simply walking away and leaving Elias to realize that his room is now not just a shelter, but a sealed grave. The Warden is systematically removing people by sealing them in rather than executing them, and she possesses the tools to permanently override individual living spaces."
+      ]
+    },
+    {
+      "node_id": "n_0e4a55c900",
+      "level": "prose",
+      "shown": [
+        "p_066ed6c917",
+        "p_2099f5561d",
+        "p_a25983a681"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8261,
+        0.8908,
+        0.8089
+      ],
+      "chosen": "p_2099f5561d",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.6373,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "662fd0bc1b5744137434c3aa4270cc97",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8148,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8835,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9524,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose My fingernails catch on the screw-head of the service panel, white-knuckled and trembling. I turn the metal, the screech of it echoing against the silence like a gunshot in a tomb. The casing drops, and there it is—or rather, the empty space where the air should be purified. My fingers graze the hollow housing, expecting the smooth ceramic of the filter core, but they strike something cold and sharp. I pull it out: a scrap of brass, jagged at the edges, bearing the stamp of the Warden’s seal. A singular, deliberate insult. I stare at the insignia, the metallic tang of the room’s dying air suddenly sharp on my tongue. She didn't let it fail. She reached in and tore it out. I sit back on my heels, the brass plate biting into my palm. It isn't a malfunction; it is an eviction. I am being erased, one cubic centimeter of air at a time, and the Warden is holding the ledger that marks my absence as a gain.",
+        "prose My fingers catch on the edge of the panel, the metal biting into my skin with a cold, insistent sharpness. It yields with a groan that sounds deafening in the vacuum of my room. I expect to see the familiar mesh, the dull grey heart of the filter that has kept me breathing for a thousand shifts. Instead, the cavity is hollowed out, a dark, gaping wound in the wall. Wedged deep within the housing is a scrap of brass, jagged and crude, mocking me with the Warden’s insignia stamped clearly into the metal. It’s not a malfunction. It’s a signature. I reach out, my hand trembling as I trace the heavy, unforgiving lines of the mark, and the truth settles in my gut like lead. The air isn't failing; it’s being stolen, redirected to someone else, somewhere else. I am not a casualty of decay. I am a line item being crossed out, a managed variable in an equation that decided I stopped mattering long ago. The realization tastes like copper and stale dust, a bitter, final clarity that suffocates me more thoroughly than the thinning oxygen ever could.",
+        "prose My fingers tremble, tracing the seal of the service panel until the catch gives with a dry, metallic click. I pull the cover back, bracing for the familiar, hum-heavy darkness of the filter unit, but there is only a hollow, echoing void. In its place lies a scrap of brass, sharp-edged and cold, resting where the intake should be. I pick it up, my thumb instinctively finding the raised, jagged weight of the Warden’s insignia stamped into the metal. It is a signature, a mocking, deliberate mark of ownership. The realization hits not as a shock, but as a slow, freezing clarity that settles in my marrow. This was never a malfunction. This was an eviction, served with the quiet, clinical efficiency of a machine. My lungs burn, demanding air that isn't there, and I realize with a sickening jolt that the room isn't just failing—it is being harvested. Every breath I draw is a theft from an account that has already been closed. I press the brass scrap against my palm, the metal biting into my skin, and listen to the silence of the room. It is no longer an absence of sound, but an active, hungry predator, and I am the only thing left to consume."
+      ]
+    },
+    {
+      "node_id": "n_e897a82355",
+      "level": "beat",
+      "shown": [
+        "p_f2bcda2a7c",
+        "p_45499aa53a",
+        "p_0f4aa7b8b1"
+      ],
+      "axes": [
+        "slow down",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.7313,
+        0.5902,
+        0.7812
+      ],
+      "chosen": "p_0f4aa7b8b1",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 2,
+      "snapshot_id": "ae9bfcc063d05d29d0c9781b006271ba",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.5789,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.22,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5505,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Last Breath of Air Elias sits on the floor, staring at the brass scrap. He holds his breath, testing how long the room can sustain him before the oxygen becomes too thin to think, watching the dust motes settle in the failing light. Elias realizes the air quality is now critical and he has no way to fix it.",
+        "The Siphon's Rhythm Sora, a junior maintenance tech, monitors the sector's airflow from a hidden junction box in the ceiling crawlspace. She watches the brass-valved bypass she installed yesterday, listening to the muffled thud of Elias trying to open his door below; she knows the air redirection is working perfectly because the pressure gauge in her hand is finally leveling out into the efficiency threshold the Warden demands. The Warden has subordinates who actively facilitate the air redirection, and the system is being actively tuned for maximum efficiency at the cost of lives.",
+        "The Resonant Echo Instead of waiting for silence, Elias presses his ear against the cold metal of the service wall, not the door. He discovers that the brass plate isn't just a plug; it's a diaphragm, vibrating with a rhythmic, low-frequency pulse from the ventilation shaft—a signal being transmitted back into his cell. He realizes the system is not merely off, but intentionally modulated to produce a specific, disorienting sound pattern, designed to fray his nerves before the air truly fails. The Warden is using sonic manipulation to accelerate Elias's psychological breakdown, treating his confinement as a controlled environment for observation."
+      ]
+    },
+    {
+      "node_id": "n_6d4c866ebb",
+      "level": "prose",
+      "shown": [
+        "p_e070cfce33",
+        "p_74f45f385c",
+        "p_b1b6aeb970"
+      ],
+      "axes": [
+        "introduce a complication",
+        "raise the stakes",
+        "slow down"
+      ],
+      "scores": [
+        0.7994,
+        0.8874,
+        0.8583
+      ],
+      "chosen": "p_74f45f385c",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.553,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "93a91ed6062b8ae276567e33f07fca18",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.8943,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.2087,
+          "length": 0.8271,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 1.0,
           "judge_specificity": 1.0,
           "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.8494,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose My pulse hammers against the metal, but as I lean closer, my ear finds something else. Not the absence of sound, but the presence of a ghost. The brass plate I pried from the vent isn't just shielding a hollow space; it is a membrane, a thin, taut skin of metal that acts like a drumhead for the shaft behind it. I press my cheek to the cool, rigid surface, and a tremor passes through my skull. It is a low-frequency hum, rhythmic and deliberate. Pulse. Pause. Pulse, pulse, pause. It is not the dying wheeze of a broken fan; it is a signal. The ventilation system is being modulated from the other side, tuned to a pitch that vibrates in my teeth and settles in the base of my brain. It is a nauseating, hypnotic cadence, designed to unravel the mind before the oxygen even fully thins. I feel the pattern pulling at my focus, a sonic trap meant to turn my own senses against me. They aren't just starving me out; they are orchestrating my breakdown, playing my nervous system like a stringed instrument until the silence itself becomes a weapon.",
+        "prose The door is a distraction, a heavy slab of wood that draws my attention only because I want to believe there is an enemy on the other side. But the real violence is happening in the walls. I turn away from the entrance, my boots scraping against the grit-strewn floor, and press my ear against the service wall. The metal is freezing, a sharp bite against my cheek that grounds me, but as I settle, the cold gives way to something else. A tremor. Beneath the silence, the wall is shivering. I press harder, ignoring the ache in my jaw, and the resonance blooms. It is not the familiar thrum of a fan or the rush of forced air. It is a calculated, rhythmic pulsing—a low-frequency throb that travels through the marrow of the wall and into my teeth. It is a signal. Each beat is a jagged, dissonant wave meant to disrupt the equilibrium of my own pulse, a subsonic instruction for my heart to race, for my lungs to claw at the thinning air. My hands grip the edges of the brass plate, and I realize it is not a seal; it is a diaphragm, a speaker amplifying the Warden’s malice directly into the shell of my room. The air isn't just running out; it’s being weaponized. The rhythm is hypnotic, a slow, predatory cycle that demands my panic. I pull back, but the sound follows, vibrating in the very bones of my skull, a mockery of my own life force being used to count down the final, suffocating seconds of my existence.",
+        "prose The silence isn't truly empty. I press my cheek against the service wall, ignoring the door where the Warden waits. The metal here is colder, biting into my skin, yet beneath the surface, there is a tremor. It is faint, a ghost of a heartbeat that shouldn't exist in a dead ventilation shaft. I close my eyes, and the vibration travels through the bone of my skull—a low-frequency pulse, steady and precise. It is not the haphazard rattle of a failing machine; it is a signal, a rhythmic modulation designed to find the gaps in my composure. Each hum is calculated, a specific cadence meant to rattle my teeth and fray my nerves while the air thins. They aren't just letting me suffocate; they are conducting the symphony of my collapse. I can feel the rhythm inside me now, syncing with my own panicked breathing, dragging me into its predatory, mechanical tempo. It is a siren song of steel, inviting me to let go, to stop the fight and let the dissonance finally shatter whatever is left of my resolve."
+      ]
+    },
+    {
+      "node_id": "n_c6646cb9bc",
+      "level": "episode",
+      "shown": [
+        "p_9d7d59775e",
+        "p_f2da7df377",
+        "p_cf173b8ac5"
+      ],
+      "axes": [
+        "slow down",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.7273,
+        0.398,
+        0.6628
+      ],
+      "chosen": "p_9d7d59775e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": "4092c1ddf73ed90aa52dd0d3edec728f",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
           "judge_voice": 0.5,
           "criterion_1": 0.75,
           "criterion_2": 0.75,
@@ -151,57 +1065,704 @@
           "criterion_4": 0.0,
           "continuity": 1.0,
           "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6197,
+          "edit_direction": 0.0,
+          "length": 0.5867,
           "dialogue_ratio": 0.0
         },
         {
-          "judge_momentum": 0.75,
-          "judge_specificity": 1.0,
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.68,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6414,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.5,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
+          "continuity": 1.0,
           "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.634,
+          "edit_direction": 0.5805,
+          "length": 0.6647,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Mechanism of Memory Elias holds the ticking watch, its cold silver weight searing his palm against the biting grit of the ash. He tries to crush the mechanism between his fingers, but the steady, rhythmic pulse of the seconds forces him to acknowledge that the watch isn't counting time—it’s counting the breaths he takes as the soot clogs his lungs, syncing his own failing rhythm to a mechanical beat. The watch is not merely a taunt or a replacement, but a tether linking Elias to the unseen entity monitoring him.",
-        "The Weight of the Second Hand Elias pries open the lid to find the heavy gold watch, its rhythmic, mechanical pulse shivering against his numb fingertips. He realizes the cedar scent is coming not from the ash, but from a small, dried sprig wedged beneath the watch’s casing—a signature he recognizes from his father’s study, confirming that the person who opened this box didn't steal, but communicated. The intrusion is personal and linked to Elias's family history; the sender is alive and tracking his movements.",
-        "The Weight of the Seconds Elias hunches over the exposed lock box, his fingers trembling as he pulls the pocket watch from the thick, grey soot. As he listens to the rhythmic, unnatural tick against the silence of Ashfall, he realizes the engraving on the back matches the seal of the house he burned down a decade ago, forcing him to confront the possibility that his past is no longer just a memory, but a predator. Elias is responsible for a past arson; someone knows his location and has left a taunting message."
+        "The Diaphragm's Hum Elias presses his ear against the cold metal of the service wall, ignoring the door. He discovers the brass plate is a vibrating diaphragm, transmitting a low-frequency pulse from the ventilation shaft. He realizes the system is not failing but is being actively modulated to fray his nerves, and he struggles to synchronize his breathing to the rhythmic, unnatural pulse to survive.",
+        "The Siphon's Rhythm Shifted to the Warden's perspective, we watch her adjust the modulation frequency of the ventilation system from a hidden sub-terminal near Elias's door. She experiences the tactical necessity of this cruelty, viewing Elias's oxygen deprivation as a precise calibration for a larger system-wide load balancing, but discovers that the diaphragm she is controlling is feeding back a signal she did not program—a pattern that suggests something else, perhaps someone else, is tapping into the line. The Warden is deliberately modulating the air to kill Elias; the ventilation system is compromised by a third party.",
+        "The Diaphragm's Pulse Elias presses his ear to the brass plate on the service wall, confirming it acts as a vibrating diaphragm. He decodes the rhythmic pulsing of the ventilation shaft as a binary sequence—a transmission from a source elsewhere in Ashfall. By manipulating the plate with his fingernails, he accidentally triggers a feedback loop that causes the wall to emit a high-pitched, piercing screech. This alerts the system to his tampering, and he hears the heavy, rhythmic thud of authority approaching his door. The ventilation system is not merely failing but is being used as a communication array; Elias's tampering has a direct, audible consequence in the hallway."
       ]
     },
     {
-      "node_id": "n_b1f2a01f2d",
+      "node_id": "n_5cb8df1858",
+      "level": "scene",
+      "shown": [
+        "p_a9f076cf14",
+        "p_49e3de26c4",
+        "p_4cfd961c1a"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.628,
+        0.3516,
+        0.676
+      ],
+      "chosen": "p_4cfd961c1a",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.9134,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": "457de723e35e7b1d31a0040d1132893c",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9899,
+          "edit_direction": 0.0,
+          "length": 0.6322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.76,
+          "voice_cosine": 0.9871,
+          "edit_direction": 0.7131,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9856,
+          "edit_direction": 1.0,
+          "length": 0.6471,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Resonance of the Ledger Elias pries the brass plate from the wall, exposing the vent’s internal mechanism. Instead of finding a blockage, he discovers a series of delicate, clockwork pins etched with serial numbers that match the Warden’s ring. He realizes the sound is not random; it is a code, a broadcast of his own physiological data being relayed back to the Warden’s office to monitor his exact moment of expiration. The Warden is using Elias’s own body as a telemetry sensor to test the air quality of the lower sectors.",
+        "The Siphon’s Cadence Inside the ventilation shaft, Sora watches the Warden’s hand trace a pattern on the external control brass, synchronizing the rhythmic pulse that Elias hears as a weapon. She records the physiological data of the sector on her slate, realizing that the Warden isn't just killing Elias, but conducting a calibration test of the entire block's endurance under psychological stress. The Warden is using Elias as a control variable for a larger, district-wide experiment in human fragility.",
+        "The Diaphragm's Hum Elias leans his forehead against the vibrating brass plate, closing his eyes to isolate the low-frequency pulses. As the rhythm syncs with his own heartbeat, he realizes that if he applies specific, calculated pressure to the plate with his palm, he can mute the frequency, effectively stalling the signal being sent into his room. He begins a silent, agonizing struggle to hold the plate in place, his muscles cramping as he attempts to keep the rhythm from restarting. Elias discovers the signal is not just atmospheric but tactile; he can physically interfere with the Warden's nerve-fraying device."
+      ]
+    },
+    {
+      "node_id": "n_45362b2039",
       "level": "beat",
       "shown": [
-        "p_c3238f726a",
-        "p_2dc5129df7",
-        "p_094ae2a590"
+        "p_b01adc977e",
+        "p_7b7c2da373",
+        "p_8eabda252b"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.8879,
+        0.8448,
+        0.7048
+      ],
+      "chosen": "p_b01adc977e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 2,
+      "snapshot_id": "07551754d13bb5a764bf20e46d46718b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9906,
+          "edit_direction": 0.0,
+          "length": 0.6528,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9913,
+          "edit_direction": 1.0,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.989,
+          "edit_direction": 0.1415,
+          "length": 0.6377,
+          "dialogue_ratio": 0.4
+        }
+      ],
+      "texts": [
+        "The Counter-Beat Elias tries to fight the rhythmic vibration by tapping against the brass plate in sync with the pulse, hoping to disrupt the signal. The metal, however, is too rigid; his fingernails crack against the plate, drawing blood that leaves dark, wet streaks across the insignia. The pain anchors him to the reality of his own helplessness as he hears the faint, mocking click of a lock disengaging somewhere deep in the wall cavity. The modulation is not just a broadcast; it is a mechanism that reacts to his interference, and he has just engaged a new phase of the Warden's protocol.",
+        "The Warden's Ledger From the corridor, the Warden of Kell leans her head against the opposite side of the wall. She tracks the low-frequency pulse on her brass ledger, her eyes scanning the ink-etched pressure gradients that correspond to the vibration. She feels a cold, clinical satisfaction confirming that the disorienting signal is perfectly tuned to trigger Elias's hyperventilation. The Warden is deliberately using the vibration to drive Elias to a panic-induced collapse.",
+        "The Siphon's Source Elias pries the brass plate from the service wall. Beneath it, a secondary conduit is connected to his main airflow pipe, snaking upward into the ventilation shaft. He realizes the air isn't just being restricted; it is being siphoned directly to the Warden's private quarters, explaining why his room is the designated 'weak link'. He is not just a discarded variable; he is a fuel source for the Warden's own prolonged comfort. The Warden is directly stealing Elias's air to sustain her own living space, revealing the specific nature of his 'discarding'."
+      ]
+    },
+    {
+      "node_id": "n_c421d5c045",
+      "level": "prose",
+      "shown": [
+        "p_cc0b1a85ce",
+        "p_14c219dbcb",
+        "p_17f0b75571"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "slow down",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8749,
+        0.844,
+        0.8426
+      ],
+      "chosen": "p_cc0b1a85ce",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "9e1dc61f1c62ee3ae6f7c603c24f3d3e",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9922,
+          "edit_direction": 0.9262,
+          "length": 0.8835,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9912,
+          "edit_direction": 1.0,
+          "length": 0.8661,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9818,
+          "edit_direction": 0.0,
+          "length": 0.8,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose I press my fingers against the diaphragm, my own pulse frantic and erratic against its cold, steady beat. I attempt to mirror the frequency, to tap a counter-rhythm against the brass that might cancel out the hum, to force a wave of silence into the room. I strike once, twice, my skin meeting the metal with a sharp, stinging retort. The plate does not budge; it is immovable, a wall unto itself. On the third strike, I feel the snap—my middle fingernail shearing against the rigid edge, a sudden, bright flare of pain that sears through the numbness of my hand. I pull back, and my blood leaves a dark, wet smear across the Warden’s cold insignia, a ruinous streak of red that looks insignificant against the polished brass. As I gasp, holding my ruined hand, the hum in the room shifts. It doesn't stop, but it deepens, transforming into the distinct, metallic *thunk* of a lock disengaging deep within the wall cavity. The system has acknowledged my interference, and the sound of the tumblers falling is like a gate swinging open to somewhere I am not meant to go.",
+        "prose I try to counter it. I press my fingertips against the cold brass and tap, a frantic rhythm meant to mimic the pulse, hoping to shatter the frequency with my own interference. I want to break the cadence, to force the machine to stutter, but the plate is immovable, an unyielding wall of indifference. My nails don’t tap; they shatter. A sharp, hot bloom of pain erupts in my fingertips as the metal bites back, tearing the nail beds in a jagged, red ruin. The blood smears across the Warden’s stamped insignia, a wet, dark insult against the pristine surface. I stare at the streaks, my breath hitching, when the wall suddenly answers me. Not with a hum, but a mechanical retort—a sharp, hollow click that resonates deep within the shaft behind the plaster. It is a lock sliding back, a tumblr falling into place, a sound so precise and mocking that it makes the hair on my arms stand up. I have triggered something I do not understand, and the silence that follows is thick with the weight of whatever has just been released.",
+        "prose I try to fight the rhythm. I strike the brass, my knuckles white, matching my pulse to the low throb of the wall. I want to break the cycle, to force a discordance that might kill the signal, but the metal is unyielding. My nails catch, snagging against the serrated edge of the insignia. A hot, sharp tear of pain flares in my fingertips, and I watch, dazed, as streaks of dark, wet blood bloom across the Warden’s mark, smearing the cold, perfect brass. The irony is a dull weight in my chest. My own blood, spilled in a useless bid for air, becomes a part of the mechanism I’m trying to break. Then, beneath the pulsing, a sound cuts through the hum: a thin, precise click. It is mechanical, deliberate, echoing from somewhere deep within the service wall cavity. The lock has turned. The wall is not just a pipe; it is a cage, and I have just given it permission to open."
+      ]
+    },
+    {
+      "node_id": "n_45362b2039",
+      "level": "beat",
+      "shown": [
+        "p_afe159e0de",
+        "p_f3836894b5",
+        "p_549c24d9b8"
       ],
       "axes": [
         "subvert the expectation",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.8645,
+        0.8551,
+        0.7037
+      ],
+      "chosen": "p_afe159e0de",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 1,
+      "snapshot_id": "d3d789a51519683a39b99487cbed7715",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9876,
+          "edit_direction": 0.4713,
+          "length": 0.6875,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9893,
+          "edit_direction": 1.0,
+          "length": 0.6377,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.57,
+          "voice_cosine": 0.9912,
+          "edit_direction": 0.0,
+          "length": 0.6027,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Resonant Echo: A Hollow Response As the lock clicks, Elias expects an intruder or a door to swing open, but nothing moves. Instead, the void behind the wall begins to exhale—not air, but a faint, metallic scent of ozone and cooling grease. He realizes the cavity behind the diaphragm is not a room or a corridor, but a maintenance conduit leading directly into the heart of the ventilation system. A small, rhythmic clacking sound emerges from the conduit, mirroring the heartbeat of the machine he just stifled, but this time, it is answered by a second, irregular pulse from deep within the building. The service wall connects to a wider maintenance system; the building's machinery is communicating with itself.",
+        "The Price of Silence As the lock clicks open, the brass diaphragm pulls back, revealing not a passage, but a pressurized release valve. A jet of freezing, oxygen-starved gas erupts directly into Elias’s face, searing his lungs and forcing him to collapse. He realizes the air in his room is being siphoned to maintain a vacuum-sealed chamber elsewhere, and his struggle for air is the only thing keeping the Warden’s secret vault pressurized. The air redirection is a power-transfer mechanism for a hidden vault, and Elias's suffering is the literal weight holding the seal closed.",
+        "The Warden's Observation Standing just outside the reinforced door, the Warden of Kell watches the room's energy signatures flicker on her brass-bound slate. She notes the exact moment Elias stops fighting the signal and realizes he has found the resonant frequency, her expression hardening not with anger, but with the cold satisfaction of an experimenter witnessing a predictable, yet inconvenient, deviation. The Warden is monitoring the room's resonance and recognizes Elias's attempt to dampen it."
+      ]
+    },
+    {
+      "node_id": "n_7fe71951f6",
+      "level": "prose",
+      "shown": [
+        "p_84f7dc6a0b",
+        "p_3416642477",
+        "p_e2b50e5bca"
+      ],
+      "axes": [
+        "shift the point of view",
+        "deepen the interiority",
+        "slow down"
+      ],
+      "scores": [
+        0.9168,
+        0.9454,
+        0.9339
+      ],
+      "chosen": "p_3416642477",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "87c1a6481b0cc7beb5c059e978082579",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.996,
+          "edit_direction": 0.0,
+          "length": 0.9283,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9945,
+          "edit_direction": 1.0,
+          "length": 0.7914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9968,
+          "edit_direction": 0.2963,
+          "length": 0.9483,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The tumblers fall with a final, wet click, but the service wall does not give way to a room or a corridor. I wait for a face, for the Warden’s cold gaze, but the silence holds, unbroken. Instead, the void behind the panel exhales. A scent hits me—sharp, ionizing ozone and the thick, sluggish tang of cooling grease. It is the breath of a machine that has been running too long. I lean in, pressing my face toward the gap, and the air here is different. It is thin, hollowed out by the constant, rhythmic churn of the ventilation system. A tiny, stuttering clack emerges from the dark throat of the conduit—the heartbeat of the machine I just stifled. Then, a second sound arrives. It is jagged and erratic, a pulse coming not from the brass plate, but from somewhere deep within the structure of the building. It is an answer. A dialogue between the hardware and the architecture that I was never meant to overhear. My hand shakes as I reach into the dark, feeling the pull of the conduit’s draft against my skin, terrified that by stopping the hum, I have somehow invited the rest of the building to speak.",
+        "prose The lock’s click is sharp, a gunshot in the tomb-like quiet of the cell. I wait, muscles braced for a heavy bootfall or the intrusion of a light, but the threshold remains undisturbed. Only the wall changes. The diaphragm panel, now loose, swings inward just enough to bleed a scent into the room—sharp ozone, the metallic tang of cooling grease, and something ancient, like dust baked under too much pressure. It is not a doorway to a corridor. It is a throat. I press my face to the gap, squinting into the pitch. The darkness inside isn't empty. There is a rhythmic clacking, the mechanical stutter of a heart that is not mine, echoing the pulse I just throttled. And then, from somewhere deeper—down in the marrow of the building—a second pulse answers. Irregular. Discordant. It mocks the steady cadence of my own breathing, a stuttering, frantic counter-beat that suggests something else is awake in the dark, and it is starving.",
+        "prose The lock’s metallic snap echoes, a sharp, final report that dies in the stillness. I wait for the door to groan, for the shadow of an inquisitor to fall across the threshold, but the room remains stagnant. My breath catches. The silence is not empty; it is a held note. Then, the wall exhales. It is a slow, dying breath that smells of ozone, of scorched copper and grease gone cold in the dark. It is the scent of a machine that has worked itself to the bone. I press my face closer to the aperture, my skin raw from the brass edge, and look into the blackness of the conduit. It is not a corridor meant for human eyes, just a narrow throat of iron pipe and tangled, weeping cables. From deep within that hollow, a rhythmic clacking emerges—a dry, skeletal sound that mimics the pulse I just throttled. My heart stutters in response. Then, it happens: a second sound, deeper, a ragged, irregular thud that vibrates through the floorboards beneath my boots. It is not my own heartbeat. It is a response from the bowels of the building, a signal caught and repeated by something miles away, something vast and indifferent. I am not alone in this; I am just a bridge between two pulses, a point of contact in a circuit that was never meant to be touched."
+      ]
+    },
+    {
+      "node_id": "n_5cb8df1858",
+      "level": "scene",
+      "shown": [
+        "p_a80ebe75d3",
+        "p_587401e42d",
+        "p_a537f20926"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.5081,
+        0.5112,
+        0.7212
+      ],
+      "chosen": "p_a537f20926",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 7,
+      "hard_flags_shown": 0,
+      "snapshot_id": "c4cbcee9b428904a22fbe9f41cea7693",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.68,
+          "voice_cosine": 0.9878,
+          "edit_direction": 0.5441,
+          "length": 0.618,
+          "dialogue_ratio": 0.3333
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9814,
+          "edit_direction": 1.0,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.9891,
+          "edit_direction": 0.0,
+          "length": 0.6687,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Auditor's Ledger Sora, a junior scribe standing in the corridor beyond Elias’s wall, watches the rhythmic fluctuation of the pressure sensor on her slate. She observes that the oxygen depletion in Elias’s sector is accelerating far beyond the Warden’s official projection, and she subtly adjusts the gain on her receiver to isolate the specific, rhythmic pulse vibrating through the maintenance conduit. The Warden is being surveilled by the central administration, and the 'malfunction' in Elias's room is part of a larger, systemic audit.",
+        "The Resonant Echo: A Hollow Response Elias pulls back from the wall, but the diaphragm does not return to its hum; instead, a rhythmic clacking emerges from the dark conduit, mirroring the machine’s pulse. Suddenly, a second, irregular signal overrides the first—a discordant, chattering noise that seems to come from deep within the building, suggesting he has tapped into a communication loop between two distinct pieces of facility hardware. The facility is not just malfunctioning; the systems are interacting with each other in ways that respond to Elias's direct physical interference.",
+        "The Conduit's Breath Elias reaches into the gap behind the brass plate, his fingers grazing a series of warm, organic-feeling cables that pulse in synchronicity with the building's hidden rhythm. As he pulls, the ventilation system violently cycles, dragging a freezing, metallic draft through the opening that tastes of ozone and rot. He realizes the system isn't just venting; it's actively draining his cell's atmosphere into an unknown lower deck. The wall begins to buckle inward, the pressure differential pinning his arm against the jagged metal edge until he hears the sickening, wet snap of bone. The facility is physically consuming his air; his injury is now a critical, life-altering anchor."
+      ]
+    },
+    {
+      "node_id": "n_16f013362f",
+      "level": "beat",
+      "shown": [
+        "p_d34e00d4d2",
+        "p_2e529bdde6",
+        "p_763e674815"
+      ],
+      "axes": [
+        "slow down",
         "introduce a complication",
         "shift the point of view"
       ],
       "scores": [
-        0.624,
-        0.4633,
-        0.8303
+        0.7158,
+        0.6287,
+        0.4627
       ],
-      "chosen": "p_094ae2a590",
+      "chosen": "p_d34e00d4d2",
       "kind": "accept",
       "veto": null,
       "edit_distance": 0.0,
-      "flags_shown": 1,
+      "flags_shown": 4,
+      "hard_flags_shown": 2,
+      "snapshot_id": "681a3329901e2f7dc79d2439ce04c337",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9837,
+          "edit_direction": 0.6298,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9854,
+          "edit_direction": 0.0,
+          "length": 0.6358,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.14,
+          "voice_cosine": 0.9823,
+          "edit_direction": 1.0,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Conduit's Breath: The Cold Exhale Elias stays pressed against the wall, but instead of the room's air cycling, he feels a freezing draft pull *out* of his cell. The vacuum effect catches his sleeve, pinning it against the gap. He smells ozone, wet rust, and something organic—like rotted vegetation—wafting from the darkness behind the brass plate, proving the system is not just monitoring him, but actively harvesting his environment. The ventilation system is a two-way conduit; the room's atmosphere is being siphoned out, not just failing, to provide resources to something else.",
+        "The Conduit's Feedback As Elias peers into the dark conduit, a sudden rush of stale, pressurized air blasts outward, forcing him to shield his face. The pressure is not merely atmospheric; it carries the faint, metallic scent of ozone and something organic, like decaying insulation. He realizes the rhythm he felt was a intake cycle, and he has just triggered a pressure release that is now drawing the room's remaining air into the wall instead of circulating it. The maintenance conduit is not an escape route but a vacuum drain siphoning his air supply.",
+        "The Scribe's Correction Sora, a junior scribe watching from a monitoring station deep within the structure, observes the spike in the facility's localized vibration pattern. She realizes the rhythmic interference isn't a malfunction of the life-support grid, but a deliberate, manual dampening originating from Elias's cell. Fearing the Warden's reaction to this anomaly, she decides to suppress the data logs rather than reporting the breach. The facility is monitored by a tiered staff; Sora knows the dampening is deliberate; Elias is being actively observed."
+      ]
+    },
+    {
+      "node_id": "n_973d395c74",
+      "level": "prose",
+      "shown": [
+        "p_9faa3c0712",
+        "p_7fb2c386eb",
+        "p_aa33f37930"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        1.0,
+        0.8855,
+        0.8263
+      ],
+      "chosen": "p_9faa3c0712",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "7a400325a3d0296d9c2cecc663dea51a",
+      "snapshot_id": "2595e9652a814018a474caff63a12523",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9949,
+          "edit_direction": 1.0,
+          "length": 0.8,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9927,
+          "edit_direction": 0.0,
+          "length": 0.7692,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9917,
+          "edit_direction": 0.2924,
+          "length": 0.7509,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The hum abruptly dies, replaced by a sudden, violent intake of breath. It is not the room cycling; it is the wall itself, inhaling. The force pins my sleeve against the jagged metal of the maintenance gap, pulling the fabric taut until the stitches groan. I struggle to wrench my arm free, but the suction is relentless, a predatory tug that wants to peel me away from the safety of my own floor. A draft hits my face, but it is not the stale, warm air of the cell. It is freezing, a sharp bite that carries the metallic tang of wet rust and the cloying, sickly sweet scent of rot—like vegetation left to wither in a dark, sunless grave. This is not a malfunction. The system isn't filtering my air anymore; it is harvesting it, drawing the very atmosphere out of my lungs to feed a hunger in the architecture. I am the fuel, and the machine is finally, hungrily, consuming its stock.",
+        "prose The air doesn't just thin; it lunges. My sleeve is snatched toward the gap behind the brass plate, the fabric plastering against the jagged edges as the room’s atmosphere is sucked out like a held breath suddenly released. I stumble back, but the vacuum is a persistent, hungry hand, pulling my arm toward the aperture. The smell hits me then—not the sterile, metallic scent of a dying fan, but a wet, cloying rot. It is the odor of compost deep in a cellar, thick and suffocating, laced with the sharp, electric tang of ozone. I press my palm against the wall to anchor myself, my fingers brushing the intake, and I feel the cold air rushing past me toward the darkness. It is not circulating. It is being harvested, pulled from my very lungs and fed into the machinery of the building's deeper, hidden veins. I am not breathing; I am being drained.",
+        "prose My sleeve flutters, then snaps taut, pinned against the jagged perimeter of the service wall by a sudden, violent inhale. I don't pull away; I can't. The air is not cycling, it is being drained, a predatory vacuum clawing at my very presence. The smell hits me then—an affront to this sterile tomb—a wet, cloying rot of vegetation mixed with the sharp, acidic bite of ozone and the iron-scent of weeping rust. It is as if the building is a lung, and I am the debris it is purging. I press my palm flat against the cold metal, my heartbeat echoing against the silence, and realize the system is not failing me; it is feeding on the space I occupy. The darkness beyond the brass diaphragm feels heavy, ancient, and utterly indifferent to the fact that I am shivering in the draft of my own disappearance."
+      ]
+    },
+    {
+      "node_id": "n_16f013362f",
+      "level": "beat",
+      "shown": [
+        "p_0fd85ab2ee",
+        "p_ace2399d5e",
+        "p_283999009f"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.7985,
+        0.7345,
+        0.69
+      ],
+      "chosen": "p_0fd85ab2ee",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 4,
+      "snapshot_id": "083d52060831d6b546a12cdbf9a4d146",
       "stale_marked": 0,
       "features": [
         {
@@ -209,29 +1770,409 @@
           "judge_specificity": 0.75,
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
-          "criterion_1": 1.0,
+          "criterion_1": 0.75,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.6011,
+          "continuity": 0.3,
+          "voice_cosine": 0.9878,
+          "edit_direction": 1.0,
+          "length": 0.6647,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.984,
+          "edit_direction": 0.1278,
+          "length": 0.6061,
           "dialogue_ratio": 0.0
         },
         {
           "judge_momentum": 0.75,
-          "judge_specificity": 0.5,
+          "judge_specificity": 0.75,
           "judge_consequence": 1.0,
-          "judge_voice": 0.25,
+          "judge_voice": 0.5,
           "criterion_1": 0.25,
           "criterion_2": 0.75,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
-          "continuity": 0.92,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
+          "continuity": 0.65,
+          "voice_cosine": 0.9836,
+          "edit_direction": 0.0,
+          "length": 0.6145,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Siphon's Origin Elias reaches into the open conduit, feeling past the jagged brass plate until his fingers meet something slick and warm that pulses like a throat. He realizes the air being harvested from his room is not being vented, but consumed; he feels the desperate, rhythmic suction of a creature or biological engine deep within the sub-deck, pulling the atmosphere down to feed itself. He pulls his hand back as the wall groans, the pressure differential causing the room to scream with a high-pitched whistle, confirming the vacuum is hungry. The ventilation system is a biological life-support or feeding mechanism for something living on a lower deck.",
+        "The Warden's Sight On the other side of the wall, the Warden watches the pressure gauge on her portable monitor. She sees the exact moment Elias's life signs flare with the spike of pain from his injury, and she adjusts a dial, not to stop the harvesting, but to synchronize the vacuum draw with his erratic heartbeat, treating his physiological collapse as a calibration test. The Warden is deliberately modulating the atmosphere to map Elias's biological limits.",
+        "The Conduit's Breath: The Finger's Toll Elias tries to tear his pinned hand free from the service wall's vacuum, but the sharp metal edge slices into his palm, causing a deep laceration. As he stumbles back, blood smears onto the conduit interior; he realizes the system isn't just harvesting air, but is feeding on his proximity, with the rhythmic suction intensifying in direct response to his presence. The ventilation system’s suction scales with Elias's own stress and proximity to the open conduit."
+      ]
+    },
+    {
+      "node_id": "n_d1a17f9d8c",
+      "level": "prose",
+      "shown": [
+        "p_0f5a1fece7",
+        "p_4dc8a1bbff",
+        "p_7903d914ac"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.9174,
+        0.863,
+        0.9237
+      ],
+      "chosen": "p_7903d914ac",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a2d5d6a8bf1cb4cf0be98b3d2f7b5a15",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.995,
+          "edit_direction": 1.0,
+          "length": 0.7432,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9925,
+          "edit_direction": 0.17,
+          "length": 0.873,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9911,
+          "edit_direction": 0.0,
+          "length": 0.8,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose My fingers slip past the jagged bite of the brass plate, sinking into the dark throat of the conduit. I expected dust, or the sharp geometry of rusted steel, but what meets me is soft—a slick, yielding warmth that twitches against my skin like a muscle under tension. It is sickeningly organic, a rhythmic, wet contraction that doesn't just pull, but hungers. The air isn't being vented; it is being inhaled, swallowed in long, desperate gulps by something living that lies dormant in the sub-deck. My breath hitches, and the creature responds, its suction sharpening. The wall begins to shriek, a high-pitched, metallic whistle that vibrates through my teeth as the pressure differential threatens to drag my entire arm into the void. The hunger is not theoretical. It is a biological engine, and it has finally tasted the draft of my dying room.",
+        "prose I shove my hand past the sharp, rusted lip of the brass plate, the metal slicing a new line into my palm, but I don't pull back. The interior of the shaft isn't the cold, sterile conduit I expected. It is humid. My fingers brush against something soft, wet, and unsettlingly warm—a thick, ribbed cable that yields under my touch, pulsating with a wet, rhythmic tremor. It is not mechanical. It is a throat, or something trying to be one, shivering against my skin as it draws the air from my room with a ravenous, slurping intensity. I realize then that the vent isn't a pipe. It is an esophagus, and the building is digesting me. Panic flares, sharp and white-hot, as the suction intensifies; the entire wall buckles inward with a groan of stressed rivets, and the gap begins to shriek, a high-pitched, metallic whistle that tears through the silence like a scream. My fingers are pinned against the soft, pulsing mass, the vacuum dragging my blood toward the dark, hungry cavity. It isn't just taking my air. It is pulling my life into the floorboards.",
+        "prose My fingers slip past the jagged brass, tracing the cold, weeping interior of the conduit. I expected dust and dead wires; instead, I find a texture like wet, bruised skin. It is warm. It is alive. Beneath my palm, the conduit wall shifts with a sickening, peristaltic rhythm—a muscular contraction that ripples away from me, drawing the air from my cell with a greedy, organic desperation. It is not a machine. It is a gullet. The realization settles in my chest, colder than the freezing draft, as the wall begins to moan under the strain of the vacuum. The air in my room is being sucked into this thing, a high-pitched whistle rising from the seams like a scream of starvation. I wrench my hand back, my breath hitching, just as the metal groans and buckles inward. My fingers are slick with something viscous, smelling of bile and stagnant water. It isn't just venting; it’s eating, and I have just reached into its throat."
+      ]
+    },
+    {
+      "node_id": "n_c6646cb9bc",
+      "level": "episode",
+      "shown": [
+        "p_24312c2bc5",
+        "p_dfb439a0ce",
+        "p_bfbc24e4ab"
+      ],
+      "axes": [
+        "shift the point of view",
+        "raise the stakes",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.2601,
+        0.7564,
+        0.6538
+      ],
+      "chosen": "p_dfb439a0ce",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "ad40ea641da7f7cae76c3f6d144ec695",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.76,
+          "voice_cosine": 0.9815,
+          "edit_direction": 1.0,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9826,
+          "edit_direction": 0.0128,
+          "length": 0.679,
+          "dialogue_ratio": 0.25
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9889,
+          "edit_direction": 0.0,
+          "length": 0.6145,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Scribe's Ledger Sora, a junior scribe, monitors the pressure drop in Elias’s cell from a ventilation control room. She realizes the vacuum isn't just a failure but a calculated extraction to feed the sub-deck, and as she logs the data, she sees that the intake isn't just air, but a sequence of organic signatures that match the Warden's own bloodline. The Warden is using the architecture of Ashfall to siphon more than just air; they are harvesting something essential from the inhabitants.",
+        "The Siphon's Price Elias pries the brass plate further, his hand shredded by the jagged edges, as the conduit's suction grows violent. He discovers a bundle of nerve-like conduits; when he accidentally severs one, the rhythmic pulse in the walls stops, plunging the floor into a frantic, high-pitched mechanical shriek that shatters the light fixtures. As the dark settles, he finds his own breath coming in wet, ragged gasps, realizing that by breaking the connection, he has not stopped the hunger—he has simply forced it to start tearing through the floorboards to reach him. The ventilation system is part of a larger, biological architecture that reacts aggressively to damage, and the 'hunger' is physical and immediate.",
+        "The Siphon's Feedback Elias tries to block the conduit, but his touch triggers a reflex; the organic cables beneath the brass plate lash out, wrapping around his wrist like a cold, wet tourniquet. As he struggles, the room's remaining air is forcibly evacuated in a singular, violent pulse, causing the brass diaphragm to shriek as it seals shut, locking Elias in a vacuum. The conduit is not just a pipe; it is a defensive, living organism that recognizes and reacts to intrusion."
+      ]
+    },
+    {
+      "node_id": "n_537d3d8e90",
+      "level": "scene",
+      "shown": [
+        "p_0ffef4b811",
+        "p_7693267a57",
+        "p_95de794435"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8552,
+        0.3463,
+        0.6646
+      ],
+      "chosen": "p_0ffef4b811",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": "6fc228dfd1021ec72658a12db59ed1e2",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.979,
+          "edit_direction": 0.0196,
+          "length": 0.6769,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.0,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.68,
+          "voice_cosine": 0.9849,
+          "edit_direction": 1.0,
+          "length": 0.6607,
+          "dialogue_ratio": 0.5
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9876,
+          "edit_direction": 0.0,
+          "length": 0.6567,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Siphon's Price Elias attempts to jam the brass plate back over the conduit, but his hand slips, his blood coating the slick edges of the opening. He stares at his own red smear on the cold wall, realizing it is being drawn inward by the vacuum, staining the hidden gears deep inside. He tries to jam his tattered sleeve into the crack to stem the suction, but as the fabric catches, he hears a soft, wet tearing sound from within the machine, as if something gargantuan and soft has just snagged a morsel of bait. The system is not just mechanical; it has a biological interface that actively reacts to and consumes organic matter.",
+        "The Siphon's Ledger Sora, the Warden’s junior scribe, stands in the shadow of the service corridor behind Elias’s wall. She watches the brass diaphragm pulse with the rhythmic draw of the machine, recording on her slate that the intake pressure is exceeding safety parameters—not because of a malfunction, but because the entity below is actively over-drawing. When the wall groans and metal screams from the pressure differential, she realizes the 'structural repair' she was sent to monitor is actually a coordinated execution. The Warden is not just watching Elias, but actively managing a biological 'feeding' process, and Sora is beginning to realize the scope of the atrocity.",
+        "The Siphon's Feedback Elias hooks a sharp shard of the brass plate into the conduit's pulsating interior, hoping to puncture the rhythm. Instead of resistance, he feels the warm, slick surface collapse inward, releasing a pressurized blast of frigid, metallic-tasting air that slams him backward against the opposite wall. The ventilation system doesn't stop, but its pitch shifts upward, turning the low-frequency thrum into a jagged, shrieking whistle that vibrates the very marrow of his teeth. The siphon is not just a drain but an active, responsive biological interface that adapts to tampering, and Elias’s attempt to sabotage it has only accelerated the environment's hostility."
+      ]
+    },
+    {
+      "node_id": "n_5fe0a1149f",
+      "level": "beat",
+      "shown": [
+        "p_df4c34ca3e",
+        "p_ef22759a7d",
+        "p_4fc00c112f"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.9147,
+        0.2908,
+        0.7214
+      ],
+      "chosen": "p_df4c34ca3e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 10,
+      "hard_flags_shown": 5,
+      "snapshot_id": "6d1268b74cd5eff5c1dc0b4a06b79928",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9871,
+          "edit_direction": 0.0,
+          "length": 0.6358,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.0,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.0,
+          "criterion_1": 0.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.9826,
+          "edit_direction": 0.701,
           "length": 0.5978,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.57,
+          "voice_cosine": 0.984,
+          "edit_direction": 1.0,
+          "length": 0.6395,
+          "dialogue_ratio": 0.25
+        }
+      ],
+      "texts": [
+        "The Siphon's Price As the air drags outward, Elias realizes the jagged metal edge has sliced deep into his palm. He tries to pull back, but his hand is stuck in the viscous substance coating the conduit's throat, which acts like a structural glue that is rapidly setting. The vacuum is not just stealing air; it is anchoring him to the wall, turning his own body into a physical bridge between his room and the unknown deck below. The conduit's biological secretions are adhesive, designed to capture and hold anything that breaches the seal.",
+        "The Siphon's Price Sora, crouching in the crawlspace behind the maintenance partition, recoils as she feels the violent suction pulling from Elias's cell. She realizes the biological interface—a writhing, moss-like growth—is not just feeding, but actively rejecting the impurities of the air coming from his room; it hisses and shudders, pushing back against the flow. The biological entity is selective, and the air in Elias's room is 'toxic' or unusable to it.",
+        "The Siphon's Feedback Instead of fighting the suction, Elias stops resisting, letting the vacuum pull against his hand. He feeds his own blood-slicked fingers deeper into the conduit, feeling the 'throat' tighten around his touch as if testing his temperature. The biological engine responds not with violence, but with a sudden, localized burst of warmth, feeding a pulse of adrenaline directly into his fingertips that leaves him dizzy and unanchored from his own body. The building's hunger is not merely mechanical; it is a symbiotic, predatory lifeform that can manipulate its hosts through direct biological contact."
+      ]
+    },
+    {
+      "node_id": "n_10eedf0226",
+      "level": "prose",
+      "shown": [
+        "p_0e3c546159",
+        "p_0fe224476d",
+        "p_22ec5949e9"
+      ],
+      "axes": [
+        "introduce a complication",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8831,
+        0.9045,
+        0.9254
+      ],
+      "chosen": "p_22ec5949e9",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "0bc64c85bd3b6932b4bc2b270ae36a62",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.991,
+          "edit_direction": 0.0,
+          "length": 0.9091,
           "dialogue_ratio": 0.0
         },
         {
@@ -240,132 +2181,815 @@
           "judge_consequence": 1.0,
           "judge_voice": 0.75,
           "criterion_1": 1.0,
-          "criterion_2": 0.75,
+          "criterion_2": 1.0,
           "criterion_3": 0.0,
           "criterion_4": 0.0,
           "continuity": 1.0,
-          "voice_cosine": 0.5,
-          "edit_direction": 0.5,
-          "length": 0.5836,
+          "voice_cosine": 0.9877,
+          "edit_direction": 0.8863,
+          "length": 0.8627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9862,
+          "edit_direction": 1.0,
+          "length": 0.8462,
           "dialogue_ratio": 0.0
         }
       ],
       "texts": [
-        "The Resonance of Silence Instead of casting the watch aside, Elias realizes the ticking has stopped precisely when he holds his breath. He deliberately stifles his next inhale, and the watch emits a single, sharp chime, vibrating with a warmth that matches his own skin; the watch is a biometric mirror, and it is waiting for him to signal it. The watch is not merely counting; it is actively responding to Elias's breathing patterns.",
-        "The Synchronization Lock As the watch pulses, the surrounding ash surges upward, forming a barrier that seals Elias within a suffocating, circular clearing. He realizes the watch is not just a timer, but a physical key to the space, and he cannot escape the ash circle as long as the device continues to beat in his hand. The watch is a supernatural anchor that controls the physical properties of the Ashfall environment.",
-        "The Observer's Pulse From a high vantage point obscured by the haze, Kael watches Elias claw through the ash. She synchronizes her own breathing to the ticking sound amplified by a receiver pressed against her ear, feeling a perverse satisfaction as Elias begins to mimic the pace of her machine. Kael is intentionally manipulating Elias's physiology using the watch's rhythm as a metronome."
+        "prose The metal doesn't just cut; it hooks. A jagged sliver of the brass plate buries itself deep into the meat of my palm, pinning me as surely as a display specimen. I pull back, a sharp, ragged sound escaping my throat, but my hand holds firm. It isn't just the snag—it is the conduit itself. The substance coating the throat of the wall, that slick, bile-smelling gel, has surged upward like rising tide, flooding the gap and catching my skin in its thickening embrace. It is hardening, the ambient heat of the conduit turning it from a fluid into a structural adhesive, a trap set for anything foolish enough to reach inside. The vacuum pulls harder now, a relentless, whistling draft that drags my entire arm toward the dark. I am no longer just a witness to the harvesting; I have become part of the machine's anatomy, a human seal plugging a leak I was never meant to find. My heart hammers against my ribs, a trapped bird, as the cold starts to creep up my wrist, numbing the nerves, binding me to the unseen deck below as the last of my air whistles past my ears.",
+        "prose The metal edge isn't just sharp; it is a razor, and I feel the heat of my own blood before I feel the pain. My palm has found the throat of the wall, and the wall is closing around it. I try to pull back, but the motion is met with a thick, syrupy resistance—a gel that smells of rot and old iron. It is hardening against my skin, cold and impossibly fast. Panic flares, a bright, jagged spike behind my eyes, and I yank my arm, but the substance has already anchored me. I am no longer just standing by the wall; I am becoming part of the ventilation, a fleshy plug in a system that is drinking my room dry. The vacuum pulses against my wrist, a rhythmic, hungry tugging that makes the marrow in my arm ache. I am a tether, pinned here, feeling the house breathe through the hole where my hand used to be. My own life is being siphoned out, a slow, inevitable drain, and the silence of the room is now the sound of my own ending.",
+        "prose The metal lip is not merely sharp; it is a razor, and my palm is wide open against it. I feel the hot bloom of blood, a sticky heat that usually signals a wound, but here, it is cold. The suction is immediate and terrifying, dragging the red life out of me and into the dark, wet throat of the conduit. I try to pull my hand away, to wrench myself back into the sanity of my own room, but the viscous bile-scented sludge lining the opening has locked me in place. It is setting, a chemical hardening that grips my fingers like wet concrete. My arm is tethered, a bridge of flesh and bone forced into the architecture’s machinery. I am no longer a tenant here; I am a component, a plug held fast by my own blood and the machine's insatiable hunger for mass. My pulse thuds against the conduit’s wall, and I realize with a sickening jolt that the rhythm I hear isn't just the system—it’s now, in some way, synchronized to my own failing heart."
+      ]
+    },
+    {
+      "node_id": "n_5fe0a1149f",
+      "level": "beat",
+      "shown": [
+        "p_85d0b656ec",
+        "p_c8149de5ee",
+        "p_a3fb3e493d"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.3881,
+        0.7513,
+        0.7727
+      ],
+      "chosen": "p_a3fb3e493d",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": "040bb5a2ab827134d3999411b67c4aa6",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.68,
+          "voice_cosine": 0.9807,
+          "edit_direction": 0.5932,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9785,
+          "edit_direction": 1.0,
+          "length": 0.6232,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9834,
+          "edit_direction": 0.0,
+          "length": 0.6627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Auditor's Perspective Sora, an junior auditor, stands in the corridor outside Elias's door. She presses her own ear to the bulkhead, listening to the same irregular, organic pulse that Elias feels, and realizes with clinical horror that the room is not meant to hold a prisoner, but to digest a specimen. She checks her slate, noting the bio-metric data surging from the cell, and realizes the Warden is not just cutting off air—she is monitoring the biological breakdown of the occupant in real-time. The Warden is deliberately using the cell to break down human biology, and Sora is witnessing this process.",
+        "The Feedback Loop Elias tries to tear his hand away from the conduit, but the hardening adhesive makes the movement impossible. As he pulls, he feels the structure flex, a wet, yielding resistance that pulls back—the conduit is reacting to his struggle, matching his exertion with a counter-pull. He realizes the system is not merely consuming air, but learning his physical thresholds, using his own resistance to calibrate the strength of its grip. The conduit system is adaptive and actively gauges Elias's strength to maintain its hold.",
+        "The Price of Separation Elias tries to tear his palm free from the conduit's hardening adhesive, but the movement drags more of his skin into the serrated edge. As the room's pressure drops, the adhesive begins to draw warmth directly from his hand, leaving his fingers numb and frost-bitten. He notices that the suction is not just a vacuum; it's a siphon, and the rhythmic pulse he hears is actually his own blood being drawn into the structure as the adhesive hardens further, tethering him permanently to the machinery. The adhesive is thermally conductive, drawing body heat, and the conduit's feeding process is now actively consuming Elias's blood."
+      ]
+    },
+    {
+      "node_id": "n_50a6861fa7",
+      "level": "prose",
+      "shown": [
+        "p_b4e7edd40f",
+        "p_14ed10c1bc",
+        "p_92c16840a9"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.8035,
+        0.9639,
+        0.9598
+      ],
+      "chosen": "p_14ed10c1bc",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "76ddfece190f60013192af5ba55e1008",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.995,
+          "edit_direction": 1.0,
+          "length": 0.9322,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9931,
+          "edit_direction": 0.0,
+          "length": 0.9821,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9901,
+          "edit_direction": 0.6668,
+          "length": 0.9283,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose I heave backward, my heels skidding against the floor as I try to rip my hand from the conduit’s grip, but the effort is a mistake. The adhesive has woven itself into my pores, and as I pull, the jagged edge of the brass plate bites deeper, flaying a strip of skin from my palm. My scream catches in my throat, sounding wet and thin. The suction intensifies, a sudden, brutal drop in pressure that makes my ears pop with a nauseating crack. I feel a terrifying, localized chill—not the ambient cold of the cell, but a hungry, parasitic frost bleeding directly from the wound into the machinery. My fingers are turning blue, the skin beneath the sludge hardening like quick-set mortar, binding me to the iron. Through the roar of the air rushing past my ear, I finally hear the true source of that rhythmic pulse. It is not the ventilation system cycling; it is the wet, sluggish thud of my own blood being siphoned out, a steady, measured harvest. With every beat of my heart, the conduit pulls, and the adhesive anchors me tighter, turning my own circulation into the very mechanism that keeps me pinned here, dying in the dark.",
+        "prose I heave backward, my heels skidding against the grit-strewn floor, but the conduit refuses the surrender. The movement is a mistake. Instead of breaking the seal, the friction drags my palm deeper into the jagged, brass-rimmed throat of the wall. Pain flares—not a sharp, clean cut, but a dull, tearing ache that travels all the way to my shoulder. The adhesive is cooling, turning from a viscous, bile-smelling sludge into something rigid and unyielding, like cooling slag. It is drinking the heat right out of my fingertips. My skin is going numb, the kind of deep, frost-bitten cold that makes me wonder if I still have fingers at all, or if they have already been incorporated into the wall’s architecture. I press my forehead against the cold plating, gasping for air that barely exists, and that is when the rhythm reveals itself. It isn't just a pulse from the vents. It is the syncopated throb of my own blood, being pulled from the vein by the vacuum's unrelenting draw. The conduit is timing its intake to my heartbeat. I am the pump. Every time my heart kicks, it sends a fresh donation into the machine's gullet, and the adhesive hardens by another fraction of an inch. I am not being held. I am being harvested.",
+        "prose I heave my arm backward, a desperate, animal reflex, but the adhesive only tightens its grip. The movement drags my palm deeper into the serrated mouth of the conduit, the metal slicing through calloused skin and nerves with a silent, clinical ease. A wave of numbness surges from my fingertips, creeping up my wrist like a rising tide of ice; it isn't just holding me, it is leaching the very heat from my marrow. I stare at the junction, my vision tunneling as the room’s air thins. Through the viscous, bile-smelling sludge, I see the truth: my blood is not just pooling—it is being pulled. A faint, rhythmic pulse throbs within the conduit’s throat, perfectly synced to the laboring beat of my own heart. It is a siphon, and I am the reservoir. Each thud in my chest sends a fresh tremor through the machine, a transaction of life-force I cannot stop. I am being harvested, my vitality refined into the very hum that keeps these walls standing. The realization is a cold, final clarity: I am not just trapped in this cell, I am being integrated into the architecture itself, my pulse the only thing keeping the machine hungry for more."
+      ]
+    },
+    {
+      "node_id": "n_537d3d8e90",
+      "level": "scene",
+      "shown": [
+        "p_aefc8082c8",
+        "p_4a593c3c3e",
+        "p_61828f8849"
+      ],
+      "axes": [
+        "shift the point of view",
+        "raise the stakes",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.4016,
+        0.7197,
+        0.7818
+      ],
+      "chosen": "p_61828f8849",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 0,
+      "snapshot_id": "2500884630582dbe97489669178a6276",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.68,
+          "voice_cosine": 0.9859,
+          "edit_direction": 0.3478,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.5,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9856,
+          "edit_direction": 0.0,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9881,
+          "edit_direction": 1.0,
+          "length": 0.6094,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Warden's Ledger From the corridor, the Warden tracks the seismic activity of Elias's struggle on her slate, noting the exact millisecond his heart rate synchronized with the conduit. She observes a flickering indicator that reveals the siphon has not just trapped Elias, but has begun to transmit his bio-data into the lower-deck infrastructure as a localized anchor, ensuring the building's structural integrity relies on his continued agony. The Warden is monitoring the siphon's harvest in real-time, and Elias's physical distress is a functional requirement for the building's stability.",
+        "The Siphon's Price: A Part of the Whole Elias feels the hardening adhesive pull his skin taught, drawing a cold, electric hum from his nerves as the conduit pulses with his own blood. As his grip on the wall fails, he realizes that the suction has stopped pulling air and is now actively grafting his own tissue into the conduit's internal structure; he is being digested not as a casualty, but as a replacement component. The conduit is not just feeding; it is actively recycling biological material to repair its own failing integrity, and Elias is becoming part of the architecture.",
+        "The Weight of the Tether Elias tries to carve the adhesive from his palm using the jagged brass plate, but the effort causes the conduit to pulse harder, drawing more blood into the mechanism. He notices the adhesive is now pulsating in rhythm with his heartbeat, turning his own biology into a feedback loop that sustains the wall’s hunger. The siphon is not just feeding on Elias's blood, but using his circulatory system to calibrate its own intake cycles."
+      ]
+    },
+    {
+      "node_id": "n_959f951696",
+      "level": "beat",
+      "shown": [
+        "p_8ceceb7c94",
+        "p_5591a30de8",
+        "p_39a8780fd3"
+      ],
+      "axes": [
+        "shift the point of view",
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.3659,
+        0.5723,
+        0.8642
+      ],
+      "chosen": "p_39a8780fd3",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 6,
+      "hard_flags_shown": 3,
+      "snapshot_id": "0c42139901046cac36d8b5ed31b3ee40",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.981,
+          "edit_direction": 0.0,
+          "length": 0.6145,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9836,
+          "edit_direction": 1.0,
+          "length": 0.6197,
+          "dialogue_ratio": 0.3333
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9581,
+          "edit_direction": 0.763,
+          "length": 0.6471,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Warden's Audit From the corridor, the Warden monitors the pressure drop on a brass-cased gauge, watching the needle twitch in perfect, sickening unison with a muffled thud from inside the cell. She notes in her ledger that the subject's vitals are successfully integrated into the conduit's flow. She does not feel pity; she feels the efficiency of a machine that is finally operating within parameters. The Warden is deliberately managing Elias's harvest and treats his physical trauma as a successful calibration.",
+        "The Auditory Breach Instead of losing consciousness, Elias hears a rhythmic, metallic clicking behind the service wall that isn't the machine—it's a deliberate code being tapped back at him. He realizes the 'harvesting' is not just a blind process; the architecture is responding to his presence, and the pulse now mimics the exact, erratic tempo of his own panicked heart, turning his fear into a transmission medium. The siphon is not an autonomous machine, but a responsive entity that monitors and reflects Elias's physiological state.",
+        "The Siphon's Feedback Elias tries to use his free hand to pry the hardening adhesive from the conduit, but as he pulls, he feels the structure react. The conduit begins to pulse with a wet, heavy rhythmic force that isn't just sucking air—it is mimicking his own frantic, elevated heart rate. Elias realizes the machine isn't just taking blood; it is adjusting its internal metabolism to mirror his state of panic, effectively turning his own fight-or-flight response into the catalyst for its own consumption. The conduit is a feedback-loop system that uses the host's physiological distress to accelerate the harvest."
+      ]
+    },
+    {
+      "node_id": "n_7219af5f76",
+      "level": "prose",
+      "shown": [
+        "p_12f8ed845f",
+        "p_b605801ed5",
+        "p_a74712320e"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "raise the stakes",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.9086,
+        0.9246,
+        0.8329
+      ],
+      "chosen": "p_b605801ed5",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.8383,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "c1f864cc602999ad0d264ae6af9e600c",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9928,
+          "edit_direction": 1.0,
+          "length": 0.8088,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.992,
+          "edit_direction": 0.007,
+          "length": 0.7829,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9908,
+          "edit_direction": 0.0,
+          "length": 0.8943,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose My free hand scrabbles at the adhesive, fingernails digging into the cooling, rubbery sludge that binds my right arm. It is like clawing at warm wax that refuses to give. I pull, gritting my teeth, but the moment my fingers sink into the seam, the wall shudders. A wet, visceral lurch ripples through the metal behind my palm. It is not mechanical; it is organic, a bloated, sucking sound like a throat swallowing hard. My heart hammers a frantic, jagged rhythm against my ribs—thump-thump, thump-thump—and the conduit mimics it instantly. The suction spikes, drawing the blood from my laceration in sync with my pulses. It is learning me. It is matching its own metabolic hunger to the speed of my fear. As I panic, the machine accelerates; as I breathe faster, it drains harder. I am trapped in a feedback loop where my instinct to fight is the very thing fueling my own consumption, a terrifying biological mirror that thrives on the sound of my rising terror.",
+        "prose My fingers claw at the hardening sludge, but the substance is no longer just glue; it is a living, synthetic graft. As I dig, a sudden, wet thud ripples through the metal. It’s not the machine’s rhythm anymore—it’s mine. I see my own veins bulging against the pale skin of my wrist, and the wall mimics the terror in my stride, pulsing with a frantic, stuttering beat that matches my own spike in adrenaline. The suction intensifies, not as a steady drain, but as a ravenous, jerking pull. Every time I gasp, every time my heart hammers against my ribs, the machine greedily drinks the vibration of my panic. It is calibrating itself to my fear, turning my own survival instinct into an accelerant. I am feeding the architecture with my own cortisol, and as my pulse climbs, the cold iron teeth of the conduit bite deeper into my palm to taste the fear directly from the blood.",
+        "prose My free hand reaches up, fingers trembling as I claw at the mess where my skin meets the wall. The adhesive is no longer a liquid; it is a warm, thickening graft that pulses with a sickening, wet elasticity. I dig my nails into the ridge of it, intending to tear myself free, but the moment I apply pressure, the wall shuddering in response. A heavy, rhythmic thrumming blooms behind the brass, deeper and more insistent than before. It catches my own heart in its gears. I try to hold my breath, to calm the frantic hammering in my chest, but the machine forces the pace. It is a mirror, a dark, biological reflection of my own terror. With every involuntary spike in my pulse, the conduit gurgles, drawing a tighter, hungrier draft of my blood into the architecture. I am feeding it, not just with my body, but with my panic, fueling its metabolism with the very fight-or-flight response that should be keeping me alive. The realization is a cold blade in my gut: the room is not just a prison, it is a metabolic engine, and I am the spark plug."
+      ]
+    },
+    {
+      "node_id": "n_959f951696",
+      "level": "beat",
+      "shown": [
+        "p_dfce1af4fa",
+        "p_dc091e5cb8",
+        "p_3b2e50ba75"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "slow down"
+      ],
+      "scores": [
+        0.4138,
+        0.3931,
+        0.4576
+      ],
+      "chosen": "p_3b2e50ba75",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 9,
+      "hard_flags_shown": 3,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.25,
+          "criterion_1": 0.0,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.33,
+          "voice_cosine": 0.9633,
+          "edit_direction": 0.2736,
+          "length": 0.6197,
+          "dialogue_ratio": 0.25
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.25,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.22,
+          "voice_cosine": 0.9813,
+          "edit_direction": 0.0,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.25,
+          "criterion_1": 0.5,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9788,
+          "edit_direction": 1.0,
+          "length": 0.6128,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Warden's Ledger On the other side of the heavy door, The Warden stands perfectly still, holding an observation slate. She watches the subtle ripples moving across the door's surface, tracking the bio-rhythmic fluctuations of the wall. She records not Elias's pulse, but the efficiency of the conduit’s harvest, noting that the 'subject' is finally contributing the required catalytic volume to stabilize the deck's pressure. The Warden is deliberately allowing the conduit to harvest Elias as part of a routine maintenance protocol for the station.",
+        "The Dissonant Sync As the conduit forces a rhythmic surge of blood, the wall’s vibration intensifies, shaking the entire cell. The light fixtures overhead spark and shatter into dust, and in the resulting pitch-black, Elias realizes the wall is not just consuming him—it is broadcasting a low-frequency hum back through the service shaft that makes his inner ear bleed, masking a faint, metallic clicking coming from the door handle. The service wall's feedback loop is intentionally creating a sound barrier to hide a mechanical intrusion at the room's entrance.",
+        "The Resonance of Flesh Elias stops struggling, not out of acceptance, but because he notices the vibrations from the ventilation shaft are starting to hum in the marrow of his own teeth. He realizes the sound isn't just external; the conduit is using his skeletal structure as an acoustic resonator to amplify the signal, effectively tuning his body to the station's broadcast frequency. The facility is using Elias's body to amplify or receive a specific signal, beyond just harvesting his blood."
+      ]
+    },
+    {
+      "node_id": "n_959f951696",
+      "level": "beat",
+      "shown": [
+        "p_314d7f46b5",
+        "p_5c4bd2ed23",
+        "p_510bb040f1"
+      ],
+      "axes": [
+        "slow down",
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.6604,
+        0.6736,
+        0.6881
+      ],
+      "chosen": "p_510bb040f1",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.9172,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": "1012ff60f3137d77d0f2daa17890975c",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9747,
+          "edit_direction": 0.1802,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.5,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9685,
+          "edit_direction": 0.0,
+          "length": 0.582,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.5,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9692,
+          "edit_direction": 1.0,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Siphon's Internal Geometry Elias stops struggling, forcing himself into a hollow, breathless stillness to deceive the conduit. He observes how the adhesive, now cold and translucent like cured resin, reveals microscopic conduits burrowing into his own skin, tracing the path of his veins. He realizes the machine is not just drawing blood; it is mapping his circulatory system to find the most efficient point of entry. The adhesive is not just an attachment; it is an active, invasive sensory array mapping Elias's anatomy.",
+        "The Dissonant Sync Elias tries to deliberately slow his heart rate, hoping to starve the conduit of its rhythmic trigger. Instead, the wall emits a high-pitched, metallic shriek that forces his heart into a frantic, arrhythmic tachycardia, effectively seizing control of his physical state to ensure the blood flow continues. The conduit will forcefully override Elias's physiological efforts to stop the harvest.",
+        "The Internal Mirror Elias tries to forcefully decelerate his own breathing, attempting to decouple his heart rate from the conduit's rhythm. As he slows his pulse, the conduit hesitates, its suction stuttering, but then it compensates by vibrating violently, forcing a sharp, high-pitched feedback tone that compels his heart to race again in a panic-induced spike. He realizes he cannot outsmart the machine's requirement for a specific physiological frequency; it is not merely taking, it is setting the tempo for his own existence. The conduit is an active participant in Elias's biology, capable of forcing physiological changes to maintain its feeding cycle."
+      ]
+    },
+    {
+      "node_id": "n_ca361a21d3",
+      "level": "prose",
+      "shown": [
+        "p_d81d35ad2b",
+        "p_414e688bcd",
+        "p_ad8f125259"
+      ],
+      "axes": [
+        "shift the point of view",
+        "pay off an open thread",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.833,
+        0.8555,
+        0.791
+      ],
+      "chosen": "p_414e688bcd",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.823,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "51362504a1bd39f337185b1001196f38",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9851,
+          "edit_direction": 0.3473,
+          "length": 0.873,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9856,
+          "edit_direction": 1.0,
+          "length": 0.8333,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9914,
+          "edit_direction": 0.0,
+          "length": 0.8209,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The brass plate is not a barrier; it is a diaphragm, a thin, resonant window into the ventilation shaft. I press my ear against the cold metal, my breath hitching as the vibration teeth into my skull. It isn't random. Under the chaotic whine of the suction, there is a low-frequency pulse—a steady, deliberate thrum that matches the cadence of the conduit’s hunger. It is being transmitted back into the cell, a modulating signal tuned to vibrate at the exact frequency of my own failing heart. The system is not merely consuming; it is orchestrating my collapse. As I listen, the pulses align, the metal plate humming in sympathy with my own frantic heartbeat. It is a feedback loop designed to fray the nerves, a sonic cage intended to shatter my resolve before the air runs thin. I am shivering, the freezing draft from the wall biting at my skin, but it is the precision of the rhythm that terrifies me most. It isn't just taking my air; it is playing my biology like an instrument, forcing me to dance to the machine’s own dying, mechanical tempo.",
+        "prose I press my ear hard against the cold metal of the service wall, ignoring the searing ache in my palm. The vibration isn't just the suction anymore; it is a pulse, rhythmic and low, bleeding out from the darkness of the ventilation shaft. It is a signal, a modulated thrum that resonates against my skull, forcing my own nervous system to dance to its frequency. My lungs burn as I try to hold my breath, but the wall demands a cadence. I am not listening to the machine; I am being played by it. The brass plate beneath my ear feels like a diaphragm, shivering under the weight of an invisible transmission. It is a calculated, artificial lullaby, designed to fray the last threads of my resolve before the air runs dry. The sound is not mechanical—it is instructional, etching its pattern into my marrow. I can feel the architecture of the room shifting, not just to trap me, but to dismantle my internal clock, replacing my own heartbeat with the wall's singular, hungry demand.",
+        "prose I press my ear against the metal of the service wall, desperate for any sound that isn't the screaming in my own head. My fingers are locked in the adhesive, my palm a ruin of torn meat, but the vibration isn't coming from the conduit’s hunger anymore. Beneath the metallic thrum of the intake, there is a low-frequency pulse—a slow, deliberate stutter of metal against stone. It's a signal. The brass plate I pried loose, the one digging into my side, is acting as a diaphragm. It’s catching the modulation from the ventilation shaft behind the wall, turning the system's own mechanical breath into a rhythmic code. The air isn't just being stolen; it’s being modulated, thinned, and shaped into a frequency that mimics a heart, but slower, heavier, dragging my own frantic pulse down toward its own deathly pace. The walls are telling me how to die, and as the vibration travels through my skull, I realize the air will fail only once my pulse finally matches the machine's cadence."
       ]
     }
   ],
-  "episodes_completed": 0,
+  "episodes_completed": 3,
   "call_summary": {
-    "calls": 221,
-    "prompt_tokens": 148019,
-    "completion_tokens": 80893,
+    "calls": 521,
+    "prompt_tokens": 1948571,
+    "completion_tokens": 425126,
     "cost_usd": 0.0,
-    "cache_hits": 118,
-    "errors": 101,
-    "mean_latency_s": 0.013694356547574286,
-    "total_tokens": 228912,
-    "cache_hit_rate": 0.5339366515837104,
+    "cache_hits": 7,
+    "errors": 15,
+    "mean_latency_s": 4.424159341786819,
+    "total_tokens": 2373697,
+    "cache_hit_rate": 0.013435700575815739,
     "by_purpose": [
       {
-        "purpose": "propose.prose",
-        "calls": 60,
-        "tokens": 102230,
+        "purpose": "propose.beat",
+        "calls": 98,
+        "tokens": 645461,
         "cost_usd": 0.0,
-        "cache_hits": 60
+        "cache_hits": 0
       },
       {
         "purpose": "judge.soft",
-        "calls": 140,
-        "tokens": 51159,
+        "calls": 194,
+        "tokens": 596275,
         "cost_usd": 0.0,
-        "cache_hits": 37
+        "cache_hits": 0
       },
       {
-        "purpose": "propose.episode",
-        "calls": 7,
-        "tokens": 35062,
+        "purpose": "propose.prose",
+        "calls": 84,
+        "tokens": 377925,
         "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 0
       },
       {
-        "purpose": "propose.beat",
-        "calls": 7,
-        "tokens": 30371,
+        "purpose": "propose.beat.repair",
+        "calls": 24,
+        "tokens": 263187,
         "cost_usd": 0.0,
-        "cache_hits": 7
+        "cache_hits": 0
       },
       {
         "purpose": "propose.scene",
-        "calls": 7,
-        "tokens": 10090,
+        "calls": 42,
+        "tokens": 170524,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.episode",
+        "calls": 28,
+        "tokens": 144635,
         "cost_usd": 0.0,
         "cache_hits": 7
+      },
+      {
+        "purpose": "propose.episode.repair",
+        "calls": 13,
+        "tokens": 106448,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts",
+        "calls": 22,
+        "tokens": 56128,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 14,
+        "tokens": 8942,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts.repair",
+        "calls": 2,
+        "tokens": 4172,
+        "cost_usd": 0.0,
+        "cache_hits": 0
       }
     ],
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 164,
-        "tokens": 196584,
+        "calls": 498,
+        "tokens": 2358052,
         "cost_usd": 0.0
       },
       {
         "provider": "groq",
-        "calls": 57,
-        "tokens": 32328,
+        "calls": 23,
+        "tokens": 15645,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 260,
-      "misses": 185,
-      "entries": 8640
+      "hits": 61,
+      "misses": 1548,
+      "entries": 10509
     },
-    "budget_remaining_usd": 12.0
+    "budget_remaining_usd": 5.20603375
   },
   "preference_summary": {
-    "pairs_seen": 6,
-    "edits_seen": 0,
-    "voice_trained": false,
+    "pairs_seen": 58,
+    "edits_seen": 2,
+    "voice_trained": true,
     "top_weights": [
       {
-        "feature": "judge_voice",
-        "weight": 2.5203
-      },
-      {
-        "feature": "continuity",
-        "weight": 2.0292
-      },
-      {
-        "feature": "judge_consequence",
-        "weight": 1.819
+        "feature": "criterion_1",
+        "weight": 4.8817
       },
       {
         "feature": "criterion_2",
-        "weight": 1.6801
+        "weight": 3.9107
+      },
+      {
+        "feature": "continuity",
+        "weight": 3.4817
+      },
+      {
+        "feature": "judge_momentum",
+        "weight": 3.2466
       }
     ],
     "bandit_safe": 0.5,
     "bandit_explore": 0.5,
     "fitted_weights": {
-      "judge_momentum": 1.5869971156414926,
-      "judge_specificity": 1.2870152445868772,
-      "judge_consequence": 1.819030367983594,
-      "judge_voice": 2.5202759217959834,
-      "criterion_1": 1.6781517764427967,
-      "criterion_2": 1.680096358570438,
-      "criterion_3": 4.1903137126010805e-82,
-      "criterion_4": 3.345639307493945e-82,
-      "continuity": 2.029150725498497,
-      "voice_cosine": 9.219254548011257e-83,
-      "edit_direction": 2.943012440402197e-82,
-      "length": 0.05944274085893777,
-      "dialogue_ratio": 1.509396190746394e-82
+      "judge_momentum": 3.246640624279979,
+      "judge_specificity": 1.8170597557237302,
+      "judge_consequence": -0.1821672721536499,
+      "judge_voice": 2.9474780975709325,
+      "criterion_1": 4.881739062918285,
+      "criterion_2": 3.910711369520871,
+      "criterion_3": 6.0028554019505664e-291,
+      "criterion_4": 4.792812750408935e-291,
+      "continuity": 3.4817373572899113,
+      "voice_cosine": -0.01907440246615378,
+      "edit_direction": 0.2791561784435042,
+      "length": 0.8018111585966329,
+      "dialogue_ratio": 1.2786410109624964
     },
-    "weight_recovery": 0.5134119985405033
+    "weight_recovery": 0.27805314493301947,
+    "weight_recovery_identified": 0.10038585673339091
   },
   "hidden_weights": {
     "judge_momentum": 0.0,
@@ -382,10 +3006,42 @@
     "length": 0.6,
     "dialogue_ratio": -0.3
   },
-  "probe": [],
-  "errors": [
-    "RateLimited: groq: rate limited"
+  "probe": [
+    {
+      "tau": 0.33333333333333326,
+      "top1": 0.5,
+      "points": 18.0,
+      "tau_uniform": 0.3333333333333333,
+      "top1_uniform": 0.5,
+      "tau_prior": 0.3333333333333333,
+      "top1_prior": 0.6111111111111112,
+      "decisions": 13.0,
+      "episode": 1.0
+    },
+    {
+      "tau": 0.29629629629629634,
+      "top1": 0.3888888888888889,
+      "points": 18.0,
+      "tau_uniform": 0.3333333333333333,
+      "top1_uniform": 0.5,
+      "tau_prior": 0.3333333333333333,
+      "top1_prior": 0.6111111111111112,
+      "decisions": 24.0,
+      "episode": 2.0
+    },
+    {
+      "tau": 0.40740740740740733,
+      "top1": 0.5555555555555556,
+      "points": 18.0,
+      "tau_uniform": 0.2222222222222222,
+      "top1_uniform": 0.4444444444444444,
+      "tau_prior": 0.3333333333333333,
+      "top1_prior": 0.5555555555555556,
+      "decisions": 36.0,
+      "episode": 3.0
+    }
   ],
-  "waited_seconds": 989.0,
-  "rate_limit_waits": 9
+  "errors": [],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
 }

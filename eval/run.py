@@ -247,6 +247,14 @@ def _combined_call_summary(logs: list[RunLog]) -> dict[str, Any]:
     return total
 
 
+def _ceiling_for_key(
+    ceilings: dict[str, Any], key: str, log: RunLog
+) -> dict[str, Any]:
+    """The ceiling for one run, by configuration and persona rather than persona alone."""
+    config = (log.config or {}).get("name") or key.split("/", 1)[0]
+    return ceilings.get(f"{config}/{log.persona}") or ceilings.get(log.persona) or {}
+
+
 def summarize(
     logs: dict[str, RunLog],
     skipped: list[dict[str, str]],
@@ -316,8 +324,8 @@ def summarize(
                 "weight_recovery_identified": log.preference_summary.get(
                     "weight_recovery_identified"
                 ),
-                "weight_recovery_ceiling": ceilings.get(log.persona, {}).get("mean"),
-                "weight_recovery_ceiling_sd": ceilings.get(log.persona, {}).get("sd"),
+                "weight_recovery_ceiling": _ceiling_for_key(ceilings, key, log).get("mean"),
+                "weight_recovery_ceiling_sd": _ceiling_for_key(ceilings, key, log).get("sd"),
                 "probe_tau_first": log.probe[0]["tau"] if log.probe else None,
                 "probe_tau_last": log.probe[-1]["tau"] if log.probe else None,
                 "probe_top1_last": log.probe[-1]["top1"] if log.probe else None,

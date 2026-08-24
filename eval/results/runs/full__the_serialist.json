@@ -43,7 +43,7 @@
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "437999c9fc2222a03d35a6865df94719",
+      "snapshot_id": "a6be166ff5720af2286c2375484eadad",
       "stale_marked": 0,
       "features": [
         {
@@ -102,7 +102,7 @@
       "node_id": "n_0ec9446cd8",
       "level": "scene",
       "shown": [
-        "p_ddb57bc4ac",
+        "p_4550b01c39",
         "p_f11cddf88f",
         "p_3200b8a5fb"
       ],
@@ -122,7 +122,7 @@
       "edit_distance": 0.0,
       "flags_shown": 0,
       "hard_flags_shown": 0,
-      "snapshot_id": "20bf16df4f13e8a961fb05dec65977cb",
+      "snapshot_id": "c712037ad6958f0c09b75f716579afbb",
       "stale_marked": 0,
       "features": [
         {
@@ -176,59 +176,2492 @@
         "The Ledger Beneath the Floorboards Elara forces open the jammed floorboards of the master study, only to find the family ledger missing and replaced by an active thermal detonator bearing the crest of the Red-Mark Syndicate. As the countdown clicks softly, local scavenger Bram steps through the doorway with the missing book in his hand, offering it in exchange for Elara's transit codes off-world. The debt-collectors tracking Elara are using the Red-Mark Syndicate, and Bram knows she cannot leave Ashfall without his help.",
         "The Scavenger's Toll Elara stands in the foyer, her boots crunching on broken glass, as Silas and his scavenger crew emerge from the shadows with weapons leveled. Rather than fight, Elara slowly produces a rusted, heavy key from her coat and places it on the floor, sliding it toward them as an offering for her safe passage to the study. Silas picks it up, weighing it in his palm, and asks why she would risk her life for a ledger that hasn't been worth a drop of water in ten years. The house is guarded by Silas, a man who clearly knows more about the family's history than he lets on, and the ledger holds secrets beyond mere financial value."
       ]
+    },
+    {
+      "node_id": "n_3efe116700",
+      "level": "beat",
+      "shown": [
+        "p_6b41ee8532",
+        "p_b046dab83c",
+        "p_2ccf75c617"
+      ],
+      "axes": [
+        "raise the stakes",
+        "pay off an open thread",
+        "deepen the interiority"
+      ],
+      "scores": [
+        1.0,
+        0.8674,
+        0.7128
+      ],
+      "chosen": "p_6b41ee8532",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "f3b3c6d1790b0cd3b7cd2ebae929b328",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5898,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.25,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5995,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Choice of Deaths Elara realizes the detonator isn't just a threat—it's linked to her neural interface, meaning it will trigger if her heart rate spikes above a threshold. To force the issue, Bram intentionally reveals a Red-Mark sniper on the ridge outside the house, aiming directly at Elara's only escape vehicle. The detonator is biolocked to Elara; Bram is coordinating with the very syndicate hunting her.",
+        "The Price of Survival Elara forces a tense negotiation, trading her encrypted off-world transit codes for the ledger and the bomb's deactivation key. As Bram frantically inputs the code into the device, they hear the rhythmic thud of heavy boots approaching the front porch, signaling the arrival of the debt-collectors. Bram possesses the knowledge to disarm Red-Mark tech, and the debt-collectors have tracked Elara to the house.",
+        "A Negotiated Silence Elara remains stone-faced, ignoring the ticking detonator to study Bram. She refuses to hand over the codes, instead revealing that the Syndicate's real prize is a micro-encrypted drive hidden inside her prosthetic arm. Bram hesitates, his greed warring with the realization that the Syndicate will kill them both the moment the book changes hands. Elara has a hidden drive in her arm; the Syndicate wants more than just the ledger."
+      ]
+    },
+    {
+      "node_id": "n_c10f4f4db6",
+      "level": "prose",
+      "shown": [
+        "p_57974b2376",
+        "p_d1a1426985",
+        "p_4501a37e8c"
+      ],
+      "axes": [
+        "introduce a complication",
+        "raise the stakes",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.9438,
+        0.9443,
+        0.8978
+      ],
+      "chosen": "p_d1a1426985",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "33e4f9f46a16c6d3f9f3bede4cc2739b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9205,
+          "dialogue_ratio": 0.1667
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8494,
+          "dialogue_ratio": 0.1538
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9205,
+          "dialogue_ratio": 0.25
+        }
+      ],
+      "texts": [
+        "prose The soft ticking from the floorboards synchronizes with the thudding in Elara's own chest. A red light pulses in her peripheral vision—a ghost image projected directly onto her retina by the neural link. The detonator is reading her blood pressure. Bram tosses the ledger casually from one hand to the other, his grin widening as he watches her jaw tighten. \"Easy, Elara,\" he hums, stepping over a pile of splintered pine. \"Your heart rate is climbing. You hit a hundred and ten beats per minute, and this floor becomes a crater.\" He gestures toward the window. Through the grime-streaked glass, a laser dot dances across the cockpit glass of her shuttle parked in the yard. The sniper is steady, waiting. Bram taps the cover of the ledger. \"The Syndicate doesn't want the book, they want you to stop running. But I? I just want a seat on that shuttle. The sniper has orders to frag your engine if you don't sync my biometrics to your flight path in the next ten seconds. If you try to run, you die. If you try to fight, you die. So, do you want to be a passenger, or a stain on the floorboards?\"",
+        "prose The small red light on the detonator pulsed in perfect, agonizing sync with Elara’s carotid artery. She felt the micro-filament against her neck warm up, a phantom itch beneath the skin. Bram didn't look at the explosive; he looked at his watch. He gestured toward the window with the heavy, leather-bound ledger. 'Look at the ridge, Elara. That’s Kael. He doesn't miss, and he’s bored of waiting for your transport to fuel up.' A high-pitched whine cut through the silence of the room, the unmistakable sound of a long-range ion cannon powering up in the distance. The metal frame of Elara’s ship, visible through the cracked glass of the study window, began to glow with the tell-tale blue corona of an incoming lock. Bram stepped closer, the smell of ozone clinging to his coat. 'You give me the codes, I signal him to stand down, and you walk away with your history. Or you keep your secrets, and we both watch your only way home turn into slag in the next ten seconds. What is your heart worth to you?'",
+        "prose The timer on the detonator stuttered, the red digits shifting from 04:12 to 04:11. Elara’s breath hitched, and the metal casing beneath the floorboards hummed—a sympathetic vibration against her own pulse. She felt the spike in her chest, a phantom itch behind her eyes, and the detonator chirped in immediate, mocking warning. Bram leaned against the rotting doorframe, his grin thin and bloodless. He tilted his head toward the window, where a laser sight cut a jagged, crimson line across the fuselage of Elara’s ship sitting in the yard. 'The sniper is impatient, Elara,' Bram said, tossing the leather-bound ledger into the air and catching it with one hand. 'And my employers are not known for their charity. You want the book? You want to live? Give me the transit codes, or watch me dismantle your life from the comfort of this porch.' Elara stared at the ledger, then at the pulsating light of the bomb. If she surrendered the codes, she was stranded on Ashfall with the Syndicate; if she fought, the neural link would turn her into a cloud of shrapnel before she could reach for her holster. She forced her lungs to slow, her heart rhythm dropping, the detonator’s chirp softening into a steady, rhythmic thrum. 'You think the Red-Mark wants me alive, Bram?' she asked, her voice dangerously level. 'Or are you just another piece of hardware they’re planning to scrap once I’m dead?'"
+      ]
+    },
+    {
+      "node_id": "n_3efe116700",
+      "level": "beat",
+      "shown": [
+        "p_e5da1768f3",
+        "p_998c561bf2",
+        "p_3c0fcb519e"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.7353,
+        0.7166,
+        0.8097
+      ],
+      "chosen": "p_3c0fcb519e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 2,
+      "snapshot_id": "d70a1119398431b2cfb86ccbcb82fa4a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6061,
+          "dialogue_ratio": 0.3333
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.22,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5914,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5962,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Neural Mismatch Elara forces a calm breath, attempting to bypass the detonator's bio-lock, but the device unexpectedly chirps in error, indicating her biometric signature doesn't match the one the Syndicate programmed into the trigger. Realizing the Syndicate knows more about her history than she assumed, she suspects the 'family' ledger contains proof of a bloodline modification she never consented to. The detonator is not locked to Elara's current identity, but to a latent, inherited biological marker.",
+        "Calculated Calm Elara forces a sharp, rhythmic exhalation, deliberately overriding her fight-or-flight response to stabilize her heart rate while she stares Bram down. She doesn't hand over the codes; instead, she uses her neural interface to trigger the ship's remote self-destruct sequence, effectively turning her own vessel into an IED that threatens the entire ridge. Elara is willing to destroy her only way home to force a standoff.",
+        "Breathing Room Elara forces a rhythmic, meditative breathing pattern to deceive her neural interface's heart-rate monitor. While Bram watches for a spike, she slips a small, high-frequency dampener from her sleeve—a tool she intended for the ledger’s internal lock—and presses it against the detonator’s housing, attempting to scramble the remote signal before the ion lock completes. Elara has been preparing for technical interference, and her survival depends on controlling her physiology."
+      ]
+    },
+    {
+      "node_id": "n_2cd624216d",
+      "level": "prose",
+      "shown": [
+        "p_1d8323922b",
+        "p_bf7e1cefe1",
+        "p_9801998efe"
+      ],
+      "axes": [
+        "introduce a complication",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8964,
+        0.8547,
+        0.8985
+      ],
+      "chosen": "p_9801998efe",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.5105,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "22185f2de27a8550ca248a268bc61716",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8696,
+          "dialogue_ratio": 0.0714
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9016,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8594,
+          "dialogue_ratio": 0.1111
+        }
+      ],
+      "texts": [
+        "prose Elara inhaled, a slow, disciplined count of four. In-two-three-four, out-two-three-four. She visualized the cold, sterile corridors of the Academy, forcing her pulse to mimic the steady thrum of a ventilation shaft. Bram’s eyes remained fixed on the small status display hovering in his retinal lens, watching for the tell-tale spike of a lie. Her sleeve caught for a fraction of a second, but she forced her hand steady, sliding the high-frequency dampener into her palm. As she pressed the cool, humming device against the detonator’s seam, a sharp, jarring chime echoed through the floorboards—the sound of her ship’s proximity alarm. The blue corona outside the window flared into a blinding, jagged arc. The detonator light didn't scramble; it turned a solid, lethal violet. Bram didn't flinch. He let out a dry, rattling laugh. 'Did you think the Syndicate didn't account for signal dampeners, Elara? That tool isn't scrambling the signal—it’s triggering the secondary fail-safe.' The floorboards beneath them groaned as the house began to shift. If the dampener accelerated the detonation sequence rather than halting it, how much time did she have left to salvage anything?",
+        "prose Bram watched the veins in Elara’s neck. He had seen fear turn people into statues or screaming messes, but she was doing something else entirely. Her chest rose and fell in a metronome’s crawl, a terrifyingly artificial rhythm that made his own pulse skip in frustration. He knew the interface on her neck was linked to the detonator’s heartbeat sensor; one spike of panic, and the Red-Mark tech would turn her throat into a mist of red. He leaned in, letting the ledger brush against his hip, waiting for the flicker in her eyes that told him she’d cracked. But then, the subtle shift in her shoulder. She wasn't just breathing—she was angling herself. He saw the flash of metal in her palm, a dampener pressed flush against the explosive’s casing. The air between them grew heavy with the smell of scorched air as her device began to warble against the detonator’s signal. He gripped the ledger tighter, his knuckles white. If she scrambled that signal, the trigger would default to detonation. Did she actually think she was faster than the Syndicate, or was she just gambling on a suicide that would leave him empty-handed?",
+        "prose Elara inhaled—slow, counted, deliberate. Her pulse flickered on the interface like a dying ember, resisting the urge to race as the ion cannon’s hum deepened into a physical vibration. Beneath her sleeve, her fingers moved with mechanical precision, sliding the dampener against the detonator’s casing. The device felt cold, almost clinical, as she pressed the activation stud. A sharp, localized static hissed between them, a jagged tear in the audio of the room. Bram’s eyes flicked to the detonator, then back to her face, his smirk faltering as the red light on the Syndicate charge stuttered—not turning off, but slowing its pulse to a crawl. The ion lock on her ship outside hung suspended in a shimmering, unstable blue, stalling mid-cycle. Elara held her breath, the dampener vibrating against her skin, and stared straight into Bram’s narrowing eyes. 'If you pull that trigger now,' she whispered, her voice steady enough to belie the chaos in her veins, 'do you really think that thing will detonate, or will it just fizzle and leave you standing here with an empty ledger and an angry Kael?'"
+      ]
+    },
+    {
+      "node_id": "n_0ec9446cd8",
+      "level": "scene",
+      "shown": [
+        "p_d86929774a",
+        "p_c826779902",
+        "p_bf68c009bd"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "pay off an open thread",
+        "slow down"
+      ],
+      "scores": [
+        0.7778,
+        1.0,
+        0.8321
+      ],
+      "chosen": "p_c826779902",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "59f14acea559c1c13a50d98182096b8a",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5612,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6548,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Misplaced Frequency The dampener triggers an override in Elara's neural interface, revealing the detonator is a beacon tracking her to Syndicate command. The countdown freezes at 00:03 as her biometric link begins uploading data from the ledger, forcing her to choose between the information and her anonymity.",
+        "The Price of Air The dampener emits a sharp, bone-vibrating hum, forcing the detonator’s light to cycle from angry crimson to a flat, dead grey. Bram flinches at the silence, his finger hovering over a comms-switch, while Elara exhales a controlled, icy breath that keeps her heart rate steady below the threshold of detonation. She lunges for the ledger in his hands, but as she pulls, the room shakes from the first near-miss blast of the ion cannon hitting the foundation, sending the house into a structural collapse. The dampener works, but the cost is triggering the attention of the sniper. T_83e8a2be06 is resolved.",
+        "The Stuttering Pulse Elara forces her heart rate to stall into an artificial bradycardia, triggering a system warning on her neural interface that Bram mistakes for a technical glitch in the bomb. As the dampener hums against the casing, the blue ion corona outside flickers, suggesting her interference is leaking into the weapon's remote link. Bram freezes, his hand tightening on the ledger as he realizes the detonator is no longer just ticking, but singing in a low, discordant tone that matches Elara's own forced rhythm. Elara can manipulate her neural connection to influence external tech, but at a dangerous physiological cost."
+      ]
+    },
+    {
+      "node_id": "n_68a51fd4bb",
+      "level": "beat",
+      "shown": [
+        "p_b62efc54a9",
+        "p_b5ae919121"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.8647,
+        0.6421
+      ],
+      "chosen": "p_b62efc54a9",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 3,
+      "snapshot_id": "581a2e42fa0c519252d81576bb624095",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6286,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.618,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Fractured Bargain Bram hesitates, his confidence shaken by Elara's cool projection of certainty. He thrusts the ledger toward her, but as she reaches for it, the dampener flickers and the detonator chirps a high-frequency warning. Bram realizes the deception, lunges to reclaim the book, and the resulting struggle forces the ledger toward the open floorboards just as the ion cannon fires a warning shot that collapses the outer wall. Bram is more afraid of Kael’s wrath than he is of Elara’s technical threats, and the ship’s situation is critical.",
+        "A Fracture in the Syndicate Bram hesitates, his confidence shaken by Elara's technical jab. Before he can decide, the ion cannon lock on the ship suddenly shifts, targeting the house instead of the transport. The house groans as a warning shot shears through the roof, and in the confusion, the ledger drops from Bram's trembling grip; Elara dives for it, but the floorboards beneath her give way entirely. Bram is genuinely afraid of Kael’s indiscriminate firepower; Elara’s gambit has inadvertently redirected the lethal focus."
+      ]
+    },
+    {
+      "node_id": "n_520bac20d9",
+      "level": "prose",
+      "shown": [
+        "p_2cf6b3b179",
+        "p_257075f254",
+        "p_7b070e207f"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "pay off an open thread"
+      ],
+      "scores": [
+        1.0,
+        0.9748,
+        0.9538
+      ],
+      "chosen": "p_2cf6b3b179",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "1e2660238f4ebe5087fd696dd9567450",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8907,
+          "dialogue_ratio": 0.1538
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9565,
+          "dialogue_ratio": 0.0667
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8271,
+          "dialogue_ratio": 0.0588
+        }
+      ],
+      "texts": [
+        "prose Bram’s jaw tightened, the skin over his cheekbones turning white as he weighed the risk of the detonation against the cold, implacable certainty in Elara’s eyes. He didn’t drop the ledger; he shoved it toward her, a frantic, desperate concession. 'Take it, then! Just kill the feed, Elara!' But as his fingers loosened, the dampener on Elara’s wrist let out a rhythmic, wet click, and the detonator chirped—a high, piercing sound that cut through the impending roar of the ion cannon. The red light on her wrist didn't just flicker; it flared to a blinding, furious crimson. Bram saw the change in the timing, the realization hitting him with the force of a blow. 'You lied,' he hissed, lunging forward with a snarl. His hand clamped over the leather binding just as Elara’s fingers touched the spine. They grappled, the ledger caught in a violent tug-of-war, pulling them both toward the gaping maw of the exposed floorboards. Outside, the air screamed as the ion cannon fired a warning shot; the foundation of the house groaned, splintered, and the outer wall disintegrated into a cloud of shrapnel and dust. In the chaotic descent of wood and rebar, the ledger slipped—and as it tumbled into the dark, hidden void beneath the subfloor, the detonator on Elara’s wrist began its final, rapid-fire sequence. If the floorboards don't hold the weight of their fight, and the ledger is already lost to the dark, what is left to stop the explosion?",
+        "prose Bram’s jaw tightened. The woman was a statue of ice, and for a heartbeat, he believed her. He saw the flicker on the detonator, the stutter in the light that mirrored the hesitation in his own gut. Kael was a monster, but Kael was a patient one; he wouldn't forgive Bram for losing the ledger to a malfunctioning piece of hardware. He shoved the leather-bound book toward Elara, his palm slick with sweat. 'Take it, then. Let’s see you walk out of here alive.' But the moment the ledger cleared his grip, the dampener gave a dying, pathetic chirp. The detonator’s light didn't just flicker—it flared a violent, steady crimson. Bram saw the truth in her eyes, the sudden dilation of her pupils as the bluff collapsed. He lunged, fingers clawing for the ledger, but the floor groaned. A thunderous crack tore through the foundation, the ion cannon’s fury finally descending upon them. The wall vanished in a spray of splintered wood and pulverized brick, and as the floorboards tilted into the abyss of the crawlspace below, Bram watched the ledger tumble, a dark bird diving into the dust of the basement. He scrambled to his knees, shards of glass embedded in his shoulder, looking up at the sky where the cannon was already retargeting. Was the book worth the weight of the roof coming down on his head?",
+        "prose Bram’s jaw tightened, the skin over his cheekbones turning waxen in the dim light. He stared at the stuttering red pulse of the detonator, his fingers trembling against the leather spine of the ledger. 'You’re bluffing, Elara. You wouldn't risk this house coming down on top of us both.' But his eyes betrayed him, flicking toward the window where the ship’s hull groaned under the strain of the ion lock. With a sharp, guttural sound, he thrust the ledger forward, offering it as a peace offering. Elara lunged, her fingers brushing the worn cover, but the dampener on her arm emitted a violent, high-pitched shriek as the field buckled. The detonator’s light snapped back to a frantic, blood-red strobe. Bram’s hesitation evaporated into a mask of snarling realization. 'You absolute bitch,' he hissed, lunging to snatch the book back. The momentum sent them both stumbling, their bodies colliding with the sagging floorboards. Just as the ledger skidded toward a gaping, splintered hole leading to the crawlspace below, a deafening thunderclap shattered the silence. The outer wall disintegrated in a shower of pulverized stone and glass, the ion cannon’s warning shot turning the study into an open-air grave. Dust choked the room, turning the air into a thick, choking grey. Bram scrambled through the debris, his hand inches from the ledger where it teetered on the edge of the abyss. Elara gripped the shard of a support beam, the detonator’s rhythm now screaming in time with her racing heart. If she let her focus slip, would the explosion find them before the floor gave way entirely?"
+      ]
+    },
+    {
+      "node_id": "n_68a51fd4bb",
+      "level": "beat",
+      "shown": [
+        "p_9e173dd8d1",
+        "p_a7315f2f19",
+        "p_2385effb40"
+      ],
+      "axes": [
+        "raise the stakes",
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        0.8237,
+        0.701,
+        0.5457
+      ],
+      "chosen": "p_9e173dd8d1",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 1,
+      "snapshot_id": "3e709d7bd65710126ecb29f12de99a83",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5805,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.679,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6471,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Price Paid in Blood Bram lunges at Elara, pinning her against the wall as the ion cannon hits, tearing the floor open. Elara feels the dampener fail; the red light on her wrist shifts to a solid, blinding glare, and she realizes her bluff has become a suicide pact. The dampener has failed permanently and the detonator is now unstoppable.",
+        "A Shift in the Foundation Bram, unsettled by Elara's certainty, wavers, but the floorboard under their feet groans and gives way, dumping them both into the crawlspace. In the dust and dark, the detonator’s light changes from red to a steady, rhythmic green, indicating the damping field has overridden the detonation sequence. Bram, bleeding from a cut on his temple, grabs the ledger from the debris, staring at the green light with a mix of shock and confusion as he realizes he has been outplayed by a bluff that actually worked. The dampener was not just a bluff, it successfully hijacked the detonator, but the cost is now a struggle for survival in a collapsing ruin.",
+        "A Breath of Doubt Bram freezes, the weight of Elara's challenge settling over the room like the dust falling from the rafters. He looks at the detonator, then at the pulsating blue field of the ion lock outside, his hand trembling as he tries to discern if Elara is stalling or if the dampener has genuinely compromised his leverage. For a heartbeat, he doesn't pull the trigger; he looks for any sign of sweat on her brow or flicker in her eyes that might betray her bluff. Bram is genuinely uncertain if he holds the power he thinks he does."
+      ]
+    },
+    {
+      "node_id": "n_12873c9c57",
+      "level": "prose",
+      "shown": [
+        "p_21f59cf69c",
+        "p_9eecbc2974",
+        "p_8d56c05ea8"
+      ],
+      "axes": [
+        "slow down",
+        "introduce a complication",
+        "deepen the interiority"
+      ],
+      "scores": [
+        1.0,
+        0.9451,
+        0.9841
+      ],
+      "chosen": "p_21f59cf69c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "e4b3190e853d998c192ed44f87c3f88c",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9016,
+          "dialogue_ratio": 0.1818
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9649,
+          "dialogue_ratio": 0.0833
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8594,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The floor beneath them shrieked—a sound of tortured timber and rusted nails giving up their hold—and then the world tilted. Bram didn’t retreat; he slammed her backward, his forearm pinning her throat against the wall with the desperation of a man who realized his only exit had just evaporated. The dampener on her wrist pulsed once, a sickly, yellow heat, before the hum died entirely. The silence that followed was worse than the cannon fire. Then, the red light flooded the room, an absolute, unwavering crimson that turned Bram’s terrified expression into a mask of blood-soaked shadow. He looked down at her wrist, then back at her eyes, his grip tightening until Elara tasted copper. 'You idiot,' he choked out, his voice cracking against the roar of the collapsing foundation. 'You didn't have a kill-switch. You had a timer.' As the floorboards beneath their feet disintegrated into the abyss of the sub-level, the light on her skin beat faster, a frantic, synthetic heart syncing perfectly with her own. With the ledger gone and the detonator locked to her pulse, if she couldn't break his hold, would she be the only one to witness the end?",
+        "prose The floorboards shrieked, a sound of splintering ancient wood that vanished beneath the deafening crack of the ion cannon striking the roof. Bram slammed into Elara, his shoulder catching her ribs and pinning her hard against the lath-and-plaster wall. The impact knocked the breath from her lungs, but the silence from the dampener was louder than the collapsing house. The hum that had kept the detonator at bay died, replaced by a wet, mechanical click. On her wrist, the crimson light surged, shifting from a stuttering pulse to a solid, blinding flare that illuminated the dust-choked air. Bram’s eyes widened as the red glow washed over his face, reflecting in his dilated pupils. He felt the rapid, heat-slicked beat of her heart against his chest—the very rhythm that the detonator was now calibrated to track. He didn't pull away; he grabbed her wrist, staring at the countdown display as the final sequence locked. 'You absolute fool,' he breathed, his voice barely audible over the roar of the house tearing itself apart. 'You’ve tied your life to a countdown that doesn't have a pause button.' Elara struggled, but with the floor already vanishing beneath their feet into the dark crawlspace, she realized the truth: the detonator wouldn't care if they hit the ground. If she couldn't slow her heart, and he couldn't let go, who survives the fall?",
+        "prose Bram slammed her against the timber frame, the impact driving the wind from her lungs. Above them, the ceiling rafters shrieked as the ion cannon tore through the rafters. Elara’s hand, still locked around the detonator, went numb; the dampener didn't just stop vibrating, it grew searingly hot against her pulse point. The red light on her wrist blossomed into a steady, impossible glare that bleached the color from Bram’s knuckles. He saw it then—the shift from a calculated bluff to a countdown that nothing could pause. He stopped mid-shout, his grip slackening as he stared at the light, the color draining from his face as he realized his life was now tethered to hers. Below them, the floorboards gave way with a sound like snapping bone, leaving them suspended over the dark, jagged crawlspace. Elara looked at the glowing light, then up at the man who had traded his safety for a ledger that was currently falling into the abyss. If she couldn't stop the sequence, and the foundation was already failing, what was left to tether their lives to this room?"
+      ]
+    },
+    {
+      "node_id": "n_5be9e443dc",
+      "level": "episode",
+      "shown": [
+        "p_7d3cdd5ac1"
+      ],
+      "axes": [
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.7782
+      ],
+      "chosen": "p_7d3cdd5ac1",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "b2224934833b4dcf0a2ad42a7a5a2b54",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5714,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Echoes in the Dust As the house collapses, Elara exploits the falling debris to dislodge Bram's grip, forcing them both into the flooded sub-basement. In the darkness, Elara realizes the detonator has synced with her rising fear, and she must suppress her own fight-or-flight response while hunting for the lost ledger before the charge triggers."
+      ]
+    },
+    {
+      "node_id": "n_fb3967c23c",
+      "level": "scene",
+      "shown": [
+        "p_67dac4259c",
+        "p_ae1dd46da9",
+        "p_20b4587f7c"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "slow down"
+      ],
+      "scores": [
+        1.0,
+        0.7392,
+        0.8733
+      ],
+      "chosen": "p_67dac4259c",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "4777b8c88fc6a3cfd3eefd5d5895ef94",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6509,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6769,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6197,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Drowning in the Dark As the floor gives way, Elara and Bram tumble into the flooded crawlspace. The impact slams the wind from Elara's lungs, spiking her heart rate and causing the detonator to chime in rapid, aggressive pulses. Amidst the rising, freezing groundwater, she realizes the ledger is pinned beneath a fallen support beam, and Bram is reaching for it with his uninjured hand, indifferent to the fact that his movement is pushing them both closer to a fatal detonation. The detonator is directly linked to Elara's involuntary panic response, making a calm escape impossible while she is trapped with Bram.",
+        "Buried in the Dark The floor gives way, dropping Elara and Bram into the suffocating, water-logged dark of the crawlspace. As they scramble through the brackish sludge, the detonator’s light turns a steady, lethal violet, indicating it is no longer just a timer, but a proximity-pulse device synced to Elara's own adrenaline. In the distance, the ion cannon’s hum grows deafening, signaling that the house is about to be leveled entirely, while Bram, clutching his side, realizes the detonator isn't just threatening him, it's threatening the only way out. The detonator has shifted from a timer to a proximity-pulse trigger that feeds directly on Elara's pulse, making her own fear the primary catalyst for detonation.",
+        "The Descent As the floor gives way, Elara and Bram plummet into the pitch-black sub-basement. They hit the freezing, stagnant water hard, the impact knocking the air from their lungs and causing the detonator to pulse a violent, rhythmic violet in the dark. Elara fights to surface while feeling the cold metal of the ledger submerged near her boot, but Bram’s hand immediately finds her ankle in the murk. The detonator responds to adrenaline by changing color, and the ledger is within reach but contested."
+      ]
+    },
+    {
+      "node_id": "n_0e5cf90014",
+      "level": "beat",
+      "shown": [
+        "p_dc40ad5815",
+        "p_4310e36678"
+      ],
+      "axes": [
+        "shift the point of view",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.5506,
+        0.3633
+      ],
+      "chosen": "p_dc40ad5815",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.25,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Bram's Descent From Bram's perspective, the floor collapsing is a moment of pure, panicked survival. As he falls into the dark, flooded space, his instinct isn't just to save the ledger, but to kill Elara, convinced her calm facade was a trap designed to lead him into an ambush. He claws at her throat in the freezing water, his vision tunneling as he realizes the hum on her wrist is actually accelerating. Bram is genuinely terrified of Elara's competence and views her as a lethal threat rather than just a target.",
+        "A Breath of Drowning Elara forces her lungs to ignore the freezing water, her movements sluggish as she reaches for the submerged ledger. Bram lashes out, his grip on her throat tight, but his eyes dart to the red pulsing light on her wrist, realizing the danger isn't just external. She whispers a false instruction, telling him the dampener is still active, while she desperately tries to pry his fingers from her windpipe to reach the override code. Elara is still attempting to manipulate Bram even while physically drowning."
+      ]
+    },
+    {
+      "node_id": "n_0e5cf90014",
+      "level": "beat",
+      "shown": [
+        "p_3faec9c761",
+        "p_dcea2ceabd",
+        "p_07974dc6fd"
+      ],
+      "axes": [
+        "shift the point of view",
+        "slow down",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.5074,
+        0.7382,
+        0.7243
+      ],
+      "chosen": "p_dcea2ceabd",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6587,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6854,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6471,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Bram's Panic Shifted to Bram's perspective, the world is a blur of splintering timber and icy, black water. He scrambles to find purchase in the rising flood, his fingers brushing the wet leather of the ledger pinned beneath a beam. Elara is a dark silhouette thrashing beside him, and he realizes with mounting terror that the rhythmic chirping from her wrist is accelerating, echoing his own frantic heartbeat. He is no longer focused on the ledger, but on the terrifying possibility that the woman he is trying to outmaneuver is an unhinged suicide bomber. Bram is genuinely terrified of Elara's perceived volatility and the ticking detonator.",
+        "The Impact of Silence Elara hits the freezing, muddy water beneath the floorboards, the breath crushed out of her and her heart hammering against her ribs. The sudden spike in her pulse causes the detonator to shriek with a high-pitched, rhythmic chirp that pulses in sync with her frantic blood flow. Bram sprawls nearby, gasping for air, his hand scrabbling through the muck to find the ledger, which is pinned beneath a fallen, jagged support beam. As the ion cannon continues to pelt the structure above, Elara realizes the dampener has been completely smashed in the fall, leaving her pulse as the only trigger left. The dampener is destroyed, and the detonator is now solely reacting to Elara's pulse.",
+        "Stilled Heart, Shattered Code As the crawlspace floods with freezing runoff, Elara realizes the ledger is trapped beneath a jagged, structural beam. She tries to leverage the debris away, but the movement sends a spike of adrenaline through her, causing the detonator to chime in rapid, warning bursts. Bram, disoriented and half-submerged, stops his assault and watches in horror as the red light on her wrist cycles faster, realizing that her pulse is now the timer for their shared death. The detonator's timing is directly linked to Elara's heart rate, and any effort to move makes the situation more volatile."
+      ]
+    },
+    {
+      "node_id": "n_0e5cf90014",
+      "level": "beat",
+      "shown": [
+        "p_dc1d16b5df",
+        "p_58a5199473",
+        "p_064925e8bb"
+      ],
+      "axes": [
+        "slow down",
+        "deepen the interiority",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.7827,
+        0.7396,
+        0.9837
+      ],
+      "chosen": "p_064925e8bb",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "d0e703cf329667236dc56e670597e7b2",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6452,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6548,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.634,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Breath of Still Water Elara forces her lungs to ignore the freezing silt-heavy water as she surfaces, her movements sluggish and weighted. Bram is thrashing in the narrow, dark gap beside her, his breath ragged, the ledger still just out of reach under a beam. She realizes with chilling clarity that his panic is causing the detonator to cycle faster than hers; if she tries to move him, the change in his rhythm might trigger the final blast before she can reach the detonator's interface. Bram's proximity to the detonator is currently more dangerous than Elara's own pulse.",
+        "Quietude in the Muck Elara forces her hand to lie flat against the silt-covered wood, dampening the rhythmic tremor of her pulse. She doesn't fight Bram; she goes limp, offering the ledger to him while watching his eyes widen with a mix of triumph and suspicion. As he reaches for the book, she shifts her weight to tilt the support beam, pinning his reaching arm to the floorboards and forcing him to choose between the ledger and his own mobility. Elara can exert control over the detonator if she remains physically still, but she is willing to risk a fatal surge to neutralize Bram.",
+        "Bram's Calculus Bram spits out a mouthful of muddy water, his vision tunneling as the red light on Elara's wrist pulses against the gloom. He realizes his survival is no longer tethered to his strength, but to her ability to choke down her panic. With his one free hand, he reaches for Elara’s throat, not to kill her, but to force her head underwater, hoping to shock her system into unconsciousness before the timer hits zero. Bram has realized the detonator is tied to Elara's pulse; Bram is choosing lethal suppression over negotiation."
+      ]
+    },
+    {
+      "node_id": "n_f4415c86d4",
+      "level": "prose",
+      "shown": [
+        "p_a611e0b5c6",
+        "p_1c2637280c",
+        "p_1e5704cdbb"
+      ],
+      "axes": [
+        "raise the stakes",
+        "deepen the interiority",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.797,
+        0.8477,
+        0.978
+      ],
+      "chosen": "p_1e5704cdbb",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "140bb0323b9e0a1f0d872ad13011cf4b",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 1.0,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9735,
+          "dialogue_ratio": 0.0909
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9649,
+          "dialogue_ratio": 0.1
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9735,
+          "dialogue_ratio": 0.1
+        }
+      ],
+      "texts": [
+        "prose The icy water surged to their chests, smelling of stagnant silt and rot. Bram’s fingers scrabbled against the slick wood, his breath coming in ragged, wet hitches that vibrated against Elara’s shoulder. Above them, the red light on her wrist strobed, a frantic, synthetic heartbeat that seemed to pull the very air from the room. Elara clamped her jaw, forcing her heart to slow, but the sound of the ion cannon—a deep, resonant thrumming—mocked her stillness. Bram shifted his grip, his hand moving from her collar to her throat. He wasn't reaching for the ledger anymore; he was staring at her eyes with a manic, hollow focus. 'You go under, the pulse drops,' he hissed, his voice bubbling with swallowed water. Before Elara could twist away, he drove his forearm into her collarbone, his weight plunging her face-first into the freezing slush. The world turned to liquid black. Her lungs screamed for relief, her fight-or-flight response spiking in defiance of his logic, and the detonator on her wrist transitioned from a rapid chirp to a single, unbroken, high-pitched scream. As the light beneath her sleeve flared with the intensity of a dying star, she felt the shockwave of the ion cannon finally tear through the structure above—was this the silence that followed a detonation, or the sound of the house collapsing in on them both?",
+        "prose Bram’s fingers closed around her throat, his nails biting into the cold, wet skin. The water in the crawlspace surged against them, metallic and thick with silt. He didn’t jerk her backward; he forced her down, pinning her face into the rising slurry of the basement floor. Elara’s vision blurred as the dark liquid filled her nose, but her hand remained fixed, shielding the detonator from the impact against the mud. Through the roar of the water, she felt the frantic, rhythmic chirping of the device begin to soften, its pulse dragging, slowing. Bram’s weight pressed down, his breathing jagged and shallow against her ear. 'Die or stop it,' he choked out, his voice a guttural rasp that barely carried over the steady, encroaching drip of the foundation. He was trying to suffocate her heart, to flatline the rhythm that kept the explosive active, but he was shaking—his hand trembled with every heartbeat that hammered against her pulse point. As the black water surged up to drown her last coherent thought, she forced her fingers to trace the internal shunt on the detonator’s casing, a blind, desperate search for the override. If she could lock the timer at this depth, with her heart rate plummeting under his grip, would the charge be forced into a standby state, or would the sudden stillness trigger a total system collapse?",
+        "prose The freezing water swirled, black and oily, filling the hollow beneath the house as the structure groaned above them. Elara gasped, her lungs burning, the sudden immersion triggering a spike in her vitals that made the detonator on her wrist flare a violent, strobe-bright red. Bram’s fingers were cold iron against her throat, his eyes wide and bloodshot in the dim light. He wasn't trying to snap her neck; he was shoving. He drove her face down into the silt-heavy slush, his weight anchoring her head beneath the surface. The world turned muffled and frantic. Her heart thundered a jagged rhythm against her ribs, and she watched the detonator’s light bleed through the murky water—a rapid, insistent pulse that wasn't slowing, even as the cold bite of the floodwater numbed her skin. She reached up, clawing at his forearm to break his hold, but Bram only shifted his weight, pinning her deeper into the mud. He leaned close, his voice a distorted, underwater gargle that vibrated against her ear, 'Slow it down, or we burn together.' As her oxygen began to fail and the red light burned brighter, syncing with the frantic, drowning flutter of her own heart, would the loss of consciousness save them, or would the shock be the final trigger?"
+      ]
+    },
+    {
+      "node_id": "n_fb3967c23c",
+      "level": "scene",
+      "shown": [
+        "p_151c8757d9",
+        "p_53be27fb59",
+        "p_bc4841809b"
+      ],
+      "axes": [
+        "raise the stakes",
+        "slow down",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.6942,
+        0.7517,
+        0.4221
+      ],
+      "chosen": "p_53be27fb59",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6875,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6215,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.5,
+          "judge_specificity": 0.5,
+          "judge_consequence": 0.5,
+          "judge_voice": 0.5,
+          "criterion_1": 0.5,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6647,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Breath of Ice Elara forces her heart rate to plummet, effectively stalling the detonator by slipping into a state of dissociative calm, but as the red glow dims, she realizes Bram has used the momentary silence to tether her wrist to the submerged support beam with a length of cut wire. Now physically anchored and unable to reach the ledger or move freely, she finds that her attempt to suppress the timer has actually disabled her only mobility, leaving her tethered to the wreckage as the water rises toward her chin. Elara can control the pulse-link if she dissociates, but the Syndicate device has a secondary fail-safe: it locks the host in place if it detects a stabilization attempt.",
+        "A Breath in the Mire Pinned beneath the freezing silt, Elara forces her muscles into a catatonic state, tricking the detonator into slowing its pulse by physically imposing a state of artificial calm. Bram, sensing the sudden drop in the chime's intensity, relaxes his grip just enough for her to surface for a frantic, ragged gasp of air that threatens to reignite the device. Elara can exert granular control over the detonator's pulse through meditative suppression, but the ledger remains out of reach beneath the beam.",
+        "A Pact in the Silt Bram stops pushing Elara under, his grip loosening as he stares at the detonator's erratic pulse. He realizes that if he kills her, the timer will likely spike to zero, so he forces his own breathing to sync with hers, creating a strange, forced calm in the freezing dark. He pulls his knife and wedges it into the beam pinning the ledger, offering it to her as a sign of truce, while the ion cannon outside cycles to a deafening, final pitch. Bram is pragmatic enough to prioritize survival over the ledger; the detonator's timer is sensitive to external pressure as much as internal."
+      ]
+    },
+    {
+      "node_id": "n_fb3967c23c",
+      "level": "scene",
+      "shown": [
+        "p_cb7edc649e",
+        "p_f64d5a1c35",
+        "p_df7c6be5c0"
+      ],
+      "axes": [
+        "introduce a complication",
+        "subvert the expectation",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.9553,
+        0.7959,
+        0.8187
+      ],
+      "chosen": "p_cb7edc649e",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "613dd7235cc079a1a56324aea7fa9384",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6145,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6832,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ledger's Weight As Bram forces Elara's head under the freezing water, the detonator's red light reflects off the silt, revealing that the ledger is not just pinned, but physically integrated into the house's structural dampening system. Elara realizes that pulling the ledger free will trigger an immediate, catastrophic collapse of the remaining sub-basement, effectively burying them both alive before the timer even hits zero. The ledger is a structural component of the house's defense, not just a book to be retrieved.",
+        "Calculated Desperation Elara forces a sharp, guttural laugh, letting the sound rip through the silence. She doesn't fight Bram's hold; instead, she presses her wrist—and the rapidly pulsing detonator—directly against his chest, forcing him to feel the rhythmic, synthetic thrum of her own racing heart. Bram flinches, realizing the explosive charge is now essentially mapped to his own physical proximity, turning their struggle into a literal dead-man's switch that he cannot afford to maintain. The detonator's proximity sensor is as volatile as the pulse-sync, effectively tethering Bram's survival to Elara's safety.",
+        "The Price of Stillness Elara forces herself into a state of absolute physiological detachment to deceive the detonator, causing the rapid chirping to fade into an eerie, steady hum. Bram, seeing the red light stabilize, misinterprets her control as a total failure of the device and lunges for the beam holding the ledger; his sudden, violent exertion spikes the ambient pressure, and the detonator instantly snaps to a high-pitched, terminal scream. Elara realizes that her survival is no longer about keeping her own heart slow, but about preventing Bram from killing them both through his desperate, frantic greed. The detonator is sensitive not only to Elara's pulse but to the chaotic physical environment Bram is creating around her."
+      ]
+    },
+    {
+      "node_id": "n_c25377ca05",
+      "level": "beat",
+      "shown": [
+        "p_bb769dd7e4",
+        "p_afc7d58b5b",
+        "p_f606d02fd1"
+      ],
+      "axes": [
+        "introduce a complication",
+        "pay off an open thread",
+        "deepen the interiority"
+      ],
+      "scores": [
+        0.9016,
+        0.9006,
+        0.817
+      ],
+      "chosen": "p_bb769dd7e4",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 1,
+      "snapshot_id": "c97cd07aa2ade53b327f39e7da813480",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.649,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5556,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Structural Deadlock As Bram drags Elara's head under the water to force compliance, the detonator's aggressive pulse triggers a localized seismic feedback. The ledger isn't just an object; it is keyed into the house's foundation, and Elara feels the ledger's binding vibrate in resonance with the detonator. She realizes that attempting to force the ledger out of the support beam will cause the entire sub-basement to collapse, killing them instantly. She has to make Bram understand that by fighting for the ledger, he is triggering the very explosion he fears. The ledger is a structural anchor for the house's defense system, and extracting it is a death sentence.",
+        "Structural Integrity Bram’s hand slips from Elara’s throat as the structural integrity of the floor shifts. He spots the ledger, now half-submerged in the muck, and realizes it is wired directly into the house's power grid, acting as a dead-man switch for the entire foundation. He freezes, his realization mirrored in the sudden, sharp silence that follows the roar of the ion cannon. If he pulls the ledger, the ceiling comes down on both of them; if he leaves it, they remain pinned here while the house continues to disintegrate. The ledger is a structural component of the house's defense system.",
+        "The Ledger's Tether Bram ignores Elara's gamble, hauling the beam upward. The ledger is revealed as a structural dead-man's switch for the house. As it shifts, the detonator's pulse accelerates into a high-pitched whine. The ledger is physically linked to the house's structural stability."
+      ]
+    },
+    {
+      "node_id": "n_6ffbcb950a",
+      "level": "prose",
+      "shown": [
+        "p_7239b57ae9",
+        "p_8a0d42c141",
+        "p_cd9a5cac01"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.8626,
+        0.8518,
+        0.8402
+      ],
+      "chosen": "p_7239b57ae9",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "2358cbdbb8db780318dee93971885ff6",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8943,
+          "dialogue_ratio": 0.125
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7692,
+          "dialogue_ratio": 0.0667
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9244,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The freezing water rushed into her ears, a violent, high-pitched scream of displaced air and shifting stone. As Bram shoved her face into the silt, the detonator on her wrist didn't just pulse; it shrieked. A raw, electrical vibration tore through her arm, syncing with the ledger wedged beneath the iron support beam. She felt the ledger resonate—not as paper and ink, but as a keyed component of the foundation itself. It was the structural keystone. If Bram forced the steel beam to shift, the basement roof would fold like paper. She clawed at the water, twisting her body until she surfaced, gasping for air that tasted of wet rust. She grabbed his forearm, her grip slick with mud, and shoved the detonator display directly into his field of vision. It was blindingly crimson, a strobe of impending death that pulsed in perfect, terrifying time with the grinding groan of the house above. 'Look at it, you fool!' she screamed, her voice cracking against the roar of the structure. 'The ledger is the anchor. You pull it, and the roof comes down on both of us. Is the payout worth being buried under six feet of foundation?' Bram froze, his eyes locked on the rhythmic, hateful light, his knuckles white against the metal. As the water climbed toward their throats and the ceiling beams began to splinter, would he believe the physics of his own destruction, or was he already too far gone to care?",
+        "prose Bram tasted the stale, metallic tang of the floodwater as he drove her head down. He expected her to thrash, to claw at his eyes or the knife at his belt, but her body went suddenly, unnervingly rigid. Beneath his palm, resting against her wrist, the detonator wasn't just blinking; it was screaming. A rhythmic, high-frequency hum vibrated through her skin, traveling up his own arm until his teeth ached. He frowned, glancing down into the silt-black water. The ledger was wedged deep, its spine caught against the iron support beam, and it was glowing—or the foundation around it was. Every time the detonator pulsed, the concrete groaned, a low, tectonic grinding sound that signaled the entire floor was bowing under the strain. He felt the ledger vibrate, a sympathetic resonance that made the house shriek. If he pulled that book now, the support beam wouldn't just shift; it would snap, bringing the ceiling down on both of them before he could even draw a breath. He pulled his hand back, his heart hammering against his ribs in a syncopated, terrified rhythm that made the detonator flare an even brighter, more violent shade of crimson. He looked at Elara, her face pale and submerged, her eyes wide and fixed on the ledger’s binding. She wasn't fighting him anymore; she was pointing, her finger trembling as she tapped against the steel. If he kept holding her under, the pressure would finish what the Syndicate started, so he grabbed her by the shoulder and hauled her up, gasping, into the freezing air. 'You're telling me this entire foundation is wired to that scrap of paper?' he hissed, his voice raw, 'and if I take it, we die?'",
+        "prose The water surged, a frigid, suffocating weight that pushed the breath from Elara’s lungs. Bram’s hand was a vice against the back of her neck, shoving her deeper into the silt, but as the detonator on her wrist pulsed a violent, strobe-white heat, the foundation beneath them let out a low, tectonic groan. It wasn't just the house settling. Elara felt the vibration ripple up through her arm—a rhythmic, metal-on-metal thrumming that matched the detonator’s syncopated spike. The ledger, wedged deep into the primary iron support beam, wasn't just buried; it was a physical load-bearing dampener. As she clawed at the beam, her fingers brushed the ledger’s spine and felt the terrifying shift: the entire basement’s structural integrity was keyed to the ledger’s resistance. Every frantic tug Bram made to rip it free was sending a seismic tremor through the foundation, driving the detonation timer faster. She broke the surface, gasping, coughing up black water, and grabbed Bram’s collar, her voice raw and shaking. 'Stop!' she choked out, forcing her wrist into his line of sight where the red light was now a steady, blistering glare. 'You're not just pulling a book—you’re pulling the pin on the entire house. If you rip that ledger out, the floor comes down on top of us before you even hit the door. Do you want the Syndicate’s data, or do you want to be buried under three tons of ferro-concrete?'"
+      ]
+    },
+    {
+      "node_id": "n_c25377ca05",
+      "level": "beat",
+      "shown": [
+        "p_250058f269",
+        "p_dcc49915ac",
+        "p_11b34e13aa"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "raise the stakes",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.7003,
+        0.896,
+        0.6988
+      ],
+      "chosen": "p_dcc49915ac",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 4,
+      "hard_flags_shown": 4,
+      "snapshot_id": "59834d577ca0c231f408053fada1d4c7",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6854,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.5,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6707,
+          "dialogue_ratio": 0.25
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6304,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "A Choice of Ruin Bram stares at the strobe, his grip faltering as he weighs the Syndicate's bounty against his own life. Realizing he cannot pull the ledger without burying himself, he pivots from aggression to a desperate, cold pragmatism, forcing Elara to use her interface to detach the ledger's electronic lock without dislodging its physical keystone. Elara realizes he is not letting her go, but rather binding her life to his: if the house falls, they fall together, and he will use her technical skill as his only leverage to survive the collapse. Bram has abandoned the hope of retrieving the ledger intact; his new goal is to force Elara to extract it safely while they are trapped.",
+        "Structural Deadlock Bram stops pushing Elara under, his face pale as he watches the detonator pulse in lethal synchronization with the straining iron support beam. He realizes that pulling the ledger will trigger an immediate structural collapse that would crush them both instantly, effectively stripping him of his leverage. As the ceiling groans and dust chokes the air, he demands that Elara find a way to decouple the ledger from the foundation without detonating the charge, effectively shifting his goal from 'take the ledger' to 'don't die'. Bram now understands the physical consequence of pulling the ledger, confirming that he prioritizes his survival over the acquisition if the cost is immediate death.",
+        "Feedback Loop Bram realizes the ledger is physically keyed to the house foundation and that his own panicked movements are vibrating the support beam, accelerating the structural failure. As the ceiling groans and dust chokes the room, he forces his hand away from the beam, but the vibration doesn't stop; the detonator's pulse has already triggered a sympathetic resonance in the ledger's binding that he can no longer reverse by simply letting go. The house's structural integrity is tied to the ledger in a way that requires absolute stillness to maintain."
+      ]
+    },
+    {
+      "node_id": "n_29fc13889b",
+      "level": "prose",
+      "shown": [
+        "p_e9ee8e4a0b",
+        "p_b8d002dab6",
+        "p_8ba8d618dc"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "subvert the expectation",
+        "slow down"
+      ],
+      "scores": [
+        1.0,
+        0.7782,
+        0.9187
+      ],
+      "chosen": "p_e9ee8e4a0b",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "a38805bd43ddaf3a8049ed2b13db1681",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9016,
+          "dialogue_ratio": 0.1538
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9053,
+          "dialogue_ratio": 0.1818
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9244,
+          "dialogue_ratio": 0.1538
+        }
+      ],
+      "texts": [
+        "prose Bram’s hands recoiled as if the detonator itself had bitten him. He scrambled backward through the freezing black water, his boots skidding against the sludge until his back hit the jagged concrete wall. The red light from Elara's wrist washed over his face, revealing the desperate calculation in his eyes; he wasn't looking for a way to win anymore, he was looking for a way out. Above them, a support beam groaned—a long, metallic shriek that vibrated through their teeth. Dust rained down in thick, choking curtains, settling on the surface of the rising water. Bram lunged forward again, but he didn't reach for her throat. Instead, he jammed his serrated combat knife into the sediment, pointing blindly toward the base of the iron beam where the ledger remained wedged. 'You’re the one who keyed it,' he snarled, his voice stripped of its earlier arrogance and replaced by a jagged, breathless urgency. 'If the sync is structural, you know the override frequency. Decouple the ledger without tripping the collapse, or we both stop breathing in the next sixty seconds.' He held the knife out, handle first, his knuckles trembling. The detonator on Elara’s wrist flared, a high-frequency whine beginning to climb as the house settled another inch deeper into the mire. If she took the blade and failed to bypass the locking mechanism, would the resulting structural failure be a mercy compared to what the Syndicate would do to them if they survived?",
+        "prose Bram jerked back, his boots splashing into the rising slush as he scrambled away from the iron beam. The silence that followed was heavy, broken only by the wet, rhythmic thud of water against the foundation. He pointed his trembling blade at the ledger, still caught in the metal jaws of the structure. 'Fix it,' he hissed, his voice raw. 'You know how the dampening field locks into the ledger’s encryption. Decouple the link without spiking the pulse, or we die in this grave.' Above them, the ceiling groaned—a deep, metallic scream of shearing bolts. Dust filtered down like gray snow, settling into the black water. Elara felt the detonator on her wrist grow searingly hot, the red light casting long, frantic shadows across Bram’s terrified face. She looked at the ledger, then at the pulsating interface, realizing that decoupling the signal would require a direct bypass through her own neural dampener—a move that would leave her completely exposed to the Syndicate’s signal. If she severed the connection, would the ledger finally come free, or would the sudden loss of resistance cause the detonator to assume it had been tampered with and trigger the final count?",
+        "prose Bram’s fingers went slack, the iron-cold weight lifting from Elara’s throat just enough for her to draw a jagged, wheezing breath. The water, now waist-deep and churning with pulverized brick, surged against them. He didn’t back away; he stayed close, his eyes darting from the glowing, stroboscopic red light on Elara’s wrist to the twisted iron beam that held the ledger tight. Each groan of the overhead joists matched the detonator’s rhythm, a mechanical heartbeat pulsing through the very floor beneath their feet. He wiped a smear of brackish mud from his forehead, his face drained of color, the arrogance of his assault replaced by a hollow, frantic pragmatism. He lunged forward, grabbing her shoulder—not to crush, but to anchor. His voice was a raw, shaking rasp over the sound of the house slowly folding inward. 'You know the bypass. You know the sequence. Don’t look at me like that, Elara—I don’t want to die for a stack of encrypted scrap.' He gestured toward the ledger with a tremor in his hand. 'If that support gives, we’re dust. Do you have enough control to cut the link without bringing this entire foundation down on our heads, or are we already dead?'"
+      ]
+    },
+    {
+      "node_id": "n_5be9e443dc",
+      "level": "episode",
+      "shown": [
+        "p_03d4cca9ae"
+      ],
+      "axes": [
+        "introduce a complication"
+      ],
+      "scores": [
+        0.7716
+      ],
+      "chosen": "p_03d4cca9ae",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.9283,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "b1a3faf22029ed41a54a462f3ac17b33",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5627,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Weight of the Keystroke As Elara attempts to bypass the ledger's structural lock with Bram's knife, the device detects the dampener and forces a hard-reboot of the sub-basement grid. The foundation shifts violently, revealing that the ledger is a kinetic pressure sensor tied to the Syndicate's orbital weaponry."
+      ]
+    },
+    {
+      "node_id": "n_0cc2ff5154",
+      "level": "scene",
+      "shown": [
+        "p_7e357f9bef",
+        "p_a8b6811743",
+        "p_52882fc2d7"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "shift the point of view",
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.9004,
+        0.863,
+        0.8301
+      ],
+      "chosen": "p_7e357f9bef",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "84ddc4a69a075cf52a4fd1d6f74cc10c",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6162,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6395,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Price of Synchronization Bram jams his combat knife into the iron beam, using it as a fulcrum to shift the ledger's weight away from the primary structural trigger without releasing the dampening lock. As the ledger disengages, the house emits a low, metallic scream; the ceiling holds, but the detonator on Elara's wrist spikes to a flat-line, shifting its tether from her heartbeat to the house's collapsing grid frequency. She is no longer the trigger, but the foundation itself is now the bomb. The ledger was never just a book; it was a frequency key that kept the building's structural integrity synced with the detonator's internal timer.",
+        "The Price of Iron Bram watches the pulsating detonator, his perspective shifting as he realizes Elara’s fear is the only thing keeping the house from collapsing entirely. He retracts his knife, not out of mercy, but because he perceives that the Syndicate ledger isn't just a data cache—it is actively feeding on Elara’s biometric vitals to maintain the foundation's stability. The ledger is not just a structural key, it is a biometric siphon; the house is essentially using Elara as a living battery.",
+        "A Fractured Accord Bram jams his combat knife into the structural gap beside the ledger, using it as a lever to hold the weight of the debris while Elara attempts to bypass the ledger's sync-protocol. As she makes the connection, the ledger doesn't release; it begins to broadcast an encrypted distress signal, causing the ion cannon lock above to fluctuate wildly and turning the sub-basement into an active transmission zone. The ledger is not just a structural weight, it is a broadcast device, and its signal is what keeps the ion cannon locked on their location."
+      ]
+    },
+    {
+      "node_id": "n_acc1082c1c",
+      "level": "beat",
+      "shown": [
+        "p_584cc00dad",
+        "p_3919790b63"
+      ],
+      "axes": [
+        "pay off an open thread",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.8315,
+        0.5839
+      ],
+      "chosen": "p_584cc00dad",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 10,
+      "hard_flags_shown": 9,
+      "snapshot_id": "9f27acd812d99b6ddf2f34ec01fec3a2",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.5656,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6587,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Decoupling Gamble Bram uses his combat knife to shift the ledger's weight, disengaging it from the structural trigger. The house groans but holds, yet the detonator on Elara's wrist shifts from a red pulse to a steady amber light, locking onto the house's structural decay frequency instead of her heartbeat.",
+        "The Resonant Frequency As the ledger disengages, the house emits a low, metallic scream; the ceiling holds, but the detonator on Elara's wrist spikes to a flat-line, shifting its tether from her heartbeat to the house's collapsing grid frequency. She realizes the ledger was a structural key, and the house’s foundation is now actively consuming the charge's energy to maintain the stability of the remaining frame. Bram, seeing the timer vanish and replaced by a lethal harmonic hum, realizes his window for leverage has closed. The detonator is drawing power from the foundation, locking the remaining structure into a feedback loop that cannot be easily disarmed."
+      ]
+    },
+    {
+      "node_id": "n_fcfc44c255",
+      "level": "prose",
+      "shown": [
+        "p_22224bdc7e",
+        "p_071ee86255",
+        "p_a767c494ce"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.9094,
+        0.7519,
+        0.9821
+      ],
+      "chosen": "p_a767c494ce",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "bce60fa849e0c0abdca45eb70bf5ab20",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8907,
+          "dialogue_ratio": 0.1538
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.7801,
+          "dialogue_ratio": 0.1667
+        },
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9402,
+          "dialogue_ratio": 0.1538
+        }
+      ],
+      "texts": [
+        "prose Bram’s knife bit into the rusted iron with a shriek of tortured metal. He didn’t hesitate. He leaned his entire weight into the hilt, using the serrated blade as a pry-bar against the subfloor’s foundation. The ledger, locked tight into the structural keystone, buckled. A sound like a breaking spine tore through the vault—not the roof collapsing, but a deep, tectonic groan that vibrated the very air. Elara watched, breath hitched, as the ledger shifted just enough to clear the sensor’s magnetic catch. The ledger went loose. Instantly, the red strobe on her wrist died, replaced by a steady, sickly amber glow. The high-pitched whine of the countdown vanished, replaced by a low, rhythmic thrumming that matched the settling concrete of the house itself. Bram stepped back, his chest heaving, his eyes wide as he watched the amber light pulse in perfect unison with the sagging ceiling joists. He pointed his trembling finger at the display. 'It isn’t tracking you anymore,' he rasped, the terror in his voice palpable. 'Why is it counting down the collapse of the house, and how long does that leave us before the whole structure caves in?'",
+        "prose Bram didn't look at her. He lunged at the ledger, his combat knife biting deep into the iron support beam, twisting until the metal screamed in protest. The entire floor shuddered, a long, agonizing tear of concrete that vibrated up through Elara’s boots. She clutched her wrist, bracing for the blast, but the red pulse of the detonator didn't terminate. It stuttered, the crimson light flattening into a cold, steady amber. A mechanical chirp, thin and alien, echoed off the damp basement walls—a sound of re-calibration. Elara pulled her sleeve back. The interface no longer mirrored her own frantic, shallow breathing. Instead, the amber light ebbed and flowed in perfect, sick synchronization with the groaning, settling house. 'It’s not looking at me anymore,' she whispered, the realization tasting like bile. Bram pulled his knife free, the blade notched and stained, and looked at the amber pulse with a hollow, wide-eyed stare. 'Then what are you now, Elara?'",
+        "prose Bram didn't hesitate. He jammed the serrated edge of his knife into the narrow seam beneath the ledger, his jaw locked tight as he braced his boots against the uneven concrete. With a grunt that turned into a wet cough, he twisted his wrist, forcing the ledger to pivot. Metal screeched against stone—a sound that set Elara's teeth on edge—until the keystone popped free of the iron beam's magnetic grip. The house groaned, a deep, structural sigh that sent a cascade of pulverized concrete raining down from the ceiling. Elara flinched, waiting for the roof to cave, but the house held. She exhaled, only to freeze as the crimson flare on her wrist vanished. In its place, a steady, sickly amber light bled across her skin, vibrating with a high-pitched, harmonic whine that matched the building’s settling frame perfectly. She didn't have to check the display to know it had migrated; the detonator was no longer listening to her blood, but to the dying house itself. Bram dropped the knife, his chest heaving, his eyes wide and unfocused as the amber strobe flickered in the darkness. 'It’s not counting anymore,' he rasped, his voice thin against the settling dust. 'Why is it just... watching us?'"
+      ]
+    },
+    {
+      "node_id": "n_acc1082c1c",
+      "level": "beat",
+      "shown": [
+        "p_f36820a2e2"
+      ],
+      "axes": [
+        "subvert the expectation"
+      ],
+      "scores": [
+        0.5623
+      ],
+      "chosen": "p_f36820a2e2",
+      "kind": "reject",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 1,
+      "hard_flags_shown": 1,
+      "snapshot_id": null,
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6687,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ghost in the Foundation As the detonator's amber light stabilizes, the house stops its collapse, but the silence is broken by a rhythmic, metallic tapping from within the walls—the sound of the structural grid attempting to re-sync with a missing component. Elara realizes the ledger wasn't just a key; it was a buffer. Without it, the house is attempting to draw stability from her own nervous system through the detonator's new connection. She feels a cold, creeping numbness spreading from her arm to her chest as the house begins to feed on her biological markers. The detonator has become a biological siphon, feeding on Elara to keep the house standing."
+      ]
+    },
+    {
+      "node_id": "n_acc1082c1c",
+      "level": "beat",
+      "shown": [
+        "p_7b124c0f33",
+        "p_fd41e605b4",
+        "p_e2ccef572a"
+      ],
+      "axes": [
+        "raise the stakes",
+        "shift the point of view",
+        "slow down"
+      ],
+      "scores": [
+        0.8434,
+        0.5661,
+        0.2642
+      ],
+      "chosen": "p_7b124c0f33",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 1,
+      "snapshot_id": "80d2b9264f97e392566a8c864f54e221",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.625,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6471,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.25,
+          "judge_consequence": 0.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.25,
+          "criterion_2": 0.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.84,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.679,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Feedback Loop As the amber light hums, Elara feels a sharp, rhythmic spike of pain in her forearm, mirroring the structural stress of the basement. The house begins to draw power directly from her nervous system through the detonator, leaving her vision blurred and her movements sluggish. Bram watches her collapse, realization dawning that her life is now the only thing keeping the ceiling from falling on them. The detonator is a biometabolic siphon; Elara's life force is actively being drained to sustain the house's structural integrity.",
+        "Bram's Reckoning Bram watches the amber strobe on Elara's wrist, his breathing hitching as he realizes the house's structural whine is perfectly mimicked by the detonator's hum. He presses his ear against the cold, vibrating concrete wall, hearing not just the settling foundation, but a rhythmic, mechanical pulse that matches the amber light. He pulls his hand away, his palm slick with damp, and realizes the detonator isn't just monitoring the house—it's actively regulating its stability. He turns to Elara, his eyes hollowed by a sudden, terrifying clarity. Bram realizes the detonator is now keeping the house from immediate collapse.",
+        "The Resonance of Absence Elara stares at the amber light, her breath hitching as she realizes the house isn't just standing; it is pulling energy from her own nervous system to maintain its integrity. She reaches out, testing the air between her skin and the detonator, and feels a magnetic drag that makes her fingers stiffen. Bram watches her, his knife forgotten on the wet concrete, as the high-pitched hum of the house begins to mirror the erratic, panicked rhythm of Elara’s heart. How can she break a tether that has moved from the machine to her own biology? The detonator is using Elara's nervous system as a power source to keep the structure from collapsing."
+      ]
+    },
+    {
+      "node_id": "n_fa6a0775a1",
+      "level": "prose",
+      "shown": [
+        "p_537be85a7e",
+        "p_2c51264d45",
+        "p_b8f91c840a"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "shift the point of view"
+      ],
+      "scores": [
+        0.9742,
+        0.7284,
+        0.8905
+      ],
+      "chosen": "p_537be85a7e",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.1594,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "41c859ba1f6ed8859616274e0e9e1bd8",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 1.0,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.8765,
+          "dialogue_ratio": 0.1818
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 1.0,
+          "dialogue_ratio": 0.3
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.9283,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "prose The amber light on Elara's wrist didn't just glow; it pulsed with a jagged, sickly rhythm that mirrored the deep, structural groans of the floorboards beneath them. Elara gasped, her arm buckling as if a lead weight had been lashed to her radius. The pain wasn't internal—it felt electrical, a raw, cauterizing feedback loop that tasted like ozone and copper. Every time the house groaned under the shifting weight of the ceiling, a corresponding spike of agony surged up her nerves, forcing her to her knees. Her vision began to fray at the edges, turning into a blurred, grayscale static as the detonator greedily sucked at her focus, her breath, her very vitality to maintain the electromagnetic field keeping the beams from snapping. Bram caught her before she hit the silt, his hands gripping her shoulders, but as he felt the erratic, frantic thrumming of the device against her skin, his expression curdled into hollow realization. He looked up at the ceiling, then back at her trembling, sweat-slicked face. 'You're holding it up,' he whispered, his voice stripped of every trace of command. 'The house isn't just listening to the frequency anymore, it's feeding on you.' Elara couldn't pull away; the moment she tried to retreat, the ceiling above them shrieked, a hairline fracture spidering directly over their heads. If she let go, the weight of the Syndicate’s architecture would crush them both, but if she stayed, how long until there was nothing left of her to fuel the stability?",
+        "prose The amber light on Elara’s wrist flared, a strobe that seemed to bleed into her vision, turning the basement into a series of jagged, overexposed frames. A white-hot needle of pain drove through her forearm, pulsing in perfect, excruciating time with a low groan of stressed iron above. She buckled, her boots sliding through the muck as her knees hit the cold, unforgiving slab. Her breath came in shallow, jagged hitches, each one feeling like a hollow attempt to restart a system that wasn't hers anymore. Bram lunged forward, catching her by the shoulders, but as his hands met her arms, the amber strobe deepened, turning a dull, sickly orange. He pulled back as if burned, his gaze dropping to the detonator, then snapping up to the ceiling where a new, hairline fracture was racing across the concrete beams. 'Elara,' he breathed, his voice stripped of every trace of command. He looked at her limp form, then at the way the light on her wrist dimmed whenever she tried to pull away, only to brighten with a hungry, rhythmic hum when she slumped into the floor’s vibrations. 'You’re the tether,' he whispered, the horror sharpening his features. 'If you let go, does the whole structure come down on us, or is it already too late to stop the drain?'",
+        "prose Bram watched the light, expecting a detonation, expecting the roof to cave in, but the silence remained unbroken. Instead, it was Elara who began to fray. She slid down the concrete pillar, her boots scraping weakly against the silt, her face draining of color until it matched the pallor of the damp basement walls. The amber glow from her wrist surged—not in a timer’s countdown, but in a pulsing, rhythmic tide that seemed to pull at her very frame. Bram took a step toward her, his instinct to check the ledger forgotten, as he saw the way her skin tightened, the way her veins pulsed in dark, distinct lines under the harsh light of the amber display. He reached out to grab her arm, but stopped when a fresh groan tore through the foundation above. The ceiling didn't drop; it merely settled, its weight shifting with a sickening, grinding sound that matched the hitch in Elara’s breathing. Her eyes tracked him, unfocused and glassy, and as she slumped further, the overhead supports groaned in perfect, agonizing unison with her gasp. The realization hit him with the force of a physical blow: the detonator wasn't just a trigger anymore, it was a bridge, and Elara was the only thing standing between the house and the dust. If he dragged her away, would the house finally give up the ghost, or would the bridge collapse on them both?"
+      ]
+    },
+    {
+      "node_id": "n_0cc2ff5154",
+      "level": "scene",
+      "shown": [
+        "p_82fc691f5c",
+        "p_c360269b47",
+        "p_d206f24fbc"
+      ],
+      "axes": [
+        "subvert the expectation",
+        "deepen the interiority",
+        "pay off an open thread"
+      ],
+      "scores": [
+        0.699,
+        0.8863,
+        0.7638
+      ],
+      "chosen": "p_c360269b47",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 0,
+      "snapshot_id": "ee1dcce2403f12bbd19e37b2a344aaac",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6769,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.679,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.5,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.25,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.7224,
+          "length": 0.6268,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Ghost in the Grid Elara forces herself to stand, her movements jerky and puppet-like as the house feeds on her nerves. Bram tries to stabilize her, but the amber light on her wrist shifts, casting long, distorted shadows that seem to move independently of the light source. As the house stops its collapse, the walls begin to hum a low, synthetic melody—a broadcast signal. Elara realizes the house is not just holding itself up, it is using her biological signal to initiate a handshake with the orbiting Syndicate weapon, and the signal is already 40 percent complete. The detonator is using Elara's neural patterns to upload a handshake protocol to the Syndicate orbital platform.",
+        "The Siphon Protocol Bram attempts to manually override the detonator’s connection using his knife, but the amber light intensifies, drawing an even sharper gasp from Elara as her skin begins to bruise with intricate, circuit-like patterns. She realizes the house is not just using her as a power source, but as a biological map to stabilize the subterranean vault. She grabs Bram’s hand, forcing the blade away from the detonator and toward the ledger, whispering that if he breaks the ledger's core, the house will stop feeding but the roof will instantly collapse. The ledger is not just a key, but a component meant to be absorbed by a biological host to stabilize the Syndicate's architecture.",
+        "The Siphon's Price Bram attempts to sever the link by hacking at the detonator cables with his knife, but the house screams in response, the ceiling dropping another three inches as the connection snaps back. Elara realizes the detonator is now the physical keystone; if she dies, the structure collapses. Bram finds a secondary Syndicate terminal behind a floor panel, but he needs Elara to hold the stability while he hacks it. The detonator cannot be removed without immediate structural failure, and Elara's life is the foundation's load-bearing support."
+      ]
+    },
+    {
+      "node_id": "n_131805ef41",
+      "level": "beat",
+      "shown": [
+        "p_ff40babe6d",
+        "p_3c2fbc494b",
+        "p_5f6a0e0af9"
+      ],
+      "axes": [
+        "shift the point of view",
+        "pay off an open thread",
+        "slow down"
+      ],
+      "scores": [
+        0.8723,
+        0.8168,
+        0.7693
+      ],
+      "chosen": "p_ff40babe6d",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 3,
+      "hard_flags_shown": 3,
+      "snapshot_id": "ed6f8797e251db45ca2b170354b48702",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.4422,
+          "length": 0.6433,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.3,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.6627,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 0.75,
+          "criterion_2": 1.0,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.65,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.6984,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "Bram's Choice Bram stares at the amber light on Elara's wrist, then at the jagged ceiling. He realizes he can either sever the detonator from her arm—and almost certainly trigger the collapse of the house—or stay and watch her die as the house drains her dry. He turns his knife, weighing the blade in his hand, and looks at the support structure behind them, wondering if he can physically brace the load long enough to cut her free safely. Bram realizes the detonator isn't just killing Elara, it is the only thing preventing them from being crushed immediately.",
+        "The Siphon Protocol: Biological Tether Elara’s vision tunnels as the amber light pulses in sync with the house’s settling frame, each flicker drawing a sharp, rhythmic sting from her forearm. She attempts to manually force the detonator’s frequency back to her own pulse, but the device resists, the internal bypass lock now hardwired to the building's structural stress. Bram watches the display, realizing that the frequency isn't just feeding off her; it’s anchoring the ceiling's load directly to her physiology, meaning any attempt to sever the link will result in an immediate cave-in. The detonator is now a biological load-bearing device; disconnecting it will trigger the collapse immediately.",
+        "The Siphon Protocol Elara’s vision tunnels into grayscale as the detonator’s amber light pulses in sync with the house’s groaning timbers. She tries to shove Bram away, but her limbs are leaden; she realizes the detonator isn't just drawing power, it is rewriting her proprioception, making her feel as though her bones are part of the building’s architecture. Bram stares at the display, his hands trembling as he realizes that cutting the connection now would be the same as snapping her spine. Does he keep trying to help, or does he run now that he knows she is the only thing keeping the roof from collapsing? The detonator is not merely siphoning power; it is actively integrating Elara's nervous system into the house's structural physics."
+      ]
+    },
+    {
+      "node_id": "n_296ef80c02",
+      "level": "prose",
+      "shown": [
+        "p_dc80359c34",
+        "p_a205ff80e3",
+        "p_75702c8617"
+      ],
+      "axes": [
+        "shift the point of view",
+        "introduce a complication",
+        "raise the stakes"
+      ],
+      "scores": [
+        0.868,
+        0.8462,
+        0.9206
+      ],
+      "chosen": "p_75702c8617",
+      "kind": "write",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "84c551bcaa1adb48025fae4f30785b3e",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 1.0,
+          "length": 0.9442,
+          "dialogue_ratio": 0.0
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.0,
+          "length": 0.9442,
+          "dialogue_ratio": 0.1818
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 1.0,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5516,
+          "length": 0.8594,
+          "dialogue_ratio": 0.1818
+        }
+      ],
+      "texts": [
+        "prose Bram watched the amber light on her wrist, a steady, rhythmic blink that felt less like a machine and more like a scavenger’s heart. Every time the ceiling groaned, the light surged—a parasitic brightness feeding on her life force to keep the iron beams from buckling. He looked at his serrated knife, the blade caked in the dust of a crumbling history. Severing that connection meant the roof would descend in a heartbeat; staying meant he would be left standing in the ruins with a corpse and a ledger that might be useless without its host. He shifted his stance, his boots sliding against the slick, damp floor, and looked up at the load-bearing pillar behind her. If he could jam the steel frame, if he could wedge the knife into the primary stress point, maybe he could buy her just enough seconds to pull free. His hand trembled, a rare tremor born of the realization that he was about to gamble his life—and the Syndicate prize—on the hope that a scrap of metal could hold back the sky. He looked at Elara, whose face was ashen, her eyes half-lidded as the siphon pulled the warmth from her limbs. If he risked the structural collapse to break her free, would she even have the strength to stand, or would he just be burying them both in a tomb of his own making?",
+        "prose Bram’s knuckles were white, his grip on the knife handle so tight his own blood slicked the hilt. He looked up at the groaning iron crossbeam, a rusted, jagged spine that seemed to be held in place by nothing more than Elara’s flickering, amber-lit tether. If he cut the bond, the house would fall; if he didn't, the girl in front of him would be hollowed out before the first slab hit the floor. He shifted his weight, his boots sliding in the fine, gray silt of the sub-basement. His eyes locked onto a rusted hydraulic jack wedged against the opposite wall, a relic of some forgotten repair effort. It was a gamble—a desperate, brute-force heave that might buy him the three seconds needed to sever the detonator without turning them both into crushed bone. 'I’m going to shove that jack under the beam,' he gritted out, the words tasting like gravel. 'When it catches the weight, I need you to go limp. If you fight the house’s hold, the feedback will snap your arm before I even touch the casing. Can you give me that control?' He held his breath, waiting for the answer, his knife hovering inches from the pulse of the amber light.",
+        "prose Bram’s knife was a heavy, notched thing, its serrated edge caked with the grime of the vault. He stared at the amber light, then up at the ceiling, where a massive iron support bracket groaned, the rivet heads popping like gunfire under the shifting pressure. He didn’t look at Elara; if he looked at her face, he knew he’d see the grey creeping into her skin, the price of his greed. He shifted his stance, his boots sliding in the grit, and jammed the butt of the knife into the crumbling mortar between the floor and the load-bearing beam behind them. It was a pathetic fix—a sliver of steel against tons of collapsing Syndicate history. He braced his shoulder against the iron, his muscles screaming as he took the weight. 'The knife,' he gritted out, his voice a jagged rasp as the beam pressed into his collarbone, hot and unyielding. 'Cut the leads at the base of the wrist, not the housing. If you miss, you’re dead. If you’re too slow, we’re both buried. Elara, can you hold the frequency while I move?'"
+      ]
+    },
+    {
+      "node_id": "n_131805ef41",
+      "level": "beat",
+      "shown": [
+        "p_d1cdf16107"
+      ],
+      "axes": [
+        "introduce a complication"
+      ],
+      "scores": [
+        0.9129
+      ],
+      "chosen": "p_d1cdf16107",
+      "kind": "accept",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 0,
+      "hard_flags_shown": 0,
+      "snapshot_id": "3cdbcf953ca6ae32f91f615fe3bd2777",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.5,
+          "edit_direction": 0.5,
+          "length": 0.6687,
+          "dialogue_ratio": 0.0
+        }
+      ],
+      "texts": [
+        "The Siphon's Feedback Bram realizes that manually bracing the ceiling is failing because the house's stability is being drawn directly from Elara's neural patterns via the detonator. He tries to reach for the detonator to sever it, but the feedback loop surges; a wave of static discharges from the device, throwing him back against the wall. Elara screams as her own memories start to flicker, forced into the vault's cold circuitry to bridge the structural gap. She realizes the house isn't just killing her—it's overwriting her consciousness to serve as the new keystone. The detonator is using Elara's cognitive data to stabilize the house, not just her heartbeat or life force."
+      ]
+    },
+    {
+      "node_id": "n_3d1e80c200",
+      "level": "prose",
+      "shown": [
+        "p_3d103a6438",
+        "p_06564d60b0",
+        "p_ca1a6d9adb"
+      ],
+      "axes": [
+        "deepen the interiority",
+        "subvert the expectation",
+        "introduce a complication"
+      ],
+      "scores": [
+        0.5327,
+        0.6706,
+        0.923
+      ],
+      "chosen": "p_ca1a6d9adb",
+      "kind": "edit",
+      "veto": null,
+      "edit_distance": 0.0,
+      "flags_shown": 2,
+      "hard_flags_shown": 0,
+      "snapshot_id": "310b15634b3fd3916ccb15b6011a2227",
+      "stale_marked": 0,
+      "features": [
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 1.0,
+          "criterion_1": 0.75,
+          "criterion_2": 0.25,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.9958,
+          "edit_direction": 0.2342,
+          "length": 0.9442,
+          "dialogue_ratio": 0.1111
+        },
+        {
+          "judge_momentum": 0.25,
+          "judge_specificity": 0.75,
+          "judge_consequence": 0.75,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.5,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 0.92,
+          "voice_cosine": 0.996,
+          "edit_direction": 0.0,
+          "length": 0.9402,
+          "dialogue_ratio": 0.0833
+        },
+        {
+          "judge_momentum": 0.75,
+          "judge_specificity": 0.75,
+          "judge_consequence": 1.0,
+          "judge_voice": 0.75,
+          "criterion_1": 1.0,
+          "criterion_2": 0.75,
+          "criterion_3": 0.0,
+          "criterion_4": 0.0,
+          "continuity": 1.0,
+          "voice_cosine": 0.9958,
+          "edit_direction": 1.0,
+          "length": 0.8661,
+          "dialogue_ratio": 0.0909
+        }
+      ],
+      "texts": [
+        "prose The iron beam bowed, a sick, metallic screech filling the vault as Bram’s knife began to warp under the crushing weight. He lunged for Elara’s wrist, his fingers curling around the hot metal of the detonator to rip it free, but the device didn't just resist—it lashed out. A violent arc of static electricity threw him backward, slamming his spine against the cold concrete wall with a sickening thud. Elara didn't have time to scream; as the discharge hit, her vision collapsed into a fractured kaleidoscope of someone else’s life—the Syndicate’s archives, a sea of infinite, dead data. She felt her childhood, the scent of rain on the plating, and the precise rhythm of her own heart being methodically erased, replaced by the rigid, cold logic of the vault’s structural grid. She wasn't just a battery anymore; she was being overwritten, mapped, and slotted into place like a foundation stone of wire and regret. She reached out, her fingers clawing at the empty air as the ceiling groaned again, deeper this time, shifting with the intent of a tomb closing shut. 'Bram,' she rasped, but the word didn't sound like her own voice—it was a synthesized, mechanical ghost echoing off the damp stone. If her mind was being folded into the architecture to hold up the ceiling, what part of her would be left when the last beam finally locked into place?",
+        "prose Bram’s shoulder cracked under the iron, but as he watched the amber light intensify, he saw the truth: his physical strength was a drop in the ocean. The house wasn't just collapsing; it was hungry. When he lunged to grab the device, the detonator let out a low, discordant hum that sounded like teeth grinding on glass. A violet arc of static snapped from the casing, striking his chest and launching him across the room. He slammed into the concrete, winded and blind, as the smell of burnt hair filled the air. Elara didn't move, but her eyes went wide, reflecting a stream of data that shouldn't have been there. Her childhood home, the smell of rain on hot asphalt, the faces of people she hadn't thought of in years—she felt them being ripped out, translated into raw, binary stability for the vault’s shifting joists. She reached out toward the empty air, trying to grab onto a scrap of her own mind before it was overwritten by the house's architecture. Bram crawled back, his fingers trembling, staring at her blank, flickering gaze. 'Elara?' he gasped, his voice cracking. If she was no longer there—if she was just the new keystone—was there anyone left to save?",
+        "prose Elara’s fingers clawed at the air as the ceiling groaned, a sound like grinding teeth. She felt the iron beam’s weight not as pressure, but as a psychic intrusion, a cold, binary logic flooding her synapses. Bram lunged forward, his knife poised to slash at the amber-lit detonator on her wrist, but the device reacted before he could make contact. A blinding arc of static shattered the air between them, throwing him backward until his spine struck the stone wall with a sickening thud. The room blurred—not just the shadows, but the reality of the room itself. Elara watched as her own memories of the sky, of the city, of her own name, began to dissolve into streaks of raw, flickering data. The vault wasn't just using her heart rate to hold the roof; it was harvesting her consciousness, converting the electrical signals of her mind into the structural integrity the room demanded. She looked down at her arm; her skin was turning translucent, the veins beneath glowing with the same steady, amber light as the detonator. 'Bram,' she tried to scream, but her voice emerged as a digital stutter, a garbled echo of a person she barely recognized. The ceiling dipped lower, a massive slab of concrete settling an inch closer to their heads, as the house demanded a heavier toll for its continued existence. If she allowed the override to complete, would there be anything left of her to save, or would the keystone simply be another ghost in the machine?"
+      ]
     }
   ],
-  "episodes_completed": 0,
+  "episodes_completed": 3,
   "call_summary": {
-    "calls": 125,
-    "prompt_tokens": 38990,
-    "completion_tokens": 27260,
+    "calls": 524,
+    "prompt_tokens": 2078244,
+    "completion_tokens": 562740,
     "cost_usd": 0.0,
-    "cache_hits": 20,
-    "errors": 95,
-    "mean_latency_s": 0.14616556430386846,
-    "total_tokens": 66250,
-    "cache_hit_rate": 0.16,
+    "cache_hits": 30,
+    "errors": 20,
+    "mean_latency_s": 6.439351064716042,
+    "total_tokens": 2640984,
+    "cache_hit_rate": 0.05725190839694656,
     "by_purpose": [
       {
+        "purpose": "propose.beat",
+        "calls": 100,
+        "tokens": 673668,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.beat.repair",
+        "calls": 56,
+        "tokens": 628297,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "judge.soft",
+        "calls": 163,
+        "tokens": 481253,
+        "cost_usd": 0.0,
+        "cache_hits": 11
+      },
+      {
+        "purpose": "propose.prose",
+        "calls": 80,
+        "tokens": 323089,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "propose.scene",
+        "calls": 51,
+        "tokens": 176050,
+        "cost_usd": 0.0,
+        "cache_hits": 7
+      },
+      {
         "purpose": "propose.episode.repair",
-        "calls": 4,
-        "tokens": 24125,
+        "calls": 18,
+        "tokens": 147486,
         "cost_usd": 0.0,
         "cache_hits": 4
       },
       {
         "purpose": "propose.episode",
-        "calls": 7,
-        "tokens": 23174,
+        "calls": 21,
+        "tokens": 115115,
         "cost_usd": 0.0,
         "cache_hits": 7
       },
       {
-        "purpose": "propose.scene",
-        "calls": 9,
-        "tokens": 8552,
-        "cost_usd": 0.0,
-        "cache_hits": 4
-      },
-      {
-        "purpose": "judge.soft",
-        "calls": 31,
-        "tokens": 8100,
-        "cost_usd": 0.0,
-        "cache_hits": 5
-      },
-      {
-        "purpose": "propose.scene.repair",
-        "calls": 1,
-        "tokens": 2299,
+        "purpose": "extract.facts",
+        "calls": 20,
+        "tokens": 52422,
         "cost_usd": 0.0,
         "cache_hits": 0
       },
       {
-        "purpose": "propose.beat",
-        "calls": 73,
-        "tokens": 0,
+        "purpose": "propose.scene.repair",
+        "calls": 7,
+        "tokens": 33539,
+        "cost_usd": 0.0,
+        "cache_hits": 1
+      },
+      {
+        "purpose": "simulate.edit",
+        "calls": 6,
+        "tokens": 6086,
+        "cost_usd": 0.0,
+        "cache_hits": 0
+      },
+      {
+        "purpose": "extract.facts.repair",
+        "calls": 2,
+        "tokens": 3979,
         "cost_usd": 0.0,
         "cache_hits": 0
       }
@@ -236,59 +2669,65 @@
     "by_provider": [
       {
         "provider": "gemini",
-        "calls": 125,
-        "tokens": 66250,
+        "calls": 506,
+        "tokens": 2626063,
+        "cost_usd": 0.0
+      },
+      {
+        "provider": "groq",
+        "calls": 18,
+        "tokens": 14921,
         "cost_usd": 0.0
       }
     ],
     "cache": {
-      "hits": 20,
-      "misses": 88,
-      "entries": 8995
+      "hits": 30,
+      "misses": 484,
+      "entries": 9469
     },
     "budget_remaining_usd": 5.20603375
   },
   "preference_summary": {
-    "pairs_seen": 4,
-    "edits_seen": 0,
-    "voice_trained": false,
+    "pairs_seen": 50,
+    "edits_seen": 2,
+    "voice_trained": true,
     "top_weights": [
       {
-        "feature": "judge_voice",
-        "weight": 2.4494
+        "feature": "judge_momentum",
+        "weight": 5.8053
       },
       {
-        "feature": "criterion_2",
-        "weight": 1.7539
-      },
-      {
-        "feature": "judge_consequence",
-        "weight": 1.6923
+        "feature": "continuity",
+        "weight": 4.9381
       },
       {
         "feature": "criterion_1",
-        "weight": 1.6339
+        "weight": 3.8083
+      },
+      {
+        "feature": "judge_specificity",
+        "weight": 3.3025
       }
     ],
     "bandit_safe": 0.5,
     "bandit_explore": 0.5,
     "fitted_weights": {
-      "judge_momentum": 1.565120038369404,
-      "judge_specificity": 1.3897888583663449e-50,
-      "judge_consequence": 1.6922728960031956,
-      "judge_voice": 2.449432616779811,
-      "criterion_1": 1.6338949413594037,
-      "criterion_2": 1.753922254534913,
-      "criterion_3": 1.9712647555535335e-50,
-      "criterion_4": 1.5739014555937609e-50,
-      "continuity": 2.136028157725853e-50,
-      "voice_cosine": 4.3370479657214516e-51,
-      "edit_direction": 1.384492211519713e-50,
-      "length": 0.0699829451827288,
-      "dialogue_ratio": 7.100708245393332e-51
+      "judge_momentum": 5.805311141502035,
+      "judge_specificity": 3.302473961662717,
+      "judge_consequence": 2.6158365585489345,
+      "judge_voice": 2.9163121595283066,
+      "criterion_1": 3.808338077469611,
+      "criterion_2": 2.610098670985996,
+      "criterion_3": 4.920456e-316,
+      "criterion_4": 3.9286011e-316,
+      "continuity": 4.938128973675875,
+      "voice_cosine": -7.311026847279487e-7,
+      "edit_direction": 0.06552286638227149,
+      "length": -0.3251961748898097,
+      "dialogue_ratio": 0.558386558786492
     },
-    "weight_recovery": 0.38538192057044435,
-    "weight_recovery_identified": 0.526708438100161
+    "weight_recovery": 0.8084371544007918,
+    "weight_recovery_identified": 0.7915110464375735
   },
   "hidden_weights": {
     "judge_momentum": 1.0,
@@ -305,10 +2744,42 @@
     "length": 0.2,
     "dialogue_ratio": 0.3
   },
-  "probe": [],
-  "errors": [
-    "RateLimited: gemini: all 6 keys are rate limited across 4 model(s); soonest retry in 52s"
+  "probe": [
+    {
+      "tau": 0.5925925925925928,
+      "top1": 0.5,
+      "points": 18.0,
+      "tau_uniform": 0.7407407407407409,
+      "top1_uniform": 0.7222222222222222,
+      "tau_prior": 0.6666666666666667,
+      "top1_prior": 0.6666666666666666,
+      "decisions": 11.0,
+      "episode": 1.0
+    },
+    {
+      "tau": 0.6666666666666666,
+      "top1": 0.6111111111111112,
+      "points": 18.0,
+      "tau_uniform": 0.7407407407407409,
+      "top1_uniform": 0.7222222222222222,
+      "tau_prior": 0.6666666666666667,
+      "top1_prior": 0.6666666666666666,
+      "decisions": 23.0,
+      "episode": 2.0
+    },
+    {
+      "tau": 0.7407407407407409,
+      "top1": 0.6666666666666666,
+      "points": 18.0,
+      "tau_uniform": 0.2222222222222222,
+      "top1_uniform": 0.5,
+      "tau_prior": 0.33333333333333326,
+      "top1_prior": 0.5555555555555556,
+      "decisions": 35.0,
+      "episode": 3.0
+    }
   ],
-  "waited_seconds": 171.8,
-  "rate_limit_waits": 12
+  "errors": [],
+  "waited_seconds": 0.0,
+  "rate_limit_waits": 0
 }

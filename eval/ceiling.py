@@ -204,7 +204,14 @@ def for_runs(runs: list[dict[str, Any]], noise_by_persona: dict[str, float]) -> 
     """
     out: dict[str, Any] = {}
     for run in runs:
+        # Keyed by configuration *and* persona. Keying on the persona alone was fine while
+        # one configuration existed and silently wrong the moment two did: the same writer
+        # appears in both, so whichever was processed last overwrote the other's ceiling.
+        # A two-decision run's ceiling is 0.0, and a real run scaled against it reports
+        # more than a thousand per cent of what was achievable, which is how this was found.
         persona = run.get("persona", "")
+        config = (run.get("config") or {}).get("name") or ""
+        key = f"{config}/{persona}" if config else persona
         # A rejected set produces no comparison in reality -- the writer said no to all of
         # them, so there is no winner to pair against anything. The oracle always picks a
         # best, so including those decisions fitted the ceiling on materially more
@@ -214,7 +221,7 @@ def for_runs(runs: list[dict[str, Any]], noise_by_persona: dict[str, float]) -> 
             for a in run.get("actions", ())
             if len(a.get("features", ())) >= 2 and a.get("kind") != "reject"
         ]
-        out[persona] = ceiling_for(
+        out[key] = ceiling_for(
             [list(a["features"]) for a in usable],
             noise=noise_by_persona.get(persona, 0.08),
             edited=[a.get("kind") == "edit" for a in usable],
