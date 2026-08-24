@@ -720,7 +720,12 @@ scale is not $1.0$: twenty-odd noisy comparisons over \rFeatures{} features do n
 \rFeatures{} weights. The \emph{oracle ceiling}, which is the same estimator on
 the same candidate sets at the same decision count fitted to weights it is told, is
 \rCeilingMean{} on average. Measured recovery is therefore \rRecoveryFractionOfCeiling{} of
-what was achievable. Sample size, not the estimator, is what caps this: swept independently,
+what was achievable. One run exceeds its own ceiling, at
+\rLiveWeightRecoveryBest{} against \rCeilingBest{}, which is not a contradiction: the
+ceiling is a mean over many synthetic runs with a spread of roughly $\pm$
+\rCeilingAtTwoHundredSd{}, so a single real run landing above it is a lucky draw rather than
+an impossible one. It is also the reason the fraction is quoted over four runs rather than
+celebrated on one. Sample size, not the estimator, is what caps this: swept independently,
 the ceiling is \rCeilingAtTwentyFive{} $\pm$ \rCeilingAtTwentyFiveSd{} at twenty-five
 decisions and still only \rCeilingAtTwoHundred{} $\pm$ \rCeilingAtTwoHundredSd{} at two
 hundred, because real candidate features are clustered and correlated and the design matrix
@@ -1489,13 +1494,24 @@ dialogue scored zero; and the voice model, which trains on prose the \emph{write
 rewrote, had never once been trained, because no simulated writer had ever used the
 hand-write or polish paths the interface offers. Both are fixed and both features now move.
 
-They do not move \emph{much}, and the reason is the third thing, which is structural and is
-not a bug at all. The judge emits five levels. Four fixed axes and every writer-defined
-criterion are that judge's output rescaled, and with three candidates in a set the expected
-outcome is a tie: across the shipped probe fixture the two unfilled criterion slots are
-constant in every decision, two of the four judge axes are constant in more than half of
-them, and voice cosine, now that it varies at all, varies across a range too narrow to reorder
-anything at any weight the head can learn. That is the dominant cause of the constant
+Both fixes worked, and the run reports say so: the unexercised-feature list in
+\file{summary.md} is down to the two criterion slots no persona fills, which are structurally
+absent because each writer defines exactly two criteria. Dialogue ratio now spans zero to
+about a third across a run, and voice cosine spans roughly 0.5 to 0.99, where both were
+constant in every run this project had produced before.
+
+Two things bound that result and both belong here rather than in a footnote.
+
+The first is that the \emph{probe fixture} predates the fixes. It was sampled from a run made
+before either bug was found, so in the measuring stick those two columns are still nearly
+flat, and the probe therefore cannot currently reward a head for learning them. Rebuilding it
+would fix that and would also change the measuring stick underneath a result, which is a
+trade this document declines to make quietly: the fixture stays, and its blind spot is stated.
+
+The second is structural and is not a bug at all. The judge emits five levels. Four fixed axes
+and every writer-defined criterion are that judge's output rescaled, and with three candidates
+in a set the expected outcome is a tie: across the shipped fixture two of the four judge axes
+are constant in more than half the decisions. That is the dominant cause of the constant
 columns, it was not fixed by fixing the two bugs, and it bounds how much a
 \rFeatures{}-dimensional head can be identified from a few dozen three-way comparisons at
 all.
