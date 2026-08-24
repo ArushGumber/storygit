@@ -820,7 +820,13 @@ def test_the_chunk_seven_costing_is_arithmetic_and_never_calls_anything() -> Non
     assert half["total_usd"] == pytest.approx(9.75)
 
     body = costing.render(summary, cap_usd=12.0)
-    assert "No OpenRouter call was made" in body
+    # The document used to promise that no metered call had ever been made. That promise
+    # expired the day the authorized rerun ran, and a test that pins prose the project has
+    # outgrown is a test that gets deleted rather than believed. What is still true, and is
+    # the property worth holding, is that *computing the projection* touches no provider:
+    # it is published rates times recorded tokens, and it must stay runnable with no keys.
+    assert "arithmetic" in body
+    assert "published rates" in body
     assert "half only" in body, "a run over the cap must say so rather than just printing it"
 
 
@@ -1092,3 +1098,38 @@ def test_the_evaluation_refuses_the_metered_provider_unless_it_was_asked_for() -
             go(enabled, None, Path(d))
         with pytest.raises(RuntimeError, match="needs OPENROUTER_ENABLED=true"):
             go(disabled, "some/model", Path(d))
+
+
+def test_the_costing_projection_touches_no_provider() -> None:
+    """The projection must stay computable with no keys and no network.
+
+    Asserted structurally rather than by reading the prose that says so. `eval/costing.py`
+    is arithmetic over recorded tokens and published rates, and the moment it imports the
+    provider layer that stops being checkable by inspection.
+    """
+    import ast
+    from pathlib import Path
+
+    source = Path("eval/costing.py").read_text()
+    tree = ast.parse(source)
+    imported: set[str] = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ImportFrom) and node.module:
+            imported.add(node.module)
+        elif isinstance(node, ast.Import):
+            imported.update(alias.name for alias in node.names)
+
+    # The price table is data and is exactly what this module should read. What it must not
+    # reach is anything that can place a call: the router, or a provider client.
+    can_call = {
+        name
+        for name in imported
+        if name.endswith("providers.router")
+        or name.endswith("providers.gemini")
+        or name.endswith("providers.groq")
+        or name.endswith("providers.openrouter")
+    }
+    assert not can_call, f"the costing projection imports something that can call: {can_call}"
+    assert any("pricing" in name for name in imported), (
+        "the projection should read the price table rather than hard-coding rates"
+    )

@@ -103,6 +103,7 @@ def collect() -> dict[str, str]:
             macros["StaleSoftBestFOne"] = _num(tied[0].get("f1"))
             macros["StaleSoftTiedCount"] = str(len(tied))
             macros["StaleSoftSweptCount"] = str(len(soft))
+
             # The labels read "+ soft edges @ 0.68"; the range wants the numbers only.
             def _threshold(point: dict[str, Any]) -> str:
                 match = re.search(r"([\d.]+)\s*$", str(point.get("label", "")))

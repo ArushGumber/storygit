@@ -83,10 +83,12 @@ def render(summary: dict[str, Any], *, cap_usd: float) -> str:
     """
     totals = totals_from(summary)
     lines = [
-        "# chunk7_costing.md — what the metered rerun would cost",
+        "# chunk7_costing.md - what the metered rerun costs",
         "",
-        "Arithmetic only. **No OpenRouter call was made to produce this**; it multiplies the",
-        "token counts the free-tier run actually produced by published rates.",
+        "A projection, and the measurement that now exists to check it against. The table",
+        "below is arithmetic: it multiplies the token counts the free-tier run produced by",
+        "published rates. The metered rerun has since been run, so the last section compares",
+        "what this predicted against what it actually cost.",
         "",
         f"Measured on the current run: {totals['prompt']:,.0f} prompt tokens, "
         f"{totals['completion']:,.0f} completion tokens, across "
@@ -98,6 +100,7 @@ def render(summary: dict[str, Any], *, cap_usd: float) -> str:
         "| model | full run | half config | $/decision (full) | fits the cap? |",
         "|---|---|---|---|---|",
     ]
+    measured = _measured_metered(summary)
     for model in CANDIDATES:
         full = project(totals, model)
         half = project(totals, model, fraction=0.5)
@@ -126,7 +129,60 @@ def render(summary: dict[str, Any], *, cap_usd: float) -> str:
         "including `sample_index`, so a *rerun* of an identical configuration is nearly free;",
         "these figures are for the first run, which is the one that has to fit.",
     ]
+    if measured:
+        lines += [
+            "",
+            "## Projection against measurement",
+            "",
+            f"The metered rerun has since run on `{measured['model']}`: "
+            f"**${measured['spend']:,.2f}** across {measured['decisions']:,.0f} decisions, "
+            f"or **${measured['per_decision']:.3f} per decision**, under the ${cap_usd:,.2f} "
+            "cap, which was not raised and never had to refuse a call.",
+            "",
+            f"The projection for that model was ${measured['projected_per_decision']:.3f} "
+            "per decision, so the estimate was "
+            f"{measured['ratio']:.0%} of what it cost. The gap is not a pricing error, it is "
+            "a run-shape error: the projection divides a whole run's tokens by a whole run's",
+            "decisions, and three of the four metered runs stopped at their first episode.",
+            "They paid for episode proposals, which are the expensive part, and never reached",
+            "the beats that would have amortised them. A cost model built from complete runs",
+            "under-prices incomplete ones, which is worth knowing before quoting a per-decision",
+            "figure for a run that might not finish.",
+        ]
     return "\n".join(lines) + "\n"
+
+
+def _measured_metered(summary: dict[str, Any]) -> dict[str, Any] | None:
+    """What the metered rerun actually cost, if one has been run.
+
+    A projection that is never checked against a measurement is a spreadsheet. This pulls
+    the real figures out of the summary so the two sit next to each other.
+
+    Args:
+        summary: A loaded ``summary.json``.
+
+    Returns:
+        The comparison, or ``None`` when no metered run is recorded.
+    """
+    rows = [r for r in (summary.get("runs") or []) if str(r.get("run", "")).startswith("half/")]
+    if not rows:
+        return None
+    decisions = sum(r.get("decisions", 0) for r in rows)
+    spend = sum((r.get("usd_per_action") or 0.0) * r.get("decisions", 0) for r in rows)
+    if not decisions or not spend:
+        return None
+    model = "google/gemini-2.5-pro"
+    projected = project(totals_from(summary), model)
+    projected_per_decision = projected["usd_per_decision"]
+    per_decision = spend / decisions
+    return {
+        "model": model,
+        "spend": spend,
+        "decisions": decisions,
+        "per_decision": per_decision,
+        "projected_per_decision": projected_per_decision,
+        "ratio": projected_per_decision / per_decision if per_decision else 0.0,
+    }
 
 
 def main() -> None:

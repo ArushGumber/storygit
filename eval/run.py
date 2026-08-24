@@ -247,9 +247,7 @@ def _combined_call_summary(logs: list[RunLog]) -> dict[str, Any]:
     return total
 
 
-def _ceiling_for_key(
-    ceilings: dict[str, Any], key: str, log: RunLog
-) -> dict[str, Any]:
+def _ceiling_for_key(ceilings: dict[str, Any], key: str, log: RunLog) -> dict[str, Any]:
     """The ceiling for one run, by configuration and persona rather than persona alone."""
     config = (log.config or {}).get("name") or key.split("/", 1)[0]
     return ceilings.get(f"{config}/{log.persona}") or ceilings.get(log.persona) or {}
