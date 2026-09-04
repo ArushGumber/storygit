@@ -4,8 +4,7 @@
 human writer develop a one-line premise into a structured serial — Story → Episodes →
 Scenes → Beats → Prose — while keeping the writer in charge of every change.
 
-Built as a take-home for a research-engineering role in serialized audio fiction. The
-reference point is Google
+The reference point is Google
 DeepMind's *Fabula*; the goal is not to reproduce it, but to fix the structural problems
 its own user study surfaced.
 
